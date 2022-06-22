@@ -1,0 +1,44 @@
+@import 'src/assets/styles/_variables.scss';
+
+.user {
+  &__wrapper {
+    background-color: $color-white;
+    padding: 60px;
+    height: 100%;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $color-grey-flash;
+    padding-bottom: 20px;
+    &-title {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+      & > span {
+        @include font(20px, $color-grey-space, 600);
+      }
+    }
+    &-label {
+    }
+    &-buttons {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    padding-top: 30px;
+    max-width: 400px;
+    margin: 0 auto;
+    &-line {
+      height: 1px;
+      background-color: $color-grey-flash;
+    }
+  }
+}

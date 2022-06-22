@@ -1,0 +1,188 @@
+@import 'src/assets/styles/_variables.scss';
+
+.page-inner {
+  height: inherit;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+}
+.parts {
+  &__body {
+    overflow: hidden;
+    height: inherit;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
+  &__left {
+    overflow-y: auto;
+    @include hideScrollbar;
+  }
+  &__right {
+    background-color: $color-bg;
+    border-top-left-radius: 20px;
+    padding: 20px;
+  }
+}
+
+.service {
+  @include border;
+  padding: 20px;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  &__title {
+    @include font(18px, $color-space, 600);
+  }
+  &__field {
+    display: flex;
+    align-items: center;
+    @include border;
+    padding: 14px 16px;
+    background-color: $color-bg;
+    @include font(14px, $color-space, 500);
+
+    & > i {
+      font-size: 18px;
+      margin-right: 10px;
+      &.orange {
+        color: $color-orange;
+      }
+      &.red {
+        color: $color-red;
+      }
+      &.blue {
+        color: $color-blue;
+      }
+      &.green {
+        color: $color-green;
+      }
+    }
+    & > span {
+      font-weight: 700;
+      margin-right: 3px;
+    }
+  }
+}
+
+.block {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  height: inherit;
+  &__header {
+    padding: 40px;
+    padding-left: 56px;
+    &-title {
+      @include font(24px, $color-space, 600);
+    }
+  }
+  &__main {
+    overflow: hidden;
+    display: grid;
+    &--empty {
+    }
+  }
+}
+
+.empty {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border-top: 1px solid $color-lightgrey;
+
+  &__inner {
+    display: grid;
+    place-items: center;
+    margin-bottom: 100px;
+  }
+  &__icon {
+    padding: 20px;
+    background-color: $color-bg;
+    line-height: 0;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    & > i {
+      @include font(40px, $color-space);
+    }
+  }
+  &__title {
+    @include font(24px, $color-space, 600);
+    margin-bottom: 20px;
+  }
+  &__subtitle {
+    @include font(14px, $color-grey, 500, 1.5);
+    max-width: 340px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    @include border(90px);
+    background-color: $color-bg;
+    padding: 12px 60px;
+    cursor: pointer;
+    & > i {
+      @include font(18px, $color-grey);
+    }
+    & > span {
+      @include font(14px, $color-space, 600);
+    }
+  }
+}
+
+.list {
+  padding-left: 56px;
+  padding-right: 30px;
+  overflow: hidden;
+  display: grid;
+  &__inner {
+    border-top: 1px solid $color-lightgrey;
+    padding-top: 20px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+  &__header {
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    &-title {
+      @include font(18px, $color-grey, 600);
+    }
+    &-btn {
+      display: flex;
+      align-items: center;
+      & > i {
+        @include font(16px, $color-green);
+        margin-right: 10px;
+      }
+      & > span {
+        @include font(16px, $color-grey, 600);
+      }
+    }
+    &-bottom {
+      display: grid;
+      grid-template-columns: 16px 4fr 1fr 1fr 1fr 1fr 20px;
+      column-gap: 10px;
+      padding-bottom: 20px;
+      // border-bottom: 1px solid $color-lightgrey;
+      & > span {
+        @include font(14px, $color-grey, 500);
+
+        &:first-child {
+          grid-area: auto / 1 / auto / 3;
+        }
+      }
+    }
+  }
+  &__main {
+    overflow-y: auto;
+    @include hideScrollbar;
+  }
+}

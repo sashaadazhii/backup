@@ -1,0 +1,59 @@
+@import 'src/assets/styles/_variables.scss';
+
+.page-inner {
+  height: inherit;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.customer {
+  &__wrapper {
+    height: inherit;
+    overflow-y: auto;
+    display: grid;
+    justify-items: center;
+    align-items: start;
+    background-color: $color-bg;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  &__inner {
+    margin-top: 40px;
+    max-width: 410px;
+    width: 100%;
+    background-color: $color-white;
+    box-shadow: 0px 4px 84px rgba(99, 99, 112, 0.16);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__header {
+    margin-bottom: 30px;
+  }
+  &__title {
+    @include font(20px, $color-space, 600);
+  }
+  &__main {
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+    width: 100%;
+  }
+  &__footer {
+    width: 100%;
+  }
+  &__button {
+    margin-top: 16px;
+    background-color: $color-green;
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding: 14px;
+    border-radius: 12px;
+    @include font(16px, $color-white, 700);
+  }
+}

@@ -1,0 +1,115 @@
+@import 'src/assets/styles/_variables.scss';
+
+.vehicle {
+  &__wrapper {
+  }
+  &__lsit {
+  }
+  &__add {
+    @include border(12px, #d6d7de);
+    background-color: $color-lightgrey;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    margin-top: 20px;
+
+    & > i {
+      @include font(16px, $color-grey);
+    }
+    & > span {
+      @include font(14px, $color-space);
+    }
+  }
+}
+.card {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 46px;
+    column-gap: 20px;
+    margin-bottom: 20px;
+  }
+  &__main {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 24px;
+  }
+  &__close {
+    @include border;
+    padding: 12px;
+    align-self: start;
+    line-height: 0;
+    margin-top: 26px;
+    cursor: pointer;
+    & > i {
+      @include font(20px, $color-lightgrey);
+    }
+  }
+}
+.field {
+  &__title {
+    @include font(14px, $color-space, 600);
+    margin-bottom: 12px;
+  }
+  &__dropdown {
+
+    &-option,
+    &-label {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      & > i {
+        // font-size: 18px;
+        margin-top: -3px;
+        margin-bottom: -3px;
+        // &.blue {
+        //   color: $color-blue;
+        // }
+        // &.red {
+        //   color: $color-red;
+        // }
+        // &.green {
+        //   color: $color-green;
+        // }
+      }
+      // & > span {
+      //   @include font(14px, $color-space, 500);
+      // }
+    }
+    &.main {
+      grid-area: 1 / 1 / 1 / 5;
+    }
+  }
+}
+
+// .main {
+//   &__wrapper {
+//     overflow-y: auto;
+//     padding: 30px;
+//   }
+//   &__select {
+//     &-option,
+//     &-label {
+//       display: flex;
+//       align-items: center;
+//       column-gap: 8px;
+//       padding: 3px 0;
+//       & > i {
+//         font-size: 18px;
+//         &.blue {
+//           color: $color-blue;
+//         }
+//         &.red {
+//           color: $color-red;
+//         }
+//         &.green {
+//           color: $color-green;
+//         }
+//       }
+//       & > span {
+//         @include font(14px, $color-space, 500);
+//       }
+//     }
+//   }
+// }

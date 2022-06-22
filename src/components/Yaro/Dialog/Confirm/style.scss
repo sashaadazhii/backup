@@ -1,0 +1,47 @@
+@import '../../styles/_variables.scss';
+.block {
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+  }
+  &__icon {
+    display: block;
+    margin-bottom: 40px;
+    font-size: 70px;
+    &.red {
+      color: $color-red;
+    }
+    &.green {
+      color: $color-green;
+    }
+    &.grey {
+      color: $color-grey;
+    }
+  }
+  &__title {
+    @include font(20px, $color-grey-space, 700);
+    margin-bottom: 14px;
+  }
+  &__subtitle {
+    @include font(14px, $color-grey, 600, 1.6);
+    text-align: center;
+    & > span {
+      color: $color-grey-space;
+    }
+  }
+  &__buttons {
+    display: flex;
+    width: 100%;
+    column-gap: 16px;
+    margin-top: 24px;
+    &--vertical {
+      flex-direction: column;
+      row-gap: 12px;
+    }
+    & > button {
+      width: 100%;
+    }
+  }
+}

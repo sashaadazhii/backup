@@ -1,0 +1,96 @@
+@import 'src/assets/styles/_variables.scss';
+
+.card {
+  &__wrapper {
+    @include border(18px);
+    padding: 14px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+  &__left {
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+  }
+  &__label {
+    padding: 12px 10px;
+    @include border(10px);
+    display: flex;
+    align-items: center;
+    background-color: $color-bg;
+    &--empty {
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    & > span {
+      @include font(16px, $color-grey, 600);
+      &:focus-visible {
+        outline: none;
+      }
+    }
+    & > i,
+    img {
+      @include font(18px, #3eb3bb);
+      margin-right: 10px;
+      margin-top: -2px;
+    }
+  }
+  &__buttons {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+  }
+  &__btn {
+    @include border(10px);
+    height: 42px;
+    display: grid;
+    place-items: center;
+    padding: 0 14px;
+    & > span {
+      @include font(16px, $color-white, 600);
+    }
+    & > i {
+      @include font(18px, $color-grey);
+    }
+    &.green {
+      background-color: $color-green;
+      border-color: transparent;
+      & > span {
+        color: $color-white;
+      }
+    }
+    &.grey {
+      background-color: $color-bg;
+      width: 42px;
+      padding: 0 8px;
+    }
+  }
+}
+.field {
+  &__label {
+    padding: 7px 10px;
+    @include border(10px);
+    display: flex;
+    align-items: center;
+    &-empty {
+      border-color: transparent;
+      width: 100%;
+    }
+    &-icon {
+      & > i {
+        @include font(18px, $color-orange);
+        margin-right: 10px;
+      }
+      & > input {
+        max-width: 100px;
+      }
+    }
+  }
+  &__input {
+    width: 100%;
+  }
+}

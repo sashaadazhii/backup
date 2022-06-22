@@ -1,0 +1,22 @@
+@import 'src/assets/styles/_variables.scss';
+
+.loader {
+  position: absolute;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: $color-green;
+  line-height: 0;
+  height: 90%;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: all .2s;
+  &.show {
+    visibility: visible;
+    opacity: 1;
+  }
+}

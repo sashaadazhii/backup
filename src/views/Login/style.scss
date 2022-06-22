@@ -1,0 +1,242 @@
+@import 'src/assets/styles/_variables.scss';
+
+.login {
+  &__wrapper {
+    color: $color-space;
+    height: inherit;
+    // background-color: $color-bg;
+    // background: center / contain no-repeat url("../../media/examples/firefox-logo.svg"),
+    //         #eee 35% url("../../media/examples/lizard.png");
+    display: grid;
+    grid-template-rows: 69px 1fr;
+  }
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__header {
+    text-align: center;
+  }
+  &__subtitle {
+    @include font(18px, _, 700, 1.2);
+  }
+  &__title {
+    @include font(40px, _, 700, 1.2);
+    margin-bottom: 30px;
+  }
+  &__main {
+  }
+  &__footer {
+    & > span {
+      @include font(14px, _, 400, 1.2);
+      &.bold {
+        font-weight: 700;
+      }
+      &.green {
+        color: $color-green;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.block {
+  &__wrapper {
+    padding: 30px;
+    // @include border(20px, #d6d7de);
+    // background-color: $color-white;
+    width: 560px;
+    margin-bottom: 60px;
+    display: grid;
+    row-gap: 24px;
+    position: relative;
+    z-index: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      bottom: 1px;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: $color-white;
+      @include border(20px, #d6d7de);
+      border-radius: 20px;
+      mask-image: radial-gradient(circle at bottom, transparent 41px, black 41px);
+      -webkit-mask-image: radial-gradient(circle at bottom, transparent 41px, black 41px);
+    }
+  }
+  &__animation {
+    margin: 10px 0;
+  }
+  &__round {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 1px);
+    background-color: $color-bg;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    border: 1px solid#D6D7DE;
+    border-bottom: none;
+  }
+
+  @keyframes shake {
+    0% {
+      transform: skewX(-10deg);
+    }
+    5% {
+      transform: skewX(10deg);
+    }
+    10% {
+      transform: skewX(-10deg);
+    }
+    15% {
+      transform: skewX(10deg);
+    }
+    20% {
+      transform: skewX(0deg);
+    }
+    100% {
+      transform: skewX(0deg);
+    }
+  }
+  @keyframes swinging {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(5deg);
+    }
+    75% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  &__lock {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background-color: #f6f7fb;
+    border-radius: 50%;
+    border: 1px solid#D6D7DE;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    & > i {
+      font-size: 24px;
+      color: $color-grey;
+    }
+    &.error {
+      background-color: $color-red;
+      border-color: $color-red;
+      & > i {
+        color: $color-white;
+      }
+    }
+    &.success {
+      background-color: $color-green;
+      border-color: $color-green;
+      & > i {
+        color: $color-white;
+      }
+    }
+    &:active > i {
+      animation: swinging 1s infinite;
+    }
+  }
+
+  &__footer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 38px;
+  }
+  &__rounded {
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    width: 56px;
+    height: 56px;
+    transform: translate(-50%, 0px);
+    &::before {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: -13px;
+      width: 82px;
+      height: 82px;
+      border: 1px solid #d6d7de;
+      border-radius: 50%;
+      background-color: transparent;
+      mask-image: radial-gradient(circle at bottom, transparent 58px, black 58px);
+      -webkit-mask-image: radial-gradient(circle at bottom, transparent 58px, black 58px);
+    }
+  }
+  &__left {
+    display: flex;
+    align-items: center;
+    @include font(14px, _, 600);
+    & > i {
+      height: 24px;
+      margin-right: 14px;
+      cursor: pointer;
+      &::before {
+        font-size: 42px;
+        line-height: 0.2;
+        height: 24px;
+        margin-top: 8px;
+        display: block;
+      }
+    }
+  }
+
+  &__right {
+    & > span {
+      @include font(14px, rgba($color-space, 0.7), 600);
+      cursor: pointer;
+    }
+  }
+}
+.i-toggle_on {
+  color: $color-green;
+}
+
+// TODO: Main field styles
+.field {
+  &__label {
+  }
+  &__title {
+    @include font(14px, _, 600);
+    margin-bottom: 10px;
+  }
+  &__input {
+    padding: 16px;
+    @include border;
+    width: 100%;
+    background-color: rgba($color-lightgrey, 0.2);
+
+    &.error {
+      color: $color-red;
+      border-color: $color-red;
+      animation: shake 1s;
+    }
+    &.success {
+      border-color: $color-green;
+    }
+  }
+}

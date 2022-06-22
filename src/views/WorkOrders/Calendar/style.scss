@@ -1,0 +1,58 @@
+@import 'src/assets/styles/_variables.scss';
+
+.calendar {
+  &__wrapper {
+    height: inherit;
+  }
+  &__inner {
+    &.row {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      height: inherit;
+    }
+    &.col {
+      height: inherit;
+      overflow: auto;
+      padding-top: 20px;
+      position: relative;
+    }
+  }
+  &__days {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 20px 0;
+    border-bottom: 1px solid $color-lightgrey;
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+  }
+  &__tasks {
+    flex-grow: 1;
+    padding: 20px;
+    overflow: auto;
+
+    &-inner {
+    }
+  }
+}
+
+.col {
+  &-wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 20px;
+    padding: 20px 0;
+    padding-right: 20px;
+    &:first-child {
+      padding-top: 0;
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-lightgrey;
+    }
+  }
+  &-day {
+  }
+  &-tasks {
+  }
+}

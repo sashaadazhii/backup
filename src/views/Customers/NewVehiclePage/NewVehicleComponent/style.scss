@@ -1,0 +1,90 @@
+@import 'src/assets/styles/_variables.scss';
+
+.vehicle {
+  &__wrapper {
+    height: inherit;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: $color-bg;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  &__inner {
+    margin-top: 40px;
+    width: 790px;
+    max-height: 90%;
+    overflow: hidden;
+    background-color: $color-white;
+    box-shadow: 0px 4px 84px rgba(99, 99, 112, 0.16);
+    border-radius: 20px;
+    padding: 30px;
+    padding-top: 40px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  &__header {
+    &-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+  }
+  &__title {
+    @include font(20px, $color-space, 600);
+  }
+  &__search {
+    background-color: $color-green;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    border-radius: 52px;
+    & > i {
+      @include font(16px, $color-white);
+      margin-right: 8px;
+    }
+    & > span {
+      @include font(14px, $color-white, 600);
+    }
+  }
+  &__main {
+    overflow-y: auto;
+    @include hideScrollbar;
+  }
+  &__footer {
+  }
+  &__button {
+    margin-top: 16px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding: 14px;
+    border-radius: 12px;
+    @include font(16px, $color-white, 600);
+    background-color: $color-green;
+  }
+}
+.nav {
+  display: flex;
+  column-gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $color-lightgrey;
+  &__link {
+    @include font(16px, $color-grey, 600);
+    @include border(10px);
+    cursor: pointer;
+    padding: 10px;
+    &.green {
+      border-color: $color-green;
+      color: $color-green;
+    }
+    &.red {
+      border-color: $color-red;
+      color: $color-red;
+    }
+  }
+}

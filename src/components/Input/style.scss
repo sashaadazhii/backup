@@ -1,0 +1,195 @@
+@import 'src/assets/styles/_variables.scss';
+
+.field {
+  &__label {
+    position: relative;
+    display: block;
+    &.icon-left {
+      & > .field__input {
+        padding-left: 44px;
+      }
+    }
+    &.icon-right {
+      & > .field__input {
+        padding-right: 36px;
+      }
+    }
+    &.right-text {
+      & > .field__input {
+        padding-right: 82px;
+      }
+    }
+    &.error {
+      & > .field {
+        &__icon {
+          display: none;
+          &--error {
+            display: block;
+            right: 16px;
+          }
+        }
+        &__input {
+          background-color: rgba($color-red, 0.1);
+          border-color: $color-red;
+          &::placeholder {
+            color: rgba($color-red, 0.8);
+          }
+        }
+      }
+      &.icon-left {
+        > .field {
+          &__icon {
+            display: none;
+            &--error {
+              display: block;
+              left: 16px;
+            }
+          }
+        }
+      }
+      &.icon-left {
+        > .field__icon--error {
+          left: 16px;
+        }
+      }
+      &.icon-right {
+        > .field__icon--error {
+          right: 16px;
+        }
+      }
+      &.right-text {
+        & > .field__icon--error {
+          display: none;
+        }
+      }
+    }
+    &.error-message {
+      & > .field {
+        &__icon {
+          // display: none;
+          &--error {
+            // display: block;
+            bottom: 33px;
+          }
+        }
+        // &__input {
+        //   background-color: rgba($color-red, 0.1);
+        //   border-color: $color-red;
+        //   &::placeholder {
+        //     color: rgba($color-red, 0.8);
+        //   }
+        // }
+      }
+    }
+  }
+  &__title {
+    @include font(14px, $color-space, 600);
+    margin-bottom: 12px;
+  }
+  &__input {
+    @include font(13.5px, $color-space, 500);
+    padding: 14px;
+    background-color: rgba($color-lightgrey, 0.2);
+    @include border;
+    width: 100%;
+    &::placeholder {
+      color: $color-grey;
+    }
+  }
+  &__icon {
+    position: absolute;
+    bottom: 14px;
+    @include font(18px, $color-grey, 500, 0);
+    &.left {
+      left: 16px;
+    }
+    &.right {
+      right: 16px;
+    }
+    &.orange {
+      color: $color-orange;
+    }
+    &.bluegreen {
+      color: $color-bluegreen;
+    }
+    &-text {
+      position: absolute;
+      right: 0;
+      bottom: 16px;
+      right: 16px;
+      @include font(12px, $color-grey, 600);
+      &.orange {
+        color: $color-orange;
+      }
+      &.bluegreen {
+        color: $color-bluegreen;
+      }
+    }
+    &--error {
+      color: $color-red;
+      display: none;
+    }
+  }
+  &__error {
+    @include font(11px, $color-red, 600);
+    margin-top: 8px;
+  }
+}
+
+// .field {
+//   &__label {
+//     display: inline-flex;
+//     flex-direction: column;
+//     position: relative;
+//     width: 100%;
+//     margin-bottom: 14px;
+
+//     & > i {
+//       @include font(18px, $color-grey);
+//       position: absolute;
+//       right: 16px;
+//       top: 14px;
+//       display: none;
+//     }
+//     & > span {
+//       @include font(10px, #f37878, 600);
+//       margin-top: 8px;
+//     }
+//     &--icon {
+//       & > i {
+//         display: block;
+//       }
+//     }
+//     &.red {
+//       & > input {
+//         border-color: #f37878;
+//         background-color: rgba(#f37878, 0.1);
+//         &::placeholder {
+//           color: #f37878;
+//         }
+//       }
+//       & > i {
+//         display: block;
+//         color: #f37878;
+//       }
+//     }
+//     // &.green {
+//     //   border-color: #10b981;
+//     //   background-color: rgba(#10b981, 0.1);
+//     //   & > i {
+//     //     color: #10b981;
+//     //   }
+//     // }
+//   }
+//   &__title {
+//     @include font(14px, $color-space, 600);
+//     margin-bottom: 12px;
+//   }
+//   &__input {
+//     width: 100%;
+//     padding: 14px;
+//     background-color: $color-bg;
+//     @include border(12px);
+//     @include font(14px, $color-space, 500);
+//   }
+// }

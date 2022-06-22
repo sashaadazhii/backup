@@ -1,0 +1,42 @@
+@import 'src/assets/styles/_variables.scss';
+
+.board {
+  &__wrapper {
+    height: inherit;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+  &__inner {
+    padding: 30px 20px;
+    padding-bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(auto, 300px));
+    column-gap: 30px;
+    overflow: hidden;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    background-color: $color-bg;
+    border-top: 1px solid $color-lightgrey;
+  }
+  &__col {
+    &-wrapper {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      overflow: hidden;
+    }
+    &-title {
+      display: flex;
+      align-items: center;
+      column-gap: 16px;
+      @include font(16px, $color-space, 600);
+      & > span {
+        @include font(14px, $color-grey, 600);
+      }
+      margin-bottom: 16px;
+    }
+    &-inner {
+      overflow-y: auto;
+      @include hideScrollbar;
+    }
+  }
+}

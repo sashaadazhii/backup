@@ -1,0 +1,65 @@
+@import 'src/assets/styles/_variables.scss';
+
+.customer {
+  &__wrapper {
+    background-color: $color-white;
+    min-height: 100px;
+    border-radius: 16px;
+    padding: 12px 20px;
+    padding-bottom: 6px;
+    margin-top: 20px;
+    margin-left: 20px;
+    box-shadow: 0px 4px 14px rgba(99, 99, 112, 0.1);
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 6px;
+    margin-bottom: 12px;
+    &-name {
+      @include font(18px, $color-space, 600);
+    }
+    &-edit {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+      cursor: pointer;
+      & > i {
+        @include font(16px, $color-lightgrey);
+      }
+      & > span {
+        @include font(14px, $color-grey, 600);
+      }
+    }
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-lightgrey;
+    }
+    &-left {
+      @include font(14px, $color-grey, 600);
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      & > i {
+        font-size: 14px;
+        &.bluegreen {
+          color: #3EB3BB;
+        }
+        &.orange {
+          color: #FFA14E;
+        }
+      }
+      & > span {
+        @include font(14px, $color-space, 700);
+      }
+    }
+  }
+}

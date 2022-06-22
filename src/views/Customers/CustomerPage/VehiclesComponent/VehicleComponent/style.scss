@@ -1,0 +1,70 @@
+@import 'src/assets/styles/_variables.scss';
+
+.vehicle {
+  &__wrapper {
+    display: grid;
+    align-items: center;
+    column-gap: 14px;
+    grid-template-columns: 34px auto auto auto 1fr;
+    margin-bottom: 14px;
+    box-shadow: 0px 4px 14px rgba(99, 99, 112, 0.1);
+    padding: 14px 20px;
+    border-radius: 16px;
+    background-color: $color-white;
+    &:hover {
+      background-color: $color-bg;
+    }
+  }
+  &__icon {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    background-color: $color-lightgrey;
+    border-radius: 50%;
+    & > i {
+      @include font(16px, $color-space);
+    }
+  }
+  &__name {
+    @include font(14px, $color-space, 600);
+  }
+  &__year {
+    @include font(14px, $color-space, 600);
+    @include border(60px);
+    padding: 6px 12px;
+    background-color: $color-bg;
+  }
+  &__odometer {
+    @include font(14px, #3eb3bb, 600);
+    @include border(10px, #3eb3bb);
+    background-color: rgba(#3eb3bb, 0.1);
+    padding: 10px 12px;
+  }
+  &__select {
+    justify-self: end;
+    &-menu {
+      width: 32px;
+      height: 32px;
+      background-color: rgba($color-lightgrey, 0.4);
+      display: grid;
+      place-items: center;
+      @include border(50%);
+      cursor: pointer;
+      & > i {
+        @include font(24px, $color-grey);
+      }
+    }
+    &-option {
+      display: flex;
+      align-items: center;
+      & > i {
+        font-size: 18px;
+        margin-right: 10px;
+      }
+      & > span {
+        @include font(14px, $color-space, 600);
+      }
+    }
+  }
+}

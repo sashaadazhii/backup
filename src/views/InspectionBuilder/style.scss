@@ -1,0 +1,63 @@
+@import 'src/assets/styles/_variables.scss';
+
+.page-inner {
+  height: inherit;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.services {
+  &__wrapper {
+    height: inherit;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+
+.service__item {
+  display: grid;
+  grid-template-columns: 5fr 5fr 3fr 24px;
+  align-items: center;
+  column-gap: 20px;
+  padding: 12px 20px;
+  border-bottom: 1px solid $color-lightgrey;
+  min-height: 59px;
+}
+
+.service__skeleton {
+  height: 34px;
+  width: 100%;
+  background: #fff;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-white;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(8%, rgba($color-lightgrey, 0.6)),
+    color-stop(18%, rgba($color-lightgrey, 0.8)),
+    color-stop(33%, rgba($color-lightgrey, 0.6))
+  );
+  background: linear-gradient(
+    to right,
+    rgba($color-lightgrey, 0.6) 8%,
+    rgba($color-lightgrey, 0.8) 18%,
+    rgba($color-lightgrey, 0.6) 33%
+  );
+  background-size: 800px 100px;
+  animation: wave-lines 2s infinite ease-out;
+}
+@keyframes wave-lines {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}

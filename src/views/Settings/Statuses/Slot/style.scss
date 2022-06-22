@@ -1,0 +1,36 @@
+@import 'src/assets/styles/_variables.scss';
+
+.status {
+  &__wrapper {
+    border-bottom: 1px solid $color-grey-flash;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+  &__header {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: center;
+    column-gap: 8px;
+    margin-bottom: 20px;
+
+    &-icon {
+      justify-self: center;
+    }
+    &-title {
+      display: flex;
+      flex-direction: column;
+      & > span:first-child {
+        @include font(18px, $color-grey-space, 600);
+        margin-bottom: 8px;
+      }
+      & > span:last-child {
+        @include font(14px, $color-grey, 600);
+      }
+    }
+  }
+  &__main {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+}

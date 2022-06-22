@@ -1,0 +1,71 @@
+@import 'src/assets/styles/_variables.scss';
+
+.status {
+  &__wrapper {
+    background-color: $color-white;
+    padding: 60px;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-title {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+      & > span {
+        @include font(20px, $color-grey-space, 600);
+      }
+    }
+    &-label {
+    }
+    border-bottom: 1px solid $color-grey-flash;
+    padding-bottom: 20px;
+    &-buttons {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+    }
+  }
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    padding-top: 30px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  &__subheader {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 8px;
+    &-icon {
+      grid-row-start: 1;
+      grid-row-end: 3;
+      place-self: center;
+      font-size: 24px;
+    }
+    &-title {
+      @include font(18px, $color-grey-space, 600);
+    }
+    &-subtitle {
+      @include font(14px, rgba($color-grey, 0.6), 600);
+      grid-column-start: 2;
+    }
+  }
+  &__main {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+  }
+  &__color {
+    @include border;
+    display: flex;
+    align-items: center;
+    column-gap: 18px;
+    padding: 12px;
+    &-title {
+      @include font(14px, $color-space, 600);
+    }
+  }
+}

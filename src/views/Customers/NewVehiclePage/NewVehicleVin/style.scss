@@ -1,0 +1,71 @@
+@import 'src/assets/styles/_variables.scss';
+
+.vehicle {
+  &__wrapper {
+    height: inherit;
+    overflow-y: auto;
+    display: grid;
+    justify-items: center;
+    align-items: start;
+    background-color: $color-bg;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  &__inner {
+    margin-top: 50px;
+    max-width: 410px;
+    background-color: $color-white;
+    box-shadow: 0px 4px 84px rgba(99, 99, 112, 0.16);
+    border-radius: 20px;
+    padding: 30px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__header {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__icon {
+    @include font(70px, $color-green);
+    margin-bottom: 26px;
+    &.orange {
+      color: #ff9b70;
+    }
+  }
+  &__title {
+    @include font(20px, $color-space, 600);
+    margin-bottom: 26px;
+  }
+  &__subtitle {
+    @include font(14px, $color-grey, 500, 1.6);
+    text-align: center;
+  }
+  &__main {
+    width: 100%;
+  }
+  &__footer {
+    width: 100%;
+    display: flex;
+    column-gap: 16px;
+  }
+  &__button {
+    margin-top: 16px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding: 14px;
+    border-radius: 12px;
+    @include font(16px, $color-space, 600);
+    @include border(12px);
+    &.green {
+      border: none;
+      background-color: #10b981;
+      @include font(16px, $color-white, 700);
+    }
+  }
+}

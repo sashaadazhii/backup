@@ -1,0 +1,67 @@
+$mainFont: 'Inter', sans-serif;
+
+$color-white: #fff;
+$color-black: #000;
+$color-dark: #374151;
+$color-grey: #6b7280;
+$color-lightgrey: #e5e7eb;
+$color-space: #303249;
+$color-bg: #f8f8fa;
+
+$color-green: #10B981;
+$color-blue: #2C9AFF;
+$color-bluegreen: #3EB3BB;
+$color-red: #f37878;
+$color-orange: #FF9B70;
+$color-orangebright: #FFA14E;
+$color-yellow: #f2c94c;
+$color-purple: #9b51e0;
+
+$color-bg: #f9f9fa;
+
+$tablet-screen-width: 1024px;
+$fablet-screen-width: 768px;
+$mobile-screen-width: 480px;
+
+@mixin font($size: 16px, $color: $color-dark, $weight: 400, $line-height: 1) {
+  @if $size != _ {
+    font-size: $size;
+  }
+  @if $color != _ {
+    color: $color;
+  }
+
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+@mixin border($radius: 12px, $color: $color-lightgrey, $size: 1px, $style: solid) {
+  border: $size $style $color;
+  @if $radius != _ {
+    border-radius: $radius;
+  }
+}
+
+@mixin hideScrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: #{$tablet-screen-width}) {
+    @content;
+  }
+}
+
+@mixin fablet {
+  @media only screen and (max-width: #{$fablet-screen-width}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: #{$mobile-screen-width}) {
+    @content;
+  }
+}

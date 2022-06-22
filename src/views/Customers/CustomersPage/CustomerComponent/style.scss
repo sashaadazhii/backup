@@ -1,0 +1,100 @@
+@import 'src/assets/styles/_variables.scss';
+
+.customer {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 2fr 2.5fr 1.5fr 5fr 24px;
+    align-items: center;
+    column-gap: 20px;
+    padding: 12px 20px;
+    border-bottom: 1px solid $color-lightgrey;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: $color-bg;
+      .i-more_horiz {
+        opacity: 1;
+      }
+    }
+    &.active {
+      background-color: $color-green-pale;
+    }
+  }
+  &__cell {
+    display: flex;
+    align-items: center;
+
+    &--name {
+      @include font(14px, $color-space, 600);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+    }
+    &--icon {
+    }
+    &--vehicles {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      min-height: 34px;
+    }
+  }
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    & > i {
+      @include font(16px, $color-grey);
+      margin-right: 8px;
+    }
+    & > span {
+      @include font(14px, $color-space, 500);
+      margin-bottom: 1px;
+    }
+  }
+  &__vehicle {
+    display: inline-flex;
+    align-items: center;
+    background-color: $color-bg;
+    padding-right: 12px;
+    @include border(60px);
+    & > i {
+      @include border(50%, $color-lightgrey, 2px);
+      @include font(16px, $color-grey);
+      padding: 6px;
+      margin-right: 8px;
+      margin-left: -1px;
+    }
+    & > span {
+      @include font(14px, $color-space, 600);
+      margin-bottom: 1px;
+    }
+  }
+  &__counter {
+    @include font(12px, $color-grey, 600);
+    @include border(6px);
+    padding: 6px 10px;
+    background-color: $color-bg;
+  }
+}
+.dropdown__label--icon {
+  display: flex;
+  align-items: center;
+  & > i {
+    @include font(18px);
+    margin-right: 10px;
+    &.red {
+      color: $color-red;
+    }
+    &.green {
+      color: $color-green;
+    }
+  }
+  & > span {
+    @include font(14px, $color-space, 600);
+  }
+}
+
+.i-more_horiz {
+  @include font(24px, $color-grey);
+  opacity: 0.5;
+}

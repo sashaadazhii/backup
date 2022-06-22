@@ -1,0 +1,53 @@
+@import 'src/assets/styles/_variables.scss';
+
+.user {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr) minmax(0, 160px) minmax(0, 1fr) 24px;
+    justify-items: start;
+    align-items: center;
+    column-gap: 12px;
+    padding: 16px 20px;
+    @include border(12px);
+    background-color: $color-white;
+    margin-bottom: 12px;
+  }
+  &__label {
+    &.red {
+      color: $color-red;
+      background-color: $color-red-blush;
+    }
+    &.grey {
+      color: $color-grey;
+      background-color: $color-grey-flash;
+    }
+    &.orange {
+      color: $color-orange;
+      background-color: rgba($color-orange, 0.1);
+    }
+    &.dark {
+      background-color: $color-grey-space;
+    }
+  }
+  &__name {
+    @include font(14px, $color-space, 600);
+  }
+  &__mail {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    width: 100%;
+    & > i {
+      @include font(20px, $color-orange);
+    }
+    & > span {
+      @include font(14px, $color-space, 600);
+      display: inline-block;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 2px 0;
+    }
+  }
+}

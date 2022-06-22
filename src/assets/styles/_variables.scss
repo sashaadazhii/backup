@@ -1,0 +1,96 @@
+$mainFont: 'Inter', sans-serif;
+
+$color-white: #fff;
+$color-black: #000;
+$color-dark: #374151;
+$color-grey: #6b7280;
+$color-lightgrey: #e5e7eb;
+$color-space: #303249;
+$color-bg: #f8f8fa;
+
+$color-green: #10B981;
+$color-blue: #2C9AFF;
+$color-bluegreen: #3EB3BB;
+$color-red: #f37878;
+$color-orange: #FF9B70;
+$color-orangebright: #FFA14E;
+$color-yellow: #f2c94c;
+$color-purple: #9b51e0;
+
+$color-bg: #f9f9fa;
+
+$tablet-screen-width: 1024px;
+$fablet-screen-width: 768px;
+$mobile-screen-width: 480px;
+
+@mixin font($size: 16px, $color: $color-dark, $weight: 400, $line-height: 1) {
+  @if $size != _ {
+    font-size: $size;
+  }
+  @if $color != _ {
+    color: $color;
+  }
+
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+@mixin border($radius: 12px, $color: $color-lightgrey, $size: 1px, $style: solid) {
+  border: $size $style $color;
+  @if $radius != _ {
+    border-radius: $radius;
+  }
+}
+
+@mixin hideScrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: #{$tablet-screen-width}) {
+    @content;
+  }
+}
+
+@mixin fablet {
+  @media only screen and (max-width: #{$fablet-screen-width}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: #{$mobile-screen-width}) {
+    @content;
+  }
+}
+
+// ================= Colors =================
+
+$color-grey-space: #303249;
+$color-grey-dark: #191e27;
+$color-grey: #6b7280;
+$color-grey-light: #d6d7de;
+$color-grey-flash: #e5e7eb;
+$color-grey-smoke: #f8f8fa;
+
+$color-green: #10b981;
+$color-green-dark: #109f6f;
+$color-green-shamrock: #40c79a;
+$color-green-pale: #9fe3cd;
+$color-green-mint: #e7f8f2;
+
+$color-red: #f37878;
+$color-red-dark: #de6565;
+$color-red-salmon: #f69393;
+$color-red-pink: #fac9c9;
+$color-red-blush: #fef2f2;
+
+$color-orange: #ff9b70;
+$color-orange-bright: #ffa14e;
+
+$color-bluegreen: #3eb3bb;
+$color-blue: #2c9aff;
+$color-violet: #ba8ae7;
+$color-white: #fff;

@@ -1,0 +1,332 @@
+@import '../styles/_variables.scss';
+
+.y-dropdown {
+  width: 100%;
+  position: relative;
+
+  &-inner {
+    background-color: $color-grey-smoke;
+    @include border(12px, $color-grey-flash);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 46px;
+    position: relative;
+    transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    &:hover {
+      border-color: $color-grey;
+    }
+  }
+  &-dots {
+    cursor: pointer;
+    line-height: 0;
+    & > i {
+      @include font(24px, $color-grey-flash);
+    }
+    &:hover {
+      & > i {
+        color: $color-grey;
+      }
+    }
+  }
+  &-search-container {
+    display: flex;
+    place-items: center;
+    padding: 0 16px;
+    padding-left: 0;
+    width: 100%;
+    & > i {
+      @include font(18px, $color-grey);
+      margin: -1px 0;
+      margin-right: 8px;
+    }
+  }
+  &-search {
+    @include font(14px, $color-grey-space, 500);
+    background-color: transparent;
+    width: 100%;
+    &::placeholder {
+      color: $color-grey;
+    }
+  }
+  &-clear {
+    position: absolute;
+    right: 44px;
+    display: flex;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    &-icon {
+      cursor: pointer;
+      @include font(16px, $color-grey);
+    }
+    &-line {
+      height: 12px;
+      width: 1px;
+      background-color: $color-grey-flash;
+      display: flex;
+      margin-left: 12px;
+    }
+  }
+  &-loading-icon {
+    @include font(16px, $color-grey);
+  }
+  &-trigger {
+    display: grid;
+    place-items: center;
+    line-height: 0;
+    & > i {
+      @include font(16px, $color-grey-space);
+    }
+  }
+  &-label {
+    & > span {
+      @include font(14px, $color-grey-space, 500);
+    }
+  }
+  &-placeholder {
+    & > span {
+      color: $color-grey;
+    }
+  }
+  &-error-message {
+    position: absolute;
+    @include font(10px, $color-red, 600);
+    bottom: -18px;
+    left: 0;
+  }
+  &-title {
+    position: absolute;
+    top: -26px;
+    left: 0;
+    @include font(14px, $color-grey-space, 600);
+  }
+  &--focus {
+    & > .y-dropdown-inner {
+      border-color: $color-grey;
+      background-color: $color-white;
+      box-shadow: 0 0 0 2px $color-grey-flash;
+    }
+  }
+  &--clearable {
+    .y-dropdown-search {
+      padding-right: 30px;
+    }
+  }
+  &--title {
+    margin-top: 26px;
+  }
+  &--search {
+    &.y-dropdown--focus {
+      .y-dropdown {
+        &-inner {
+          border-color: $color-green;
+          box-shadow: 0 0 0 2px $color-green-mint;
+        }
+        &-search {
+          &-icon {
+            color: $color-green;
+          }
+        }
+      }
+    }
+    .y-dropdown {
+      &-inner {
+        &:hover {
+          border-color: $color-green;
+        }
+      }
+    }
+  }
+  &--error {
+    &.y-dropdown--focus {
+      & > .y-dropdown-inner {
+        box-shadow: 0 0 0 2px $color-red-blush;
+      }
+    }
+    .y-dropdown {
+      &-inner {
+        border-color: $color-red;
+        background-color: $color-red-blush;
+        &:hover {
+          border-color: $color-red;
+        }
+      }
+      &-search {
+        &-icon {
+          color: $color-red;
+        }
+        & {
+          color: $color-red;
+          &::placeholder {
+            color: $color-red-salmon;
+          }
+        }
+      }
+      &-trigger-icon {
+        color: $color-red;
+      }
+      &-placeholder > span {
+        color: $color-red-salmon;
+      }
+      &-label > span {
+        color: $color-red;
+      }
+    }
+    &-message {
+      margin-bottom: 18px;
+    }
+  }
+  &--disabled {
+    pointer-events: none;
+  }
+}
+
+.y-dropdown-panel {
+  position: absolute;
+  background-color: $color-white;
+  @include border;
+  box-shadow: 0px 7px 14px rgba($color-grey-dark, 0.08);
+  overflow: hidden;
+  &[style*='center top'] {
+    margin-top: 6px;
+  }
+  &[style*='center bottom'] {
+    margin-top: -6px;
+  }
+}
+
+.y-dropdown {
+  &-header {
+    border-bottom: 1px solid $color-grey-flash;
+    padding: 10px;
+    & + .y-filter-items-wrapper {
+      padding-top: 0;
+    }
+  }
+  &-filter {
+    &-label {
+      @include border(20px, $color-grey-flash);
+      display: block;
+      overflow: hidden;
+      padding: 10px;
+      padding-left: 14px;
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      transition: border-color 0.2s;
+      position: relative;
+      background-color: $color-grey-smoke;
+      &:hover {
+        border-color: $color-green;
+      }
+    }
+    &-search {
+      line-height: 0;
+      transition: color 0.2s;
+      & > i {
+        @include font(16px, $color-grey-space);
+      }
+    }
+    &-input {
+      @include font(14px, $color-grey-space, 500);
+      background-color: transparent;
+      width: 100%;
+      &::placeholder {
+        color: $color-grey;
+      }
+    }
+    &-clear {
+      cursor: pointer;
+      position: absolute;
+      right: 12px;
+      & > i {
+        @include font(16px, $color-grey);
+      }
+    }
+    &--active {
+      &.y-dropdown-filter-label {
+        border-color: $color-green;
+      }
+      & > .y-dropdown-filter-search {
+        color: $color-green;
+      }
+    }
+    &--clear {
+      &.y-dropdown-filter-label {
+        padding-right: 32px;
+      }
+    }
+  }
+  &-items {
+    &-wrapper {
+      padding: 8px 0;
+      overflow-y: auto;
+      @include hideScrollbar;
+    }
+  }
+  &-item {
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.2s ease-in-out;
+    padding: 13px 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    outline: 0;
+    & > span {
+      @include font(14px, rgba($color-grey-space, 0.8), 600);
+    }
+    &:hover {
+      background-color: $color-grey-smoke;
+      & > .y-filter-checkbox {
+        & > i {
+          color: $color-green;
+        }
+      }
+    }
+
+    &--highlight {
+      & > span {
+        color: $color-grey-space;
+      }
+      & > .y-filter-checkbox {
+        & > i {
+          color: $color-green;
+        }
+      }
+    }
+    &--disabled {
+    }
+    &-group {
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      padding: 13px 18px;
+      @include font(14px, rgba($color-grey, 0.4), 600);
+    }
+    &-icon {
+      &-name {
+      }
+    }
+  }
+  &-checkbox {
+    line-height: 0;
+    margin: -3px;
+    & > i {
+      @include font(20px, rgba($color-grey, 0.4));
+      transition: color 0.2s ease-in-out;
+    }
+  }
+  &-empty-message {
+    padding: 13px 18px;
+    // padding-bottom: 4px;
+    @include font(14px, $color-grey, 600);
+  }
+}
+
+//==============================

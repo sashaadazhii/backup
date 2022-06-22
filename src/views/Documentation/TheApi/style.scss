@@ -1,0 +1,57 @@
+@import 'src/assets/styles/_variables.scss';
+
+.doc {
+  &__api {
+    width: 100%;
+    align-self: flex-start;
+    margin-bottom: 16px;
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 16px 0 24px;
+  }
+  &__text {
+    display: inline-grid;
+    @include font(16px, #236054, 500);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #236054;
+    cursor: pointer;
+
+    &.active {
+      background-color: rgba($color-green, 0.1);
+    }
+    &__buttons {
+      display: flex;
+      gap: 20px;
+    }
+    &__info {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    &__table {
+      &-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+
+        &:nth-child(even) {
+          background-color: rgba($color-lightgrey, 0.25);
+        }
+      }
+      &-col {
+        padding: 10px;
+      }
+      &-header {
+        @include font(16px, $color-space, 600);
+        background-color: rgba($color-green, 0.1);
+      }
+      &-body {
+        @include font(14px, $color-grey, 500);
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@import 'src/assets/styles/_variables.scss';
+
+.main {
+  &__wrapper {
+    overflow-y: auto;
+    padding: 30px;
+    padding-top: 20px;
+    padding-bottom: 6px;
+    display: grid;
+    // grid-template-rows: auto 1fr;
+    row-gap: 24px;
+    @include hideScrollbar;
+  }
+}

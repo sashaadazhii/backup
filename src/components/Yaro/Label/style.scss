@@ -1,0 +1,151 @@
+@import '../styles/_variables.scss';
+
+.y-label {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  user-select: none;
+  overflow: hidden;
+  position: relative;
+  padding: 0 12px;
+  height: 28px;
+  background-color: $color-green;
+  @include border(4px, transparent);
+  color: $color-white;
+  &__alias {
+    @include font(10px, _, 600);
+  }
+  &__icon {
+    font-size: 14px;
+    &.y-button--circle {
+      border-radius: 50%;
+    }
+  }
+  &__text {
+    @include font(14px, _, 600);
+  }
+  // ======== Icon ========
+  &--icon {
+    padding: 0 8px;
+  }
+  // ======== Border ========
+  &--border {
+    background-color: transparent;
+    border-color: $color-green;
+    color: $color-green;
+  }
+  // ======== Icon Only ========
+  &--icon-only {
+    padding: 0;
+    width: 28px;
+  }
+  // ======== circle ========
+  &--circle {
+    border-radius: 20px;
+  }
+  // ======== size ========
+  &--mini {
+    height: 20px;
+    padding: 0 8px;
+    &.y-label {
+      &--circle {
+        border-radius: 12px;
+      }
+      &--icon {
+        padding: 0 6px;
+      }
+      &--icon-only {
+        padding: 0;
+        width: 20px;
+        & > .y-label__icon {
+          font-size: 12px;
+        }
+      }
+    }
+    & > .y-label {
+      &__alias {
+        font-size: 8px;
+      }
+      &__icon {
+        font-size: 10px;
+      }
+      &__text {
+        @include font(12px, _, 700);
+      }
+    }
+  }
+  &--small {
+    height: 24px;
+    padding: 0 10px;
+    &.y-label {
+      &--icon {
+        padding: 0 6px;
+      }
+      &--circle {
+      }
+      &--icon-only {
+        padding: 0;
+        width: 24px;
+      }
+    }
+    & > .y-label {
+      &__alias {
+        font-size: 9px;
+      }
+      &__icon {
+        font-size: 12px;
+      }
+      &__text {
+        @include font(12px, _, 700);
+      }
+    }
+  }
+  &--large {
+    height: 32px;
+    &.y-label {
+      &--icon {
+      }
+      &--circle {
+      }
+      &--icon-only {
+        padding: 0;
+        width: 32px;
+      }
+    }
+    & > .y-label {
+      &__alias {
+      }
+      &__icon {
+      }
+      &__text {
+      }
+    }
+  }
+  &--huge {
+    height: 42px;
+    &.y-label {
+      &--icon {
+      }
+      &--circle {
+      }
+      &--icon-only {
+        padding: 0;
+        width: 42px;
+      }
+    }
+    & > .y-label {
+      &__alias {
+        font-size: 16px;
+      }
+      &__icon {
+        font-size: 24px;
+      }
+      &__text {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+//==============================

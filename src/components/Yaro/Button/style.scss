@@ -1,0 +1,250 @@
+@import '../styles/_variables.scss';
+
+.y-button {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: bottom;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  padding: 0 18px;
+  height: 36px;
+  background-color: $color-green;
+  border-radius: 10px;
+  @include border(10px, transparent);
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  &--label {
+    flex: 1 1 auto;
+    @include font(16px, $color-white, 600);
+  }
+  &:hover {
+    background-color: $color-green-shamrock;
+  }
+  &:active {
+    background-color: $color-green-dark;
+  }
+  &--disabled {
+    background-color: $color-green-pale;
+    cursor: default;
+    pointer-events: none;
+  }
+  // ======== circle ========
+  &--circle {
+    border-radius: 48px;
+  }
+  // ======== icon ========
+  &--icon {
+    @include font(16px, $color-white);
+    &--right {
+      margin-left: 8px;
+      order: 1;
+    }
+    &--left {
+      margin-right: 8px;
+    }
+    &-only {
+      padding: 0;
+      width: 36px;
+      justify-content: center;
+
+      &.y-button--circle {
+        border-radius: 50%;
+      }
+      & > .y-button--label {
+        visibility: hidden;
+        width: 0;
+        flex: 0 0 auto;
+      }
+      & > .y-button--icon {
+        font-size: 20px;
+      }
+    }
+  }
+  // ======== border ========
+  &--border {
+    border-color: $color-grey-light;
+    background-color: transparent;
+    & > .y-button {
+      &--label {
+        color: $color-grey-space;
+      }
+      &--icon {
+        color: $color-grey-space;
+      }
+    }
+    &:hover {
+      background-color: transparent;
+      border-color: $color-grey;
+    }
+    &:active {
+      background-color: $color-grey-smoke;
+    }
+    &--disabled {
+      border-color: $color-grey-light;
+      background-color: transparent;
+      pointer-events: none;
+      & > .y-button--label {
+        color: rgba($color-grey-space, 0.6);
+      }
+    }
+  }
+  // ======== loading ========
+  &--loading {
+    &.y-button--border {
+      & > .y-button--loading-icon > i {
+        color: $color-grey-space;
+      }
+    }
+    & > .y-button {
+      &--label {
+        color: transparent;
+      }
+      &--icon {
+        color: transparent;
+      }
+    }
+    &-icon {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: inline-flex;
+      & > i {
+        color: $color-white;
+        font-size: 18px;
+      }
+    }
+  }
+  // ======== size ========
+  &--mini {
+    height: 28px;
+    padding: 0 10px;
+    border-radius: 8px;
+    &.y-button {
+      &--circle {
+        border-radius: 52px;
+      }
+      &--icon-only {
+        padding: 0;
+        width: 28px;
+        & > .y-button--icon {
+          font-size: 16px;
+        }
+      }
+    }
+    & > .y-button--label {
+      font-size: 14px;
+    }
+  }
+  &--small {
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 8px;
+    &.y-button {
+      &--circle {
+        border-radius: 48px;
+      }
+      &--icon-only {
+        padding: 0;
+        width: 32px;
+      }
+    }
+    & > .y-button {
+      &--label {
+        font-size: 14px;
+      }
+      &--icon {
+        font-size: 20px;
+      }
+    }
+  }
+  &--large {
+    height: 46px;
+    padding: 0 20px;
+    border-radius: 12px;
+    &.y-button {
+      &--circle {
+        border-radius: 48px;
+      }
+      &--icon-only {
+        padding: 0;
+        width: 46px;
+        & > .y-button--icon {
+          font-size: 24px;
+        }
+      }
+    }
+    & > .y-button {
+      &--label {
+        font-weight: 700;
+      }
+      &__icon {
+        font-size: 18px;
+      }
+    }
+  }
+  &--huge {
+    height: 60px;
+    border-radius: 12px;
+    padding: 0 20px;
+    &.y-button {
+      &--circle {
+        border-radius: 48px;
+      }
+      &--icon-only {
+        padding: 0;
+        width: 60px;
+        & > .y-button--icon {
+          font-size: 24px;
+        }
+      }
+    }
+    & > .y-button {
+      &--label {
+        font-weight: 700;
+      }
+      &__icon {
+        font-size: 18px;
+      }
+    }
+  }
+  // ======== color ========
+  &--red {
+    background-color: $color-red;
+    &:hover {
+      background-color: $color-red-salmon;
+    }
+    &:active {
+      background-color: $color-red-dark;
+    }
+    &:disabled,
+    &--disabled {
+      background-color: $color-red-baby;
+    }
+  }
+  &--grey {
+    background-color: $color-grey-light;
+    & > .y-button {
+      &--label,
+      &--icon {
+        color: $color-grey-space;
+      }
+    }
+    &:hover {
+      background-color: $color-grey-flash;
+    }
+    &:active {
+      background-color: $color-grey;
+    }
+    &:disabled,
+    &--disabled {
+      background-color: $color-grey-smoke;
+    }
+  }
+}
+
+//==============================

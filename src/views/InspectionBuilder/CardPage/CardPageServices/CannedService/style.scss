@@ -1,0 +1,77 @@
+@import 'src/assets/styles/_variables.scss';
+
+.card {
+  &__wrapper {
+    @include border(18px);
+    padding: 14px;
+    padding-left: 24px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+  &__left {
+  }
+  &__name {
+    @include font(18px, $color-space, 600);
+  }
+  &__label {
+    @include border(12px);
+    padding: 13px 26px 13px 16px;
+    display: flex;
+    align-items: center;
+    @include font(14px, $color-space, 500);
+    background: $color-bg;
+    & > i {
+      font-size: 18px;
+      margin-right: 10px;
+      &.orange {
+        color: $color-orange;
+      }
+      &.red {
+        color: $color-red;
+      }
+      &.blue {
+        color: $color-blue;
+      }
+      &.green {
+        color: $color-green;
+      }
+    }
+    & > span {
+      font-weight: 600;
+      margin-right: 3px;
+    }
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+  }
+  &__dropdown {
+    &-option {
+      display: flex;
+      align-items: center;
+      & > i {
+        @include font(18px);
+        margin-right: 10px;
+        &.red {
+          color: $color-red;
+        }
+        &.green {
+          color: $color-green;
+        }
+      }
+      & > span {
+        @include font(14px, $color-space, 600);
+      }
+    }
+    &-menu {
+      @include border;
+      cursor: pointer;
+      padding: 11px;
+      & > i {
+        @include font(20px, $color-grey);
+      }
+    }
+  }
+}

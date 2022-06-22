@@ -1,0 +1,12 @@
+@import 'src/assets/styles/_variables.scss';
+
+.header {
+  &__wrapper {
+    // background-color: $color-dark;
+  }
+  &__inner {
+    padding: 14px 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

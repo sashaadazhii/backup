@@ -1,0 +1,28 @@
+@import 'src/assets/styles/_variables.scss';
+
+.shifts {
+  &__wrapper {
+    padding: 60px;
+    padding-top: 54px;
+  }
+  &__header {
+    margin-bottom: 24px;
+    &-title {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      & > span {
+        @include font(20px, $color-grey-space, 600);
+      }
+    }
+    &-subtitle {
+      @include font(14px, $color-grey, 600);
+    }
+  }
+  &__main {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}

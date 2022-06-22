@@ -1,0 +1,24 @@
+@import 'src/assets/styles/_variables.scss';
+
+.component {
+  &__wrapper {
+  }
+  &__block {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+    row-gap: 24px;
+    padding-bottom: 30px;
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-lightgrey;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.field {
+  &__title {
+    @include font(14px, $color-space, 600);
+    margin-bottom: 12px;
+  }
+}

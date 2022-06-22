@@ -1,0 +1,51 @@
+@import '../styles/_variables.scss';
+
+.y-textarea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  &--error {
+    & > .y-textarea {
+      &__text {
+        background-color: $color-red-blush;
+        border-color: $color-red;
+        &::placeholder {
+          color: $color-red-salmon;
+        }
+      }
+    }
+  }
+  &--error-message {
+    & > .y-textarea {
+      &__error-icon {
+        bottom: 28px;
+      }
+    }
+  }
+  &__title {
+    @include font(14px, $color-grey-dark, 600);
+    margin-bottom: 12px;
+  }
+  &__text {
+    @include font(14px, $color-grey-space, 500, 1.4);
+    @include border;
+    @include hideScrollbar;
+    padding: 16px;
+    background-color: $color-grey-smoke;
+    width: 100%;
+    resize: none;
+    &::placeholder {
+      color: $color-grey;
+    }
+  }
+  &__error {
+    @include font(10px, $color-red, 600);
+    margin-top: 8px;
+    &-icon {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      @include font(18px, $color-red);
+    }
+  }
+}

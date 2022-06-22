@@ -1,0 +1,47 @@
+@import 'src/assets/styles/_variables.scss';
+
+.main {
+  &__wrapper {
+    overflow-y: auto;
+    padding: 30px;
+    padding-bottom: 0;
+    padding-top: 20px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    row-gap: 24px;
+  }
+  &__dropdown {
+    &-title {
+      @include font(14px, $color-space, 600);
+      margin-bottom: 12px;
+    }
+
+    &-label {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+    }
+    &-option {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      & > i {
+        font-size: 20px;
+        margin-top: -3px;
+        margin-bottom: -3px;
+        &.blue {
+          color: $color-blue;
+        }
+        &.red {
+          color: $color-red;
+        }
+        &.green {
+          color: $color-green;
+        }
+      }
+      & > span {
+        @include font(14px, $color-space, 500);
+      }
+    }
+  }
+}

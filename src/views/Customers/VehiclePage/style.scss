@@ -1,0 +1,47 @@
+@import 'src/assets/styles/_variables.scss';
+
+.page-inner {
+  height: inherit;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.vehicle {
+  &__wrapper {
+    height: inherit;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  &__header {
+    padding: 20px;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    border-bottom: 1px solid $color-lightgrey;
+    &-link {
+      display: flex;
+      align-items: center;
+      color: $color-grey;
+      column-gap: 8px;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 20px;
+      margin-bottom: -1px;
+      cursor: pointer;
+      & > i {
+        font-size: 16px;
+      }
+      & > span {
+        @include font(14px, _, 600);
+      }
+      &.active {
+        color: $color-space;
+        border-color: $color-space;
+      }
+    }
+  }
+}

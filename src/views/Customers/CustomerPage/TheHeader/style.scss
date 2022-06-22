@@ -1,0 +1,69 @@
+@import 'src/assets/styles/_variables.scss';
+.header {
+  &__wrapper {
+    padding: 12px 20px;
+    padding-left: 60px;
+    border-bottom: 1px solid $color-lightgrey;
+  }
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__icon {
+    padding: 5px;
+    background-color: rgba($color-green, 0.1);
+    line-height: 1;
+    border-radius: 50%;
+    margin-right: 12px;
+    line-height: 0;
+    & > i {
+      @include font(20px, $color-green);
+    }
+  }
+  &__btn {
+    padding: 6px;
+    padding-right: 14px;
+    background-color: $color-green;
+    border-radius: 48px;
+    display: flex;
+    align-items: center;
+    & > i {
+      @include font(20px, $color-white);
+      margin-right: 8px;
+    }
+    & > span {
+      @include font(14px, $color-white, 400);
+      margin-bottom: 1px;
+    }
+  }
+  &__close {
+    padding: 6px;
+    @include border(50%);
+    @include font(18px, $color-grey);
+    background-color: rgba($color-lightgrey, .6);
+    height: 32px;
+    width: 32px;
+    display: grid;
+    place-items: center;
+  }
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+  }
+  &__title {
+    @include font(16px, $color-grey, 600);
+  }
+  &__line {
+    @include font(16px, $color-lightgrey, 600);
+    margin: 0 16px;
+  }
+  &__name {
+    @include font(16px, $color-space, 600);
+  }
+}

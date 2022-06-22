@@ -1,0 +1,80 @@
+@import 'src/assets/styles/_variables.scss';
+.header {
+  &__wrapper {
+    padding: 12px 20px;
+    // padding-left: 60px;
+    border-bottom: 1px solid $color-lightgrey;
+  }
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__back {
+    line-height: 0;
+    margin-left: 42px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    & > i {
+      @include font(24px, $color-grey);
+      margin-right: 12px;
+    }
+    & > span {
+      @include font(20px, $color-grey, 600);
+    }
+  }
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+  &__title {
+    @include font(20px, $color-grey, 600);
+    & > i {
+      display: inline-block;
+      @include font(16px, $color-green);
+      padding: 4px;
+      background-color: rgba($color-green, 0.1);
+      border-radius: 4px;
+      margin-right: 12px;
+    }
+    & > span {
+      color: $color-space;
+    }
+  }
+  &__line {
+    @include font(16px, $color-lightgrey, 600);
+    margin: 0 16px;
+  }
+}
+
+.dropdown {
+  justify-self: end;
+  &-menu {
+    width: 30px;
+    height: 30px;
+    background-color: rgba($color-lightgrey, 0.4);
+    display: grid;
+    place-items: center;
+    @include border(50%);
+    cursor: pointer;
+    & > i {
+      @include font(24px, $color-grey);
+    }
+  }
+  &-option {
+    display: flex;
+    align-items: center;
+    & > i {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    & > span {
+      @include font(14px, $color-space, 600);
+    }
+  }
+}

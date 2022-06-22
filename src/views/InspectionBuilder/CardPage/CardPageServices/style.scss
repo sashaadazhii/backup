@@ -1,0 +1,57 @@
+@import 'src/assets/styles/_variables.scss';
+
+.services {
+  &__wrapper {
+    height: 100%;
+    padding: 20px 30px;
+    padding-top: 0;
+  }
+  &__empty {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    &-block {
+      display: grid;
+      place-items: center;
+      max-width: 360px;
+    }
+
+    &-title {
+      @include font(24px, $color-space, 600);
+      margin-bottom: 16px;
+    }
+    &-text {
+      @include font(14px, $color-space, 400, 1.5);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    &-btn {
+      background-color: $color-bg;
+      @include border(90px);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      & > i {
+        margin-right: 10px;
+        @include font(18px, $color-grey);
+      }
+      & > span {
+        @include font(14px, $color-space, 600);
+      }
+    }
+  }
+  &__inner {
+    &-header {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    &-main {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+      padding-bottom: 30px;
+    }
+  }
+}

@@ -1,0 +1,107 @@
+@import 'src/assets/styles/_variables.scss';
+
+.vehicle {
+  &__inner {
+    height: inherit;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    column-gap: 10px;
+    padding: 20px;
+    background-color: $color-bg;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  &__left {
+  }
+  &__right {
+  }
+  &__block {
+    background-color: $color-white;
+    @include border;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    &-header {
+      @include font(16px, $color-space, 600);
+      padding: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid $color-lightgrey;
+    }
+    &-body {
+    }
+    &.additional {
+      grid-column-start: 2;
+      .body {
+        padding: 0px 14px;
+        padding-top: 2px;
+        &__row {
+          padding: 14px;
+          margin: 0;
+          &:not(:last-child) {
+            border-bottom: 1px solid $color-lightgrey;
+          }
+        }
+      }
+    }
+    &.general {
+      .body {
+        padding: 30px 14px;
+        &__row {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+    &.engine {
+      margin-bottom: 10px;
+    }
+  }
+}
+.body {
+  &.column {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 12px;
+    padding: 14px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      margin-bottom: 22px;
+    }
+    &-title {
+      @include font(14px, rgba($color-space, 0.8), 600);
+      &.blue {
+        @include font(14px, $color-white, 600);
+        padding: 4px 6px;
+        background-color: $color-blue;
+        border-radius: 4px;
+        display: inline-block;
+      }
+    }
+    &-text {
+      @include font(14px, $color-space, 600);
+    }
+  }
+  &__cell {
+    background-color: rgba($color-bg, 0.6);
+    @include border(10px);
+    padding: 14px;
+    &-title {
+      @include font(14px, $color-white, 600);
+      padding: 4px 6px;
+      background-color: $color-orange;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+    &-text {
+      @include font(14px, $color-space, 600);
+    }
+  }
+}

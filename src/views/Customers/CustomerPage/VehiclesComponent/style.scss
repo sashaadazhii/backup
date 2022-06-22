@@ -1,0 +1,8 @@
+@import 'src/assets/styles/_variables.scss';
+
+.vehicles__wrapper {
+  overflow-y: auto;
+  height: inherit;
+  @include hideScrollbar;
+  padding: 20px;
+}

@@ -1,0 +1,26 @@
+@import 'src/assets/styles/_variables.scss';
+
+.users {
+  &__wrapper {
+    padding: 60px;
+    padding-top: 54px;
+  }
+  &__header {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-title {
+      & > span {
+        @include font(20px, $color-grey-space, 600);
+        margin-right: 20px;
+      }
+    }
+  }
+  &__label {
+    border-color: $color-grey-flash;
+    color: $color-grey-space;
+  }
+  &__inner {
+  }
+}

@@ -1,0 +1,84 @@
+@import '../styles/_variables.scss';
+
+.y-menu {
+  background-color: $color-white;
+  @include border;
+  box-shadow: 0px 7px 14px rgba($color-grey-dark, 0.08);
+  overflow: hidden;
+  &[style*='center top'] {
+    margin-top: 6px;
+  }
+  &[style*='center bottom'] {
+    margin-top: -6px;
+  }
+  &__btn {
+    display: grid;
+    place-items: center;
+    &-icon {
+      @include font(24px, $color-grey-light);
+      cursor: pointer;
+      transition: color $animationDuration ease-in-out;
+      &:hover {
+        color: $color-grey;
+      }
+    }
+  }
+  &--overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  &__list {
+    padding: 8px 0;
+    overflow-y: auto;
+    @include hideScrollbar;
+  }
+  &__item {
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    transition: background-color $animationDuration ease-in-out;
+    padding: 13px 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    outline: 0;
+
+    &--icon {
+      @include font(20px, $color-grey);
+      transition: color $animationDuration ease-in-out, opacity $animationDuration ease-in-out;
+      margin: -3px;
+      &.red {
+        color: $color-red;
+      }
+      &.orange {
+        color: $color-orange;
+      }
+      &.green {
+        color: $color-green;
+      }
+    }
+    &--text {
+      @include font(14px, rgba($color-grey-space, 0.8), 600);
+    }
+    &:hover {
+      background-color: $color-grey-smoke;
+      & > .y-menu__item {
+        &--icon {
+        }
+        &--text {
+        }
+      }
+    }
+    &-header {
+      padding: 13px 18px;
+      @include font(14px, rgba($color-grey, 0.4), 600);
+    }
+    &--disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+  }
+}

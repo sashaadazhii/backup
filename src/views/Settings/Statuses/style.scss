@@ -1,0 +1,19 @@
+@import 'src/assets/styles/_variables.scss';
+
+.statuses {
+  &__wrapper {
+    padding: 60px;
+  }
+  &__header {
+    margin-bottom: 40px;
+    &-title {
+      @include font(20px, $color-grey-space, 600);
+      margin-bottom: 12px;
+    }
+    &-subtitle {
+      @include font(14px, $color-grey, 400, 1.4);
+    }
+  }
+  &__main {
+  }
+}

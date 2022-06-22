@@ -1,0 +1,36 @@
+@import '../styles/_variables.scss';
+
+.y-skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: $color-grey-flash;
+  border-radius: 12px;
+
+  &::after {
+    background: linear-gradient(90deg, rgba($color-white, 0), rgba($color-white, 0.4), rgba($color-white, 0));
+    content: '';
+    animation: y-skeleton-animation 1.2s infinite;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(-100%);
+    z-index: 1;
+  }
+  &--circle {
+    border-radius: 50%;
+  }
+  &--none::after {
+    animation: none;
+  }
+}
+
+@keyframes y-skeleton-animation {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}

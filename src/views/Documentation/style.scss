@@ -1,0 +1,100 @@
+@import 'src/assets/styles/_variables.scss';
+
+.doc {
+  &-section {
+    height: inherit;
+    overflow: auto;
+    @include hideScrollbar();
+  }
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 40px auto;
+    padding: 15px;
+    scroll-margin-top: 100px;
+  }
+  &__emits {
+    margin-bottom: 20px;
+    .doc__text {
+      color: rgb(177, 131, 75);
+    }
+  }
+  &__code {
+    padding: 0 20px;
+    background-color: rgba($color-lightgrey, 0.15);
+    &--orange {
+      padding: 0;
+      color: $color-orange;
+      background-color: transparent;
+    }
+  }
+  &__elements {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 0 10px;
+  }
+}
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+
+  &__icon i {
+    padding: 0 10px;
+    color: $color-bluegreen;
+    font-size: 14px;
+  }
+  .code {
+    font-size: 16px;
+  }
+}
+.title {
+  margin-bottom: 16px;
+  @include font(36px, rgb(53, 81, 38), 700);
+  text-align: center;
+}
+.code {
+  @include font(14px, $color-grey, 500);
+  &__red {
+    color: $color-red;
+  }
+  &__blue {
+    color: $color-bluegreen;
+  }
+  &__green {
+    color: $color-green;
+  }
+  &__purple {
+    color: rgb(191, 61, 119);
+  }
+  &__orange {
+    color: rgb(194, 110, 15);
+  }
+  &__navy {
+    color: rgb(23, 105, 167);
+  }
+}
+.menu {
+  position: sticky;
+  left: 50px;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 71px;
+  padding: 20px 80px;
+  background-color: $color-white;
+  border-bottom: 1px solid rgba($color-lightgrey, 0.4);
+  box-shadow: inset 0px -2px 10px 0px rgba($color-lightgrey, 0.2);
+  z-index: 1;
+  &__item {
+    @include font(18px, $color-space, 600);
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,59 @@
+.ql-editor {
+  & img {
+    display: inline-block;
+  }
+}
+
+@import '@/components/Yaro/styles/style.scss';
+
+//=================== Dropdown ===================
+
+.y-dropdown-item-custom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  & > i {
+    @include font(20px, $color-grey);
+    margin: -3px;
+    &.red {
+      color: $color-red;
+    }
+    &.green {
+      color: $color-green;
+    }
+    &.orange {
+      color: $color-orange;
+    }
+    &.i-edit {
+      margin-bottom: -4px;
+    }
+  }
+  & > span {
+    @include font(14px, rgba($color-space, 0.8), 600);
+  }
+}
+
+.y-dropdown-label-custom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  & > i {
+    @include font(20px, $color-grey);
+    margin: -3px;
+    &.red {
+      color: $color-red;
+    }
+    &.green {
+      color: $color-green;
+    }
+    &.orange {
+      color: $color-orange;
+    }
+    &.i-edit {
+      margin-bottom: -4px;
+    }
+  }
+  & > span {
+    @include font(14px, rgba($color-space, 0.8), 600);
+  }
+}

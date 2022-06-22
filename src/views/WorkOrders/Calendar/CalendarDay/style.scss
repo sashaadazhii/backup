@@ -1,0 +1,131 @@
+@import 'src/assets/styles/_variables.scss';
+
+.day {
+  &__wrapper {
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid $color-border-lightgrey;
+    background-color: $color-white;
+    display: flex;
+    flex-shrink: 0;
+    opacity: 0.7;
+    box-shadow: 0px 0px 0px 3px transparent;
+    cursor: pointer;
+    transition: opacity 0.3s, box-shadow 0.3s;
+    width: 320px;
+    &:first-child {
+      margin-left: 20px;
+    }
+    &:last-child {
+      margin-right: 20px;
+    }
+    &:hover {
+      opacity: 1;
+      border: 1px solid $color-grey;
+      box-sizing: border-box;
+      box-shadow: 0px 0px 0px 3px rgba($color-grey, 0.08);
+    }
+    &.active {
+      opacity: 1;
+      border: 1px solid $color-grey;
+      box-sizing: border-box;
+      box-shadow: 0px 0px 0px 3px rgba($color-grey, 0.08);
+    }
+  }
+  &__date {
+    padding: 18px;
+    border-radius: 8px;
+    border: 1px solid $color-border-lightgrey;
+    display: grid;
+    place-items: center;
+    &-num {
+      @include font(20px, $color-sub-grey, 700);
+      margin-bottom: 6px;
+    }
+    &-month {
+      @include font(12px, $color-sub-grey, 500);
+    }
+  }
+  &__progress {
+    border: 1px solid $color-border-lightgrey;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-left: 8px;
+  }
+}
+
+.progress {
+  &__wrap {
+    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 106px 1fr;
+    align-items: center;
+    @include font(12px, $color-sub-grey, 600);
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  &__name {
+    margin-right: 6px;
+    justify-self: end;
+  }
+  &__line {
+    display: block;
+    width: 106px;
+    height: 8px;
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+    &-bg {
+      width: inherit;
+      height: inherit;
+      background-color: rgba(#000, 0.2);
+    }
+    &-front {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 34%;
+      height: inherit;
+      border-radius: 100px;
+      background-color: rgba(#000, 0.4);
+    }
+    &.green {
+      .progress__line {
+        &-bg {
+          background-color: rgba($color-sub-green, 0.1);
+        }
+        &-front {
+          width: 30%;
+          background-color: $color-sub-green;
+        }
+      }
+    }
+    &.orange {
+      .progress__line {
+        &-bg {
+          background-color: rgba($color-sub-orange, 0.1);
+        }
+        &-front {
+          width: 60%;
+          background-color: $color-sub-orange;
+        }
+      }
+    }
+    &.red {
+      .progress__line {
+        &-bg {
+          background-color: rgba($color-sub-red, 0.1);
+        }
+        &-front {
+          width: 90%;
+          background-color: $color-sub-red;
+        }
+      }
+    }
+  }
+
+  &__percents {
+    margin-left: 10px;
+  }
+}

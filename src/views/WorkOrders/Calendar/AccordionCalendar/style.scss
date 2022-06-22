@@ -1,0 +1,65 @@
+@import 'src/assets/styles/_variables.scss';
+
+.accordion {
+  &__wrapper {
+    background-color: $color-white;
+    border: 1px solid $color-lightgrey;
+    border-radius: 12px;
+    overflow: hidden;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  &__header {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 16px 14px 1fr 18px;
+    column-gap: 8px;
+    padding: 16px 14px;
+    cursor: pointer;
+
+    &-title {
+      @include font(_, _, 600);
+    }
+    &-number {
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      padding: 4px;
+      @include font(14px, $color-white, 600);
+    }
+    &.disabled {
+      pointer-events: none;
+      & > i {
+        color: transparent;
+      }
+    }
+  }
+  &__status {
+    border: 1px solid $color-dark;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    display: grid;
+    overflow: hidden;
+    grid-template-rows: 1fr 1.4fr;
+    &-top {
+    }
+    &-bottom {
+      background-color: $color-dark;
+    }
+  }
+  &__body {
+    border-top: 1px solid $color-lightgrey;
+    &-item {
+      padding: 10px 14px;
+    }
+    &-title {
+      @include font(16px, _, 600);
+      margin-bottom: 10px;
+    }
+    &-text {
+      @include font(14px);
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import 'src/assets/styles/_variables.scss';
+
+.admin-layout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+}
+.page-wrapper {
+  grid-column-start: 2;
+  grid-row-end: 3;
+  background-color: $color-white;
+  overflow: hidden;
+}
+.admin-wrapper {
+  grid-column-start: 2;
+  background-color: $color-bg;
+  overflow: hidden;
+}
+.board-wrapper {
+  grid-column-start: 2;
+  background-color: $color-white;
+  overflow: hidden;
+}

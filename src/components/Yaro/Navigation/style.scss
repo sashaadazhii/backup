@@ -1,0 +1,35 @@
+@import '../styles/_variables.scss';
+
+.y-nav {
+  &__list {
+  }
+  &__item {
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    transition: color $animationDuration ease-in-out, background-color $animationDuration ease-in-out, border-color $animationDuration ease-in-out;
+    &.router-link-active {
+      background-color: $color-white;
+      border-color: $color-grey-flash;
+      & > .y-nav {
+        &__icon {
+          color: $color-green;
+        }
+        &__label {
+          @include font(14px, $color-grey, 600);
+        }
+      }
+    }
+  }
+  &__icon {
+    @include font(16px, $color-grey);
+  }
+  &__label {
+    @include font(14px, $color-grey, 600);
+  }
+}

@@ -1,0 +1,175 @@
+@import '../styles/_variables.scss';
+
+.y-filter {
+  &-button {
+    padding: 7px 10px;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    background-color: $color-grey-smoke;
+    cursor: pointer;
+    @include border(8px, $color-grey-flash);
+    transition: background-color 0.2s;
+
+    & > i {
+      @include font(16px, $color-grey-space);
+    }
+    &-text {
+      @include font(14px, $color-grey-space, 600);
+    }
+    &-indicator {
+      height: 18px;
+      width: 18px;
+      @include font(12px, $color-white, 600);
+      background-color: $color-green;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      margin: -1px;
+    }
+  }
+  &--focus,
+  &--filled {
+    & > .y-filter-button {
+      background-color: $color-grey-flash;
+    }
+  }
+}
+
+.y-filter-panel {
+  position: absolute;
+  background-color: $color-white;
+  @include border;
+  box-shadow: 0px 7px 14px rgba($color-grey-dark, 0.08);
+  overflow: hidden;
+  width: 228px;
+  &[style*='center top'] {
+    margin-top: 4px;
+  }
+  &[style*='center bottom'] {
+    margin-top: -4px;
+  }
+}
+
+.y-filter {
+  &-header {
+    border-bottom: 1px solid $color-grey-flash;
+    padding: 10px;
+    & + .y-filter-items-wrapper {
+      padding-top: 0;
+    }
+  }
+  &-sort {
+    &--active {
+      &.y-filter-sort-label {
+        border-color: $color-green;
+      }
+      & > .y-filter-sort-search {
+        color: $color-green;
+      }
+    }
+    &-label {
+      @include border(20px);
+      display: block;
+      overflow: hidden;
+      padding: 10px;
+      padding-left: 14px;
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      transition: border-color 0.2s;
+      &:hover {
+        border-color: $color-green;
+      }
+      background-color: $color-grey-smoke;
+    }
+    &-search {
+      line-height: 0;
+      transition: color 0.2s;
+      & > i {
+        @include font(16px, $color-grey-space);
+      }
+    }
+    &-input {
+      @include font(14px, $color-grey-space, 600);
+      background-color: transparent;
+      width: 100%;
+      &::placeholder {
+        color: $color-grey;
+      }
+    }
+    &-close {
+      cursor: pointer;
+    }
+  }
+  &-items {
+    &-wrapper {
+      padding: 8px 0;
+      overflow-y: auto;
+      @include hideScrollbar;
+    }
+  }
+  &-item {
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.2s ease-in-out;
+    padding: 13px 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    outline: 0;
+    & > span {
+      @include font(14px, rgba($color-grey-space, 0.8), 600);
+    }
+    &:hover {
+      background-color: $color-grey-smoke;
+      & > .y-filter-checkbox {
+        & > i {
+          color: $color-green;
+        }
+      }
+    }
+
+    &--highlight {
+      & > span {
+        color: $color-grey-space;
+      }
+      & > .y-filter-checkbox {
+        & > i {
+          color: $color-green;
+        }
+      }
+    }
+    &--disabled {
+    }
+    &-group {
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      padding: 13px 18px;
+      @include font(14px, rgba($color-grey, 0.4), 600);
+    }
+    &-icon {
+      &-name {
+      }
+    }
+  }
+  &-checkbox {
+    line-height: 0;
+    margin: -3px;
+    & > i {
+      @include font(20px, rgba($color-grey, 0.4));
+      transition: color 0.2s ease-in-out;
+    }
+  }
+  &-empty-message {
+    padding: 12px 18px;
+    padding-bottom: 4px;
+    @include font(14px, $color-grey, 600);
+  }
+}
+
+//==============================

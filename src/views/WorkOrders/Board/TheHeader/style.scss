@@ -1,0 +1,100 @@
+@import 'src/assets/styles/_variables.scss';
+
+.header {
+  &__wrapper {
+  }
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background-color: $color-white;
+    // border-bottom: 1px solid $color-lightgrey;
+  }
+  &__left {
+  }
+  &__right {
+  }
+  &__chips {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    border-top: 1px solid $color-lightgrey;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    overflow-x: auto;
+    @include hideScrollbar;
+    background-color: $color-bg;
+  }
+}
+
+.filter {
+  &__option {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    & > i {
+      @include font(20px, rgba($color-grey, 0.4));
+      margin: -3px;
+    }
+    & > span {
+      @include font(14px, rgba($color-space, 0.8), 600);
+    }
+    &--pin {
+      background-color: rgba($color-space, 0.4);
+      height: 18px;
+      width: 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      @include font(8px, $color-lightgrey, 600);
+      transition: background-color 0.2s ease-in-out;
+      margin: -2px;
+    }
+  }
+}
+
+.y-filter-item:hover {
+  .filter__option--pin {
+    background-color: rgba($color-grey, 0.8);
+  }
+}
+.y-filter-item--highlight {
+  .filter__option--pin:not(:hover) {
+    background-color: $color-space;
+  }
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid #d6d7de;
+
+  border-radius: 8px;
+  background-color: $color-white;
+  &__icon {
+    line-height: 0;
+    margin: -2px;
+    margin-right: 8px;
+    & > i {
+      @include font(16px, $color-grey);
+      &.green {
+        color: $color-green;
+      }
+    }
+  }
+  &__name {
+    @include font(14px, $color-space, 500);
+    white-space: nowrap;
+  }
+  &__close {
+    margin-left: 12px;
+    line-height: 0;
+    cursor: pointer;
+    & > i {
+      @include font(18px, rgba($color-grey, 0.6), 500);
+    }
+  }
+}
