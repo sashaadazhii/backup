@@ -28,6 +28,11 @@
               <div class="sidebar__link-text show">Company Settings</div>
               <div class="sidebar__link-num"></div>
             </router-link>
+            <router-link v-if="user.role === 'admin'" class="sidebar__link" to="/reports">
+              <div class="sidebar__link-icon"><i class="i-report" /></div>
+              <div class="sidebar__link-text show">Reports</div>
+              <div class="sidebar__link-num"></div>
+            </router-link>
             <router-link v-if="isDev" class="sidebar__link" to="/work-orders/board">
               <div class="sidebar__link-icon"><i class="i-dashboard" /></div>
               <div class="sidebar__link-text show">Work Board</div>

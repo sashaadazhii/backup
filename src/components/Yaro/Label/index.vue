@@ -1,9 +1,9 @@
 <template>
   <div :class="containerClass" :style="{backgroundColor: color}">
     <slot>
-      <i :class="iconClass" v-if="icon" />
-      <span class="y-label__alias" v-if="alias && !icon">{{ alias }}</span>
-      <div class="y-label__text" v-if="label">{{ label }}</div>
+      <i v-if="icon" :class="iconClass" />
+      <span v-if="alias && !icon" class="y-label__alias">{{ alias }}</span>
+      <span v-if="label" class="y-label__text">{{ label }}</span>
     </slot>
   </div>
 </template>

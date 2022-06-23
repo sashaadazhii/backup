@@ -5,6 +5,7 @@ import login from './login/login'
 import workOrder from './workOrder/workOrder'
 import info from './info'
 import company from './company'
+import reports from './reports/reports'
 
 export default createStore({
   state: {},
@@ -16,6 +17,7 @@ export default createStore({
     login,
     workOrder,
     info,
-    company
+    company,
+    reports
   }
 })

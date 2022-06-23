@@ -1,0 +1,45 @@
+@import 'src/assets/styles/_variables.scss';
+.header {
+  &__inner {
+    padding: 12px 20px;
+    padding-left: 60px;
+    padding-bottom: 0;
+    border-bottom: 1px solid $color-lightgrey;
+  }
+  &__top {
+    display: flex;
+    align-items: center;
+  }
+  &__icon {
+    padding: 5px;
+    background-color: rgba($color-green, 0.1);
+    line-height: 1;
+    border-radius: 50%;
+    margin-right: 12px;
+    line-height: 0;
+    & > i {
+      @include font(20px, $color-green);
+    }
+  }
+  &__title {
+    @include font(20px, $color-space, 600);
+  }
+  &__bottom {
+    margin-top: 20px;
+  }
+  &__nav {
+    display: flex;
+    column-gap: 30px;
+    &-link {
+      @include font(14px, $color-grey, 600);
+      padding-bottom: 14px;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color .2s ease-in-out, border-color .2s ease-in-out;
+      &.router-link-active {
+        color: $color-green;
+        border-color: $color-green;
+      }
+    }
+  }
+}

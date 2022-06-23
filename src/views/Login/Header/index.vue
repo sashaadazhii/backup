@@ -2,7 +2,7 @@
   <div class="header__wrapper">
     <div class="header__inner">
       <div class="header__left">
-        <div class="header__title">autosoftname</div>
+        <div class="header__title">asn tech</div>
       </div>
       <div class="header__right">
         <div class="header__clock">{{ time }}</div>

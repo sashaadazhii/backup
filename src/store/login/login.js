@@ -6,7 +6,10 @@ export default {
   state: {
     token: localStorage.getItem('token') || sessionStorage.getItem('token') || '',
     keepMe: true,
-    user: {}
+    // Only MVP
+    user: {
+      role: 'admin'
+    }
   },
   mutations: {
     changeKeepMe(state) {
