@@ -1,0 +1,122 @@
+@import 'src/assets/styles/_variables.scss';
+
+.reports {
+  &__inner {
+    background-color: $color-white;
+    border-radius: 16px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    max-height: 100%;
+  }
+}
+
+.table__header,
+.table__row,
+.table__footer {
+  display: grid;
+  align-items: center;
+  grid-template-columns: minmax(180px, 1.5fr) repeat(4, minmax(90px, 1fr)) minmax(85px, 3fr);
+}
+
+.table {
+  &__wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+  }
+  &__header {
+    padding: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid $color-grey-flash;
+    &-title {
+      @include font(12px, $color-grey, 500);
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+  &__main {
+    overflow: auto;
+    @include hideScrollbar;
+  }
+  &__row {
+    border-bottom: 1px solid $color-grey-flash;
+    padding: 16px;
+    &:nth-child(even) {
+      background-color: $color-grey-smoke;
+    }
+    &:last-child {
+      border: none;
+    }
+  }
+  &__cell {
+    @include font(14px, $color-grey-space, 600);
+    &--icon {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+      & > i {
+        @include font(16px, $color-grey);
+      }
+      &--bluegreen {
+        & > i {
+          color: $color-bluegreen;
+        }
+      }
+    }
+    &--link {
+    }
+    &-link {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+      & > i {
+        @include font(16px, $color-bluegreen);
+      }
+    }
+    &--label {
+    }
+    &-label {
+      border-radius: 8px;
+      border-color: $color-grey-light;
+      background-color: $color-grey-flash;
+      color: $color-grey-space;
+    }
+    &--red {
+      color: $color-red;
+    }
+    &--green {
+      color: $color-green;
+    }
+    &--orange {
+      color: $color-orange;
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+  &__footer {
+    padding: 16px;
+    background-color: $color-grey-smoke;
+    border: 1px solid $color-grey-flash;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    &-cell {
+      @include font(14px, $color-grey-dark, 700);
+      &:last-child {
+        text-align: right;
+      }
+      &--red {
+        color: $color-red;
+      }
+      &--green {
+        color: $color-green;
+      }
+      &--orange {
+        color: $color-orange;
+      }
+    }
+  }
+}

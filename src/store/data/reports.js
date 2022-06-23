@@ -253,4 +253,93 @@ const deferredWork = [
     profitDeferred: 1233
   },
 ]
-export {soldTime, newCustomers, deferredWork}
+const monthlyEfficiency = [
+  {
+    date: 'Jul 1, 2022',
+    availableTime: 78.33,
+    hoursOnJob: 55.00,
+    idleTime: 12.45,
+    timeOnJob: 86,
+    jobEfficiency: 45
+
+  },
+  {
+    date: 'Jul 1, 2022',
+    availableTime: 78.33,
+    hoursOnJob: 55.00,
+    idleTime: 12.45,
+    timeOnJob: 86, jobEfficiency: 61
+  },
+  {
+    date: 'Jul 1, 2022',
+    availableTime: 78.33,
+    hoursOnJob: 55.00,
+    idleTime: 12.45,
+    timeOnJob: 86, jobEfficiency: 86
+  },
+  {
+    date: 'Jul 1, 2022',
+    availableTime: 78.33,
+    hoursOnJob: 55.00,
+    idleTime: 12.45,
+    timeOnJob: 86, jobEfficiency: 87
+  },
+  {
+    date: 'Jul 1, 2022',
+    availableTime: 78.33,
+    hoursOnJob: 55.00,
+    idleTime: 12.45,
+    timeOnJob: 86, jobEfficiency: 97
+  },
+  {
+    date: 'Jul 1, 2022',
+    availableTime: 78.33,
+    hoursOnJob: 55.00,
+    idleTime: 12.45,
+    timeOnJob: 86, jobEfficiency: 78
+  },
+  {
+    date: 'Jul 1, 2022',
+    availableTime: 78.33,
+    hoursOnJob: 55.00,
+    idleTime: 12.45,
+    timeOnJob: 86, jobEfficiency: 34
+  },
+  {
+    date: 'Jul 1, 2022',
+    availableTime: 78.33,
+    hoursOnJob: 55.00,
+    idleTime: 12.45,
+    timeOnJob: 86, jobEfficiency: 95
+  },
+  {
+    date: 'Jul 1, 2022',
+    availableTime: 78.33,
+    hoursOnJob: 55.00,
+    idleTime: 12.45,
+    timeOnJob: 86, jobEfficiency: 34
+  },
+  {
+    date: 'Jul 1, 2022',
+    availableTime: 78.33,
+    hoursOnJob: 55.00,
+    idleTime: 12.45,
+    timeOnJob: 86, jobEfficiency: 72
+  },
+  {
+    date: 'Jul 1, 2022',
+    availableTime: 78.33,
+    hoursOnJob: 55.00,
+    idleTime: 12.45,
+    timeOnJob: 86, jobEfficiency: 79
+  },
+  {
+    date: 'Jul 1, 2022',
+    availableTime: 78.33,
+    hoursOnJob: 55.00,
+    idleTime: 12.45,
+    timeOnJob: 86, jobEfficiency: 60
+  },
+
+]
+export { soldTime, newCustomers, deferredWork, monthlyEfficiency }
