@@ -1,10 +1,11 @@
-import {soldTime, newCustomers} from '../data/reports'
+import {soldTime, newCustomers, deferredWork} from '../data/reports'
 
 export default {
   namespaced: true,
   state: {
     soldTime,
-    newCustomers
+    newCustomers,
+    deferredWork
   },
   mutations: {},
   actions: {}

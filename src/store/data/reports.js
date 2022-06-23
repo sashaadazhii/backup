@@ -139,7 +139,118 @@ const newCustomers = [
     phone: '(905)345.34.34',
     lastJobDate: 'Jul 1, 2022',
     refferedBy: 'Ok Tire'
+  }
+]
+const deferredWork = [
+  {
+    date: 'Jul 1, 2022',
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    declined: [
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#F37878'
+      },
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#FF9B70'
+      }
+    ],
+    warranty: 0,
+    discountTime: 0,
+    costTotal: 320,
+    priceTotal: 400,
+    profitDeferred: 12333412
+  },
+  {
+    date: 'Jul 1, 2022',
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    declined: [
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#F37878'
+      },
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#FF9B70'
+      }
+    ],
+    warranty: 0,
+    discountTime: 0,
+    costTotal: 320,
+    priceTotal: 400,
+    profitDeferred: 1233
+  },
+  {
+    date: 'Jul 1, 2022',
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    declined: [
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#F37878'
+      },
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#FF9B70'
+      }
+    ],
+    warranty: 0,
+    discountTime: 0,
+    costTotal: 320,
+    priceTotal: 400,
+    profitDeferred: 1233
+  },
+  {
+    date: 'Jul 1, 2022',
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    declined: [
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#F37878'
+      },
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#FF9B70'
+      }
+    ],
+    warranty: 0,
+    discountTime: 0,
+    costTotal: 320,
+    priceTotal: 400,
+    profitDeferred: 1233
+  },
+  {
+    date: 'Jul 1, 2022',
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    declined: [
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#F37878'
+      },
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#FF9B70'
+      }
+    ],
+    warranty: 0,
+    discountTime: 0,
+    costTotal: 320,
+    priceTotal: 400,
+    profitDeferred: 1233
   },
 ]
-
-export {soldTime, newCustomers}
+export {soldTime, newCustomers, deferredWork}

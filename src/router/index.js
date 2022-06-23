@@ -154,6 +154,7 @@ const routes = [
     name: 'Reports',
     meta: {layout: 'admin', access: ['admin'], auth: true, header: 'Reports'},
     component: () => import('@/views/Reports'),
+    redirect: '/reports/sold-time',
     children: [
       {
         path: 'sold-time',
@@ -166,6 +167,12 @@ const routes = [
         name: 'ReportsNewCustomers',
         meta: {layout: 'admin', access: ['admin'], auth: true, header: 'Reports'},
         component: () => import('@/views/Reports/NewCustomers')
+      },
+      {
+        path: 'deferred-work',
+        name: 'ReportsDeferredWork',
+        meta: {layout: 'admin', access: ['admin'], auth: true, header: 'Reports'},
+        component: () => import('@/views/Reports/DeferredWork')
       },
     ]
   },

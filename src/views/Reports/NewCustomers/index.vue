@@ -39,11 +39,8 @@ import Header from '../ReportHeader'
 import Label from '@/components/Yaro/Label'
 
 export default {
-  name: 'ReportsSoldTime',
+  name: 'ReportsNewCustomers',
   components: {Header, Label},
-  created() {
-    console.log(this.reports)
-  },
   computed: {
     ...mapState({
       reports: s => s.reports.newCustomers
