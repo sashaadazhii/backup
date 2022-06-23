@@ -5,9 +5,9 @@
     background-color: $color-white;
     border-radius: 16px;
     overflow: hidden;
-    height: inherit;
     display: grid;
     grid-template-rows: auto 1fr;
+    max-height: 100%;
   }
 }
 
