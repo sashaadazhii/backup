@@ -261,7 +261,6 @@ const monthlyEfficiency = [
     idleTime: 12.45,
     timeOnJob: 86,
     jobEfficiency: 45
-
   },
   {
     date: 'Jul 1, 2022',
@@ -342,4 +341,163 @@ const monthlyEfficiency = [
   },
 
 ]
-export { soldTime, newCustomers, deferredWork, monthlyEfficiency }
+const profit = [
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 0.00,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 0.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 0.00,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+
+]
+export { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit }

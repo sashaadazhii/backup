@@ -146,7 +146,8 @@ const routes = [
         name: 'CompanySettingsStatus',
         meta: { layout: 'admin', access: ['admin'], auth: true, header: 'CompanySettings' },
         component: () => import('@/views/Settings/Statuses/StatusPage')
-      }
+      },
+
     ]
   },
   {
@@ -179,6 +180,12 @@ const routes = [
         name: 'MonthlyEfficiency',
         meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
         component: () => import('@/views/Reports/MonthlyEfficiency')
+      },
+      {
+        path: 'profit',
+        name: 'Profit',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/Profit')
       },
     ]
   },

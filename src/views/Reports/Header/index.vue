@@ -11,7 +11,7 @@
           <router-link class="header__nav-link" to="/reports/new-customers">New Customers</router-link>
           <router-link class="header__nav-link" to="/reports/deferred-work">Deferred Work</router-link>
           <router-link class="header__nav-link" to="/reports/monthly-efficiency">Monthly Efficiency</router-link>
-          <!-- <router-link class="header__nav-link" to="/reports/"></router-link> -->
+          <router-link class="header__nav-link" to="/reports/profit">Profit</router-link>
           <!-- <router-link class="header__nav-link" to="/reports/"></router-link> -->
           <!-- <router-link class="header__nav-link" to="/reports/"></router-link> -->
           <!-- <router-link class="header__nav-link" to="/reports/"></router-link> -->

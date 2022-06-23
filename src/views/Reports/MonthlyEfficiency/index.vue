@@ -12,7 +12,7 @@
       </div>
       <div class="table__main">
         <div v-for="(report, idx) of reports" :key="idx" class="table__row">
-          <div class="table__cell table__cell--icon table__cell--icon--bluegreen">
+          <div class="table__cell table__cell--icon">
             <i class="i-calendar" />
             {{ report.date }}
           </div>
@@ -61,7 +61,7 @@ import {mapState} from 'vuex'
 import Header from '../ReportHeader'
 
 export default {
-  name: 'ReportsDeferredWork',
+  name: 'MonthlyEfficiency',
   components: {Header},
   created() {
     console.log(this.reports)
