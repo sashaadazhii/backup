@@ -21,10 +21,10 @@
             <i class="i-calendar" />
             {{ report.date }}
           </div>
-          <div class="table__cell table__cell--icon">
+          <div class="table__cell">
             {{ report.soldTime.toFixed(2) }}
           </div>
-          <div class="table__cell table__cell--icon">
+          <div class="table__cell">
             {{ report.warrantyTime.toFixed(2) }}
           </div>
           <div class="table__cell">{{ report.discountTime.toFixed(2) }}</div>

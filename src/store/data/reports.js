@@ -500,4 +500,61 @@ const profit = [
   },
 
 ]
-export { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit }
+const serviceDue = [
+  {
+    dueDate: 'Jul 1, 2022',
+    dueKM: 800000,
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Rear Brake Service',
+    callback: 'Wed, May 11, 2022',
+    note: 'Remind customer of replacing tires...'
+  },
+  {
+    dueDate: 'Jul 1, 2022',
+    dueKM: 800000,
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Rear Brake Service',
+    callback: '',
+    note: ''
+  },
+  {
+    dueDate: 'Jul 1, 2022',
+    dueKM: 800000,
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Rear Brake Service',
+    callback: 'Wed, May 11, 2022',
+    note: ''
+  },
+  {
+    dueDate: 'Jul 1, 2022',
+    dueKM: 800000,
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Rear Brake Service',
+    callback: '',
+    note: ''
+  },
+  {
+    dueDate: 'Jul 1, 2022',
+    dueKM: 800000,
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Rear Brake Service',
+    callback: '',
+    note: ''
+  },
+  {
+    dueDate: 'Jul 1, 2022',
+    dueKM: 800000,
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Rear Brake Service',
+    callback: 'Wed, May 11, 2022',
+    note: 'Remind customer of replacing tires...'
+  },
+
+]
+export { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit, serviceDue }

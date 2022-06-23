@@ -187,6 +187,12 @@ const routes = [
         meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
         component: () => import('@/views/Reports/Profit')
       },
+      {
+        path: 'service-due',
+        name: 'ServiceDue',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/ServiceDue')
+      },
     ]
   },
   {

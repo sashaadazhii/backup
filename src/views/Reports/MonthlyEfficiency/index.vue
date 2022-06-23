@@ -16,10 +16,10 @@
             <i class="i-calendar" />
             {{ report.date }}
           </div>
-          <div class="table__cell table__cell--icon">
+          <div class="table__cell">
             {{ report.availableTime }}
           </div>
-          <div class="table__cell table__cell--icon">
+          <div class="table__cell">
             {{ report.hoursOnJob.toFixed(2) }}
           </div>
           <div class="table__cell">{{ report.idleTime.toFixed(2) }}</div>
@@ -63,10 +63,6 @@ import Header from '../ReportHeader'
 export default {
   name: 'MonthlyEfficiency',
   components: {Header},
-  created() {
-    console.log(this.reports)
-    console.log(this.rep)
-  },
   computed: {
     ...mapState({
       reports: s => s.reports.monthlyEfficiency
