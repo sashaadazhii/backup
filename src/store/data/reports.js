@@ -557,4 +557,34 @@ const serviceDue = [
   },
 
 ]
-export { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit, serviceDue }
+const payrollHours = [
+  {
+    technician: 'Andrew Martin',
+    hoursWorked: 45.2
+  },
+  {
+    technician: 'Andrew Marshall',
+    hoursWorked: 41.8
+  },
+  {
+    technician: 'Andrew Zetter',
+    hoursWorked: 37.2
+  },
+  {
+    technician: 'Dominic',
+    hoursWorked: 39.6
+  },
+  {
+    technician: 'Merlin',
+    hoursWorked: 45.2
+  },
+  {
+    technician: 'Simon',
+    hoursWorked: 43.0
+  },
+  {
+    technician: 'Tonny Smith',
+    hoursWorked: 42.2
+  },
+]
+export { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit, serviceDue, payrollHours }

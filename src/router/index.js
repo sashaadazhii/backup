@@ -193,6 +193,12 @@ const routes = [
         meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
         component: () => import('@/views/Reports/ServiceDue')
       },
+      {
+        path: 'payroll-hours',
+        name: 'PayrollHours',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/PayrollHours')
+      },
     ]
   },
   {
