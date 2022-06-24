@@ -32,9 +32,9 @@
           </div>
           <div class="table__cell">{{ report.warranty.toFixed(2) }}</div>
           <div class="table__cell">{{ report.discountTime.toFixed(2) }}</div>
-          <div class="table__cell">$ {{ report.costTotal.toFixed(2) }}</div>
-          <div class="table__cell">$ {{ report.priceTotal.toFixed(2) }}</div>
-          <div class="table__cell">$ {{ report.profitDeferred.toLocaleString('fr-FR') }}</div>
+          <div class="table__cell">{{ formatter(report.costTotal) }}</div>
+          <div class="table__cell">{{ formatter(report.priceTotal) }}</div>
+          <div class="table__cell">{{ formatter(report.profitDeferred) }}</div>
         </div>
       </div>
     </div>
@@ -48,13 +48,16 @@ import Label from '@/components/Yaro/Label'
 export default {
   name: 'ReportsDeferredWork',
   components: {Header, Label},
-  created() {
-    console.log(this.reports)
-  },
   computed: {
     ...mapState({
       reports: s => s.reports.deferredWork
     })
+  },
+  methods: {
+    formatter(val) {
+      const price = new Intl.NumberFormat('en-CA', {style: 'currency', currency: 'CAD'}).format(val)
+      return price
+    }
   }
 }
 </script>

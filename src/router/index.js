@@ -199,6 +199,12 @@ const routes = [
         meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
         component: () => import('@/views/Reports/PayrollHours')
       },
+      {
+        path: 'mark-up',
+        name: 'markUp',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/MarkUp')
+      },
     ]
   },
   {

@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="table__footer">
-        <div class="table__footer-cell">Average:</div>
+        <div class="table__footer-cell">Total:</div>
         <div class="table__footer-cell">{{ reports.reduce((sum, current) => sum + current.availableTime, 0).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.hoursOnJob, 0) / reports.length).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.idleTime, 0) / reports.length).toFixed(2) }}</div>

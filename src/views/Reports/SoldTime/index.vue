@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="table__footer">
-        <div class="table__footer-cell">Average:</div>
+        <div class="table__footer-cell">Total:</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.soldTime, 0) / reports.length).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.capacity, 0) / reports.length).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.availability, 0) / reports.length).toFixed(2) }}</div>

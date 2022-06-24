@@ -1,4 +1,4 @@
-import { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit, serviceDue, payrollHours } from '../data/reports'
+import { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit, serviceDue, payrollHours, markUp } from '../data/reports'
 
 export default {
   namespaced: true,
@@ -9,7 +9,8 @@ export default {
     monthlyEfficiency,
     profit,
     serviceDue,
-    payrollHours
+    payrollHours,
+    markUp
   },
   mutations: {},
   actions: {}

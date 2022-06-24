@@ -587,4 +587,43 @@ const payrollHours = [
     hoursWorked: 42.2
   },
 ]
-export { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit, serviceDue, payrollHours }
+const markUp = [
+  {
+    markUp: 'Additional labour to hit 165/hour',
+    cost: 125,
+    price: 4135.00,
+    grossProfit: 97.52
+  },
+  {
+    markUp: 'Battery 30%',
+    cost: 145,
+    price: 7135.00,
+    grossProfit: 94.50
+  },
+  {
+    markUp: 'Courtesy Vehicle Rental',
+    cost: 120,
+    price: 4135.00,
+    grossProfit: 91.52
+  },
+  {
+    markUp: 'Diagnostic Testing Fee',
+    cost: 125,
+    price: 1160.50,
+    grossProfit: 107.89
+  },
+  {
+    markUp: 'Parts Sold to employee',
+    cost: 125,
+    price: 4137.50,
+    grossProfit: 112.30
+  },
+  {
+    markUp: 'Shop Vehicle Parts',
+    cost: 125,
+    price: 2166.00,
+    grossProfit: 95.32
+  },
+]
+
+export { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit, serviceDue, payrollHours, markUp }

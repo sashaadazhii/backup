@@ -14,7 +14,7 @@
           <router-link class="header__nav-link" to="/reports/profit">Profit</router-link>
           <router-link class="header__nav-link" to="/reports/service-due">Service Due</router-link>
           <router-link class="header__nav-link" to="/reports/payroll-hours">Payroll Hours</router-link>
-          <!-- <router-link class="header__nav-link" to="/reports/"></router-link> -->
+          <router-link class="header__nav-link" to="/reports/mark-up">Mark Up</router-link>
           <!-- <router-link class="header__nav-link" to="/reports/"></router-link> -->
         </div>
       </div>

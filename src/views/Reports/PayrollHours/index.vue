@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="table__footer">
-        <div class="table__footer-cell">Average:</div>
+        <div class="table__footer-cell">Totla:</div>
         <div class="table__footer-cell">{{ reports.reduce((sum, current) => sum + current.hoursWorked, 0).toFixed(1) }} hrs</div>
       </div>
     </div>
@@ -24,7 +24,7 @@ import {mapState} from 'vuex'
 import Header from '../ReportHeader'
 
 export default {
-  name: 'ReportsSoldTime',
+  name: 'PayrollHours',
   components: {Header},
   computed: {
     ...mapState({

@@ -29,28 +29,36 @@
           </div>
           <div class="table__cell">{{ report.discountTime.toFixed(2) }}</div>
           <div class="table__cell">{{ report.billableTime.toFixed(2) }}</div>
-          <div class="table__cell">${{ report.additionalLabour.toLocaleString('en-CA') }}</div>
-          <div class="table__cell">${{ report.labourPrice.toLocaleString('en-CA') }}</div>
-          <div class="table__cell">${{ report.partsCost.toLocaleString('en-CA') }}</div>
-          <div class="table__cell">${{ report.partsPrice.toLocaleString('en-CA') }}</div>
-          <div class="table__cell">${{ report.totalPrice.toLocaleString('en-CA') }}</div>
-          <div class="table__cell">${{ report.totalProfit.toLocaleString('en-CA') }}</div>
+          <div class="table__cell">{{ formatter(report.additionalLabour) }}</div>
+          <div class="table__cell">{{ formatter(report.labourPrice) }}</div>
+          <div class="table__cell">{{ formatter(report.partsCost) }}</div>
+          <div class="table__cell">{{ formatter(report.partsPrice) }}</div>
+          <div class="table__cell">{{ formatter(report.totalPrice) }}</div>
+          <div class="table__cell">{{ formatter(report.totalProfit) }}</div>
         </div>
       </div>
       <div class="table__footer">
-        <div class="table__footer-cell">Average:</div>
+        <div class="table__footer-cell">Total:</div>
         <div class="table__footer-cell">{{ reports.reduce((sum, current) => sum + current.soldTime, 0).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.warrantyTime, 0) / reports.length).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.discountTime, 0) / reports.length).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.billableTime, 0) / reports.length).toFixed(2) }}</div>
         <div class="table__footer-cell">
-          ${{ (reports.reduce((sum, current) => sum + current.additionalLabour, 0) / reports.length).toLocaleString('en-CA') }}
+          {{ formatter(reports.reduce((sum, current) => sum + current.additionalLabour, 0) / reports.length) }}
         </div>
-        <div class="table__footer-cell">${{ (reports.reduce((sum, current) => sum + current.labourPrice, 0) / reports.length).toLocaleString('en-CA') }}</div>
-        <div class="table__footer-cell">${{ (reports.reduce((sum, current) => sum + current.partsCost, 0) / reports.length).toLocaleString('en-CA') }}</div>
-        <div class="table__footer-cell">${{ (reports.reduce((sum, current) => sum + current.partsPrice, 0) / reports.length).toLocaleString('en-CA') }}</div>
-        <div class="table__footer-cell">${{ (reports.reduce((sum, current) => sum + current.totalPrice, 0) / reports.length).toLocaleString('en-CA') }}</div>
-        <div class="table__footer-cell">${{ reports.reduce((sum, current) => sum + current.totalProfit, 0).toLocaleString('en-CA') }}</div>
+        <div class="table__footer-cell">
+          {{ formatter(reports.reduce((sum, current) => sum + current.labourPrice, 0) / reports.length) }}
+        </div>
+        <div class="table__footer-cell">
+          {{ formatter(reports.reduce((sum, current) => sum + current.partsCost, 0) / reports.length) }}
+        </div>
+        <div class="table__footer-cell">
+          {{ formatter(reports.reduce((sum, current) => sum + current.partsPrice, 0) / reports.length) }}
+        </div>
+        <div class="table__footer-cell">
+          {{ formatter(reports.reduce((sum, current) => sum + current.totalPrice, 0) / reports.length) }}
+        </div>
+        <div class="table__footer-cell">{{ formatter(reports.reduce((sum, current) => sum + current.totalProfit, 0)) }}</div>
       </div>
     </div>
   </div>
@@ -66,9 +74,12 @@ export default {
     ...mapState({
       reports: s => s.reports.profit
     })
-    // avarageJobEfficiency() {
-    //   return (this.reports.reduce((sum, current) => sum + current.jobEfficiency, 0) / this.reports.length).toFixed(2)
-    // }
+  },
+  methods: {
+    formatter(val) {
+      const price = new Intl.NumberFormat('en-CA', {style: 'currency', currency: 'CAD'}).format(val)
+      return price
+    }
   }
 }
 </script>
