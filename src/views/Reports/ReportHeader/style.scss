@@ -12,3 +12,43 @@
     }
   }
 }
+//TODO: remove later
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: $color-grey-smoke;
+  border: 1px solid $color-grey-light;
+  border-radius: 8px;
+  cursor: pointer;
+  &--light {
+    background: $color-white;
+  }
+
+  &-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &__title {
+    @include font(14px, $color-grey, 500);
+  }
+  &__text {
+    @include font(14px, $color-space, 600);
+  }
+  &__icon {
+    height: 20px; // ???
+    & > i {
+      font-size: 16px;
+      color: $color-grey;
+      // line-height: 1;
+    }
+  }
+}
