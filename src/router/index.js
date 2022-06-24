@@ -186,7 +186,7 @@ const routes = [
     path: '/work-order',
     name: 'WorkOrder',
     meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true, header: 'WorkOrder'},
-    component: () => import('@/views/WorkOrder/New'),
+    component: () => import('@/views/WorkOrder'),
     redirect: '/work-order/new',
     children: [
       {
@@ -196,37 +196,32 @@ const routes = [
         component: () => import('@/views/WorkOrder/New')
       },
       {
-        path: 'work-order/:uid/general',
+        path: ':uid/general',
         name: 'WorkOrderGeneral',
         meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true, header: 'WorkOrder'},
         component: () => import('@/views/WorkOrder/General')
       },
       {
-        path: 'work-order/:uid/general',
-        name: 'WorkOrderGeneral',
-        meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true, header: 'WorkOrder'},
-        component: () => import('@/views/WorkOrder/General')
-      },
-      {
-        path: 'work-order/:uid/vehicle-health',
+        path: ':uid/vehicle-health',
         name: 'WorkOrderVehicleHealth',
         meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true, header: 'WorkOrder'},
         component: () => import('@/views/WorkOrder/VehicleHealth')
       },
       {
-        path: 'work-order/:uid/vehicle-info',
+        path: ':uid/vehicle-info',
         name: 'WorkOrderVehicleInfo',
         meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true, header: 'WorkOrder'},
         component: () => import('@/views/WorkOrder/VehicleInfo')
       },
       {
-        path: 'work-order/:uid/finance',
+        path: ':uid/finance',
         name: 'WorkOrderFinance',
         meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true, header: 'WorkOrder'},
         component: () => import('@/views/WorkOrder/Finance')
-      },
+      }
     ]
   },
+
   {
     path: '/test',
     name: 'TestPage',

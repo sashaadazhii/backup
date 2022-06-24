@@ -1,5 +1,6 @@
 <template>
-  <div class="order-layout layout">
+  <div class="order-layout layout" :class="{'is-header': headerName === 'WorkOrder'}">
+    <Header v-if="headerName === 'WorkOrder'" />
     <div class="page-wrapper">
       <router-view />
     </div>
@@ -7,8 +8,16 @@
 </template>
 
 <script>
+import Header from './Header'
+
 export default {
-  name: 'orderLayout'
+  name: 'orderLayout',
+  components: {Header},
+  computed: {
+    headerName() {
+      return this.$route.meta.header
+    }
+  }
 }
 </script>
 

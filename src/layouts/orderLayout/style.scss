@@ -1,6 +1,10 @@
 @import 'src/assets/styles/_variables.scss';
 
 .order-layout {
+  display: grid;
+  &.is-header {
+    grid-template-rows: auto 1fr;
+  }
 }
 .page-wrapper {
   background-color: $color-grey-smoke;

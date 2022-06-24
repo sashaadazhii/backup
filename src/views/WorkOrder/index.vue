@@ -1,10 +1,10 @@
 <template>
-  <div class="">asfasf</div>
+  <router-view />
 </template>
 
 <script>
 export default {
-  name: 'WorkOrderGeneral'
+  name: 'WorkOrder'
 }
 </script>
 
