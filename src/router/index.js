@@ -205,6 +205,12 @@ const routes = [
         meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
         component: () => import('@/views/Reports/MarkUp')
       },
+      {
+        path: 'inventory',
+        name: 'inventory',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/Inventory')
+      },
     ]
   },
   {
