@@ -16,7 +16,7 @@
 .table__footer {
   display: grid;
   align-items: center;
-  grid-template-columns: minmax(110px, 1.2fr) repeat(4, minmax(86px, 1fr)) repeat(5, minmax(100px, 1fr)) minmax(130px, 1.3fr);
+  grid-template-columns: minmax(110px, 1.2fr) repeat(4, minmax(86px, 1fr)) repeat(5, minmax(100px, 1fr)) minmax(120px, 1.2fr);
   gap: 10px;
 }
 

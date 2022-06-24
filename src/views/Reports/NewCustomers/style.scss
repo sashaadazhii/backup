@@ -60,11 +60,6 @@
       & > i {
         @include font(16px, $color-grey);
       }
-      &--bluegreen {
-        & > i {
-          color: $color-bluegreen;
-        }
-      }
     }
     &--link {
     }
@@ -103,5 +98,24 @@
     &-cell {
       @include font(14px, $color-grey-dark, 700);
     }
+  }
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px 6px 6px;
+  gap: 6px;
+  background: $color-grey-flash;
+  border: 1px solid $color-grey-light;
+  border-radius: 6px;
+  &__icon {
+    & > i {
+      font-size: 16px;
+      color: $color-space;
+    }
+  }
+  &__text {
+    @include font(14px, $color-space, 600);
   }
 }

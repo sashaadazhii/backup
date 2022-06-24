@@ -28,12 +28,18 @@
           <div class="table__cell">{{ report.service }}</div>
 
           <div v-if="report.callback !== ''" class="table__cell table__cell--icon table__cell--icon--green"><i class="i-calendar" />{{ report.callback }}</div>
-          <div v-else class="table__cell table__cell--icon table__cell--label">
-            <Label class="table__cell-label" size="small" icon="i-calendar" label="Set Date" border color="#F8F8FA" />
+          <div v-else class="table__cell">
+            <div class="label">
+              <div class="label__icon"><i class="i-calendar" /></div>
+              <div class="label__text">Set Date</div>
+            </div>
           </div>
           <div v-if="report.note !== ''" class="table__cell">{{ report.note }}</div>
           <div v-else class="table__cell table__cell--icon table__cell--label">
-            <Label class="table__cell-label" size="small" icon="i-add_circle" label="Add Note" border />
+            <div class="label label--dark">
+              <div class="label__icon"><i class="i-add_circle" /></div>
+              <div class="label__text">Add Note</div>
+            </div>
           </div>
         </div>
       </div>
@@ -43,11 +49,10 @@
 <script>
 import {mapState} from 'vuex'
 import Header from '../ReportHeader'
-import Label from '@/components/Yaro/Label'
 
 export default {
   name: 'ServiceDue',
-  components: {Header, Label},
+  components: {Header},
   computed: {
     ...mapState({
       reports: s => s.reports.serviceDue
