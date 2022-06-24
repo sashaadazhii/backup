@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     ...mapState({
-      orders: s => s.workOrder.workOrders
+      orders: s => s.workOrder.workOrder
     })
   },
   methods: {

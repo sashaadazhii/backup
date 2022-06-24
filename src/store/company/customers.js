@@ -1,5 +1,6 @@
 import axios from 'axios'
 import _ from 'lodash'
+import {customers as customersList} from '../data/customers'
 
 export default {
   namespaced: true,
@@ -66,15 +67,11 @@ export default {
   },
   actions: {
     async fetch({commit, state}) {
-      const url = process.env.VUE_APP_BACKEND
-      const page = state.page
       const search = state.searchParams
-
       try {
-        const customers = await axios.get(`${url}company/customers/`, {params: {page, search}})
-        commit('pagination', customers.data.pagination)
-        commit('set', customers.data.data)
-        commit('changePage')
+        const customers = customersList
+        commit('pagination', customers.pagination)
+        commit('set', customers.data)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

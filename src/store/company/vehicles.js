@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {vehicles as vehiclesList} from '../data/vehicles'
 
 export default {
   namespaced: true,
@@ -55,9 +56,8 @@ export default {
       }
     },
     async fetchVehicles({commit}, uid) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        return await axios.get(`${url}company/customers/${uid}/vehicles/`)
+        return vehiclesList
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
