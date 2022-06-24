@@ -16,9 +16,8 @@
           <router-link class="header__nav-link" to="/reports/payroll-hours">Payroll Hours</router-link>
           <router-link class="header__nav-link" to="/reports/mark-up">Mark Up</router-link>
           <router-link class="header__nav-link" to="/reports/inventory">Inventory</router-link>
-          <!-- <router-link class="header__nav-link" to="/reports/"></router-link> -->
-          <!-- <router-link class="header__nav-link" to="/reports/"></router-link> -->
-          <!-- <router-link class="header__nav-link" to="/reports/"></router-link> -->
+          <router-link class="header__nav-link" to="/reports/stocks">Stocks</router-link>
+          <router-link class="header__nav-link" to="/reports/customer-sales-report">Customer Sales Report</router-link>
         </div>
       </div>
     </div>
