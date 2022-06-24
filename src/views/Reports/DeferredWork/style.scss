@@ -16,14 +16,16 @@
 .table__footer {
   display: grid;
   align-items: center;
-  grid-template-columns: minmax(120px, 1.2fr) minmax(140px, 2fr) minmax(160px, 2fr) minmax(100px, 2fr) repeat(4, minmax(90px, 1fr)) minmax(120px, 1fr);
+  grid-template-columns: minmax(120px, 1.1fr) minmax(240px, 2fr) minmax(190px, 1.7fr) minmax(240px, 2fr) repeat(4, minmax(100px, 1fr)) minmax(110px, 1.1fr);
+  // minmax(240px, max-content)   repeat( auto-fit, minmax(240px, max-content))  fit-content(300px)
+  gap: 10px;
 }
 
 .table {
   &__wrapper {
     display: grid;
     grid-template-rows: auto 1fr;
-    overflow: hidden;
+    overflow-x: auto;
   }
   &__header {
     padding: 16px;
@@ -39,7 +41,10 @@
   }
   &__row {
     border-bottom: 1px solid $color-grey-flash;
-    padding: 16px;
+    // padding: 16px;
+    padding: 0 16px;
+    height: 60px;
+
     &:nth-child(even) {
       background-color: $color-grey-smoke;
     }
@@ -49,6 +54,7 @@
   }
   &__cell {
     @include font(14px, $color-grey-space, 600);
+    white-space: nowrap;
     &--icon {
       display: flex;
       align-items: center;
@@ -99,5 +105,28 @@
     &-cell {
       @include font(14px, $color-grey-dark, 700);
     }
+  }
+}
+
+// TODO: remove later
+.label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px 5px 8px;
+  background: $color-grey-flash;
+  border-radius: 8px;
+  @include font(14px, $color-space, 600);
+
+  &-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__icon {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
   }
 }

@@ -16,7 +16,7 @@
 .table__footer {
   display: grid;
   align-items: center;
-  grid-template-columns: minmax(180px, 1.5fr) repeat(6, minmax(120px, 1fr)) minmax(160px, 2fr);
+  grid-template-columns: minmax(300px, 3fr) repeat(2, minmax(120px, 1fr)) minmax(400px, 3.5fr);
   gap: 10px;
 }
 
@@ -32,6 +32,10 @@
     border-bottom: 1px solid $color-grey-flash;
     &-title {
       @include font(12px, $color-grey, 500);
+
+      &:last-child {
+        text-align: right;
+      }
     }
   }
   &__main {
@@ -75,6 +79,9 @@
     &--orange {
       color: $color-orange;
     }
+    &:last-child {
+      text-align: right;
+    }
   }
   &__footer {
     padding: 16px;
@@ -84,6 +91,9 @@
     border-bottom-right-radius: 16px;
     &-cell {
       @include font(14px, $color-grey-dark, 700);
+      &:last-child {
+        text-align: right;
+      }
     }
   }
 }

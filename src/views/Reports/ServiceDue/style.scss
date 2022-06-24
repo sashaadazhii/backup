@@ -16,7 +16,7 @@
 .table__footer {
   display: grid;
   align-items: center;
-  grid-template-columns: minmax(180px, 1.5fr) repeat(6, minmax(120px, 1fr)) minmax(160px, 2fr);
+  grid-template-columns: repeat(2, minmax(100px, 1fr)) repeat(4, minmax(200px, 2fr)) minmax(340px, 3fr);
   gap: 10px;
 }
 
@@ -60,11 +60,29 @@
       & > i {
         @include font(16px, $color-grey);
       }
-      &--bluegreen {
+      &--green {
         & > i {
-          color: $color-bluegreen;
+          color: $color-green;
         }
       }
+    }
+    &--link {
+    }
+    &-link {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+      & > i {
+        @include font(16px, $color-bluegreen);
+      }
+    }
+    &--label {
+    }
+    &-label {
+      border-radius: 8px;
+      border-color: $color-grey-light;
+      background-color: $color-grey-flash;
+      color: $color-grey-space;
     }
     &--red {
       color: $color-red;
@@ -84,6 +102,15 @@
     border-bottom-right-radius: 16px;
     &-cell {
       @include font(14px, $color-grey-dark, 700);
+      &--red {
+        color: $color-red;
+      }
+      &--green {
+        color: $color-green;
+      }
+      &--orange {
+        color: $color-orange;
+      }
     }
   }
 }

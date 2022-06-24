@@ -16,7 +16,7 @@
 .table__footer {
   display: grid;
   align-items: center;
-  grid-template-columns: minmax(180px, 1.5fr) repeat(6, minmax(120px, 1fr)) minmax(160px, 2fr);
+  grid-template-columns: minmax(110px, 1.2fr) repeat(4, minmax(86px, 1fr)) repeat(5, minmax(100px, 1fr)) minmax(130px, 1.3fr);
   gap: 10px;
 }
 
@@ -32,6 +32,9 @@
     border-bottom: 1px solid $color-grey-flash;
     &-title {
       @include font(12px, $color-grey, 500);
+      &:last-child {
+        text-align: right;
+      }
     }
   }
   &__main {
@@ -66,6 +69,24 @@
         }
       }
     }
+    &--link {
+    }
+    &-link {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+      & > i {
+        @include font(16px, $color-bluegreen);
+      }
+    }
+    &--label {
+    }
+    &-label {
+      border-radius: 8px;
+      border-color: $color-grey-light;
+      background-color: $color-grey-flash;
+      color: $color-grey-space;
+    }
     &--red {
       color: $color-red;
     }
@@ -74,6 +95,10 @@
     }
     &--orange {
       color: $color-orange;
+    }
+
+    &:last-child {
+      text-align: right;
     }
   }
   &__footer {
@@ -84,6 +109,18 @@
     border-bottom-right-radius: 16px;
     &-cell {
       @include font(14px, $color-grey-dark, 700);
+      &:last-child {
+        text-align: right;
+      }
+      &--red {
+        color: $color-red;
+      }
+      &--green {
+        color: $color-green;
+      }
+      &--orange {
+        color: $color-orange;
+      }
     }
   }
 }

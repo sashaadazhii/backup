@@ -16,14 +16,15 @@
 .table__footer {
   display: grid;
   align-items: center;
-  grid-template-columns: minmax(120px, 1fr) minmax(120px, 1fr) minmax(120px, 1fr) minmax(120px, 1fr) minmax(120px, 1fr);
+  grid-template-columns: repeat(4, minmax(200px, 1fr)) minmax(300px, 2fr);
+  gap: 10px;
 }
 
 .table {
   &__wrapper {
     display: grid;
     grid-template-rows: auto 1fr;
-    overflow: hidden;
+    overflow-x: auto;
   }
   &__header {
     padding: 16px;
@@ -39,7 +40,9 @@
   }
   &__row {
     border-bottom: 1px solid $color-grey-flash;
-    padding: 16px;
+    // padding: 16px;
+    padding: 0 16px;
+    height: 60px;
     &:nth-child(even) {
       background-color: $color-grey-smoke;
     }
@@ -49,6 +52,7 @@
   }
   &__cell {
     @include font(14px, $color-grey-space, 600);
+    white-space: nowrap;
     &--icon {
       display: flex;
       align-items: center;

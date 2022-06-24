@@ -14,9 +14,12 @@
 .table__header,
 .table__row,
 .table__footer {
-  display: grid;
+  // display: grid;
   align-items: center;
-  grid-template-columns: minmax(180px, 1.5fr) repeat(6, minmax(120px, 1fr)) minmax(160px, 2fr);
+  // grid-template-columns: 1fr 1fr;
+  // justify-items: stretch;
+  display: flex;
+  justify-content: space-between;
   gap: 10px;
 }
 

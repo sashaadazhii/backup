@@ -150,10 +150,10 @@ const deferredWork = [
       {
         name: 'Card',
         quantity: 2,
-        color: '#F37878'
+        color: '#10b981'
       },
       {
-        name: 'Card',
+        name: '2 Cards',
         quantity: 2,
         color: '#FF9B70'
       }
@@ -170,14 +170,46 @@ const deferredWork = [
     vehicle: 'Dodge Caravan 2013',
     declined: [
       {
-        name: 'Card',
+        name: '2 Cards',
         quantity: 2,
-        color: '#F37878'
+        color: '#10b981'
+      },
+      {
+        name: '2 Cards',
+        quantity: 2,
+        color: '#10b981'
+      },
+      {
+        name: '2 Cards',
+        quantity: 2,
+        color: '#10b981'
       },
       {
         name: 'Card',
         quantity: 2,
         color: '#FF9B70'
+      }
+    ],
+    warranty: 0,
+    discountTime: 0,
+    costTotal: 320,
+    priceTotal: 400,
+    profitDeferred: 1233
+  },
+  {
+    date: 'Jul 1, 2022',
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    declined: [
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#F37878'
+      },
+      {
+        name: '2 Cards',
+        quantity: 2,
+        color: '#10b981'
       }
     ],
     warranty: 0,
@@ -221,29 +253,7 @@ const deferredWork = [
       {
         name: 'Card',
         quantity: 2,
-        color: '#FF9B70'
-      }
-    ],
-    warranty: 0,
-    discountTime: 0,
-    costTotal: 320,
-    priceTotal: 400,
-    profitDeferred: 1233
-  },
-  {
-    date: 'Jul 1, 2022',
-    customer: 'Justin Anderson',
-    vehicle: 'Dodge Caravan 2013',
-    declined: [
-      {
-        name: 'Card',
-        quantity: 2,
-        color: '#F37878'
-      },
-      {
-        name: 'Card',
-        quantity: 2,
-        color: '#FF9B70'
+        color: '#10b981'
       }
     ],
     warranty: 0,
@@ -261,7 +271,6 @@ const monthlyEfficiency = [
     idleTime: 12.45,
     timeOnJob: 86,
     jobEfficiency: 45
-
   },
   {
     date: 'Jul 1, 2022',
@@ -342,4 +351,289 @@ const monthlyEfficiency = [
   },
 
 ]
-export { soldTime, newCustomers, deferredWork, monthlyEfficiency }
+const profit = [
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 0.00,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 0.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 0.00,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+  {
+    date: 'Jul 1, 2022',
+    soldTime: 78.33,
+    warrantyTime: 5.50,
+    discountTime: 80.31,
+    billableTime: 80.31,
+    labourPrice: 1165.26,
+    additionalLabour: 1165.26,
+    partsCost: 989.74,
+    partsPrice: 989.74,
+    totalPrice: 1169.36,
+    totalProfit: 1169.36
+  },
+
+]
+const serviceDue = [
+  {
+    dueDate: 'Jul 1, 2022',
+    dueKM: 800000,
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Rear Brake Service',
+    callback: 'Wed, May 11, 2022',
+    note: 'Remind customer of replacing tires...'
+  },
+  {
+    dueDate: 'Jul 1, 2022',
+    dueKM: 800000,
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Rear Brake Service',
+    callback: '',
+    note: ''
+  },
+  {
+    dueDate: 'Jul 1, 2022',
+    dueKM: 800000,
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Rear Brake Service',
+    callback: 'Wed, May 11, 2022',
+    note: ''
+  },
+  {
+    dueDate: 'Jul 1, 2022',
+    dueKM: 800000,
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Rear Brake Service',
+    callback: '',
+    note: ''
+  },
+  {
+    dueDate: 'Jul 1, 2022',
+    dueKM: 800000,
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Rear Brake Service',
+    callback: '',
+    note: ''
+  },
+  {
+    dueDate: 'Jul 1, 2022',
+    dueKM: 800000,
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Rear Brake Service',
+    callback: 'Wed, May 11, 2022',
+    note: 'Remind customer of replacing tires...'
+  },
+
+]
+const payrollHours = [
+  {
+    technician: 'Andrew Martin',
+    hoursWorked: 45.2
+  },
+  {
+    technician: 'Andrew Marshall',
+    hoursWorked: 41.8
+  },
+  {
+    technician: 'Andrew Zetter',
+    hoursWorked: 37.2
+  },
+  {
+    technician: 'Dominic',
+    hoursWorked: 39.6
+  },
+  {
+    technician: 'Merlin',
+    hoursWorked: 45.2
+  },
+  {
+    technician: 'Simon',
+    hoursWorked: 43.0
+  },
+  {
+    technician: 'Tonny Smith',
+    hoursWorked: 42.2
+  },
+]
+const markUp = [
+  {
+    markUp: 'Additional labour to hit 165/hour',
+    cost: 125,
+    price: 4135.00,
+    grossProfit: 97.52
+  },
+  {
+    markUp: 'Battery 30%',
+    cost: 145,
+    price: 7135.00,
+    grossProfit: 94.50
+  },
+  {
+    markUp: 'Courtesy Vehicle Rental',
+    cost: 120,
+    price: 4135.00,
+    grossProfit: 91.52
+  },
+  {
+    markUp: 'Diagnostic Testing Fee',
+    cost: 125,
+    price: 1160.50,
+    grossProfit: 107.89
+  },
+  {
+    markUp: 'Parts Sold to employee',
+    cost: 125,
+    price: 4137.50,
+    grossProfit: 112.30
+  },
+  {
+    markUp: 'Shop Vehicle Parts',
+    cost: 125,
+    price: 2166.00,
+    grossProfit: 95.32
+  },
+]
+
+export { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit, serviceDue, payrollHours, markUp }
