@@ -23,7 +23,7 @@
             <a class="table__cell-link" :href="`tel:${report.phone}`"><i class="i-phone" /> {{ report.phone }}</a>
           </div>
           <div class="table__cell table__cell--icon table__cell--label">
-            <Label class="table__cell-label" icon="i-calendar" :label="report.lastJobDate" border />
+            <Label class="table__cell-label" size="small" icon="i-calendar" :label="report.lastJobDate" border />
           </div>
           <div class="table__cell">
             {{ report.refferedBy }}

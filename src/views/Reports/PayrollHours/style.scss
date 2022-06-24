@@ -20,13 +20,14 @@
   // justify-items: stretch;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .table {
   &__wrapper {
     display: grid;
     grid-template-rows: auto 1fr;
-    overflow: hidden;
+    overflow-x: auto;
   }
   &__header {
     padding: 16px;
@@ -52,6 +53,7 @@
   }
   &__cell {
     @include font(14px, $color-grey-space, 600);
+    white-space: nowrap;
     &--icon {
       display: flex;
       align-items: center;

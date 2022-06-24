@@ -16,14 +16,15 @@
 .table__footer {
   display: grid;
   align-items: center;
-  grid-template-columns: minmax(120px, 2fr) repeat(6, minmax(80px, 1fr)) minmax(120px, 2fr);
+  grid-template-columns: minmax(180px, 1.5fr) repeat(6, minmax(120px, 1fr)) minmax(160px, 2fr);
+  gap: 10px;
 }
 
 .table {
   &__wrapper {
     display: grid;
     grid-template-rows: auto 1fr;
-    overflow: hidden;
+    overflow-x: auto;
   }
   &__header {
     padding: 16px;
@@ -49,6 +50,7 @@
   }
   &__cell {
     @include font(14px, $color-grey-space, 600);
+    white-space: nowrap;
     &--icon {
       display: flex;
       align-items: center;
