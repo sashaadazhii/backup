@@ -635,5 +635,49 @@ const markUp = [
     grossProfit: 95.32
   },
 ]
+const inventory = [
+  {
+    markUp: 'Filter Kia/Hyundai',
+    numberSold: 6,
+    cost: 42,
+    price: 4125.65,
+    grossProfit: 97.45
+  },
+  {
+    markUp: 'Oil Filter',
+    numberSold: 12,
+    cost: 45,
+    price: 4125.65,
+    grossProfit: 97.45
+  },
+  {
+    markUp: 'Carbon Fighter',
+    numberSold: 5,
+    cost: 12,
+    price: 3455.90,
+    grossProfit: 93.45
+  },
+  {
+    markUp: 'Filter Kia/Hyundai',
+    numberSold: 12,
+    cost: 45,
+    price: 4125.65,
+    grossProfit: 97.45
+  },
+  {
+    markUp: 'Filter Kia/Hyundai',
+    numberSold: 12,
+    cost: 45,
+    price: 4125.65,
+    grossProfit: 97.45
+  },
+  {
+    markUp: 'Transmission service kit',
+    numberSold: 10,
+    cost: 90,
+    price: 2098.643,
+    grossProfit: 93.10
+  },
+]
 
-export { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit, serviceDue, payrollHours, markUp }
+export { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit, serviceDue, payrollHours, markUp, inventory }

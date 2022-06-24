@@ -16,8 +16,7 @@
 .table__footer {
   display: grid;
   align-items: center;
-  grid-template-columns: minmax(120px, 1.1fr) minmax(240px, 2fr) minmax(190px, 1.7fr) minmax(240px, 2fr) repeat(4, minmax(100px, 1fr)) minmax(110px, 1.1fr);
-  // minmax(240px, max-content)   repeat( auto-fit, minmax(240px, max-content))  fit-content(300px)
+  grid-template-columns: minmax(400px, 3.5fr) repeat(3, minmax(130px, 1fr)) minmax(400px, 3.5fr);
   gap: 10px;
 }
 
@@ -26,7 +25,6 @@
     display: grid;
     grid-template-rows: auto 1fr;
     overflow-x: auto;
-    // width: 300px;
   }
   &__header {
     padding: 16px;
@@ -34,6 +32,10 @@
     border-bottom: 1px solid $color-grey-flash;
     &-title {
       @include font(12px, $color-grey, 500);
+
+      &:last-child {
+        text-align: right;
+      }
     }
   }
   &__main {
@@ -45,7 +47,6 @@
     // padding: 16px;
     padding: 0 16px;
     height: 60px;
-
     &:nth-child(even) {
       background-color: $color-grey-smoke;
     }
@@ -69,24 +70,6 @@
         }
       }
     }
-    &--link {
-    }
-    &-link {
-      display: flex;
-      align-items: center;
-      column-gap: 6px;
-      & > i {
-        @include font(16px, $color-bluegreen);
-      }
-    }
-    &--label {
-    }
-    &-label {
-      border-radius: 8px;
-      border-color: $color-grey-light;
-      background-color: $color-grey-flash;
-      color: $color-grey-space;
-    }
     &--red {
       color: $color-red;
     }
@@ -95,6 +78,9 @@
     }
     &--orange {
       color: $color-orange;
+    }
+    &:last-child {
+      text-align: right;
     }
   }
   &__footer {
@@ -105,29 +91,9 @@
     border-bottom-right-radius: 16px;
     &-cell {
       @include font(14px, $color-grey-dark, 700);
+      &:last-child {
+        text-align: right;
+      }
     }
-  }
-}
-
-// TODO: remove later
-.label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 10px 5px 8px;
-  background: $color-grey-flash;
-  border-radius: 8px;
-  @include font(14px, $color-space, 600);
-
-  &-wrap {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  &__icon {
-    width: 10px;
-    height: 10px;
-    border-radius: 2px;
   }
 }
