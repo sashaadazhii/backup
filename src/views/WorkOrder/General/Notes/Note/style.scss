@@ -1,0 +1,38 @@
+@import 'src/assets/styles/_variables.scss';
+
+.note {
+  &__wrapper {
+    @include border(12px);
+    background-color: $color-grey-smoke;
+    padding: 14px;
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 10px;
+  }
+  &__alias {
+    height: 20px;
+    width: 20px;
+    display: grid;
+    place-items: center;
+    @include font(8px, $color-white, 600);
+    background-color: $color-grey;
+    border-radius: 50%;
+    &.new {
+      background-color: $color-bluegreen;
+    }
+  }
+  &__title {
+  }
+  &__author {
+    @include font(14px, $color-grey-space, 600);
+  }
+  &__date {
+    @include font(12px, $color-grey, 500);
+    margin-top: 6px;
+  }
+  &__pin {
+  }
+  &__text {
+    @include font(14px, $color-grey-space, 500, 1.5);
+  }
+}

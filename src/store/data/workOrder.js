@@ -15,6 +15,23 @@ const workOrder = {
     status: 'in-shop',
     currentOdometer: 12000
   },
+  notes: [
+    {
+      author: 'Maynard Bauman',
+      alias: 'MB',
+      date: '14:53 23 Jun 2022',
+      pin: false,
+      text: "Call her on her cellphone but keep trying until she answers because she can't get messages."
+    },
+    {
+      author: 'Maynard Bauman',
+      alias: 'MB',
+      date: '14:53 23 Jun 2022',
+      pin: false,
+      text: "Call her on her cellphone but keep trying until she answers because she can't get messages."
+    }
+  ],
+  // =========== OLD ===================
   needCourtesyVehicle: false,
   serviceAdvisor: {
     id: 12,

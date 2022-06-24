@@ -35,9 +35,6 @@ export default {
     ...mapState({
       order: s => s.workOrder.localOrder
     })
-  },
-  created() {
-    console.log(this.order)
   }
 }
 </script>

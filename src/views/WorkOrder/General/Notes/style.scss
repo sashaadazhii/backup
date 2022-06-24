@@ -1,1 +1,82 @@
 @import 'src/assets/styles/_variables.scss';
+
+.block {
+  &__wrapper {
+    background-color: $color-white;
+    padding: 16px;
+    border-radius: 16px;
+  }
+  &__title {
+    @include font(14px, $color-blue, 600);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  &__btn {
+    @include border(12px, $color-grey-light);
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+    background-color: $color-grey-flash;
+    & > i {
+      @include font(18px, $color-grey);
+    }
+    & > span {
+      @include font(14px, $color-grey-space, 600);
+    }
+  }
+  &__notes {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    margin-top: 12px;
+  }
+  &__dialog {
+    width: 300px;
+  }
+}
+
+.dialog {
+  &__inner {
+    padding: 20px;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  &__title {
+    @include font(18px, $color-grey-space, 600);
+  }
+  &__close {
+    height: 30px;
+    width: 30px;
+    display: grid;
+    place-items: center;
+    @include border(50%, $color-grey-light);
+    & > i {
+      @include font(20px, $color-grey);
+    }
+  }
+  &__textarea {
+    display: block;
+    height: 200px;
+    width: 600px;
+    resize: none;
+    @include border(12px, $color-grey-flash);
+    @include font(14px, $color-grey-space, 500);
+    padding: 16px;
+    margin-bottom: 18px;
+  }
+  &__btns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 18px;
+  }
+  &__btn {
+    height: 40px;
+  }
+}

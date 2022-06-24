@@ -3,15 +3,19 @@
     <div class="general__block">
       <Info />
     </div>
+    <div class="general__block">
+      <Notes />
+    </div>
   </div>
 </template>
 
 <script>
 import Info from './Info'
+import Notes from './Notes'
 
 export default {
   name: 'WorkOrderGeneral',
-  components: {Info}
+  components: {Info, Notes}
 }
 </script>
 

@@ -23,6 +23,9 @@ export default {
     reset(state) {
       state.workOrders = []
       state.page = 1
+    },
+    addNotes(state, note) {
+      state.localOrder.notes.unshift(note)
     }
   },
   actions: {
