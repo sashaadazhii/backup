@@ -13,7 +13,15 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  &.blue {
+    color: $color-blue;
+  }
+  &.bluegreen {
+    color: $color-bluegreen;
+  }
 }
+
+
 
 .i-rp_done:before {
   content: "\e9d2";

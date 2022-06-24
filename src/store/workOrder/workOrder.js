@@ -1,12 +1,14 @@
 import axios from 'axios'
 import status from './workOrderStatuses'
+import {workOrder as localOrder} from '../data/workOrder'
 
 export default {
   namespaced: true,
 
   state: {
     workOrders: {},
-    workOrder: {}
+    workOrder: {},
+    localOrder: localOrder
   },
   mutations: {
     set(state, workOrders) {

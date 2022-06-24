@@ -1,10 +1,17 @@
 <template>
-  <div class="">asfasf</div>
+  <div class="general__wrapper">
+    <div class="general__block">
+      <Info />
+    </div>
+  </div>
 </template>
 
 <script>
+import Info from './Info'
+
 export default {
-  name: 'WorkOrderGeneral'
+  name: 'WorkOrderGeneral',
+  components: {Info}
 }
 </script>
 

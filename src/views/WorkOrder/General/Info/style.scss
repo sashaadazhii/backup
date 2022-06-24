@@ -1,0 +1,42 @@
+@import 'src/assets/styles/_variables.scss';
+
+.block {
+  &__wrapper {
+    background-color: $color-white;
+    padding: 16px;
+    border-radius: 16px;
+  }
+  &__title {
+    @include font(14px, $color-blue, 600);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  &__subtitle {
+    @include font(14px, $color-grey, 500);
+    margin-bottom: 12px;
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    margin-bottom: 16px;
+    & > i {
+      @include font(18px, $color-grey);
+    }
+    & > span {
+      @include font(14px, $color-grey-dark, 500);
+    }
+    &--label {
+      column-gap: 12px;
+      & > span {
+        @include font(14px, $color-grey-space, 600);
+      }
+    }
+    &-label {
+      background-color: $color-grey-smoke;
+      border-color: $color-grey-flash;
+      color: $color-grey-space;
+      border-radius: 8px;
+    }
+  }
+}
