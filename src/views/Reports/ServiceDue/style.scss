@@ -40,7 +40,9 @@
   }
   &__row {
     border-bottom: 1px solid $color-grey-flash;
-    padding: 16px;
+    // padding: 16px;
+    padding: 0 16px;
+    height: 60px;
     &:nth-child(even) {
       background-color: $color-grey-smoke;
     }

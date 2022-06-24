@@ -150,10 +150,10 @@ const deferredWork = [
       {
         name: 'Card',
         quantity: 2,
-        color: '#F37878'
+        color: '#10b981'
       },
       {
-        name: 'Card',
+        name: '2 Cards',
         quantity: 2,
         color: '#FF9B70'
       }
@@ -170,14 +170,46 @@ const deferredWork = [
     vehicle: 'Dodge Caravan 2013',
     declined: [
       {
-        name: 'Card',
+        name: '2 Cards',
         quantity: 2,
-        color: '#F37878'
+        color: '#10b981'
+      },
+      {
+        name: '2 Cards',
+        quantity: 2,
+        color: '#10b981'
+      },
+      {
+        name: '2 Cards',
+        quantity: 2,
+        color: '#10b981'
       },
       {
         name: 'Card',
         quantity: 2,
         color: '#FF9B70'
+      }
+    ],
+    warranty: 0,
+    discountTime: 0,
+    costTotal: 320,
+    priceTotal: 400,
+    profitDeferred: 1233
+  },
+  {
+    date: 'Jul 1, 2022',
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    declined: [
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#F37878'
+      },
+      {
+        name: '2 Cards',
+        quantity: 2,
+        color: '#10b981'
       }
     ],
     warranty: 0,
@@ -221,29 +253,7 @@ const deferredWork = [
       {
         name: 'Card',
         quantity: 2,
-        color: '#FF9B70'
-      }
-    ],
-    warranty: 0,
-    discountTime: 0,
-    costTotal: 320,
-    priceTotal: 400,
-    profitDeferred: 1233
-  },
-  {
-    date: 'Jul 1, 2022',
-    customer: 'Justin Anderson',
-    vehicle: 'Dodge Caravan 2013',
-    declined: [
-      {
-        name: 'Card',
-        quantity: 2,
-        color: '#F37878'
-      },
-      {
-        name: 'Card',
-        quantity: 2,
-        color: '#FF9B70'
+        color: '#10b981'
       }
     ],
     warranty: 0,

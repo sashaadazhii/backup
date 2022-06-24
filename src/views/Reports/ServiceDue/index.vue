@@ -29,11 +29,11 @@
 
           <div v-if="report.callback !== ''" class="table__cell table__cell--icon table__cell--icon--green"><i class="i-calendar" />{{ report.callback }}</div>
           <div v-else class="table__cell table__cell--icon table__cell--label">
-            <Label class="table__cell-label" icon="i-calendar" label="Set Date" border color="#F8F8FA" />
+            <Label class="table__cell-label" size="small" icon="i-calendar" label="Set Date" border color="#F8F8FA" />
           </div>
           <div v-if="report.note !== ''" class="table__cell">{{ report.note }}</div>
           <div v-else class="table__cell table__cell--icon table__cell--label">
-            <Label class="table__cell-label" icon="i-add_circle" label="Add Note" border />
+            <Label class="table__cell-label" size="small" icon="i-add_circle" label="Add Note" border />
           </div>
         </div>
       </div>

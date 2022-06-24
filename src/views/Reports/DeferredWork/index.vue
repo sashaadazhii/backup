@@ -28,7 +28,13 @@
             {{ report.vehicle }}
           </div>
           <div class="table__cell table__cell--icon table__cell--label">
-            <Label v-for="(card, idx) of report.declined" :key="idx" class="table__cell-label" icon="i-article_menu" :label="card.name" border />
+            <div class="label-wrap">
+              <div v-for="(card, idx) of report.declined" :key="idx" class="label">
+                <div class="label__icon" :style="{background: card.color}"></div>
+                <span>{{ card.name }}</span>
+              </div>
+            </div>
+            <!-- <Label v-for="(card, idx) of report.declined" :key="idx" class="table__cell-label" icon="i-article_menu" :label="card.name" border /> -->
           </div>
           <div class="table__cell">{{ report.warranty.toFixed(2) }}</div>
           <div class="table__cell">{{ report.discountTime.toFixed(2) }}</div>
@@ -47,7 +53,7 @@ import Label from '@/components/Yaro/Label'
 
 export default {
   name: 'ReportsDeferredWork',
-  components: {Header, Label},
+  components: {Header},
   computed: {
     ...mapState({
       reports: s => s.reports.deferredWork
