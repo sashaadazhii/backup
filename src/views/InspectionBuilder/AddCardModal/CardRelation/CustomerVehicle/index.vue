@@ -1,68 +1,48 @@
 <template>
   <div class="block__wrapper">
     <div class="field__dropdown">
-      <div class="field__title">Customer</div>
       <Dropdown
         :modelValue="card.customer"
         :options="customers"
-        placeholder="Customer"
+        searchPlaceholder="Type customer’s name"
         optionLabel="name"
-        filter
-        :filterFields="['name']"
+        title="Customer"
+        :error="error('vehicleUID')"
+        search
         @change="search"
       >
-        <template #value="{value}">
-          <div class="main__dropdown-option">
-            <span v-if="value">{{ value.firstName }} {{ value.lastName }}</span>
-            <span v-else>Customer</span>
-          </div>
-        </template>
         <template #option="{option}">
-          <div class="main__dropdown-label">
-            <span>{{ option.firstName }} {{ option.lastName }}</span>
+          <div class="y-dropdown-item-custom">
+            <i class="i-user" />
+            <span>{{ option.name }}</span>
           </div>
         </template>
       </Dropdown>
     </div>
     <div class="field__dropdown">
-      <div class="field__title">Vehicle</div>
       <Dropdown
         :modelValue="card.vehicle"
         :options="vehicles"
-        placeholder="Vehicle"
-        @change="selectVehicle"
+        title="Vehicle"
+        searchPlaceholder="Vehicle"
         :disabled="!this.vehicles.length"
+        :error="error('vehicleUID')"
+        @change="selectVehicle"
       >
         <template #value="{value}">
-          <div class="main__dropdown-option">
-            <span v-if="value">{{ value.make }} {{ value.model }}</span>
-            <span v-else>Vehicle</span>
+          <div class="y-dropdown-label-custom">
+            <i class="i-directions_car" />
+            <span v-if="value">{{ value.make }} {{ value.model }} {{ value.year }}</span>
+            <span class="-placeholder" v-else>Choose customer’s vehicle</span>
           </div>
         </template>
         <template #option="{option}">
-          <div class="main__dropdown-label">
-            <span>{{ option.make }} {{ option.model }}</span>
+          <div class="y-dropdown-item-custom">
+            <i class="i-directions_car" />
+            <span>{{ option.make }} {{ option.model }} {{ option.year }}</span>
           </div>
         </template>
       </Dropdown>
-      <!-- <Dropdown
-        :modelValue="vehicle"
-        :list="vehicles"
-        placeholder="Vehicle"
-        @update:modelValue="selectVehicle"
-        :isDisabled="!this.vehicles.length"
-      >
-        <template #option="{label: label}">
-          <div class="field__dropdown-option">
-            <span>{{ label.make }} {{ label.model }}</span>
-          </div>
-        </template>
-        <template #label="{label: label}">
-          <div class="field__dropdown-label">
-            <span>{{ label.make }} {{ label.model }}</span>
-          </div>
-        </template>
-      </Dropdown> -->
     </div>
   </div>
 </template>
@@ -77,7 +57,8 @@ export default {
   data() {
     return {
       customer: null,
-      vehicle: null
+      vehicle: null,
+      vehicles: []
     }
   },
   async created() {
@@ -85,7 +66,6 @@ export default {
   },
   computed: {
     ...mapState({
-      // customers: s => s.company.card.customers,
       customers: s => {
         const customers = s.company.card.customers
         return customers.map(c => {
@@ -93,26 +73,31 @@ export default {
           return c
         })
       },
-      card: s => s.company.card.card
-    }),
-    vehicles() {
-      return this.card.customer?.vehicles || []
-    }
+      card: s => s.company.card.card,
+      errors: s => s.company.card.errors
+    })
   },
   methods: {
     ...mapActions({
-      fetchCustomers: 'company/card/fetchCustomers'
+      fetchCustomers: 'company/card/fetchCustomers',
+      fetchVehicles: 'company/vehicles/fetchVehicles'
     }),
     ...mapMutations({
       setCustomer: 'company/card/setCustomer',
       setVehicle: 'company/card/setVehicle'
     }),
-    search(e) {
+    async search(e) {
       this.setCustomer(e.value)
+      if (e.value) this.vehicles = await this.fetchVehicles(e.value.uid)
+      else this.vehicles = []
       this.setVehicle(null)
     },
     selectVehicle(e) {
       this.setVehicle(e.value)
+    },
+    error(name) {
+      const error = this.errors.find(err => err.$property === name)
+      if (error) return true
     }
   }
 }

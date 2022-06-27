@@ -55,5 +55,8 @@
   }
   & > span {
     @include font(14px, rgba($color-space, 0.8), 600);
+    &.-placeholder {
+      @include font(14px, $color-grey, 500);
+    }
   }
 }

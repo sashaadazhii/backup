@@ -63,13 +63,8 @@
   }
   &__footer {
     padding: 30px;
-  }
-  &__btn {
-    background-color: $color-green;
-    @include font(16px, $color-white, 600);
-    padding: 16px;
-    text-align: center;
-    border-radius: 12px;
-    width: 100%;
+    & > button {
+      width: 100%;
+    }
   }
 }

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {cars} from '../data/vehicles'
+import {cars, carsModels} from '../data/cars'
 
 export default {
   namespaced: true,
@@ -40,8 +40,7 @@ export default {
     },
     async fetchVehicleMakes({commit}) {
       try {
-        const vehicles = cars.map(c => c.name)
-        commit('setVehicleMakes', vehicles)
+        commit('setVehicleMakes', cars)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
@@ -49,8 +48,8 @@ export default {
     },
     async fetchVehicleModels({commit}, make) {
       try {
-        const vehiclesMake = cars.find(c => c.name === make)
-        if (vehiclesMake) commit('setVehicleModels', vehiclesMake.list)
+        const vehiclesMake = carsModels.filter(c => c.make === make)
+        if (vehiclesMake) commit('setVehicleModels', vehiclesMake.map(v => v.model))
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

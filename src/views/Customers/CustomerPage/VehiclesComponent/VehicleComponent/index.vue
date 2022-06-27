@@ -5,9 +5,7 @@
     <div class="vehicle__year">{{ vehicle.year }}</div>
     <div v-if="vehicle.odometer" class="vehicle__odometer">Mileage {{ vehicle.odometer.toLocaleString('fr-FR') }} mi.</div>
     <div v-else></div>
-    <div class="vehicle__select" ref="menu">
-      <Menu :list="actionsList" />
-    </div>
+    <div class="vehicle__select" ref="menu"><Menu :list="actionsList" /></div>
   </div>
 </template>
 
@@ -50,7 +48,7 @@ export default {
     }),
     ...mapMutations({
       setNewVehicle: 'company/vehicles/setNewVehicle',
-      setVehicle: 'company/vehicles/setVehicle',
+      setVehicle: 'company/vehicles/setVehicle'
     }),
     async selectAction(action) {
       if (this.isLoading) return

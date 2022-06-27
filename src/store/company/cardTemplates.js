@@ -1,5 +1,7 @@
 import axios from 'axios'
 import _ from 'lodash'
+import {cardsList} from '../data/cardTemplates'
+import {vehicles as vehiclesList} from '../data/vehicles'
 
 export default {
   namespaced: true,
@@ -34,6 +36,7 @@ export default {
     },
     add(state, template) {
       state.templates.unshift(template)
+      console.log(state.templates)
     },
     update(state, template) {
       state.template = template
@@ -50,43 +53,35 @@ export default {
   },
   actions: {
     async fetch({commit, state}) {
-      const url = process.env.VUE_APP_BACKEND
-      const page = state.page
-      const search = state.searchParams
-
+      const search = state.searchParams?.toLocaleLowerCase() || ''
+      const filteredCards = cardsList.data.filter(card => card.name.toLocaleLowerCase().includes(search))
       try {
-        const templates = await axios.get(`${url}company/cards/`, {params: {page, search}})
-        commit('pagination', templates.data.pagination)
-        commit('set', templates.data.data)
-        commit('changePage')
+        commit('pagination', cardsList.pagination)
+        commit('set', filteredCards)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async fetchTemplate({commit}, id) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const template = await axios.get(`${url}company/cards/${id}/`)
-        commit('setTemplate', template.data)
-      } catch (err) {
-        commit('setError', err, {root: true})
-        throw err
-      }
-    },
-    async pickForVehicle({commit}, uid) {
-      const url = process.env.VUE_APP_BACKEND
-      try {
-        return await axios.get(`${url}company/cards/pick/${uid}/`)
+        const template = cardsList.data.find(c => c.templateID === id)
+        commit('setTemplate', template)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async add({commit}, template) {
-      const url = process.env.VUE_APP_BACKEND
+      template.templateID = Date.now()
+      template.relations ||= []
+      if (template.vehicleUID) {
+        template.relations.push(vehiclesList.find(v => v.uid === template.vehicleUID))
+      }
       try {
-        return await axios.post(`${url}company/cards/`, template)
+        console.log(template)
+        commit('add', template)
+        return template
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
@@ -102,10 +97,18 @@ export default {
       }
     },
     async remove({commit}, id) {
+      try {
+        commit('remove', id)
+      } catch (err) {
+        commit('setError', err, {root: true})
+        throw err
+      }
+    },
+
+    async pickForVehicle({commit}, uid) {
       const url = process.env.VUE_APP_BACKEND
       try {
-        await axios.delete(`${url}company/cards/${id}/`)
-        commit('remove', id)
+        return await axios.get(`${url}company/cards/pick/${uid}/`)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
