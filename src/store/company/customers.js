@@ -1,7 +1,5 @@
-import axios from 'axios'
 import _ from 'lodash'
 import {customers as customersList} from '../data/customers'
-
 export default {
   namespaced: true,
 
@@ -37,22 +35,20 @@ export default {
       state.customers = state.customers.filter(user => user.uid !== uid)
     },
     add(state, customer) {
-      state.customers.unshift({...customer, isUpdated: true})
+      const newCustomer = _.clone(customer)
+      newCustomer.isUpdated = true
+      state.customers.unshift(newCustomer)
     },
     update(state, customer) {
       if (state.customer.uid) state.customer = customer
       if (!state.customers.length) return
       const cusIdx = state.customers.findIndex(cus => cus.uid === customer.uid)
-      const newCustomer = {...customer, vehicles: state.customers[cusIdx].vehicles}
-      if (customer.isUpdated) delete newCustomer.isUpdated
+      const newCustomer = {..._.cloneDeep(customer), vehicles: state.customers[cusIdx].vehicles}
+      if (customer.isUpdated) newCustomer.isUpdated = false
       else newCustomer.isUpdated = true
       state.customers.splice(cusIdx, 1, newCustomer)
     },
-    removeVehicle(state, {uid, vehicleUID}) {
-      if (!state.customers.length) return
-      const customer = state.customers.find(cus => cus.uid === uid)
-      customer.vehicles = customer.vehicles.filter(vehicle => vehicle.uid !== vehicleUID)
-    },
+
     addVehicle(state, vehicle) {
       if (!state.customers.length) return
       const customer = state.customers.find(cus => cus.uid === vehicle.customerUID)
@@ -63,61 +59,74 @@ export default {
       const customer = state.customers.find(cus => cus.uid === vehicle.customerUID)
       let vehicleIndex = customer.vehicles.indexOf(vehicle => vehicle.uid === vehicle.uid)
       customer.vehicles.splice(vehicleIndex, 1, vehicle)
+    },
+    removeVehicle(state, {customerUID, vehicleUID}) {
+      if (!state.customers.length) return
+      const customer = state.customers.find(cus => cus.uid === customerUID)
+      customer.vehicles = customer.vehicles.filter(vehicle => vehicle.uid !== vehicleUID)
     }
   },
   actions: {
     async fetch({commit, state}) {
-      const search = state.searchParams
+      const search = state.searchParams?.toLocaleLowerCase() || ''
+      const filteredCustomer = customersList.data.filter(cus => {
+        const isFirstName = cus.firstName.toLocaleLowerCase().includes(search)
+        const isLastName = cus.lastName.toLocaleLowerCase().includes(search)
+        return isFirstName || isLastName
+      })
+
       try {
-        const customers = customersList
-        commit('pagination', customers.pagination)
-        commit('set', customers.data)
+        commit('pagination', customersList.pagination)
+        commit('set', filteredCustomer)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async search({commit}, search) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        return await axios.get(`${url}company/customers/`, {params: search})
+        const searchValue = search?.toLocaleLowerCase() || ''
+        const filteredCustomer = customersList.data.filter(cus => {
+          const isFirstName = cus.firstName.toLocaleLowerCase().includes(searchValue)
+          const isLastName = cus.lastName.toLocaleLowerCase().includes(searchValue)
+          return isFirstName || isLastName
+        })
+        return filteredCustomer
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async find({commit}, uid) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const customers = await axios.get(`${url}company/customers/${uid}/`)
-        commit('setCustomer', customers.data)
+        const customer = customersList.data.find(c => c.uid === uid)
+        commit('setCustomer', customer)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
-    async create({commit}, user) {
-      const url = process.env.VUE_APP_BACKEND
+    async create({commit}, cus) {
       try {
-        return await axios.post(`${url}company/customers/`, user)
+        cus.uid = Date.now()
+        commit('add', cus)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
-    async update({commit}, {user, id}) {
-      const url = process.env.VUE_APP_BACKEND
+    async update({commit}, {cus, uid}) {
       try {
-        return await axios.put(`${url}company/customers/${id}/`, user)
+        cus.uid = uid
+        commit('update', cus)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
-    async delete({commit}, id) {
-      const url = process.env.VUE_APP_BACKEND
+    async delete({commit}, uid) {
       try {
-        return await axios.delete(`${url}company/customers/${id}/`)
+        commit('remove', uid)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

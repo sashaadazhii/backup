@@ -76,8 +76,7 @@ export default {
   methods: {
     ...mapMutations({
       setCustomer: 'company/customers/setCustomer',
-      update: 'company/customers/update',
-      removeCustomer: 'company/customers/remove'
+      update: 'company/customers/update'
     }),
     ...mapActions({
       deleteCustomer: 'company/customers/delete'
@@ -96,7 +95,6 @@ export default {
         icon: 'i-volume_up',
         accept: async () => {
           await this.deleteCustomer(this.customer.uid)
-          this.removeCustomer(this.customer.uid)
         }
       })
     }

@@ -10,47 +10,32 @@
         :errorMessage="errorMessage('vin')"
         @update:modelValue="changeVehicle({key: 'vin', value: $event})"
       />
-      <y-input
-        :modelValue="newVehicle.license"
-        title="License"
-        placeholder="License"
-        @update:modelValue="changeVehicle({key: 'license', value: $event})"
-      />
+      <y-input :modelValue="newVehicle.license" title="License" placeholder="License" @update:modelValue="changeVehicle({key: 'license', value: $event})" />
     </div>
     <div class="component__block">
       <div class="field__select">
         <div class="field__title">Brand</div>
-        <Dropdown
-          :modelValue="newVehicle.make"
-          :list="vehicleMakes"
-          class="customers-dropdown"
-          :error="error('make')"
-          placeholder="Brand"
-          search
-          @update:modelValue="selectBrand"
-        />
+        <Dropdown :modelValue="newVehicle.make" :options="vehicleMakes" searchPlaceholder="Brand" search :error="error('make')" @change="selectBrand" />
       </div>
       <div class="field__select">
         <div class="field__title">Model</div>
         <Dropdown
           :modelValue="newVehicle.model"
-          :list="vehicleModels"
-          :error="error('model')"
-          class="customers-dropdown"
+          :options="vehicleModels"
           placeholder="Model"
-          :is-disabled="!!!newVehicle.make"
-          @update:modelValue="changeVehicle({key: 'model', value: $event})"
+          :error="error('model')"
+          :disabled="!!!newVehicle.make"
+          @change="changeVehicle({key: 'model', value: $event.value})"
         />
       </div>
       <div class="field__select">
         <div class="field__title">Type</div>
         <Dropdown
           :modelValue="newVehicle.vehicleType"
-          :error="error('vehicleType')"
-          :list="vehicleTypes"
-          class="customers-dropdown"
+          :options="vehicleTypes"
           placeholder="Type"
-          @update:modelValue="changeVehicle({key: 'vehicleType', value: $event})"
+          :error="error('vehicleType')"
+          @change="changeVehicle({key: 'vehicleType', value: $event.value})"
         />
       </div>
       <y-input
@@ -74,7 +59,7 @@
 
 <script>
 import {mapState, mapMutations, mapActions} from 'vuex'
-import Dropdown from '@/components/Dropdown(new)'
+import Dropdown from '@/components/Yaro/Dropdown'
 
 export default {
   name: 'NewVehicleGeneralComponent',
@@ -98,7 +83,7 @@ export default {
     changeComponent: null
   },
   async created() {
-    if (this.newVehicle.make && !this.vehicleModels.length) this.fetchVehicleModels(this.newVehicle.make)
+    if (this.newVehicle.make && !this.vehicleModels.length) await this.fetchVehicleModels(this.newVehicle.make)
     if (!this.vehicleMakes.length) await this.fetchVehicleMakes()
   },
   computed: {
@@ -117,10 +102,10 @@ export default {
       fetchVehicleModels: 'modules/fetchVehicleModels'
     }),
     async selectBrand(e) {
-      if (this.newVehicle.make === e) return
-      this.changeVehicle({key: 'make', value: e})
+      if (this.newVehicle.make === e.value) return
+      this.changeVehicle({key: 'make', value: e.value})
       this.changeVehicle({key: 'model', value: null})
-      await this.fetchVehicleModels(e)
+      await this.fetchVehicleModels(e.value)
     },
     error(name) {
       const asyncErrors = this.asyncErrors.find(err => err.$property === name)

@@ -11,18 +11,8 @@
           </button>
         </div>
         <div class="vehicle__header-nav nav">
-          <div
-            class="nav__link"
-            :class="{green: component === 'GeneralComponent', red: generalError}"
-            @click="component = 'GeneralComponent'"
-          >
-            General
-          </div>
-          <div
-            class="nav__link"
-            :class="{green: component === 'EngineComponent', red: v$.vehicle.engine.$error}"
-            @click="component = 'EngineComponent'"
-          >
+          <div class="nav__link" :class="{green: component === 'GeneralComponent', red: generalError}" @click="component = 'GeneralComponent'">General</div>
+          <div class="nav__link" :class="{green: component === 'EngineComponent', red: v$.vehicle.engine.$error}" @click="component = 'EngineComponent'">
             Engine
           </div>
           <div
@@ -36,12 +26,7 @@
       </div>
       <div class="vehicle__main main">
         <div class="main__body">
-          <component
-            :is="component"
-            @changeComponent="changeComponent"
-            :errors="v$.$errors"
-            :asyncErrors="asyncErrors"
-          />
+          <component :is="component" @changeComponent="changeComponent" :errors="v$.$errors" :asyncErrors="asyncErrors" />
         </div>
       </div>
       <div class="vehicle__footer">
@@ -126,9 +111,9 @@ export default {
     ...mapMutations({
       changeVehicle: 'company/vehicles/changeVehicle',
       addVehicleToCustomer: 'company/customers/addVehicle',
-      addVehicleToVehicles: 'company/vehicles/addVehicle',
+      addVehicleToVehicles: 'company/vehicles/add',
       updateCustomersVehicle: 'company/customers/updateVehicle',
-      updateVehicles: 'company/vehicles/updateVehicle',
+      updateVehicles: 'company/vehicles/update',
       setNewVehicle: 'company/vehicles/setNewVehicle'
     }),
     changeComponent(component) {
@@ -151,15 +136,15 @@ export default {
       try {
         this.isLoading = true
         if (this.vehicleUid) {
-          delete vehicle.uid
-          // if (vehicle.rims) delete vehicle.rims // TODO: remove after deleted all old vehicles
-          const newVehicle = await this.updateVehicle({uid: this.localVehicle.uid, vehicle})
-          this.updateCustomersVehicle(newVehicle.data)
-          this.updateVehicles(newVehicle.data)
+          // delete vehicle.uid
+          // const newVehicle = await this.updateVehicle({uid: this.localVehicle.uid, vehicle})
+          await this.updateVehicle({cusUID: this.customer.uid, vehicle})
+          // this.updateCustomersVehicle(newVehicle.data)
+          // this.updateVehicles(newVehicle.data)
         } else {
-          const req = await this.addVehicle({uid: this.customer.uid, vehicle})
-          this.addVehicleToCustomer(req?.data)
-          this.addVehicleToVehicles(req?.data)
+          await this.addVehicle({cusUID: this.customer.uid, vehicle})
+          // this.addVehicleToCustomer(req?.data)
+          // this.addVehicleToVehicles(req?.data)
         }
         this.$router.back()
       } catch (err) {
