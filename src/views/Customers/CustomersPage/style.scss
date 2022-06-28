@@ -43,12 +43,7 @@
     color-stop(18%, rgba($color-lightgrey, 0.8)),
     color-stop(33%, rgba($color-lightgrey, 0.6))
   );
-  background: linear-gradient(
-    to right,
-    rgba($color-lightgrey, 0.6) 8%,
-    rgba($color-lightgrey, 0.8) 18%,
-    rgba($color-lightgrey, 0.6) 33%
-  );
+  background: linear-gradient(to right, rgba($color-lightgrey, 0.6) 8%, rgba($color-lightgrey, 0.8) 18%, rgba($color-lightgrey, 0.6) 33%);
   background-size: 800px 100px;
   animation: wave-lines 2s infinite ease-out;
 }
