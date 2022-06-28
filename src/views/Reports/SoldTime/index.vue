@@ -29,7 +29,7 @@
               'table__cell--green': report.efficiency > 70
             }"
           >
-            {{ report.efficiency.toFixed() }} %
+            {{ report.efficiency.toFixed() }}%
           </div>
           <div class="table__cell">{{ report.warranty.toFixed(2) }}</div>
           <div class="table__cell">{{ report.discount.toFixed(2) }}</div>
@@ -37,11 +37,11 @@
         </div>
       </div>
       <div class="table__footer">
-        <div class="table__footer-cell">Average:</div>
+        <div class="table__footer-cell">Total:</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.soldTime, 0) / reports.length).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.capacity, 0) / reports.length).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.availability, 0) / reports.length).toFixed(2) }}</div>
-        <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.efficiency, 0) / reports.length).toFixed() }} %</div>
+        <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.efficiency, 0) / reports.length).toFixed() }}%</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.warranty, 0) / reports.length).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.discount, 0) / reports.length).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.effectiveLabourRate, 0) / reports.length).toFixed(2) }} / hr</div>

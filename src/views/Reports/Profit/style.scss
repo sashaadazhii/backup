@@ -16,7 +16,7 @@
 .table__footer {
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(4, minmax(200px, 1fr)) minmax(300px, 2fr);
+  grid-template-columns: minmax(110px, 1.2fr) repeat(4, minmax(86px, 1fr)) repeat(5, minmax(100px, 1fr)) minmax(120px, 1.2fr);
   gap: 10px;
 }
 
@@ -32,6 +32,9 @@
     border-bottom: 1px solid $color-grey-flash;
     &-title {
       @include font(12px, $color-grey, 500);
+      &:last-child {
+        text-align: right;
+      }
     }
   }
   &__main {
@@ -59,6 +62,11 @@
       column-gap: 6px;
       & > i {
         @include font(16px, $color-grey);
+      }
+      &--bluegreen {
+        & > i {
+          color: $color-bluegreen;
+        }
       }
     }
     &--link {
@@ -88,6 +96,10 @@
     &--orange {
       color: $color-orange;
     }
+
+    &:last-child {
+      text-align: right;
+    }
   }
   &__footer {
     padding: 16px;
@@ -97,25 +109,18 @@
     border-bottom-right-radius: 16px;
     &-cell {
       @include font(14px, $color-grey-dark, 700);
+      &:last-child {
+        text-align: right;
+      }
+      &--red {
+        color: $color-red;
+      }
+      &--green {
+        color: $color-green;
+      }
+      &--orange {
+        color: $color-orange;
+      }
     }
-  }
-}
-
-.label {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px 6px 6px;
-  gap: 6px;
-  background: $color-grey-flash;
-  border: 1px solid $color-grey-light;
-  border-radius: 6px;
-  &__icon {
-    & > i {
-      font-size: 16px;
-      color: $color-space;
-    }
-  }
-  &__text {
-    @include font(14px, $color-space, 600);
   }
 }

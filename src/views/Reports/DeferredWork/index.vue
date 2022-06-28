@@ -15,7 +15,7 @@
       </div>
       <div class="table__main">
         <div v-for="(report, idx) of reports" :key="idx" class="table__row">
-          <div class="table__cell table__cell--icon table__cell--icon--bluegreen">
+          <div class="table__cell table__cell--icon">
             <i class="i-calendar" />
             {{ report.date }}
           </div>
@@ -28,13 +28,19 @@
             {{ report.vehicle }}
           </div>
           <div class="table__cell table__cell--icon table__cell--label">
-            <Label v-for="(card, idx) of report.declined" :key="idx" class="table__cell-label" icon="i-article_menu" :label="card.name" border />
+            <div class="label-wrap">
+              <div v-for="(card, idx) of report.declined" :key="idx" class="label">
+                <div class="label__icon" :style="{background: card.color}"></div>
+                <span>{{ card.name }}</span>
+              </div>
+            </div>
+            <!-- <Label v-for="(card, idx) of report.declined" :key="idx" class="table__cell-label" icon="i-article_menu" :label="card.name" border /> -->
           </div>
           <div class="table__cell">{{ report.warranty.toFixed(2) }}</div>
           <div class="table__cell">{{ report.discountTime.toFixed(2) }}</div>
-          <div class="table__cell">$ {{ report.costTotal.toFixed(2) }}</div>
-          <div class="table__cell">$ {{ report.priceTotal.toFixed(2) }}</div>
-          <div class="table__cell">$ {{ report.profitDeferred.toLocaleString('fr-FR') }}</div>
+          <div class="table__cell">{{ formatter(report.costTotal) }}</div>
+          <div class="table__cell">{{ formatter(report.priceTotal) }}</div>
+          <div class="table__cell">{{ formatter(report.profitDeferred) }}</div>
         </div>
       </div>
     </div>
@@ -47,14 +53,17 @@ import Label from '@/components/Yaro/Label'
 
 export default {
   name: 'ReportsDeferredWork',
-  components: {Header, Label},
-  created() {
-    console.log(this.reports)
-  },
+  components: {Header},
   computed: {
     ...mapState({
       reports: s => s.reports.deferredWork
     })
+  },
+  methods: {
+    formatter(val) {
+      const price = new Intl.NumberFormat('en-CA', {style: 'currency', currency: 'CAD'}).format(val)
+      return price
+    }
   }
 }
 </script>

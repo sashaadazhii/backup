@@ -16,7 +16,7 @@
 .table__footer {
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(4, minmax(200px, 1fr)) minmax(300px, 2fr);
+  grid-template-columns: minmax(400px, 3.5fr) repeat(3, minmax(130px, 1fr)) minmax(400px, 3.5fr);
   gap: 10px;
 }
 
@@ -32,6 +32,10 @@
     border-bottom: 1px solid $color-grey-flash;
     &-title {
       @include font(12px, $color-grey, 500);
+
+      &:last-child {
+        text-align: right;
+      }
     }
   }
   &__main {
@@ -60,24 +64,11 @@
       & > i {
         @include font(16px, $color-grey);
       }
-    }
-    &--link {
-    }
-    &-link {
-      display: flex;
-      align-items: center;
-      column-gap: 6px;
-      & > i {
-        @include font(16px, $color-bluegreen);
+      &--bluegreen {
+        & > i {
+          color: $color-bluegreen;
+        }
       }
-    }
-    &--label {
-    }
-    &-label {
-      border-radius: 8px;
-      border-color: $color-grey-light;
-      background-color: $color-grey-flash;
-      color: $color-grey-space;
     }
     &--red {
       color: $color-red;
@@ -88,6 +79,9 @@
     &--orange {
       color: $color-orange;
     }
+    &:last-child {
+      text-align: right;
+    }
   }
   &__footer {
     padding: 16px;
@@ -97,25 +91,9 @@
     border-bottom-right-radius: 16px;
     &-cell {
       @include font(14px, $color-grey-dark, 700);
+      &:last-child {
+        text-align: right;
+      }
     }
-  }
-}
-
-.label {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px 6px 6px;
-  gap: 6px;
-  background: $color-grey-flash;
-  border: 1px solid $color-grey-light;
-  border-radius: 6px;
-  &__icon {
-    & > i {
-      font-size: 16px;
-      color: $color-space;
-    }
-  }
-  &__text {
-    @include font(14px, $color-space, 600);
   }
 }

@@ -12,14 +12,14 @@
       </div>
       <div class="table__main">
         <div v-for="(report, idx) of reports" :key="idx" class="table__row">
-          <div class="table__cell table__cell--icon table__cell--icon--bluegreen">
+          <div class="table__cell table__cell--icon">
             <i class="i-calendar" />
             {{ report.date }}
           </div>
-          <div class="table__cell table__cell--icon">
+          <div class="table__cell">
             {{ report.availableTime }}
           </div>
-          <div class="table__cell table__cell--icon">
+          <div class="table__cell">
             {{ report.hoursOnJob.toFixed(2) }}
           </div>
           <div class="table__cell">{{ report.idleTime.toFixed(2) }}</div>
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="table__footer">
-        <div class="table__footer-cell">Average:</div>
+        <div class="table__footer-cell">Total:</div>
         <div class="table__footer-cell">{{ reports.reduce((sum, current) => sum + current.availableTime, 0).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.hoursOnJob, 0) / reports.length).toFixed(2) }}</div>
         <div class="table__footer-cell">{{ (reports.reduce((sum, current) => sum + current.idleTime, 0) / reports.length).toFixed(2) }}</div>
@@ -61,18 +61,14 @@ import {mapState} from 'vuex'
 import Header from '../ReportHeader'
 
 export default {
-  name: 'ReportsDeferredWork',
+  name: 'MonthlyEfficiency',
   components: {Header},
-  created() {
-    console.log(this.reports)
-    console.log(this.rep)
-  },
   computed: {
     ...mapState({
       reports: s => s.reports.monthlyEfficiency
     }),
     avarageJobEfficiency() {
-      return (this.reports.reduce((sum, current) => sum + current.jobEfficiency, 0) / this.reports.length).toFixed(2)
+      return this.reports.reduce((sum, current) => sum + current.jobEfficiency, 0) / this.reports.length
     }
   }
 }

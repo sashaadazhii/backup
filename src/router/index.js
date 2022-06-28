@@ -146,7 +146,8 @@ const routes = [
         name: 'CompanySettingsStatus',
         meta: {layout: 'admin', access: ['admin'], auth: true, header: 'CompanySettings'},
         component: () => import('@/views/Settings/Statuses/StatusPage')
-      }
+      },
+
     ]
   },
   {
@@ -219,9 +220,49 @@ const routes = [
         meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true, header: 'WorkOrder'},
         component: () => import('@/views/WorkOrder/Finance')
       }
+        path: 'profit',
+        name: 'Profit',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/Profit')
+      },
+      {
+        path: 'service-due',
+        name: 'ServiceDue',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/ServiceDue')
+      },
+      {
+        path: 'payroll-hours',
+        name: 'PayrollHours',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/PayrollHours')
+      },
+      {
+        path: 'mark-up',
+        name: 'markUp',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/MarkUp')
+      },
+      {
+        path: 'inventory',
+        name: 'inventory',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/Inventory')
+      },
+      {
+        path: 'stocks',
+        name: 'stocks',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/Stocks')
+      },
+      {
+        path: 'customer-sales-report',
+        name: 'customerSalesReport',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/CustomerSalesReport')
+      }
     ]
   },
-
   {
     path: '/test',
     name: 'TestPage',
