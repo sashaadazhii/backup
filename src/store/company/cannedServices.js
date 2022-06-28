@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {serviceList} from '../data/cannedServices'
 
 export default {
   namespaced: true,
@@ -24,6 +25,7 @@ export default {
     },
     add(state, service) {
       state.services.unshift(service)
+      serviceList.unshift(service)
     },
     update(state, service) {
       if (state.activeService.id) state.activeService = service
@@ -37,41 +39,50 @@ export default {
       const service = state.services.find(ser => ser.id === serviceID)
       const partIdx = service.parts.findIndex(p => p.id === id)
       service.parts.splice(partIdx, 1)
-    }
+    },
+
   },
   actions: {
     async fetch({commit}, id) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const services = await axios.get(`${url}company/cards/${id}/services/`)
-        commit('set', services.data)
+        const services = serviceList.filter(s => s.templateID === id)
+        commit('set', services)
+      } catch (err) {
+        commit('setError', err, {root: true})
+        throw err
+      }
+    },
+    async find({commit}, id) {
+      try {
+        const services = serviceList.find(s => s.id === id)
+        commit('set', services)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async create({commit}, {id, service}) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        return await axios.post(`${url}company/cards/${id}/services/`, service)
+        commit('add', service)
+        commit('company/cardTemplates/incrementService', id, {root: true})
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async update({commit}, {id, templateID, service}) {
-      const url = process.env.VUE_APP_BACKEND
+      console.log(service)
       try {
-        return await axios.put(`${url}company/cards/${templateID}/services/${id}/`, service)
+        commit('update', service)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async delete({commit}, {id, templateID}) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        return await axios.delete(`${url}company/cards/${templateID}/services/${id}/`)
+        commit('remove', id)
+        commit('company/cardTemplates/decrementService', templateID, {root: true})
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

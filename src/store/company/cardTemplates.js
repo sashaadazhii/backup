@@ -46,7 +46,14 @@ export default {
     remove(state, id) {
       state.templates = state.templates.filter(template => template.templateID !== id)
     },
-    removeService(state, templateID) {
+    incrementService(state, templateID) {
+      const card = state.templates.find(card => card.templateID === templateID)
+      if (card) {
+        card.servicesCount ||= 0
+        card.servicesCount++
+      }
+    },
+    decrementService(state, templateID) {
       const card = state.templates.find(card => card.templateID === templateID)
       if (card) card.servicesCount--
     }

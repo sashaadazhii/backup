@@ -74,6 +74,7 @@ export default {
     async add({commit}, {cusUID, vehicle}) {
       vehicle.uid = Date.now()
       vehicle.customerUID = cusUID
+      vehiclesList.unshift(vehicle)
       commit('add', vehicle)
       commit('company/customers/addVehicle', vehicle, {root: true})
       try {

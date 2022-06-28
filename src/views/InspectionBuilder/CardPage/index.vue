@@ -65,7 +65,7 @@ export default {
     const templateID = +this.$route.params.id
     if (this.$route.query.component) this.templateBlock = this.$route.query.component
     if (!this.template.templateID) await this.fetchTemplate(templateID)
-    // if (this.services[0]?.templateID !== templateID) await this.fetchServices(this.template.templateID)
+    if (this.services[0]?.templateID !== templateID) await this.fetchServices(this.template.templateID)
   },
   methods: {
     ...mapActions({

@@ -50,7 +50,7 @@ export default {
     changeComponent: null
   },
   async created() {
-    if (this.vehicle) this.vin = this.vehicle.vin
+    // if (this.vehicle) this.vin = this.vehicle.vin
   },
   computed: {
     ...mapState({

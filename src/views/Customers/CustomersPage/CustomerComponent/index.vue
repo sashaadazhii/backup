@@ -20,7 +20,7 @@
       </div>
       <div v-if="customer.vehicles && customer.vehicles.length > 1" class="customer__counter">+ {{ customer.vehicles.length - 1 }}</div>
     </div>
-    <div class="customer__cell" ref="dropdown">
+    <div class="customer__cell" ref="menu">
       <Menu :list="actionsList" />
     </div>
   </div>
@@ -82,7 +82,7 @@ export default {
       deleteCustomer: 'company/customers/delete'
     }),
     openCustomerPage(e) {
-      if (!this.$refs.dropdown || this.$refs.dropdown.contains(e.target)) return
+      if (!this.$refs.menu || this.$refs.menu.contains(e.target)) return
       this.setCustomer(this.customer)
       this.$router.push(`/customers/${this.customer.uid}`)
     },

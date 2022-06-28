@@ -50,7 +50,7 @@ export default {
         this.isLoading = true
         await this.delete({id, templateID})
         this.remove(id)
-        this.removeFromTemplates(templateID)
+        // this.removeFromTemplates(templateID)
         this.$vfm.hide('DeleteModal')
         this.$router.back()
         setTimeout(() => {
