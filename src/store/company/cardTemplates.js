@@ -85,10 +85,10 @@ export default {
         throw err
       }
     },
-    async update({commit}, {template, id}) {
-      const url = process.env.VUE_APP_BACKEND
+    async update({commit}, template) {
       try {
-        return await axios.put(`${url}company/cards/${id}/`, template)
+        commit('update', template)
+        commit('setTemplate', template)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

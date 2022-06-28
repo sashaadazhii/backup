@@ -2,7 +2,7 @@
   <div class="card__wrapper" @click="openCustomerPage">
     <div class="card__cell card__cell--name">
       <span>{{ card.name }}</span>
-      <div class="card__counter">{{ card.servicesCount }}</div>
+      <div v-if="card.servicesCount" class="card__counter">{{ card.servicesCount }}</div>
     </div>
     <div class="card__cell card__cell--vehicles">
       <div v-if="!card.relations.length" class="card__vehicle green">

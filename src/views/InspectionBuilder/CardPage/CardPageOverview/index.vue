@@ -95,8 +95,7 @@ export default {
           template.timeTrackType = timeTrackType
         }
 
-        await this.updateTemplate({id, template})
-        this.setTemplate({...this.template, description})
+        await this.updateTemplate({...this.template, description})
         this.isEditDesc = false
       } finally {
         this.isLoading = false
@@ -128,9 +127,7 @@ export default {
           template.timeTrackLength = timeTrackLength
           template.timeTrackType = timeTrackType
         }
-
-        await this.updateTemplate({id, template})
-        this.setTemplate({...this.template, descriptionForCustomer})
+        await this.updateTemplate({...this.template, descriptionForCustomer})
         this.isEditCusDesc = false
       } finally {
         this.isLoading = false
