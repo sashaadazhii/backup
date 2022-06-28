@@ -75,9 +75,7 @@ export default {
     async add({commit}, template) {
       template.templateID = Date.now()
       template.relations ||= []
-      if (template.vehicleUID) {
-        template.relations.push(vehiclesList.find(v => v.uid === template.vehicleUID))
-      }
+      if (template.vehicleUID) template.relations.push(vehiclesList.find(v => v.uid === template.vehicleUID))
       try {
         console.log(template)
         commit('add', template)
