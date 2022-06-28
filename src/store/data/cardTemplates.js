@@ -18,6 +18,7 @@ const cardsList = {
       createdAt: '2022-01-13T10:39:32.000Z',
       updatedAt: '2022-01-18T10:39:32.000Z',
       updatedBy: 55,
+      servicesCount: 2,
       relations: [
         {
           id: 313,

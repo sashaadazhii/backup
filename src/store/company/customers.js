@@ -52,6 +52,7 @@ export default {
     addVehicle(state, vehicle) {
       if (!state.customers.length) return
       const customer = state.customers.find(cus => cus.uid === vehicle.customerUID)
+      customer.vehicles ||= []
       customer.vehicles.unshift(vehicle)
     },
     updateVehicle(state, vehicle) {

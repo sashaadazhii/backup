@@ -4,7 +4,28 @@ export default {
   namespaced: true,
 
   state: {
-    settings: {}
+    settings: {
+      id: 1,
+      slug: 'test-and-repairs',
+      isActive: true,
+      businessName: 'Test & Repairs Inc.',
+      mainAddress: '1234 Test Ave, Ottawa',
+      businessPhoneNumber: 2222222222,
+      ownerName: 'Nikola Tesla',
+      ownerEmail: 'nikola_tesla@test.com',
+      ownerPhone: 2222222222,
+      mainContactName: 'Thomas Edison',
+      mainContactEmail: 'thomas_edison@test.com',
+      mainContactPhone: 2222222222,
+      loanVehicles: true,
+      rideToWork: true,
+      hasShifts: true,
+      hasGlobalWarranty: true,
+      warrantyTime: 18,
+      warrantyRange: 30000,
+      usersQuota: 5,
+      usersCount: 2
+    }
   },
   mutations: {
     set(state, settings) {

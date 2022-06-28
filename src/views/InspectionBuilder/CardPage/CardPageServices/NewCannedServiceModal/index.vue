@@ -19,15 +19,7 @@
               <i class="i-remove" />
             </div>
             <div>
-              <input
-                type="number"
-                :value="hours"
-                :min="0.5"
-                step="0.5"
-                @input="updateHours"
-                @blur="updateHour"
-                :style="{width: hoursWidth}"
-              />
+              <input type="number" :value="hours" :min="0.5" step="0.5" @input="updateHours" @blur="updateHour" :style="{width: hoursWidth}" />
               <span>hr</span>
             </div>
             <div class="field__counter-inc" @click="incTime"><i class="i-add" /></div>
@@ -35,21 +27,21 @@
         </div>
         <div class="field__select">
           <div class="field__title">Warranty</div>
-          <Dropdown v-model="warranty" :list="warrantyList" @update:modelValue="selectWarranty">
-            <template #option="{label: label}">
+          <Dropdown v-model="warranty" :options="warrantyList" @change="selectWarranty">
+            <template #value="{value}">
               <div class="field__select-option">
-                <i v-if="label.id === 'off'" class="i-remove_moderator red" />
-                <i v-if="label.id === 'global'" class="i-shield green" />
-                <i v-if="label.id === 'custom'" class="i-add_moderator blue" />
-                <span>{{ label.label }}</span>
+                <i v-if="value.id === 'off'" class="i-remove_moderator red" />
+                <i v-if="value.id === 'global'" class="i-shield green" />
+                <i v-if="value.id === 'custom'" class="i-add_moderator blue" />
+                <span>{{ value.label }}</span>
               </div>
             </template>
-            <template #label="{label: label}">
+            <template #option="{option}">
               <div class="field__select-label">
-                <i v-if="label.id === 'off'" class="i-remove_moderator red" />
-                <i v-if="label.id === 'global'" class="i-shield green" />
-                <i v-if="label.id === 'custom'" class="i-add_moderator blue" />
-                <span>{{ label.label }}</span>
+                <i v-if="option.id === 'off'" class="i-remove_moderator red" />
+                <i v-if="option.id === 'global'" class="i-shield green" />
+                <i v-if="option.id === 'custom'" class="i-add_moderator blue" />
+                <span>{{ option.label }}</span>
               </div>
             </template>
           </Dropdown>
@@ -86,9 +78,9 @@
 </template>
 
 <script>
-import {mapActions, mapMutations, mapState} from 'vuex'
+import {mapActions, mapState} from 'vuex'
 import Loader from '@/components/loader'
-import Dropdown from '@/components/Dropdown(new)'
+import Dropdown from '@/components/Yaro/Dropdown'
 import useVuelidate from '@vuelidate/core'
 import {required, requiredIf} from '@vuelidate/validators'
 
@@ -137,10 +129,7 @@ export default {
       update: 'company/cannedServices/update',
       fetchCompanySettings: 'company/settings/fetch'
     }),
-    ...mapMutations({
-      add: 'company/cannedServices/add',
-      updateService: 'company/cannedServices/update'
-    }),
+
     updateHours(e) {
       const hours = e.target.value
       this.hours = hours
@@ -152,7 +141,7 @@ export default {
       this.hoursWidth = (this.hours.toString().length + 1) * 7 + 'px'
     },
     async selectWarranty(warranty) {
-      if (warranty.id === 'custom') {
+      if (warranty.value.id === 'custom') {
         await this.$nextTick()
         this.$refs.warrantyOdometr.$el.focus()
       }
@@ -170,27 +159,35 @@ export default {
       if (this.isLoading) return
       const result = await this.v$.$validate()
       if (!result) return
-      const id = this.$route.params.id
+      const id = +this.$route.params.id
       const {name, hours, warranty, time, range} = this
-      const service = {name, hours}
+      const service = {name, hours, warrantyType: warranty.id}
 
       if (warranty.id === 'custom') {
         service.warranty = {}
         if (time) service.warranty.time = time
         if (range) service.warranty.range = range
+      } else if (warranty.id === 'global') {
+        const {warrantyRange, warrantyTime} = this.company
+        service.warranty = {
+          time: warrantyTime,
+          range: warrantyRange
+        }
       } else {
-        service.warranty = warranty.id
+        service.warranty = {}
       }
 
       try {
         this.isLoading = true
         if (this.templateID) {
-          const req = await this.update({id: this.id, service, templateID: this.templateID})
-          await this.updateService(req.data)
+          service.templateID = this.templateID
+          service.id = this.id
+          await this.update({id: this.id, service, templateID: this.templateID})
           this.$vfm.hide('EditModal')
         } else {
-          const req = await this.create({id, service})
-          this.add(req.data)
+          service.templateID = id
+          service.id = this.$getID()
+          await this.create({id, service})
           this.$vfm.hide('AddCannedServiceModal')
         }
       } finally {
@@ -219,7 +216,6 @@ export default {
       name: {required},
       description: {},
       hours: {required},
-      warranty: {required},
       time: {requiredIf: requiredIf(() => this.warranty.id === 'custom' && !this.range)},
       range: {requiredIf: requiredIf(() => this.warranty.id === 'custom' && !this.time)}
     }

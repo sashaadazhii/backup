@@ -25,35 +25,21 @@
         <span v-if="service.warranty.range">{{ service.warranty.range.toLocaleString('fr-FR') }} km</span>
       </div>
 
-      <div class="card__dropdown" ref="dropdown">
-        <Dropdown :modelValue="action" :list="actionsList" @update:modelValue="selectAction" actionMenu>
-          <template #option="{label: label}">
-            <div class="card__dropdown-option">
-              <i v-if="label === 'Edit'" class="i-edit" />
-              <i v-if="label === 'Delete'" class="i-remove_circle red" />
-              <span>{{ label }}</span>
-            </div>
-          </template>
-          <template #menu>
-            <div class="card__dropdown-menu">
-              <i class="i-more_horiz" />
-            </div>
-          </template>
-        </Dropdown>
+      <div class="card__dropdown" ref="menu">
+        <Menu :list="actionsList" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Dropdown from '@/components/Dropdown(new)'
-import DeleteModal from './DeleteModal'
+import Menu from '@/components/Yaro/Menu'
 import EditModal from '../NewCannedServiceModal'
-import {mapMutations} from 'vuex'
+import {mapActions, mapMutations} from 'vuex'
 
 export default {
   name: 'CannedServiceComponent',
-  components: {Dropdown},
+  components: {Menu},
   props: {
     service: {
       type: Object,
@@ -64,46 +50,54 @@ export default {
     return {
       isEdit: false,
       isLoading: false,
-      action: null,
-      actionsList: ['Edit', 'Delete']
+      actionsList: [
+        {
+          label: 'Edit',
+          icon: 'i-edit',
+          command: () => {
+            this.openEditModal()
+          }
+        },
+        {
+          label: 'Delete',
+          icon: 'i-remove_circle red',
+          command: () => this.openDeleteModal()
+        }
+      ]
     }
   },
   methods: {
     ...mapMutations({
       setActiveService: 'company/cannedServices/setActiveService'
     }),
-    async selectAction(action) {
-      if (this.isLoading) return
-      if (action === 'Delete') {
-        this.openModal('delete')
-      } else if (action === 'Edit') {
-        this.openModal('edit')
-      }
-    },
-
-    openModal(type) {
-      let component = null
-      let name = ''
-      if (type === 'delete') {
-        component = DeleteModal
-        name = 'DeleteModal'
-      }
-      if (type === 'edit') {
-        component = EditModal
-        name = 'EditModal'
-      }
+    ...mapActions({
+      delete: 'company/cannedServices/delete'
+    }),
+    openEditModal() {
       this.$vfm.show(
         {
-          component,
+          component: EditModal,
           bind: {
-            name
+            name: 'EditModal'
           }
         },
         this.service
       )
     },
+    openDeleteModal() {
+      this.$confirm.require({
+        title: 'Hey, wait!',
+        message: `Are you sure, you want to delete ${this.service.name} from the services?`,
+        acceptLabel: 'Delete',
+        rejectLabel: 'Cancel',
+        icon: 'i-volume_up',
+        accept: async () => {
+          await this.delete({id: this.service.id, templateID: this.service.templateID})
+        }
+      })
+    },
     openService(e) {
-      if (!this.$refs.dropdown || this.$refs.dropdown.contains(e.target)) return
+      if (!this.$refs.menu || this.$refs.menu.contains(e.target)) return
       this.setActiveService(this.service)
       this.$router.push(`/inspection-builder/card/${this.service.templateID}/parts`)
     }

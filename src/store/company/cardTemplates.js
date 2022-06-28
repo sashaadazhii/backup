@@ -46,7 +46,14 @@ export default {
     remove(state, id) {
       state.templates = state.templates.filter(template => template.templateID !== id)
     },
-    removeService(state, templateID) {
+    incrementService(state, templateID) {
+      const card = state.templates.find(card => card.templateID === templateID)
+      if (card) {
+        card.servicesCount ||= 0
+        card.servicesCount++
+      }
+    },
+    decrementService(state, templateID) {
       const card = state.templates.find(card => card.templateID === templateID)
       if (card) card.servicesCount--
     }
@@ -85,10 +92,10 @@ export default {
         throw err
       }
     },
-    async update({commit}, {template, id}) {
-      const url = process.env.VUE_APP_BACKEND
+    async update({commit}, template) {
       try {
-        return await axios.put(`${url}company/cards/${id}/`, template)
+        commit('update', template)
+        commit('setTemplate', template)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

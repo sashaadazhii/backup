@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {partsList} from '../data/parts'
 
 export default {
   namespaced: true,
@@ -30,28 +31,26 @@ export default {
   },
   actions: {
     async fetch({commit}, id) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const parts = await axios.get(`${url}company/services/${id}/parts/`)
-        commit('set', parts.data)
+        const parts = partsList.filter(p => p.serviceID === id)
+        commit('set', parts)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async create({commit}, {id, part}) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        return await axios.post(`${url}company/services/${id}/parts/`, part)
+        commit('add', part)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async update({commit}, {id, serviceID, part}) {
-      const url = process.env.VUE_APP_BACKEND
+      // const url = process.env.VUE_APP_BACKEND
       try {
-        return await axios.put(`${url}company/services/${serviceID}/parts/${id}/`, part)
+        // return await axios.put(`${url}company/services/${serviceID}/parts/${id}/`, part)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

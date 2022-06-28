@@ -36,11 +36,11 @@
     column-gap: 30px;
     width: inherit;
     overflow-x: auto;
+    @include hideScrollbar;
     &-link {
       @include font(14px, $color-grey, 600);
       padding-bottom: 14px;
       border-bottom: 2px solid transparent;
-      margin-bottom: -1px;
       transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
       white-space: nowrap;
       &.router-link-active {

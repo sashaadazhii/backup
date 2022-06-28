@@ -18,8 +18,8 @@ export default {
     }
   },
   created() {
-    const uid = this.$route.params.uid
-    if (this.vehicles.length && this.vehicles[0].customerUID === uid) this.showVehicles = true
+    const uid = this.$route.params.uid.toString()
+    if (this.vehicles.length && this.vehicles[0].customerUID.toString() === uid) this.showVehicles = true
   },
   computed: {
     ...mapState({
@@ -28,8 +28,9 @@ export default {
   },
   watch: {
     vehicles() {
-      const uid = this.$route.params.uid
-      if (this.vehicles.length && this.vehicles[0].customerUID === uid) this.showVehicles = true
+
+      const uid = this.$route.params.uid.toString()
+      if (this.vehicles.length && this.vehicles[0].customerUID.toString() === uid) this.showVehicles = true
     }
   }
 }
