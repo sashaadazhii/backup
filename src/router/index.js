@@ -219,7 +219,8 @@ const routes = [
         name: 'WorkOrderFinance',
         meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true, header: 'WorkOrder'},
         component: () => import('@/views/WorkOrder/Finance')
-      }
+      },
+      {
         path: 'profit',
         name: 'Profit',
         meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
