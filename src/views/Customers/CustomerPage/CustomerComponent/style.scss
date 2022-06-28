@@ -38,27 +38,34 @@
     align-items: center;
     justify-content: space-between;
     padding: 14px 0;
+    gap: 16px;
     &:not(:last-child) {
       border-bottom: 1px solid $color-lightgrey;
     }
     &-left {
       @include font(14px, $color-grey, 600);
+      white-space: nowrap;
     }
     &-right {
-      display: flex;
+      // display: flex;
+      display: inline-grid;
+      grid-template-columns: 14px 1fr;
       align-items: center;
       column-gap: 8px;
       & > i {
         font-size: 14px;
         &.bluegreen {
-          color: #3EB3BB;
+          color: #3eb3bb;
         }
         &.orange {
-          color: #FFA14E;
+          color: #ffa14e;
         }
       }
       & > span {
         @include font(14px, $color-space, 700);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
   }
