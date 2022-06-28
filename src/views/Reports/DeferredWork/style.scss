@@ -16,8 +16,7 @@
 .table__footer {
   display: grid;
   align-items: center;
-  grid-template-columns: minmax(120px, 1.1fr) minmax(240px, 2fr) minmax(190px, 1.7fr) minmax(240px, 2fr) repeat(4, minmax(100px, 1fr)) minmax(110px, 1.1fr);
-  // minmax(240px, max-content)   repeat( auto-fit, minmax(240px, max-content))  fit-content(300px)
+  grid-template-columns: minmax(120px, 1.1fr) minmax(240px, 2fr) minmax(190px, 1.7fr) minmax(220px, 2fr) repeat(4, minmax(100px, 1fr)) minmax(120px, 1.2fr);
   gap: 10px;
 }
 
@@ -34,6 +33,9 @@
     border-bottom: 1px solid $color-grey-flash;
     &-title {
       @include font(12px, $color-grey, 500);
+      &:last-child {
+        text-align: right;
+      }
     }
   }
   &__main {
@@ -56,17 +58,15 @@
   &__cell {
     @include font(14px, $color-grey-space, 600);
     white-space: nowrap;
+    &:last-child {
+      text-align: right;
+    }
     &--icon {
       display: flex;
       align-items: center;
       column-gap: 6px;
       & > i {
         @include font(16px, $color-grey);
-      }
-      &--bluegreen {
-        & > i {
-          color: $color-bluegreen;
-        }
       }
     }
     &--link {
@@ -105,6 +105,9 @@
     border-bottom-right-radius: 16px;
     &-cell {
       @include font(14px, $color-grey-dark, 700);
+      &:last-child {
+        text-align: right;
+      }
     }
   }
 }
@@ -114,7 +117,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 10px 5px 8px;
+  padding: 6px 10px 6px 8px;
   background: $color-grey-flash;
   border-radius: 8px;
   @include font(14px, $color-space, 600);

@@ -68,7 +68,7 @@ export default {
       reports: s => s.reports.monthlyEfficiency
     }),
     avarageJobEfficiency() {
-      return (this.reports.reduce((sum, current) => sum + current.jobEfficiency, 0) / this.reports.length).toFixed(2)
+      return this.reports.reduce((sum, current) => sum + current.jobEfficiency, 0) / this.reports.length
     }
   }
 }

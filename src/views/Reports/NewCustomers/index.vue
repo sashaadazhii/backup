@@ -11,7 +11,7 @@
       </div>
       <div class="table__main">
         <div v-for="(report, idx) of reports" :key="idx" class="table__row">
-          <div class="table__cell table__cell--icon table__cell--icon--bluegreen">
+          <div class="table__cell table__cell--icon">
             <i class="i-calendar" />
             {{ report.dateAdded }}
           </div>
@@ -22,8 +22,12 @@
           <div class="table__cell table__cell--icon table__cell--link">
             <a class="table__cell-link" :href="`tel:${report.phone}`"><i class="i-phone" /> {{ report.phone }}</a>
           </div>
-          <div class="table__cell table__cell--icon table__cell--label">
-            <Label class="table__cell-label" size="small" icon="i-calendar" :label="report.lastJobDate" border />
+          <div class="table__cell">
+            <div class="label">
+              <div class="label__icon"><i class="i-calendar" /></div>
+              <div class="label__text">{{ report.lastJobDate }}</div>
+            </div>
+            <!-- <Label class="table__cell-label" size="small" icon="i-calendar" :label="report.lastJobDate" border /> -->
           </div>
           <div class="table__cell">
             {{ report.refferedBy }}
@@ -40,7 +44,7 @@ import Label from '@/components/Yaro/Label'
 
 export default {
   name: 'ReportsNewCustomers',
-  components: {Header, Label},
+  components: {Header},
   computed: {
     ...mapState({
       reports: s => s.reports.newCustomers

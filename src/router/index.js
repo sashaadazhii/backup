@@ -211,6 +211,18 @@ const routes = [
         meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
         component: () => import('@/views/Reports/Inventory')
       },
+      {
+        path: 'stocks',
+        name: 'stocks',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/Stocks')
+      },
+      {
+        path: 'customer-sales-report',
+        name: 'customerSalesReport',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Reports' },
+        component: () => import('@/views/Reports/CustomerSalesReport')
+      },
     ]
   },
   {

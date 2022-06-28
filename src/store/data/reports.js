@@ -150,12 +150,7 @@ const deferredWork = [
       {
         name: 'Card',
         quantity: 2,
-        color: '#10b981'
-      },
-      {
-        name: '2 Cards',
-        quantity: 2,
-        color: '#FF9B70'
+        color: '#F37878'
       }
     ],
     warranty: 0,
@@ -172,17 +167,46 @@ const deferredWork = [
       {
         name: '2 Cards',
         quantity: 2,
-        color: '#10b981'
+        color: '#F37878'
       },
       {
         name: '2 Cards',
         quantity: 2,
-        color: '#10b981'
-      },
+        color: '#FF9B70'
+      }
+    ],
+    warranty: 0,
+    discountTime: 0,
+    costTotal: 320,
+    priceTotal: 400,
+    profitDeferred: 1233
+  },
+  {
+    date: 'Jul 1, 2022',
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    declined: [
       {
-        name: '2 Cards',
+        name: 'Card',
         quantity: 2,
-        color: '#10b981'
+        color: '#F37878'
+      }
+    ],
+    warranty: 0,
+    discountTime: 0,
+    costTotal: 320,
+    priceTotal: 400,
+    profitDeferred: 1233
+  },
+  {
+    date: 'Jul 1, 2022',
+    customer: 'Justin Anderson',
+    vehicle: 'Dodge Caravan 2013',
+    declined: [
+      {
+        name: 'Card',
+        quantity: 2,
+        color: '#F37878'
       },
       {
         name: 'Card',
@@ -207,53 +231,9 @@ const deferredWork = [
         color: '#F37878'
       },
       {
-        name: '2 Cards',
-        quantity: 2,
-        color: '#10b981'
-      }
-    ],
-    warranty: 0,
-    discountTime: 0,
-    costTotal: 320,
-    priceTotal: 400,
-    profitDeferred: 1233
-  },
-  {
-    date: 'Jul 1, 2022',
-    customer: 'Justin Anderson',
-    vehicle: 'Dodge Caravan 2013',
-    declined: [
-      {
-        name: 'Card',
-        quantity: 2,
-        color: '#F37878'
-      },
-      {
         name: 'Card',
         quantity: 2,
         color: '#FF9B70'
-      }
-    ],
-    warranty: 0,
-    discountTime: 0,
-    costTotal: 320,
-    priceTotal: 400,
-    profitDeferred: 1233
-  },
-  {
-    date: 'Jul 1, 2022',
-    customer: 'Justin Anderson',
-    vehicle: 'Dodge Caravan 2013',
-    declined: [
-      {
-        name: 'Card',
-        quantity: 2,
-        color: '#F37878'
-      },
-      {
-        name: 'Card',
-        quantity: 2,
-        color: '#10b981'
       }
     ],
     warranty: 0,
@@ -679,5 +659,76 @@ const inventory = [
     grossProfit: 93.10
   },
 ]
+const stocks = [
+  {
+    markUp: 'Filter Kia/Hyundai',
+    description: 'Filter Kia/Hyundai',
+    onHand: 6,
+    cost: 42,
+    price: 4125.65,
+    grossProfit: 97.45
+  },
+  {
+    markUp: 'Transmission service kit',
+    description: 'Transmission service kit',
+    onHand: 9,
+    cost: 56,
+    price: 6125.90,
+    grossProfit: 91.45
+  },
+  {
+    markUp: 'Power steering kit',
+    description: 'Power steering kit',
+    onHand: 6,
+    cost: 42,
+    price: 4125.65,
+    grossProfit: 87.98
+  },
+  {
+    markUp: 'Oil Filter',
+    description: 'FOil Filter',
+    onHand: 78,
+    cost: 18,
+    price: 304.54,
+    grossProfit: 91.42
+  },
+  {
+    markUp: 'Induction Service Kit',
+    description: 'Induction Service Kit',
+    onHand: 34,
+    cost: 32,
+    price: 784.43,
+    grossProfit: 81.43
+  },
+]
+const customerSalesReport = [
+  {
+    vehicle: 'Dodge Caravan 2013',
+    service: 'Diagnostic',
+    numberOfJobs: 3,
+    parts: 5,
+    subTotal: 10,
+    hst: 10,
+    total: 2390.56
+  },
+  {
+    vehicle: 'Audi RS4',
+    service: 'Diagnostic',
+    numberOfJobs: 2,
+    parts: 2,
+    subTotal: 7,
+    hst: 12,
+    total: 4390.90
+  },
+  {
+    vehicle: 'Ford F150',
+    service: 'Filter change',
+    numberOfJobs: 1,
+    parts: 2,
+    subTotal: 10,
+    hst: 19,
+    total: 1350.32
+  },
+]
 
-export { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit, serviceDue, payrollHours, markUp, inventory }
+export { soldTime, newCustomers, deferredWork, monthlyEfficiency, profit, serviceDue, payrollHours, markUp, inventory, stocks, customerSalesReport }
