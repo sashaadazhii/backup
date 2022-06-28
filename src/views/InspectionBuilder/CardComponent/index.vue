@@ -38,31 +38,19 @@
         </div>
       </div>
     </div>
-    <div class="card__cell" ref="dropdown">
-      <Dropdown :modelValue="action" :list="actionsList" @update:modelValue="selectAction" actionMenu>
-        <template #option="{label: label}">
-          <div class="dropdown__label--icon">
-            <i v-if="label === 'Edit'" class="i-edit" />
-            <i v-if="label === 'Remove'" class="i-remove_circle red" />
-            <span>{{ label }}</span>
-          </div>
-        </template>
-        <template #menu>
-          <i class="i-more_horiz" />
-        </template>
-      </Dropdown>
+    <div class="card__cell" ref="menu">
+      <Menu :list="actionsList" />
     </div>
   </div>
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
-import Dropdown from '@/components/Dropdown(new)'
-import DeleteModal from './DeleteModal'
+import {mapMutations, mapActions} from 'vuex'
+import Menu from '@/components/Yaro/Menu'
 
 export default {
   name: 'CardComponent',
-  components: {Dropdown},
+  components: {Menu},
   props: {
     card: {
       type: Object,
@@ -72,42 +60,47 @@ export default {
   data() {
     return {
       isLoading: false,
-      action: null,
-      actionsList: ['Edit', 'Remove']
+      actionsList: [
+        {
+          label: 'Edit',
+          icon: 'i-edit',
+          command: () => {
+            this.setTemplate(this.card)
+            this.$router.push(`/inspection-builder/card/${this.card.templateID}`)
+          }
+        },
+        {
+          label: 'Delete',
+          icon: 'i-remove_circle red',
+          command: () => this.openModal()
+        }
+      ]
     }
   },
-
   methods: {
+    ...mapActions({
+      remove: 'company/cardTemplates/remove'
+    }),
     ...mapMutations({
       setTemplate: 'company/cardTemplates/setTemplate'
     }),
-    async selectAction(action) {
-      switch (action) {
-        case 'Remove':
-          this.openModal()
-          break
-        case 'Edit':
-          this.setTemplate(this.card)
-          this.$router.push(`/inspection-builder/card/${this.card.templateID}`)
-          break
-      }
-    },
 
     openCustomerPage(e) {
-      if (!this.$refs.dropdown || this.$refs.dropdown.contains(e.target)) return
+      if (!this.$refs.menu || this.$refs.menu.contains(e.target)) return
       this.setTemplate(this.card)
       this.$router.push(`/inspection-builder/card/${this.card.templateID}`)
     },
     openModal() {
-      this.$vfm.show(
-        {
-          component: DeleteModal,
-          bind: {
-            name: 'DeleteModal'
-          }
-        },
-        this.card
-      )
+      this.$confirm.require({
+        title: 'Hey, wait!',
+        message: `Are you sure, you want to delete ${this.card.name} ?`,
+        acceptLabel: 'Delete',
+        rejectLabel: 'Cancel',
+        icon: 'i-volume_up',
+        accept: async () => {
+          await this.remove(this.card.templateID)
+        }
+      })
     }
   }
 }

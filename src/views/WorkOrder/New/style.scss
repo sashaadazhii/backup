@@ -1,0 +1,42 @@
+@import 'src/assets/styles/_variables.scss';
+
+.order {
+  &__wrapper {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__title {
+    @include font(24px, $color-grey-dark, 600);
+    margin-bottom: 30px;
+    margin-top: 140px;
+  }
+  &__block {
+    background-color: $color-white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 700px;
+    max-width: 100%;
+    &-title {
+      @include font(20px, $color-grey-space, 600);
+      margin-bottom: 20px;
+      & > span {
+        color: $color-red;
+      }
+    }
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+    }
+    &-btns {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      column-gap: 20px;
+      & > button {
+        width: 100%;
+      }
+    }
+  }
+}

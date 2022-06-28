@@ -1,4 +1,4 @@
-import axios from 'axios'
+import {customers as customersList} from '../data/customers'
 
 const getDefaultCard = () => {
   return {
@@ -100,15 +100,18 @@ export default {
     },
     seTtimeTrackType(state, type) {
       state.card.timeTrackType = type
-    },
+    }
   },
   actions: {
     async fetchCustomers({commit}, search) {
-      const url = process.env.VUE_APP_BACKEND
-
       try {
-        const customers = await axios.get(`${url}company/customers/`, {params: {search}})
-        commit('setCustomers', customers.data.data)
+        const searchValue = search?.toLocaleLowerCase() || ''
+        const filteredCustomer = customersList.data.filter(cus => {
+          const isFirstName = cus.firstName.toLocaleLowerCase().includes(searchValue)
+          const isLastName = cus.lastName.toLocaleLowerCase().includes(searchValue)
+          return isFirstName || isLastName
+        })
+        commit('setCustomers', filteredCustomer)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

@@ -43,7 +43,7 @@
 <script>
 import TheHeader from './TheHeader'
 import Loader from '@/components/loader'
-import {mapState, mapActions, mapMutations} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 import useVuelidate from '@vuelidate/core'
 import {required, requiredIf, email, minLength} from '@vuelidate/validators'
 
@@ -93,10 +93,6 @@ export default {
       update: 'company/customers/update',
       fetch: 'company/customers/fetch'
     }),
-    ...mapMutations({
-      add: 'company/customers/add',
-      updateCustomer: 'company/customers/update'
-    }),
     async save() {
       if (this.isLoading) return
       const result = await this.v$.$validate()
@@ -113,15 +109,11 @@ export default {
       try {
         this.isLoading = true
         if (this.uid) {
-          // const req = await this.update({user: customer, id: this.uid})
-          // this.updateCustomer(req.data)
-          this.updateCustomer(customer)
+          await this.update({cus: customer, uid: this.uid})
         } else {
-          const req = await this.create(customer)
-          this.add(req.data)
+          await this.create(customer)
         }
-        // await this.fetch()
-        // this.$router.push('/customers')
+        this.$router.back()
       } catch (err) {
         switch (err.response.data.message) {
           case 'Your phone is already taken':

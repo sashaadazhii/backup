@@ -35,20 +35,7 @@
           </div>
         </div>
         <div class="header__right">
-          <Dropdown :modelValue="action" :list="actionsList" @update:modelValue="selectAction" actionMenu>
-            <template #option="{label: label}">
-              <div class="vehicle__select-option">
-                <i v-if="label === 'Edit'" class="i-edit" />
-                <i v-if="label === 'Delete'" class="i-remove_circle red" />
-                <span>{{ label }}</span>
-              </div>
-            </template>
-            <template #menu>
-              <div class="vehicle__select-menu">
-                <i class="i-more_horiz" />
-              </div>
-            </template>
-          </Dropdown>
+          <Menu :list="actionsList" />
         </div>
       </div>
     </div>
@@ -57,24 +44,37 @@
 
 <script>
 import {mapState, mapActions, mapMutations} from 'vuex'
-import Dropdown from '@/components/Dropdown(new)'
-import DeleteModal from './DeleteModal'
+import Menu from '@/components/Yaro/Menu'
 
 export default {
-  name: 'CustomerPageHeader',
+  name: 'VehiclePageHeader',
+  components: {Menu},
   data() {
     return {
       isLoading: false,
-      action: null,
-      actionsList: ['Edit', 'Delete']
+      actionsList: [
+        {
+          label: 'Edit',
+          icon: 'i-edit',
+          command: () => {
+            this.setNewVehicle(this.vehicle)
+            this.$router.push(`/customers/${this.vehicle.customerUID}/vehicles/${this.vehicle.uid}/edit`)
+          }
+        },
+        {
+          label: 'Delete',
+          icon: 'i-remove_circle red',
+          command: () => this.openModal()
+        }
+      ]
     }
   },
-  components: {Dropdown},
   async created() {
     const uid = this.$route.params.uid
     const vehicleUid = this.$route.params.vehicleUid
     if (!this.customer?.uid) await this.find(uid)
     if (!this.vehicle?.uid) await this.findVehicle(vehicleUid)
+    await this.fetchVinCar('JT2BG22K6W0242999')
   },
   computed: {
     ...mapState({
@@ -82,35 +82,28 @@ export default {
       vehicle: s => s.company.vehicles.vehicle
     })
   },
-
   methods: {
     ...mapActions({
       find: 'company/customers/find',
-      findVehicle: 'company/vehicles/find'
+      findVehicle: 'company/vehicles/find',
+      delete: 'company/vehicles/delete',
+      fetchVinCar: 'modules/findByVin'
     }),
     ...mapMutations({
-      setVehicle: 'company/vehicles/setVehicle',
       setNewVehicle: 'company/vehicles/setNewVehicle'
     }),
-    async selectAction(action) {
-      if (this.isLoading) return
-      if (action === 'Delete') {
-        this.openModal()
-      } else if (action === 'Edit') {
-        this.setNewVehicle(this.vehicle)
-        this.$router.push(`/customers/${this.vehicle.customerUID}/vehicles/${this.vehicle.uid}/edit`)
-      }
-    },
     openModal() {
-      this.$vfm.show(
-        {
-          component: DeleteModal,
-          bind: {
-            name: 'DeleteModal'
-          }
-        },
-        this.vehicle
-      )
+      this.$confirm.require({
+        title: 'Hey, wait!',
+        message: `Are you sure, you want to delete ${this.vehicle.make}  ${this.vehicle.model} ${this.vehicle.year} from the customer vehicles?`,
+        acceptLabel: 'Delete',
+        rejectLabel: 'Cancel',
+        icon: 'i-volume_up',
+        accept: async () => {
+          await this.delete({vehicleUID: this.vehicle.uid, customerUID: this.vehicle.customerUID})
+          this.$router.back()
+        }
+      })
     }
   }
 }

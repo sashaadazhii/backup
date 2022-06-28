@@ -10,6 +10,7 @@
 import LoginLayout from '@/layouts/loginLayout'
 import mainLayout from '@/layouts/mainLayout'
 import adminLayout from '@/layouts/adminLayout' // TODO: Rename layout
+import orderLayout from '@/layouts/orderLayout'
 import {ModalsContainer} from 'vue-final-modal'
 import {mapMutations, mapState} from 'vuex'
 import ConfirmModal from '@/components/Yaro/Dialog/Confirm'
@@ -20,6 +21,7 @@ export default {
   components: {
     mainLayout,
     adminLayout,
+    orderLayout,
     LoginLayout,
     ModalsContainer,
     ConfirmModal
@@ -40,7 +42,6 @@ export default {
     // window.addEventListener('resize', appHeight)
     // appHeight()
     // this.decryptToken()
-
     // ====================
     // Function that checks all requests
     // ====================
@@ -53,7 +54,6 @@ export default {
     //       if (role === 'admin') this.$router.push('/signin/user')
     //       if (role === 'technician') this.$router.push('/signin/user')
     //     }
-
     //     throw err
     //   })
     // })

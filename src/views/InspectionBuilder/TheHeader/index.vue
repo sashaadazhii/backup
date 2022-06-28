@@ -16,26 +16,9 @@
       <div class="header__middle">
         <div class="header__left">
           <div class="header__field field">
-            <!-- <label class="field__label">
-              <i class="i-search1" />
-              <input
-                :value="searchParams"
-                class="field__input"
-                type="search"
-                placeholder="Start by typing card name"
-                @input="search"
-              />
-              <i class="i-close" @click="resetInput" />
-            </label> -->
             <label class="field__label">
               <i class="i-search1" />
-              <input
-                :value="searchParams"
-                class="field__input"
-                type="search"
-                placeholder="Start by typing card name"
-                @input="search"
-              />
+              <input :value="searchParams" class="field__input" type="search" placeholder="Start by typing card name" @input="search" />
               <i class="i-close" @click="resetInput" />
             </label>
           </div>
@@ -58,7 +41,7 @@ import {mapActions, mapMutations, mapState} from 'vuex'
 import _ from 'lodash'
 
 export default {
-  name: 'CannedServicesHeader',
+  name: 'InspectionBuilderHeader',
   computed: {
     ...mapState({
       searchParams: s => s.company.cardTemplates.searchParams

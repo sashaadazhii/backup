@@ -5,7 +5,7 @@
       <div class="settings__nav">
         <Nav :list="navList" />
       </div>
-      <div class="settings__inner"><router-view></router-view></div>
+      <div class="settings__inner"><router-view /></div>
     </div>
   </div>
 </template>

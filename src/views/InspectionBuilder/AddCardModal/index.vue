@@ -36,10 +36,7 @@
       </div>
       <component :is="component" />
       <div class="modal__footer">
-        <button class="modal__btn" @click="save">
-          <span>Save</span>
-          <Loader :show="isLoading" />
-        </button>
+        <Button label="Save" @click="save" size="large" :loading="isLoading" />
       </div>
     </div>
   </vue-final-modal>
@@ -52,11 +49,11 @@ import CardRelation from './CardRelation'
 import CardType from './CardType'
 import useVuelidate from '@vuelidate/core'
 import {required, requiredIf, helpers} from '@vuelidate/validators'
-import Loader from '@/components/loader'
+import Button from '@/components/Yaro/Button'
 
 export default {
   name: 'AddCardTemplateModal',
-  components: {CardGeneral, CardRelation, Loader, CardType},
+  components: {CardGeneral, CardRelation, CardType, Button},
   data() {
     return {
       v$: useVuelidate(),
@@ -118,12 +115,11 @@ export default {
       try {
         this.isLoading = true
         const req = await this.create(card)
+        // this.setTemplate(req)
         this.v$.$reset()
-        this.setTemplate(req.data)
-        this.add(req.data)
-        this.$vfm.hide('AddCardModal')
-        this.$router.push(`/inspection-builder/card/${req.data.templateID}`)
         this.reset()
+        this.$vfm.hide('AddCardModal')
+        // this.$router.push(`/inspection-builder/card/${req.templateID}`)
       } finally {
         this.isLoading = false
       }

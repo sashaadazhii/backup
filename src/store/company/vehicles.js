@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {vehicles as vehiclesList} from '../data/vehicles'
 
 export default {
   namespaced: true,
@@ -18,8 +19,17 @@ export default {
     setNewVehicle(state, vehicle) {
       state.newVehicle = vehicle
     },
-    removeVehicle(state, uid) {
+    add(state, vehicle) {
+      state.vehicles.unshift(vehicle)
+    },
+    remove(state, uid) {
       state.vehicles = state.vehicles.filter(vehicle => vehicle.uid !== uid)
+    },
+    update(state, newVehicle) {
+      if (state.vehicle.uid) state.vehicle = newVehicle
+      if (!state.vehicles.length) return
+      const vehicleIndex = state.vehicles.findIndex(vehicle => vehicle.uid === newVehicle.uid)
+      state.vehicles.splice(vehicleIndex, 1, newVehicle)
     },
     changeVehicle(state, {key, value}) {
       state.newVehicle[key] = value
@@ -32,74 +42,66 @@ export default {
     },
     removeVehicleFields(state, idx) {
       state.newVehicle.customFields.splice(idx, 1)
-    },
-    addVehicle(state, vehicle) {
-      state.vehicles.unshift(vehicle)
-    },
-    updateVehicle(state, newVehicle) {
-      if (state.vehicle.uid) state.vehicle = newVehicle
-      if (!state.vehicles.length) return
-      const vehicleIndex = state.vehicles.findIndex(vehicle => vehicle.uid === newVehicle.uid)
-      state.vehicles.splice(vehicleIndex, 1, newVehicle)
     }
   },
   actions: {
     async fetch({commit}, uid) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const vehicles = await axios.get(`${url}company/customers/${uid}/vehicles/`)
-        commit('set', vehicles.data)
+        const vehicles = vehiclesList.filter(v => v.customerUID === uid)
+        commit('set', vehicles)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async fetchVehicles({commit}, uid) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        return await axios.get(`${url}company/customers/${uid}/vehicles/`)
-      } catch (err) {
-        commit('setError', err, {root: true})
-        throw err
-      }
-    },
-    async add({commit}, {uid, vehicle}) {
-      const url = process.env.VUE_APP_BACKEND
-      try {
-        return await axios.post(`${url}company/customers/${uid}/vehicles/`, vehicle)
-      } catch (err) {
-        commit('setError', err, {root: true})
-        throw err
-      }
-    },
-    async update({commit}, {uid, vehicle}) {
-      const url = process.env.VUE_APP_BACKEND
-      try {
-        return await axios.put(`${url}company/vehicles/${uid}/`, vehicle)
-      } catch (err) {
-        commit('setError', err, {root: true})
-        throw err
-      }
-    },
-    async delete({commit}, uid) {
-      const url = process.env.VUE_APP_BACKEND
-      try {
-        return await axios.delete(`${url}company/vehicles/${uid}/`)
+        return vehiclesList.filter(v => v.customerUID === uid)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async find({commit}, uid) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const vehicle = await axios.get(`${url}company/vehicles/${uid}/`)
-        commit('setVehicle', vehicle.data)
+        const vehicle = vehiclesList.find(v => v.uid === uid)
+        commit('setVehicle', vehicle)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
+    async add({commit}, {cusUID, vehicle}) {
+      vehicle.uid = Date.now()
+      vehicle.customerUID = cusUID
+      commit('add', vehicle)
+      commit('company/customers/addVehicle', vehicle, {root: true})
+      try {
+      } catch (err) {
+        commit('setError', err, {root: true})
+        throw err
+      }
+    },
+    async update({commit}, {cusUID, vehicle}) {
+      vehicle.customerUID = cusUID
+      commit('update', vehicle)
+      commit('company/customers/updateVehicle', vehicle, {root: true})
+      try {
+      } catch (err) {
+        commit('setError', err, {root: true})
+        throw err
+      }
+    },
+    async delete({commit}, {vehicleUID, customerUID}) {
+      try {
+        commit('remove', vehicleUID)
+        commit('company/customers/removeVehicle', {vehicleUID, customerUID}, {root: true})
+      } catch (err) {
+        commit('setError', err, {root: true})
+        throw err
+      }
+    },
+
     async sync({commit}, uid) {
       const url = process.env.VUE_APP_BACKEND
       try {

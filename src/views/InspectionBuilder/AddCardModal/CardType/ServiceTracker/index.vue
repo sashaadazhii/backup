@@ -1,6 +1,6 @@
 <template>
   <div class="block__wrapper">
-    <y-input
+    <Input
       title="Odometer Track"
       v-maska="'########'"
       :modelValue="odometerTrack"
@@ -8,10 +8,11 @@
       iconLeft="i-shutter_speed"
       iconColor="bluegreen"
       rightText="kilometers"
+      :error="error('odometerTrack')"
       @update:modelValue="setOdometerTrack"
     />
 
-    <y-input
+    <Input
       title="Time Track"
       :modelValue="timeTrackLength"
       v-maska="'####'"
@@ -19,7 +20,7 @@
       iconLeft="i-time"
       iconColor="orange"
       rightText="months"
-      error
+      :error="error('timeTrackLength')"
       @update:modelValue="setTimeTrackLength"
     />
   </div>
@@ -27,9 +28,11 @@
 
 <script>
 import {mapMutations, mapState} from 'vuex'
+import Input from '@/components/Yaro/Input'
 
 export default {
   name: 'AddCardRelation',
+  components: {Input},
   computed: {
     ...mapState({
       odometerTrack: s => s.company.card.card.odometerTrack,
@@ -41,7 +44,11 @@ export default {
     ...mapMutations({
       setTimeTrackLength: 'company/card/setTimeTrackLength',
       setOdometerTrack: 'company/card/setOdometerTrack'
-    })
+    }),
+    error(name) {
+      const error = this.errors.find(err => err.$property === name)
+      if (error) return true
+    }
   }
 }
 </script>

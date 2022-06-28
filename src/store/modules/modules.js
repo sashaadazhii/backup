@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {cars, carsModels} from '../data/cars'
 
 export default {
   namespaced: true,
@@ -30,9 +31,7 @@ export default {
       delete instance.defaults.headers.common['Authorization']
       try {
         const key = process.env.VUE_APP_WEATHER_KEY
-        const weather = await instance.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=metric`
-        )
+        const weather = await instance.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=metric`)
         commit('setWeather', weather.data)
       } catch (err) {
         commit('setError', err, {root: true})
@@ -40,30 +39,40 @@ export default {
       }
     },
     async fetchVehicleMakes({commit}) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const vehicles = await axios.get(`${url}info/vehicle/makes`, {params: {records: 300}})
-        commit('setVehicleMakes', vehicles.data)
+        commit('setVehicleMakes', cars)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async fetchVehicleModels({commit}, make) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const vehicles = await axios.get(`${url}info/vehicle/${make}/models`, {params: {records: 300}})
-        commit('setVehicleModels', vehicles.data)
+        const vehiclesMake = carsModels.filter(c => c.make === make)
+        if (vehiclesMake) commit('setVehicleModels', vehiclesMake.map(v => v.model))
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async findByVin({commit}, vin) {
-      const url = process.env.VUE_APP_BACKEND
+      const apikey = process.env.VUE_APP_VIN_API_KEY
       try {
-        const vehicle = await axios.get(`${url}info/vehicle/lookup/${vin}/`)
-        commit('setVehicleByVin', vehicle.data)
+        const req = await axios.get(`https://auto.dev/api/vin/${vin}`, {params: {apikey}})
+        const vehicle = req.data
+        const newVehicle = {
+          vin,
+          make: vehicle.make.name,
+          model: vehicle.model.name,
+          year: vehicle.years[0]?.year,
+          engine: {
+            size: vehicle.engine.size,
+            cylinders: vehicle.engine.cylinder,
+            code: vehicle.engine.code
+          },
+          vehicleType: vehicle.categories.vehicleStyle
+        }
+        commit('setVehicleByVin', newVehicle)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
