@@ -3,7 +3,7 @@
 .customer {
   &__wrapper {
     display: grid;
-    grid-template-columns: 2fr 2.5fr 1.5fr 5fr 24px;
+    grid-template-columns: minmax(160px, 2fr) minmax(200px, 2.5fr) minmax(130px, 1.5fr) 5fr 24px;
     align-items: center;
     column-gap: 20px;
     padding: 12px 20px;
