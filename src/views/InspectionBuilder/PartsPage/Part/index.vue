@@ -3,28 +3,17 @@
     <div class="card__icon"><i class="i-build" /></div>
     <div class="card__text name">{{ part.name }}</div>
     <div class="card__field">
-      <y-input
-        v-model="name"
-        placeholder="Name"
-        :error="v$.name.$error || errorName"
-        errorMessage="This part is already exist"
-        @input="errorName = false"
-      />
+      <y-input v-model="name" placeholder="Name" :error="v$.name.$error || errorName" errorMessage="This part is already exist" @input="errorName = false" />
     </div>
     <div class="card__text"></div>
     <div class="card__text price">${{ part.price }}</div>
     <div class="card__field">
-      <y-input
-        v-maska="{mask: 'HHHHH', tokens: {H: {pattern: /[0-9.]/}}}"
-        v-model="price"
-        placeholder="Price"
-        :error="v$.price.$error"
-      />
+      <y-input v-maska="{mask: 'HHHHH', tokens: {H: {pattern: /[0-9.]/}}}" v-model="price" placeholder="Price" :error="v$.price.$error" />
     </div>
     <div class="card__text"></div>
     <div class="card__text"></div>
     <div class="card__dropdown">
-      <Dropdown :modelValue="action" :list="actionsList" @update:modelValue="selectAction" actionMenu>
+      <!-- <Dropdown :modelValue="action" :list="actionsList" @update:modelValue="selectAction" actionMenu>
         <template #option="{label: label}">
           <div class="card__dropdown-option">
             <i v-if="label === 'Edit'" class="i-edit" />
@@ -37,7 +26,7 @@
             <i class="i-more_horiz" />
           </div>
         </template>
-      </Dropdown>
+      </Dropdown> -->
     </div>
     <div class="card__buttons">
       <button class="card__btn green" @click="save">
@@ -51,7 +40,6 @@
 
 <script>
 import {mapActions, mapState, mapMutations} from 'vuex'
-import Dropdown from '@/components/Dropdown(new)'
 import DeleteModal from './DeleteModal'
 import Loader from '@/components/loader'
 
@@ -66,7 +54,7 @@ export default {
       required: true
     }
   },
-  components: {Dropdown, Loader},
+  components: {Loader},
   data() {
     return {
       v$: useVuelidate(),

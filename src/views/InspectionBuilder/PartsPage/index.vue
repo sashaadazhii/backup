@@ -12,8 +12,8 @@
               <div class="empty__icon"><i class="i-build" /></div>
               <div class="empty__title">Add Parts to canned service</div>
               <div class="empty__subtitle">
-                Service includes a visual inspection of the brake system, replacement with new fluid that meets or
-                exceeds your vehicle manufacturer’s specifications and proper disposal of the used fluid.
+                Service includes a visual inspection of the brake system, replacement with new fluid that meets or exceeds your vehicle manufacturer’s
+                specifications and proper disposal of the used fluid.
               </div>
               <div class="empty__btn" @click="create">
                 <i class="i-add_circle" />
@@ -97,18 +97,19 @@ export default {
       return
     }
     this.isLoading = true
-    if (!this.parts.length || this.parts[0]?.serviceID !== this.service.id) await this.fetch(this.service.id)
+    if (!this.parts.length || this.parts[0]?.serviceID !== this.service.id) await this.fetch(+this.service.id)
     this.isLoading = false
   },
   methods: {
     ...mapMutations({
-      createPart: 'company/parts/createPart'
+      // createPart: 'company/parts/createPart'
     }),
     ...mapActions({
-      fetch: 'company/parts/fetch'
+      fetch: 'company/parts/fetch',
+      // find: 'company/cannedServices/find'
     }),
     create() {
-      this.createPart({name: '', price: '', isCreate: true})
+      // this.createPart({name: '', price: '', isCreate: true})
     }
   }
 }

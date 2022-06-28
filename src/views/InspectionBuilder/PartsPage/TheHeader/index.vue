@@ -13,41 +13,40 @@
         </div>
       </div>
       <div class="header__right">
-        <Dropdown :modelValue="action" :list="actionsList" @update:modelValue="selectAction" actionMenu>
-          <template #option="{label: label}">
-            <div class="dropdown-option">
-              <i v-if="label === 'Edit'" class="i-edit" />
-              <i v-if="label === 'Delete'" class="i-remove_circle red" />
-              <span>{{ label }}</span>
-            </div>
-          </template>
-          <template #menu>
-            <div class="dropdown-menu">
-              <i class="i-more_horiz" />
-            </div>
-          </template>
-        </Dropdown>
+        <Menu :list="actionsList" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {mapState, mapMutations} from 'vuex'
-import Dropdown from '@/components/Dropdown(new)'
-
-import DeleteModal from './DeleteModal'
+import {mapState, mapActions, mapMutations} from 'vuex'
+import Menu from '@/components/Yaro/Menu'
 import EditModal from '../../CardPage/CardPageServices/NewCannedServiceModal'
 
 export default {
   name: 'PartHeader',
   data() {
     return {
-      action: null,
-      actionsList: ['Edit', 'Delete']
+      actionsList: [
+        {
+          label: 'Edit',
+          icon: 'i-edit',
+          command: () => {
+            this.openEditModal()
+          }
+        },
+        {
+          label: 'Delete',
+          icon: 'i-remove_circle red',
+          command: () => {
+            this.openDeleteModal()
+          }
+        }
+      ]
     }
   },
-  components: {Dropdown},
+  components: {Menu},
   computed: {
     ...mapState({
       service: s => s.company.cannedServices.activeService,
@@ -57,6 +56,9 @@ export default {
   methods: {
     ...mapMutations({
       setActiveService: 'company/cannedServices/setActiveService'
+    }),
+    ...mapActions({
+      delete: 'company/cannedServices/delete'
     }),
     back() {
       this.$router.push({path: `/inspection-builder/card/${this.$route.params.id}`, query: {component: 'CannedServices'}})
@@ -69,26 +71,30 @@ export default {
         this.openModal('edit')
       }
     },
-    openModal(type) {
-      let component = null
-      let name = ''
-      if (type === 'delete') {
-        component = DeleteModal
-        name = 'DeleteModal'
-      }
-      if (type === 'edit') {
-        component = EditModal
-        name = 'EditModal'
-      }
+    openEditModal() {
       this.$vfm.show(
         {
-          component,
+          component: EditModal,
           bind: {
-            name
+            name: 'EditModal'
           }
         },
         this.service
       )
+    },
+    openDeleteModal() {
+      const {id, templateID} = this.service
+      this.$confirm.require({
+        title: 'Hey, wait!',
+        message: `Are you sure, you want to delete ${this.service.name}  from the services?`,
+        acceptLabel: 'Delete',
+        rejectLabel: 'Cancel',
+        icon: 'i-volume_up',
+        accept: async () => {
+          await this.delete({id, templateID})
+          this.$router.back()
+        }
+      })
     }
   }
 }
