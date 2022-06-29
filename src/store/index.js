@@ -1,4 +1,4 @@
-import {createStore} from 'vuex'
+import { createStore } from 'vuex'
 import inspection from './inspection/inspection'
 import modules from './modules/modules'
 import login from './login/login'
@@ -6,6 +6,7 @@ import workOrder from './workOrder/workOrder'
 import info from './info'
 import company from './company'
 import reports from './reports/reports'
+import vendors from './vendors/vendors'
 
 export default createStore({
   state: {},
@@ -18,6 +19,7 @@ export default createStore({
     workOrder,
     info,
     company,
-    reports
+    reports,
+    vendors
   }
 })

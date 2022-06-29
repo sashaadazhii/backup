@@ -1,4 +1,4 @@
-import {createApp} from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -6,7 +6,7 @@ import store from './store'
 // import axios from 'axios'
 
 import Maska from 'maska'
-import {vfmPlugin} from 'vue-final-modal'
+import { vfmPlugin } from 'vue-final-modal'
 import dayjs from 'dayjs'
 import Yaro from '@/components/Yaro/config'
 import ConfirmationDialog from '@/components/Yaro/Dialog/Confirm/service'
@@ -33,4 +33,4 @@ app.config.globalProperties.$getID = () => {
 
 app.config.globalProperties.$dayjs = dayjs
 
-app.use(store).use(router).use(vfmPlugin).use(Maska).use(Yaro, {ripple: true}).use(ConfirmationDialog).component('y-input', InputComponent).mount('#app')
+app.use(store).use(router).use(vfmPlugin).use(Maska).use(Yaro, { ripple: true }).use(ConfirmationDialog).component('y-input', InputComponent).mount('#app')
