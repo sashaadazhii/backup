@@ -1,0 +1,16 @@
+@import 'src/assets/styles/_variables.scss';
+
+.page-inner {
+  height: inherit;
+  display: grid;
+  overflow: hidden;
+  grid-template-rows: auto 1fr;
+}
+
+.vendors {
+  &__wrapper {
+    overflow: hidden;
+    background-color: $color-grey-smoke;
+    padding: 20px;
+  }
+}
