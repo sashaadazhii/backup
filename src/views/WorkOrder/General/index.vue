@@ -10,6 +10,9 @@
     <div class="general__block">
       <Scheduling />
     </div>
+    <div class="general__block">
+      <Options />
+    </div>
   </div>
 </template>
 
@@ -18,10 +21,11 @@ import Info from './Info'
 import Notes from './Notes'
 import Settings from './Settings'
 import Scheduling from './Scheduling'
+import Options from './Options'
 
 export default {
   name: 'WorkOrderGeneral',
-  components: {Info, Notes, Settings, Scheduling}
+  components: {Info, Notes, Settings, Scheduling, Options}
 }
 </script>
 

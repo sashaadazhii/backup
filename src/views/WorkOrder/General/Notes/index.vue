@@ -8,7 +8,7 @@
     <div class="block__notes">
       <Note v-for="(note, idx) of order.notes" :key="idx" :note="note" />
     </div>
-    <Dialog header="Header" v-model:visible="display" :dismissableMask="false">
+    <Dialog v-model:visible="display" :dismissableMask="false">
       <div class="dialog__inner">
         <div class="dialog__header">
           <div class="dialog__title">Add new note</div>
