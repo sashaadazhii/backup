@@ -13,11 +13,19 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  color: $color-grey;
   &.blue {
     color: $color-blue;
   }
   &.bluegreen {
     color: $color-bluegreen;
+  }
+  &.orange {
+    color: $color-orange;
+  }
+  &.green {
+    color: $color-green;
   }
 }
 

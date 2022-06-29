@@ -1,0 +1,269 @@
+@import '../styles/_variables.scss';
+
+.y-field {
+  &__wrapper {
+  }
+  &__label {
+    height: 46px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 18px 1fr;
+    column-gap: 8px;
+    @include border;
+    @include font(14px, $color-grey-space, 500);
+    background-color: rgba($color-grey-flash, 0.2);
+    padding: 0 16px;
+  }
+  &__input {
+    width: 100%;
+    background-color: transparent;
+    &::placeholder {
+      color: $color-grey;
+    }
+  }
+  &__icon {
+    font-size: 18px;
+  }
+}
+
+.y-calendar {
+  position: relative;
+  display: inline-flex;
+  max-width: 100%;
+}
+
+.y-datepicker {
+  width: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 16px;
+  background-color: $color-white;
+  color: $color-grey;
+  @include border(16px, $color-grey-flash);
+  &__group {
+    &-container {
+    }
+  }
+  &__header {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__prev {
+    @include font(24px);
+    &-icon {
+    }
+  }
+  &__next {
+    @include font(24px);
+    &-icon {
+    }
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    &-month {
+      @include font(16px, _, 600);
+    }
+    &-year {
+      @include font(16px, _, 600);
+    }
+  }
+  &__calendar {
+    &-container {
+    }
+  }
+  //======================
+
+  table th {
+    height: 36px;
+    width: 36px;
+  }
+  table th > span {
+    // width: 2.5rem;
+    // height: 2.5rem;
+  }
+
+  table td {
+    // height: 36px;
+    // width: 36px;
+    // text-align: center;
+    // vertical-align: middle;
+    // border-radius: 8px;
+    // font-weight: 500;
+  }
+  table td > span {
+    display: grid;
+    place-items: center;
+    height: 36px;
+    width: 36px;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+
+  table td > span.p-highlight {
+    color: rgba(255, 255, 255, 0.87);
+    background: rgba(100, 181, 246, 0.16);
+  }
+  table td > span:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 1px #93cbf9;
+  }
+  table td.y-datepicker__today > span {
+    background-color: $color-grey-flash;
+    // border-radius: 8px;
+    // background: transparent;
+    // color: #64b5f6;
+    // border-color: transparent;
+  }
+  table td.p-datepicker-today > span.p-highlight {
+    color: rgba(255, 255, 255, 0.87);
+    background: rgba(100, 181, 246, 0.16);
+  }
+  //======================
+  &--inline {
+    display: inline-block;
+    position: static;
+    overflow-x: auto;
+  }
+}
+
+// .field {
+//   &__label {
+//     position: relative;
+//     display: block;
+//     &.icon-left {
+//       & > .field__input {
+//         padding-left: 44px;
+//       }
+//     }
+//     &.icon-right {
+//       & > .field__input {
+//         padding-right: 36px;
+//       }
+//     }
+//     &.right-text {
+//       & > .field__input {
+//         padding-right: 82px;
+//       }
+//     }
+//     &.error {
+//       & > .field {
+//         &__icon {
+//           display: none;
+//           &--error {
+//             display: block;
+//             right: 16px;
+//           }
+//         }
+//         &__input {
+//           background-color: rgba($color-red, 0.1);
+//           border-color: $color-red;
+//           &::placeholder {
+//             color: rgba($color-red, 0.8);
+//           }
+//         }
+//       }
+//       &.icon-left {
+//         > .field {
+//           &__icon {
+//             display: none;
+//             &--error {
+//               display: block;
+//               left: 16px;
+//             }
+//           }
+//         }
+//       }
+//       &.icon-left {
+//         > .field__icon--error {
+//           left: 16px;
+//         }
+//       }
+//       &.icon-right {
+//         > .field__icon--error {
+//           right: 16px;
+//         }
+//       }
+//       &.right-text {
+//         & > .field__icon--error {
+//           display: none;
+//         }
+//       }
+//     }
+//     &.error-message {
+//       & > .field {
+//         &__icon {
+//           // display: none;
+//           &--error {
+//             // display: block;
+//             bottom: 33px;
+//           }
+//         }
+//         // &__input {
+//         //   background-color: rgba($color-red, 0.1);
+//         //   border-color: $color-red;
+//         //   &::placeholder {
+//         //     color: rgba($color-red, 0.8);
+//         //   }
+//         // }
+//       }
+//     }
+//   }
+//   &__title {
+//     @include font(14px, $color-grey-space, 600);
+//     margin-bottom: 12px;
+//   }
+//   &__input {
+//     @include font(13.5px, $color-grey-space, 500);
+//     padding: 14px;
+//     background-color: rgba($color-grey-flash, 0.2);
+//     @include border;
+//     width: 100%;
+//     &::placeholder {
+//       color: $color-grey;
+//     }
+//   }
+//   &__icon {
+//     position: absolute;
+//     bottom: 14px;
+//     @include font(18px, $color-grey, 500, 0);
+//     &.left {
+//       left: 16px;
+//     }
+//     &.right {
+//       right: 16px;
+//     }
+//     &.orange {
+//       color: $color-orange;
+//     }
+//     &.bluegreen {
+//       color: $color-bluegreen;
+//     }
+//     &-text {
+//       position: absolute;
+//       right: 0;
+//       bottom: 16px;
+//       right: 16px;
+//       @include font(12px, $color-grey, 600);
+//       &.orange {
+//         color: $color-orange;
+//       }
+//       &.bluegreen {
+//         color: $color-bluegreen;
+//       }
+//     }
+//     &--error {
+//       color: $color-red;
+//       display: none;
+//     }
+//   }
+//   &__error {
+//     @include font(11px, $color-red, 600);
+//     margin-top: 8px;
+//   }
+// }

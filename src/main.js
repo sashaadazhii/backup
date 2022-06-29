@@ -5,6 +5,8 @@ import store from './store'
 
 // import axios from 'axios'
 
+import {SetupCalendar} from 'v-calendar'
+import 'v-calendar/dist/style.css';
 import Maska from 'maska'
 import {vfmPlugin} from 'vue-final-modal'
 import dayjs from 'dayjs'
@@ -33,4 +35,13 @@ app.config.globalProperties.$getID = () => {
 
 app.config.globalProperties.$dayjs = dayjs
 
-app.use(store).use(router).use(vfmPlugin).use(Maska).use(Yaro, {ripple: true}).use(ConfirmationDialog).component('y-input', InputComponent).mount('#app')
+app
+  .use(store)
+  .use(router)
+  .use(vfmPlugin)
+  .use(Maska)
+  .use(Yaro, {ripple: true})
+  .use(ConfirmationDialog)
+  .use(SetupCalendar, {})
+  .component('y-input', InputComponent)
+  .mount('#app')
