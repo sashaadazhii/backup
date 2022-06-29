@@ -11,7 +11,7 @@
         />
       </div>
       <div class="header__btn">
-        <Button label="Add New Vendor" size="small" icon="i-add_circle" class="header__btn" />
+        <Button label="Add New Vendor" size="small" icon="i-add_circle" class="header__btn" @click="openModal" />
       </div>
     </div>
   </div>
@@ -20,6 +20,7 @@
 <script>
 import {mapState, mapMutations} from 'vuex'
 import Button from '@/components/Yaro/Button'
+import NewVendorModal from '../NewVendorModal'
 import _ from 'lodash'
 
 export default {
@@ -37,7 +38,15 @@ export default {
     }),
     searchVendors: _.debounce(async function (searchParams) {
       this.setSearch(searchParams)
-    }, 300)
+    }, 300),
+    openModal() {
+      this.$vfm.show({
+        component: NewVendorModal,
+        bind: {
+          name: 'NewVendorModal'
+        }
+      })
+    }
   }
 }
 </script>
