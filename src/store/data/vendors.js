@@ -54,5 +54,87 @@ const vendorsList = [
     address: 'Aroland, ON P0T 1B0'
   },
 ]
+const vendorExpenses = [
+  {
+    date: 'Jul 1, 2022',
+    part: 39680,
+    expenseAccount: 'Parts for Relase',
+    amount: 220.36,
+    hst: 23.65,
+    billTotal: 345.35
+  },
+  {
+    date: 'Jul 1, 2022',
+    part: 31200,
+    expenseAccount: 'Office Supplies',
+    amount: 220.36,
+    hst: 25.89,
+    billTotal: 345.35
+  },
+  {
+    date: 'Jul 1, 2022',
+    part: 43900,
+    expenseAccount: 'Office Supplies',
+    amount: 319.34,
+    hst: 23.65,
+    billTotal: 674.23
+  },
+  {
+    date: 'Jul 1, 2022',
+    part: 39680,
+    expenseAccount: 'Parts for Relase',
+    amount: 220.36,
+    hst: 23.65,
+    billTotal: 345.35
+  },
+  {
+    date: 'Jul 1, 2022',
+    part: 39680,
+    expenseAccount: 'Parts for Relase',
+    amount: 450.36,
+    hst: 23.65,
+    billTotal: 1290.43
+  },
+  {
+    date: 'Jul 1, 2022',
+    part: 39680,
+    expenseAccount: 'Meals for Stuff',
+    amount: 220.36,
+    hst: 23.65,
+    billTotal: 345.35
+  },
+  {
+    date: 'Jul 1, 2022',
+    part: 39680,
+    expenseAccount: 'Parts for Relase',
+    amount: 220.36,
+    hst: 23.65,
+    billTotal: 345.35
+  },
+  {
+    date: 'Jul 1, 2022',
+    part: 39680,
+    expenseAccount: 'Parts for Relase',
+    amount: 220.36,
+    hst: 23.65,
+    billTotal: 345.35
+  },
+  {
+    date: 'Jul 1, 2022',
+    part: 39680,
+    expenseAccount: 'Parts for Relase',
+    amount: 220.36,
+    hst: 23.65,
+    billTotal: 345.35
+  },
+  {
+    date: 'Jul 1, 2022',
+    part: 39680,
+    expenseAccount: 'Meals for Stuff',
+    amount: 1320.39,
+    hst: 83.78,
+    billTotal: 2378.59
+  },
+]
 
-export { vendorsList }
+export { vendorsList, vendorExpenses }

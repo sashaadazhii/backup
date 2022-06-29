@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { vendorsList } from '../data/vendors'
+import { vendorsList, vendorExpenses } from '../data/vendors'
 
 export default {
   namespaced: true,
@@ -10,7 +10,8 @@ export default {
     vendor: {},
     searchParams: null,
     pagination: {},
-    page: 1
+    page: 1,
+    vendorExpenses
   },
   mutations: {
     set(state, vendors) {

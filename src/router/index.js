@@ -236,6 +236,12 @@ const routes = [
         name: 'Vendors',
         meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Vendors' },
         component: () => import('@/views/Vendors/Vendors')
+      },
+      {
+        path: 'vendor-expenses',
+        name: 'VendorExpenses',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Vendors' },
+        component: () => import('@/views/Vendors/VendorExpenses')
       }
     ]
   },
