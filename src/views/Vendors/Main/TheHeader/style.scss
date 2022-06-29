@@ -4,10 +4,14 @@
   grid-template-columns: 1fr 170px;
   align-items: center;
   gap: 20px;
+
   &__wrapper {
     padding: 16px;
     border-bottom: 1px solid $color-grey-flash;
     width: 100%;
     overflow: hidden;
+  }
+  &__btn {
+    height: 46px;
   }
 }

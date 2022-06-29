@@ -136,5 +136,39 @@ const vendorExpenses = [
     billTotal: 2378.59
   },
 ]
+const vendorReport = [
+  {
+    expenseAccount: 'Bank/credit card charges',
+    total: 294.43
+  },
+  {
+    expenseAccount: 'Computer Hardware',
+    total: 87.43
+  },
+  {
+    expenseAccount: 'Employee Training',
+    total: 876.45
+  },
+  {
+    expenseAccount: 'Building Maintenance',
+    total: 294.43
+  },
+  {
+    expenseAccount: 'Garbage Disposal',
+    total: 254.09
+  },
+  {
+    expenseAccount: 'Computer Hardware',
+    total: 44.09
+  },
+  {
+    expenseAccount: 'Computer Hardware',
+    total: 445.76
+  },
+  {
+    expenseAccount: 'Employee Training',
+    total: 298.33
+  }
+]
 
-export { vendorsList, vendorExpenses }
+export { vendorsList, vendorExpenses, vendorReport }

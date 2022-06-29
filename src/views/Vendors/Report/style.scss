@@ -1,0 +1,89 @@
+@import 'src/assets/styles/_variables.scss';
+
+.vendors {
+  &__inner {
+    background-color: $color-white;
+    border-radius: 16px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    max-height: 100%;
+  }
+}
+
+.table__header,
+.table__row,
+.table__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.table {
+  &__wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow-x: auto;
+    padding: 16px 0 0;
+    padding-top: 0;
+  }
+  &__header {
+    padding: 16px;
+    padding-bottom: 14px;
+    &-title {
+      @include font(12px, $color-grey, 500);
+    }
+  }
+  &__main {
+    overflow: auto;
+    @include hideScrollbar;
+  }
+  &__footer {
+    border: 1px solid $color-grey-flash;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    background-color: $color-grey-smoke;
+    &-column {
+      width: 100%;
+    }
+    &-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 16px;
+      border-bottom: 1px solid $color-grey-flash;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    &-cell {
+      @include font(14px, $color-grey-dark, 700);
+    }
+  }
+
+  &__row {
+    margin-bottom: 6px;
+    padding: 0 16px;
+    height: 46px;
+    &:nth-child(odd) {
+      background-color: $color-grey-smoke;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__cell {
+    @include font(14px, $color-grey-space, 600);
+    white-space: nowrap;
+    &--icon {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+      & > i {
+        @include font(16px, $color-grey);
+      }
+    }
+  }
+}

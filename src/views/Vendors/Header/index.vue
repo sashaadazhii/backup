@@ -6,10 +6,9 @@
       </div>
       <div class="header__bottom">
         <div class="header__nav">
-          <router-link class="header__nav-link" to="/vendors/vendors">Vendors</router-link>
-          <router-link class="header__nav-link" to="/vendors/vendor-expenses">Vendor Expenses</router-link>
-          <!-- 
-          <router-link class="header__nav-link" to="/reports/deferred-work">Deferred Work</router-link> -->
+          <router-link class="header__nav-link" to="/vendors/main">Vendors</router-link>
+          <router-link class="header__nav-link" to="/vendors/expenses">Vendor Expenses</router-link>
+          <router-link class="header__nav-link" to="/vendors/report">Vendor Report</router-link>
         </div>
       </div>
     </div>

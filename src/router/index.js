@@ -229,19 +229,25 @@ const routes = [
     name: 'Vendors',
     meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Vendors' },
     component: () => import('@/views/Vendors'),
-    redirect: '/vendors/vendors',
+    redirect: '/vendors/main',
     children: [
       {
-        path: 'vendors',
+        path: 'main',
         name: 'Vendors',
         meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Vendors' },
-        component: () => import('@/views/Vendors/Vendors')
+        component: () => import('@/views/Vendors/Main')
       },
       {
-        path: 'vendor-expenses',
-        name: 'VendorExpenses',
+        path: 'expenses',
+        name: 'Expenses',
         meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Vendors' },
-        component: () => import('@/views/Vendors/VendorExpenses')
+        component: () => import('@/views/Vendors/Expenses')
+      },
+      {
+        path: 'report',
+        name: 'Report',
+        meta: { layout: 'admin', access: ['admin'], auth: true, header: 'Vendors' },
+        component: () => import('@/views/Vendors/Report')
       }
     ]
   },

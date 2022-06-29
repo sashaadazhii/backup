@@ -28,10 +28,9 @@
   </div>
 </template>
 <script>
-import {mapState, mapMutations} from 'vuex'
+import {mapState} from 'vuex'
 import Header from './TheHeader'
 import Menu from '@/components/Yaro/Menu'
-// import _ from 'lodash'
 
 export default {
   name: 'TheVendors',
@@ -42,15 +41,12 @@ export default {
         {
           label: 'Edit',
           icon: 'i-edit',
-          command: () => {
-            // this.setNewVehicle(this.vehicle)
-            // this.$router.push(`/customers/${this.vehicle.customerUID}/vehicles/${this.vehicle.uid}/edit`)
-          }
+          command: () => {}
         },
         {
           label: 'Delete',
           icon: 'i-remove_circle red',
-          command: () => this.openModal()
+          command: () => {}
         }
       ]
     }
@@ -59,22 +55,6 @@ export default {
     ...mapState({
       vendors: s => s.vendors.vendors
     })
-  },
-  methods: {
-    ...mapMutations({})
-    // openModal() {
-    //   this.$confirm.require({
-    //     title: 'Hey, wait!',
-    //     // message: `Are you sure, you want to delete ${this.vehicle.make}  ${this.vehicle.model} ${this.vehicle.year} from the customer vehicles?`,
-    //     acceptLabel: 'Delete',
-    //     rejectLabel: 'Cancel',
-    //     icon: 'i-volume_up',
-    //     accept: async () => {
-    //       // await this.delete({vehicleUID: this.vehicle.uid, customerUID: this.vehicle.customerUID})
-    //       this.$router.back()
-    //     }
-    //   })
-    // }
   }
 }
 </script>

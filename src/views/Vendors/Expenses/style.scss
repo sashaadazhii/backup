@@ -71,7 +71,7 @@
   }
 }
 
-//TODO: remove later
+// TODO: remove later
 .label {
   display: inline-flex;
   align-items: center;
@@ -95,5 +95,12 @@
     border-color: $color-bluegreen;
     background: rgba(62, 179, 187, 0.05);
     color: $color-bluegreen;
+  }
+  &-square {
+    width: fit-content;
+    padding: 6px 8px;
+    background: $color-grey-flash;
+    border: 1px solid $color-grey-light;
+    border-radius: 8px;
   }
 }

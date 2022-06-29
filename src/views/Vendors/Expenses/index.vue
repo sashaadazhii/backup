@@ -18,19 +18,13 @@
             {{ vendor.date }}
           </div>
           <div class="table__cell">{{ vendor.part }}</div>
-          <div
-            class="table__cell label"
-            :class="{
-              blue: vendor.expenseAccount === 'Parts for Relase',
-              orange: vendor.expenseAccount === 'Meals for Stuff',
-              green: vendor.expenseAccount === 'Office Supplies'
-            }"
-          >
+          <div class="table__cell label" :class="labelColor(vendor.expenseAccount)">
             {{ vendor.expenseAccount }}
           </div>
           <div class="table__cell">{{ formatter(vendor.amount) }}</div>
           <div class="table__cell">{{ vendor.hst.toFixed(2) }}</div>
-          <div class="table__cell">{{ formatter(vendor.billTotal) }}</div>
+          <!-- TODO: replace with Label -->
+          <div class="table__cell label-square">{{ formatter(vendor.billTotal) }}</div>
           <div class="table__cell">
             <Menu :list="actionsList" />
           </div>
@@ -40,10 +34,9 @@
   </div>
 </template>
 <script>
-import {mapState, mapMutations} from 'vuex'
+import {mapState} from 'vuex'
 import Header from './TheHeader'
 import Menu from '@/components/Yaro/Menu'
-// import _ from 'lodash'
 
 export default {
   name: 'TheVendors',
@@ -54,21 +47,15 @@ export default {
         {
           label: 'Edit',
           icon: 'i-edit',
-          command: () => {
-            // this.setNewVehicle(this.vehicle)
-            // this.$router.push(`/customers/${this.vehicle.customerUID}/vehicles/${this.vehicle.uid}/edit`)
-          }
+          command: () => {}
         },
         {
           label: 'Delete',
           icon: 'i-remove_circle red',
-          command: () => this.openModal()
+          command: () => {}
         }
       ]
     }
-  },
-  created() {
-    console.log(this.vendors)
   },
   computed: {
     ...mapState({
@@ -80,20 +67,16 @@ export default {
       const price = new Intl.NumberFormat('en-CA', {style: 'currency', currency: 'CAD'}).format(val)
       return price
     },
-    ...mapMutations({})
-    // openModal() {
-    //   this.$confirm.require({
-    //     title: 'Hey, wait!',
-    //     // message: `Are you sure, you want to delete ${this.vehicle.make}  ${this.vehicle.model} ${this.vehicle.year} from the customer vehicles?`,
-    //     acceptLabel: 'Delete',
-    //     rejectLabel: 'Cancel',
-    //     icon: 'i-volume_up',
-    //     accept: async () => {
-    //       // await this.delete({vehicleUID: this.vehicle.uid, customerUID: this.vehicle.customerUID})
-    //       this.$router.back()
-    //     }
-    //   })
-    // }
+    labelColor(expenseAccount) {
+      switch (expenseAccount) {
+        case 'Parts for Relase':
+          return 'blue'
+        case 'Meals for Stuff':
+          return 'orange'
+        case 'Office Supplies':
+          return 'green'
+      }
+    }
   }
 }
 </script>

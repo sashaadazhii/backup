@@ -11,7 +11,7 @@
         />
       </div>
       <div class="header__btn">
-        <Button label="Add New Vendor" size="small" icon="i-add_circle" class="vendors" />
+        <Button label="Add New Vendor" size="small" icon="i-add_circle" class="header__btn" />
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@ import Button from '@/components/Yaro/Button'
 import _ from 'lodash'
 
 export default {
-  name: 'VendorsMainHeader',
+  name: 'MainHeader',
   components: {Button},
   computed: {
     ...mapState({
@@ -43,7 +43,4 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import 'style';
-.header__btn > button.vendors {
-  height: 46px !important;
-}
 </style>

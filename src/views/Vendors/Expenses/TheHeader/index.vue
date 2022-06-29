@@ -28,7 +28,7 @@
         <div class="filter filter--light">
           <div class="filter__icon"><i class="i-settings_menu" /></div>
         </div>
-        <Button label="Add New Expense" size="small" icon="i-add_circle" class="expanse" />
+        <Button label="Add New Expense" size="small" icon="i-add_circle" class="filter__btn" />
       </div>
     </div>
   </div>
@@ -38,13 +38,10 @@
 import Button from '@/components/Yaro/Button'
 
 export default {
-  name: 'VendorExpensesHeader',
+  name: 'ExpensesHeader',
   components: {Button}
 }
 </script>
 <style lang="scss" scoped>
 @import 'style';
-.filter__right > button.expanse {
-  height: 42px !important;
-}
 </style>
