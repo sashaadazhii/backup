@@ -13,10 +13,6 @@
     @include font(14px, $color-blue, 600);
     text-transform: uppercase;
   }
-  &__subtitle {
-    @include font(14px, $color-grey, 500);
-    margin-bottom: 12px;
-  }
   &__row {
     display: flex;
     align-items: center;
@@ -24,18 +20,6 @@
     column-gap: 8px;
     padding-bottom: 14px;
     border-bottom: 1px solid $color-grey-flash;
-    // &--label {
-    //   column-gap: 12px;
-    //   & > span {
-    //     @include font(14px, $color-grey-space, 600);
-    //   }
-    // }
-    // &-label {
-    //   background-color: $color-grey-smoke;
-    //   border-color: $color-grey-flash;
-    //   color: $color-grey-space;
-    //   border-radius: 8px;
-    // }
   }
   &__cell {
     display: flex;

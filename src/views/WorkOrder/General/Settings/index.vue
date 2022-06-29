@@ -38,7 +38,7 @@
       v-model="timePromised"
       mode="dateTime"
       :minute-increment="5"
-      :popover="{visibility: 'focus'}"
+
       locale="en"
       :masks="{inputDateTime: 'DD MMM YYYY hh:mm a'}"
     >
