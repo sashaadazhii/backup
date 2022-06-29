@@ -34,7 +34,7 @@
       @include font(18px, $color-grey);
     }
     & > span {
-      @include font(14px, $color-grey-space, 500);
+      @include font(14px, $color-grey-space, 600);
     }
   }
 }
