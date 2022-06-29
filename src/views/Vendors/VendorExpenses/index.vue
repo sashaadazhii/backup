@@ -3,22 +3,34 @@
     <Header />
     <div class="table table__wrapper">
       <div class="table__header">
-        <div class="table__header-title">Business Name</div>
-        <div class="table__header-title">Main Contact Person</div>
-        <div class="table__header-title">Phone</div>
-        <div class="table__header-title">Address</div>
+        <div class="table__header-title">Date</div>
+        <div class="table__header-title">Part #</div>
+        <div class="table__header-title">Expense Account</div>
+        <div class="table__header-title">Amount</div>
+        <div class="table__header-title">HST Total</div>
+        <div class="table__header-title">Bill Total</div>
         <div class="table__header-title"></div>
       </div>
       <div class="table__main">
         <div v-for="(vendor, idx) of vendors" :key="idx" class="table__row">
-          <div class="table__cell">
-            {{ vendor.businessName }}
+          <div class="table__cell table__cell--icon">
+            <i class="i-calendar" />
+            {{ vendor.date }}
           </div>
-          <div class="table__cell">{{ vendor.mainContactPerson }}</div>
-          <div class="table__cell table__cell--icon table__cell--link">
-            <a class="table__cell-link" :href="`tel:${vendor.phone}`"><i class="i-phone" /> {{ vendor.phone }}</a>
+          <div class="table__cell">{{ vendor.part }}</div>
+          <div
+            class="table__cell label"
+            :class="{
+              blue: vendor.expenseAccount === 'Parts for Relase',
+              orange: vendor.expenseAccount === 'Meals for Stuff',
+              green: vendor.expenseAccount === 'Office Supplies'
+            }"
+          >
+            {{ vendor.expenseAccount }}
           </div>
-          <div class="table__cell table__cell--icon"><i class="i-location_on" />{{ vendor.address }}</div>
+          <div class="table__cell">{{ formatter(vendor.amount) }}</div>
+          <div class="table__cell">{{ vendor.hst.toFixed(2) }}</div>
+          <div class="table__cell">{{ formatter(vendor.billTotal) }}</div>
           <div class="table__cell">
             <Menu :list="actionsList" />
           </div>
@@ -55,12 +67,19 @@ export default {
       ]
     }
   },
+  created() {
+    console.log(this.vendors)
+  },
   computed: {
     ...mapState({
-      vendors: s => s.vendors.vendors
+      vendors: s => s.vendors.vendorExpenses
     })
   },
   methods: {
+    formatter(val) {
+      const price = new Intl.NumberFormat('en-CA', {style: 'currency', currency: 'CAD'}).format(val)
+      return price
+    },
     ...mapMutations({})
     // openModal() {
     //   this.$confirm.require({
