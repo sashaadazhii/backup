@@ -12,6 +12,7 @@
     </div>
     <div class="general__block">
       <Options />
+      <Requests />
     </div>
   </div>
 </template>
@@ -22,10 +23,11 @@ import Notes from './Notes'
 import Settings from './Settings'
 import Scheduling from './Scheduling'
 import Options from './Options'
+import Requests from './Requests'
 
 export default {
   name: 'WorkOrderGeneral',
-  components: {Info, Notes, Settings, Scheduling, Options}
+  components: {Info, Notes, Settings, Scheduling, Options, Requests}
 }
 </script>
 

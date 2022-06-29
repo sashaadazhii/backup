@@ -131,7 +131,7 @@ import dayjs from 'dayjs'
 import Ripple from '@/components/Yaro/ripple'
 
 export default {
-  name: 'WorkOrderGeneral',
+  name: 'WorkOrderGeneralOptions',
   components: {Switch, Dialog, Button, DatePicker, Input, Dropdown},
   data() {
     return {
