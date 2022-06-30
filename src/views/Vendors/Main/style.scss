@@ -1,0 +1,72 @@
+@import 'src/assets/styles/_variables.scss';
+
+.vendors {
+  &__inner {
+    background-color: $color-white;
+    border-radius: 16px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    max-height: 100%;
+  }
+}
+
+.table__header,
+.table__row,
+.table__footer {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(3, minmax(200px, 1fr)) repeat(2, minmax(300px, 1.5fr));
+  gap: 10px;
+}
+
+.table {
+  &__wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow-x: auto;
+    padding: 16px;
+    padding-top: 0;
+  }
+  &__header {
+    padding: 16px;
+    padding-bottom: 14px;
+    &-title {
+      @include font(12px, $color-grey, 500);
+    }
+  }
+  &__main {
+    overflow: auto;
+    @include hideScrollbar;
+  }
+  &__row {
+    margin-bottom: 6px;
+    border: 1px solid $color-grey-flash;
+    border-radius: 14px;
+    padding: 0 20px;
+    height: 52px;
+  }
+  &__cell {
+    @include font(14px, $color-grey-space, 600);
+    white-space: nowrap;
+    &--icon {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+      & > i {
+        @include font(16px, $color-grey);
+      }
+    }
+    &-link {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+      & > i {
+        @include font(16px, $color-bluegreen);
+      }
+    }
+    &:last-child {
+      justify-self: end;
+    }
+  }
+}

@@ -33,6 +33,11 @@
               <div class="sidebar__link-text show">Reports</div>
               <div class="sidebar__link-num"></div>
             </router-link>
+            <router-link v-if="user.role === 'admin'" class="sidebar__link" to="/vendors">
+              <div class="sidebar__link-icon"><i class="i-article" /></div>
+              <div class="sidebar__link-text show">Vendors</div>
+              <div class="sidebar__link-num"></div>
+            </router-link>
             <router-link v-if="isDev" class="sidebar__link" to="/work-orders/board">
               <div class="sidebar__link-icon"><i class="i-dashboard" /></div>
               <div class="sidebar__link-text show">Work Board</div>
