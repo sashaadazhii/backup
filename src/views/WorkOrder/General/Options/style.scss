@@ -1,1 +1,132 @@
 @import 'src/assets/styles/_variables.scss';
+
+.block {
+  &__wrapper {
+    background-color: $color-white;
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+  &__title {
+    @include font(14px, $color-blue, 600);
+    text-transform: uppercase;
+  }
+  &__row {
+    &-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      column-gap: 8px;
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-grey-flash;
+      padding-bottom: 14px;
+    }
+  }
+  &__cell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 8px;
+    & > i {
+      @include font(18px, $color-grey);
+    }
+    & > span {
+      @include font(14px, $color-grey-space, 600);
+    }
+  }
+}
+
+.section {
+  background-color: $color-grey-smoke;
+  @include border(12px, $color-grey-flash);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  margin-top: 14px;
+  &__desc {
+    @include font(13px, $color-grey-space, 500, 1.4);
+    border-bottom: 1px solid $color-grey-flash;
+    padding-bottom: 12px;
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-grey-flash;
+      padding-bottom: 12px;
+    }
+  }
+  &__title {
+    @include font(14px, $color-grey, 500);
+  }
+  &__text {
+    @include font(14px, $color-grey-space, 600);
+  }
+  &__btn {
+    @include border(12px, $color-grey-light);
+    background-color: $color-grey-flash;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+    overflow: hidden;
+    position: relative;
+
+    & > span {
+      @include font(14px, $color-grey-space, 600);
+    }
+    & > i {
+      @include font(16px, $color-grey);
+    }
+  }
+}
+
+.dialog {
+  &__inner {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__title {
+    @include font(18px, $color-grey-space, 600);
+  }
+  &__close {
+    height: 30px;
+    width: 30px;
+    display: grid;
+    place-items: center;
+    @include border(50%, $color-grey-light);
+    & > i {
+      @include font(20px, $color-grey);
+    }
+  }
+  &__textarea {
+    display: block;
+    height: 200px;
+    width: 600px;
+    resize: none;
+    @include border(12px, $color-grey-flash);
+    @include font(14px, $color-grey-space, 500);
+    padding: 16px;
+  }
+  &__btns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 18px;
+  }
+  &__btn {
+    height: 40px;
+  }
+}

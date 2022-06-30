@@ -1,1 +1,36 @@
 @import 'src/assets/styles/_variables.scss';
+
+.block {
+  &__wrapper {
+    background-color: $color-white;
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+  &__title {
+    @include font(14px, $color-blue, 600);
+    text-transform: uppercase;
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 8px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid $color-grey-flash;
+  }
+  &__cell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 8px;
+    & > i {
+      @include font(18px, $color-grey);
+    }
+    & > span {
+      @include font(14px, $color-grey-space, 500);
+    }
+  }
+}

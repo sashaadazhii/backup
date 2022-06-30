@@ -8,5 +8,8 @@
     column-gap: 20px;
   }
   &__block {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
   }
 }

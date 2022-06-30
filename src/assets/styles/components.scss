@@ -60,3 +60,27 @@
     }
   }
 }
+
+//===================================================
+
+//=================== Date Picker ===================
+@import '~v-calendar/dist/style.css';
+
+.vc-popover-caret {
+  display: none;
+}
+.vc-container {
+  border-radius: 16px;
+}
+.vc-highlight {
+  border-radius: 8px !important;
+  background-color: $color-green !important;
+  height: 36px;
+  width: 36px;
+}
+.vc-day-content {
+  border-radius: 8px;
+  height: 36px;
+  width: 36px;
+}
+//===================================================
