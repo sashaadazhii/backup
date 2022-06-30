@@ -17,8 +17,14 @@
           <template #value="{value}">
             <div class="y-dropdown-label-custom">
               <i class="i-request_page" />
-              <span v-if="value">{{ value }} </span>
+              <span v-if="value.type">{{ value.type }} </span>
               <span v-else class="-placeholder">Choose Expense Account</span>
+            </div>
+          </template>
+          <template #option="{option}">
+            <div class="field__select-label">
+              <span class="field__select-circle" :style="{background: option.color}"></span>
+              <span>{{ option.type }}</span>
             </div>
           </template>
         </Dropdown>
@@ -50,7 +56,7 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import {mapMutations, mapState} from 'vuex'
 import Button from '@/components/Yaro/Button'
 import Input from '@/components/Yaro/Input'
 import Dropdown from '@/components/Yaro/Dropdown'
@@ -64,13 +70,17 @@ export default {
   data() {
     return {
       v$: useVuelidate(),
-      expenseAccount: null,
+      expenseAccount: {},
       amount: null,
       date: null,
-      expenseAccounts: ['Parts for Relase', 'Office Supplies', 'Meals for Stuff'],
       dates: ['1 Jul 2022', '2 Jul 2022', '3 Jul 2022', '4 Jul 2022', '5 Jul 2022']
       // TODO : add file
     }
+  },
+  computed: {
+    ...mapState({
+      expenseAccounts: s => s.vendors.expensesTypes
+    })
   },
   methods: {
     ...mapMutations({
@@ -81,7 +91,7 @@ export default {
       const result = await this.v$.$validate()
       if (!result) return
       const {expenseAccount, amount, date} = this
-      const expense = {expenseAccount, amount: +amount, date, hst: 0, billTotal: 300, part: 12987}
+      const expense = {expenseAccount: expenseAccount.type, amount: +amount, date, hst: 0, billTotal: 300, part: 12987}
       this.createExpense(expense)
       this.$vfm.hide('NewExpensesModal')
     },
@@ -90,9 +100,10 @@ export default {
       if (!result) return
 
       let {expenseAccount, amount, date} = this
-      const expense = {expenseAccount, amount: +amount, date, hst: 20, billTotal: 490, part: 10342}
+      const expense = {expenseAccount: expenseAccount.type, amount: +amount, date, hst: 20, billTotal: 490, part: 10342}
       this.createExpense(expense)
-      this.expenseAccount = this.amount = this.date = null
+      this.expenseAccount = {}
+      this.amount = this.date = null
       this.v$.$reset()
     },
     errorMessage(name) {

@@ -2,7 +2,7 @@
 
 ::v-deep(.vfm__content) {
   width: 96%;
-  max-width: 600px;
+  max-width: 680px;
   border-radius: 20px;
   box-shadow: 0px 4px 84px rgba(99, 99, 112, 0.16);
   height: 430px;
@@ -143,21 +143,13 @@
       display: flex;
       align-items: center;
       column-gap: 8px;
-      & > i {
-        font-size: 18px;
-        &.blue {
-          color: $color-blue;
-        }
-        &.red {
-          color: $color-red;
-        }
-        &.green {
-          color: $color-green;
-        }
-      }
-      & > span {
-        @include font(14px, $color-space, 500);
-      }
+      @include font(14px, $color-space, 600);
+    }
+    &-circle {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: $color-grey-light;
     }
   }
 }
