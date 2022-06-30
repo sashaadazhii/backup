@@ -38,16 +38,17 @@
               <div class="sidebar__link-text show">Vendors</div>
               <div class="sidebar__link-num"></div>
             </router-link>
+            <router-link class="sidebar__link" to="/work-order">
+              <div class="sidebar__link-icon"><i class="i-directions_car" /></div>
+              <div class="sidebar__link-text show">Work Order</div>
+              <div class="sidebar__link-num"></div>
+            </router-link>
             <router-link v-if="isDev" class="sidebar__link" to="/work-orders/board">
               <div class="sidebar__link-icon"><i class="i-dashboard" /></div>
               <div class="sidebar__link-text show">Work Board</div>
               <div class="sidebar__link-num"></div>
             </router-link>
-            <router-link v-if="isDev" class="sidebar__link" to="/work-order">
-              <div class="sidebar__link-icon"><i class="i-directions_car" /></div>
-              <div class="sidebar__link-text show">Work Order</div>
-              <div class="sidebar__link-num"></div>
-            </router-link>
+
             <router-link v-if="isDev" class="sidebar__link" to="/test">
               <div class="sidebar__link-icon"><i class="i-build_circle1" /></div>
               <div class="sidebar__link-text show">Test</div>
