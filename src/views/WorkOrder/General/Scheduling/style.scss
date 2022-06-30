@@ -19,4 +19,193 @@
     text-transform: uppercase;
     margin-bottom: 16px;
   }
+  &__btn {
+    @include border(12px, $color-grey-light);
+    background-color: $color-grey-flash;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+    overflow: hidden;
+    position: relative;
+
+    & > span {
+      @include font(14px, $color-grey-space, 600);
+    }
+    & > i {
+      @include font(16px, $color-grey);
+    }
+  }
+}
+
+.dialog {
+  &__inner {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    row-gap: 18px;
+  }
+  &__header {
+    &-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 10px;
+    }
+    &-label {
+      height: 38px;
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      @include border(10px, $color-green);
+      padding: 0 10px;
+      & > i {
+        @include font(18px, $color-green);
+      }
+      & > span {
+        @include font(16px, $color-grey-space, 600);
+        & > span {
+          color: $color-green;
+        }
+      }
+    }
+  }
+  &__title {
+    @include font(18px, $color-grey-space, 600);
+  }
+  &__close {
+    height: 30px;
+    width: 30px;
+    display: grid;
+    place-items: center;
+    @include border(50%, $color-grey-light);
+    & > i {
+      @include font(20px, $color-grey);
+    }
+  }
+  &__main {
+    flex-grow: 1;
+    overflow: auto;
+    @include hideScrollbar;
+  }
+  &__textarea {
+    display: block;
+    height: 200px;
+    width: 600px;
+    resize: none;
+    @include border(12px, $color-grey-flash);
+    @include font(14px, $color-grey-space, 500);
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+}
+
+.day {
+  &__list {
+  }
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid $color-grey-flash;
+    }
+  }
+  &__header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 20px;
+    margin-bottom: 14px;
+    &-title {
+      @include font(16px, $color-grey-space, 600);
+    }
+    &-line {
+      height: 1px;
+      background-color: $color-grey-flash;
+    }
+    &-close {
+      height: 26px;
+      width: 26px;
+      display: grid;
+      place-items: center;
+      @include border(50%, $color-grey-light);
+      & > i {
+        @include font(16px, $color-grey);
+      }
+    }
+    &--close {
+      grid-template-columns: auto 1fr 26px;
+    }
+  }
+  &__main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 14px;
+  }
+  &__btn {
+    @include border(12px, $color-grey-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+    width: 100%;
+    height: 52px;
+    background-color: $color-grey-flash;
+    margin-top: 14px;
+    & > i {
+      @include font(16px, $color-grey);
+    }
+    & > span {
+      @include font(14px, $color-grey-space, 600);
+    }
+  }
+}
+
+.y-number {
+  &__wrapper {
+  }
+  &__title {
+    @include font(14px, $color-grey-dark, 600);
+    margin-bottom: 12px;
+  }
+  &__inner {
+    background-color: $color-grey-smoke;
+    @include border(12px, $color-grey-flash);
+    height: 46px;
+    display: grid;
+    grid-template-columns: 28px 1fr 28px;
+    align-items: center;
+    padding: 0 12px;
+    & > i {
+      height: 28px;
+      width: 28px;
+      display: grid;
+      place-items: center;
+      background-color: $color-green;
+      border-radius: 50%;
+      cursor: pointer;
+      @include font(14px, $color-white);
+
+      &.-disabled {
+        color: $color-grey;
+        background-color: $color-grey-flash;
+        cursor: default;
+      }
+    }
+  }
+  &__text {
+    justify-self: center;
+    @include font(14px, $color-grey, 600);
+  }
+  &__dec {
+  }
+  &__inc {
+  }
 }

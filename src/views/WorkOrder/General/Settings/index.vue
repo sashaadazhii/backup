@@ -26,7 +26,7 @@
       v-model="timeComing"
       mode="dateTime"
       :minute-increment="5"
-      :popover="{visibility: 'focus'}"
+      :popover="{visibility: 'focus', positionFixed: true}"
       locale="en"
       :masks="{inputDateTime: 'DD MMM YYYY hh:mm a'}"
     >
@@ -38,7 +38,7 @@
       v-model="timePromised"
       mode="dateTime"
       :minute-increment="5"
-      :popover="{visibility: 'focus'}"
+      :popover="{visibility: 'focus', positionFixed: true}"
       locale="en"
       :masks="{inputDateTime: 'DD MMM YYYY hh:mm a'}"
     >

@@ -22,7 +22,7 @@
             <DatePicker
               v-model="localNeedRideDate"
               mode="time"
-              :popover="{visibility: 'focus'}"
+              :popover="{visibility: 'focus', positionFixed: true}"
               locale="en"
               :masks="{inputTime: 'hh:mm a'}"
               :minute-increment="10"
@@ -68,7 +68,7 @@
               <div class="dialog__title">Courtasy vehicle</div>
               <button class="dialog__close" @click="closeCourtasyVehicleDialog"><i class="i-circle_close" /></button>
             </div>
-            <DatePicker v-model="localCourtasyVehicleDate" :popover="{visibility: 'focus'}" locale="en" is-range :masks="{input: 'DD MMM YYYY'}">
+            <DatePicker v-model="localCourtasyVehicleDate" :popover="{visibility: 'focus', positionFixed: true}" locale="en" is-range :masks="{input: 'DD MMM YYYY'}">
               <template v-slot="{inputValue, inputEvents}">
                 <Input :modelValue="formattedRange(inputValue)" v-on="inputEvents.start" title="Date" iconLeft="i-calendar" placeholder="Choose Date" />
               </template>
