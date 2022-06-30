@@ -19,9 +19,9 @@
         </div>
         <div v-else class="modal__colors">
           <Colors v-model="color" />
-          <Input v-model.trim="type" placeholder="Enter Expense Title" />
-          <Button label="Cancel" border @click="isShowed = !isShowed" />
-          <Button label="Save" @click="add" />
+          <Input v-model.trim="type" placeholder="Enter Expense Title" :error="v$.type.$error" :errorMessage="errorMessage('type')" />
+          <Button label="Cancel" class="modal__btn-large" border @click="isShowed = !isShowed" />
+          <Button label="Save" class="modal__btn-large" @click="add" />
         </div>
       </div>
     </div>
@@ -33,12 +33,15 @@ import {mapMutations, mapState} from 'vuex'
 import Button from '@/components/Yaro/Button'
 import Colors from '@/components/Yaro/Colors'
 import Input from '@/components/Yaro/Input'
+import useVuelidate from '@vuelidate/core'
+import {required, minLength, helpers} from '@vuelidate/validators'
 
 export default {
   name: 'EditModal',
   components: {Button, Colors, Input},
   data() {
     return {
+      v$: useVuelidate(),
       type: null,
       color: null,
       isShowed: false
@@ -53,10 +56,26 @@ export default {
     ...mapMutations({
       createExpensesType: 'vendors/createExpensesType'
     }),
-    add() {
-      const {type, color} = this
-      const expensesType = {type, color}
-      this.createExpensesType(expensesType)
+    async add() {
+      const result = await this.v$.$validate()
+      if (!result) return
+      else {
+        const {type, color} = this
+        const expensesType = {type, color}
+        this.createExpensesType(expensesType)
+      }
+    },
+    errorMessage(name) {
+      const error = this.v$.$errors.find(err => err.$property === name)
+      if (error) return error.$message
+    }
+  },
+  validations() {
+    return {
+      type: {
+        required: helpers.withMessage('Expense Account is required.', required),
+        minLength: helpers.withMessage('Expense Account must have at least 3 letters.', minLength(3))
+      }
     }
   }
 }

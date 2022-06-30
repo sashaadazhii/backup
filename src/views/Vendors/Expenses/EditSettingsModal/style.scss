@@ -101,6 +101,10 @@
   &__btn {
     display: inline-block;
     align-items: center;
+
+    &-large {
+      height: 46px;
+    }
   }
   &__colors {
     display: grid;
