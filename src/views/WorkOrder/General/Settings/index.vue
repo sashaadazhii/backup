@@ -22,26 +22,12 @@
       </div>
       <Switch v-model="partsOrdered" />
     </div>
-    <DatePicker
-      v-model="timeComing"
-      mode="dateTime"
-      :minute-increment="5"
-      :popover="{visibility: 'focus', positionFixed: true}"
-      locale="en"
-      :masks="{inputDateTime: 'DD MMM YYYY hh:mm a'}"
-    >
+    <DatePicker v-model="timeComing" mode="dateTime" :minute-increment="5" locale="en-Ca">
       <template v-slot="{inputValue, inputEvents}">
         <Input :modelValue="`${inputValue}`" v-on="inputEvents" title="Time coming *" iconLeft="i-timer orange" placeholder="Choose time & date" />
       </template>
     </DatePicker>
-    <DatePicker
-      v-model="timePromised"
-      mode="dateTime"
-      :minute-increment="5"
-      :popover="{visibility: 'focus', positionFixed: true}"
-      locale="en"
-      :masks="{inputDateTime: 'DD MMM YYYY hh:mm a'}"
-    >
+    <DatePicker v-model="timePromised" mode="dateTime" :minute-increment="5" locale="en-Ca">
       <template v-slot="{inputValue, inputEvents}">
         <Input :modelValue="`${inputValue}`" v-on="inputEvents" title="Time promised" iconLeft="i-timer green" placeholder="Choose time & date" />
       </template>

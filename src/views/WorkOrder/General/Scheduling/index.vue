@@ -2,7 +2,7 @@
   <div class="block__wrapper">
     <div class="block__title">Scheduling</div>
     <div class="block__inner">
-      <DatePicker v-model="date" :popover="{visibility: 'focus', positionFixed: true}" locale="en" :masks="{input: 'DD MMM YYYY'}">
+      <DatePicker v-model="date" locale="en-Ca">
         <template v-slot="{inputValue, inputEvents}">
           <Input :modelValue="`${inputValue}`" v-on="inputEvents" title="Job date" iconLeft="i-timer orange" placeholder="Choose date" />
         </template>
@@ -50,7 +50,7 @@
                 <button v-if="localDays.length > 1" class="day__header-close" @click="remove(idx)"><i class="i-remove_circle_outline" /></button>
               </div>
               <div class="day__main">
-                <DatePicker v-model="day.date" :popover="{visibility: 'focus', positionFixed: true}" locale="en" :masks="{input: 'DD MMM YYYY'}">
+                <DatePicker v-model="day.date" locale="en-Ca">
                   <template v-slot="{inputValue, inputEvents}">
                     <Input :modelValue="`${inputValue}`" v-on="inputEvents" title="Date" iconLeft="i-timer orange" placeholder="Choose date" />
                   </template>

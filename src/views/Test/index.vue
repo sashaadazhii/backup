@@ -1,15 +1,16 @@
 <template>
   <div class="wrap">
-    <DatePicker v-model="date" mode="dateTime" :minute-increment="5" :popover="{visibility: 'focus'}" locale="en">
+    <!-- <DatePicker v-model="date" mode="dateTime" :minute-increment="5"> -->
+
+    <DatePicker v-model="date" class="custom-date-picker" >
       <template v-slot="{inputValue, inputEvents}">
         <Input :modelValue="`${inputValue}`" v-on="inputEvents" />
       </template>
     </DatePicker>
-    <!-- <DatePicker v-model="range" is-range>
-      <template v-slot="{inputValue, inputEvents}">
-        <input :value="`${inputValue.start} ~ ${inputValue.end}`" v-on="inputEvents.start" />
-      </template>
-    </DatePicker> -->
+    <!-- <Calendar v-model="date" is-range :columns="$screens({default: 1, lg: 2})"  locale="en-CA" :first-day-of-week="2"  /> -->
+    <!-- <Calendar v-model="date" /> -->
+    <!-- <y-calendar v-model="date" /> -->
+    <!-- <y-date-picker v-model="date" class="custom-date-picker" /> -->
   </div>
 </template>
 
@@ -19,7 +20,8 @@ import {Calendar, DatePicker} from 'v-calendar'
 import Input from '@/components/Yaro/Input'
 export default {
   name: 'test',
-  components: {DatePicker, Input},
+  components: {Input, DatePicker},
+  // components: {Calendar},
   data() {
     return {
       date: new Date(),
@@ -27,11 +29,12 @@ export default {
         start: new Date(2020, 9, 12),
         end: new Date(2020, 9, 16)
       },
-      value: null
+      value: null,
     }
   }
 }
 </script>
+<style lang="scss"></style>
 <style lang="scss" scoped>
 .wrap {
   padding: 100px;

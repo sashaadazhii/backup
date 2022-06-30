@@ -6,7 +6,7 @@ import store from './store'
 // import axios from 'axios'
 
 import {SetupCalendar} from 'v-calendar'
-import 'v-calendar/dist/style.css';
+
 import Maska from 'maska'
 import {vfmPlugin} from 'vue-final-modal'
 import dayjs from 'dayjs'
@@ -42,6 +42,20 @@ app
   .use(Maska)
   .use(Yaro, {ripple: true})
   .use(ConfirmationDialog)
-  .use(SetupCalendar, {})
+  .use(SetupCalendar, {
+    masks: {
+      input: 'DD MMM YYYY',
+      inputDateTime: 'DD MMM YYYY hh:mm a',
+      inputTime: 'hh:mm a'
+    },
+    datePicker: {
+      popover: {visibility: 'click', positionFixed: true}
+    },
+    locales: {
+      'en-Ca': {
+        firstDayOfWeek: 2
+      }
+    }
+  })
   .component('y-input', InputComponent)
   .mount('#app')

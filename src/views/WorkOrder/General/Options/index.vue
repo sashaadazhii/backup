@@ -14,19 +14,12 @@
               <div class="dialog__title">Ride to work/home</div>
               <button class="dialog__close" @click="closeNeedRideDialog"><i class="i-circle_close" /></button>
             </div>
-            <DatePicker v-model="localNeedRideDate" :popover="{visibility: 'focus'}" locale="en" :masks="{input: 'DD MMM YYYY'}">
+            <DatePicker v-model="localNeedRideDate" locale="en-Ca">
               <template v-slot="{inputValue, inputEvents}">
                 <Input :modelValue="inputValue" v-on="inputEvents" title="Date" iconLeft="i-calendar" placeholder="Choose Date" />
               </template>
             </DatePicker>
-            <DatePicker
-              v-model="localNeedRideDate"
-              mode="time"
-              :popover="{visibility: 'focus', positionFixed: true}"
-              locale="en"
-              :masks="{inputTime: 'hh:mm a'}"
-              :minute-increment="10"
-            >
+            <DatePicker v-model="localNeedRideDate" mode="time" locale="en-Ca" :minute-increment="10">
               <template v-slot="{inputValue, inputEvents}">
                 <Input :modelValue="inputValue" v-on="inputEvents" title="Time" iconLeft="i-time" placeholder="Choose Time" />
               </template>
@@ -68,11 +61,13 @@
               <div class="dialog__title">Courtasy vehicle</div>
               <button class="dialog__close" @click="closeCourtasyVehicleDialog"><i class="i-circle_close" /></button>
             </div>
-            <DatePicker v-model="localCourtasyVehicleDate" :popover="{visibility: 'focus', positionFixed: true}" locale="en" is-range :masks="{input: 'DD MMM YYYY'}">
+            <!--
+    <DatePicker v-model="localCourtasyVehicleDate" :popover="{visibility: 'focus', positionFixed: true}" locale="en" is-range :masks="{input: 'DD MMM YYYY'}">
               <template v-slot="{inputValue, inputEvents}">
                 <Input :modelValue="formattedRange(inputValue)" v-on="inputEvents.start" title="Date" iconLeft="i-calendar" placeholder="Choose Date" />
               </template>
             </DatePicker>
+            -->
             <Dropdown v-model="localCourtasyVehicleCar" :options="carsList" title="Choose vehicle">
               <template #value="{value}">
                 <div class="y-dropdown-label-custom">
