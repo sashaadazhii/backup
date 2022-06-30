@@ -6,21 +6,22 @@
         <button class="modal__close" @click="close"><i class="i-circle_close" /></button>
       </div>
       <div class="modal__main">
-        <y-input
+        <Input
           v-model.trim="businessName"
           title="Business Name"
           placeholder="Enter Business Name"
           :error="v$.businessName.$error"
           :errorMessage="errorMessage('businessName')"
         />
-        <y-input
+
+        <Input
           v-model.trim="mainContactPerson"
           title="Main Contact Person"
           placeholder="Enter Main Contact Person"
           :error="v$.mainContactPerson.$error"
           :errorMessage="errorMessage('mainContactPerson')"
         />
-        <y-input
+        <Input
           v-model="phone"
           title="Phone"
           placeholder="Enter Phone"
@@ -28,7 +29,7 @@
           v-maska="'(###) ### ####'"
           :errorMessage="errorMessage('phone')"
         />
-        <y-input v-model.trim="address" title="Address" placeholder="Enter address" :error="v$.address.$error" :errorMessage="errorMessage('address')" />
+        <Input v-model.trim="address" title="Address" placeholder="Enter address" :error="v$.address.$error" :errorMessage="errorMessage('address')" />
       </div>
       <div class="modal__footer">
         <Button label="Cancel" border @click="close" />
@@ -39,29 +40,23 @@
 </template>
 
 <script>
-import {mapMutations, mapState} from 'vuex'
+import {mapMutations} from 'vuex'
 import Button from '@/components/Yaro/Button'
+import Input from '@/components/Yaro/Input'
 import useVuelidate from '@vuelidate/core'
 import {required, minLength, maxLength, helpers} from '@vuelidate/validators'
 
 export default {
   name: 'NewVendorModal',
-  components: {Button},
+  components: {Button, Input},
   data() {
     return {
       v$: useVuelidate(),
       businessName: null,
       mainContactPerson: null,
       phone: null,
-      address: null,
-      isLoading: false
+      address: null
     }
-  },
-
-  computed: {
-    ...mapState({
-      // company: s => s.company.settings.settings
-    })
   },
   methods: {
     ...mapMutations({
@@ -69,7 +64,6 @@ export default {
     }),
 
     async createVendor() {
-      if (this.isLoading) return
       const result = await this.v$.$validate()
       if (!result) return
 
@@ -81,13 +75,8 @@ export default {
         })
         .join('')
       const vendor = {businessName, mainContactPerson, address, phone: formattedPhone}
-      try {
-        this.isLoading = true
-        this.create(vendor)
-        this.$vfm.hide('NewVendorModal')
-      } finally {
-        this.isLoading = false
-      }
+      this.create(vendor)
+      this.$vfm.hide('NewVendorModal')
     },
     errorMessage(name) {
       const error = this.v$.$errors.find(err => err.$property === name)
