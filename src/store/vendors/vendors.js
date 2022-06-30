@@ -6,7 +6,8 @@ export default {
     vendors: vendorsList,
     vendor: {},
     searchParams: null,
-    vendorExpenses,
+    expenses: vendorExpenses,
+    expense: {},
     vendorReport
   },
   mutations: {
@@ -15,6 +16,12 @@ export default {
     },
     setVendor(state, vendor) {
       state.vendor = vendor
+    },
+    setExpenses(state, expenses) {
+      state.expenses = expenses
+    },
+    setExpense(state, expense) {
+      state.expense = expense
     },
     setSearch(state, searchParams) {
       state.searchParams = searchParams
@@ -27,6 +34,10 @@ export default {
     create(state, vendor) {
       state.vendor = vendor
       state.vendors.unshift(vendor)
+    },
+    createExpense(state, expense) {
+      state.expense = expense
+      state.expenses.unshift(expense)
     },
   },
   actions: {}

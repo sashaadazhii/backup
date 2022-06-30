@@ -28,7 +28,7 @@
         <div class="filter filter--light">
           <div class="filter__icon"><i class="i-settings_menu" /></div>
         </div>
-        <Button label="Add New Expense" size="small" icon="i-add_circle" class="filter__btn" />
+        <Button label="Add New Expense" size="small" icon="i-add_circle" class="filter__btn" @click="openModal" />
       </div>
     </div>
   </div>
@@ -36,10 +36,21 @@
 
 <script>
 import Button from '@/components/Yaro/Button'
+import NewExpensesModal from '../NewExpenseModal'
 
 export default {
   name: 'ExpensesHeader',
-  components: {Button}
+  components: {Button},
+  methods: {
+    openModal() {
+      this.$vfm.show({
+        component: NewExpensesModal,
+        bind: {
+          name: 'NewExpensesModal'
+        }
+      })
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

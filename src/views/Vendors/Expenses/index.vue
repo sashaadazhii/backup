@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     ...mapState({
-      vendors: s => s.vendors.vendorExpenses
+      vendors: s => s.vendors.expenses
     })
   },
   methods: {
