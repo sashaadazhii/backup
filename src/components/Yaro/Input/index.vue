@@ -3,7 +3,6 @@
     class="field__label"
     :class="{
       'right-text': rightText,
-      'left-text': leftText,
       'icon-left': iconLeft,
       'icon-right': iconRight,
       error,
