@@ -14,7 +14,7 @@
     <Dropdown v-model="item" :options="list" title="Responsible Service Advisor" size="medium">
       <template #value="{value}">
         <div class="y-dropdown-label-custom">
-          <span>Time Period:</span>
+          <span class="-title">Time Period:</span>
           <span v-if="value">{{ value }}</span>
           <span v-else class="-placeholder">Choose Service Advisor</span>
         </div>
