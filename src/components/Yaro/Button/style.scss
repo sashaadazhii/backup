@@ -10,7 +10,7 @@
   text-align: center;
   overflow: hidden;
   position: relative;
-  padding: 0 18px;
+  padding: 0 10px;
   height: 36px;
   background-color: $color-green;
   border-radius: 10px;
@@ -59,7 +59,7 @@
         flex: 0 0 auto;
       }
       & > .y-button--icon {
-        font-size: 20px;
+        // font-size: 20px;
       }
     }
   }
@@ -67,6 +67,11 @@
   &--border {
     border-color: $color-grey-light;
     background-color: transparent;
+    &.y-button--icon-only {
+      & > i {
+        color: $color-grey;
+      }
+    }
     & > .y-button {
       &--label {
         color: $color-grey-space;
@@ -75,6 +80,27 @@
         color: $color-grey-space;
       }
     }
+    // ======== border color start ========
+    &.y-button--grey {
+      background-color: $color-grey-smoke;
+      & > .y-button {
+        &--label,
+        &--icon {
+          color: $color-grey;
+        }
+      }
+      &:hover {
+        background-color: $color-grey-smoke;
+      }
+      &:active {
+        background-color: $color-grey-smoke;
+      }
+      &:disabled,
+      &--disabled {
+        background-color: $color-grey-smoke;
+      }
+    }
+    // ======== border color end ========
     &:hover {
       background-color: transparent;
       border-color: $color-grey;
@@ -210,6 +236,13 @@
       &__icon {
         font-size: 18px;
       }
+    }
+  }
+  // ======== position ========
+  &--center {
+    justify-content: center;
+    & > .y-button--label {
+      flex: 0;
     }
   }
   // ======== color ========
