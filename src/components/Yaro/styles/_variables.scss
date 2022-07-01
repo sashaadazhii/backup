@@ -34,7 +34,7 @@ $animationDuration: 0.2s;
 
 // ================= Mixins =================
 
-@mixin font($size: 16px, $color: $color-space, $weight: 400, $line-height: 1) {
+@mixin font($size: 16px, $color: $color-grey-space, $weight: 400, $line-height: 1) {
   @if $size != _ {
     font-size: $size;
   }
