@@ -58,6 +58,9 @@
     &.-placeholder {
       @include font(14px, $color-grey, 500);
     }
+    &.-title {
+      @include font(14px, $color-grey, 600);
+    }
   }
 }
 

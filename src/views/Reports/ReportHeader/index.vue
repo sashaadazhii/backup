@@ -40,11 +40,8 @@
 </template>
 
 <script>
-import Button from '@/components/Yaro/Button'
-
 export default {
   name: 'ReportsHeader'
-  // components: {Button}
 }
 </script>
 <style lang="scss" scoped>
