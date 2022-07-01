@@ -2,15 +2,34 @@
   <div class="wrap">
     <!-- <DatePicker v-model="date" mode="dateTime" :minute-increment="5"> -->
 
-    <DatePicker v-model="date" class="custom-date-picker" >
+    <DatePicker v-model="date">
       <template v-slot="{inputValue, inputEvents}">
-        <Input :modelValue="`${inputValue}`" v-on="inputEvents" />
+        <Input :modelValue="`${inputValue}`" v-on="inputEvents" size="medium" />
       </template>
     </DatePicker>
     <!-- <Calendar v-model="date" is-range :columns="$screens({default: 1, lg: 2})"  locale="en-CA" :first-day-of-week="2"  /> -->
     <!-- <Calendar v-model="date" /> -->
     <!-- <y-calendar v-model="date" /> -->
     <!-- <y-date-picker v-model="date" class="custom-date-picker" /> -->
+    <Dropdown v-model="item" :options="list" title="Responsible Service Advisor" size="medium">
+      <template #value="{value}">
+        <div class="y-dropdown-label-custom">
+          <span>Time Period:</span>
+          <span v-if="value">{{ value }}</span>
+          <span v-else class="-placeholder">Choose Service Advisor</span>
+        </div>
+      </template>
+      <template #option="{option}">
+        <div class="y-dropdown-item-custom">
+          <i class="i-work_order blue" />
+          <span>{{ option }}</span>
+        </div>
+      </template>
+    </Dropdown>
+    <Button icon="i-print" border />
+    <div style="display: flex;">
+      <Button icon="i-print" border label="asfsafaf" grey style="width: 100%" position="center" size="huge" />
+    </div>
   </div>
 </template>
 
@@ -18,9 +37,12 @@
 import {mapActions, mapState, mapMutations} from 'vuex'
 import {Calendar, DatePicker} from 'v-calendar'
 import Input from '@/components/Yaro/Input'
+import Dropdown from '@/components/Yaro/Dropdown'
+import Button from '@/components/Yaro/Button'
+
 export default {
   name: 'test',
-  components: {Input, DatePicker},
+  components: {Input, DatePicker, Dropdown, Button},
   // components: {Calendar},
   data() {
     return {
@@ -30,6 +52,8 @@ export default {
         end: new Date(2020, 9, 16)
       },
       value: null,
+      item: null,
+      list: ['afasf', 'sdgsdgshsd', 'sdgoiqewrqwr', 'gasgagsasg']
     }
   }
 }

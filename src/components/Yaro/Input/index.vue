@@ -3,10 +3,12 @@
     class="field__label"
     :class="{
       'right-text': rightText,
+      'left-text': leftText,
       'icon-left': iconLeft,
       'icon-right': iconRight,
       error,
-      'error-message': errorMessage
+      'error-message': errorMessage,
+      medium: size === 'medium'
     }"
   >
     <div v-if="title" class="field__title">{{ title }}</div>
@@ -67,6 +69,10 @@ export default {
       default: false
     },
     errorMessage: {
+      type: String,
+      default: null
+    },
+    size: {
       type: String,
       default: null
     }
