@@ -45,6 +45,7 @@ export default {
       state.vendor = vendor
       state.vendors.unshift(vendor)
     },
+
     createExpense(state, expense) {
       state.expense = expense
       state.expenses.unshift(expense)

@@ -76,8 +76,8 @@ export default {
       fetchCustomers: 'company/customers/fetch',
       fetchVehicles: 'company/vehicles/fetchVehicles'
     }),
-    async selectCustomer() {
-      this.vehicles = await this.fetchVehicles()
+    async selectCustomer({value}) {
+      this.vehicles = await this.fetchVehicles(value.uid)
     }
   }
 }
