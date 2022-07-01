@@ -23,22 +23,17 @@
           </template>
           <template #option="{option}">
             <div class="field__select-label">
-              <span class="field__select-circle" :style="{background: option.color}"></span>
+              <span class="circle" :style="{background: option.color}"></span>
               <span>{{ option.type }}</span>
             </div>
           </template>
         </Dropdown>
         <div class="modal__row">
-          <!-- TODO: replace with Calendar -->
-          <Dropdown v-model="date" :options="dates" title="Date" placeholder="Choose Date" :error="v$.date.$error" :errorMessage="errorMessage('date')">
-            <template #value="{value}">
-              <div class="y-dropdown-label-custom">
-                <i class="i-calendar" />
-                <span v-if="value">{{ value }} </span>
-                <span v-else class="-placeholder">Choose Date</span>
-              </div>
+          <DatePicker v-model="date" :masks="masks" :model-config="modelConfig">
+            <template v-slot="{inputValue, inputEvents}">
+              <Input :modelValue="`${inputValue}`" v-on="inputEvents" placeholder="Choose Date" title="Date" iconLeft="i-calendar" />
             </template>
-          </Dropdown>
+          </DatePicker>
           <Input v-model.trim="amount" title="Amount" placeholder="Enter Amount" :error="v$.amount.$error" :errorMessage="errorMessage('amount')" />
         </div>
         <div class="modal__file-wrap">
@@ -60,20 +55,27 @@ import {mapMutations, mapState} from 'vuex'
 import Button from '@/components/Yaro/Button'
 import Input from '@/components/Yaro/Input'
 import Dropdown from '@/components/Yaro/Dropdown'
+import {Calendar, DatePicker} from 'v-calendar'
 
 import useVuelidate from '@vuelidate/core'
 import {required, helpers, numeric} from '@vuelidate/validators'
 
 export default {
   name: 'NewExpensesModal',
-  components: {Button, Input, Dropdown},
+  components: {Button, Input, Dropdown, DatePicker},
   data() {
     return {
       v$: useVuelidate(),
       expenseAccount: {},
       amount: null,
       date: null,
-      dates: ['1 Jul 2022', '2 Jul 2022', '3 Jul 2022', '4 Jul 2022', '5 Jul 2022']
+      masks: {
+        input: 'MMM D, YYYY'
+      },
+      modelConfig: {
+        type: 'string',
+        mask: 'MMM D, YYYY'
+      }
       // TODO : add file
     }
   },
