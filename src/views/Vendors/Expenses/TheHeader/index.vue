@@ -25,10 +25,10 @@
         </div>
       </div>
       <div class="filter__right">
+        <Button label="Add New Expense" size="small" icon="i-add_circle" class="filter__btn" @click="openModal" />
         <div class="filter filter--light">
-          <div class="filter__icon"><i class="i-settings_menu" /></div>
+          <div class="filter__icon" @click="openEditModal"><i class="i-settings_menu" /></div>
         </div>
-        <Button label="Add New Expense" size="small" icon="i-add_circle" class="filter__btn" />
       </div>
     </div>
   </div>
@@ -36,10 +36,33 @@
 
 <script>
 import Button from '@/components/Yaro/Button'
+import NewExpensesModal from '../NewExpenseModal'
+import EditSettingsModal from '../EditSettingsModal'
 
 export default {
   name: 'ExpensesHeader',
-  components: {Button}
+  components: {Button},
+  methods: {
+    openModal() {
+      this.$vfm.show({
+        component: NewExpensesModal,
+        bind: {
+          name: 'NewExpensesModal'
+        }
+      })
+    },
+    openEditModal() {
+      this.$vfm.show(
+        {
+          component: EditSettingsModal,
+          bind: {
+            name: 'EditSettingsModal'
+          }
+        },
+        this.service
+      )
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

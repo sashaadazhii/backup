@@ -12,23 +12,7 @@
         <div class="table__header-title"></div>
       </div>
       <div class="table__main">
-        <div v-for="(vendor, idx) of vendors" :key="idx" class="table__row">
-          <div class="table__cell table__cell--icon">
-            <i class="i-calendar" />
-            {{ vendor.date }}
-          </div>
-          <div class="table__cell">{{ vendor.part }}</div>
-          <div class="table__cell label" :class="labelColor(vendor.expenseAccount)">
-            {{ vendor.expenseAccount }}
-          </div>
-          <div class="table__cell">{{ formatter(vendor.amount) }}</div>
-          <div class="table__cell">{{ vendor.hst.toFixed(2) }}</div>
-          <!-- TODO: replace with Label -->
-          <div class="table__cell label-square">{{ formatter(vendor.billTotal) }}</div>
-          <div class="table__cell">
-            <Menu :list="actionsList" />
-          </div>
-        </div>
+        <Expense v-for="(expense, idx) of expenses" :key="idx" :expense="expense" />
       </div>
     </div>
   </div>
@@ -36,46 +20,21 @@
 <script>
 import {mapState} from 'vuex'
 import Header from './TheHeader'
-import Menu from '@/components/Yaro/Menu'
+import Expense from './Expense'
 
 export default {
   name: 'TheVendors',
-  components: {Header, Menu},
-  data() {
-    return {
-      actionsList: [
-        {
-          label: 'Edit',
-          icon: 'i-edit',
-          command: () => {}
-        },
-        {
-          label: 'Delete',
-          icon: 'i-remove_circle red',
-          command: () => {}
-        }
-      ]
-    }
-  },
+  components: {Header, Expense},
+
   computed: {
     ...mapState({
-      vendors: s => s.vendors.vendorExpenses
+      expenses: s => s.vendors.expenses
     })
   },
   methods: {
     formatter(val) {
       const price = new Intl.NumberFormat('en-CA', {style: 'currency', currency: 'CAD'}).format(val)
       return price
-    },
-    labelColor(expenseAccount) {
-      switch (expenseAccount) {
-        case 'Parts for Relase':
-          return 'blue'
-        case 'Meals for Stuff':
-          return 'orange'
-        case 'Office Supplies':
-          return 'green'
-      }
     }
   }
 }
