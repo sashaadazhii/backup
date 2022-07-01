@@ -1,10 +1,14 @@
 @import 'src/assets/styles/_variables.scss';
+
 .header {
+  &__wrapper {
+    border-bottom: 1px solid $color-lightgrey;
+  }
   &__inner {
     padding: 12px 20px;
     padding-left: 60px;
     padding-bottom: 0;
-    border-bottom: 1px solid $color-lightgrey;
+    transform: translateY(1px);
   }
   &__top {
     display: flex;

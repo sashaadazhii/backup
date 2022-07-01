@@ -2,6 +2,7 @@
   <div class="header__wrapper">
     <div class="header__inner">
       <div class="header__top">
+        <div class="header__icon"><i class="i-report" /></div>
         <div class="header__title">Vendors</div>
       </div>
       <div class="header__bottom">
