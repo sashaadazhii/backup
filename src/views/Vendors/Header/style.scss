@@ -1,10 +1,13 @@
 @import 'src/assets/styles/_variables.scss';
 .header {
+  &__wrapper {
+    border-bottom: 1px solid $color-lightgrey;
+  }
   &__inner {
-    padding: 18px 20px;
+    padding: 12px 20px;
     padding-left: 60px;
     padding-bottom: 0;
-    border-bottom: 1px solid $color-lightgrey;
+    transform: translateY(1px);
   }
   &__top {
     display: flex;
@@ -12,6 +15,17 @@
   }
   &__title {
     @include font(20px, $color-space, 600);
+  }
+  &__icon {
+    padding: 5px;
+    background-color: rgba($color-green, 0.1);
+    line-height: 1;
+    border-radius: 50%;
+    margin-right: 12px;
+    line-height: 0;
+    & > i {
+      @include font(20px, $color-green);
+    }
   }
   &__bottom {
     display: grid;
