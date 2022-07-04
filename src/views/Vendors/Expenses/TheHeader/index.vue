@@ -59,9 +59,6 @@
     <div class="header__right">
       <Button label="Add New Expense" size="small" icon="i-add_circle" class="filter__btn" @click="openModal" />
       <Button border grey icon="i-settings_menu" @click="openEditModal" />
-      <!-- <div class="filter filter--light">
-        <div class="filter__icon" @click="openEditModal"><i class="i-settings_menu" /></div>
-      </div> -->
     </div>
   </div>
 </template>

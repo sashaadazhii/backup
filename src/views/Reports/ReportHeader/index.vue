@@ -1,47 +1,81 @@
 <template>
   <div class="header__wrapper">
-    <div class="filter-wrap">
-      <div class="filter__left">
-        <div class="filter">
-          <div class="filter__title">Time Period:</div>
-          <div class="filter__text">This month</div>
-          <div class="filter__icon"><i class="i-keyboard_arrow_down" /></div>
-        </div>
-        <div class="filter">
-          <div class="filter__title">Date range:</div>
-          <div class="filter__icon"><i class="i-calendar" /></div>
-          <div class="filter__text">1 Jul 2022 ~ 6 Jul 2022</div>
-          <div class="filter__icon"><i class="i-keyboard_arrow_down" /></div>
-        </div>
-        <div class="filter">
-          <div class="filter__title">Display by:</div>
-          <div class="filter__text">Day</div>
-          <div class="filter__icon"><i class="i-keyboard_arrow_down" /></div>
-        </div>
-      </div>
-      <div class="filter__right">
-        <div class="filter filter--light">
-          <div class="filter__icon"><i class="i-print" /></div>
-        </div>
-        <div class="filter filter--light">
-          <div class="filter__icon"><i class="i-email" /></div>
-        </div>
-        <div class="filter">
-          <div class="filter__icon"><i class="i-save_alt" /></div>
-          <div class="filter__title">Export Report</div>
-        </div>
-      </div>
-
-      <!-- <Button icon="i-print" border class="reports__btn--icon" /> -->
-      <!-- <Button icon="i-email" border class="reports__btn--icon" /> -->
-      <!-- <Button icon="i-save_alt" border label="Export Report" class="reports__btn" /> -->
+    <div class="header__left">
+      <Dropdown v-model="period" :options="periods" size="medium">
+        <template #value="{value}">
+          <div class="y-dropdown-label-custom">
+            <span class="-title">Time Period:</span>
+            <span v-if="value">{{ value }} </span>
+            <span v-else>All</span>
+          </div>
+        </template>
+        <template #option="{option}">
+          <div class="field__select-label">
+            <span>{{ option }}</span>
+          </div>
+        </template>
+      </Dropdown>
+      <DatePicker v-model="range" is-range class="field__label-wrap">
+        <template v-slot="{inputValue, inputEvents}">
+          <label class="field__label">
+            <span class="field__placeholder">Date range:</span>
+            <span class="field__input-wrap">
+              <i class="i-calendar" />
+              <input :value="formattedRange(inputValue)" v-on="inputEvents.start" class="field__input" />
+              <span class="field__input-value">{{ formattedRange(inputValue) }}</span>
+            </span>
+          </label>
+        </template>
+      </DatePicker>
+      <Dropdown v-model="sorted" :options="sortList" size="medium">
+        <template #value="{value}">
+          <div class="y-dropdown-label-custom">
+            <span class="-title">Display by:</span>
+            <span v-if="value">{{ value }} </span>
+            <span v-else>All</span>
+          </div>
+        </template>
+        <template #option="{option}">
+          <div class="field__select-label">
+            <span>{{ option }}</span>
+          </div>
+        </template>
+      </Dropdown>
+    </div>
+    <div class="header__right">
+      <Button border grey icon="i-print" />
+      <Button border grey icon="i-email" />
+      <Button label="Export Report" border grey icon="i-save_alt" />
     </div>
   </div>
 </template>
 
 <script>
+import Button from '@/components/Yaro/Button'
+import Dropdown from '@/components/Yaro/Dropdown'
+import {Calendar, DatePicker} from 'v-calendar'
 export default {
-  name: 'ReportsHeader'
+  name: 'ReportsHeader',
+  components: {Button, Dropdown, DatePicker},
+  data() {
+    return {
+      range: {
+        start: new Date(),
+        end: new Date()
+      },
+      periods: ['3 days', 'Week', 'This month', '3 months', '6 months', 'Year'],
+      period: 'This month',
+      sortList: ['Day', 'Expense Account', 'Amount', 'HST'],
+      sorted: 'Day'
+    }
+  },
+  methods: {
+    formattedRange(range) {
+      if (!range.start) return ''
+      if (range.start === range.end) return `${range.start}`
+      return `${range.start} ~ ${range.end}`
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
