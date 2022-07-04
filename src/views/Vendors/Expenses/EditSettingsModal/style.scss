@@ -99,12 +99,7 @@
     justify-items: stretch;
   }
   &__btn {
-    display: inline-block;
-    align-items: center;
-
-    &-large {
-      height: 46px;
-    }
+    display: initial;
   }
   &__colors {
     display: grid;
