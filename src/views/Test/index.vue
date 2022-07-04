@@ -1,6 +1,19 @@
 <template>
   <div class="wrap">
-    <!-- <DatePicker v-model="date" mode="dateTime" :minute-increment="5"> -->
+    <Dropdown v-model="period" :options="periods" size="medium" id="222">
+      <template #value="{value}">
+        <div class="y-dropdown-label-custom">
+          <span class="-title">Time Period:</span>
+          <span v-if="value">{{ value }} </span>
+          <span v-else>All</span>
+        </div>
+      </template>
+      <template #option="{option}">
+        <div class="field__select-label">
+          <span>{{ option }}</span>
+        </div>
+      </template>
+    </Dropdown>
 
     <DatePicker v-model="date">
       <template v-slot="{inputValue, inputEvents}">
@@ -27,7 +40,7 @@
       </template>
     </Dropdown>
     <Button icon="i-print" border />
-    <div style="display: flex;">
+    <div style="display: flex">
       <Button icon="i-print" border label="asfsafaf" grey style="width: 100%" position="center" size="huge" />
     </div>
   </div>
@@ -55,6 +68,11 @@ export default {
       item: null,
       list: ['afasf', 'sdgsdgshsd', 'sdgoiqewrqwr', 'gasgagsasg']
     }
+  },
+  computed: {
+    ...mapState({
+      vendors: s => s.vendors.vendors
+    })
   }
 }
 </script>
@@ -62,7 +80,7 @@ export default {
 <style lang="scss" scoped>
 .wrap {
   padding: 100px;
-  // display: flex;
+  display: flex;
   // justify-content: flex-end;
   // column-gap: 20px;
   // height: inherit;

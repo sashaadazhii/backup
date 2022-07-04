@@ -279,9 +279,10 @@ export default {
   isModelValueChanged: false,
   updated() {
     if (this.overlayVisible && this.isModelValueChanged) {
-      this.scrollValueInView()
+      setTimeout(() => {
+        this.scrollValueInView()
+      }, 0)
     }
-
     this.isModelValueChanged = false
   },
   beforeUnmount() {

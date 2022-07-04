@@ -393,11 +393,11 @@
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> icon</span><span>="i-build"</span><span class="code__blue"> color</span><span>="#5b80bd"</span><span class="code__blue"> circle</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> icon</span><span>="i-build"</span><span class="code__blue"> color</span><span>="#5b80bd"</span><span class="code__blue"> size</span><span>="large"</span><span class="code__blue"> circle</span><span class="code__arrow"> /&gt;</span>
 <span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
-<span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>  
+<span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> label</span><span>="User"</span><span class="code__blue"> icon</span><span>="i-person"</span><span class="code__blue"> size</span><span>="small"</span><span class="code__blue"> circle</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> label</span><span>="Email"</span><span class="code__blue"> icon</span><span>="i-email"</span><span class="code__blue"> size</span><span>="small"</span><span class="code__blue"> circle border</span><span class="code__arrow"> /&gt;</span>
 <span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
-<span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>  
+<span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> label</span><span>="Phone"</span><span class="code__blue"> icon</span><span>="i-phone"</span><span class="code__blue"> size</span><span>="mini"</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> label</span><span>="user"</span><span class="code__blue"> icon</span><span>="i-lock"</span><span class="code__blue"> size</span><span>="mini"</span><span class="code__blue"> border</span><span class="code__arrow"> /&gt;</span>
 <span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
@@ -627,7 +627,7 @@
    <span class="code__arrow">&lt;</span><span class="code__red">Dropdown</span><span class="code__blue"> v-model</span><span>="country"</span> :<span class="code__blue">options</span><span>="countries"</span><span class="code__blue"> placeholder</span>="Select your country"
              <span class="code__blue"> scrollHeight</span><span>="120px"</span><span class="code__blue"> openPosition</span><span>="right"</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span class="code__red">Dropdown</span><span class="code__blue"> v-model</span><span>="country"</span> :<span class="code__blue">options</span><span>="countries"</span><span class="code__blue"> placeholder</span>="Choose your country"
-             <span class="code__blue"> panelClass</span><span>="colored"</span><span class="code__arrow"> /&gt;</span>          
+             <span class="code__blue"> panelClass</span><span>="colored"</span><span class="code__arrow"> /&gt;</span>
 <span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
 
 <span class="code__arrow">&lt;</span><span class="code__red">script</span><span class="code__arrow">&gt;</span>
@@ -752,7 +752,7 @@
               <pre class="doc__code"><code class="code">
 <span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
    <span class="code__arrow">&lt;</span><span class="code__red">Menu</span> :<span class="code__blue">list</span><span>="actions"</span><span class="code__arrow"> /&gt;</span>
-   
+
    <span class="code__arrow">&lt;</span><span class="code__red">Menu</span> :<span class="code__blue">list</span><span>="actions"</span><span class="code__arrow">&gt;</span>
          <span class="code__arrow">&lt;</span><span class="code__red">template</span> #<span class="code__blue">menu</span><span class="code__arrow"> /&gt;</span>
             <span class="code__arrow">&lt;</span><span class="code__red">span</span><span class="code__arrow">&gt;</span>Settings <span class="code__arrow">&lt;</span><span class="code__red">i</span><span class="code__arrow"><span class="code__blue"> class</span>="i-settings" /&gt;</span><span class="code__arrow"></span> <span class="code__arrow">&lt;/</span><span class="code__red">span</span><span class="code__arrow">&gt;</span>
@@ -851,7 +851,7 @@
               <pre class="doc__code"><code class="code">
 <span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
    <span class="code__arrow">&lt;</span><span class="code__red">Menu</span> :<span class="code__blue">list</span><span>="actions"</span><span class="code__arrow"> /&gt;</span>
-   
+
    <span class="code__arrow">&lt;</span><span class="code__red">Menu</span> :<span class="code__blue">list</span><span>="actions"</span><span class="code__arrow">&gt;</span>
          <span class="code__arrow">&lt;</span><span class="code__red">template</span> #<span class="code__blue">menu</span><span class="code__arrow"> /&gt;</span>
             <span class="code__arrow">&lt;</span><span class="code__red">span</span><span class="code__arrow">&gt;</span>Settings <span class="code__arrow">&lt;</span><span class="code__red">i</span><span class="code__arrow"><span class="code__blue"> class</span>="i-settings" /&gt;</span><span class="code__arrow"></span> <span class="code__arrow">&lt;/</span><span class="code__red">span</span><span class="code__arrow">&gt;</span>
@@ -1076,9 +1076,7 @@ export default {
       })
     },
     setPhone(e) {
-      console.log(e)
       this.newPhone = '+380'
-      // console.log(this.newPhone)
     }
   }
 }
