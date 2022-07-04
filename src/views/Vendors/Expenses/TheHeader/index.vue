@@ -57,7 +57,7 @@
       </Dropdown>
     </div>
     <div class="header__right">
-      <Button label="Add New Expense" size="small" icon="i-add_circle" class="filter__btn" @click="openModal" />
+      <Button label="Add New Expense" icon="i-add_circle" class="filter__btn" @click="openModal" />
       <Button border grey icon="i-settings_menu" @click="openEditModal" />
     </div>
   </div>
