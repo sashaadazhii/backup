@@ -45,14 +45,11 @@ export default {
   },
   actions: {
     async fetch({commit, state}) {
-      const url = process.env.VUE_APP_BACKEND
-      const page = state.page
-
       try {
         const users = await axios.get(`${url}company/users/`, {params: {page}})
-        commit('pagination', users.data.pagination)
-        commit('set', users.data.data)
-        // commit('changePage')
+
+        commit('pagination', users.pagination)
+        commit('set', users.data)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

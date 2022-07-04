@@ -28,6 +28,9 @@
             right: 16px;
           }
         }
+        &__icon-text {
+          bottom: 36px;
+        }
         &__input {
           background-color: rgba($color-red, 0.1);
           border-color: $color-red;

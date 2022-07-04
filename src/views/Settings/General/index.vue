@@ -1,34 +1,30 @@
 <template>
-  <div class="general__wrapper"></div>
+  <div class="general__wrapper">
+    <component :is="card" :card="card" @changeComponent="changeComponent" />
+  </div>
 </template>
 <script>
-import {mapState, mapActions} from 'vuex'
+import {mapState} from 'vuex'
+import Overview from './Overview'
+import Edit from './Edit'
 
 export default {
   name: 'CompanySettingsGeneral',
+  components: {Overview, Edit},
   data() {
     return {
-      isLoading: false
-    }
-  },
-  async created() {
-    if (this.info.id) return
-    try {
-      this.isLoading = true
-      await this.fetch()
-    } finally {
-      this.isLoading = false
+      card: 'Overview'
     }
   },
   computed: {
     ...mapState({
-      info: s => s.company.settings.settings
+      settings: s => s.company.settings.settings
     })
   },
   methods: {
-    ...mapActions({
-      fetch: 'company/settings/fetch'
-    })
+    changeComponent(cmp) {
+      this.card = cmp
+    }
   }
 }
 </script>
