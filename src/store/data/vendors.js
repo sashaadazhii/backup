@@ -170,5 +170,10 @@ const vendorReport = [
     total: 298.33
   }
 ]
+const expenseAccounts = [
+  { type: 'Parts for Relase', color: '#3EB3BB' },
+  { type: 'Office Supplies', color: '#10B981' },
+  { type: 'Meals for Stuff', color: '#FF9B70' }
+]
 
-export { vendorsList, vendorExpenses, vendorReport }
+export { vendorsList, vendorExpenses, vendorReport, expenseAccounts }

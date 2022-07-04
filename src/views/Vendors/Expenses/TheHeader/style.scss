@@ -1,33 +1,13 @@
 @import 'src/assets/styles/_variables.scss';
 .header {
   &__wrapper {
-    padding: 16px;
-    border-bottom: 1px solid $color-grey-flash;
-    width: 100%;
-    overflow: hidden;
-  }
-}
-
-// TODO: remove later
-.filter {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  background: $color-grey-smoke;
-  border: 1px solid $color-grey-light;
-  border-radius: 8px;
-  cursor: pointer;
-  white-space: nowrap;
-  &--light {
-    background: $color-white;
-  }
-  &-wrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 30px;
-    width: inherit;
+    width: 100%;
+    padding: 16px;
+    border-bottom: 1px solid $color-grey-flash;
     overflow-x: auto;
     @include hideScrollbar;
   }
@@ -38,20 +18,46 @@
     gap: 10px;
     white-space: nowrap;
   }
-  &__title {
-    @include font(14px, $color-grey, 500);
-  }
-  &__text {
-    @include font(14px, $color-space, 600);
-  }
-  &__icon {
-    height: 20px;
-    & > i {
-      font-size: 16px;
-      color: $color-grey;
+}
+
+.field__select-label {
+  @include font(14px, $color-space, 600);
+}
+
+.field {
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px;
+
+    &-wrap {
+      background-color: rgba($color-lightgrey, 0.2);
+      @include border;
     }
   }
-  &__btn {
-    height: 42px;
+  &__input {
+    background: transparent;
+    width: auto;
+    height: 0;
+    width: 0;
+    &-value {
+      @include font(14px, rgba($color-space, 0.8), 600);
+    }
+    &::placeholder {
+      color: $color-grey;
+    }
+    &-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      i {
+        font-size-adjust: 18px;
+        color: $color-grey;
+      }
+    }
+  }
+  &__placeholder {
+    @include font(14px, $color-grey, 600);
   }
 }

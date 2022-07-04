@@ -1,4 +1,4 @@
-import { vendorsList, vendorExpenses, vendorReport } from '../data/vendors'
+import { vendorsList, vendorExpenses, vendorReport, expenseAccounts } from '../data/vendors'
 
 export default {
   namespaced: true,
@@ -6,7 +6,10 @@ export default {
     vendors: vendorsList,
     vendor: {},
     searchParams: null,
-    vendorExpenses,
+    expenses: vendorExpenses,
+    expense: {},
+    expensesTypes: expenseAccounts,
+    expensesType: {},
     vendorReport
   },
   mutations: {
@@ -15,6 +18,20 @@ export default {
     },
     setVendor(state, vendor) {
       state.vendor = vendor
+    },
+    setExpenses(state, expenses) {
+      state.expenses = expenses
+    },
+    setExpense(state, expense) {
+      state.expense = expense
+    },
+    setExpensesTypes(state, expensesTypes) {
+      state.expensesTypes
+        = expensesTypes
+    },
+    setExpensesType(state, expensesType) {
+      state.expensesType
+        = expensesType
     },
     setSearch(state, searchParams) {
       state.searchParams = searchParams
@@ -27,6 +44,15 @@ export default {
     create(state, vendor) {
       state.vendor = vendor
       state.vendors.unshift(vendor)
+    },
+
+    createExpense(state, expense) {
+      state.expense = expense
+      state.expenses.unshift(expense)
+    },
+    createExpensesType(state, expensesType) {
+      state.expensesType = expensesType
+      state.expensesTypes.push(expensesType)
     },
   },
   actions: {}
