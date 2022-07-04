@@ -119,7 +119,6 @@ export default {
   watch: {
     // errors(err) {
     //   const errorRelations = err.find(err => err.$property === 'relations')
-    //   console.log('ee', errorRelations.$response.$errors)
     // }
     // vehicleModels(models) {
     //   if (models.length) this.vehicleModelsFormatted = models

@@ -3,7 +3,8 @@
 .y-dropdown {
   width: 100%;
   position: relative;
-
+  user-select: none;
+  display: inline-flex;
   &-inner {
     background-color: $color-grey-smoke;
     @include border(12px, $color-grey-flash);

@@ -1,36 +1,56 @@
 <template>
   <div class="wrap">
-    <!-- <DatePicker v-model="date" mode="dateTime" :minute-increment="5"> -->
-
-    <DatePicker v-model="date" class="custom-date-picker" >
-      <template v-slot="{inputValue, inputEvents}">
-        <Input :modelValue="`${inputValue}`" v-on="inputEvents" />
+    <Dropdown v-model="period" :options="periods" size="medium" id="222">
+      <template #value="{value}">
+        <div class="y-dropdown-label-custom">
+          <span class="-title">Time Period:</span>
+          <span v-if="value">{{ value }} </span>
+          <span v-else>All</span>
+        </div>
       </template>
-    </DatePicker>
-    <!-- <Calendar v-model="date" is-range :columns="$screens({default: 1, lg: 2})"  locale="en-CA" :first-day-of-week="2"  /> -->
-    <!-- <Calendar v-model="date" /> -->
-    <!-- <y-calendar v-model="date" /> -->
-    <!-- <y-date-picker v-model="date" class="custom-date-picker" /> -->
+      <template #option="{option}">
+        <div class="field__select-label">
+          <span>{{ option }}</span>
+        </div>
+      </template>
+    </Dropdown>
+
+    <Dropdown v-model="sorted" :options="sortList" size="medium">
+      <template #value="{value}">
+        <div class="y-dropdown-label-custom">
+          <span class="-title">Display by:</span>
+          <span v-if="value">{{ value }} </span>
+          <span v-else>All</span>
+        </div>
+      </template>
+      <template #option="{option}">
+        <div class="field__select-label">
+          <span>{{ option }}</span>
+        </div>
+      </template>
+    </Dropdown>
   </div>
 </template>
 
 <script>
 import {mapActions, mapState, mapMutations} from 'vuex'
-import {Calendar, DatePicker} from 'v-calendar'
-import Input from '@/components/Yaro/Input'
+import Dropdown from '@/components/Yaro/Dropdown'
 export default {
   name: 'test',
-  components: {Input, DatePicker},
-  // components: {Calendar},
+  components: {Dropdown, },
   data() {
     return {
-      date: new Date(),
-      range: {
-        start: new Date(2020, 9, 12),
-        end: new Date(2020, 9, 16)
-      },
-      value: null,
+      vendor: null,
+      periods: ['3 days', 'Week', 'This month', '3 months', '6 months', 'Year'],
+      period: 'This month',
+      sortList: ['Day', 'Expense Account', 'Amount', 'HST'],
+      sorted: 'Day'
     }
+  },
+  computed: {
+    ...mapState({
+      vendors: s => s.vendors.vendors
+    })
   }
 }
 </script>
@@ -38,7 +58,7 @@ export default {
 <style lang="scss" scoped>
 .wrap {
   padding: 100px;
-  // display: flex;
+  display: flex;
   // justify-content: flex-end;
   // column-gap: 20px;
   // height: inherit;

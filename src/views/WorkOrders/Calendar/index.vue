@@ -54,7 +54,6 @@ export default {
         }
       })
 
-      // console.log(tasksDom.scrollLeft, pointer, tasksDom.offsetWidth)
       // tasksDom.scrollLeft = pointer * 320 - (tasksDom.offsetWidth / 320 - 1) * 320
       // console.dir(tasksDom)
       // if (this.$refs.list.scrollTop <= this.pointerPosition - (this.visibleElements - 1) * this.optionHeight) {

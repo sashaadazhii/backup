@@ -147,7 +147,6 @@ export default {
         order.serviceAdvisor.id = this.serviceAdvisor.id
       }
       await this.create(order)
-      // console.log(order)
     }
   }
 }

@@ -133,7 +133,6 @@ export default {
       } catch (err) {
         // TODO: Create human error
         this.errorName = true
-        // console.log(err.response.data)
         // switch (err.response.data.message) {
         //   case 'Your phone is already taken':
         //     this.errorPhone = true
