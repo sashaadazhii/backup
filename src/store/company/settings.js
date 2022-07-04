@@ -24,7 +24,7 @@ export default {
       warrantyTime: 18,
       warrantyRange: 30000,
       usersQuota: 5,
-      usersCount: 2
+      usersCount: 3
     }
   },
   mutations: {

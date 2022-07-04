@@ -1,10 +1,38 @@
 import axios from 'axios'
+import {users as usersList} from '../data/users'
 
 export default {
   namespaced: true,
 
   state: {
-    users: [],
+    users: usersList,
+    // localUsers: [
+    //   {
+    //     id: 23435,
+    //     companyID: 'dafc1ed1-9860-44b0-9f5e-ffeeb15572af',
+    //     firstName: 'Brad',
+    //     lastName: 'Shantz',
+    //     role: 'admin',
+    //     email: 'brad@leroysautocare.net'
+    //   },
+    //   {
+    //     id: 23465,
+    //     companyID: 'dafc1ed1-9860-44b0-9f5e-ffeeb15572af',
+    //     firstName: 'Dominic ',
+    //     lastName: 'Martin',
+    //     role: 'technician',
+    //     email: 'dominic@leroysautocare.net'
+    //   },
+    //   {
+    //     id: 23405,
+    //     companyID: 'dafc1ed1-9860-44b0-9f5e-ffeeb15572af',
+    //     firstName: 'Lewis ',
+    //     lastName: ' ',
+    //     role: 'service-advisor',
+    //     email: 'lewis@leroysautocare.net'
+    //   }
+    // ],
+    // localUser: {},
     searchingUsers: [],
     technicians: [],
     user: {},
@@ -46,10 +74,10 @@ export default {
   actions: {
     async fetch({commit, state}) {
       try {
-        const users = await axios.get(`${url}company/users/`, {params: {page}})
+        const users = state.users
 
         commit('pagination', users.pagination)
-        commit('set', users.data)
+        commit('set', users)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
@@ -76,22 +104,18 @@ export default {
       }
     },
     async create({commit}, user) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const req = await axios.post(`${url}company/users/`, user)
-        commit('add', req.data)
-        return req.data
+        commit('add', user)
+        return user
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
-    async update({commit}, {user, userID}) {
-      const url = process.env.VUE_APP_BACKEND
+    async update({commit}, user) {
       try {
-        const req = await axios.put(`${url}company/users/${userID}/`, user)
-        commit('update', req.data)
-        return req.data
+        commit('update', user)
+        return user
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
