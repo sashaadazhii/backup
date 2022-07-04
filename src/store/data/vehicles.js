@@ -255,11 +255,11 @@ const vehicles = [
     customerUID: '26cfd801-ab35-4e96-a807-169af69d5f3e',
     uid: '3a99bcc0-180f-4ee6-93fb-ed7fb2583403',
     companyID: 1,
-    vin: 'ae093af4-9f9d-41d1-b37f-62def5bdc634',
+    vin: '1GTJK34G71E314515',
     license: 'DEV-221',
     make: 'GMC',
     model: 'Sierra 3500',
-    year: 2003,
+    year: 2001,
     engine: {
       size: 83406194,
       cylinders: 6,
@@ -412,7 +412,7 @@ const vehicles = [
     odometer: 1976543,
     vehicleType: 'SUV',
     customFields: {}
-  },
+  }
 ]
 
 const cars = [
@@ -435,7 +435,7 @@ const cars = [
   {
     name: 'Toyota',
     list: ['Prado', 'Land Cruiser', 'Prius']
-  },
+  }
 ]
 
-export { vehicles, cars }
+export {vehicles, cars}
