@@ -10,7 +10,7 @@
         @after-leave="onAfterLeave"
         appear
       >
-        <div :ref="containerRef" class="y-dialog" v-if="visible" v-bind="$attrs" role="dialog" @mousedown="initDrag">
+        <div :ref="containerRef" :class="containerClass" v-if="visible" v-bind="$attrs" role="dialog">
           <div class="y-dialog__header" v-if="showHeader">
             <slot name="header">
               <span class="y-dialog__header-title" v-if="header">{{ header }}</span>
@@ -18,7 +18,7 @@
             <Button v-if="closable" icon="i-circle_close" circle border @click="close" />
           </div>
           <div :class="contentStyleClass">
-            <slot></slot>
+            <slot :initDrag="initDrag"></slot>
           </div>
         </div>
       </transition>
@@ -265,6 +265,9 @@ export default {
     maskClass() {
       return ['y-dialog__mask', {'y-dialog__mask--overlay y-component-overlay-enter': this.modal}, this.getPositionClass()]
     },
+    containerClass() {
+      return ['y-dialog', {'y-dialog--draggable': this.draggable}]
+    },
     contentStyleClass() {
       return ['y-dialog__content', this.contentClass]
     },
@@ -277,7 +280,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@import 'style';
-</style>

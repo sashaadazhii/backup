@@ -10,6 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    column-gap: 8px;
     padding: 0 16px;
     height: 46px;
     position: relative;
@@ -346,3 +347,27 @@
 }
 
 //==============================
+
+//=========== Theme: grey ===================
+.y-dropdown.--theme-grey {
+  .y-dropdown {
+    &-inner {
+      background-color: $color-grey;
+    }
+    &-trigger-icon {
+      color: $color-white;
+    }
+  }
+}
+.y-dropdown-panel.--theme-grey {
+  background-color: $color-grey;
+
+  .y-dropdown {
+    &-item {
+      &:hover {
+        background-color: rgba($color-grey-light, 0.2);
+      }
+    }
+  }
+}
+//===========================================

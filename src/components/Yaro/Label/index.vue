@@ -1,7 +1,7 @@
 <template>
   <div :class="containerClass" :style="{backgroundColor: color}">
     <slot>
-      <i v-if="icon" :class="iconClass" :style="{backgroundColor: iconColor}" />
+      <i v-if="icon" :class="iconClass" :style="{backgroundColor: iconColor, fontSize: iconSize}" />
       <span v-if="alias && !icon" class="y-label__alias">{{ alias }}</span>
       <span v-if="label" class="y-label__text">{{ label }}</span>
     </slot>
@@ -23,6 +23,9 @@ export default {
       type: String
     },
     iconColor: {
+      type: String
+    },
+    iconSize: {
       type: String
     },
     alias: {

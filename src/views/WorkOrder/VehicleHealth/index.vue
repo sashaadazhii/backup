@@ -9,13 +9,13 @@
           <Dropdown v-model="viewType" :options="viewTypes" size="medium" class="health__header-dropdown">
             <template #value="{value}">
               <div class="y-dropdown-item-custom">
-                <i class="i-ballot green" />
+                <i class="i-view_stream green" />
                 <span>{{ value }} </span>
               </div>
             </template>
             <template #option="{option}">
               <div class="y-dropdown-label-custom">
-                <i class="i-ballot green" />
+                <i class="i-view_stream green" />
                 <span>{{ option }}</span>
               </div>
             </template>
@@ -27,12 +27,6 @@
                 <span>{{ value }} </span>
               </div>
             </template>
-            <!-- <template #option="{option}">
-            <div class="y-dropdown-label-custom">
-              <i class="i-ballot green" />
-              <span>{{ option }}</span>
-            </div>
-          </template> -->
           </Dropdown>
           <Filter
             v-model="activeFilters"
@@ -45,19 +39,13 @@
             openPosition="left"
             @change="changeFilters"
           >
-            <!-- <template #optionlist="{option}">
-            <div class="filter__option">
-              <i v-if="option.name === 'Technitian'" class="i-build" />
-              <i v-if="option.name === 'Service Advisor'" class="i-headset_mic" />
-              <span>{{ option.name }}</span>
-            </div>
-          </template> -->
-            <!-- <template #option="{option}">
-            <div class="filter__option">
-              <div class="filter__option--pin">{{ option.firstName[0] }}{{ option.lastName[0] }}</div>
-              <span>{{ option.firstName }} {{ option.lastName }}</span>
-            </div>
-          </template> -->
+            <template #optionlist="{option}">
+              <div class="y-dropdown-item-custom">
+                <i v-if="option.name === 'Card Status'" class="i-layers" />
+                <i v-if="option.name === 'Approval Status'" class="i-mark" />
+                <span>{{ option.name }}</span>
+              </div>
+            </template>
           </Filter>
           <Input size="medium" icon-left="i-search1" placeholder="Start typing to search card" />
           <Button label="Add Card from Library" icon="i-add_circle" />
@@ -65,8 +53,8 @@
         <div v-if="activeFilters.length" class="chip__wrapper">
           <div v-for="chip of activeFilters" :key="chip.id" class="chip">
             <div class="chip__icon">
-              <i v-if="chip.type === 'Technitian'" class="i-build" />
-              <i v-if="chip.type === 'Service Advisor'" class="i-headset_mic green" />
+              <i v-if="chip.type === 'Card Status'" class="i-layers" />
+              <i v-if="chip.type === 'Approval Status'" class="i-mark" />
             </div>
             <div class="chip__name">{{ chip.name }}</div>
             <div class="chip__close" @click="removeChip(chip.id)"><i class="i-close" /></div>
@@ -86,28 +74,33 @@
         </div>
       </div>
     </div>
-    <Dialog v-model:visible="display" :dismissableMask="false" position="bottom" :closeOnEsc="false" :modal="false" draggable>
-      <div class="dialog__inner">
-        <div class="y-chips">{{ selectedCards.length }}</div>
-        <div class="dialog__title">selected</div>
-        <div class="dialog__title">Change Status to</div>
-        <Dropdown v-model="status" :options="statuses" size="medium" class="health__header-dropdown">
-          <template #value="{value}">
-            <div class="y-dropdown-item-custom">
-              <i class="i-rp_done green" />
-              <span>{{ value }} </span>
-            </div>
-          </template>
-          <template #option="{option}">
-            <div class="y-dropdown-label-custom">
-              <i class="i-rp_done green" />
-              <span>{{ option }}</span>
-            </div>
-          </template>
-        </Dropdown>
-        <Button label="Apply changes" @click="save" />
-        <Button label="Cancel" @click="close" />
-      </div>
+    <Dialog v-model:visible="display" :dismissableMask="false" position="bottom" :closeOnEsc="false" :modal="false" draggable class="dialog__wrapper">
+      <template v-slot="{initDrag}">
+        <div class="dialog__inner">
+          <div class="dialog__move" @mousedown="initDrag"><i class="i-open_with" /></div>
+          <div class="y-chips">{{ selectedCards.length }}</div>
+          <div class="dialog__text">Cards Selected:</div>
+          <div class="dialog__title">Change Card Status to</div>
+          <Dropdown v-model="status" :options="statuses" size="medium" class="health__header-dropdown" theme="grey">
+            <template #value="{value}">
+              <div class="y-dropdown-item-custom --theme-grey">
+                <i class="i-layers bluegreen" />
+                <span>{{ value }} </span>
+              </div>
+            </template>
+            <template #option="{option}">
+              <div class="y-dropdown-label-custom --theme-grey">
+                <i class="i-layers bluegreen" />
+                <span>{{ option }}</span>
+              </div>
+            </template>
+          </Dropdown>
+          <div class="dialog__btns">
+            <button class="dialog__btn" @click="save">Apply changes</button>
+            <button class="dialog__btn dialog__btn--border" @click="close">Close</button>
+          </div>
+        </div>
+      </template>
     </Dialog>
   </div>
 </template>
@@ -134,7 +127,7 @@ export default {
       sortType: 'Sort A-Z',
       sortTypes: ['Sort A-Z', 'Sort Z-A'],
       status: 'Good',
-      statuses: ['No Status', 'Good', 'Recommended', 'Component Unsafe', 'Canned Service Completed'],
+      statuses: ['No Status', 'Good', 'Recommended', 'Component Unsafe'],
       approvalStatuses: [
         'No Status',
         'Approved By Customer',

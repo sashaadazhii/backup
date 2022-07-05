@@ -31,6 +31,11 @@
   & > span {
     @include font(14px, rgba($color-space, 0.8), 600);
   }
+  &.--theme-grey {
+    & > span {
+      color: $color-white;
+    }
+  }
 }
 
 .y-dropdown-label-custom {
@@ -60,6 +65,11 @@
     }
     &.-title {
       @include font(14px, $color-grey, 600);
+    }
+  }
+  &.--theme-grey {
+    & > span {
+      color: $color-white;
     }
   }
 }
