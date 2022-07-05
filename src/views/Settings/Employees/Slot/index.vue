@@ -1,6 +1,6 @@
 <template>
   <div class="user__wrapper">
-    <Label size="small" circle :alias="`${user.firstName[0]}${user.lastName[0]}`" class="user__label dark" />
+    <Label size="small" circle :alias="abr" class="user__label dark" />
     <div class="user__name">
       <span>{{ user.firstName }} {{ user.lastName }}</span>
     </div>
@@ -45,15 +45,8 @@ export default {
       ]
     }
   },
-  async created() {
-    try {
-      this.isLoading = true
-    } finally {
-      this.isLoading = false
-    }
-  },
+
   computed: {
-    ...mapState({}),
     roleIcon() {
       const role = this.user.role
       switch (role) {
@@ -74,6 +67,15 @@ export default {
         grey: this.user.role === 'technician',
         orange: this.user.role === 'service-advisor'
       }
+    },
+    abr() {
+      let name
+      if (this.user.firstName && this.user.lastName) {
+        name = this.user.firstName[0] + this.user.lastName[0]
+      } else {
+        return this.user.firstName[0] || this.user.lastName[0]
+      }
+      return name
     }
   },
   methods: {
@@ -86,12 +88,12 @@ export default {
     openModal() {
       this.$confirm.require({
         title: 'Hey, wait!',
-        message: `Are you sure, you want to delete ${this.user.firstName}  ${this.user.lastName}?`,
+        message: `Are you sure, you want to delete ${this.user.firstName} ${this.user.lastName}?`,
         acceptLabel: 'Delete',
         rejectLabel: 'Cancel',
         icon: 'i-volume_up red',
-        accept: async () => {
-          await this.delete(this.user.id)
+        accept: () => {
+          this.delete(this.user.id)
         }
       })
     }

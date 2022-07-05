@@ -19,7 +19,7 @@ const users = [
     id: 23405,
     companyID: 'dafc1ed1-9860-44b0-9f5e-ffeeb15572af',
     firstName: 'Lewis ',
-    lastName: ' ',
+    lastName: '',
     role: 'service-advisor',
     email: 'lewis@leroysautocare.net'
   }

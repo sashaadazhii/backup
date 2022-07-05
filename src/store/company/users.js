@@ -6,33 +6,6 @@ export default {
 
   state: {
     users: usersList,
-    // localUsers: [
-    //   {
-    //     id: 23435,
-    //     companyID: 'dafc1ed1-9860-44b0-9f5e-ffeeb15572af',
-    //     firstName: 'Brad',
-    //     lastName: 'Shantz',
-    //     role: 'admin',
-    //     email: 'brad@leroysautocare.net'
-    //   },
-    //   {
-    //     id: 23465,
-    //     companyID: 'dafc1ed1-9860-44b0-9f5e-ffeeb15572af',
-    //     firstName: 'Dominic ',
-    //     lastName: 'Martin',
-    //     role: 'technician',
-    //     email: 'dominic@leroysautocare.net'
-    //   },
-    //   {
-    //     id: 23405,
-    //     companyID: 'dafc1ed1-9860-44b0-9f5e-ffeeb15572af',
-    //     firstName: 'Lewis ',
-    //     lastName: ' ',
-    //     role: 'service-advisor',
-    //     email: 'lewis@leroysautocare.net'
-    //   }
-    // ],
-    // localUser: {},
     searchingUsers: [],
     technicians: [],
     user: {},
@@ -75,7 +48,6 @@ export default {
     async fetch({commit, state}) {
       try {
         const users = state.users
-
         commit('pagination', users.pagination)
         commit('set', users)
       } catch (err) {
@@ -122,9 +94,7 @@ export default {
       }
     },
     async delete({commit}, id) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        await axios.delete(`${url}company/users/${id}/`)
         commit('remove', id)
       } catch (err) {
         commit('setError', err, {root: true})
