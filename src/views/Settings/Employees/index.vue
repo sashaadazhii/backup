@@ -22,20 +22,6 @@ import User from './Slot'
 export default {
   name: 'CompanySettingsEmployees',
   components: {Label, User, Button},
-  // data() {
-  //   return {
-  //     isLoading: false
-  //   }
-  // },
-  // async created() {
-  //   if (this.users.length) return
-  //   try {
-  //     this.isLoading = true
-  //     await this.fetchUsers()
-  //   } finally {
-  //     this.isLoading = false
-  //   }
-  // },
   computed: {
     ...mapState({
       company: s => s.company.settings.settings,
