@@ -36,15 +36,5 @@ export default {
       if (settings) state.settings = settings
     }
   },
-  actions: {
-    // async update({commit}, settings) {
-    //   const url = process.env.VUE_APP_BACKEND
-    //   try {
-    //     return await axios.put(url + `company/settings/`, settings)
-    //   } catch (err) {
-    //     commit('setError', err, {root: true})
-    //     throw err
-    //   }
-    // }
-  }
+  actions: {}
 }

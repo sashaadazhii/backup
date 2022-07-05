@@ -26,7 +26,7 @@
         <div class="services__title">Additional</div>
         <div class="services__row">
           <div class="services__col">
-            <i class="i-view_stream" :class="{active: settings.initialWalkThrough}"></i>
+            <i class="i-video_call" :class="{active: settings.initialWalkThrough}"></i>
             <div class="services__name">Initial Walk Through</div>
           </div>
           <div class="services__toggle-wrap">
@@ -42,7 +42,7 @@ import {mapMutations, mapState} from 'vuex'
 import _ from 'lodash'
 import Switch from '@/components/Yaro/Switch'
 export default {
-  name: 'Services',
+  name: 'CompanySettingsServices',
   components: {Switch},
   data() {
     return {
