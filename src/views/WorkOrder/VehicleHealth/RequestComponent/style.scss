@@ -1,0 +1,77 @@
+@import 'src/assets/styles/_variables.scss';
+
+.request {
+  &__wrapper {
+    background-color: $color-white;
+    border-radius: 16px;
+    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+    padding: 16px 14px;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+  }
+  &__label {
+    border-color: $color-grey-flash;
+    color: $color-grey;
+    background-color: $color-grey-smoke;
+  }
+  &__main {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    column-gap: 8px;
+    row-gap: 12px;
+    padding: 12px 0;
+    border-top: 1px dashed $color-grey-flash;
+    border-bottom: 1px dashed $color-grey-flash;
+    &-icon {
+      @include font(16px, $color-blue);
+    }
+    &-title {
+      @include font(14px, $color-grey-space, 600);
+    }
+    &-text {
+      @include font(12px, $color-grey-space, 500, 1.4);
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
+  &__footer {
+    padding-top: 12px;
+    &-desc {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &-time {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+      margin-bottom: 10px;
+      & > i {
+        @include font(14px, $color-grey);
+      }
+      & > span {
+        @include font(12px, $color-grey, 500);
+      }
+      & > span:last-child {
+        @include font(12px, $color-grey-space, 600);
+      }
+    }
+    &-progress {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      column-gap: 6px;
+      & > span {
+        height: 4px;
+        background-color: $color-grey-flash;
+        border-radius: 4px;
+        &.fill {
+          background-color: $color-green;
+        }
+      }
+    }
+  }
+}

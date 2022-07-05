@@ -6,7 +6,8 @@
       'icon-left': iconLeft,
       'icon-right': iconRight,
       error,
-      'error-message': errorMessage
+      'error-message': errorMessage,
+      medium: size === 'medium'
     }"
   >
     <div v-if="title" class="field__title">{{ title }}</div>
@@ -69,6 +70,10 @@ export default {
     errorMessage: {
       type: String,
       default: null
+    },
+    size: {
+      type: String,
+      default: null
     }
   },
   emits: {
@@ -79,6 +84,7 @@ export default {
   },
   methods: {
     updateValue(event) {
+      // console.log(this.modelModifiers)
       this.$emit('update:modelValue', event.target.value)
     }
   }

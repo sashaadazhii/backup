@@ -81,6 +81,16 @@
         // }
       }
     }
+    &.medium {
+      & > .field__input {
+        padding: 9px 12px;
+        padding-left: 30px;
+      }
+      & > .field__icon.left {
+        bottom: 10px;
+        left: 10px;
+      }
+    }
   }
   &__title {
     @include font(14px, $color-grey-space, 600);

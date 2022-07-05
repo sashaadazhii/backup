@@ -16,7 +16,7 @@
         :aria-labelledby="ariaLabelledBy"
       />
     </div>
-    <div class="y-filter-button">
+    <div class="y-filter-button" :class="{medium: size === 'medium'}">
       <i class="i-filter_list" />
       <span class="y-filter-button-text">Filter</span>
       <span v-if="modelValue && modelValue.length" class="y-filter-button-indicator">{{ modelValue.length }}</span>
@@ -199,6 +199,7 @@ export default {
     inputId: String,
     tabindex: String,
     ariaLabelledBy: null,
+    size: String,
     appendTo: {
       type: String,
       default: 'body'
@@ -223,6 +224,10 @@ export default {
     virtualScrollerOptions: {
       type: Object,
       default: null
+    },
+    openPosition: {
+      type: String,
+      default: 'right'
     },
     optionListLabel: null,
     optionListChildren: null
@@ -649,7 +654,7 @@ export default {
         DomHandler.relativePosition(this.overlay, this.$el)
       } else {
         this.overlay.style.minWidth = DomHandler.getOuterWidth(this.$el) + 'px'
-        DomHandler.absolutePosition(this.overlay, this.$el, 'right')
+        DomHandler.absolutePosition(this.overlay, this.$el, this.openPosition)
       }
     },
     updateModel(event, value) {

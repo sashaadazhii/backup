@@ -14,6 +14,14 @@
     height: 46px;
     position: relative;
     transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    &--medium {
+      height: 36px;
+      padding: 0 12px;
+      border-radius: 10px;
+      .y-dropdown-search-icon {
+        font-size: 16px;
+      }
+    }
     &:hover {
       border-color: $color-grey;
     }

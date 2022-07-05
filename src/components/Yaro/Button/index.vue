@@ -38,6 +38,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    position: {
+      type: String,
+      default: null
     }
   },
   computed: {
@@ -54,7 +58,8 @@ export default {
         'y-button--circle': this.$attrs.hasOwnProperty('circle'),
         'y-button--border': this.$attrs.hasOwnProperty('border'),
         'y-button--red': this.$attrs.hasOwnProperty('red'),
-        'y-button--grey': this.$attrs.hasOwnProperty('grey')
+        'y-button--grey': this.$attrs.hasOwnProperty('grey'),
+        'y-button--center': this.position === 'center'
       }
     },
     iconClass() {
