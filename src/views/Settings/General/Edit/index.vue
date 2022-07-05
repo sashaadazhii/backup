@@ -214,7 +214,6 @@ export default {
         mainContactPhone,
         loanVehicles,
         rideToWork,
-        usersQuota,
         timeZoneName,
         hasShifts
       } = this.settings
@@ -253,8 +252,10 @@ export default {
         hasGlobalWarranty: false,
         loanVehicles,
         rideToWork,
-        usersQuota,
+        usersQuota: this.settings.usersQuota,
+        usersCount: this.settings.usersCount,
         timeZoneName,
+        initialWalkThrough: this.settings.initialWalkThrough,
         hasShifts
       }
 

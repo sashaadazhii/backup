@@ -1,0 +1,223 @@
+<template>
+  <div class="services">
+    <div class="services__left">
+      <div class="services__block">
+        <div class="services__title">Main</div>
+        <div class="services__row">
+          <div class="services__col">
+            <i class="i-car_rental" :class="{active: settings.loanVehicles}"></i>
+            <div class="services__name">Vehicle in return</div>
+          </div>
+          <div class="services__toggle-wrap">
+            <Switch v-model="settings.loanVehicles" @click="updateLoanVehicles" />
+          </div>
+        </div>
+        <div class="services__row">
+          <div class="services__col">
+            <i class="i-local_taxi" :class="{active: settings.rideToWork}"></i>
+            <div class="services__name">Ride to work</div>
+          </div>
+          <div class="services__toggle-wrap">
+            <Switch v-model="settings.rideToWork" @click="updateRideToWork" />
+          </div>
+        </div>
+      </div>
+      <div class="services__block">
+        <div class="services__title">Additional</div>
+        <div class="services__row">
+          <div class="services__col">
+            <i class="i-view_stream" :class="{active: settings.initialWalkThrough}"></i>
+            <div class="services__name">Initial Walk Through</div>
+          </div>
+          <div class="services__toggle-wrap">
+            <Switch v-model="settings.initialWalkThrough" @click="updateWalkThrough" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import {mapMutations, mapState} from 'vuex'
+import _ from 'lodash'
+import Switch from '@/components/Yaro/Switch'
+export default {
+  name: 'Services',
+  components: {Switch},
+  data() {
+    return {
+      isLoading: false,
+      initialWalkThrough: false
+    }
+  },
+  computed: {
+    ...mapState({
+      settings: s => s.company.settings.settings
+    })
+  },
+
+  methods: {
+    ...mapMutations({
+      update: 'company/settings/update'
+    }),
+    async updateLoanVehicles() {
+      if (this.isLoading) return
+      this.settings.loanVehicles = !this.settings.loanVehicles
+      const {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        timeZoneName,
+        initialWalkThrough,
+        hasShifts
+      } = this.settings
+
+      const settings = {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        timeZoneName,
+        hasShifts,
+        initialWalkThrough,
+        usersQuota: this.settings.usersQuota,
+        usersCount: this.settings.usersCount
+      }
+      try {
+        this.update(settings)
+      } finally {
+        this.isLoading = false
+      }
+    },
+    async updateRideToWork() {
+      if (this.isLoading) return
+      this.settings.rideToWork = !this.settings.rideToWork
+
+      const {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        timeZoneName,
+        initialWalkThrough,
+        hasShifts
+      } = this.settings
+
+      const settings = {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        timeZoneName,
+        hasShifts,
+        initialWalkThrough,
+        usersQuota: this.settings.usersQuota,
+        usersCount: this.settings.usersCount
+      }
+      try {
+        this.isLoading = true
+        this.update(settings)
+      } finally {
+        this.isLoading = false
+      }
+    },
+    updateWalkThrough() {
+      if (this.isLoading) return
+      this.settings.initialWalkThrough = !this.settings.initialWalkThrough
+
+      const {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        timeZoneName,
+        hasShifts,
+        initialWalkThrough
+      } = this.settings
+
+      const settings = {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        timeZoneName,
+        hasShifts,
+        initialWalkThrough,
+        usersQuota: this.settings.usersQuota,
+        usersCount: this.settings.usersCount
+      }
+      try {
+        this.isLoading = true
+        this.update(settings)
+      } finally {
+        this.isLoading = false
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import 'style';
+</style>
