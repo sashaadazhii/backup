@@ -90,6 +90,31 @@
   transition: opacity 0.1s linear;
 }
 
+.y-component-overlay-enter {
+  animation: y-component-overlay-enter-animation 150ms forwards;
+}
+
+.y-component-overlay-leave {
+  animation: y-component-overlay-leave-animation 150ms forwards;
+}
+
+@keyframes y-component-overlay-enter-animation {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: rgba($color-grey, 0.4);
+  }
+}
+@keyframes y-component-overlay-leave-animation {
+  from {
+    background-color: rgba($color-grey, 0.4);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
 // ================================================
 
 .y-overflow-hidden {
@@ -107,4 +132,7 @@
   width: 1px;
 }
 
+.y-unselectable-text {
+  user-select: none;
+}
 // ================================================

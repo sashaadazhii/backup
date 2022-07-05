@@ -27,6 +27,9 @@
       border-radius: 50%;
       margin: -1px;
     }
+    &.medium {
+      padding: 9px 10px;
+    }
   }
   &--focus,
   &--filled {
@@ -42,7 +45,7 @@
   @include border;
   box-shadow: 0px 7px 14px rgba($color-grey-dark, 0.08);
   overflow: hidden;
-  width: 228px;
+  min-width: 228px;
   &[style*='center top'] {
     margin-top: 4px;
   }
