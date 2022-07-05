@@ -3,7 +3,7 @@
 .y-dropdown {
   width: 100%;
   position: relative;
-
+  user-select: none;
   &-inner {
     background-color: $color-grey-smoke;
     @include border(12px, $color-grey-flash);
