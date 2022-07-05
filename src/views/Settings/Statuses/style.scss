@@ -2,7 +2,13 @@
 
 .statuses {
   &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 255px;
+    height: 100%;
+  }
+  &__container {
     padding: 60px;
+    border-right: 1px solid $color-grey-flash;
   }
   &__header {
     margin-bottom: 40px;
