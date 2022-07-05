@@ -9,7 +9,7 @@
   height: inherit;
   overflow: hidden;
   &.requests {
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 3.6fr;
   }
 }
 .requests {
@@ -56,7 +56,7 @@
 .table {
   &__header {
     display: grid;
-    grid-template-columns: 16px minmax(100px, 1fr) minmax(200px, 2fr) minmax(100px, 1fr) minmax(300px, 3fr) 24px;
+    grid-template-columns: 16px minmax(100px, 180px) minmax(200px, 2.2fr) minmax(100px, 204px) minmax(200px, 2fr) 24px;
     column-gap: 14px;
     align-items: center;
     padding: 14px 16px;
@@ -88,11 +88,55 @@
   }
 }
 
-.dialog__inner {
-  display: flex;
-  align-items: center;
-  column-gap: 14px;
-  padding: 18px 14px;
+.dialog {
+  &__inner {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    padding: 18px 14px;
+    background-color: $color-grey-space;
+    border-radius: 20px;
+  }
+  &__move {
+    padding-right: 14px;
+    border-right: 1px solid $color-grey;
+    & > i {
+      @include font(18px, $color-grey);
+      cursor: move;
+    }
+  }
+  &__text {
+    @include font(14px, $color-grey-light, 600);
+  }
+  &__title {
+    @include font(14px, $color-grey-smoke, 600);
+    @include border(10px, $color-grey-light);
+    background-color: $color-grey;
+    height: 36px;
+    padding: 0 12px;
+    display: grid;
+    place-items: center;
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    margin-left: 60px;
+  }
+  &__btn {
+    height: 36px;
+    padding: 0 12px;
+    display: grid;
+    place-items: center;
+    background-color: $color-white;
+    @include font(14px, $color-grey-space, 600);
+    @include border(10px, transparent);
+    &--border {
+      border-color: $color-grey;
+      background-color: transparent;
+      color: $color-white;
+    }
+  }
 }
 .y-chips {
   @include font(14px, $color-white, 600);
@@ -100,19 +144,6 @@
   background-color: $color-green;
   border-radius: 30px;
 }
-.dialog__title {
-}
-.health__header-dropdown {
-}
-.y-dropdown-item-custom {
-}
-.i-rp_done {
-}
-.green {
-}
-.y-dropdown-label-custom {
-}
-
 
 .chip {
   display: flex;

@@ -3,7 +3,7 @@
 .card {
   &__wrapper {
     display: grid;
-    grid-template-columns: 16px minmax(100px, 1fr) minmax(200px, 2fr) minmax(100px, 1fr) minmax(300px, 3fr) 24px;
+    grid-template-columns: 16px minmax(100px, 180px) minmax(200px, 2.2fr) minmax(100px, 204px) minmax(200px, 2fr) 24px;
     column-gap: 14px;
     align-items: center;
     padding: 16px;
@@ -18,6 +18,42 @@
     @include font(14px, $color-grey-space, 600);
   }
   &__label {
+    &.-red {
+      background-color: $color-red;
+    }
+    &.-orange {
+      background-color: $color-orange;
+    }
+    &.-bluegreen {
+      background-color: $color-bluegreen;
+    }
+    &.-none {
+      border-color: $color-grey-flash;
+      background-color: $color-grey-smoke;
+      color: $color-grey;
+    }
+    &.-shadow {
+      &.-green {
+        background-color: $color-green-mint;
+        color: $color-green;
+        &.-border {
+          border-color: $color-green;
+        }
+      }
+      &.-red {
+        color: $color-red;
+        background-color: rgba($color-red, .1);
+      }
+      &.-bluegreen {
+        color: $color-bluegreen;
+        background-color: rgba($color-bluegreen, .1);
+      }
+      &.-none {
+        border-color: transparent;
+        background-color: $color-grey-smoke;
+        color: $color-grey;
+      }
+    }
   }
   &__progress {
     justify-self: stretch !important;
