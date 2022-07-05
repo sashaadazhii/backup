@@ -15,13 +15,13 @@
         </div>
 
         <div v-if="!isShowed" class="modal__footer">
-          <Button label="Add one more Account" grey icon="i-add_circle" class="modal__btn" @click="isShowed = !isShowed" />
+          <Button label="Add one more Account" grey icon="i-add_circle" class="modal__btn y-button--center" @click="isShowed = !isShowed" />
         </div>
         <div v-else class="modal__colors">
           <Colors v-model="color" />
           <Input v-model.trim="type" placeholder="Enter Expense Title" :error="v$.type.$error" :errorMessage="errorMessage('type')" />
-          <Button label="Cancel" class="modal__btn-large" border @click="isShowed = !isShowed" />
-          <Button label="Save" class="modal__btn-large" @click="add" />
+          <Button label="Cancel" size="large" border @click="isShowed = !isShowed" />
+          <Button label="Save" size="large" center @click="add" />
         </div>
       </div>
     </div>

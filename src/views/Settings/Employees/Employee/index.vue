@@ -117,7 +117,7 @@ export default {
       try {
         this.isLoading = true
         if (userID) {
-          await this.update({user, userID})
+          await this.update(user)
         } else {
           await this.create(user)
         }

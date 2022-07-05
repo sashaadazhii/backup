@@ -25,6 +25,14 @@
     &:hover {
       border-color: $color-grey;
     }
+    &--medium {
+      height: 36px;
+      padding: 0 12px;
+      border-radius: 10px;
+      .y-dropdown-search-icon {
+        font-size: 16px;
+      }
+    }
   }
   &-dots {
     cursor: pointer;

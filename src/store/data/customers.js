@@ -71,7 +71,7 @@ const customers = {
       updatedAt: '2022-05-18T10:21:21.667Z'
     },
     {
-      uid: '0721dd98-8b96-499b-9db0-74b3eaba11f1',
+      uid: '2f61a152-9c3f-42e9-823c-e412f348ec10',
       email: 'lukas.terry@mail.com',
       firstName: 'Terry',
       lastName: 'Lucas',
@@ -119,7 +119,7 @@ const customers = {
       cellPhones: ['549 730 0464'],
       createdAt: '2022-04-02T20:50:52.667Z',
       updatedAt: '2022-05-18T10:21:21.667Z'
-    },
+    }
   ],
   pagination: {
     page: 1,
@@ -128,4 +128,4 @@ const customers = {
   }
 }
 
-export { customers }
+export {customers}

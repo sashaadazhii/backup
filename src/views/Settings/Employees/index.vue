@@ -2,7 +2,8 @@
   <div class="users__wrapper">
     <div class="users__header">
       <div class="users__header-title">
-        <span>Employees</span><Label :label="`${users.length}/${company.usersQuota || 0}`" circle border color="transparent" class="users__label" />
+        <span>Employees</span>
+        <Label :label="`${users.length}/${company.usersQuota || 0}`" circle border color="transparent" class="users__label" />
       </div>
       <router-link to="/settings/employees/new"><Button label="Add New" icon="i-add_circle" circle size="small" /></router-link>
     </div>
@@ -19,20 +20,20 @@ import User from './Slot'
 export default {
   name: 'CompanySettingsEmployees',
   components: {Label, User, Button},
-  data() {
-    return {
-      isLoading: false
-    }
-  },
-  async created() {
-    if (this.users.length) return
-    try {
-      this.isLoading = true
-      await this.fetchUsers()
-    } finally {
-      this.isLoading = false
-    }
-  },
+  // data() {
+  //   return {
+  //     isLoading: false
+  //   }
+  // },
+  // async created() {
+  //   if (this.users.length) return
+  //   try {
+  //     this.isLoading = true
+  //     await this.fetchUsers()
+  //   } finally {
+  //     this.isLoading = false
+  //   }
+  // },
   computed: {
     ...mapState({
       company: s => s.company.settings.settings,

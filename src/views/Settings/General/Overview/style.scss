@@ -1,0 +1,173 @@
+@import 'src/assets/styles/_varBoard.scss';
+
+.overview {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 30px;
+  padding: 60px 10px 10px;
+  margin: 0 auto;
+  max-height: inherit;
+  max-width: 810px;
+  overflow: auto;
+  width: inherit;
+  @include hideScrollbar;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    &-info {
+      display: flex;
+      gap: 10px;
+    }
+  }
+  &__action {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    background: $color-bg;
+    @include border(48px, $color-lightgrey);
+    transition: 0.3s ease-in-out;
+
+    &:hover,
+    &:active {
+      background: rgba($color-lightgrey, 0.6);
+    }
+    & > i {
+      font-size: 20px;
+      color: $color-grey;
+    }
+  }
+  &__indicator {
+    margin-top: 3px;
+    padding: 4px 8px;
+    background-color: $color-grey;
+    border-radius: 10px;
+    @include font(12px, $color-white, 700);
+    &.green {
+      background-color: $color-green;
+    }
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    @include font(24px, $color-space, 700);
+    & > i {
+      font-size: 16px;
+      color: $color-grey;
+      cursor: pointer;
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    margin-top: 12px;
+    @include font(14px, rgba($color-grey, 0.8), 500);
+    & > i {
+      font-size: 16px;
+    }
+  }
+  &__block {
+    padding: 20px 0;
+    border-top: 1px solid $color-lightgrey;
+    &:first-child {
+      border-top: none;
+    }
+  }
+  &__subtitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 20px;
+    @include font(_, _, 600);
+    & > i {
+      font-size: 20px;
+    }
+  }
+  &__row {
+    padding-bottom: 20px;
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 30px;
+    &:last-child {
+      padding: 0;
+    }
+  }
+  &__name {
+    @include font(14px, $color-grey, 500);
+  }
+  &__data {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    @include font(14px, $color-space, 600);
+
+    & > i {
+      font-size: 16px;
+      color: $color-space;
+    }
+    & > .i-phone {
+      color: #3eb3bb;
+    }
+  }
+  &__widget {
+    @include border(20px);
+    position: relative;
+    &-wrap {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      &--top {
+        position: relative;
+        top: -1px;
+        left: -1px;
+        width: calc(100% + 2px);
+        @include border(20px);
+      }
+    }
+    & i {
+      font-size: 20px;
+      color: $color-green;
+    }
+    &-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0 20px;
+      @include font(14px, $color-space, 600);
+      &:last-child {
+        padding: 0;
+      }
+    }
+    &.hidden {
+      border: none;
+    }
+  }
+  &__subtitle--long {
+    margin-bottom: 12px;
+    @include font(12px, $color-grey, 500);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  &__num {
+    @include font(20px, $color-space, 700);
+    &-wrap {
+      display: flex;
+      align-items: center;
+    }
+    &-additional {
+      margin-left: 8px;
+      @include font(14px, $color-green, 600);
+    }
+    &--inactive {
+      color: $color-grey;
+    }
+  }
+}
+
+.circle {
+}

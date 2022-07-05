@@ -33,6 +33,7 @@ const workOrder = {
   ],
   vehicleInShop: false,
   talkSA: false,
+
   // =========== OLD ===================
   needCourtesyVehicle: false,
   serviceAdvisor: {

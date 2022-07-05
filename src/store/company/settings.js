@@ -5,18 +5,18 @@ export default {
 
   state: {
     settings: {
-      id: 1,
-      slug: 'test-and-repairs',
+      id: 'dafc1ed1-9860-44b0-9f5e-ffeeb15572af',
+      slug: 'auto-car-service',
       isActive: true,
-      businessName: 'Test & Repairs Inc.',
-      mainAddress: '1234 Test Ave, Ottawa',
-      businessPhoneNumber: 2222222222,
-      ownerName: 'Nikola Tesla',
-      ownerEmail: 'nikola_tesla@test.com',
-      ownerPhone: 2222222222,
-      mainContactName: 'Thomas Edison',
-      mainContactEmail: 'thomas_edison@test.com',
-      mainContactPhone: 2222222222,
+      businessName: 'Auto Car Service',
+      mainAddress: '103 Queen St, Armstrong, ON P0T 1A0, Canada',
+      businessPhoneNumber: 1234567890,
+      ownerName: 'Michel Smith',
+      ownerEmail: 'michel@auto-s.com',
+      ownerPhone: 2345678760,
+      mainContactName: 'Alex Thomson',
+      mainContactEmail: 'alex_t@auto-s.com',
+      mainContactPhone: 34567876547,
       loanVehicles: true,
       rideToWork: true,
       hasShifts: true,
@@ -24,33 +24,26 @@ export default {
       warrantyTime: 18,
       warrantyRange: 30000,
       usersQuota: 5,
-      usersCount: 2
+      usersCount: 3
     }
   },
   mutations: {
     set(state, settings) {
       state.settings = settings
+    },
+    update(state, settings) {
+      if (settings) state.settings = settings
     }
   },
   actions: {
-    async fetch({commit}) {
-      const url = process.env.VUE_APP_BACKEND
-      try {
-        const settings = await axios.get(url + `company/settings/`)
-        commit('set', settings.data)
-      } catch (err) {
-        commit('setError', err, {root: true})
-        throw err
-      }
-    },
-    async update({commit}, settings) {
-      const url = process.env.VUE_APP_BACKEND
-      try {
-        return await axios.put(url + `company/settings/`, settings)
-      } catch (err) {
-        commit('setError', err, {root: true})
-        throw err
-      }
-    }
+    // async update({commit}, settings) {
+    //   const url = process.env.VUE_APP_BACKEND
+    //   try {
+    //     return await axios.put(url + `company/settings/`, settings)
+    //   } catch (err) {
+    //     commit('setError', err, {root: true})
+    //     throw err
+    //   }
+    // }
   }
 }
