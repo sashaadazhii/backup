@@ -2,10 +2,7 @@
   <div class="statuses__wrapper">
     <div class="statuses__header">
       <div class="statuses__header-title">Statuses</div>
-      <div class="statuses__header-subtitle">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      </div>
+      <div class="statuses__header-subtitle">Add as many statuses to each of the major phases of a work order.</div>
     </div>
     <div class="statuses__main">
       <Status v-for="status of logicalStatuses" :key="status.uid" :status="status" />
