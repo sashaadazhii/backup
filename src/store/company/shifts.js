@@ -1,9 +1,10 @@
 import axios from 'axios'
+import {shifts as shiftsList} from '../data/shifts'
 
 export default {
   namespaced: true,
   state: {
-    shifts: [],
+    shifts: shiftsList,
     shift: {}
   },
   mutations: {
@@ -19,14 +20,23 @@ export default {
     update(state, shift) {
       const shiftIdx = state.shifts.findIndex(s => s.id === shift.id)
       state.shifts.splice(shiftIdx, 1, shift)
+    },
+    deactivate(state, id) {
+      const updatedShift = state.shifts.find(s => s.id === id)
+      updatedShift.deactivated = true
+      state.shift = updatedShift
+    },
+    activate(state, id) {
+      const updatedShift = state.shifts.find(s => s.id === id)
+      updatedShift.deactivated = false
+      state.shift = updatedShift
     }
   },
   actions: {
-    async fetch({commit}) {
-      const url = process.env.VUE_APP_BACKEND
+    async fetch({commit, state}) {
       try {
-        const shifts = await axios.get(`${url}company/shifts/`)
-        commit('set', shifts.data)
+        const shifts = state.shifts
+        commit('set', shifts)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
@@ -43,43 +53,39 @@ export default {
         throw err
       }
     },
-    async create({commit}, shift) {
-      const url = process.env.VUE_APP_BACKEND
+    async create({commit, state}, shift) {
       try {
-        const req = await axios.post(`${url}company/shifts/`, shift)
-        commit('add', req.data)
-        return req.data
+        state.shift = shift
+        commit('add', shift)
+        return shift
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
-    async update({commit}, {shift, id}) {
-      const url = process.env.VUE_APP_BACKEND
+    async update({commit, state}, shift) {
       try {
-        const req = await axios.put(`${url}company/shifts/${id}/`, shift)
-        commit('update', req.data)
-        return req.data
+        state.shift = shift
+        commit('update', shift)
+        return shift
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
-    async deactivate({commit},id) {
-      const url = process.env.VUE_APP_BACKEND
+    async deactivate({commit, state}, id) {
       try {
-        const req = await axios.delete(`${url}company/shifts/${id}/deactivate/`)
-        return req.data
+        commit('deactivate', id)
+        return state.shift
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
-    async activate({commit},id) {
-      const url = process.env.VUE_APP_BACKEND
+    async activate({commit, state}, id) {
       try {
-        const req = await axios.put(`${url}company/shifts/${id}/activate/`)
-        return req.data
+        commit('activate', id)
+        return state.shift
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

@@ -21,7 +21,6 @@
   }
   &__inner {
     border-left: 1px solid $color-grey-flash;
-    background-color: $color-white;
     overflow: auto;
     @include hideScrollbar;
   }

@@ -8,7 +8,7 @@
       <div class="shifts__header-subtitle">The company must have at least one shift</div>
     </div>
     <div class="shifts__main">
-      <Shift v-for="shift of shifts" :key="shift.uid" :shift="shift" />
+      <Shift v-for="shift of shifts" :key="shift.id + shift.deactivated" :shift="shift" />
     </div>
   </div>
 </template>
