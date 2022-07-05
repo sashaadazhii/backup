@@ -1,10 +1,14 @@
 <template>
-  <div class="shift__wrapper">
+  <div class="shift__wrapper" :class="{inActive: shift.deactivated}">
     <div class="shift__header">
       <div class="shift__header-icon" :style="{backgroundColor: shift.color}"></div>
       <div class="shift__header-title">
-        <span>{{ shift.name }}</span>
-        <span v-if="shift.shortName"> ({{ shift.shortName }})</span>
+        <div>{{ shift.name }}</div>
+        <div v-if="shift.shortName">({{ shift.shortName }})</div>
+        <div v-if="shift.deactivated" class="shift__label">
+          Deactivated
+          <!-- TODO: replace whith Label -->
+        </div>
       </div>
       <Menu :list="actionsList" />
     </div>
@@ -51,39 +55,35 @@ export default {
           }
         },
         {
-          label: 'Deactivate',
-          icon: 'i-remove_circle red',
+          label: this.shift.deactivated ? 'Activate' : 'Deactivate',
+          icon: this.shift.deactivated ? 'i-check_circle green' : 'i-remove_circle red',
           command: () => this.openModal()
         }
       ]
     }
   },
-  async created() {
-    try {
-      this.isLoading = true
-    } finally {
-      this.isLoading = false
-    }
-  },
-  computed: {
-    ...mapState({})
-  },
   methods: {
     ...mapActions({
-      deactivate: 'company/shifts/deactivate'
+      deactivate: 'company/shifts/deactivate',
+      activate: 'company/shifts/activate'
     }),
     ...mapMutations({
       setShift: 'company/shifts/setShift'
     }),
     openModal() {
+      const deactivated = this.shift.deactivated
       this.$confirm.require({
         title: 'Hey, wait!',
-        message: `Are you sure, you want to deactivate ${this.shift.name} shift ?`,
-        acceptLabel: 'Deactivate',
+        message: `Are you sure, you want to ${deactivated ? 'activate' : 'deactivate'}  ${this.shift.name} shift ?`,
+        acceptLabel: deactivated ? 'Activate' : 'Deactivate',
+        acceptAttrs: deactivated ? {size: 'large'} : null,
         rejectLabel: 'Cancel',
-        icon: 'i-volume_up red',
+        icon: `i-volume_up ${deactivated ? 'green' : 'red'}`,
         accept: async () => {
-          await this.deactivate(this.shift.id)
+          if (!this.shift.deactivated) await this.deactivate(this.shift.id)
+          else {
+            await this.activate(this.shift.id)
+          }
         }
       })
     }

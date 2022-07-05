@@ -110,22 +110,22 @@
             <div class="overview__subtitle--long">Users quota:</div>
             <div class="overview__num-wrap">
               <div class="overview__num">{{ settings.usersCount }}/{{ settings.usersQuota ? settings.usersQuota : 5 }}</div>
+              <div class="overview__num-additional">+7 extra</div>
             </div>
           </div>
 
-          <div class="overview__widget-block">
+          <!-- <div class="overview__widget-block">
             <div class="overview__subtitle--long">OVERALL Profit:</div>
             <div class="overview__num-wrap">
               <div class="overview__num overview__num--inactive"><span>$</span>0</div>
             </div>
-          </div>
+          </div> -->
         </div>
-        <div class="overview__widget-wrap overview__widget-wrap--bottom" v-if="settings.loanVehicles || settings.rideToWork || settings.hasShifts">
+        <div class="overview__widget-wrap overview__widget-wrap--bottom" v-if="settings.loanVehicles || settings.rideToWork">
           <div class="overview__widget-block">
             <div class="overview__subtitle--long">Services:</div>
             <div v-if="settings.loanVehicles" class="overview__widget-info"><i class="i-car_rental"></i> <span>Vehicle in return</span></div>
             <div v-if="settings.rideToWork" class="overview__widget-info"><i class="i-local_taxi"></i> <span>Ride to work</span></div>
-            <div v-if="settings.hasShifts" class="overview__widget-info"><i class="i-view_stream"></i> <span>Shifts</span></div>
           </div>
         </div>
       </div>
@@ -153,7 +153,9 @@ export default {
     }
   },
   emits: {changeComponent: null},
-
+  created() {
+    console.log(this.settings)
+  },
   computed: {
     ...mapState({
       settings: s => s.company.settings.settings

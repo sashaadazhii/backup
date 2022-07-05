@@ -1,14 +1,16 @@
 <template>
   <div class="shifts__wrapper">
-    <div class="shifts__header">
-      <div class="shifts__header-title">
-        <span>Shifts</span>
-        <router-link to="/settings/shifts/new"><Button label="Add New" icon="i-add_circle" circle size="small" /></router-link>
+    <div class="shifts__container">
+      <div class="shifts__header">
+        <div class="shifts__header-title">
+          <span>Shifts</span>
+          <router-link to="/settings/shifts/new"><Button label="Add New" icon="i-add_circle" circle size="small" /></router-link>
+        </div>
+        <div class="shifts__header-subtitle">The company must have at least one shift</div>
       </div>
-      <div class="shifts__header-subtitle">The company must have at least one shift</div>
-    </div>
-    <div class="shifts__main">
-      <Shift v-for="shift of shifts" :key="shift.uid" :shift="shift" />
+      <div class="shifts__main">
+        <Shift v-for="shift of shifts" :key="shift.id + shift.deactivated" :shift="shift" />
+      </div>
     </div>
   </div>
 </template>
