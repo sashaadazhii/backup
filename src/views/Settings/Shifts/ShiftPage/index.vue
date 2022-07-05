@@ -26,8 +26,7 @@
           :errorMessage="errorName"
           @input="errorName = null"
         />
-        <Input v-model="shortName" title="Short Name" placeholder="Short Name" />
-        <Input v-model="location" title="Location" placeholder="Location" :error="v$.location.$error" />
+        <Input v-model="shortName" title="Shift Abbreviation" placeholder="Shift Abbreviation" />
         <Textarea v-model="description" title="Description" placeholder="Description" />
         <div class="shift__time">
           <div class="shift__time-title">Start Time</div>
@@ -74,7 +73,6 @@ export default {
       color: null,
       name: null,
       shortName: null,
-      location: null,
       startTime: {
         hours: null,
         minutes: null,
@@ -99,18 +97,17 @@ export default {
       if (!this.localShift.id) {
         try {
           this.isLoading = true
-          await this.find(shiftID)
+          this.localShift.id = this.$getID()
         } finally {
           this.isLoading = false
         }
       }
 
-      const {color, name, shortName, description, location, startTime: strStartTime, endTime: strEndTime} = this.localShift
+      const {color, name, shortName, description, startTime: strStartTime, endTime: strEndTime} = this.localShift
 
       this.color = color
       this.name = name
       this.shortName = shortName
-      this.location = location
       this.description = description
 
       this.startTime.hours = `${strStartTime.slice(0, 2)} h`
@@ -138,15 +135,15 @@ export default {
       const result = await this.v$.$validate()
       if (!result) return
 
-      const {name, description, color, startTime: objStartTime, endTime: objEndTime, location, shortName} = this
+      const {name, description, color, startTime: objStartTime, endTime: objEndTime, shortName} = this
       const startTime = `${objStartTime.hours.slice(0, 2)}:${objStartTime.minutes.slice(0, 2)}${objStartTime.timePeriod}`
       const endTime = `${objEndTime.hours.slice(0, 2)}:${objEndTime.minutes.slice(0, 2)}${objEndTime.timePeriod}`
       const shift = {
+        id: this.localShift.id || this.$getID(),
         name,
         color,
         startTime,
-        endTime,
-        location
+        endTime
       }
       if (shortName) shift.shortName = shortName
       if (description) shift.description = description
@@ -156,10 +153,11 @@ export default {
         if (this.isNew) {
           await this.create(shift)
         } else {
-          await this.update({shift, id: this.localShift.id})
+          await this.update(shift)
         }
         this.$router.back()
       } catch (err) {
+        console.log(err)
         const errors = err.response.data.details
         const errorName = errors.find(err => err.field === 'name')
         this.errorName = errorName.message
@@ -171,7 +169,6 @@ export default {
   validations() {
     return {
       name: {required},
-      location: {required},
       color: {required},
       startTime: {
         required,
