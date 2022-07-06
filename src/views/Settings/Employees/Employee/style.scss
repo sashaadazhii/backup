@@ -4,7 +4,9 @@
   &__wrapper {
     background-color: $color-white;
     padding: 60px;
-    height: 100%;
+    height: inherit;
+    max-width: 930px;
+    min-width: 600px;
   }
   &__header {
     display: flex;
@@ -18,6 +20,7 @@
       column-gap: 12px;
       & > span {
         @include font(20px, $color-grey-space, 600);
+        white-space: nowrap;
       }
     }
     &-label {
