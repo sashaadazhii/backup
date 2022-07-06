@@ -12,7 +12,7 @@
               <i v-if="!value" class="i-layers" />
               <span v-if="value">
                 <i v-if="value === 'Price & Service'" class="i-construction" />
-                <i v-if="value === 'Labor'" class="i-build" />
+                <i v-if="value === 'Labour'" class="i-build" />
                 {{ value }}
               </span>
               <span v-else class="-placeholder">Choose Type</span>
@@ -21,7 +21,7 @@
           <template #option="{option}">
             <div class="field__select-label">
               <i v-if="option === 'Price & Service'" class="i-construction" />
-              <i v-if="option === 'Labor'" class="i-build" />
+              <i v-if="option === 'Labour'" class="i-build" />
               <span>{{ option }}</span>
             </div>
           </template>
@@ -60,7 +60,7 @@ export default {
       style: null,
       costs: null,
       markup: null,
-      types: ['Price & Service', 'Labor']
+      types: ['Price & Service', 'Labour']
     }
   },
   computed: {},

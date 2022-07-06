@@ -38,7 +38,7 @@ export default {
     labelClass() {
       return {
         green: this.markup.type === 'Price & Service',
-        blue: this.markup.type === 'Labor'
+        blue: this.markup.type === 'Labour'
       }
     },
     labelIcon() {
@@ -46,7 +46,7 @@ export default {
       switch (type) {
         case 'Price & Service':
           return 'i-construction'
-        case 'Labor':
+        case 'Labour':
           return 'i-build'
         default:
           return 'i-request_page'
