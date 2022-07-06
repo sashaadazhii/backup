@@ -8,7 +8,7 @@
       <router-link class="header__nav-link" :to="`/work-order/${uid}/finance`">Finance</router-link>
     </div>
     <div class="header__menu">
-      <Button label="Cancel" border />
+      <router-link class="header__nav-link" :to="'/work-orders/board'"><Button label="Cancel" border /></router-link>
       <Button label="Save" />
     </div>
   </div>

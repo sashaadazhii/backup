@@ -55,6 +55,24 @@ const vehicles = [
   },
   {
     customerUID: '2f61a152-9c3f-42e9-823c-e412f348ec18',
+    uid: '30b68f26-f050-4b26-b390-bca6743f9a6e',
+    companyID: 1,
+    vin: '1GTFK19Y98Z187790',
+    license: 'DEV-777',
+    make: 'Audi',
+    model: 'e-tron GT',
+    year: 2022,
+    engine: {
+      size: 4.2,
+      cylinders: 8,
+      code: 'CQ-12-02'
+    },
+    odometer: 2000,
+    vehicleType: 'Sportback',
+    customFields: {}
+  },
+  {
+    customerUID: '2f61a152-9c3f-42e9-823c-e412f348ec18',
     uid: '41145fc2-c385-44c7-8355-720f38618ba1',
     companyID: 1,
     vin: '1GCEK14K8RE106083',

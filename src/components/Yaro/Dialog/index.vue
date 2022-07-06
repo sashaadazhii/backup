@@ -236,10 +236,12 @@ export default {
         }
       }
       window.document.addEventListener('mousemove', this.documentDragListener)
+      window.document.addEventListener('touchmove', this.documentDragListener)
     },
     unbindDocumentDragListener() {
       if (this.documentDragListener) {
         window.document.removeEventListener('mousemove', this.documentDragListener)
+        window.document.removeEventListener('touchmove', this.documentDragListener)
         this.documentDragListener = null
       }
     },
@@ -253,10 +255,12 @@ export default {
         }
       }
       window.document.addEventListener('mouseup', this.documentDragEndListener)
+      window.document.addEventListener('touchend', this.documentDragEndListener)
     },
     unbindDocumentDragEndListener() {
       if (this.documentDragEndListener) {
         window.document.removeEventListener('mouseup', this.documentDragEndListener)
+        window.document.removeEventListener('touchend', this.documentDragEndListener)
         this.documentDragEndListener = null
       }
     }

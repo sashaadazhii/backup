@@ -61,13 +61,19 @@
               <div class="dialog__title">Courtasy vehicle</div>
               <button class="dialog__close" @click="closeCourtasyVehicleDialog"><i class="i-circle_close" /></button>
             </div>
-            <!--
-    <DatePicker v-model="localCourtasyVehicleDate" :popover="{visibility: 'focus', positionFixed: true}" locale="en" is-range :masks="{input: 'DD MMM YYYY'}">
+
+            <DatePicker
+              v-model="localCourtasyVehicleDate"
+              :popover="{visibility: 'focus', positionFixed: true}"
+              locale="en"
+              is-range
+              :masks="{input: 'DD MMM YYYY'}"
+            >
               <template v-slot="{inputValue, inputEvents}">
                 <Input :modelValue="formattedRange(inputValue)" v-on="inputEvents.start" title="Date" iconLeft="i-calendar" placeholder="Choose Date" />
               </template>
             </DatePicker>
-            -->
+
             <Dropdown v-model="localCourtasyVehicleCar" :options="carsList" title="Choose vehicle">
               <template #value="{value}">
                 <div class="y-dropdown-label-custom">

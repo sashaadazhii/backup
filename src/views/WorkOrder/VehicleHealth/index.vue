@@ -77,7 +77,7 @@
     <Dialog v-model:visible="display" :dismissableMask="false" position="bottom" :closeOnEsc="false" :modal="false" draggable class="dialog__wrapper">
       <template v-slot="{initDrag}">
         <div class="dialog__inner">
-          <div class="dialog__move" @mousedown="initDrag"><i class="i-open_with" /></div>
+          <div class="dialog__move" @mousedown="initDrag" @touchstart="initDrag"><i class="i-open_with" /></div>
           <div class="y-chips">{{ selectedCards.length }}</div>
           <div class="dialog__text">Cards Selected:</div>
           <div class="dialog__title">Change Card Status to</div>
