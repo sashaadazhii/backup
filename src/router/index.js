@@ -152,6 +152,12 @@ const routes = [
         name: 'CompanySettingsServices',
         meta: {layout: 'admin', access: ['admin'], auth: true, header: 'CompanySettings'},
         component: () => import('@/views/Settings/Services')
+      },
+      {
+        path: 'markups',
+        name: 'CompanySettingsMarkups',
+        meta: {layout: 'admin', access: ['admin'], auth: true, header: 'CompanySettings'},
+        component: () => import('@/views/Settings/Markups')
       }
     ]
   },

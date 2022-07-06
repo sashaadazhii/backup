@@ -40,6 +40,11 @@ export default {
           icon: 'i-construction',
           label: 'Services',
           to: '/settings/services'
+        },
+        {
+          icon: 'i-monetization_on',
+          label: 'Markups',
+          to: '/settings/markups'
         }
       ]
     }

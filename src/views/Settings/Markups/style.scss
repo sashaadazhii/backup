@@ -1,16 +1,12 @@
 @import 'src/assets/styles/_variables.scss';
-
-.users {
+.markups {
   &__wrapper {
     width: 810px;
     margin-left: 60px;
     padding-right: 60px;
     padding-top: 60px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: 100%;
+    overflow: hidden;
     border-right: 1px solid $color-grey-flash;
-    @include hideScrollbar;
   }
   &__container {
     width: 100%;
@@ -20,6 +16,9 @@
     width: inherit;
     overflow-x: auto;
     @include hideScrollbar;
+  }
+  &__list {
+    width: 100%;
   }
   &__header {
     margin-bottom: 30px;
@@ -33,10 +32,14 @@
       }
     }
   }
-  &__label {
-    border-color: $color-grey-flash;
-    color: $color-grey-space;
-  }
-  &__inner {
+  &__titles {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(130px, 1.5fr) repeat(2, minmax(54px, 0.3fr)) minmax(60px, 0.7fr) 24px;
+    column-gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
+    &-item {
+      @include font(12px, rgba($color-grey-space, 0.6), 500);
+    }
   }
 }
