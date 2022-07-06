@@ -38,8 +38,9 @@
     align-items: center;
     width: 100%;
     padding: 20px;
-    margin-bottom: 14px;
-    @include border(10px);
+    margin-bottom: 8px;
+    @include border;
+    background-color: $color-white;
   }
 
   &__col {

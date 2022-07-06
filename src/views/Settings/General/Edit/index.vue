@@ -1,149 +1,151 @@
 <template>
   <div class="info">
-    <div class="info__header">
-      <div class="info__header-left"><i class="i-business_center" /><span>Update Company</span></div>
-      <div class="info__header-right">
-        <div class="btn-wrap">
-          <Button label="Cancel" border @click="$emit('changeComponent', 'Overview')" />
-          <Button label="Save" :loading="isLoading" @click="submit" />
+    <div class="info__wrap">
+      <div class="info__header">
+        <div class="info__header-left"><i class="i-business_center" /><span>Update Company</span></div>
+        <div class="info__header-right">
+          <div class="btn-wrap">
+            <Button label="Cancel" border @click="$emit('changeComponent', 'Overview')" />
+            <Button label="Save" :loading="isLoading" @click="submit" />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="info__main">
-      <div class="info__main-container">
-        <div class="info__block">
-          <div class="info__title"><i class="i-business_center" /> <span>General</span></div>
-          <div class="input-wrap">
-            <Input
-              v-model="settings.businessName"
-              placeholder="Enter company name here"
-              title="Company name"
-              :error="v$.settings.businessName.$error"
-              :errorMessage="errorMessage('businessName')"
-            />
+      <div class="info__main">
+        <div class="info__main-container">
+          <div class="info__block">
+            <div class="info__title"><i class="i-business_center" /> <span>General</span></div>
+            <div class="input-wrap">
+              <Input
+                v-model="settings.businessName"
+                placeholder="Enter company name here"
+                title="Company name"
+                :error="v$.settings.businessName.$error"
+                :errorMessage="errorMessage('businessName')"
+              />
+            </div>
+            <div class="input-wrap input-wrap--static">
+              <Input
+                v-model="settings.slug"
+                placeholder="Domain"
+                title="Domain"
+                rightText=".asn.tech"
+                :error="v$.settings.slug.$error || slugError"
+                :errorMessage="errorMessage('slug') || 'Company with this identifier already exists in a system'"
+              />
+            </div>
           </div>
-          <div class="input-wrap input-wrap--static">
-            <Input
-              v-model="settings.slug"
-              placeholder="Domain"
-              title="Domain"
-              rightText=".asn.tech"
-              :error="v$.settings.slug.$error || slugError"
-              :errorMessage="errorMessage('slug') || 'Company with this identifier already exists in a system'"
-            />
+          <div class="info__block">
+            <div class="info__section">
+              <div class="info__title"><i class="i-business_center" /> <span>Business</span></div>
+              <div class="info__section-row">
+                <div class="input-wrap">
+                  <Input
+                    v-model="settings.mainAddress"
+                    placeholder="Address"
+                    title="Address"
+                    :error="v$.settings.mainAddress.$error"
+                    :errorMessage="errorMessage('mainAddress')"
+                  />
+                </div>
+                <div class="input-wrap">
+                  <Input
+                    v-model="settings.businessPhoneNumber"
+                    placeholder="Phone"
+                    title="Phone"
+                    :error="v$.settings.businessPhoneNumber.$error"
+                    v-maska="'(###) ### ####'"
+                    :errorMessage="errorMessage('businessPhoneNumber')"
+                  />
+                </div>
+              </div>
+              <div class="info__section-row">
+                <div class="input-wrap">
+                  <div class="field__title">Time Zones</div>
+                  <Dropdown
+                    v-model="settings.timeZoneName"
+                    :options="timeZones"
+                    placeholder="Choose Time Zone"
+                    :error="v$.settings.timeZoneName.$error"
+                    :errorMessage="errorMessage('timeZoneName')"
+                  >
+                  </Dropdown>
+                </div>
+                <div class="input-wrap">
+                  <Input
+                    v-model="settings.usersQuota"
+                    placeholder="Users Quota"
+                    title="Users Quota"
+                    :error="v$.settings.usersQuota.$error"
+                    :errorMessage="errorMessage('usersQuota')"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="info__block">
-          <div class="info__section">
-            <div class="info__title"><i class="i-business_center" /> <span>Business</span></div>
+          <div class="info__block">
+            <div class="info__title"><i class="i-user" /> <span>Owner</span></div>
+            <div class="input-wrap">
+              <Input
+                v-model="settings.ownerName"
+                placeholder="Owner Name"
+                title="Name"
+                :error="v$.settings.businessName.$error"
+                :errorMessage="errorMessage('ownerName')"
+              />
+            </div>
             <div class="info__section-row">
               <div class="input-wrap">
                 <Input
-                  v-model="settings.mainAddress"
-                  placeholder="Address"
-                  title="Address"
-                  :error="v$.settings.mainAddress.$error"
-                  :errorMessage="errorMessage('mainAddress')"
+                  v-model="settings.ownerEmail"
+                  placeholder="E-mail"
+                  title="E-mail"
+                  :error="v$.settings.ownerEmail.$error"
+                  :errorMessage="errorMessage('ownerEmail')"
                 />
               </div>
               <div class="input-wrap">
                 <Input
-                  v-model="settings.businessPhoneNumber"
+                  v-model="settings.ownerPhone"
                   placeholder="Phone"
                   title="Phone"
-                  :error="v$.settings.businessPhoneNumber.$error"
+                  :error="v$.settings.ownerPhone.$error"
                   v-maska="'(###) ### ####'"
-                  :errorMessage="errorMessage('businessPhoneNumber')"
+                  :errorMessage="errorMessage('ownerPhone')"
                 />
               </div>
+            </div>
+          </div>
+          <div class="info__block">
+            <div class="info__title"><i class="i-supervisor_account" /> <span>Additional</span></div>
+            <div class="input-wrap">
+              <Input
+                v-model="settings.mainContactName"
+                placeholder="User Name"
+                title="Name"
+                :error="v$.settings.mainContactName.$error"
+                :errorMessage="errorMessage('mainContactName')"
+              />
             </div>
             <div class="info__section-row">
               <div class="input-wrap">
-                <div class="field__title">Time Zones</div>
-                <Dropdown
-                  v-model="settings.timeZoneName"
-                  :options="timeZones"
-                  placeholder="Choose Time Zone"
-                  :error="v$.settings.timeZoneName.$error"
-                  :errorMessage="errorMessage('timeZoneName')"
-                >
-                </Dropdown>
+                <Input
+                  v-model="settings.mainContactEmail"
+                  placeholder="E-mail"
+                  title="E-mail"
+                  :error="v$.settings.mainContactEmail.$error"
+                  :errorMessage="errorMessage('mainContactEmail')"
+                />
               </div>
               <div class="input-wrap">
                 <Input
-                  v-model="settings.usersQuota"
-                  placeholder="Users Quota"
-                  title="Users Quota"
-                  :error="v$.settings.usersQuota.$error"
-                  :errorMessage="errorMessage('usersQuota')"
+                  v-model="settings.mainContactPhone"
+                  placeholder="Phone"
+                  title="Phone"
+                  :error="v$.settings.mainContactPhone.$error"
+                  v-maska="'(###) ### ####'"
+                  :errorMessage="errorMessage('mainContactPhone')"
                 />
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="info__block">
-          <div class="info__title"><i class="i-user" /> <span>Owner</span></div>
-          <div class="input-wrap">
-            <Input
-              v-model="settings.ownerName"
-              placeholder="Owner Name"
-              title="Name"
-              :error="v$.settings.businessName.$error"
-              :errorMessage="errorMessage('ownerName')"
-            />
-          </div>
-          <div class="info__section-row">
-            <div class="input-wrap">
-              <Input
-                v-model="settings.ownerEmail"
-                placeholder="E-mail"
-                title="E-mail"
-                :error="v$.settings.ownerEmail.$error"
-                :errorMessage="errorMessage('ownerEmail')"
-              />
-            </div>
-            <div class="input-wrap">
-              <Input
-                v-model="settings.ownerPhone"
-                placeholder="Phone"
-                title="Phone"
-                :error="v$.settings.ownerPhone.$error"
-                v-maska="'(###) ### ####'"
-                :errorMessage="errorMessage('ownerPhone')"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="info__block">
-          <div class="info__title"><i class="i-supervisor_account" /> <span>Additional</span></div>
-          <div class="input-wrap">
-            <Input
-              v-model="settings.mainContactName"
-              placeholder="User Name"
-              title="Name"
-              :error="v$.settings.mainContactName.$error"
-              :errorMessage="errorMessage('mainContactName')"
-            />
-          </div>
-          <div class="info__section-row">
-            <div class="input-wrap">
-              <Input
-                v-model="settings.mainContactEmail"
-                placeholder="E-mail"
-                title="E-mail"
-                :error="v$.settings.mainContactEmail.$error"
-                :errorMessage="errorMessage('mainContactEmail')"
-              />
-            </div>
-            <div class="input-wrap">
-              <Input
-                v-model="settings.mainContactPhone"
-                placeholder="Phone"
-                title="Phone"
-                :error="v$.settings.mainContactPhone.$error"
-                v-maska="'(###) ### ####'"
-                :errorMessage="errorMessage('mainContactPhone')"
-              />
             </div>
           </div>
         </div>

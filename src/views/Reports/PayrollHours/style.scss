@@ -28,6 +28,7 @@
     display: grid;
     grid-template-rows: auto 1fr;
     overflow-x: auto;
+    @include hideScrollbar;
   }
   &__header {
     padding: 16px;
