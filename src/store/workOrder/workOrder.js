@@ -47,10 +47,8 @@ export default {
       }
     },
     async fetchBoard({commit}, params) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const orders = await axios.get(`${url}work-orders/board/`, {params})
-        commit('set', orders.data)
+        commit('set', localOrders)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
