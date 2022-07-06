@@ -8,7 +8,7 @@ const markups = [
   },
   {
     id: 'a56e-4a4f-9172',
-    type: 'Labor',
+    type: 'Labour',
     style: 'Hourly Rate',
     costs: 10,
     markup: 0.35
@@ -22,7 +22,7 @@ const markups = [
   },
   {
     id: 'a56e-4a4f-9174',
-    type: 'Labor',
+    type: 'Labour',
     style: 'Daily Rate',
     costs: 80,
     markup: 0.85
