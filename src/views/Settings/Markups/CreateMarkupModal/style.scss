@@ -5,7 +5,7 @@
   max-width: 680px;
   border-radius: 20px;
   box-shadow: 0px 4px 84px rgba(99, 99, 112, 0.16);
-  height: 490px;
+  height: 430px;
 }
 
 .modal {
@@ -25,7 +25,7 @@
   }
   &__row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 18px;
   }
   &__title {
@@ -69,6 +69,23 @@
   align-items: center;
   gap: 10px;
   @include font(14px, $color-space, 600);
+  span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  i {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+    margin: -3px;
+  }
+  .i-construction {
+    color: $color-green;
+  }
+  .i-build {
+    color: $color-blue;
+  }
 }
 .circle {
   width: 8px;

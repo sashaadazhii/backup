@@ -8,14 +8,20 @@
       <div class="modal__main">
         <Dropdown v-model="type" :options="types" title="Type" :error="v$.type.$error" :errorMessage="errorMessage('type')">
           <template #value="{value}">
-            <div class="y-dropdown-label-custom">
-              <i class="i-layers" />
-              <span v-if="value">{{ value }} </span>
+            <div class="y-dropdown-label-custom field__select-label">
+              <i v-if="!value" class="i-layers" />
+              <span v-if="value">
+                <i v-if="value === 'Price & Service'" class="i-construction" />
+                <i v-if="value === 'Labor'" class="i-build" />
+                {{ value }}
+              </span>
               <span v-else class="-placeholder">Choose Type</span>
             </div>
           </template>
           <template #option="{option}">
             <div class="field__select-label">
+              <i v-if="option === 'Price & Service'" class="i-construction" />
+              <i v-if="option === 'Labor'" class="i-build" />
               <span>{{ option }}</span>
             </div>
           </template>
@@ -25,29 +31,7 @@
         <div class="modal__row">
           <Input v-model.trim="costs" title="Costs less than:" placeholder="< Enter Amount" :error="v$.costs.$error" :errorMessage="errorMessage('costs')" />
           <Input v-model.trim="markup" title="Markup" placeholder="Enter Amount" :error="v$.markup.$error" :errorMessage="errorMessage('markup')" />
-          <!-- <Input
-            v-model.trim="markup"
-            title="Markup not less than:"
-            placeholder="Enter Amount"
-            :error="v$.markup.$error"
-            :errorMessage="errorMessage('markup')"
-          /> -->
         </div>
-        <Dropdown v-model="status" :options="statuses" title="Status" :error="v$.status.$error" :errorMessage="errorMessage('status')">
-          <template #value="{value}">
-            <div class="y-dropdown-label-custom">
-              <span class="circle"></span>
-              <span v-if="value">{{ value }} </span>
-              <span v-else class="-placeholder">Choose Status</span>
-            </div>
-          </template>
-          <template #option="{option}">
-            <div class="field__select-label">
-              <span class="circle" :style="{background: option.color}"></span>
-              <span>{{ option }}</span>
-            </div>
-          </template>
-        </Dropdown>
       </div>
       <div class="modal__footer">
         <Button label="Save & Close" border @click="createClose" />
@@ -76,9 +60,7 @@ export default {
       style: null,
       costs: null,
       markup: null,
-      status: null,
-      types: ['Price & Service', 'Price & Service 2'],
-      statuses: ['no status', 'no status 2']
+      types: ['Price & Service', 'Labor']
     }
   },
   computed: {},
@@ -90,18 +72,18 @@ export default {
     async createClose() {
       const result = await this.v$.$validate()
       if (!result) return
-      const {type, style, costs, markup, status} = this
-      const newMarkup = {type, style, costs, markup: +markup, status}
+      const {type, style, costs, markup} = this
+      const newMarkup = {type, style, costs, markup: +markup}
       this.add(newMarkup)
       this.$vfm.hide('CreateMarkupModal')
     },
     async createRepeat() {
       const result = await this.v$.$validate()
       if (!result) return
-      const {type, style, costs, markup, status} = this
-      const newMarkup = {type, style, costs, markup: +markup, status}
+      const {type, style, costs, markup} = this
+      const newMarkup = {type, style, costs, markup: +markup}
       this.add(newMarkup)
-      this.type = this.style = this.costs = this.markup = this.status = null
+      this.type = this.style = this.costs = this.markup = null
       this.v$.$reset()
     },
     errorMessage(name) {
@@ -114,8 +96,7 @@ export default {
       type: {required: helpers.withMessage('Type is required.', required)},
       markup: {required: helpers.withMessage('Amount is required.', required), numeric},
       style: {required: helpers.withMessage('Style is required.', required)},
-      costs: {required: helpers.withMessage('Costs is required.', required), numeric},
-      status: {required: helpers.withMessage('Status is required.', required)}
+      costs: {required: helpers.withMessage('Costs is required.', required), numeric}
     }
   }
 }
