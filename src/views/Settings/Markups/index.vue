@@ -6,7 +6,7 @@
           <div class="markups__header-title">
             <span>Markups</span>
           </div>
-          <Button label="Add New Markup" icon="i-add_circle" circle size="small" />
+          <Button label="Add New Markup" icon="i-add_circle" circle size="small" @click="openModal" />
         </div>
         <div class="markups__titles">
           <div class="markups__titles-item">Type/Style</div>
@@ -22,9 +22,11 @@
   </div>
 </template>
 <script>
-import {mapState, mapActions} from 'vuex'
+import {mapState} from 'vuex'
 import Button from '@/components/Yaro/Button'
 import Markup from './Slot'
+import CreateMarkupModal from './CreateMarkupModal'
+
 export default {
   name: 'CompanySettingsMarkups',
   components: {Markup, Button},
@@ -34,9 +36,14 @@ export default {
     })
   },
   methods: {
-    // ...mapActions({
-    //   fetchUsers: 'company/users/fetch'
-    // })
+    openModal() {
+      this.$vfm.show({
+        component: CreateMarkupModal,
+        bind: {
+          name: 'CreateMarkupModal'
+        }
+      })
+    }
   }
 }
 </script>
