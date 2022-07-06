@@ -4,7 +4,7 @@
       <i class="i-construction" /> <span>{{ markup.type }}</span>
     </div>
     <div class="markup__text">{{ markup.style }}</div>
-    <div class="markup__text">&lt;{{ markup.costs }}$</div>
+    <div class="markup__text">&lt;${{ markup.costs }}</div>
     <div class="markup__text">{{ markup.markup.toFixed(2) }}</div>
     <div class="markup__label markup__label--small">{{ markup.status }}</div>
 
@@ -35,8 +35,7 @@ export default {
         {label: 'Remove', icon: 'i-remove_circle red', command: () => {}}
       ]
     }
-  },
-  methods: {}
+  }
 }
 </script>
 <style lang="scss" scoped>
