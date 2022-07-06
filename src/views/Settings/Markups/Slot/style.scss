@@ -3,58 +3,42 @@
 .markup {
   &__wrapper {
     display: grid;
-    grid-template-columns: minmax(130px, 1fr) minmax(130px, 1.5fr) repeat(2, minmax(50px, 0.5fr)) minmax(60px, 0.75fr) 24px;
-    gap: 10px;
-
+    grid-template-columns: minmax(180px, 1fr) minmax(130px, 1.5fr) repeat(2, minmax(50px, 0.3fr)) minmax(60px, 0.5fr) 24px;
+    column-gap: 12px;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 8px;
     @include border;
     background-color: $color-white;
-    padding: 12px;
+    width: inherit;
   }
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 11px;
+    background: #e8f4ff;
+    border-radius: 8px;
+    white-space: nowrap;
 
-  &__main {
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    column-gap: 20px;
-    row-gap: 10px;
-    &-time {
-      display: grid;
-      grid-template-columns: 20px 80px auto;
-      column-gap: 8px;
-      align-items: center;
-      grid-column-start: 2;
-      &-icon {
-        font-size: 20px;
-        margin-right: 8px;
-        &.red {
-          color: $color-red;
-        }
-        &.green {
-          color: $color-green;
-        }
-      }
-      &-name {
-        @include font(14px, $color-grey-dark, 600);
-      }
-      &-params {
-        @include font(14px, $color-grey, 500);
-      }
-      &:first-child {
-        border-top: solid 1px $color-grey-flash;
-        padding-top: 16px;
-      }
+    i {
+      font-size: 20px;
+      color: $color-blue;
+    }
+    span {
+      @include font(16px, $color-blue, 600);
+    }
+    &--small {
+      width: fit-content;
+      padding: 6px 12px;
+      @include font(13px, $color-grey, 600);
+      border: 1px dashed $color-grey-light;
+      border-radius: 26px;
+      background-color: transparent;
     }
   }
-  &__footer {
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    column-gap: 20px;
-    row-gap: 12px;
-    margin-top: 20px;
-    & > span {
-      @include font(14px, rgba($color-grey, 0.6), 600);
-      grid-column-start: 2;
-      border-top: solid 1px $color-grey-flash;
-      padding-top: 16px;
-    }
+  &__text {
+    @include font(14px, $color-grey-space, 600);
+    white-space: nowrap;
   }
 }

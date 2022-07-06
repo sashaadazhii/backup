@@ -1,13 +1,24 @@
 @import 'src/assets/styles/_variables.scss';
 .markups {
   &__wrapper {
-    display: grid;
-    grid-template-columns: 1fr 255px;
-    height: 100%;
+    width: 810px;
+    margin-left: 60px;
+    padding-right: 60px;
+    padding-top: 60px;
+    overflow: hidden;
+    border-right: 1px solid $color-grey-flash;
   }
   &__container {
-    padding: 60px;
-    border-right: 1px solid $color-grey-flash;
+    width: 100%;
+    overflow: hidden;
+  }
+  &__overflow {
+    width: inherit;
+    overflow-x: auto;
+    @include hideScrollbar;
+  }
+  &__list {
+    width: 100%;
   }
   &__header {
     margin-bottom: 30px;
@@ -19,6 +30,16 @@
         @include font(20px, $color-grey-space, 600);
         margin-right: 20px;
       }
+    }
+  }
+  &__titles {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(130px, 1.5fr) repeat(2, minmax(50px, 0.3fr)) minmax(60px, 0.5fr) 24px;
+    column-gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
+    &-item {
+      @include font(12px, rgba($color-grey-space, 0.6), 500);
     }
   }
 }
