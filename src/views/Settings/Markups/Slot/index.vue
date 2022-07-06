@@ -1,13 +1,11 @@
 <template>
   <div class="markup__wrapper">
-    <div class="markup__label">
-      <i class="i-construction" /> <span>{{ markup.type }}</span>
+    <div class="markup__label" :class="labelClass">
+      <i :class="labelIcon" /> <span>{{ markup.type }}</span>
     </div>
     <div class="markup__text">{{ markup.style }}</div>
     <div class="markup__text">&lt;${{ markup.costs }}</div>
     <div class="markup__text">{{ markup.markup.toFixed(2) }}</div>
-    <div class="markup__label markup__label--small">{{ markup.status }}</div>
-
     <Menu :list="actionsList" />
   </div>
 </template>
@@ -34,6 +32,25 @@ export default {
         },
         {label: 'Remove', icon: 'i-remove_circle red', command: () => {}}
       ]
+    }
+  },
+  computed: {
+    labelClass() {
+      return {
+        green: this.markup.type === 'Price & Service',
+        blue: this.markup.type === 'Labor'
+      }
+    },
+    labelIcon() {
+      const type = this.markup.type
+      switch (type) {
+        case 'Price & Service':
+          return 'i-construction'
+        case 'Labor':
+          return 'i-build'
+        default:
+          return 'i-request_page'
+      }
     }
   }
 }

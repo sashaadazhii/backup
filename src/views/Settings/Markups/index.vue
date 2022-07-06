@@ -13,7 +13,6 @@
           <div class="markups__titles-item"></div>
           <div class="markups__titles-item">Costs</div>
           <div class="markups__titles-item">Markup</div>
-          <div class="markups__titles-item">Status</div>
           <div class="markups__titles-item"></div>
         </div>
         <div class="markups__list"><Markup v-for="markup of markups" :key="markup.id" :markup="markup" /></div>

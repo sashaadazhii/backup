@@ -3,7 +3,7 @@
 .markup {
   &__wrapper {
     display: grid;
-    grid-template-columns: minmax(180px, 1fr) minmax(130px, 1.5fr) repeat(2, minmax(54px, 0.3fr)) minmax(60px, 0.7fr) 24px;
+    grid-template-columns: minmax(180px, 1fr) minmax(130px, 1.5fr) repeat(2, minmax(60px, 0.3fr)) 24px;
     column-gap: 12px;
     align-items: center;
     padding: 12px;
@@ -23,18 +23,24 @@
 
     i {
       font-size: 20px;
-      color: $color-blue;
     }
     span {
-      @include font(16px, $color-blue, 600);
+      @include font(16px, _, 600);
     }
-    &--small {
-      width: fit-content;
-      padding: 6px 12px;
-      @include font(13px, $color-grey, 600);
-      border: 1px dashed $color-grey-light;
-      border-radius: 26px;
-      background-color: transparent;
+
+    &.green {
+      background-color: rgba($color-green, 0.2);
+      & > span,
+      & > i {
+        color: $color-green;
+      }
+    }
+    &.blue {
+      background-color: rgba($color-blue, 0.2);
+      & > span,
+      & > i {
+        color: $color-blue;
+      }
     }
   }
   &__text {
