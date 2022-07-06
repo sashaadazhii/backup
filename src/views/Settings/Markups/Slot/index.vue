@@ -1,17 +1,18 @@
 <template>
   <div class="markup__wrapper">
-    <Label :label="markup.type" icon="i-construction" size="huge" />
-    <div class="markup__name">{{ markup.name }}</div>
+    <div class="markup__label">
+      <i class="i-construction" /> <span>{{ markup.type }}</span>
+    </div>
+    <div class="markup__text">{{ markup.style }}</div>
     <div class="markup__text">&lt;{{ markup.costs }}$</div>
     <div class="markup__text">{{ markup.markup.toFixed(2) }}</div>
-    <div class="markup__label">{{ markup.status }}</div>
+    <div class="markup__label markup__label--small">{{ markup.status }}</div>
 
     <Menu :list="actionsList" />
   </div>
 </template>
 <script>
 import Menu from '@/components/Yaro/Menu'
-import Label from '@/components/Yaro/Label'
 
 export default {
   name: 'CompanySettingsMarkupSlot',
@@ -21,7 +22,7 @@ export default {
       required: true
     }
   },
-  components: {Menu, Label},
+  components: {Menu},
   data() {
     return {
       isLoading: false,
@@ -31,10 +32,7 @@ export default {
           icon: 'i-edit',
           command: () => {}
         },
-        {
-          icon: 'i-remove_circle red',
-          command: () => {}
-        }
+        {label: 'Remove', icon: 'i-remove_circle red', command: () => {}}
       ]
     }
   },
