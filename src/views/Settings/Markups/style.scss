@@ -34,7 +34,7 @@
   }
   &__titles {
     display: grid;
-    grid-template-columns: minmax(180px, 1fr) minmax(130px, 1.5fr) repeat(2, minmax(54px, 0.3fr)) minmax(60px, 0.7fr) 24px;
+    grid-template-columns: minmax(180px, 1fr) minmax(130px, 1.5fr) repeat(2, minmax(60px, 0.3fr)) 24px;
     column-gap: 12px;
     align-items: center;
     margin-bottom: 10px;

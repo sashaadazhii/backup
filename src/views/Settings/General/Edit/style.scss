@@ -3,15 +3,26 @@
 .info {
   display: grid;
   grid-template-rows: auto 1fr;
-  overflow: hidden;
   max-height: inherit;
+  max-width: 830px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+
+  &__wrap {
+    padding: 60px 10px 10px;
+    height: inherit;
+    overflow: auto;
+    width: inherit;
+    @include hideScrollbar;
+  }
 
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 78px;
-    padding: 20px 30px 20px;
+    padding-bottom: 20px;
     border-bottom: 1px solid $color-lightgrey;
     &-left {
       display: flex;
@@ -28,16 +39,9 @@
     }
   }
   &__main {
-    overflow: hidden;
     height: inherit;
     display: grid;
-    // grid-template-columns: 1fr 210px;
     grid-template-columns: 1fr;
-    &-container {
-      padding: 0 30px;
-      overflow-y: auto;
-      @include hideScrollbar;
-    }
   }
   & &__right {
     & > div {
@@ -137,14 +141,7 @@
       align-items: center;
       gap: 10px;
       padding: 6px 0 20px;
-      // margin-bottom: 20px;
       @include font(18px, $color-space, 600);
-      // border-bottom: 1px solid $color-lightgrey;
-
-      // &:first-child {
-      //   padding: 20px 0;
-      //   border-top: 1px solid #e5e7eb;
-      // }
       & > i {
         font-size: 20px;
       }
@@ -154,9 +151,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 14px;
     }
-  }
-  &__form {
-    // overflow: hidden !important;
   }
 }
 .input-wrap {

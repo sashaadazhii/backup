@@ -1,7 +1,7 @@
 @import 'src/assets/styles/_variables.scss';
 .header {
   display: grid;
-  grid-template-columns: 1fr 170px;
+  grid-template-columns: 1fr 180px;
   align-items: center;
   gap: 20px;
 
@@ -10,8 +10,5 @@
     border-bottom: 1px solid $color-grey-flash;
     width: 100%;
     overflow: hidden;
-  }
-  &__btn {
-    height: 46px;
   }
 }

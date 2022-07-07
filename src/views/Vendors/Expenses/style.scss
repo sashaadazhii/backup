@@ -27,6 +27,7 @@
     overflow-x: auto;
     padding: 16px;
     padding-top: 0;
+    @include hideScrollbar;
   }
   &__header {
     padding: 16px;

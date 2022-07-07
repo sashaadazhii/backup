@@ -104,6 +104,7 @@ const routes = [
     name: 'CompanySettings',
     meta: {layout: 'admin', access: ['admin'], auth: true, header: 'CompanySettings'},
     component: () => import('@/views/Settings'),
+    redirect: '/settings/general',
     children: [
       {
         path: 'general',
