@@ -7,6 +7,8 @@
       <div class="menu__item"><a href="#dropdown">Dropdown</a></div>
       <div class="menu__item"><a href="#menu">Menu</a></div>
       <div class="menu__item"><a href="#filters">Filters</a></div>
+      <div class="menu__item"><a href="#colors">Colors</a></div>
+      <div class="menu__item"><a href="#switch">Switch</a></div>
     </div>
     <div class="container">
       <div id="input" class="doc-wrap">
@@ -20,7 +22,10 @@
                 <Input v-model="userName" placeholder="Enter your name" title="Name" />
                 <div>User name: {{ userName }}</div>
               </div>
-
+              <div class="doc__element">
+                <Input v-model="userPhone" placeholder="Enter your phone" title="Medium size" size="medium" />
+                <div>Phone: {{ userPhone }}</div>
+              </div>
               <div class="doc__element">
                 <Input v-model="website" placeholder="Enter website" title="Website domain" rightText=".com" />
                 <div>Website: {{ website }}</div>
@@ -32,6 +37,7 @@
               <pre class="doc__code"><code class="code">
 <span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Input</span><span class="code__blue"> v-model</span><span>="userName"</span><span class="code__blue"> placeholder</span><span>="Enter your name"</span><span class="code__blue"> title</span><span>="Name"</span><span  class="code__arrow"> /&gt;</span>
+   <span class="code__arrow">&lt;</span><span  class="code__red">Input</span><span class="code__blue"> v-model</span><span>="userPhone"</span><span class="code__blue"> placeholder</span><span>="Enter your phone"</span><span class="code__blue"> title</span><span>="Medium size"</span><span class="code__blue"> size</span><span>="medium"</span><span  class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Input</span><span class="code__blue"> v-model</span><span>="website"</span><span class="code__blue"> placeholder</span><span>="Enter website"</span><span class="code__blue"> title</span><span>="Website domain"</span><span  class="code__arrow"> /&gt;</span>
 <span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
 
@@ -41,6 +47,7 @@
         <span class="code__purple">return</span> {
           <span class="code__blue">userName</span>: null,
           <span class="code__blue">website</span>: null,
+          <span class="code__blue">userPhone</span>: null
         }
       }
     }
@@ -188,6 +195,7 @@
             <div class="doc__elements">
               <div class="doc__element"><Button label="Submit" size="mini" /></div>
               <div class="doc__element"><Button label="Agree" size="small" /></div>
+              <div class="doc__element"><Button label="Create" size="medium" /></div>
               <div class="doc__element"><Button label="Send" size="large" /></div>
               <div class="doc__element"><Button label="Confirm" size="huge" /></div>
             </div>
@@ -197,6 +205,7 @@
 <span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
    <span class="code__arrow">&lt;</span><span class="code__red">Button</span><span class="code__blue"> label</span><span>="Submit"</span><span class="code__blue"> size</span><span>="mini"</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span class="code__red">Button</span><span class="code__blue"> label</span><span>="Agree"</span><span class="code__blue"> size</span><span>="small"</span><span class="code__arrow"> /&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Button</span><span class="code__blue"> label</span><span>="Create"</span><span class="code__blue"> size</span><span>="medium"</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span class="code__red">Button</span><span class="code__blue"> label</span><span>="Send"</span><span class="code__blue"> size</span><span>="large"</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span class="code__red">Button</span><span class="code__blue"> label</span><span>="Confirm"</span><span class="code__blue"> size</span><span>="huge"</span><span class="code__arrow"> /&gt;</span>
 <span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span></code>
@@ -211,6 +220,7 @@
               <div class="doc__element"><Button label="Submit" border /></div>
               <div class="doc__element"><Button label="Submit" grey /></div>
               <div class="doc__element"><Button label="Submit" circle grey /></div>
+              <div class="doc__element"><Button label="Submit" border grey /></div>
             </div>
           </template>
           <template #code>
@@ -220,6 +230,7 @@
    <span class="code__arrow">&lt;</span><span class="code__red">Button</span><span class="code__blue"> label</span><span>="Submit"</span> <span class="code__blue">border</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span class="code__red">Button</span><span class="code__blue"> label</span><span>="Submit"</span> <span class="code__blue">grey</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span class="code__red">Button</span><span class="code__blue"> label</span><span>="Submit"</span> <span class="code__blue">circle grey</span><span class="code__arrow"> /&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Button</span><span class="code__blue"> label</span><span>="Submit"</span> <span class="code__blue">border grey</span><span class="code__arrow"> /&gt;</span>
 <span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span></code>
             </pre>
           </template>
@@ -292,14 +303,15 @@
           <template #elements>
             <div class="doc__elements">
               <div class="doc__element"><Label alias="MN" size="mini" /></div>
-              <div class="doc__element"><Label alias="MN" size="mini" /></div>
               <div class="doc__element"><Label alias="MN" size="small" /></div>
+              <div class="doc__element"><Label alias="MN" size="medium" /></div>
               <div class="doc__element"><Label alias="MN" size="large" /></div>
               <div class="doc__element"><Label alias="MN" size="huge" /></div>
             </div>
             <div class="doc__elements">
               <div class="doc__element"><Label label="active" size="mini" /></div>
               <div class="doc__element"><Label label="active" size="small" /></div>
+              <div class="doc__element"><Label label="active" size="medium" /></div>
               <div class="doc__element"><Label label="active" size="large" /></div>
               <div class="doc__element"><Label label="active" size="huge" /></div>
             </div>
@@ -310,12 +322,14 @@
 <span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="MN"</span><span class="code__blue"> size</span><span>="mini"</span><span  class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="MN"</span><span class="code__blue"> size</span><span>="small"</span><span  class="code__arrow"> /&gt;</span>
+   <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="MN"</span><span class="code__blue"> size</span><span>="medium"</span><span  class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="MN"</span><span class="code__blue"> size</span><span>="large"</span><span  class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="MN"</span><span class="code__blue"> size</span><span>="huge"</span><span  class="code__arrow"> /&gt;</span>
 <span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
 <span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> label</span><span>="active"</span><span class="code__blue"> size</span><span>="mini"</span><span  class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> label</span><span>="active"</span><span class="code__blue"> size</span><span>="small"</span><span  class="code__arrow"> /&gt;</span>
+   <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> label</span><span>="active"</span><span class="code__blue"> size</span><span>="medium"</span><span  class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> label</span><span>="active"</span><span class="code__blue"> size</span><span>="large"</span><span  class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> label</span><span>="active"</span><span class="code__blue"> size</span><span>="huge"</span><span  class="code__arrow"> /&gt;</span>
 <span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
@@ -330,12 +344,14 @@
             <div class="doc__elements">
               <div class="doc__element"><Label alias="CL" size="mini" circle /></div>
               <div class="doc__element"><Label alias="CL" size="small" circle /></div>
+              <div class="doc__element"><Label alias="CL" size="medium" circle /></div>
               <div class="doc__element"><Label alias="CL" size="large" circle /></div>
               <div class="doc__element"><Label alias="CL" size="huge" circle /></div>
             </div>
             <div class="doc__elements">
               <div class="doc__element"><Label alias="BF" size="mini" border /></div>
               <div class="doc__element"><Label alias="BF" size="small" border /></div>
+              <div class="doc__element"><Label alias="BF" size="medium" border /></div>
               <div class="doc__element"><Label alias="BF" size="large" border /></div>
               <div class="doc__element"><Label alias="BF" size="huge" border /></div>
             </div>
@@ -346,12 +362,14 @@
 <span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="CL"</span><span class="code__blue"> size</span><span>="mini"</span><span class="code__blue"> circle</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="CL"</span><span class="code__blue"> size</span><span>="small"</span><span class="code__blue"> circle</span><span class="code__arrow"> /&gt;</span>
+   <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="CL"</span><span class="code__blue"> size</span><span>="medium"</span><span class="code__blue"> circle</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="CL"</span><span class="code__blue"> size</span><span>="large"</span><span class="code__blue"> circle</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="CL"</span><span class="code__blue"> size</span><span>="huge"</span><span class="code__blue"> circle</span><span class="code__arrow"> /&gt;</span>
 <span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
 <span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="BF"</span><span class="code__blue"> size</span><span>="mini"</span><span class="code__blue"> border</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="BF"</span><span class="code__blue"> size</span><span>="small"</span><span class="code__blue"> border</span><span class="code__arrow"> /&gt;</span>
+   <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="BF"</span><span class="code__blue"> size</span><span>="medium"</span><span class="code__blue"> border</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="BF"</span><span class="code__blue"> size</span><span>="large"</span><span class="code__blue"> border</span><span class="code__arrow"> /&gt;</span>
    <span class="code__arrow">&lt;</span><span  class="code__red">Label</span><span class="code__blue"> alias</span><span>="BF"</span><span class="code__blue"> size</span><span>="huge"</span><span class="code__blue"> border</span><span class="code__arrow"> /&gt;</span>
 <span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span></code>
@@ -801,7 +819,7 @@
             <div class="code__anim">
               <pre class="doc__code"><code class="code">
 <span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
-   <span class="code__arrow">&lt;</span><span class="code__red">Menu</span> :<span class="code__blue">list</span><span>="actions"</span><span class="code__blue">position</span>="left"<span class="code__arrow"> /&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Menu</span> :<span class="code__blue">list</span><span>="actions"</span><span class="code__blue"> position</span>="left"<span class="code__arrow"> /&gt;</span>
 <span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
 
 <span class="code__arrow">&lt;</span><span class="code__red">script</span><span class="code__arrow">&gt;</span>
@@ -843,7 +861,6 @@
               <div class="doc__element">
                 <Filter />
               </div>
-              <div class="doc__element"></div>
             </div>
           </template>
           <template #code>
@@ -888,6 +905,83 @@
           </template>
         </Doc>
       </div>
+      <div id="colors" class="doc-wrap">
+        <div class="title">Colors</div>
+
+        <Api :api="apiColors" name="Colors" />
+        <div class="doc__view">
+          <div class="doc__elements">
+            <div class="doc__element">
+              <Colors v-model="color" :list="colors" />
+              <div class="doc__res colors">Chosen color: <span class="square" :style="{background: color}"></span></div>
+            </div>
+            <div class="doc__element">
+              <Colors v-model="color2" />
+              <div class="doc__res colors">Chosen color: <span class="square" :style="{background: color2}"></span></div>
+            </div>
+          </div>
+        </div>
+        <Doc subtitle="">
+          <template #code>
+            <div class="code__anim">
+              <pre class="doc__code"><code class="code">
+<span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Colors</span> :<span class="code__blue">list</span><span>="colors"</span><span class="code__blue">v-model</span><span>="color"</span><span class="code__arrow"> /&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Colors</span><span class="code__blue"> v-model</span><span>="color"</span><span class="code__arrow"> /&gt;</span>
+<span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
+
+<span class="code__arrow">&lt;</span><span class="code__red">script</span><span class="code__arrow">&gt;</span>
+  <span class="code__purple"> export default</span>{
+      <span class="code__orange">data</span>() {
+        <span class="code__purple">return</span> {
+           <span class="code__blue">colors</span>: ['#fcba03', '#37276b', '#62b85f', '#c36ad9', '#c2413a', 'rgb(59, 171, 179)', 'lightgrey'],
+           <span class="code__blue">color</span>: null
+         }
+      }
+    }
+<span class="code__arrow">&lt;/</span><span class="code__red">script</span><span class="code__arrow">&gt;</span></code>
+            </pre>
+            </div>
+          </template>
+        </Doc>
+      </div>
+      <div id="switch" class="doc-wrap">
+        <div class="title">Switch</div>
+
+        <Api :api="apiSwitch" name="Switch" />
+        <Doc subtitle="#Default">
+          <template #elements>
+            <div class="doc__elements">
+              <div class="doc__element">
+                <Switch :modelValue="isVisible" @click="isVisible = !isVisible" />
+              </div>
+              <div class="doc__element">
+                <Switch v-model="isLoading" @click="isLoading = !isLoading" label="Agree with T&C" />
+              </div>
+            </div>
+          </template>
+          <template #code>
+            <div class="code__anim">
+              <pre class="doc__code"><code class="code">
+<span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Switch</span> :<span class="code__blue">modelValue</span><span>="isVisible"</span> @<span class="code__blue">click</span>="isVisible = !isVisible"<span class="code__arrow"> /&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Switch</span> <span class="code__blue">v-model</span><span>="isVisible"</span><span class="code__blue"> label</span><span>="Agree with T&C"</span> @<span class="code__blue">click</span>="isVisible = !isVisible"<span class="code__arrow"> /&gt;</span>
+<span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
+
+<span class="code__arrow">&lt;</span><span class="code__red">script</span><span class="code__arrow">&gt;</span>
+  <span class="code__purple"> export default</span>{
+      <span class="code__orange">data</span>() {
+        <span class="code__purple">return</span> {
+           <span class="code__blue">isVisible</span>: false
+         }
+      }
+    }
+<span class="code__arrow">&lt;/</span><span class="code__red">script</span><span class="code__arrow">&gt;</span></code>
+            </pre>
+            </div>
+          </template>
+        </Doc>
+      </div>
     </div>
   </section>
 </template>
@@ -898,13 +992,15 @@ import Dropdown from '@/components/Yaro/Dropdown'
 import Input from '@/components/Yaro/Input'
 import Menu from '@/components/Yaro/Menu'
 import Filter from '@/components/Yaro/Filter'
+import Colors from '@/components/Yaro/Colors'
+import Switch from '@/components/Yaro/Switch'
 import Doc from './Doc'
 import Api from './TheApi'
 import {mapActions} from 'vuex'
 
 export default {
   name: 'Documentation',
-  components: {Api, Button, Label, Input, Filter, Doc, Dropdown, Menu},
+  components: {Api, Button, Label, Input, Filter, Doc, Dropdown, Menu, Colors, Switch},
   data() {
     return {
       isLoading: false,
@@ -929,6 +1025,9 @@ export default {
       car: {title: 'Seat', label: 'st', id: '4'},
       role: {title: 'director', label: 'dr', id: '09'},
       countries: ['Ukraine', 'Canada', 'Austarlia', 'New Zeland'],
+      colors: ['#fcba03', '#37276b', '#62b85f', '#c36ad9', '#c2413a', 'rgb(59, 171, 179)', 'lightgrey'],
+      color: null,
+      color2: null,
       country: '',
       customers: [],
       userName: null,
@@ -962,6 +1061,7 @@ export default {
           {name: 'iconRight', type: 'String', default: 'null'},
           {name: 'iconColor', type: 'String', default: 'null'},
           {name: 'rightText', type: 'String', default: 'null'},
+          {name: 'size', type: 'String', default: ''},
           {name: 'error', type: 'Boolen', default: 'false'},
           {name: 'errorMessage', type: 'String', default: 'null'}
         ],
@@ -970,7 +1070,7 @@ export default {
       apiButton: {
         apiProps: [
           {name: 'label', type: 'String', default: 'none'},
-          {name: 'size', type: 'String', default: 'none; [mini, small, large, huge]'},
+          {name: 'size', type: 'String', default: 'medium; [mini, small, medium, large, huge]'},
           {name: 'icon', type: 'String', default: ''},
           {name: 'iconPos', type: 'String', default: 'left'},
           {name: 'loading', type: 'Boolen', default: 'false'},
@@ -979,14 +1079,15 @@ export default {
           {name: 'circle', type: 'Boolen [attr]', default: ''},
           {name: 'border', type: 'Boolen [attr]', default: ''},
           {name: 'red', type: 'Boolen [attr]', default: ''},
-          {name: 'grey', type: 'Boolen [attr]', default: ''}
+          {name: 'grey', type: 'Boolen [attr]', default: ''},
+          {name: 'position', type: 'String', default: 'null'}
         ],
         apiEmits: []
       },
       apiLabel: {
         apiProps: [
           {name: 'label', type: 'String', default: 'none'},
-          {name: 'size', type: 'String', default: 'none; [mini, small, large, huge]'},
+          {name: 'size', type: 'String', default: 'medium; [mini, small, medium, large, huge]'},
           {name: 'icon', type: 'String', default: 'none'},
           {name: 'alias', type: 'String', default: 'none'},
           {name: 'circle', type: 'Boolen [attr]', default: ''},
@@ -1036,6 +1137,23 @@ export default {
       apiFilters: {
         apiProps: [{name: 'options', type: 'Array', default: ''}],
         apiEmits: ['update: modelValue', 'before-show', 'before-hide', 'show', 'hide', 'change', 'filter', 'search', 'focus', 'blur']
+      },
+      apiColors: {
+        apiProps: [
+          {name: 'modelValue', type: 'String', default: "''"},
+          {name: 'list', type: 'Array', default: '() => []'},
+          {name: 'palette', type: 'Boolen', default: 'true'}
+        ],
+        apiEmits: ['update:modelValue']
+      },
+      apiSwitch: {
+        apiProps: [
+          {name: 'modelValue', type: 'null', default: 'false'},
+          {name: 'label', type: 'String', default: 'null'},
+          {name: 'class', type: '', default: 'null'},
+          {name: 'disabled', type: 'Boolen', default: 'false'}
+        ],
+        apiEmits: ['click', 'update:modelValue', 'change', 'input']
       }
     }
   },
@@ -1090,7 +1208,4 @@ export default {
 .your_icon_class i {
   color: orange;
 }
-// .colored {
-//   background-color: lightyellow !important;
-// }
 </style>
