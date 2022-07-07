@@ -38,6 +38,11 @@ const workOrder = {
       text: "Call her on her cellphone but keep trying until she answers because she can't get messages."
     }
   ],
+  scheduling: null,
+  // scheduling: {
+  //   date: null,
+  //   shift: null
+  // },
 
   // =========== OLD ===================
   needCourtesyVehicle: false,

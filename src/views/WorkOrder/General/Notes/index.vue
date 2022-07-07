@@ -5,7 +5,7 @@
       <i class="i-add_circle" />
       <span>New Note</span>
     </button>
-    <div class="block__notes">
+    <div v-if="order.notes" class="block__notes">
       <Note v-for="(note, idx) of order.notes" :key="idx" :note="note" />
     </div>
     <Dialog v-model:visible="display" :dismissableMask="false">
@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     ...mapState({
-      order: s => s.workOrder.localOrder
+      order: s => s.workOrder.workOrder
     })
   },
   methods: {

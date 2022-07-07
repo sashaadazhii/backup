@@ -103,7 +103,7 @@
     @include font(13.5px, $color-grey-space, 500);
     padding: 14px;
     background-color: $color-grey-smoke;
-    @include border;
+    @include border(12px, $color-grey-flash);
     width: 100%;
     transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     &::placeholder {

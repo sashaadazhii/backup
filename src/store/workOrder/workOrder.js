@@ -18,18 +18,32 @@ export default {
       const {uid, firstName, lastName, cellPhones} = customer
       const {uid: vehicleUID, make, model, year, currentOdometer} = vehicle
       const order = {
+        // =============== Info =============
         customer: {uid, firstName, lastName, cellPhones},
         vehicle: {vehicleUID, make, model, year, currentOdometer},
+        // =============== Settings =============
         vehicleInShop: false,
         talkSA: false,
         partsOrdered: false,
         timeComing: null,
-        timePromised: null
+        timePromised: null,
+        technician: null,
+        serviceAdvisor: null,
+        // =============== Notes =============
+        notes: null,
+        // =============== Scheduling =============
+        scheduling: null
+        // =============== Options =============
+        // =============== Questions =============
+        // =============== Requests =============
       }
       state.workOrder = order
     },
     change(state, param) {
       state.workOrder = {...state.workOrder, ...param}
+    },
+    changeScheduling(state, param) {
+      state.workOrder.scheduling = {...state.workOrder.scheduling, ...param}
     },
     setOrder(state, order) {
       state.workOrder = order
@@ -42,7 +56,8 @@ export default {
       state.page = 1
     },
     addNotes(state, note) {
-      state.localOrder.notes.unshift(note)
+      state.workOrder.notes ||= []
+      state.workOrder.notes.unshift(note)
     }
   },
   actions: {
