@@ -66,10 +66,9 @@ export default {
       }
     },
     async search({commit}, params) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const users = await axios.get(`${url}company/users/search/`, {params})
-        return users.data
+        if (params?.role) return usersList.filter(u => u.role === params.role)
+        return [...usersList]
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

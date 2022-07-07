@@ -55,7 +55,7 @@ export default {
     }
   },
   async created() {
-    // const techsList = await this.searchUsers({role: 'technician'})
+    const techsList = await this.searchUsers({role: 'technician'})
     // const technicians = {
     //   name: 'Technitian',
     //   id: this.$getID(),

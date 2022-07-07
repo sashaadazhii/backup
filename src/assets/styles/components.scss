@@ -96,4 +96,11 @@
   height: 36px;
   width: 36px;
 }
+.vc-time-day, .vc-time-month {
+  color: $color-green;
+}
+.vc-am-pm > button.active {
+  background-color: $color-green;
+}
+
 //===================================================

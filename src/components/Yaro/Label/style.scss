@@ -24,6 +24,7 @@
   }
   &__text {
     @include font(14px, _, 600);
+    white-space: nowrap;
   }
   // ======== Icon ========
   &--icon {

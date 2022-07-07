@@ -84,7 +84,6 @@ export default {
   },
   methods: {
     updateValue(event) {
-      // console.log(this.modelModifiers)
       this.$emit('update:modelValue', event.target.value)
     }
   }

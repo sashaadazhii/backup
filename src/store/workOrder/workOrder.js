@@ -1,26 +1,38 @@
 import axios from 'axios'
 import status from './workOrderStatuses'
-import {workOrder as localOrder} from '../data/workOrder'
 import {workOrders as localOrders} from '../data/workOrders'
+import {workOrder as localOrder} from '../data/workOrder'
 
 export default {
   namespaced: true,
-
   state: {
     workOrders: {},
-    workOrder: {},
-    localOrder: localOrder,
+    workOrder: localOrder,
     localOrders: localOrders
   },
   mutations: {
     set(state, workOrders) {
       state.workOrders = workOrders
     },
-    // setLocalOrders(state, localOrders) {
-    //   state.localOrders = localOrders
-    // },
+    creaete(state, {vehicle, customer}) {
+      const {uid, firstName, lastName, cellPhones} = customer
+      const {uid: vehicleUID, make, model, year, currentOdometer} = vehicle
+      const order = {
+        customer: {uid, firstName, lastName, cellPhones},
+        vehicle: {vehicleUID, make, model, year, currentOdometer},
+        vehicleInShop: false,
+        talkSA: false,
+        partsOrdered: false,
+        timeComing: null,
+        timePromised: null
+      }
+      state.workOrder = order
+    },
+    change(state, param) {
+      state.workOrder = {...state.workOrder, ...param}
+    },
     setOrder(state, order) {
-      state.order = order
+      state.workOrder = order
     },
     add(state, order) {
       if (state.workOrders.unscheduled) state.workOrders.unscheduled.unshift(order)

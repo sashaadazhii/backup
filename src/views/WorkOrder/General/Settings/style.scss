@@ -28,6 +28,9 @@
     column-gap: 8px;
     & > i {
       @include font(18px, $color-grey);
+      &.-green {
+        color: $color-green;
+      }
     }
     & > span {
       @include font(14px, $color-grey-space, 500);

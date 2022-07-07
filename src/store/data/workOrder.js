@@ -15,6 +15,13 @@ const workOrder = {
     status: 'in-shop',
     currentOdometer: 12000
   },
+  vehicleInShop: false,
+  talkSA: false,
+  partsOrdered: false,
+  timeComing: null,
+  timePromised: null,
+  technician: null,
+  serviceAdvisor: null,
   notes: [
     {
       author: 'Maynard Bauman',
@@ -31,19 +38,17 @@ const workOrder = {
       text: "Call her on her cellphone but keep trying until she answers because she can't get messages."
     }
   ],
-  vehicleInShop: false,
-  talkSA: false,
 
   // =========== OLD ===================
   needCourtesyVehicle: false,
-  serviceAdvisor: {
-    id: 12,
-    name: 'Henry Ford'
-  },
-  technician: {
-    id: 13,
-    name: 'Enzo Ferrari'
-  },
+  // serviceAdvisor: {
+  //   id: 12,
+  //   name: 'Henry Ford'
+  // },
+  // technician: {
+  //   id: 13,
+  //   name: 'Enzo Ferrari'
+  // },
   startsAt: '10 Jan, 10:00AM',
   endsAt: '17 Jan, 2:30PM',
   logicalStatus: 'in-progress',
