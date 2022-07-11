@@ -11,9 +11,9 @@
       <Scheduling />
     </div>
     <div class="general__block">
-      <!-- <Options /> -->
-      <!-- <Questions /> -->
-      <!-- <Requests /> -->
+      <Options />
+      <Questions />
+      <Requests />
     </div>
   </div>
 </template>
@@ -29,8 +29,7 @@ import Questions from './Questions'
 
 export default {
   name: 'WorkOrderGeneral',
-  // components: {Info, Notes, Settings, Scheduling, Options, Requests, Questions}
-  components: {Info, Settings, Notes, Scheduling}
+  components: {Info, Settings, Notes, Scheduling, Options, Requests, Questions}
 }
 </script>
 

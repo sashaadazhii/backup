@@ -38,22 +38,36 @@ const workOrder = {
       text: "Call her on her cellphone but keep trying until she answers because she can't get messages."
     }
   ],
-  scheduling: null,
-  // scheduling: {
-  //   date: null,
-  //   shift: null
-  // },
+  scheduling: {
+    date: 'Fri Jul 01 2022',
+    shift: {name: 'Day'}
+  },
+  needRide: {
+    date: 'Fri Jul 01 2022',
+    note: 'lorem ipsum dolor sit amet, consectet'
+  },
+  courtesyVehicle: {
+    date: {start: 'Jul 01 2022', end: 'Jul 05 2022',},
+    note: 'lorem ipsum dolor sit amet, consectet',
+    vehicle: 'Tesla Model S'
+  },
+  customRequests: [
+    {
+      text: 'lorem ipsum dolor sit amet, consectet  ',
+      time: 2
+    },
+    {
+      text: 'lorem ipsum dolor sit amet, consectet  ',
+      time: 1.5
+    },
+    {
+      text: 'lorem ipsum dolor sit amet, consectet  ',
+      time: 1
+    }
+  ],
+
 
   // =========== OLD ===================
-  needCourtesyVehicle: false,
-  // serviceAdvisor: {
-  //   id: 12,
-  //   name: 'Henry Ford'
-  // },
-  // technician: {
-  //   id: 13,
-  //   name: 'Enzo Ferrari'
-  // },
   startsAt: '10 Jan, 10:00AM',
   endsAt: '17 Jan, 2:30PM',
   logicalStatus: 'in-progress',

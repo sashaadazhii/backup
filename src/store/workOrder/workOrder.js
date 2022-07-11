@@ -32,19 +32,30 @@ export default {
         // =============== Notes =============
         notes: null,
         // =============== Scheduling =============
-        scheduling: null
+        scheduling: null,
         // =============== Options =============
+        needRide: null,
+        courtesyVehicle: null,
         // =============== Questions =============
         // =============== Requests =============
+        customRequests: null,
       }
       state.workOrder = order
     },
+    // =================================
     change(state, param) {
       state.workOrder = {...state.workOrder, ...param}
     },
     changeScheduling(state, param) {
       state.workOrder.scheduling = {...state.workOrder.scheduling, ...param}
     },
+    changeNeedRide(state, param) {
+      param ? (state.workOrder.needRide = {...state.workOrder.needRide, ...param}) : (state.workOrder.needRide = null)
+    },
+    changeCourtesyVehicle(state, param) {
+      param ? (state.workOrder.courtesyVehicle = {...state.workOrder.courtesyVehicle, ...param}) : (state.workOrder.courtesyVehicle = null)
+    },
+    // =================================
     setOrder(state, order) {
       state.workOrder = order
     },

@@ -7,18 +7,18 @@
           <Input :modelValue="`${inputValue}`" v-on="inputEvents" title="Job date" iconLeft="i-timer orange" placeholder="Choose date" />
         </template>
       </DatePicker>
-      <Dropdown :modelValue="order.scheduling?.shift" :options="shiftsList" title="Choose Shift" @change="changeScheduling({shift: $event.value})">
+      <Dropdown :modelValue="order.scheduling?.shift" :options="shifts" title="Choose Shift" @change="changeScheduling({shift: $event.value})">
         <template #value="{value}">
           <div class="y-dropdown-label-custom">
             <i class="i-fire" />
-            <span v-if="value">{{ value }}</span>
+            <span v-if="value">{{ value.name }}</span>
             <span v-else class="-placeholder">Choose Shift</span>
           </div>
         </template>
         <template #option="{option}">
           <div class="y-dropdown-item-custom">
             <i class="i-fire" />
-            <span>{{ option }}</span>
+            <span>{{ option.name }}</span>
           </div>
         </template>
       </Dropdown>
@@ -107,7 +107,6 @@ export default {
   components: {DatePicker, Input, Dropdown, Dialog},
   data() {
     return {
-      shiftsList: ['Day', 'Night', 'Over'],
       display: false,
       days: [],
       localDays: [{date: null, shift: null, time: 0}]
@@ -115,7 +114,8 @@ export default {
   },
   computed: {
     ...mapState({
-      order: s => s.workOrder.workOrder
+      order: s => s.workOrder.workOrder,
+      shifts: s => s.company.shifts.shifts
     })
   },
   methods: {
