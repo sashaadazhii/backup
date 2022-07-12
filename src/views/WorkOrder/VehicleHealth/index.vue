@@ -1,6 +1,6 @@
 <template>
-  <div class="page-inner requests">
-    <div class="requests__wrapper">
+  <div class="page-inner" :class="{requests: showRequests}">
+    <div v-if="showRequests" class="requests__wrapper">
       <Request v-for="request of requests" :key="request.uid" :request="request" />
     </div>
     <div class="health__wrapper">
@@ -9,13 +9,15 @@
           <Dropdown v-model="viewType" :options="viewTypes" size="medium" class="health__header-dropdown">
             <template #value="{value}">
               <div class="y-dropdown-item-custom">
-                <i class="i-view_stream green" />
+                <i v-if="value === 'Card View'" class="i-view_module1 green" />
+                <i v-else class="i-view_stream1 green" />
                 <span>{{ value }} </span>
               </div>
             </template>
             <template #option="{option}">
               <div class="y-dropdown-label-custom">
-                <i class="i-view_stream green" />
+                <i v-if="option === 'Card View'" class="i-view_module1 green" />
+                <i v-else class="i-view_stream1 green" />
                 <span>{{ option }}</span>
               </div>
             </template>
@@ -119,7 +121,6 @@ import {mapState, mapMutations} from 'vuex'
 export default {
   name: 'WorkOrderVehicleHealth',
   components: {Request, Dropdown, Button, Input, Slot, Dialog, Filter},
-
   data() {
     return {
       viewType: 'Table View',
@@ -163,10 +164,13 @@ export default {
         }
       ],
       allSelected: false,
-      display: false
+      display: false,
+      showRequests: false,
     }
   },
   created() {
+    const uid = this.$route.params.uid
+    if (uid !== 'new') this.showRequests = true
     const statusList = {
       name: 'Card Status',
       id: this.$getID(),
@@ -211,10 +215,10 @@ export default {
     ...mapMutations({
       selectAll: 'company/cards/selectAll',
       deselectAll: 'company/cards/deselectAll',
-      changeStatus: 'company/cards/changeStatus'
+      changeStatus: 'company/cards/changeAllStatus',
     }),
     save() {
-      this.changeStatus(this.status)
+      this.changeAllStatus(this.status)
     },
     close() {
       this.display = false

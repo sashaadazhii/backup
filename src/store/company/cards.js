@@ -18,7 +18,11 @@ export default {
     deselectAll(state) {
       state.cards.forEach(c => (c.select = false))
     },
-    changeStatus(state, status) {
+    changeStatus(state, {status, uid}) {
+      const card = state.cards.find(c => c.uid === uid)
+      card.status = status
+    },
+    changeAllStatus(state, status) {
       state.cards.forEach(c => {
         if (c.select) {
           c.select = false

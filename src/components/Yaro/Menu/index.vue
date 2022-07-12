@@ -1,5 +1,5 @@
 <template>
-  <div ref="btn" class="y-menu__btn" @click="toggle">
+  <div ref="btn" class="y-menu__btn" :style="[styleBtn]" @click="toggle">
     <slot name="menu"><i class="i-more_horiz y-menu__btn-icon" /></slot>
   </div>
   <Teleport :to="appendTarget">
@@ -59,7 +59,8 @@ export default {
     position: {
       type: String,
       default: 'right'
-    }
+    },
+    styleBtn: String
   },
   data() {
     return {

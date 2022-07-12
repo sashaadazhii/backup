@@ -33,6 +33,7 @@
       color: $color-grey;
     }
     &.-shadow {
+      padding-right: 10px;
       &.-green {
         background-color: $color-green-mint;
         color: $color-green;
@@ -42,11 +43,15 @@
       }
       &.-red {
         color: $color-red;
-        background-color: rgba($color-red, .1);
+        background-color: rgba($color-red, 0.1);
+      }
+      &.-purple {
+        color: $color-purple;
+        background-color: rgba($color-purple, 0.1);
       }
       &.-bluegreen {
         color: $color-bluegreen;
-        background-color: rgba($color-bluegreen, .1);
+        background-color: rgba($color-bluegreen, 0.1);
       }
       &.-none {
         border-color: transparent;

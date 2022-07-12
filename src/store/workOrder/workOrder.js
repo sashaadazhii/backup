@@ -33,12 +33,13 @@ export default {
         notes: null,
         // =============== Scheduling =============
         scheduling: null,
+        schedulingTime: {all: 0, planned: 0},
         // =============== Options =============
         needRide: null,
         courtesyVehicle: null,
         // =============== Questions =============
         // =============== Requests =============
-        customRequests: null,
+        customRequests: null
       }
       state.workOrder = order
     },
@@ -46,14 +47,16 @@ export default {
     change(state, param) {
       state.workOrder = {...state.workOrder, ...param}
     },
-    changeScheduling(state, param) {
-      state.workOrder.scheduling = {...state.workOrder.scheduling, ...param}
-    },
     changeNeedRide(state, param) {
       param ? (state.workOrder.needRide = {...state.workOrder.needRide, ...param}) : (state.workOrder.needRide = null)
     },
     changeCourtesyVehicle(state, param) {
       param ? (state.workOrder.courtesyVehicle = {...state.workOrder.courtesyVehicle, ...param}) : (state.workOrder.courtesyVehicle = null)
+    },
+    changeScheduling(state, param) {
+      param ? (state.workOrder.scheduling = [...param]) : (state.workOrder.scheduling = null)
+      const time = param.reduce((sum, current) => sum + current.time, 0)
+      state.workOrder.schedulingTime.planned = time
     },
     // =================================
     setOrder(state, order) {

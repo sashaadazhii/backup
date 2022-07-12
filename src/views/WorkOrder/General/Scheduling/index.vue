@@ -2,29 +2,46 @@
   <div class="block__wrapper">
     <div class="block__title">Scheduling</div>
     <div class="block__inner">
-      <DatePicker :modelValue="order.scheduling?.date" locale="en-Ca" @update:modelValue="changeScheduling({date: $event})">
-        <template v-slot="{inputValue, inputEvents}">
-          <Input :modelValue="`${inputValue}`" v-on="inputEvents" title="Job date" iconLeft="i-timer orange" placeholder="Choose date" />
-        </template>
-      </DatePicker>
-      <Dropdown :modelValue="order.scheduling?.shift" :options="shifts" title="Choose Shift" @change="changeScheduling({shift: $event.value})">
-        <template #value="{value}">
-          <div class="y-dropdown-label-custom">
-            <i class="i-fire" />
-            <span v-if="value">{{ value.name }}</span>
-            <span v-else class="-placeholder">Choose Shift</span>
+      <div class="block__header">
+        <div class="block__header-title">Total hours/Planned</div>
+        <div class="block__label">
+          <span><i class="i-time green" />{{ order.schedulingTime?.all }}h</span>
+          <span> / </span>
+          <span v-if="order.schedulingTime?.all === order.schedulingTime?.planned"><i class="i-check_circle_outline green" />All</span>
+          <span v-else class="-grey"><i class="i-time" />{{ order.schedulingTime?.planned }}h</span>
+        </div>
+      </div>
+      <div class="block__days">
+        <div v-for="(day, idx) of order.scheduling" :key="idx" class="block__day-wrapper">
+          <div class="block__day-title">Day {{ idx + 1 }}</div>
+          <div class="block__day-inner">
+            <div class="block__day-label">
+              <div class="block__day-label-title">Date</div>
+              <div class="block__day-label-text">
+                <i class="i-calendar bluegreen" />
+                <span>{{ dayjs(day.date).format('DD MMM YYYY') }}</span>
+              </div>
+            </div>
+            <div class="block__day-label">
+              <div class="block__day-label-title">Shift</div>
+              <div class="block__day-label-text">
+                <i class="i-fire purple" />
+                <span>{{ day.shift?.name }}</span>
+              </div>
+            </div>
+            <div class="block__day-label">
+              <div class="block__day-label-title">Time</div>
+              <div class="block__day-label-text">
+                <i class="i-time orange" />
+                <span>{{ day.time }}h</span>
+              </div>
+            </div>
           </div>
-        </template>
-        <template #option="{option}">
-          <div class="y-dropdown-item-custom">
-            <i class="i-fire" />
-            <span>{{ option.name }}</span>
-          </div>
-        </template>
-      </Dropdown>
+        </div>
+      </div>
       <button v-ripple class="block__btn" @click="open">
         <i class="i-add_circle" />
-        <span>Add Day</span>
+        <span>Make a Schedule</span>
       </button>
     </div>
     <Dialog v-model:visible="display">
@@ -35,9 +52,16 @@
             <button class="dialog__close" @click="close"><i class="i-circle_close" /></button>
           </div>
           <div class="dialog__header-bottom">
-            <div class="dialog__header-label">
-              <i class="i-time" />
-              <span><span>12h </span>Total job hours</span>
+            <div class="dialog__header-label" :class="{active: schedulingTime.all === schedulingTime.planned}">
+              <span>
+                <i class="i-time green" /><span class="-green">{{ schedulingTime.all }}h </span>Total job hours
+              </span>
+              <span v-if="schedulingTime.planned && schedulingTime.all > schedulingTime.planned">
+                <span class="-grey"> / </span> <i class="i-time orange" /> <span class="-orange">{{ schedulingTime.planned }}h </span>Planned
+              </span>
+              <span v-if="schedulingTime.all === schedulingTime.planned">
+                <span class="-grey"> / </span>All Planned <i class="i-check_circle_outline green" />
+              </span>
             </div>
           </div>
         </div>
@@ -55,18 +79,18 @@
                     <Input :modelValue="`${inputValue}`" v-on="inputEvents" title="Date" iconLeft="i-timer orange" placeholder="Choose date" />
                   </template>
                 </DatePicker>
-                <Dropdown v-model="day.shift" :options="shiftsList" title="Shift">
+                <Dropdown v-model="day.shift" :options="shifts" title="Shift">
                   <template #value="{value}">
                     <div class="y-dropdown-label-custom">
                       <i class="i-fire" />
-                      <span v-if="value">{{ value }}</span>
+                      <span v-if="value">{{ value.name }}</span>
                       <span v-else class="-placeholder">Choose Shift</span>
                     </div>
                   </template>
                   <template #option="{option}">
                     <div class="y-dropdown-item-custom">
                       <i class="i-fire" />
-                      <span>{{ option }}</span>
+                      <span>{{ option.name }}</span>
                     </div>
                   </template>
                 </Dropdown>
@@ -76,17 +100,18 @@
                   <div class="y-number__inner">
                     <i class="i-remove y-number__dec" :class="{'-disabled': !day.time}" @click="dec(idx)" />
                     <span class="y-number__text">{{ day.time }} h</span>
-                    <i class="i-add y-number__inc" @click="inc(idx)" />
+                    <i class="i-add y-number__inc" :class="{'-disabled': schedulingTime.all === schedulingTime.planned}" @click="inc(idx)" />
                   </div>
                 </div>
                 <!-- TODO: Field Number Component -->
               </div>
             </div>
           </div>
-          <button class="day__btn" @click="add">
-            <i class="i-add_circle" />
-            <span>Add another day</span>
-          </button>
+          <Button class="day__btn" icon="i-add_circle" label="Add another day" border @click="add" position="center" grey />
+          <div class="dialog__btns">
+            <Button class="dialog__btn" label="Cancel" border @click="close" />
+            <Button class="dialog__btn" label="Save" @click="save" />
+          </div>
         </div>
       </div>
     </Dialog>
@@ -97,19 +122,24 @@
 import {DatePicker} from 'v-calendar'
 import Input from '@/components/Yaro/Input'
 import Dropdown from '@/components/Yaro/Dropdown'
+import Button from '@/components/Yaro/Button'
 import Dialog from '@/components/Yaro/Dialog'
 import {mapState, mapMutations} from 'vuex'
-
+import dayjs from 'dayjs'
 import Ripple from '@/components/Yaro/ripple'
 
 export default {
   name: 'WorkOrderGeneralScheduling',
-  components: {DatePicker, Input, Dropdown, Dialog},
+  components: {DatePicker, Input, Dropdown, Dialog, Button},
   data() {
     return {
+      dayjs,
       display: false,
-      days: [],
-      localDays: [{date: null, shift: null, time: 0}]
+      localDays: [{date: null, shift: null, time: 0}],
+      schedulingTime: {
+        all: 12,
+        planned: 0
+      }
     }
   },
   computed: {
@@ -118,15 +148,30 @@ export default {
       shifts: s => s.company.shifts.shifts
     })
   },
+  watch: {
+    localDays: {
+      handler(days) {
+        const time = days.reduce((sum, current) => sum + current.time, 0)
+        this.schedulingTime.planned = time
+      },
+      deep: true
+    }
+  },
   methods: {
     ...mapMutations({
       changeScheduling: 'workOrder/changeScheduling'
     }),
     open() {
       this.display = true
+      this.localDays = [...this.order.scheduling]
     },
     close() {
       this.display = false
+    },
+    save() {
+      this.changeScheduling(this.localDays)
+      this.close()
+      this.localDays = [{date: null, shift: null, time: 0}]
     },
     // TODO: Field Number Component
     dec(idx) {
@@ -134,10 +179,12 @@ export default {
       this.localDays[idx].time -= 0.5
     },
     inc(idx) {
+      if (this.schedulingTime.all === this.schedulingTime.planned) return
       this.localDays[idx].time += 0.5
     },
     // TODO: Field Number Component
     add() {
+      if (this.schedulingTime.all === this.schedulingTime.planned) return
       const day = {date: null, shift: null, time: 0}
       this.localDays.push(day)
     },

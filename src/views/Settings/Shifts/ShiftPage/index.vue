@@ -165,7 +165,6 @@ export default {
         }
         this.$router.back()
       } catch (err) {
-        console.log(err)
         const errors = err.response.data.details
         const errorName = errors.find(err => err.field === 'name')
         this.errorName = errorName.message

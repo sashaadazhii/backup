@@ -39,8 +39,9 @@
       grid-template-columns: auto auto auto 1fr auto;
       column-gap: 14px;
       overflow: hidden;
+      padding: 4px;
     }
-    padding: 16px;
+    padding: 10px;
     &-dropdown {
       width: auto;
     }

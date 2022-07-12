@@ -86,10 +86,11 @@
     }
     &.medium {
       & > .field__input {
-        padding: 9px 12px;
-        padding-left: 30px;
+        padding: 8.5px 12px;
+        padding-left: 34px;
       }
       & > .field__icon.left {
+        font-size: 18px;
         bottom: 10px;
         left: 10px;
       }
@@ -100,8 +101,8 @@
     margin-bottom: 12px;
   }
   &__input {
-    @include font(13.5px, $color-grey-space, 500);
-    padding: 14px;
+    @include font(14px, $color-grey-space, 500);
+    padding: 13.5px 14px;
     background-color: $color-grey-smoke;
     @include border(12px, $color-grey-flash);
     width: 100%;
