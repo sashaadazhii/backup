@@ -23,7 +23,7 @@
           In Progress <span v-if="orders?.inProgress" class="y-badge">{{ orders?.inProgress.length }}</span>
         </div>
         <div class="board__col-inner">
-          <Card v-for="order of orders?.inProgress" :key="order.uid" :order="order" />
+          <Card v-for="order of orders?.inProgress" :key="order.uid" :order="order" @click="selectOrder(order)" />
         </div>
       </div>
       <div class="board__col-wrapper">
@@ -31,7 +31,7 @@
           Done <span v-if="orders?.done" class="y-badge">{{ orders?.done.length }}</span>
         </div>
         <div class="board__col-inner">
-          <Card v-for="order of orders?.done" :key="order.uid" :order="order" />
+          <Card v-for="order of orders?.done" :key="order.uid" :order="order" @click="selectOrder(order)" />
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
 <script>
 import TheHeader from './TheHeader'
 import Card from './Card'
-import {mapState, mapActions} from 'vuex'
+import {mapState, mapActions, mapMutations} from 'vuex'
 
 export default {
   name: 'WorkOrderBoard',
@@ -67,7 +67,15 @@ export default {
       updateStatus: 'workOrder/updateStatus',
       scheduleOrder: 'workOrder/scheduleOrder',
       feetchStatuses: 'workOrder/status/fetch'
-    })
+    }),
+    ...mapMutations({
+      set: 'workOrder/setOrder'
+    }),
+    selectOrder(order) {
+      console.log(order)
+      this.set(order)
+      this.$router.push(`/work-order/${order.uid}/general`)
+    }
   }
 }
 </script>

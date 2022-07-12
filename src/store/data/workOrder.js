@@ -38,16 +38,23 @@ const workOrder = {
       text: "Call her on her cellphone but keep trying until she answers because she can't get messages."
     }
   ],
-  scheduling: {
-    date: 'Fri Jul 01 2022',
-    shift: {name: 'Day'}
+  schedulingTime: {
+    all: 12,
+    planned: 0
   },
+  scheduling: [
+    {
+      date: 'Fri Jul 01 2022',
+      shift: {name: 'Day'},
+      time: 0
+    }
+  ],
   needRide: {
     date: 'Fri Jul 01 2022',
     note: 'lorem ipsum dolor sit amet, consectet'
   },
   courtesyVehicle: {
-    date: {start: 'Jul 01 2022', end: 'Jul 05 2022',},
+    date: {start: 'Jul 01 2022', end: 'Jul 05 2022'},
     note: 'lorem ipsum dolor sit amet, consectet',
     vehicle: 'Tesla Model S'
   },
@@ -65,7 +72,6 @@ const workOrder = {
       time: 1
     }
   ],
-
 
   // =========== OLD ===================
   startsAt: '10 Jan, 10:00AM',

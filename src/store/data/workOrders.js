@@ -337,7 +337,10 @@ const workOrders = {
       uid: '82ecf812-ff45-4b49-9d9f-9cdf0a80805b',
       customer: {
         uid: '2f61a152-9c3f-42e9-823c-e412f348ec18',
-        name: 'Tony Stark'
+        name: 'Tony Stark',
+        firstName: 'Tony',
+        lastName: 'Stark',
+        cellPhones: ['1234567890']
       },
       vehicle: {
         uid: '30b68f26-f050-4b26-b390-bca6743f9a6e',

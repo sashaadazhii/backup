@@ -87,9 +87,10 @@
     &.medium {
       & > .field__input {
         padding: 9px 12px;
-        padding-left: 30px;
+        padding-left: 34px;
       }
       & > .field__icon.left {
+        font-size: 18px;
         bottom: 10px;
         left: 10px;
       }
