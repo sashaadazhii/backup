@@ -20,6 +20,7 @@
     background-color: $color-grey-smoke;
   }
   &__nav {
+    justify-self: center;
     background-color: $color-grey-smoke;
     padding: 8px 10px;
     @include border(78px);
