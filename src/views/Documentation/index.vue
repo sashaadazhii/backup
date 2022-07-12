@@ -2,6 +2,7 @@
   <section class="doc-section">
     <div class="menu">
       <div class="menu__item"><a href="#input">Input</a></div>
+      <div class="menu__item"><a href="#textarea">Textarea</a></div>
       <div class="menu__item"><a href="#button">Button</a></div>
       <div class="menu__item"><a href="#label">Label</a></div>
       <div class="menu__item"><a href="#dropdown">Dropdown</a></div>
@@ -9,6 +10,7 @@
       <div class="menu__item"><a href="#filters">Filters</a></div>
       <div class="menu__item"><a href="#colors">Colors</a></div>
       <div class="menu__item"><a href="#switch">Switch</a></div>
+      <div class="menu__item"><a href="#calendar">Calendar</a></div>
     </div>
     <div class="container">
       <div id="input" class="doc-wrap">
@@ -161,6 +163,109 @@
         <span class="code__orange">setPhone</span>() {
           <span class="code__green">// your code here...</span>
         }
+      }
+    }
+<span class="code__arrow">&lt;/</span><span class="code__red">script</span><span class="code__arrow">&gt;</span></code>
+            </pre>
+            </div>
+          </template>
+        </Doc>
+      </div>
+      <div id="textarea" class="doc-wrap">
+        <div class="title">Textarea</div>
+
+        <Api :api="apiTextArea" name="Textarea" />
+        <Doc subtitle="#Default">
+          <template #elements>
+            <div class="doc__elements">
+              <div class="doc__element">
+                <Textarea v-model="message" title="Message" placeholder="Enter message" />
+                <div class="doc__">Your message: {{ message }}</div>
+              </div>
+
+              <div class="doc__element">
+                <Textarea v-model="message" title="Disabled" placeholder="Enter message" disabled />
+              </div>
+            </div>
+          </template>
+          <template #code>
+            <div class="code__anim">
+              <pre class="doc__code"><code class="code">
+<span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Textarea</span><span class="code__blue"> v-model</span><span>="message"</span> <span class="code__blue">title</span>="Message" <span class="code__blue">placeholder</span>="Enter message"<span class="code__arrow"> /&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Textarea</span><span class="code__blue"> v-model</span><span>="message"</span> <span class="code__blue">title</span>="Disabled" <span class="code__blue">placeholder</span>="Enter message" <span class="code__blue">disabled</span><span class="code__arrow"> /&gt;</span>
+<span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
+
+<span class="code__arrow">&lt;</span><span class="code__red">script</span><span class="code__arrow">&gt;</span>
+  <span class="code__purple"> export default</span>{
+      <span class="code__orange">data</span>() {
+        <span class="code__purple">return</span> {
+           <span class="code__blue">message</span>: null
+         }
+      }
+    }
+<span class="code__arrow">&lt;/</span><span class="code__red">script</span><span class="code__arrow">&gt;</span></code>
+            </pre>
+            </div>
+          </template>
+        </Doc>
+        <Doc subtitle="#Styling">
+          <template #elements>
+            <div class="doc__elements">
+              <div class="doc__element">
+                <Textarea v-model="message" title="Message" placeholder="Enter message" class="custom" />
+              </div>
+            </div>
+          </template>
+          <template #code>
+            <div class="code__anim">
+              <pre class="doc__code"><code class="code">
+<span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Textarea</span><span class="code__blue"> v-model</span><span>="message"</span> <span class="code__blue">title</span>="Message" <span class="code__blue">placeholder</span>="Enter message"<span class="code__blue"> class</span><span>="custom"</span> <span class="code__arrow"> /&gt;</span>
+<span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
+
+<span class="code__arrow">&lt;</span><span class="code__red">script</span><span class="code__arrow">&gt;</span>
+  <span class="code__purple"> export default</span>{
+      <span class="code__orange">data</span>() {
+        <span class="code__purple">return</span> {
+           <span class="code__blue">message</span>: null
+         }
+      }
+    }
+<span class="code__arrow">&lt;/</span><span class="code__red">script</span><span class="code__arrow">&gt;</span>
+
+<span class="code__arrow">&lt;</span><span class="code__red">style</span><span class="code__arrow">&gt;</span>
+   <span class="code__orange">.custom .y-textarea__text</span> {
+       <span class="code__blue">background-color</span>: lavender;
+   }
+<span class="code__arrow">&lt;/</span><span class="code__red">style</span><span class="code__arrow">&gt;</span></code>
+            </pre>
+            </div>
+          </template>
+        </Doc>
+        <Doc subtitle="#Errors">
+          <template #elements>
+            <div class="doc__elements">
+              <div class="doc__element">
+                <Textarea v-model="message" title="Message" placeholder="Enter message" :error="isError" errorMessage="Enter correct message" />
+              </div>
+            </div>
+          </template>
+          <template #code>
+            <div class="code__anim">
+              <pre class="doc__code"><code class="code">
+<span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Textarea</span><span class="code__blue"> v-model</span><span>="message"</span> <span class="code__blue">title</span>="Message" <span class="code__blue">placeholder</span>="Enter message"
+            :<span class="code__blue">error</span>="isError" <span class="code__blue">errorMessage</span>="Enter correct message"<span class="code__arrow"> /&gt;</span>
+<span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
+
+<span class="code__arrow">&lt;</span><span class="code__red">script</span><span class="code__arrow">&gt;</span>
+  <span class="code__purple"> export default</span>{
+      <span class="code__orange">data</span>() {
+        <span class="code__purple">return</span> {
+           <span class="code__blue">message</span>: null,
+           <span class="code__blue">isError</span>: true
+         }
       }
     }
 <span class="code__arrow">&lt;/</span><span class="code__red">script</span><span class="code__arrow">&gt;</span></code>
@@ -982,6 +1087,43 @@
           </template>
         </Doc>
       </div>
+      <div id="calendar" class="doc-wrap">
+        <div class="title">Calendar</div>
+        <Api :api="apiCalendar" name="Calendar" />
+
+        <Doc subtitle="#Default">
+          <template #elements>
+            <div class="doc__elements">
+              <div class="doc__element">
+                <Calendar v-model="date" placeholder="Choose date" :showButtonBar="true" />
+              </div>
+              <div class="doc__element">
+                <Calendar v-model="date" selectionMode="multiple" :inline="true" />
+              </div>
+            </div>
+          </template>
+          <template #code>
+            <div class="code__anim">
+              <pre class="doc__code"><code class="code">
+<span class="code__arrow">&lt;</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Calendar</span> :<span class="code__blue">v-model</span><span>="date"</span> <span class="code__blue">placeholder</span>="Choose date" :<span class="code__blue">showButtonBar</span>="true"<span class="code__arrow"> /&gt;</span>
+   <span class="code__arrow">&lt;</span><span class="code__red">Calendar</span> :<span class="code__blue">v-model</span><span>="date"</span> <span class="code__blue">selectMode</span>="multiple" :<span class="code__blue">inline</span>="true"<span class="code__arrow"> /&gt;</span>
+<span class="code__arrow">&lt;/</span><span class="code__red">div</span><span class="code__arrow">&gt;</span>
+
+<span class="code__arrow">&lt;</span><span class="code__red">script</span><span class="code__arrow">&gt;</span>
+  <span class="code__purple"> export default</span>{
+      <span class="code__orange">data</span>() {
+        <span class="code__purple">return</span> {
+           <span class="code__blue">date</span>: null
+         }
+      }
+    }
+<span class="code__arrow">&lt;/</span><span class="code__red">script</span><span class="code__arrow">&gt;</span></code>
+            </pre>
+            </div>
+          </template>
+        </Doc>
+      </div>
     </div>
   </section>
 </template>
@@ -994,13 +1136,15 @@ import Menu from '@/components/Yaro/Menu'
 import Filter from '@/components/Yaro/Filter'
 import Colors from '@/components/Yaro/Colors'
 import Switch from '@/components/Yaro/Switch'
+import Textarea from '@/components/Yaro/Textarea'
+import Calendar from '@/components/Yaro/Calendar'
 import Doc from './Doc'
 import Api from './TheApi'
 import {mapActions} from 'vuex'
 
 export default {
   name: 'Documentation',
-  components: {Api, Button, Label, Input, Filter, Doc, Dropdown, Menu, Colors, Switch},
+  components: {Api, Button, Label, Input, Filter, Doc, Dropdown, Menu, Colors, Switch, Textarea, Calendar},
   data() {
     return {
       isLoading: false,
@@ -1035,6 +1179,8 @@ export default {
       userPhone: null,
       website: null,
       newPhone: null,
+      message: null,
+      date: null,
       actions: [
         {
           label: 'Edit',
@@ -1062,6 +1208,18 @@ export default {
           {name: 'iconColor', type: 'String', default: 'null'},
           {name: 'rightText', type: 'String', default: 'null'},
           {name: 'size', type: 'String', default: ''},
+          {name: 'error', type: 'Boolen', default: 'false'},
+          {name: 'errorMessage', type: 'String', default: 'null'}
+        ],
+        apiEmits: ['update: modelValue']
+      },
+      apiTextArea: {
+        apiProps: [
+          {name: 'modelValue', type: 'String, Number', default: "''"},
+          {name: 'placeholder', type: 'String', default: "''"},
+          {name: 'title', type: 'String', default: "''"},
+          {name: 'class', type: 'String', default: 'null'},
+          {name: 'disables', type: 'Boolen', default: 'false'},
           {name: 'error', type: 'Boolen', default: 'false'},
           {name: 'errorMessage', type: 'String', default: 'null'}
         ],
@@ -1154,6 +1312,64 @@ export default {
           {name: 'disabled', type: 'Boolen', default: 'false'}
         ],
         apiEmits: ['click', 'update:modelValue', 'change', 'input']
+      },
+      apiCalendar: {
+        apiProps: [
+          {name: 'modelValue', type: '', default: 'false'},
+          {name: 'selectionMode', type: 'String', default: 'single [range, multiple]'},
+          {name: 'dateFormat', type: 'String', default: 'null'},
+          {name: 'inline', type: 'Boolen', default: 'false'},
+          {name: 'showOtherMonths', type: 'Boolen', default: 'true'},
+          {name: 'selectOtherMonths', type: 'Boolen', default: 'false'},
+          {name: 'showIcon', type: 'Boolen', default: 'false'},
+          {name: 'icon', type: 'String', default: 'i-calendar'},
+          {name: 'numberOfMonths', type: 'Number', default: 1},
+          {name: 'responsiveOptions', type: 'Array', default: 'false'},
+          {name: 'view', type: 'String', default: 'date'},
+          {name: 'touchUI', type: 'Boolen', default: 'false'},
+          {name: 'monthNavigator', type: 'Boolen', default: 'false'},
+          {name: 'yearNavigator', type: 'Boolen', default: 'false'},
+          {name: 'yearRange', type: 'String', default: 'null'},
+          {name: 'panelClass', type: 'String', default: 'null'},
+          {name: 'minDate', type: 'Date', default: 'null'},
+          {name: 'maxDate', type: 'Date', default: 'null'},
+          {name: 'disabledDates', type: 'Array', default: 'null'},
+          {name: 'disabledDays', type: 'Array', default: 'null'},
+          {name: 'maxDateCount', type: 'Number', default: 'null'},
+          {name: 'showOnFocus', type: 'Boolen', default: 'true'},
+          {name: 'showButtonBar', type: 'Boolen', default: 'false'},
+          {name: 'shortYearCutoff', type: 'String', default: '+10'},
+          {name: 'showTime', type: 'Boolen', default: 'false'},
+          {name: 'timeOnly', type: 'Boolen', default: 'false'},
+          {name: 'hourFormat', type: 'String', default: '24'},
+          {name: 'stepHour', type: 'Number', default: 1},
+          {name: 'stepMinute', type: 'Number', default: 1},
+          {name: 'stepSecond', type: 'Number', default: 1},
+          {name: 'showSeconds', type: 'Boolean', default: 'false'},
+          {name: 'hideOnDateTimeSelect', type: 'Boolen', default: 'false'},
+          {name: 'timeSeparator', type: 'String', default: ':'},
+          {name: 'showWeek', type: 'Boolen', default: 'false'},
+          {name: 'manualInput', type: 'Boolean', default: 'true'},
+          {name: 'appendTo', type: 'String', default: 'body'},
+          {name: 'inputClass', type: '', default: 'null'},
+          {name: 'inputStyle', type: '', default: 'null'},
+          {name: 'class', type: '', default: 'null'},
+          {name: 'style', type: '', default: 'null'}
+        ],
+        apiEmits: [
+          'show',
+          'hide',
+          'input',
+          'month-change',
+          'year-change',
+          'date-select',
+          'update:modelValue',
+          'today-click',
+          'clear-click',
+          'focus',
+          'blur',
+          'keydown'
+        ]
       }
     }
   },
@@ -1207,5 +1423,8 @@ export default {
 }
 .your_icon_class i {
   color: orange;
+}
+.custom .y-textarea__text {
+  background: lavender;
 }
 </style>
