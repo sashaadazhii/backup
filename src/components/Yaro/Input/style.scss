@@ -34,6 +34,9 @@
           &::placeholder {
             color: rgba($color-red, 0.8);
           }
+          &:focus {
+            box-shadow: 0 0 0 2px transparent;
+          }
         }
       }
       &.icon-left {
@@ -92,11 +95,18 @@
     margin-bottom: 12px;
   }
   &__input {
+    display: block;
     @include font(13.5px, $color-grey-space, 500);
     padding: 14px;
     background-color: rgba($color-grey-flash, 0.2);
     @include border;
     width: 100%;
+    transition: 0.2s ease-in-out;
+    &:focus {
+      border-color: $color-grey;
+      background-color: $color-white;
+      box-shadow: 0 0 0 2px $color-grey-flash;
+    }
     &::placeholder {
       color: $color-grey;
     }

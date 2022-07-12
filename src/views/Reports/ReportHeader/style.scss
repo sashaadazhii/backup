@@ -18,21 +18,36 @@
     gap: 10px;
     white-space: nowrap;
   }
+  &__btn {
+    padding-right: 14px;
+  }
 }
 .field__select-label {
   @include font(14px, $color-space, 600);
 }
-
 .field {
   &__label {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 14px;
+    height: 34px;
+    padding: 0 14px;
 
     &-wrap {
       background-color: rgba($color-lightgrey, 0.2);
       @include border;
+      border-radius: 10px;
+      transition: 0.2s;
+      &:hover {
+        border-color: $color-grey;
+      }
+      &:active,
+      &:focus-within {
+        border-color: $color-grey;
+        box-shadow: 0 0 0 2px $color-grey-flash;
+        outline: none;
+      }
     }
   }
   &__input {
@@ -40,6 +55,9 @@
     width: auto;
     height: 0;
     width: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     &-value {
       @include font(14px, rgba($color-space, 0.8), 600);
     }

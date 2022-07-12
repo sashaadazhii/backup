@@ -45,7 +45,7 @@
     <div class="header__right">
       <Button border grey icon="i-print" />
       <Button border grey icon="i-email" />
-      <Button label="Export Report" border grey icon="i-save_alt" />
+      <Button label="Export Report" border grey icon="i-save_alt" class="header__btn" />
     </div>
   </div>
 </template>

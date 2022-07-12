@@ -15,7 +15,7 @@
         </div>
 
         <div v-if="!isShowed" class="modal__footer">
-          <Button label="Add one more Account" grey icon="i-add_circle" class="modal__btn y-button--center" @click="isShowed = !isShowed" />
+          <Button label="Add one more Account" grey icon="i-add_circle" class="modal__btn y-button--center" size="large" @click="isShowed = !isShowed" />
         </div>
         <div v-else class="modal__colors">
           <Colors v-model="color" />
