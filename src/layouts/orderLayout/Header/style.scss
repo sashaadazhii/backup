@@ -2,13 +2,22 @@
 
 .header {
   &__wrapper {
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
     padding: 8px 20px;
   }
   &__title {
-    @include font(16px, $color-grey-space, 600);
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    & > span {
+      @include font(16px, $color-grey-space, 600);
+    }
+  }
+  &__label {
+    border-color: $color-grey-flash;
+    background-color: $color-grey-smoke;
   }
   &__nav {
     background-color: $color-grey-smoke;
@@ -21,7 +30,7 @@
       @include font(14px, $color-grey, 600);
       padding: 8px 14px;
       border-radius: 38px;
-      transition: color .2s ease-in-out, background-color .2s ease-in-out;
+      transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
       &.router-link-active {
         background-color: $color-white;
         color: $color-grey-space;

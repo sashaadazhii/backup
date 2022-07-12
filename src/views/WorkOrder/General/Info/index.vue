@@ -4,7 +4,7 @@
     <div class="block__subtitle">Customer</div>
     <div class="block__row">
       <i class="i-customers" />
-      <span>{{ order.customer.name }}</span>
+      <span>{{ order.customer.firstName }} {{ order.customer.lastName }}</span>
     </div>
     <div class="block__subtitle">Vehicle</div>
     <div class="block__row">
@@ -15,11 +15,15 @@
     <div class="block__subtitle">Contact/Follow up</div>
     <div class="block__row block__row--label">
       <span>{{ order.customer.firstName }}</span>
-      <Label class="block__row-label" icon="i-phone bluegreen" :label="order.customer.cellPhones[0]" border />
+      <a :href="'tel:' + order.customer.cellPhones[0]">
+        <Label class="block__row-label" icon="i-phone bluegreen" :label="order.customer.cellPhones[0]" border />
+      </a>
     </div>
     <div v-if="order.customer.cellPhones.length > 1" class="block__row block__row--label">
       <span>{{ order.customer.firstName }}</span>
-      <Label class="block__row-label" icon="i-phone blue" :label="order.customer.cellPhones[1]" border />
+      <a :href="'tel:' + order.customer.cellPhones[1]">
+        <Label class="block__row-label" icon="i-phone blue" :label="order.customer.cellPhones[1]" border />
+      </a>
     </div>
   </div>
 </template>
@@ -33,7 +37,7 @@ export default {
   components: {Label},
   computed: {
     ...mapState({
-      order: s => s.workOrder.localOrder
+      order: s => s.workOrder.workOrder
     })
   }
 }

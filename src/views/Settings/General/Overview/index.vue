@@ -157,9 +157,6 @@ export default {
     }
   },
   emits: {changeComponent: null},
-  created() {
-    console.log(this.settings)
-  },
   computed: {
     ...mapState({
       settings: s => s.company.settings.settings

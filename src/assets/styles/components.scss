@@ -96,4 +96,27 @@
   height: 36px;
   width: 36px;
 }
+.vc-time-day,
+.vc-time-month {
+  color: $color-green;
+}
+.vc-time-picker {
+  align-items: flex-end;
+}
+.vc-time-icon {
+  margin-bottom: 2px;
+}
+.vc-am-pm > button.active {
+  background-color: $color-green;
+}
+.vc-am-pm button.active:hover {
+  background: $color-green;
+}
+.vc-am-pm button.active:focus {
+  border-color: $color-green;
+}
+.vc-am-pm button:focus {
+  border-color: transparent;
+}
+
 //===================================================

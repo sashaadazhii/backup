@@ -2,23 +2,23 @@
   <div class="block__wrapper">
     <div class="block__title">Scheduling</div>
     <div class="block__inner">
-      <DatePicker v-model="date" locale="en-Ca">
+      <DatePicker :modelValue="order.scheduling?.date" locale="en-Ca" @update:modelValue="changeScheduling({date: $event})">
         <template v-slot="{inputValue, inputEvents}">
           <Input :modelValue="`${inputValue}`" v-on="inputEvents" title="Job date" iconLeft="i-timer orange" placeholder="Choose date" />
         </template>
       </DatePicker>
-      <Dropdown v-model="shift" :options="shiftsList" title="Choose Shift">
+      <Dropdown :modelValue="order.scheduling?.shift" :options="shifts" title="Choose Shift" @change="changeScheduling({shift: $event.value})">
         <template #value="{value}">
           <div class="y-dropdown-label-custom">
             <i class="i-fire" />
-            <span v-if="value">{{ value }}</span>
+            <span v-if="value">{{ value.name }}</span>
             <span v-else class="-placeholder">Choose Shift</span>
           </div>
         </template>
         <template #option="{option}">
           <div class="y-dropdown-item-custom">
             <i class="i-fire" />
-            <span>{{ option }}</span>
+            <span>{{ option.name }}</span>
           </div>
         </template>
       </Dropdown>
@@ -98,6 +98,7 @@ import {DatePicker} from 'v-calendar'
 import Input from '@/components/Yaro/Input'
 import Dropdown from '@/components/Yaro/Dropdown'
 import Dialog from '@/components/Yaro/Dialog'
+import {mapState, mapMutations} from 'vuex'
 
 import Ripple from '@/components/Yaro/ripple'
 
@@ -106,15 +107,21 @@ export default {
   components: {DatePicker, Input, Dropdown, Dialog},
   data() {
     return {
-      date: null,
-      shift: null,
-      shiftsList: ['Day', 'Night', 'Over'],
       display: false,
       days: [],
       localDays: [{date: null, shift: null, time: 0}]
     }
   },
+  computed: {
+    ...mapState({
+      order: s => s.workOrder.workOrder,
+      shifts: s => s.company.shifts.shifts
+    })
+  },
   methods: {
+    ...mapMutations({
+      changeScheduling: 'workOrder/changeScheduling'
+    }),
     open() {
       this.display = true
     },
