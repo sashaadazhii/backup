@@ -24,34 +24,34 @@
     &.active {
       background-color: rgba($color-green, 0.1);
     }
-    &__buttons {
-      display: flex;
-      gap: 20px;
-    }
-    &__info {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-    &__table {
-      &-row {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
+  }
+  &__buttons {
+    display: flex;
+    gap: 20px;
+  }
+  &__info {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  &__table {
+    &-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
 
-        &:nth-child(even) {
-          background-color: rgba($color-lightgrey, 0.25);
-        }
+      &:nth-child(even) {
+        background-color: rgba($color-lightgrey, 0.25);
       }
-      &-col {
-        padding: 10px;
-      }
-      &-header {
-        @include font(16px, $color-space, 600);
-        background-color: rgba($color-green, 0.1);
-      }
-      &-body {
-        @include font(14px, $color-grey, 500);
-      }
+    }
+    &-col {
+      padding: 10px;
+    }
+    &-header {
+      @include font(16px, $color-space, 600);
+      background-color: rgba($color-green, 0.1);
+    }
+    &-body {
+      @include font(14px, $color-grey, 500);
     }
   }
 }
