@@ -9,13 +9,15 @@
           <Dropdown v-model="viewType" :options="viewTypes" size="medium" class="health__header-dropdown">
             <template #value="{value}">
               <div class="y-dropdown-item-custom">
-                <i class="i-view_stream green" />
+                <i v-if="value === 'Card View'" class="i-view_module1 green" />
+                <i v-else class="i-view_stream1 green" />
                 <span>{{ value }} </span>
               </div>
             </template>
             <template #option="{option}">
               <div class="y-dropdown-label-custom">
-                <i class="i-view_stream green" />
+                <i v-if="option === 'Card View'" class="i-view_module1 green" />
+                <i v-else class="i-view_stream1 green" />
                 <span>{{ option }}</span>
               </div>
             </template>
@@ -211,10 +213,10 @@ export default {
     ...mapMutations({
       selectAll: 'company/cards/selectAll',
       deselectAll: 'company/cards/deselectAll',
-      changeStatus: 'company/cards/changeStatus'
+      changeStatus: 'company/cards/changeAllStatus',
     }),
     save() {
-      this.changeStatus(this.status)
+      this.changeAllStatus(this.status)
     },
     close() {
       this.display = false

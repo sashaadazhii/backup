@@ -72,7 +72,6 @@ export default {
       set: 'workOrder/setOrder'
     }),
     selectOrder(order) {
-      console.log(order)
       this.set(order)
       this.$router.push(`/work-order/${order.uid}/general`)
     }

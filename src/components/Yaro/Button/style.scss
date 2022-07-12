@@ -18,7 +18,7 @@
   transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
   &--label {
     flex: 1 1 auto;
-    @include font(16px, $color-white, 600);
+    @include font(14px, $color-white, 600);
     white-space: nowrap;
   }
   &:hover {
