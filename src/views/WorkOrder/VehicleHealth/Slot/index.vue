@@ -6,7 +6,6 @@
         <Label :label="card.status" size="small" class="card__label" :class="labelClass(card.status)" />
       </template>
     </Menu>
-    <!-- <Label :label="card.status" size="small" class="card__label" :class="labelClass(card.status)" /> -->
     <div class="card__title">{{ card.name }}</div>
     <Label
       :label="card.approvalStatus"

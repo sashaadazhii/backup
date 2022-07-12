@@ -1,6 +1,6 @@
 <template>
-  <div class="page-inner requests">
-    <div class="requests__wrapper">
+  <div class="page-inner" :class="{requests: showRequests}">
+    <div v-if="showRequests" class="requests__wrapper">
       <Request v-for="request of requests" :key="request.uid" :request="request" />
     </div>
     <div class="health__wrapper">
@@ -121,7 +121,6 @@ import {mapState, mapMutations} from 'vuex'
 export default {
   name: 'WorkOrderVehicleHealth',
   components: {Request, Dropdown, Button, Input, Slot, Dialog, Filter},
-
   data() {
     return {
       viewType: 'Table View',
@@ -165,10 +164,13 @@ export default {
         }
       ],
       allSelected: false,
-      display: false
+      display: false,
+      showRequests: false,
     }
   },
   created() {
+    const uid = this.$route.params.uid
+    if (uid !== 'new') this.showRequests = true
     const statusList = {
       name: 'Card Status',
       id: this.$getID(),

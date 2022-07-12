@@ -26,7 +26,7 @@
               <div class="block__day-label-title">Shift</div>
               <div class="block__day-label-text">
                 <i class="i-fire purple" />
-                <span>{{ day.shift.name }}</span>
+                <span>{{ day.shift?.name }}</span>
               </div>
             </div>
             <div class="block__day-label">
