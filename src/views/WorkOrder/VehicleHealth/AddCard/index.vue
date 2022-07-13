@@ -10,7 +10,7 @@
       <div class="modal__block">
         <div class="modal__block-title">CARDS</div>
         <div class="modal__block-inner">
-          <Card v-for="card of cards" :key="card.templateID" :card="card" @click="openCard" />
+          <Card v-for="card of cards" :key="card.templateID" :card="card" @click="openCard(card)" />
         </div>
       </div>
     </div>
@@ -32,7 +32,6 @@ export default {
   },
   async created() {
     await this.fetchCards()
-    console.log(this.$vfm.modals)
   },
   computed: {
     ...mapState({
@@ -51,14 +50,17 @@ export default {
       // console.log(e)
       // this.part = e.ref.params._rawValue
     },
-    openCard() {
-      this.$vfm.show({
-        component: CardPage,
-        bind: {
-          name: 'CardPage',
-          'click-to-close': false
-        }
-      })
+    openCard(card) {
+      this.$vfm.show(
+        {
+          component: CardPage,
+          bind: {
+            name: 'CardPage',
+            'click-to-close': false
+          }
+        },
+        card
+      )
       this.$vfm.hide('AddCard')
     }
   }
