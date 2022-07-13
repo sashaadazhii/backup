@@ -8,6 +8,7 @@
     display: grid;
     grid-template-rows: auto 1fr;
     max-height: 100%;
+    box-shadow: 0px 3px 0px rgba(48, 50, 73, 0.05);
   }
 }
 
@@ -30,7 +31,7 @@
     @include hideScrollbar;
   }
   &__header {
-    padding: 16px;
+    padding: 16px 20px;
     padding-bottom: 14px;
     &-title {
       @include font(12px, $color-grey, 500);

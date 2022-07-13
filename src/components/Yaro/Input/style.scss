@@ -37,6 +37,9 @@
           &::placeholder {
             color: rgba($color-red, 0.8);
           }
+          &:focus {
+            box-shadow: 0 0 0 2px transparent;
+          }
         }
       }
       &.icon-left {
@@ -101,12 +104,18 @@
     margin-bottom: 12px;
   }
   &__input {
-    @include font(14px, $color-grey-space, 500);
-    padding: 13.5px 14px;
-    background-color: $color-grey-smoke;
-    @include border(12px, $color-grey-flash);
+    display: block;
+    @include font(13.5px, $color-grey-space, 500);
+    padding: 14px;
+    background-color: rgba($color-grey-flash, 0.2);
+    @include border;
     width: 100%;
-    transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+    &:focus {
+      border-color: $color-grey;
+      background-color: $color-white;
+      box-shadow: 0 0 0 2px $color-grey-flash;
+    }
     &::placeholder {
       color: $color-grey;
     }

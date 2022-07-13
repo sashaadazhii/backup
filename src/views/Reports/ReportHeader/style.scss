@@ -18,6 +18,9 @@
     gap: 10px;
     white-space: nowrap;
   }
+  &__btn {
+    padding-right: 14px;
+  }
 }
 .field__select-label {
   @include font(14px, $color-space, 600);
