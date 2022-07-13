@@ -67,10 +67,10 @@ const defaultOptions = {
     date: [FilterMatchMode.DATE_IS, FilterMatchMode.DATE_IS_NOT, FilterMatchMode.DATE_BEFORE, FilterMatchMode.DATE_AFTER]
   },
   zIndex: {
-    modal: 1100,
-    overlay: 1000,
-    menu: 1000,
-    tooltip: 1100
+    modal: 11000,
+    overlay: 10000,
+    menu: 10000,
+    tooltip: 11000
   }
 }
 

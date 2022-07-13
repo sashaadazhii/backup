@@ -3,7 +3,7 @@
     <div v-if="loading" class="y-button--loading-icon">
       <i :class="loadingIcon" />
     </div>
-    <i v-if="icon" :class="iconClass" />
+    <i v-if="icon" :class="iconClass" :style="{fontSize: iconSize}" />
     <span class="y-button--label">{{ label || '&nbsp;' }}</span>
   </button>
 </template>
@@ -42,7 +42,8 @@ export default {
     position: {
       type: String,
       default: null
-    }
+    },
+    iconSize: String
   },
   computed: {
     buttonClass() {
