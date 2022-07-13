@@ -5,7 +5,6 @@ export default {
 
   state: {
     status: {},
-    statuses: [],
     logicalStatuses: [
       {
         name: 'Not Scheduled',
@@ -33,6 +32,64 @@ export default {
         isNew: true
       },
       {name: 'Done', icon: 'i-rp_done', status: 'done', description: 'Work Order is finished but not closed yet.', substatuses: [], isNew: true}
+    ],
+    statuses: [
+      {
+        uid: '4e2d3f2d8220',
+        name: 'Processing Vehicle',
+        logicalStatus: 'in-progress',
+        description: "We start it automatically when Technician presses 'Start Work Order' button or 'Start Work Order' button",
+        color: '#FFA14E'
+      },
+      {
+        uid: '4e2d3f2d8221',
+        name: 'Waiting For Service Advisor',
+        logicalStatus: 'in-progress',
+        description: 'SA would receive a notification about that',
+        color: '#FF9B70'
+      },
+      {
+        uid: '4e2d3f2d8222',
+        name: 'Waiting For Customer',
+        logicalStatus: 'in-progress',
+        description: 'When SA sends quote for a customer, this status is automatically applied to a particular WO',
+        color: '#E8F4FF'
+      },
+      {
+        uid: '4e2d3f2d8223',
+        name: 'Customer Response',
+        logicalStatus: 'in-progress',
+        description: 'When customer approved/declined work',
+        color: '#2C9AFF'
+      },
+      {
+        uid: '4e2d3f2d8224',
+        name: 'Waiting For Parts',
+        logicalStatus: 'in-progress',
+        description: '',
+        color: '#BA8AE7'
+      },
+      {
+        uid: '4e2d3f2d8225',
+        name: 'Waiting For Technician',
+        logicalStatus: 'in-progress',
+        description: '',
+        color: '#3EB3BB'
+      },
+      {
+        uid: '4e2d3f2d8226',
+        name: 'Not Started',
+        logicalStatus: 'not-started',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        color: '#6B7280'
+      },
+      {
+        uid: '4e2d3f2d8227',
+        name: 'Not Invoiced',
+        logicalStatus: 'done',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        color: '#10B981'
+      }
     ]
   },
   mutations: {
@@ -71,21 +128,21 @@ export default {
         throw err
       }
     },
-    async create({commit}, status) {
-      const url = process.env.VUE_APP_BACKEND
+    async create({commit, state}, status) {
       try {
-        return await axios.post(`${url}company/work-order/statuses/`, status)
+        state.status = status
+        commit('add', status)
+        return status
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
-    async update({commit}, {status, uid}) {
-      const url = process.env.VUE_APP_BACKEND
+    async update({commit, state}, status) {
       try {
-        const req = await axios.put(`${url}company/work-order/statuses/${uid}`, status)
-        commit('update', req.data)
-        return req.data
+        state.status = status
+        commit('update', status)
+        return status
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

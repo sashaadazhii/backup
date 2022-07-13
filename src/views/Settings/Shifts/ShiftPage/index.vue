@@ -26,8 +26,7 @@
           :errorMessage="errorName"
           @input="errorName = null"
         />
-        <Input v-model="shortName" title="Short Name" placeholder="Short Name" />
-        <Input v-model="location" title="Location" placeholder="Location" :error="v$.location.$error" />
+        <Input v-model="shortName" title="Shift Abbreviation" placeholder="Shift Abbreviation" />
         <Textarea v-model="description" title="Description" placeholder="Description" />
         <div class="shift__time">
           <div class="shift__time-title">Start Time</div>
@@ -47,6 +46,9 @@
             <div class="shift__time-period" :class="{'shift__time-period--active': endTime.timePeriod === 'PM'}" @click="endTime.timePeriod = 'PM'">PM</div>
           </div>
         </div>
+        <div class="shift__switch">
+          <Switch :modelValue="!deactivated" @click="deactivated = !deactivated" label="Activated Shift" />
+        </div>
       </div>
     </div>
   </div>
@@ -59,12 +61,13 @@ import Colors from '@/components/Yaro/Colors'
 import Input from '@/components/Yaro/Input'
 import Textarea from '@/components/Yaro/Textarea'
 import Dropdown from '@/components/Yaro/Dropdown'
+import Switch from '@/components/Yaro/Switch'
 import useVuelidate from '@vuelidate/core'
 import {required} from '@vuelidate/validators'
 
 export default {
   name: 'CompanySettingsShiftPage',
-  components: {Button, Label, Colors, Input, Textarea, Dropdown},
+  components: {Button, Label, Colors, Input, Textarea, Dropdown, Switch},
   data() {
     return {
       v$: useVuelidate(),
@@ -74,7 +77,6 @@ export default {
       color: null,
       name: null,
       shortName: null,
-      location: null,
       startTime: {
         hours: null,
         minutes: null,
@@ -86,6 +88,7 @@ export default {
         timePeriod: 'AM'
       },
       description: null,
+      deactivated: false,
       errorName: null,
       hoursList: ['01 h', '02 h', '03 h', '04 h', '05 h', '06 h', '07 h', '08 h', '09 h', '10 h', '11 h', '12 h'],
       minutesList: ['00 min', '10 min', '20 min', '30 min', '40 min', '50 min', '60 min'],
@@ -99,19 +102,19 @@ export default {
       if (!this.localShift.id) {
         try {
           this.isLoading = true
-          await this.find(shiftID)
+          this.localShift.id = this.$getID()
         } finally {
           this.isLoading = false
         }
       }
 
-      const {color, name, shortName, description, location, startTime: strStartTime, endTime: strEndTime} = this.localShift
+      const {color, name, shortName, description, deactivated, startTime: strStartTime, endTime: strEndTime} = this.localShift
 
       this.color = color
       this.name = name
       this.shortName = shortName
-      this.location = location
       this.description = description
+      this.deactivated = deactivated
 
       this.startTime.hours = `${strStartTime.slice(0, 2)} h`
       this.startTime.minutes = `${strStartTime.slice(3, 5)} min`
@@ -121,6 +124,7 @@ export default {
       this.endTime.minutes = `${strEndTime.slice(3, 5)} min`
       this.endTime.timePeriod = `${strEndTime.slice(5, 7)}`
     }
+    this.localShift.deactivated = this.deactivated
   },
   computed: {
     ...mapState({
@@ -138,15 +142,16 @@ export default {
       const result = await this.v$.$validate()
       if (!result) return
 
-      const {name, description, color, startTime: objStartTime, endTime: objEndTime, location, shortName} = this
+      const {name, description, color, deactivated, startTime: objStartTime, endTime: objEndTime, shortName} = this
       const startTime = `${objStartTime.hours.slice(0, 2)}:${objStartTime.minutes.slice(0, 2)}${objStartTime.timePeriod}`
       const endTime = `${objEndTime.hours.slice(0, 2)}:${objEndTime.minutes.slice(0, 2)}${objEndTime.timePeriod}`
       const shift = {
+        id: this.localShift.id || this.$getID(),
         name,
         color,
+        deactivated,
         startTime,
-        endTime,
-        location
+        endTime
       }
       if (shortName) shift.shortName = shortName
       if (description) shift.description = description
@@ -156,7 +161,7 @@ export default {
         if (this.isNew) {
           await this.create(shift)
         } else {
-          await this.update({shift, id: this.localShift.id})
+          await this.update(shift)
         }
         this.$router.back()
       } catch (err) {
@@ -171,7 +176,6 @@ export default {
   validations() {
     return {
       name: {required},
-      location: {required},
       color: {required},
       startTime: {
         required,

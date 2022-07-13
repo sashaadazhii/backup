@@ -10,6 +10,8 @@ import vehicles from './vehicles'
 import users from './users'
 import shifts from './shifts'
 import card from './card'
+import cards from './cards'
+import markups from './markups'
 
 export default {
   namespaced: true,
@@ -28,6 +30,8 @@ export default {
     vehicles,
     users,
     shifts,
-    card
+    card,
+    cards,
+    markups
   }
 }

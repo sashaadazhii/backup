@@ -1,10 +1,11 @@
 import axios from 'axios'
+import {users as usersList} from '../data/users'
 
 export default {
   namespaced: true,
 
   state: {
-    users: [],
+    users: usersList,
     searchingUsers: [],
     technicians: [],
     user: {},
@@ -45,14 +46,10 @@ export default {
   },
   actions: {
     async fetch({commit, state}) {
-      const url = process.env.VUE_APP_BACKEND
-      const page = state.page
-
       try {
-        const users = await axios.get(`${url}company/users/`, {params: {page}})
-        commit('pagination', users.data.pagination)
-        commit('set', users.data.data)
-        // commit('changePage')
+        const users = state.users
+        commit('pagination', users.pagination)
+        commit('set', users)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
@@ -69,41 +66,34 @@ export default {
       }
     },
     async search({commit}, params) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const users = await axios.get(`${url}company/users/search/`, {params})
-        return users.data
+        if (params?.role) return usersList.filter(u => u.role === params.role)
+        return [...usersList]
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async create({commit}, user) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const req = await axios.post(`${url}company/users/`, user)
-        commit('add', req.data)
-        return req.data
+        commit('add', user)
+        return user
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
-    async update({commit}, {user, userID}) {
-      const url = process.env.VUE_APP_BACKEND
+    async update({commit}, user) {
       try {
-        const req = await axios.put(`${url}company/users/${userID}/`, user)
-        commit('update', req.data)
-        return req.data
+        commit('update', user)
+        return user
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
       }
     },
     async delete({commit}, id) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        await axios.delete(`${url}company/users/${id}/`)
         commit('remove', id)
       } catch (err) {
         commit('setError', err, {root: true})

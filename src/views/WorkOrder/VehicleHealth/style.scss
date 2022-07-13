@@ -1,1 +1,189 @@
 @import 'src/assets/styles/_variables.scss';
+
+.page-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  column-gap: 20px;
+  padding: 20px;
+  height: inherit;
+  overflow: hidden;
+  &.requests {
+    grid-template-columns: 1fr 3.6fr;
+  }
+}
+.requests {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    overflow: auto;
+    @include hideScrollbar;
+  }
+}
+.health {
+  &__wrapper {
+    background-color: $color-white;
+    border-radius: 16px;
+    height: inherit;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+  }
+  &__header {
+    display: grid;
+    &-top {
+      display: grid;
+      align-items: center;
+      grid-template-columns: auto auto auto 1fr auto;
+      column-gap: 14px;
+      overflow: hidden;
+      padding: 4px;
+    }
+    padding: 10px;
+    &-dropdown {
+      width: auto;
+    }
+  }
+  &__table {
+    overflow: hidden;
+    height: inherit;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+}
+
+.table {
+  &__header {
+    display: grid;
+    grid-template-columns: 16px minmax(100px, 180px) minmax(200px, 2.2fr) minmax(100px, 204px) minmax(200px, 2fr) 24px;
+    column-gap: 14px;
+    align-items: center;
+    padding: 14px 16px;
+    border-top: 1px solid $color-grey-flash;
+    border-bottom: 1px solid $color-grey-flash;
+    &-cell {
+      @include font(12px, $color-grey, 500);
+    }
+  }
+  &__main {
+    overflow: auto;
+    @include hideScrollbar;
+  }
+}
+
+.y-check {
+  height: 16px;
+  width: 16px;
+  border: 2px solid $color-grey-light;
+  border-radius: 4px;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    border-color: $color-green;
+  }
+  &.-active {
+    border-color: $color-green;
+    background-color: $color-green;
+  }
+}
+
+.dialog {
+  &__inner {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    padding: 18px 14px;
+    background-color: $color-grey-space;
+    border-radius: 20px;
+  }
+  &__move {
+    padding-right: 14px;
+    border-right: 1px solid $color-grey;
+    & > i {
+      @include font(18px, $color-grey);
+      cursor: move;
+    }
+  }
+  &__text {
+    @include font(14px, $color-grey-light, 600);
+  }
+  &__title {
+    @include font(14px, $color-grey-smoke, 600);
+    @include border(10px, $color-grey-light);
+    background-color: $color-grey;
+    height: 36px;
+    padding: 0 12px;
+    display: grid;
+    place-items: center;
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    margin-left: 60px;
+  }
+  &__btn {
+    height: 36px;
+    padding: 0 12px;
+    display: grid;
+    place-items: center;
+    background-color: $color-white;
+    @include font(14px, $color-grey-space, 600);
+    @include border(10px, transparent);
+    &--border {
+      border-color: $color-grey;
+      background-color: transparent;
+      color: $color-white;
+    }
+  }
+}
+.y-chips {
+  @include font(14px, $color-white, 600);
+  padding: 6px 8px;
+  background-color: $color-green;
+  border-radius: 30px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid #d6d7de;
+
+  border-radius: 8px;
+  background-color: $color-white;
+  &__wrapper {
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    overflow-x: auto;
+    width: 100%;
+    @include hideScrollbar;
+  }
+  &__icon {
+    line-height: 0;
+    margin: -2px;
+    margin-right: 8px;
+    & > i {
+      @include font(16px, $color-grey);
+      &.green {
+        color: $color-green;
+      }
+    }
+  }
+  &__name {
+    @include font(14px, $color-space, 500);
+    white-space: nowrap;
+  }
+  &__close {
+    margin-left: 12px;
+    line-height: 0;
+    cursor: pointer;
+    & > i {
+      @include font(18px, rgba($color-grey, 0.6), 500);
+    }
+  }
+}

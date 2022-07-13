@@ -36,7 +36,6 @@ export default {
     },
     add(state, template) {
       state.templates.unshift(template)
-      console.log(state.templates)
     },
     update(state, template) {
       state.template = template
@@ -84,7 +83,6 @@ export default {
       template.relations ||= []
       if (template.vehicleUID) template.relations.push(vehiclesList.find(v => v.uid === template.vehicleUID))
       try {
-        console.log(template)
         commit('add', template)
         return template
       } catch (err) {

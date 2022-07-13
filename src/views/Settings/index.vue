@@ -35,6 +35,16 @@ export default {
           icon: 'i-fiber_smart_record',
           label: 'Statuses',
           to: '/settings/statuses'
+        },
+        {
+          icon: 'i-construction',
+          label: 'Services',
+          to: '/settings/services'
+        },
+        {
+          icon: 'i-monetization_on',
+          label: 'Markups',
+          to: '/settings/markups'
         }
       ]
     }

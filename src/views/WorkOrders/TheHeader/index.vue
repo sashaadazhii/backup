@@ -16,30 +16,18 @@
         </div>
       </div>
       <div class="header__right">
-        <button class="header__btn" @click="openModal">
-          <i class="i-add_circle" />
-          <span>Add Work Order</span>
-        </button>
+        <router-link to="/work-order/new"><Button icon="i-add_circle" label="Add Work Order" /></router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import AddWorkOrder from '../AddWorkOrder'
+import Button from '@/components/Yaro/Button'
 
 export default {
   name: 'WorkBoardHeader',
-  methods: {
-    openModal() {
-      this.$vfm.show({
-        component: AddWorkOrder,
-        bind: {
-          name: 'AddWorkOrder'
-        }
-      })
-    }
-  }
+  components: {Button}
 }
 </script>
 <style lang="scss" scoped>

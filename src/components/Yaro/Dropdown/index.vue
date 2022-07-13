@@ -225,7 +225,8 @@ export default {
     size: {
       type: String,
       default: null
-    }
+    },
+    theme: String
   },
   data() {
     return {
@@ -279,9 +280,10 @@ export default {
   isModelValueChanged: false,
   updated() {
     if (this.overlayVisible && this.isModelValueChanged) {
-      this.scrollValueInView()
+      setTimeout(() => {
+        this.scrollValueInView()
+      }, 0)
     }
-
     this.isModelValueChanged = false
   },
   beforeUnmount() {
@@ -895,7 +897,8 @@ export default {
           'y-dropdown--error': this.error,
           'y-dropdown--error-message': this.errorMessage,
           'y-dropdown--title': this.title,
-          'y-dropdown--search': this.search
+          'y-dropdown--search': this.search,
+          '--theme-grey': this.theme === 'grey'
         }
       ]
     },
@@ -909,7 +912,7 @@ export default {
       ]
     },
     panelStyleClass() {
-      return ['y-dropdown-panel', this.panelClass]
+      return ['y-dropdown-panel', this.panelClass, {'--theme-grey': this.theme === 'grey'}]
     },
     label() {
       if (this.modelValue) return this.getOptionLabel(this.modelValue)

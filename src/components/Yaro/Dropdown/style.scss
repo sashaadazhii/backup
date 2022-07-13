@@ -3,17 +3,26 @@
 .y-dropdown {
   width: 100%;
   position: relative;
-
+  user-select: none;
   &-inner {
     background-color: $color-grey-smoke;
     @include border(12px, $color-grey-flash);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    column-gap: 8px;
     padding: 0 16px;
     height: 46px;
     position: relative;
     transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    &--medium {
+      height: 36px;
+      padding: 0 12px;
+      border-radius: 10px;
+      .y-dropdown-search-icon {
+        font-size: 16px;
+      }
+    }
     &:hover {
       border-color: $color-grey;
     }
@@ -338,3 +347,27 @@
 }
 
 //==============================
+
+//=========== Theme: grey ===================
+.y-dropdown.--theme-grey {
+  .y-dropdown {
+    &-inner {
+      background-color: $color-grey;
+    }
+    &-trigger-icon {
+      color: $color-white;
+    }
+  }
+}
+.y-dropdown-panel.--theme-grey {
+  background-color: $color-grey;
+
+  .y-dropdown {
+    &-item {
+      &:hover {
+        background-color: rgba($color-grey-light, 0.2);
+      }
+    }
+  }
+}
+//===========================================

@@ -1,0 +1,50 @@
+@import 'src/assets/styles/_variables.scss';
+
+.markup {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(130px, 1.5fr) repeat(2, minmax(60px, 0.3fr)) 24px;
+    column-gap: 12px;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 8px;
+    @include border;
+    background-color: $color-white;
+    width: inherit;
+  }
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 11px;
+    background: #e8f4ff;
+    border-radius: 8px;
+    white-space: nowrap;
+
+    i {
+      font-size: 20px;
+    }
+    span {
+      @include font(16px, _, 600);
+    }
+
+    &.green {
+      background-color: rgba($color-green, 0.2);
+      & > span,
+      & > i {
+        color: $color-green;
+      }
+    }
+    &.blue {
+      background-color: rgba($color-blue, 0.2);
+      & > span,
+      & > i {
+        color: $color-blue;
+      }
+    }
+  }
+  &__text {
+    @include font(14px, $color-grey-space, 600);
+    white-space: nowrap;
+  }
+}

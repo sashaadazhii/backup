@@ -64,6 +64,7 @@
 import Switch from '@/components/Yaro/Switch'
 import Dialog from '@/components/Yaro/Dialog'
 import Button from '@/components/Yaro/Button'
+import {mapState, mapMutations} from 'vuex'
 
 import Ripple from '@/components/Yaro/ripple'
 
@@ -86,7 +87,16 @@ export default {
       //===========================================
     }
   },
+  created() {
+
+  },
+  computed: {
+    ...mapState({
+      order: s => s.workOrder.workOrder
+    })
+  },
   methods: {
+    ...mapMutations({}),
     changeRequest() {
       if (this.request) this.request = false
       else this.open()

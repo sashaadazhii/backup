@@ -1,21 +1,66 @@
 import axios from 'axios'
 import status from './workOrderStatuses'
+import {workOrders as localOrders} from '../data/workOrders'
 import {workOrder as localOrder} from '../data/workOrder'
 
 export default {
   namespaced: true,
-
   state: {
     workOrders: {},
-    workOrder: {},
-    localOrder: localOrder
+    workOrder: localOrder,
+    localOrders: localOrders
   },
   mutations: {
     set(state, workOrders) {
       state.workOrders = workOrders
     },
+    creaete(state, {vehicle, customer}) {
+      const {uid, firstName, lastName, cellPhones} = customer
+      const {uid: vehicleUID, make, model, year, currentOdometer} = vehicle
+      const order = {
+        // =============== Info =============
+        customer: {uid, firstName, lastName, cellPhones},
+        vehicle: {vehicleUID, make, model, year, currentOdometer},
+        // =============== Settings =============
+        vehicleInShop: false,
+        talkSA: false,
+        partsOrdered: false,
+        timeComing: null,
+        timePromised: null,
+        technician: null,
+        serviceAdvisor: null,
+        // =============== Notes =============
+        notes: null,
+        // =============== Scheduling =============
+        scheduling: null,
+        schedulingTime: {all: 0, planned: 0},
+        // =============== Options =============
+        needRide: null,
+        courtesyVehicle: null,
+        // =============== Questions =============
+        // =============== Requests =============
+        customRequests: null
+      }
+      state.workOrder = order
+    },
+    // =================================
+    change(state, param) {
+      state.workOrder = {...state.workOrder, ...param}
+    },
+    changeNeedRide(state, param) {
+      param ? (state.workOrder.needRide = {...state.workOrder.needRide, ...param}) : (state.workOrder.needRide = null)
+    },
+    changeCourtesyVehicle(state, param) {
+      param ? (state.workOrder.courtesyVehicle = {...state.workOrder.courtesyVehicle, ...param}) : (state.workOrder.courtesyVehicle = null)
+    },
+    changeScheduling(state, param) {
+      param ? (state.workOrder.scheduling = [...param]) : (state.workOrder.scheduling = null)
+      const time = param.reduce((sum, current) => sum + current.time, 0)
+      state.workOrder.schedulingTime.planned = time
+    },
+    // =================================
     setOrder(state, order) {
-      state.order = order
+      state.workOrder = order
     },
     add(state, order) {
       if (state.workOrders.unscheduled) state.workOrders.unscheduled.unshift(order)
@@ -25,7 +70,8 @@ export default {
       state.page = 1
     },
     addNotes(state, note) {
-      state.localOrder.notes.unshift(note)
+      state.workOrder.notes ||= []
+      state.workOrder.notes.unshift(note)
     }
   },
   actions: {
@@ -42,10 +88,8 @@ export default {
       }
     },
     async fetchBoard({commit}, params) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const orders = await axios.get(`${url}work-orders/board/`, {params})
-        commit('set', orders.data)
+        commit('set', localOrders)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

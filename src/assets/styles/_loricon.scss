@@ -26,48 +26,58 @@
   &.green {
     color: $color-green;
   }
+  &.purple {
+    color: $color-purple;
+  }
 }
 
-
-
+.i-view_module1:before {
+  content: '\eb6e';
+}
+.i-view_stream1:before {
+  content: '\ecaa';
+}
+.i-mark:before {
+  content: '\eb6b';
+}
 .i-rp_done:before {
-  content: "\e9d2";
+  content: '\e9d2';
 }
 .i-rp_in_progress:before {
-  content: "\e9d4";
+  content: '\e9d4';
 }
 .i-rp_not_scheduled:before {
-  content: "\e9d6";
+  content: '\e9d6';
 }
 .i-rp_not_started:before {
-  content: "\e9d8";
+  content: '\e9d8';
 }
 .i-rp_to_do:before {
-  content: "\e9f8";
+  content: '\e9f8';
 }
 .i-settings_menu:before {
-  content: "\e9d0";
+  content: '\e9d0';
 }
 .i-user1:before {
-  content: "\e9ce";
+  content: '\e9ce';
 }
 .i-customers:before {
-  content: "\e9cb";
+  content: '\e9cb';
 }
 .i-tire:before {
-  content: "\e9c9";
+  content: '\e9c9';
 }
 .i-search1:before {
-  content: "\e9c7";
+  content: '\e9c7';
 }
 .i-directions_car2:before {
-  content: "\e9c5";
+  content: '\e9c5';
 }
 .i-user:before {
-  content: "\e9c3";
+  content: '\e9c3';
 }
 .i-time:before {
-  content: "\e9c1";
+  content: '\e9c1';
 }
 .i-ac_unit1:before {
   content: '\ef3d';

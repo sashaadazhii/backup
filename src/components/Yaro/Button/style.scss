@@ -2,7 +2,7 @@
 
 .y-button {
   margin: 0;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   vertical-align: bottom;
   cursor: pointer;
@@ -18,7 +18,8 @@
   transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
   &--label {
     flex: 1 1 auto;
-    @include font(16px, $color-white, 600);
+    @include font(14px, $color-white, 600);
+    white-space: nowrap;
   }
   &:hover {
     background-color: $color-green-shamrock;
@@ -66,7 +67,7 @@
   // ======== border ========
   &--border {
     border-color: $color-grey-light;
-    background-color: transparent;
+    background-color: $color-grey-smoke;
     &.y-button--icon-only {
       & > i {
         color: $color-grey;

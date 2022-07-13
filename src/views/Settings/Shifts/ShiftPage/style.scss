@@ -4,6 +4,9 @@
   &__wrapper {
     background-color: $color-white;
     padding: 60px;
+    height: inherit;
+    max-width: 930px;
+    min-width: 600px;
   }
   &__header {
     display: flex;
@@ -17,8 +20,7 @@
         @include font(20px, $color-grey-space, 600);
       }
     }
-    &-label {
-    }
+
     border-bottom: 1px solid $color-grey-flash;
     padding-bottom: 20px;
     &-buttons {
@@ -70,15 +72,21 @@
       @include border(8px);
       padding: 8px 10px;
       cursor: pointer;
-      transition: background-color .3s ease-in-out, color .3s ease-in-out, border-color 0.3s ease-in-out;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
       &--active {
         background-color: $color-grey;
         color: $color-white;
         border-color: transparent;
       }
       &--error {
-
       }
+    }
+  }
+  &__switch {
+    display: flex;
+    align-items: center;
+    &-title {
+      @include font(14px, $color-grey-dark, 600);
     }
   }
 }

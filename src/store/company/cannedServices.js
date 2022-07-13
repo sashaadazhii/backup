@@ -71,7 +71,6 @@ export default {
       }
     },
     async update({commit}, {id, templateID, service}) {
-      console.log(service)
       try {
         commit('update', service)
       } catch (err) {

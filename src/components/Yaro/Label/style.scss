@@ -11,7 +11,7 @@
   padding: 0 12px;
   height: 28px;
   background-color: $color-green;
-  @include border(4px, transparent);
+  @include border(8px, transparent);
   color: $color-white;
   &__alias {
     @include font(10px, _, 600);
@@ -24,6 +24,7 @@
   }
   &__text {
     @include font(14px, _, 600);
+    white-space: nowrap;
   }
   // ======== Icon ========
   &--icon {

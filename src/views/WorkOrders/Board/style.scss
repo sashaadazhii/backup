@@ -10,9 +10,10 @@
     padding: 30px 20px;
     padding-bottom: 0;
     display: grid;
-    grid-template-columns: repeat(4, minmax(auto, 300px));
+    grid-template-columns: repeat(4, minmax(280px, 1fr));
     column-gap: 30px;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: auto;
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
     background-color: $color-bg;
@@ -27,16 +28,26 @@
     &-title {
       display: flex;
       align-items: center;
-      column-gap: 16px;
-      @include font(16px, $color-space, 600);
-      & > span {
-        @include font(14px, $color-grey, 600);
-      }
+      column-gap: 8px;
+      @include font(14px, $color-grey-dark, 600);
       margin-bottom: 16px;
     }
     &-inner {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
       overflow-y: auto;
       @include hideScrollbar;
     }
   }
+}
+
+.y-badge {
+  display: grid;
+  place-items: center;
+  height: 18px;
+  width: 18px;
+  background-color: $color-grey;
+  border-radius: 50%;
+  @include font(12px, $color-white, 600);
 }

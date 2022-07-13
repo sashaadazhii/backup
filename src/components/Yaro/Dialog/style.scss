@@ -19,9 +19,9 @@
     display: grid;
     place-items: center;
     pointer-events: none;
-    background-color: rgba($color-grey, 0.4);
     &--overlay {
       pointer-events: auto;
+      // background-color: rgba($color-grey, 0.4);
     }
   }
   &__content {
@@ -114,7 +114,7 @@
 .y-dialog--bottomleft > .y-dialog-leave-active,
 .y-dialog--bottomright > .y-dialog-enter-active,
 .y-dialog--bottomright > .y-dialog-leave-active {
-  transition: transform 0.3s ease-out;
+  transition: transform 0s ease-out;
 }
 .y-dialog--top > .y-dialog-enter-from,
 .y-dialog--top > .y-dialog-leave-to {

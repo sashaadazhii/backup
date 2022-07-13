@@ -3,7 +3,7 @@
     <div class="header__inner">
       <div class="header__left"></div>
       <div class="header__right">
-        <Filter
+        <!-- <Filter
           v-model="activeFilters"
           :options="filtersList"
           :filterFields="['firstName', 'lastName']"
@@ -25,7 +25,7 @@
               <span>{{ option.firstName }} {{ option.lastName }}</span>
             </div>
           </template>
-        </Filter>
+        </Filter> -->
       </div>
     </div>
     <div v-if="activeFilters.length" class="header__chips">
@@ -47,7 +47,7 @@ import {mapActions} from 'vuex'
 
 export default {
   name: 'WorkBoardTaskHeader',
-  components: {Filter},
+  // components: {Filter},
   data() {
     return {
       activeFilters: [],
@@ -56,14 +56,14 @@ export default {
   },
   async created() {
     const techsList = await this.searchUsers({role: 'technician'})
-    const technicians = {
-      name: 'Technitian',
-      id: this.$getID(),
-      mods: ['filter', 'multiple'],
-      filterPlaceholder: 'Search Tech',
-      list: techsList
-    }
-    this.filtersList.push(technicians)
+    // const technicians = {
+    //   name: 'Technitian',
+    //   id: this.$getID(),
+    //   mods: ['filter', 'multiple'],
+    //   filterPlaceholder: 'Search Tech',
+    //   list: techsList
+    // }
+    // this.filtersList.push(technicians)
   },
   methods: {
     ...mapActions({
@@ -91,7 +91,7 @@ export default {
       // }
       // await this.fetchBoard(data)
       // await this.fetchBoard({filters: [{technicians: techsIds}]})
-      await this.fetchBoard({'filters[technicians]': techsIds})
+      // await this.fetchBoard({'filters[technicians]': techsIds})
     }
   }
 }

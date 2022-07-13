@@ -55,6 +55,24 @@ const vehicles = [
   },
   {
     customerUID: '2f61a152-9c3f-42e9-823c-e412f348ec18',
+    uid: '30b68f26-f050-4b26-b390-bca6743f9a6e',
+    companyID: 1,
+    vin: '1GTFK19Y98Z187790',
+    license: 'DEV-777',
+    make: 'Audi',
+    model: 'e-tron GT',
+    year: 2022,
+    engine: {
+      size: 4.2,
+      cylinders: 8,
+      code: 'CQ-12-02'
+    },
+    odometer: 2000,
+    vehicleType: 'Sportback',
+    customFields: {}
+  },
+  {
+    customerUID: '2f61a152-9c3f-42e9-823c-e412f348ec18',
     uid: '41145fc2-c385-44c7-8355-720f38618ba1',
     companyID: 1,
     vin: '1GCEK14K8RE106083',
@@ -255,11 +273,11 @@ const vehicles = [
     customerUID: '26cfd801-ab35-4e96-a807-169af69d5f3e',
     uid: '3a99bcc0-180f-4ee6-93fb-ed7fb2583403',
     companyID: 1,
-    vin: 'ae093af4-9f9d-41d1-b37f-62def5bdc634',
+    vin: '1GTJK34G71E314515',
     license: 'DEV-221',
     make: 'GMC',
     model: 'Sierra 3500',
-    year: 2003,
+    year: 2001,
     engine: {
       size: 83406194,
       cylinders: 6,
@@ -412,7 +430,7 @@ const vehicles = [
     odometer: 1976543,
     vehicleType: 'SUV',
     customFields: {}
-  },
+  }
 ]
 
 const cars = [
@@ -435,7 +453,7 @@ const cars = [
   {
     name: 'Toyota',
     list: ['Prado', 'Land Cruiser', 'Prius']
-  },
+  }
 ]
 
-export { vehicles, cars }
+export {vehicles, cars}

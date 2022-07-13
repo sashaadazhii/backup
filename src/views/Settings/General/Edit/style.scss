@@ -1,0 +1,210 @@
+@import 'src/assets/styles/_varBoard.scss';
+
+.info {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  max-height: inherit;
+  max-width: 830px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+
+  &__wrap {
+    padding: 60px 10px 10px;
+    height: inherit;
+    overflow: auto;
+    width: inherit;
+    @include hideScrollbar;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $color-lightgrey;
+    &-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      @include font(20px, $color-space, 600);
+      & > i {
+        font-size: 20px;
+        color: $color-green;
+        border-radius: 50%;
+        padding: 9px;
+        background-color: rgba($color-green, 0.1);
+      }
+    }
+  }
+  &__main {
+    height: inherit;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  & &__right {
+    & > div {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      justify-content: flex-end;
+    }
+  }
+  &__block {
+    margin-bottom: 10px;
+    &:first-child {
+      padding-top: 30px;
+    }
+  }
+  &__title {
+    padding: 0 0 20px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $color-lightgrey;
+    @include font(18px, $color-space, 600);
+    &::first-child {
+      border-top: none;
+    }
+  }
+  &__subtitle {
+    padding-bottom: 20px;
+    @include font(_, _, 600);
+  }
+  &__row {
+    display: grid;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    &--long {
+      grid-template-columns: 1fr;
+    }
+  }
+  &__inner {
+    padding: 20px 20px 6px;
+    @include border(10px);
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+  &__options {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  &__option {
+    @include font(14px, $color-space, 600);
+  }
+  &__check {
+    border: 1px solid #979eaa;
+    border-radius: 50%;
+    width: 19px;
+    height: 19px;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out;
+    &::after {
+      content: '';
+      height: 13px;
+      width: 13px;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      border-radius: 50%;
+      transition: background-color 0.2s ease-in-out;
+    }
+    &:hover {
+      border-color: $color-green;
+      &::after {
+        background-color: $color-green;
+      }
+    }
+  }
+  &__check-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &.active > .info__check {
+      border-color: $color-green;
+      &::after {
+        background-color: $color-green;
+      }
+    }
+  }
+
+  &__section {
+    &-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0 20px;
+      @include font(18px, $color-space, 600);
+      & > i {
+        font-size: 20px;
+      }
+    }
+    &-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+  }
+}
+.input-wrap {
+  margin-bottom: 24px;
+}
+.dropdown__label-icon {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+.dropdown__label-dot {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  & > span:first-child {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: #fa3225;
+  }
+}
+.btn {
+  width: 100px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  &-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 34px;
+    background-color: #f8f8fa;
+    @include border(50%);
+    & > i {
+      font-size: 20px;
+      color: $color-grey;
+    }
+  }
+  &--cancel {
+    border: 1px solid $color-lightgrey;
+    color: $color-grey;
+  }
+  &-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}
+.field__title {
+  @include font(14px, $color-space, 600);
+  margin-bottom: 12px;
+}

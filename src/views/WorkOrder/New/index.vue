@@ -28,8 +28,8 @@
           </template>
         </Dropdown>
         <div v-if="customer && vehicle" class="order__block-btns">
-          <Button label="Cancel" border size="large" />
-          <Button label="Next" size="large" @click="$router.push('/work-order/new/general')" />
+          <router-link to="/work-orders/board"><Button label="Cancel" border size="large" style="width: 100%" /></router-link>
+          <Button label="Next" size="large" @click="next" />
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
 import Dropdown from '@/components/Yaro/Dropdown'
 import Button from '@/components/Yaro/Button'
 
-import {mapState, mapActions} from 'vuex'
+import {mapState, mapActions, mapMutations} from 'vuex'
 export default {
   name: 'WorkOrderNew',
   components: {Dropdown, Button},
@@ -76,8 +76,17 @@ export default {
       fetchCustomers: 'company/customers/fetch',
       fetchVehicles: 'company/vehicles/fetchVehicles'
     }),
+    ...mapMutations({
+      set: 'workOrder/setOrder',
+      creaete: 'workOrder/creaete'
+    }),
     async selectCustomer({value}) {
       this.vehicles = await this.fetchVehicles(value.uid)
+    },
+    next() {
+      const {customer, vehicle} = this
+      this.creaete({customer, vehicle})
+      this.$router.push('/work-order/new/general')
     }
   }
 }

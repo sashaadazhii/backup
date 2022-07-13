@@ -3,103 +3,154 @@
 .card {
   background-color: $color-white;
   padding: 12px;
-  @include border(14px);
-  margin-bottom: 10px;
+  border-radius: 16px;
+  box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
 
   &__header {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 8px;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
   }
   &__status {
-    display: flex;
-    align-items: center;
-    column-gap: 8px;
-    background-color: $color-grey;
-    padding: 6px 10px;
-    @include font(12px, $color-white, 600);
-    border-radius: 60px;
-    & > i {
-      font-size: 14px;
+    padding-right: 10px !important;
+    &.-none {
+      border-color: $color-grey-flash;
+      background-color: $color-grey-smoke;
+      color: $color-grey;
     }
-  }
-  &__dropdown {
-    @include font(18px, $color-lightgrey);
-    cursor: pointer;
-    justify-self: end;
+    &.-grey {
+      background-color: $color-grey;
+    }
   }
   &__main {
-    margin: 12px 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
   }
   &__date {
-    background-color: rgba($color-lightgrey, 0.6);
-    border-radius: 6px;
-    padding: 10px;
+    background-color: rgba($color-grey-light, 0.4);
     display: flex;
     align-items: center;
-    column-gap: 8px;
-    margin-bottom: 16px;
-    @include font(12px, $color-space, 600);
-    & > i {
-      color: $color-green;
+    column-gap: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    & > span {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      @include font(12px, $color-grey-space, 500);
+      white-space: nowrap;
+      & > i {
+        font-size: 14px;
+      }
     }
+    // border-radius: 6px;
+    // padding: 10px;
+    // display: flex;
+    // align-items: center;
+    // column-gap: 8px;
+    // margin-bottom: 16px;
+    // @include font(12px, $color-space, 600);
+    // & > i {
+    //   color: $color-green;
+    // }
   }
   &__tech {
     display: flex;
     align-items: center;
     column-gap: 8px;
-    margin-bottom: 12px;
     & > i {
       @include font(16px, $color-grey);
     }
     & > span {
-      @include font(14px, $color-space, 500);
+      @include font(14px, $color-grey-space, 500);
     }
   }
-
-  &__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    &-left {
-      display: flex;
-      align-items: center;
-    }
-    &-right {
-      display: flex;
-      align-items: center;
-      column-gap: 2px;
-    }
-  }
-  &__assign {
-    & > span {
-      display: inline-block;
-      height: 24px;
-      width: 24px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background-color: $color-grey;
-      @include font(8px, $color-white, 600);
-      &.green {
-        background-color: $color-green;
-      }
-    }
-  }
-  &__requests {
-    @include border(6px, rgba($color-blue, 0.2));
-    background-color: rgba($color-blue, 0.08);
-    padding: 5px 8px;
-    padding-left: 6px;
+  &__additional {
+    @include border(12px, $color-grey-flash);
+    background-color: $color-grey-smoke;
+    padding: 10px;
     display: flex;
     align-items: center;
     column-gap: 8px;
     & > i {
-      @include font(16px, $color-blue);
+      display: grid;
+      place-items: center;
+      background-color: $color-grey-flash;
+      height: 26px;
+      width: 26px;
+      border-radius: 6px;
+      @include font(14px, $color-grey-space);
     }
-    & > span {
-      @include font(14px, $color-space, 600);
+  }
+  &__scheduling {
+    padding: 10px 0;
+    border-top: 1px dashed $color-grey-flash;
+    border-bottom: 1px dashed $color-grey-flash;
+    display: grid;
+    grid-template-columns: 1fr 1fr 50px;
+    &-time {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      & > i {
+        @include font(16px, $color-grey);
+      }
+      & > span {
+        @include font(14px, $color-grey-space, 500);
+      }
+      &.-green {
+        & > i {
+          color: $color-green;
+        }
+      }
+      &.-grey {
+        & > i,
+        & > span {
+          color: $color-grey-light;
+        }
+      }
+      &.-red {
+        & > i {
+          color: $color-red;
+        }
+      }
+    }
+    &-percent {
+      @include font(14px, $color-grey, 600);
+      background-color: $color-grey-smoke;
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
+      padding: 4px 0;
+      &.-green {
+        background-color: $color-green-mint;
+        color: $color-green;
+      }
+      &.-red {
+        background-color: $color-red-blush;
+        color: $color-red;
+      }
+    }
+  }
+  &__footer {
+    display: flex;
+    column-gap: 4px;
+    & > .-full {
+      flex-grow: 1;
+    }
+    & > .-blue {
+      border-color: rgba($color-blue, .1);
+      background-color: $color-blue-light;
+      color: $color-grey-space;
+    }
+    & > .-grey {
+      border-color: $color-grey-flash;
+      background-color: $color-grey-smoke;
+      color: $color-grey-space;
     }
   }
 }

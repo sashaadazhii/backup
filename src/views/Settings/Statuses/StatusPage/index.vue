@@ -105,6 +105,7 @@ export default {
       const {name, description, color} = this
       const logicalStatus = this.status.status
       const status = {
+        uid: this.localStatus.uid || this.$getID(),
         name,
         description,
         color,
@@ -114,7 +115,7 @@ export default {
       try {
         this.isLoading = true
         if (this.localStatus.uid) {
-          await this.update({status, uid: this.localStatus.uid})
+          await this.update(status)
         } else {
           await this.create(status)
         }

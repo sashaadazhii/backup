@@ -1,7 +1,7 @@
 <template>
   <div :class="containerClass" :style="{backgroundColor: color}">
     <slot>
-      <i v-if="icon" :class="iconClass" :style="{backgroundColor: iconColor}" />
+      <i v-if="icon" :class="iconClass" :style="{color: iconColor, fontSize: iconSize}" />
       <span v-if="alias && !icon" class="y-label__alias">{{ alias }}</span>
       <span v-if="label" class="y-label__text">{{ label }}</span>
     </slot>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'Chip',
+  name: 'Label',
   emits: ['remove'],
   props: {
     label: {
@@ -23,6 +23,9 @@ export default {
       type: String
     },
     iconColor: {
+      type: String
+    },
+    iconSize: {
       type: String
     },
     alias: {

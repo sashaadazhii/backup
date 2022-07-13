@@ -1,0 +1,102 @@
+@import 'src/assets/styles/_variables.scss';
+
+.services {
+  height: 100%;
+
+  &__wrapper {
+    max-width: 810px;
+    width: 100%;
+    margin-left: 60px;
+    padding-right: 60px;
+    padding-top: 60px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    border-right: 1px solid $color-grey-flash;
+    @include hideScrollbar;
+  }
+  &__container {
+    width: 100%;
+    overflow: hidden;
+  }
+  &__overflow {
+    width: inherit;
+    overflow-x: auto;
+    @include hideScrollbar;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    @include font(18px, $color-space, 600);
+  }
+  &__block:not(:last-child) {
+    margin-bottom: 30px;
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 8px;
+    @include border;
+    background-color: $color-white;
+  }
+
+  &__col {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    & > i {
+      padding: 8px;
+      font-size: 26px;
+      color: rgba($color-grey, 0.8);
+      @include border(8px, transparent);
+      background-color: $color-bg;
+      &.active {
+        color: $color-green;
+        background-color: rgba($color-green, 0.1);
+      }
+    }
+  }
+  &__toggle {
+    cursor: pointer;
+    &-wrap {
+      display: flex;
+      align-items: center;
+      height: 24px;
+    }
+    & > i {
+      @include font(54px, $color-grey, 500, 1);
+      &.i-toggle_on {
+        color: $color-green;
+      }
+      &.i-toggle_off {
+        color: $color-lightgrey;
+      }
+    }
+  }
+  &__subtitle {
+    padding-bottom: 20px;
+    @include font(12px, $color-grey, 500);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid $color-lightgrey;
+  }
+  &__name {
+    @include font(_, $color-space, 600);
+    &--small {
+      font-size: 14px;
+    }
+    &--large {
+      font-size: 20px;
+    }
+  }
+  &__additional {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+  }
+}

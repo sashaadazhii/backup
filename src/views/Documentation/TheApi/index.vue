@@ -78,17 +78,17 @@ export default {
   0% {
     opacity: 0;
     height: 0%;
-    transform: translateY(-10px);
+    // transform: translateY(-8px);
   }
   50% {
-    opacity: 0.7;
-    height: 75%;
-    transform: translateY(-3px);
+    opacity: 0.5;
+    height: 50%;
+    // transform: translateY(-4px);
   }
   100% {
     opacity: 1;
     height: 100%;
-    transform: translateY(0);
+    // transform: translateY(0);
   }
 }
 @keyframes hide {
@@ -108,10 +108,9 @@ export default {
 
 .fade-enter-active {
   animation: show 0.2s;
-  transform-origin: top;
 }
 
 .fade-leave-to {
-  animation: hide 0.2s;
+  animation: hide 0.1s;
 }
 </style>

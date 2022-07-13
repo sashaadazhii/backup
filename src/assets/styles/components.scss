@@ -31,6 +31,11 @@
   & > span {
     @include font(14px, rgba($color-space, 0.8), 600);
   }
+  &.--theme-grey {
+    & > span {
+      color: $color-white;
+    }
+  }
 }
 
 .y-dropdown-label-custom {
@@ -62,6 +67,11 @@
       @include font(14px, $color-grey, 600);
     }
   }
+  &.--theme-grey {
+    & > span {
+      color: $color-white;
+    }
+  }
 }
 
 //===================================================
@@ -78,6 +88,7 @@
 .vc-highlight {
   border-radius: 8px !important;
   background-color: $color-green !important;
+  border-color: $color-green !important;
   height: 36px;
   width: 36px;
   border-color: rgba($color-green, 0.2) !important;
@@ -100,10 +111,26 @@
     }
   }
 }
-// .vc-highlight.vc-highlight-base-start {
-//   border-color: red !important;
-// }
-// .vc-highlight .vc-day-layer {
-//   border-color: rgba($color-green, 0.2) !important;
-// }
+.vc-time-day,
+.vc-time-month {
+  color: $color-green;
+}
+.vc-time-picker {
+  align-items: flex-end;
+}
+.vc-time-icon {
+  margin-bottom: 2px;
+}
+.vc-am-pm > button.active {
+  background-color: $color-green;
+}
+.vc-am-pm button.active:hover {
+  background: $color-green;
+}
+.vc-am-pm button.active:focus {
+  border-color: $color-green;
+}
+.vc-am-pm button:focus {
+  border-color: transparent;
+}
 //===================================================
