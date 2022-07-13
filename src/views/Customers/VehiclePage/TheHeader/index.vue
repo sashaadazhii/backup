@@ -3,31 +3,18 @@
     <div class="header__inner">
       <div class="header__top">
         <div class="header__left">
-          <div class="header__icon"><i class="i-customers"></i></div>
-          <div class="header__title">Customers</div>
+          <div class="header__icon"><i class="i-arrow_back" /></div>
+          <router-link to="/customers" class="header__title">Customers</router-link>
           <div class="header__line">/</div>
-          <div class="header__name">{{ customer?.firstName }} {{ customer?.lastName }}</div>
+          <div class="header__name" @click="$router.back()">{{ customer?.firstName }} {{ customer?.lastName }}</div>
           <div class="header__line">/</div>
           <div class="header__vehicle">
             <i class="i-directions_car" />
             {{ vehicle.make }} {{ vehicle.model }}
             <span> {{ vehicle.year }}</span>
           </div>
-        </div>
-        <div class="header__right">
-          <button class="header__close" @click="$router.back()">
-            <i class="i-circle_close" />
-          </button>
-        </div>
-      </div>
-      <div class="header__bottom">
-        <div class="header__left">
-          <div class="header__vehicle-icon">
-            <i class="i-directions_car" />
-          </div>
-          <div class="header__vehicle">
-            {{ vehicle.make }} {{ vehicle.model }}
-            <span> {{ vehicle.year }}</span>
+          <div class="header__action">
+            <Menu :list="actionsList" />
           </div>
           <div class="header__vehicle-odometer">
             Mileage
@@ -35,7 +22,9 @@
           </div>
         </div>
         <div class="header__right">
-          <Menu :list="actionsList" />
+          <button class="header__close" @click="$router.back()">
+            <i class="i-circle_close" />
+          </button>
         </div>
       </div>
     </div>

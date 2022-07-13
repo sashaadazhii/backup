@@ -63,6 +63,7 @@
   &__left {
     display: flex;
     align-items: center;
+    column-gap: 16px;
   }
   &__right {
     display: flex;
@@ -74,10 +75,11 @@
   }
   &__line {
     @include font(16px, $color-lightgrey, 600);
-    margin: 0 16px;
+    // margin: 0 16px;
   }
   &__name {
     @include font(16px, $color-space, 600);
+    cursor: pointer;
   }
   &__vehicle {
     display: flex;
@@ -103,7 +105,7 @@
     &-odometer {
       @include font(14px, $color-bluegreen, 600);
       @include border(10px, $color-bluegreen);
-      background-color: rgba($color-bluegreen, .1);
+      background-color: rgba($color-bluegreen, 0.1);
       padding: 10px 12px;
       & > span {
         font-weight: 700;

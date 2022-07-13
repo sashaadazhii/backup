@@ -5,8 +5,8 @@
     height: inherit;
     overflow-y: auto;
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    column-gap: 10px;
+    grid-template-columns: 335px 1fr;
+    column-gap: 20px;
     padding: 20px;
     background-color: $color-bg;
     &::-webkit-scrollbar {
@@ -14,6 +14,9 @@
     }
   }
   &__left {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
   }
   &__right {
   }
@@ -56,6 +59,51 @@
     &.engine {
       margin-bottom: 10px;
     }
+  }
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  padding: 16px;
+  background-color: $color-white;
+  @include border(16px);
+  box-shadow: 0px 3px 0px rgba(48, 50, 73, 0.05);
+  &__title {
+    @include font(13px, $color-blue, 600);
+    text-transform: uppercase;
+  }
+  &__section {
+    &-title {
+      @include font(14px, $color-grey, 500);
+    }
+    & i {
+      font-size: 18px;
+      color: $color-grey;
+    }
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+  }
+  &__text {
+    @include font(14px, $color-grey-dark, 500);
+    &--accent {
+      font-weight: 700;
+    }
+  }
+  &__label {
+    padding: 8px 10px;
+    @include border(8px);
+    background-color: $color-grey-smoke;
+    @include font(14px, $color-space, 600);
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 }
 .body {
