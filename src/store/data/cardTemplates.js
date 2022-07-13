@@ -26,13 +26,6 @@ const cardsList = {
           model: 'A4',
           yearFrom: 2009,
           yearTo: 2010
-        },
-        {
-          id: 313,
-          make: 'Audi',
-          model: 'A4',
-          yearFrom: 2009,
-          yearTo: 2010
         }
       ]
     },
@@ -54,13 +47,6 @@ const cardsList = {
       updatedAt: '2022-01-18T10:39:32.000Z',
       updatedBy: 55,
       relations: [
-        {
-          id: 313,
-          make: 'Audi',
-          model: 'A4',
-          yearFrom: 2009,
-          yearTo: 2010
-        },
         {
           id: 313,
           make: 'Audi',
@@ -94,13 +80,6 @@ const cardsList = {
           model: 'A4',
           yearFrom: 2009,
           yearTo: 2010
-        },
-        {
-          id: 313,
-          make: 'Audi',
-          model: 'A4',
-          yearFrom: 2009,
-          yearTo: 2010
         }
       ]
     },
@@ -128,15 +107,18 @@ const cardsList = {
           model: 'A4',
           yearFrom: 2009,
           yearTo: 2010
-        },
-        {
-          id: 313,
-          make: 'Audi',
-          model: 'A4',
-          yearFrom: 2009,
-          yearTo: 2010
         }
       ]
+    },
+    {
+      cardRelationType: 'all',
+      cardType: 'inspection',
+      description: 'asf',
+      name: 'Cabin Filter',
+      odometerTrack: 50000,
+      timeTrackLength: 18,
+      relations: [],
+      templateID: 1657639605826
     }
   ],
   pagination: {

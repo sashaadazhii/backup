@@ -50,7 +50,7 @@
             </template>
           </Filter>
           <Input size="medium" icon-left="i-search1" placeholder="Start typing to search card" />
-          <Button label="Add Card from Library" icon="i-add_circle" />
+          <Button label="Add Card from Library" icon="i-add_circle" @click="addCard" />
         </div>
         <div v-if="activeFilters.length" class="chip__wrapper">
           <div v-for="chip of activeFilters" :key="chip.id" class="chip">
@@ -117,7 +117,7 @@ import Dialog from '@/components/Yaro/Dialog'
 import Filter from '@/components/Yaro/Filter'
 
 import {mapState, mapMutations} from 'vuex'
-
+import AddCard from './AddCard'
 export default {
   name: 'WorkOrderVehicleHealth',
   components: {Request, Dropdown, Button, Input, Slot, Dialog, Filter},
@@ -165,7 +165,7 @@ export default {
       ],
       allSelected: false,
       display: false,
-      showRequests: false,
+      showRequests: false
     }
   },
   created() {
@@ -215,7 +215,7 @@ export default {
     ...mapMutations({
       selectAll: 'company/cards/selectAll',
       deselectAll: 'company/cards/deselectAll',
-      changeStatus: 'company/cards/changeAllStatus',
+      changeStatus: 'company/cards/changeAllStatus'
     }),
     save() {
       this.changeAllStatus(this.status)
@@ -230,6 +230,15 @@ export default {
     },
     removeChip(id) {
       this.activeFilters = this.activeFilters.filter(c => c.id !== id)
+    },
+    addCard() {
+      this.$vfm.show({
+        component: AddCard,
+        bind: {
+          name: 'AddCard',
+          'click-to-close': false,
+        }
+      })
     }
   }
 }

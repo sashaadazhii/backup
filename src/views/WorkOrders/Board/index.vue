@@ -73,7 +73,7 @@ export default {
     }),
     selectOrder(order) {
       this.set(order)
-      this.$router.push(`/work-order/${order.uid}/general`)
+      this.$router.push(`/work-order/${order.uid}/vehicle-health`)
     }
   }
 }
