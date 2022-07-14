@@ -63,9 +63,10 @@
     display: grid;
     grid-template-columns: 2.5fr 1fr;
     overflow: hidden;
-    &-left {
+    &-blocks {
       overflow: hidden;
       max-height: 100%;
+      display: grid;
     }
     &-requests {
       background-color: $color-grey-smoke;
@@ -74,6 +75,47 @@
       overflow: hidden;
       display: grid;
     }
+  }
+}
+.blocks {
+  padding: 30px;
+  padding-top: 0;
+  &__title {
+    margin: 10px 0;
+    @include font(24px, $color-grey-space, 600);
+  }
+  &__subtitle {
+    @include font(14px, $color-grey-space, 500);
+    margin-bottom: 16px;
+  }
+  &__nav {
+    display: flex;
+    column-gap: 12px;
+    & > .-white {
+      background-color: $color-white;
+    }
+    & > .-green {
+      color: $color-green;
+      border-color: $color-green;
+    }
+  }
+  &__btn {
+    height: 36px;
+    padding: 0 10px;
+    @include border(10px, $color-grey-flash);
+    @include font(16px, $color-grey, 600);
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    &:hover {
+      border-color: $color-green;
+    }
+    &.-green {
+      border-color: $color-green;
+      color: $color-green;
+    }
+  }
+  &__inner {
+    display: grid;
+    overflow: hidden;
   }
 }
 

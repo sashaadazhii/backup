@@ -15,7 +15,21 @@
         <Button icon="i-circle_close" border circle iconSize="20px" size="small" @click="close" />
       </div>
       <div class="modal__main">
-        <div class="modal__main-left"></div>
+        <div class="modal__main-blocks blocks">
+          <div class="blocks__title">Cabin Filter</div>
+          <div class="blocks__subtitle">
+            The cabin air filter in a vehicle helps remove harmful pollutants, including pollen and dust, from the air you breathe within the car.
+          </div>
+          <div class="blocks__nav">
+            <button class="blocks__btn" :class="{'-green': block === 'General'}" @click="block = 'General'">General</button>
+            <button class="blocks__btn" :class="{'-green': block === 'Notes'}" @click="block = 'Notes'">Notes</button>
+            <button class="blocks__btn" :class="{'-green': block === 'Service'}" @click="block = 'Service'">Service Tracking</button>
+            <button class="blocks__btn" :class="{'-green': block === 'Warranty'}" @click="block = 'Warranty'">Warranty</button>
+          </div>
+          <div class="blocks__inner">
+            <component :is="block" />
+          </div>
+        </div>
         <div class="modal__main-requests">
           <div class="requests__row">
             <div class="requests__row-title">Card Status:</div>
@@ -101,15 +115,18 @@
 <script>
 import Button from '@/components/Yaro/Button'
 import Label from '@/components/Yaro/Label'
-import Menu from '@/components/Yaro/Menu'
+import General from './General'
+import Notes from './Notes'
+import Service from './Service'
+import Warranty from './Warranty'
 
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'CardPage',
-  components: {Button, Label},
+  components: {Button, Label, General, Notes, Service, Warranty},
   data() {
     return {
-      card: {}
+      block: 'General'
     }
   },
   async created() {
