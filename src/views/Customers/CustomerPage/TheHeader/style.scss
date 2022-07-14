@@ -2,7 +2,7 @@
 .header {
   &__wrapper {
     padding: 12px 20px;
-    padding-left: 60px;
+    padding-left: 66px;
     border-bottom: 1px solid $color-lightgrey;
   }
   &__inner {
@@ -20,6 +20,16 @@
     & > i {
       @include font(20px, $color-green);
     }
+  }
+  &__close {
+    padding: 6px;
+    @include border(50%);
+    @include font(18px, $color-grey);
+    background-color: rgba($color-lightgrey, 0.6);
+    height: 32px;
+    width: 32px;
+    display: grid;
+    place-items: center;
   }
   &__btn {
     padding: 6px;
@@ -59,6 +69,9 @@
     column-gap: 14px;
   }
   &__title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
     @include font(16px, $color-grey, 600);
   }
   &__line {

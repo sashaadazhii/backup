@@ -76,6 +76,7 @@
   &__section {
     &-title {
       @include font(14px, $color-grey, 500);
+      text-transform: capitalize;
     }
     & i {
       font-size: 18px;

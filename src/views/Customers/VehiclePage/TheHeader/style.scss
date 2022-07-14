@@ -9,9 +9,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 12px 20px;
-    padding-left: 60px;
+    padding-left: 66px;
     border-bottom: 1px solid $color-lightgrey;
-    padding-bottom: 12px;
   }
   &__bottom {
     display: flex;
@@ -34,6 +33,16 @@
       @include font(20px, $color-green);
     }
   }
+  &__close {
+    padding: 6px;
+    @include border(50%);
+    @include font(18px, $color-grey);
+    background-color: rgba($color-lightgrey, 0.6);
+    height: 32px;
+    width: 32px;
+    display: grid;
+    place-items: center;
+  }
   &__btn {
     padding: 6px;
     padding-right: 14px;
@@ -50,16 +59,6 @@
       margin-bottom: 1px;
     }
   }
-  &__close {
-    padding: 6px;
-    @include border(50%);
-    @include font(18px, $color-grey);
-    background-color: rgba($color-lightgrey, 0.6);
-    height: 32px;
-    width: 32px;
-    display: grid;
-    place-items: center;
-  }
   &__left {
     display: flex;
     align-items: center;
@@ -71,11 +70,13 @@
     column-gap: 14px;
   }
   &__title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
     @include font(16px, $color-grey, 600);
   }
   &__line {
     @include font(16px, $color-lightgrey, 600);
-    // margin: 0 16px;
   }
   &__name {
     @include font(16px, $color-space, 600);

@@ -5,7 +5,7 @@
       <div class="vehicle__header">
         <div class="vehicle__header-link" :class="{active: component === 'VehicleDetails'}" @click="component = 'VehicleDetails'">
           <i class="i-directions_car" />
-          <span>Vehicle Details</span>
+          <span>Vehicle Info</span>
         </div>
 
         <div class="vehicle__header-link" :class="{active: component === 'VehicleTires'}" @click="component = 'VehicleTires'">

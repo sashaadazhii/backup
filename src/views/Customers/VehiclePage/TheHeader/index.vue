@@ -3,8 +3,9 @@
     <div class="header__inner">
       <div class="header__top">
         <div class="header__left">
-          <div class="header__icon"><i class="i-arrow_back" /></div>
-          <router-link to="/customers" class="header__title">Customers</router-link>
+          <router-link to="/customers" class="header__title">
+            <span class="header__close"><i class="i-arrow_back" /></span>Customers</router-link
+          >
           <div class="header__line">/</div>
           <div class="header__name" @click="$router.back()">{{ customer?.firstName }} {{ customer?.lastName }}</div>
           <div class="header__line">/</div>
