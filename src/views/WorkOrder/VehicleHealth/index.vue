@@ -72,7 +72,7 @@
           <div class="table__header-cell">Service Tracking</div>
         </div>
         <div class="table__main">
-          <Slot v-for="card of cards" :key="card.uid" :card="card" />
+          <Slot v-for="card of cards" :key="card.uid" :card="card" @click.self="openCard(card)" />
         </div>
       </div>
     </div>
@@ -118,6 +118,7 @@ import Filter from '@/components/Yaro/Filter'
 
 import {mapState, mapMutations} from 'vuex'
 import AddCard from './AddCard'
+import CardPage from './CardPage'
 export default {
   name: 'WorkOrderVehicleHealth',
   components: {Request, Dropdown, Button, Input, Slot, Dialog, Filter},
@@ -236,9 +237,21 @@ export default {
         component: AddCard,
         bind: {
           name: 'AddCard',
-          'click-to-close': false,
+          'click-to-close': false
         }
       })
+    },
+    openCard(card) {
+      this.$vfm.show(
+        {
+          component: CardPage,
+          bind: {
+            name: 'CardPage',
+            'click-to-close': false
+          }
+        },
+        card
+      )
     }
   }
 }

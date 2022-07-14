@@ -21,7 +21,7 @@
 import Input from '@/components/Yaro/Input'
 import Button from '@/components/Yaro/Button'
 import Card from './Card'
-import CardPage from '../CardPage'
+import CardPage from './CardPage'
 
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
