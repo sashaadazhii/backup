@@ -14,8 +14,8 @@
     grid-template-rows: auto 1fr;
     max-height: 100%;
     width: inherit;
-    height: inherit;
-    overflow: auto;
+    height: auto;
+    overflow: hidden;
   }
   &__inner {
     display: grid;
@@ -24,13 +24,14 @@
     height: inherit;
     width: inherit;
     box-shadow: 0px 3px 0px rgba(48, 50, 73, 0.05);
-    overflow: auto;
-    @include hideScrollbar();
+    overflow: hidden;
   }
   &__wrapper {
     display: grid;
     background-color: $color-white;
     padding: 20px;
+    overflow: auto;
+    @include hideScrollbar();
   }
 }
 
