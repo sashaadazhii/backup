@@ -106,7 +106,7 @@
       @include font(14px, $color-bluegreen, 600);
       @include border(10px, $color-bluegreen);
       background-color: rgba($color-bluegreen, 0.1);
-      padding: 10px 12px;
+      padding: 8px 12px;
       & > span {
         font-weight: 700;
       }

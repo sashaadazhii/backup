@@ -13,9 +13,6 @@
             {{ vehicle.make }} {{ vehicle.model }}
             <span> {{ vehicle.year }}</span>
           </div>
-          <div class="header__action">
-            <Menu :list="actionsList" />
-          </div>
           <div class="header__vehicle-odometer">
             Mileage
             <span>{{ vehicle.odometer }} mi.</span>
@@ -33,29 +30,12 @@
 
 <script>
 import {mapState, mapActions, mapMutations} from 'vuex'
-import Menu from '@/components/Yaro/Menu'
 
 export default {
   name: 'VehiclePageHeader',
-  components: {Menu},
   data() {
     return {
-      isLoading: false,
-      actionsList: [
-        {
-          label: 'Edit',
-          icon: 'i-edit',
-          command: () => {
-            this.setNewVehicle(this.vehicle)
-            this.$router.push(`/customers/${this.vehicle.customerUID}/vehicles/${this.vehicle.uid}/edit`)
-          }
-        },
-        {
-          label: 'Delete',
-          icon: 'i-remove_circle red',
-          command: () => this.openModal()
-        }
-      ]
+      isLoading: false
     }
   },
   async created() {
@@ -63,7 +43,6 @@ export default {
     const vehicleUid = this.$route.params.vehicleUid
     if (!this.customer?.uid) await this.find(uid)
     if (!this.vehicle?.uid) await this.findVehicle(vehicleUid)
-    await this.fetchVinCar('JT2BG22K6W0242999')
   },
   computed: {
     ...mapState({

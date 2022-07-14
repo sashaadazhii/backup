@@ -17,8 +17,7 @@
           <div class="card__section-title">License:</div>
           <div class="card__row">
             <div class="card__label">{{ vehicle.license }}</div>
-            <!-- TODO: update all card.label with LAbel -->
-            <!-- <Label :label="vehicle.license" grey border size="medium" /> -->
+            <Label :label="vehicle.license" grey border size="medium" />
           </div>
         </div>
         <div class="card__section">
@@ -39,50 +38,28 @@
         <div class="card__section">
           <div class="card__section-title">Engine Code:</div>
           <div class="card__row">
-            <div class="card__label">{{ vehicle.engine.code }}</div>
+            <div class="card__label">{{ vehicle.engine?.code }}</div>
           </div>
         </div>
         <div class="card__section">
           <div class="card__section-title">Engine Size:</div>
           <div class="card__row">
-            <div class="card__label">{{ vehicle.engine.size }}</div>
+            <div class="card__label">{{ vehicle.engine?.size }}</div>
           </div>
         </div>
         <div class="card__section">
           <div class="card__section-title">Cylinders:</div>
           <div class="card__row">
-            <div class="card__label">{{ vehicle.engine.cylinders }}</div>
+            <div class="card__label">{{ vehicle.engine?.cylinders }}</div>
           </div>
         </div>
       </div>
-      <div class="card">
+      <div v-if="customFields && customFields.length" class="card">
         <div class="card__title">Additional fields</div>
-        <div class="card__section">
-          <div class="card__section-title">Field name:</div>
-          <!-- TODO: add logic for customFields -->
-          <!-- <div v-if="customFields && customFields[0]" class="vehicle__block additional">
-            <div class="vehicle__block-header">Additional</div>
-            <div class="vehicle__block-body body">
-              <div v-for="(field, idx) of customFields" :key="idx" class="body__row">
-                <div class="body__row-title blue">{{ field.key }}</div>
-                <div class="body__row-text">{{ field.value }}</div>
-              </div>
-            </div>
-          </div> -->
+        <div v-for="(field, idx) of customFields" :key="idx" class="card__section">
+          <div class="card__section-title">{{ field.key }}:</div>
           <div class="card__row">
-            <div class="card__label">Field Value</div>
-          </div>
-        </div>
-        <div class="card__section">
-          <div class="card__section-title">Field name:</div>
-          <div class="card__row">
-            <div class="card__label">Field Value</div>
-          </div>
-        </div>
-        <div class="card__section">
-          <div class="card__section-title">Field name:</div>
-          <div class="card__row">
-            <div class="card__label">Field Value</div>
+            <div class="card__label">{{ field.value }}</div>
           </div>
         </div>
       </div>
@@ -203,6 +180,10 @@ export default {
         }
       ]
     }
+  },
+  created() {
+    console.log(this.vehicle)
+    console.log(this.customFields)
   },
   computed: {
     ...mapState({

@@ -3,8 +3,8 @@ const customers = {
     {
       uid: '2f61a152-9c3f-42e9-823c-e412f348ec17',
       email: 'brett.ostrander@asn.tech',
-      firstName: 'Ostrander',
-      lastName: 'Brett',
+      firstName: 'Brett',
+      lastName: 'Ostrander',
       userName: 'BretOstrander',
       cellPhones: ['497 783 4727', '044 155 7555'],
       createdAt: '2022-04-02T20:50:52.667Z',

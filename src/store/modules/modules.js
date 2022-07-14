@@ -49,7 +49,11 @@ export default {
     async fetchVehicleModels({commit}, make) {
       try {
         const vehiclesMake = carsModels.filter(c => c.make === make)
-        if (vehiclesMake) commit('setVehicleModels', vehiclesMake.map(v => v.model))
+        if (vehiclesMake)
+          commit(
+            'setVehicleModels',
+            vehiclesMake.map(v => v.model)
+          )
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

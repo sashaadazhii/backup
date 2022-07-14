@@ -15,7 +15,7 @@
     </div>
     <ul class="item__list">
       <li><Label :alias="workOrder.serviceAdvisor.alias" size="small" circle color="#3EB3BB" /></li>
-      <li v-for="person of workOrder.technicians" :key="person.id">
+      <li v-for="person in workOrder.technicians" :key="person.id">
         <Label :alias="person.alias" size="small" circle color="#6B7280" />
       </li>
     </ul>
