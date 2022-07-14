@@ -2,98 +2,93 @@
   <vue-final-modal v-slot="{close}" @before-open="beforeOpen">
     <div class="modal__wrapper">
       <div class="modal__header">
-        <div class="modal__header-top">
-          <Button icon="i-arrow_back" border grey circle iconSize="20px" size="small" @click="back" />
-          <Label :label="cardRelation" size="small" circle />
-          <div class="modal__header-title">{{ card.name }}</div>
-          <div class="modal__menu">
-            <Menu :list="actionsList">
-              <template #menu>
-                <div class="modal__menu-label" :class="{'-green': cardAdded}">
-                  <template v-if="cardAdded">
-                    <i class="i-check_circle" />
-                    <span>Added</span>
-                  </template>
-                  <template v-if="!cardAdded">
-                    <i class="i-add_circle" />
-                    <span>Add Card to</span>
-                    <i class="i-keyboard_arrow_down" />
-                  </template>
-                </div>
-              </template>
-              <template #item="{item}">
-                <div class="modal__menu-item">
-                  <template v-if="item.label === 'only'">
-                    <Label :label="item.label.toUpperCase()" size="small" border class="-grey" />
-                    <span>this Customer’s Work Order</span>
-                  </template>
-                  <template v-if="item.label === 'all'">
-                    <Label :label="item.label.toUpperCase()" size="small" />
-                    <span
-                      >Customers with <span>{{ order.vehicle.make }} {{ order.vehicle.model }} {{ order.vehicle.year }}</span></span
-                    >
-                  </template>
-                </div>
-              </template>
-            </Menu>
-          </div>
-          <Button icon="i-circle_close" border grey circle iconSize="20px" size="small" @click="close" />
+        <div class="modal__header-title">Card 2/24</div>
+        <div class="modal__header-nav">
+          <Button icon="i-keyboard_arrow_down" class="-grey" border iconSize="20px" />
+          <Button icon="i-keyboard_arrow_up" class="-grey" border iconSize="20px" />
         </div>
-        <div class="modal__header-bottom">
-          <Button label="Canned Services" border :class="{'-white': block === 'service'}" @click="block = 'service'" />
-          <Button label="General info" border :class="{'-white': block === 'info'}" @click="block = 'info'" />
+        <div class="modal__header-cus">
+          <Label alias="MB" border circle size="small" class="-dark" />
+          <Button icon="i-add" border circle size="mini" />
         </div>
+        <Label icon="i-time blue" iconSize="22px" label="00:20:04" border circle size="large" class="-shadow" />
+        <Button icon="i-circle_close" border circle iconSize="20px" size="small" @click="close" />
       </div>
       <div class="modal__main">
-        <div v-if="block === 'service'" class="modal__services">
-          <Button icon="i-add_circle" label="Create Canned Service" border @click="addService" />
-          <Service />
-          <Service />
-        </div>
-        <div v-if="block === 'info'" class="modal__info">
-          <div class="modal__info-part">
-            <div class="modal__info-block -service">
-              <div class="info__title">Service Tracking</div>
-              <Label icon="i-shutter_speed bluegreen" iconSize="16px" label="24 Months" border size="large" class="-border" />
-              <Label icon="i-timer bluegreen" iconSize="16px" label="48,000 KM" border size="large" class="-border" />
-            </div>
-            <div class="modal__info-block -details">
-              <div class="info__title">Card Details</div>
-              <div class="info__block">
-                <div class="info__row">
-                  <div class="info__label">Last Updated:</div>
-                  <div class="info__text"><i class="i-calendar" /><span>22 Feb 2022 at 12:20</span></div>
-                </div>
-                <div class="info__row">
-                  <div class="info__label">Last Updated by:</div>
-                  <div class="info__text"><Label alias="DM" size="mini" circle class="-dark" /> <span>Dave Martin</span></div>
-                </div>
-              </div>
-              <div class="info__block">
-                <div class="info__row">
-                  <div class="info__label">Card Created:</div>
-                  <div class="info__text"><i class="i-calendar" /><span>22 Feb 2022 at 12:20</span></div>
-                </div>
-                <div class="info__row">
-                  <div class="info__label">Created by:</div>
-                  <div class="info__text"><Label alias="DM" size="mini" circle class="-dark" /> <span>Dave Martin</span></div>
-                </div>
-              </div>
-            </div>
+        <div class="modal__main-left"></div>
+        <div class="modal__main-requests">
+          <div class="requests__row">
+            <div class="requests__row-title">Card Status:</div>
+            <Label label="Recommended" class="-orange" />
           </div>
-          <div class="modal__info-part">
-            <div class="modal__info-block -desc">
-              <div class="info__title">Card Description</div>
-              <div class="info__desc">
-                Service includes a visual inspection of the brake system, replacement with new fluid that meets or exceeds your vehicle manufacturer’s
-                specifications and proper disposal of the used fluid.
+          <div class="requests__row">
+            <div class="requests__row-title">Customer Status:</div>
+            <Label label="No status" icon="i-rp_done" iconSize="8px" circle class="-shadow -none" />
+          </div>
+          <div class="requests__list">
+            <div class="requests__list-title">Assigned Requests:</div>
+            <div class="request__wrapper">
+              <div class="request__header">
+                <i class="i-device_hub" />
+                <span>Noise</span>
+              </div>
+              <div class="request__row">
+                <div class="request__row-title">Speed:</div>
+                <div class="request__row-text">75 km/h</div>
+              </div>
+              <div class="request__row">
+                <div class="request__row-title">While braking:</div>
+                <div class="request__row-text -green">Yes</div>
+              </div>
+              <div class="request__row">
+                <div class="request__row-title">Constant:</div>
+                <div class="request__row-text -red">No</div>
+              </div>
+              <div class="request__tracker tracker">
+                <div class="tracker__header">
+                  <div class="tracker__header-cell">
+                    <i class="i-time" />
+                    <span>Est:</span>
+                    <span>2h</span>
+                  </div>
+                  <div class="tracker__header-cell">
+                    <span>Tracked:</span>
+                    <span>1h 20min</span>
+                  </div>
+                </div>
+                <div class="tracker__progress"><span class="-green" /><span class="-green" /><span class="-green" /><span /><span /></div>
               </div>
             </div>
-            <div class="modal__info-block -desc">
-              <div class="info__title">Card Description <span>(for in-house use)</span></div>
-              <div class="info__desc">
-                Service includes a visual inspection of the brake system, replacement with new fluid that meets or exceeds your vehicle manufacturer’s
-                specifications and proper disposal of the used fluid.
+            <div class="request__wrapper">
+              <div class="request__header">
+                <i class="i-device_hub" />
+                <span>Vibrations</span>
+              </div>
+              <div class="request__row">
+                <div class="request__row-title">Speed:</div>
+                <div class="request__row-text">75 km/h</div>
+              </div>
+              <div class="request__row">
+                <div class="request__row-title">While braking:</div>
+                <div class="request__row-text -green">Yes</div>
+              </div>
+              <div class="request__row">
+                <div class="request__row-title">Constant:</div>
+                <div class="request__row-text -red">No</div>
+              </div>
+              <div class="request__tracker tracker">
+                <div class="tracker__header">
+                  <div class="tracker__header-cell">
+                    <i class="i-time" />
+                    <span>Est:</span>
+                    <span>2h</span>
+                  </div>
+                  <div class="tracker__header-cell">
+                    <span>Tracked:</span>
+                    <span>1h 20min</span>
+                  </div>
+                </div>
+                <div class="tracker__progress"><span class="-green" /><span class="-green" /><span class="-green" /><span /><span /></div>
               </div>
             </div>
           </div>
@@ -107,29 +102,14 @@
 import Button from '@/components/Yaro/Button'
 import Label from '@/components/Yaro/Label'
 import Menu from '@/components/Yaro/Menu'
-import AddCard from '../AddCard'
-import AddService from './AddService'
-import Service from './Service'
 
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'CardPage',
-  components: {Button, Label, Menu, Service},
+  components: {Button, Label},
   data() {
     return {
-      card: {},
-      cardAdded: false,
-      block: 'service',
-      actionsList: [
-        {
-          label: 'only',
-          command: () => (this.cardAdded = true)
-        },
-        {
-          label: 'all',
-          command: () => (this.cardAdded = true)
-        }
-      ]
+      card: {}
     }
   },
   async created() {
@@ -139,17 +119,9 @@ export default {
   computed: {
     ...mapState({
       // cards: s => s.company.cards.cards
-      order: s => s.workOrder.workOrder,
-      cards: s => s.company.cardTemplates.templates
-    }),
-    cardRelation() {
-      if (this.card.templateID) {
-        if (this.card.cardRelationType === 'all') return 'All Vehicles'
-        const relations = this.card.relations.map(r => `${r.make} ${r.model} ${r.yearFrom}`)
-        return relations.join(' ')
-      }
-      return ''
-    }
+      // order: s => s.workOrder.workOrder,
+      // cards: s => s.company.cardTemplates.templates
+    })
   },
   methods: {
     ...mapActions({
@@ -159,27 +131,7 @@ export default {
       // selectAll: 'company/cards/selectAll',
     }),
     beforeOpen(e) {
-      this.card = e.ref.params._rawValue
-    },
-    back() {
-      this.$vfm.show({
-        component: AddCard,
-        bind: {
-          name: 'AddCard',
-          'click-to-close': false
-        }
-      })
-      this.$vfm.hide('CardPage')
-    },
-    addService() {
-      this.$vfm.show({
-        component: AddService,
-        bind: {
-          name: 'AddService',
-          'click-to-close': false
-        }
-      })
-      // this.$vfm.hide('CardPage')
+      // this.card = e.ref.params._rawValue
     }
   }
 }
