@@ -38,9 +38,7 @@
 </template>
 
 <script>
-import Button from '@/components/Yaro/Button'
 import Label from '@/components/Yaro/Label'
-import Menu from '@/components/Yaro/Menu'
 
 export default {
   name: 'CardPageNotes',
