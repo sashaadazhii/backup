@@ -114,7 +114,6 @@ export default {
     }
   },
   async created() {
-    // console.log(this.$vfm.modals)
     // await this.fetchCards()
   },
   computed: {
@@ -139,7 +138,6 @@ export default {
     }),
     beforeOpen(e) {
       this.request = e.ref.params._rawValue
-      console.log(this.request)
     },
     select(id) {
       const card = this.cardsList.find(c => c.id === id)

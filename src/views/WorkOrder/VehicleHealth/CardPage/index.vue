@@ -130,7 +130,6 @@ export default {
     }
   },
   async created() {
-    // console.log(this.$vfm.modals)
     // await this.fetchCards()
   },
   computed: {

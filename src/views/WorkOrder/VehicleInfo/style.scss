@@ -1,1 +1,156 @@
 @import 'src/assets/styles/_variables.scss';
+
+.vehicle {
+  &__inner {
+    height: inherit;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 335px 1fr;
+    column-gap: 20px;
+    padding: 20px;
+    background-color: $color-bg;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  &__left {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  &__right {
+  }
+  &__block {
+    background-color: $color-white;
+    @include border;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    &-header {
+      @include font(16px, $color-space, 600);
+      padding: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid $color-lightgrey;
+    }
+    &-body {
+    }
+    &.additional {
+      grid-column-start: 2;
+      .body {
+        padding: 0px 14px;
+        padding-top: 2px;
+        &__row {
+          padding: 14px;
+          margin: 0;
+          &:not(:last-child) {
+            border-bottom: 1px solid $color-lightgrey;
+          }
+        }
+      }
+    }
+    &.general {
+      .body {
+        padding: 30px 14px;
+        &__row {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+    &.engine {
+      margin-bottom: 10px;
+    }
+  }
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  padding: 16px;
+  background-color: $color-white;
+  @include border(16px);
+  box-shadow: 0px 3px 0px rgba(48, 50, 73, 0.05);
+  &__title {
+    @include font(13px, $color-blue, 600);
+    text-transform: uppercase;
+  }
+  &__section {
+    &-title {
+      @include font(14px, $color-grey, 500);
+      text-transform: capitalize;
+    }
+    & i {
+      font-size: 18px;
+      color: $color-grey;
+    }
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+  }
+  &__text {
+    @include font(14px, $color-grey-dark, 500);
+    &--accent {
+      font-weight: 700;
+    }
+  }
+  &__label {
+    padding: 8px 10px;
+    @include border(8px);
+    background-color: $color-grey-smoke;
+    @include font(14px, $color-space, 600);
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+.body {
+  &.column {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 12px;
+    padding: 14px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      margin-bottom: 22px;
+    }
+    &-title {
+      @include font(14px, rgba($color-space, 0.8), 600);
+      &.blue {
+        @include font(14px, $color-white, 600);
+        padding: 4px 6px;
+        background-color: $color-blue;
+        border-radius: 4px;
+        display: inline-block;
+      }
+    }
+    &-text {
+      @include font(14px, $color-space, 600);
+    }
+  }
+  &__cell {
+    background-color: rgba($color-bg, 0.6);
+    @include border(10px);
+    padding: 14px;
+    &-title {
+      @include font(14px, $color-white, 600);
+      padding: 4px 6px;
+      background-color: $color-orange;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+    &-text {
+      @include font(14px, $color-space, 600);
+    }
+  }
+}
