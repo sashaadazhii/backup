@@ -13,7 +13,9 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  &.grey {
+    color: $color-grey;
+  }
   &.blue {
     color: $color-blue;
   }

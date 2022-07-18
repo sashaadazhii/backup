@@ -1,0 +1,187 @@
+@import 'src/assets/styles/_variables.scss';
+
+::v-deep() {
+  .vfm__container {
+    place-items: start center;
+  }
+  .vfm__content {
+    margin: 2% 0;
+    width: 96%;
+    max-width: 960px;
+    border-radius: 20px;
+  }
+  .vfm--overlay {
+    background-color: rgba($color-grey, 0.4);
+  }
+}
+
+.modal {
+  &__wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    max-height: inherit;
+  }
+  &__header {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto 30px;
+    column-gap: 12px;
+    align-items: center;
+    padding: 10px 30px;
+    padding-right: 20px;
+    background-color: $color-grey-smoke;
+    border-bottom: 1px solid $color-grey-flash;
+
+    &-title {
+      @include font(16px, $color-grey, 600);
+    }
+    & > .-grey {
+      background-color: $color-grey-flash;
+    }
+    & > .-shadow {
+      color: $color-grey-space;
+      border-color: $color-grey-flash;
+      box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+    }
+    &-nav {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+    }
+    &-cus {
+      display: flex;
+      align-items: center;
+      & > .-dark {
+        height: 28px;
+        width: 28px !important;
+        transform: translateX(4px);
+      }
+    }
+  }
+  &__body {
+    display: grid;
+    overflow: auto;
+    @include hideScrollbar;
+  }
+}
+
+.body {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px;
+    margin-bottom: 0;
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    & > i {
+      font-size: 20px;
+    }
+    & > span {
+      @include font(24px, $color-grey-space, 600);
+    }
+  }
+  &__status {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    & > span {
+      @include font(14px, $color-grey-space, 600);
+    }
+    & > .-light {
+      border-color: $color-grey-flash;
+      background-color: $color-grey-smoke;
+      color: $color-grey;
+    }
+  }
+  &__notes {
+    margin: 0 30px;
+    margin-top: 20px;
+    & > div {
+      @include font(14px, $color-grey, 600);
+      margin-bottom: 18px;
+    }
+    & > textarea {
+      @include border(16px, $color-grey-flash);
+      padding: 14px;
+      resize: none;
+      width: 100%;
+      height: 120px;
+      @include font(16px, $color-grey-dark, 500, 1.5);
+    }
+  }
+  &__footer {
+    margin-top: 18px;
+    padding: 18px 30px;
+    background-color: $color-grey-smoke;
+  }
+}
+
+.request {
+  @include border(16px, $color-grey-flash);
+  padding: 20px;
+  background-color: $color-grey-smoke;
+  box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+  margin: 0 30px;
+  margin-top: 20px;
+  &__body {
+    margin-bottom: 18px;
+    @include font(16px, $color-grey, 500, 1.5);
+  }
+  &__desc {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 18px;
+    border-top: 1px dashed $color-grey-flash;
+  }
+  &__time {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    margin-bottom: 10px;
+    & > i {
+      @include font(14px, $color-grey);
+    }
+    & > span {
+      @include font(12px, $color-grey, 500);
+    }
+    & > span:last-child {
+      @include font(12px, $color-grey-space, 600);
+    }
+  }
+  &__progress {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 6px;
+    & > span {
+      height: 4px;
+      background-color: $color-grey-flash;
+      border-radius: 4px;
+      &.fill {
+        background-color: $color-green;
+      }
+    }
+  }
+}
+
+.cards {
+  margin: 0 30px;
+  margin-top: 18px;
+  &__title {
+    @include font(14px, $color-grey, 600);
+    margin-bottom: 18px;
+  }
+  &__list {
+    display: grid;
+    row-gap: 10px;
+  }
+}
+
+.footer__cards {
+  margin: 0;
+  margin-top: 18px;
+}
