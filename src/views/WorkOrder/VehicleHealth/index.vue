@@ -247,7 +247,8 @@ export default {
           component: CardPage,
           bind: {
             name: 'CardPage',
-            'click-to-close': false
+            'click-to-close': false,
+            'esc-to-close': true
           }
         },
         card
