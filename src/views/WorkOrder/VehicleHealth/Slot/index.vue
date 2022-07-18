@@ -1,11 +1,13 @@
 <template>
   <div class="card__wrapper">
     <div class="y-check" :class="{'-active': card.select}" @click="select(card.uid)" />
-    <Menu :list="statusesChange" styleBtn="placeItems: center left;">
-      <template #menu>
-        <Label :label="card.status" size="small" class="card__label" :class="labelClass(card.status)" />
-      </template>
-    </Menu>
+    <div>
+      <Menu :list="statusesChange">
+        <template #menu>
+          <Label :label="card.status" size="small" class="card__label" :class="labelClass(card.status)" />
+        </template>
+      </Menu>
+    </div>
     <div class="card__title">{{ card.name }}</div>
     <Label
       :label="card.approvalStatus"

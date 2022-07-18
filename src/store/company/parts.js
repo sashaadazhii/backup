@@ -27,6 +27,18 @@ export default {
     update(state, newPart) {
       const partIdx = state.parts.findIndex(part => part.id === newPart.id)
       state.parts.splice(partIdx, 1, newPart)
+    },
+    // =================== Local Logic ===================
+    select(state, id) {
+      const part = state.parts.find(p => p.id === id)
+      part.select = !part.select
+    },
+    change(state, {value}) {
+      const parts = state.parts.filter(p => p.select)
+      parts.forEach(p => {
+        p.type = value
+        p.select = false
+      })
     }
   },
   actions: {
