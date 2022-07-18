@@ -47,7 +47,6 @@ export default {
       // selectAll: 'company/cards/selectAll',
     }),
     beforeOpen(e) {
-      // console.log(e)
       // this.part = e.ref.params._rawValue
     },
     openCard(card) {

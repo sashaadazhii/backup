@@ -17,7 +17,6 @@
           <div class="card__section-title">License:</div>
           <div class="card__row">
             <div class="card__label">{{ vehicle.license }}</div>
-            <Label :label="vehicle.license" grey border size="medium" />
           </div>
         </div>
         <div class="card__section">
@@ -180,10 +179,6 @@ export default {
         }
       ]
     }
-  },
-  created() {
-    console.log(this.vehicle)
-    console.log(this.customFields)
   },
   computed: {
     ...mapState({
