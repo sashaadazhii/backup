@@ -11,7 +11,7 @@
       />
     </div>
     <div class="y-colors__palette">
-      <div class="y-colors__palette-line" />
+      <div v-if="list && list.length" class="y-colors__palette-line" />
       <div class="y-colors__palette-item" :style="{backgroundColor: customColor}" />
       <label class="y-colors__palette-label">
         <i class="i-palette y-colors__palette-icon" />

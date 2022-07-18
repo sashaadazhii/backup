@@ -24,7 +24,7 @@
 import {mapState} from 'vuex'
 import Button from '@/components/Yaro/Button'
 import Markup from './Slot'
-import CreateMarkupModal from './CreateMarkupModal'
+import CreateModal from './CreateModal'
 
 export default {
   name: 'CompanySettingsMarkups',
@@ -37,7 +37,7 @@ export default {
   methods: {
     openModal() {
       this.$vfm.show({
-        component: CreateMarkupModal,
+        component: CreateModal,
         bind: {
           name: 'CreateMarkupModal'
         }

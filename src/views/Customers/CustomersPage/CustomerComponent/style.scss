@@ -6,15 +6,11 @@
     grid-template-columns: minmax(160px, 2fr) minmax(200px, 2.5fr) minmax(130px, 1.5fr) 5fr 24px;
     align-items: center;
     column-gap: 20px;
-    padding: 12px 20px;
-    border-bottom: 1px solid $color-lightgrey;
-    transition: all 0.3s ease-in-out;
-    &:hover {
-      background-color: $color-bg;
-      .i-more_horiz {
-        opacity: 1;
-      }
-    }
+    margin-bottom: 12px;
+    @include border(14px);
+    padding: 0 20px;
+    height: 52px;
+
     &.active {
       background-color: $color-green-pale;
     }

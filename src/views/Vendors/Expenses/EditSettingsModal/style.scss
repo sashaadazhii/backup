@@ -93,6 +93,7 @@
     overflow-y: auto;
     @include hideScrollbar;
     position: relative;
+    padding-bottom: 2px;
   }
   &__footer {
     display: grid;
@@ -105,6 +106,6 @@
     display: grid;
     grid-template-columns: 1fr 3fr 1fr 1fr;
     gap: 18px;
-    align-items: center;
+    align-items: start;
   }
 }

@@ -8,6 +8,7 @@
           placeholder="Start typing to search for vendor"
           iconLeft="i-search1"
           type="search"
+          class="custom-search"
           size="medium"
         />
       </div>

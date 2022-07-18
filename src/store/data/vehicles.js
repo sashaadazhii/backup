@@ -15,7 +15,10 @@ const vehicles = [
     },
     odometer: 122014,
     vehicleType: 'Sedan',
-    customFields: {}
+    customFields: {
+      color: 'Deep blue',
+      clearance: 15
+    }
   },
   {
     customerUID: '2f61a152-9c3f-42e9-823c-e412f348ec17',
@@ -33,7 +36,10 @@ const vehicles = [
     },
     odometer: 122014,
     vehicleType: 'Sedan',
-    customFields: {}
+    customFields: {
+      color: 'White',
+      clearance: 17
+    }
   },
   {
     customerUID: '2f61a152-9c3f-42e9-823c-e412f348ec18',

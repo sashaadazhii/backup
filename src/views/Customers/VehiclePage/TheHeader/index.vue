@@ -3,29 +3,14 @@
     <div class="header__inner">
       <div class="header__top">
         <div class="header__left">
-          <div class="header__icon"><i class="i-customers"></i></div>
-          <div class="header__title">Customers</div>
+          <router-link to="/customers" class="header__title">
+            <span class="header__close"><i class="i-arrow_back" /></span>Customers</router-link
+          >
           <div class="header__line">/</div>
-          <div class="header__name">{{ customer?.firstName }} {{ customer?.lastName }}</div>
+          <div class="header__name" @click="$router.back()">{{ customer?.firstName }} {{ customer?.lastName }}</div>
           <div class="header__line">/</div>
           <div class="header__vehicle">
             <i class="i-directions_car" />
-            {{ vehicle.make }} {{ vehicle.model }}
-            <span> {{ vehicle.year }}</span>
-          </div>
-        </div>
-        <div class="header__right">
-          <button class="header__close" @click="$router.back()">
-            <i class="i-circle_close" />
-          </button>
-        </div>
-      </div>
-      <div class="header__bottom">
-        <div class="header__left">
-          <div class="header__vehicle-icon">
-            <i class="i-directions_car" />
-          </div>
-          <div class="header__vehicle">
             {{ vehicle.make }} {{ vehicle.model }}
             <span> {{ vehicle.year }}</span>
           </div>
@@ -35,7 +20,9 @@
           </div>
         </div>
         <div class="header__right">
-          <Menu :list="actionsList" />
+          <button class="header__close" @click="$router.back()">
+            <i class="i-circle_close" />
+          </button>
         </div>
       </div>
     </div>
@@ -44,29 +31,12 @@
 
 <script>
 import {mapState, mapActions, mapMutations} from 'vuex'
-import Menu from '@/components/Yaro/Menu'
 
 export default {
   name: 'VehiclePageHeader',
-  components: {Menu},
   data() {
     return {
-      isLoading: false,
-      actionsList: [
-        {
-          label: 'Edit',
-          icon: 'i-edit',
-          command: () => {
-            this.setNewVehicle(this.vehicle)
-            this.$router.push(`/customers/${this.vehicle.customerUID}/vehicles/${this.vehicle.uid}/edit`)
-          }
-        },
-        {
-          label: 'Delete',
-          icon: 'i-remove_circle red',
-          command: () => this.openModal()
-        }
-      ]
+      isLoading: false
     }
   },
   async created() {
@@ -74,7 +44,6 @@ export default {
     const vehicleUid = this.$route.params.vehicleUid
     if (!this.customer?.uid) await this.find(uid)
     if (!this.vehicle?.uid) await this.findVehicle(vehicleUid)
-    await this.fetchVinCar('JT2BG22K6W0242999')
   },
   computed: {
     ...mapState({

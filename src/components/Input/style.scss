@@ -6,7 +6,7 @@
     display: block;
     &.icon-left {
       & > .field__input {
-        padding-left: 44px;
+        padding-left: 48px;
       }
     }
     &.icon-right {
@@ -33,6 +33,9 @@
           border-color: $color-red;
           &::placeholder {
             color: rgba($color-red, 0.8);
+          }
+          &:focus {
+            box-shadow: 0 0 0 2px transparent;
           }
         }
       }
@@ -92,8 +95,14 @@
     background-color: rgba($color-lightgrey, 0.2);
     @include border;
     width: 100%;
+    transition: 0.2s ease-in-out;
     &::placeholder {
       color: $color-grey;
+    }
+    &:focus {
+      border-color: $color-grey;
+      background-color: $color-white;
+      box-shadow: 0 0 0 2px $color-grey-flash;
     }
   }
   &__icon {

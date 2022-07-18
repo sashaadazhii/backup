@@ -47,8 +47,7 @@
           </div>
         </div>
         <div class="shift__switch">
-          <Switch :modelValue="!deactivated" @click="deactivated = !deactivated" />
-          <span class="shift__switch-title">Activated Shift</span>
+          <Switch :modelValue="!deactivated" @click="deactivated = !deactivated" label="Activated Shift" />
         </div>
       </div>
     </div>
