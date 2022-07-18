@@ -1,0 +1,42 @@
+@import 'src/assets/styles/_variables.scss';
+
+.part {
+  &__wrapper {
+    background-color: $color-white;
+    @include border(16px, $color-grey-flash);
+    display: grid;
+    align-items: center;
+    column-gap: 12px;
+    grid-template-columns: 16px 3fr repeat(4, minmax(80px, 1fr)) 160px;
+    padding: 10px;
+    & > span {
+      @include font(16px, $color-grey-space, 600);
+    }
+    & > .-grey {
+      border-color: $color-grey-flash;
+      color: $color-grey-space;
+    }
+    & > * {
+      justify-self: start;
+    }
+    &.-select {
+      background-color: $color-green-mint;
+    }
+  }
+}
+
+.y-check {
+  height: 16px;
+  width: 16px;
+  border: 2px solid $color-grey-light;
+  border-radius: 4px;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    border-color: $color-green;
+  }
+  &.-active {
+    border-color: $color-green;
+    background-color: $color-green;
+  }
+}

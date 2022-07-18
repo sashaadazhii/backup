@@ -37,11 +37,6 @@
   }
 }
 
-.y-radio {
-  height: 20px;
-  width: 20px;
-  @include border(50%, $color-grey, 2px);
-}
 .service {
   &__wrapper {
     background-color: $color-white;
@@ -98,4 +93,10 @@
   &__body {
     @include font(14px, $color-grey-space, 500, 1.4);
   }
+}
+
+.y-radio {
+  height: 20px;
+  width: 20px;
+  @include border(50%, $color-grey, 2px);
 }
