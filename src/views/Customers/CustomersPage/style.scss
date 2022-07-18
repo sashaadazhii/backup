@@ -2,17 +2,36 @@
 
 .page-inner {
   height: inherit;
+  width: inherit;
   display: grid;
   grid-template-rows: auto 1fr;
 }
 
 .customers {
-  &__wrapper {
+  &__container {
+    display: grid;
+    background-color: #e5e5e5;
+    grid-template-rows: auto 1fr;
+    max-height: 100%;
+    width: inherit;
+    height: auto;
+    overflow: hidden;
+  }
+  &__inner {
+    display: grid;
+    margin: 20px;
+    border-radius: 16px;
     height: inherit;
-    overflow-y: auto;
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    width: inherit;
+    box-shadow: 0px 3px 0px rgba(48, 50, 73, 0.05);
+    overflow: hidden;
+  }
+  &__wrapper {
+    display: grid;
+    background-color: $color-white;
+    padding: 20px;
+    overflow: auto;
+    @include hideScrollbar();
   }
 }
 

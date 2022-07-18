@@ -91,13 +91,16 @@
   border-color: $color-green !important;
   height: 36px;
   width: 36px;
-  border-color: rgba($color-green, 0.2) !important;
 }
 .vc-day-content {
   border-radius: 8px;
   height: 36px;
   width: 36px;
+  &:hover {
+    border: 1px solid rgba($color-white, 0.2);
+  }
 }
+
 .vc-highlights.vc-day-layer {
   .vc-day-content.vc-focusable {
     color: $color-white !important;
@@ -110,6 +113,9 @@
       border: 1px solid rgba($color-green, 0.2) !important;
     }
   }
+}
+.vc-highlights.vc-day-layer ~ span.vc-day-content.vc-focusable {
+  color: $color-white !important;
 }
 .vc-time-day,
 .vc-time-month {

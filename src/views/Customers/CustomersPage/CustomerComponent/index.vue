@@ -1,6 +1,6 @@
 <template>
   <div class="customer__wrapper" @click="openCustomerPage" :class="{active: customer.isUpdated}">
-    <div class="customer__cell customer__cell--name">{{ customer.lastName }} {{ customer.firstName }}</div>
+    <div class="customer__cell customer__cell--name">{{ customer.firstName }} {{ customer.lastName }}</div>
     <div class="customer__cell customer__cell--icon">
       <a :href="'mailto:' + customer.email" class="customer__link" @click.stop>
         <i class="i-email" />

@@ -1,0 +1,36 @@
+@import 'src/assets/styles/_variables.scss';
+
+.item {
+  display: grid;
+  grid-template-columns: 60px 120px 400px repeat(3, 1fr) 24px;
+  align-items: center;
+  gap: 16px;
+  padding: 11px 15px;
+  background-color: $color-grey-smoke;
+  @include border(8px);
+  &__period {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    @include font(14px, $color-space, 500);
+    & .dash,
+    & i {
+      font-size: 16px;
+      color: $color-grey;
+    }
+  }
+  &__label {
+    white-space: nowrap;
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    margin-right: 8px;
+    @include font(14px, $color-space, 600);
+  }
+  &__list {
+    display: flex;
+    column-gap: 6px;
+  }
+}

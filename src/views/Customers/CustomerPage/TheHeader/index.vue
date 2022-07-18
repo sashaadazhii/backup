@@ -2,8 +2,11 @@
   <div class="header__wrapper">
     <div class="header__inner">
       <div class="header__left">
-        <div class="header__icon"><i class="i-customers"></i></div>
-        <div class="header__title">Customers</div>
+        <!-- <span class="header__close"><i class="i-arrow_back" /></span>Customers</router-link> -->
+        <!-- <div class="header__icon"><i class="i-arrow_back" /></div> -->
+        <router-link to="/customers" class="header__title"
+          ><span class="header__close"><i class="i-arrow_back" /></span>Customers</router-link
+        >
         <div class="header__line">/</div>
         <div class="header__name">{{ customer?.firstName }} {{ customer?.lastName }}</div>
       </div>
