@@ -9,11 +9,19 @@
     justify-content: space-between;
     padding: 12px 20px;
     background-color: $color-white;
-    // border-bottom: 1px solid $color-lightgrey;
   }
   &__left {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    & > .y-dropdown {
+      width: auto;
+    }
   }
   &__right {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
   }
   &__chips {
     padding: 14px 20px;
@@ -95,6 +103,39 @@
     cursor: pointer;
     & > i {
       @include font(18px, rgba($color-grey, 0.6), 500);
+    }
+  }
+}
+
+.picker {
+  &__wrap {
+    @include border(10px, $color-grey-flash);
+    display: flex;
+    column-gap: 6px;
+    align-items: center;
+    height: 36px;
+    padding: 0 12px;
+    background-color: $color-grey-smoke;
+    transition: border-color 0.2s ease-in-out;
+    position: relative;
+    &:hover {
+      border-color: $color-grey;
+    }
+    & > span {
+      @include font(14px, $color-grey, 500);
+      &:last-child {
+        @include font(14px, $color-grey-space, 600);
+      }
+    }
+    & > i {
+      @include font(18px, $color-grey);
+    }
+    & > input {
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: 0;
+      bottom: 0;
     }
   }
 }

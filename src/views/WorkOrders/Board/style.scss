@@ -10,7 +10,7 @@
     padding: 30px 20px;
     padding-bottom: 0;
     display: grid;
-    grid-template-columns: repeat(4, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, minmax(320px, 1fr));
     column-gap: 30px;
     overflow-y: hidden;
     overflow-x: auto;
@@ -18,6 +18,23 @@
     border-top-right-radius: 18px;
     background-color: $color-bg;
     border-top: 1px solid $color-lightgrey;
+    @include hideScrollbar;
+    &.-three {
+      grid-template-columns: repeat(3, minmax(320px, 1fr));
+      column-gap: 15px;
+      & > .board__col-wrapper:not(:last-child) {
+        border-right: 1px solid $color-grey-flash;
+        padding-right: 15px;
+      }
+    }
+    &.-five {
+      grid-template-columns: repeat(5, minmax(320px, 1fr));
+      column-gap: 15px;
+      & > .board__col-wrapper:not(:last-child) {
+        border-right: 1px solid $color-grey-flash;
+        padding-right: 15px;
+      }
+    }
   }
   &__col {
     &-wrapper {

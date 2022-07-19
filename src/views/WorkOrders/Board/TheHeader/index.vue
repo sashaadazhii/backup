@@ -1,9 +1,33 @@
 <template>
   <div class="header__wrapper">
     <div class="header__inner">
-      <div class="header__left"></div>
+      <div class="header__left">
+        <Dropdown v-model="day" :options="days" size="medium" @change="changeDay">
+          <template #value="{value}">
+            <div class="y-dropdown-label-custom">
+              <span class="-title">Time Period:</span>
+              <span>{{ value }} </span>
+            </div>
+          </template>
+          <template #option="{option}">
+            <div class="y-dropdown-item-custom">
+              <span>{{ option }}</span>
+            </div>
+          </template>
+        </Dropdown>
+        <DatePicker v-model="date" locale="en-Ca">
+          <template v-slot="{inputValue, inputEvents}">
+            <label class="picker__wrap">
+              <span>Date:</span>
+              <i class="i-calendar" />
+              <input :value="inputValue" v-on="inputEvents" />
+              <span class="picker__value">{{ formattedRange(inputValue) }}</span>
+            </label>
+          </template>
+        </DatePicker>
+      </div>
       <div class="header__right">
-        <!-- <Filter
+        <Filter
           v-model="activeFilters"
           :options="filtersList"
           :filterFields="['firstName', 'lastName']"
@@ -25,7 +49,8 @@
               <span>{{ option.firstName }} {{ option.lastName }}</span>
             </div>
           </template>
-        </Filter> -->
+        </Filter>
+        <Button icon="i-settings" border size="small" />
       </div>
     </div>
     <div v-if="activeFilters.length" class="header__chips">
@@ -43,27 +68,34 @@
 
 <script>
 import Filter from '@/components/Yaro/Filter'
+import Button from '@/components/Yaro/Button'
+import Dropdown from '@/components/Yaro/Dropdown'
 import {mapActions} from 'vuex'
+import {DatePicker} from 'v-calendar'
+import dayjs from 'dayjs'
 
 export default {
   name: 'WorkBoardTaskHeader',
-  // components: {Filter},
+  components: {Filter, Button, DatePicker, Dropdown},
   data() {
     return {
       activeFilters: [],
-      filtersList: []
+      filtersList: [],
+      date: new Date(),
+      day: 'Day',
+      days: ['Day', 'Three Days', 'Five Days']
     }
   },
   async created() {
     const techsList = await this.searchUsers({role: 'technician'})
-    // const technicians = {
-    //   name: 'Technitian',
-    //   id: this.$getID(),
-    //   mods: ['filter', 'multiple'],
-    //   filterPlaceholder: 'Search Tech',
-    //   list: techsList
-    // }
-    // this.filtersList.push(technicians)
+    const technicians = {
+      name: 'Technitian',
+      id: this.$getID(),
+      mods: ['filter', 'multiple'],
+      filterPlaceholder: 'Search Tech',
+      list: techsList
+    }
+    this.filtersList.push(technicians)
   },
   methods: {
     ...mapActions({
@@ -73,7 +105,19 @@ export default {
     removeChip(id) {
       this.activeFilters = this.activeFilters.filter(c => c.id !== id)
     },
-    async changeFilters({value}) {
+    formattedRange(formatDate) {
+      const date = dayjs(formatDate)
+      const {day: dayType} = this
+      switch (dayType) {
+        case 'Day':
+          return date.format('DD MMM YYYY')
+        case 'Three Days':
+          return `${date.format('DD MMM YYYY')} ~ ${date.add(3, 'day').format('DD MMM YYYY')}`
+        case 'Five Days':
+          return `${date.format('DD MMM YYYY')} ~ ${date.add(5, 'day').format('DD MMM YYYY')}`
+      }
+    },
+    async changeFilters() {
       const techsList = value.filter(v => v.type === 'Technitian')
       const techsIds = techsList.map(t => t.id)
       // await this.fetchBoard()
@@ -92,6 +136,10 @@ export default {
       // await this.fetchBoard(data)
       // await this.fetchBoard({filters: [{technicians: techsIds}]})
       // await this.fetchBoard({'filters[technicians]': techsIds})
+    },
+    changeDay({value}) {
+      const day = {type: value, date: this.date}
+      this.$emit('changeDay', day)
     }
   }
 }
