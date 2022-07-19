@@ -55,7 +55,7 @@ import {mapMutations, mapState} from 'vuex'
 import Button from '@/components/Yaro/Button'
 import Input from '@/components/Yaro/Input'
 import Dropdown from '@/components/Yaro/Dropdown'
-import {Calendar, DatePicker} from 'v-calendar'
+import {DatePicker} from 'v-calendar'
 
 import useVuelidate from '@vuelidate/core'
 import {required, helpers, numeric} from '@vuelidate/validators'

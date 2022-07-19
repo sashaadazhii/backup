@@ -111,11 +111,6 @@
     @include border;
     width: 100%;
     transition: 0.2s ease-in-out;
-    &:focus {
-      border-color: $color-grey;
-      background-color: $color-white;
-      box-shadow: 0 0 0 2px $color-grey-flash;
-    }
     &::placeholder {
       color: $color-grey;
     }

@@ -2,7 +2,7 @@
   <div ref="btn" class="y-menu__btn" :style="[styleBtn]" @click="toggle">
     <slot name="menu"><i class="i-more_horiz y-menu__btn-icon" /></slot>
   </div>
-  <Teleport :to="appendTarget">
+  <Teleport :to="appendTarget" :disabled="appendDisabled">
     <transition name="y-connected-overlay" @enter="onEnter" @leave="onLeave" @after-leave="onAfterLeave">
       <div :ref="containerRef" class="y-menu y-menu--overlay" v-if="overlayVisible" v-bind="$attrs" @click="onOverlayClick">
         <ul class="y-menu__list" role="menu">
@@ -40,7 +40,7 @@ export default {
   emits: ['show', 'hide'],
   inheritAttrs: false,
   props: {
-    appendTarget: {
+    appendTo: {
       type: String,
       default: 'body'
     },
@@ -120,8 +120,12 @@ export default {
       ZIndexUtils.clear(el)
     },
     alignOverlay() {
-      DomHandler.absolutePosition(this.container, this.target, this.position)
-      this.container.style.minWidth = DomHandler.getOuterWidth(this.target) + 'px'
+      if (this.appendDisabled) {
+        DomHandler.relativePosition(this.overlay, this.$el)
+      } else {
+        DomHandler.absolutePosition(this.container, this.target, this.position)
+        this.container.style.minWidth = DomHandler.getOuterWidth(this.target) + 'px'
+      }
     },
     bindOutsideClickListener() {
       if (!this.outsideClickListener) {
@@ -190,6 +194,14 @@ export default {
           'y-menu__item--disabled': item.disabled
         }
       ]
+    }
+  },
+  computed: {
+    appendDisabled() {
+      return this.appendTo === 'self'
+    },
+    appendTarget() {
+      return this.appendDisabled ? null : this.appendTo
     }
   }
 }

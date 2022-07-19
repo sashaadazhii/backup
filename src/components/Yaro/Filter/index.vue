@@ -904,9 +904,6 @@ export default {
     },
     appendTarget() {
       return this.appendDisabled ? null : this.appendTo
-    },
-    dropdownIconClass() {
-      return ['p-dropdown-trigger-icon', this.loading ? this.loadingIcon : 'pi pi-chevron-down']
     }
   },
   components: {

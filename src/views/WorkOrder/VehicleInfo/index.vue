@@ -182,7 +182,7 @@ export default {
   },
   computed: {
     ...mapState({
-      vehicle: s => s.company.vehicles.vehicle
+      vehicle: s => s.workOrder.workOrder.vehicle
     }),
     customFields() {
       if (!this.vehicle?.customFields) return false
