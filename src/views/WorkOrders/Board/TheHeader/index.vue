@@ -15,7 +15,7 @@
             </div>
           </template>
         </Dropdown>
-        <DatePicker v-model="date" locale="en-Ca">
+        <DatePicker v-model="date" locale="en-Ca" @dayclick="changeDay">
           <template v-slot="{inputValue, inputEvents}">
             <label class="picker__wrap">
               <span>Date:</span>
@@ -137,8 +137,8 @@ export default {
       // await this.fetchBoard({filters: [{technicians: techsIds}]})
       // await this.fetchBoard({'filters[technicians]': techsIds})
     },
-    changeDay({value}) {
-      const day = {type: value, date: this.date}
+    changeDay() {
+      const day = {type: this.day, date: this.date}
       this.$emit('changeDay', day)
     }
   }

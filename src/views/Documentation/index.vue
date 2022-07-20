@@ -1200,9 +1200,8 @@ export default {
       apiInput: {
         apiProps: [
           {name: 'modelValue', type: 'String, Number', default: "''"},
-          {name: 'modelModifiers', type: 'Object', default: '() => ({})'},
           {name: 'placeholder', type: 'String', default: "''"},
-          {name: 'title', type: 'String', default: "''"},
+          {name: 'label', type: 'String', default: "''"},
           {name: 'iconLeft', type: 'String', default: 'null'},
           {name: 'iconRight', type: 'String', default: 'null'},
           {name: 'iconColor', type: 'String', default: 'null'},
