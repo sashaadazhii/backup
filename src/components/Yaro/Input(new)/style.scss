@@ -1,0 +1,28 @@
+@import '../styles/_variables.scss';
+
+.y-input {
+  &__title {
+  }
+  &__label {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    padding: 0 14px;
+    height: 36px;
+    overflow: hidden;
+    @include border(10px, $color-grey-flash);
+    @include font(14px, $color-grey-dark);
+  }
+  &__input {
+    width: 100%;
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+  &__icon {
+    &--error {
+    }
+  }
+  &__error {
+  }
+}

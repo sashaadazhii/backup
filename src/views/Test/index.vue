@@ -1,12 +1,19 @@
 <template>
-  <div class="wrap"></div>
+  <div class="wrap">
+    <Input type="search" v-model="text" />
+    {{text}}
+  </div>
 </template>
 
 <script>
+import Input from '@/components/Yaro/Input'
 export default {
   name: 'test',
+  components: {Input},
   data() {
-    return {}
+    return {
+      text: null
+    }
   }
 }
 </script>
