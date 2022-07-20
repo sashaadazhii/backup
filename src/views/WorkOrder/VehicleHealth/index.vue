@@ -219,7 +219,7 @@ export default {
       changeStatus: 'company/cards/changeAllStatus'
     }),
     save() {
-      this.changeAllStatus(this.status)
+      this.changeStatus(this.status)
     },
     close() {
       this.display = false
