@@ -1,0 +1,35 @@
+@import 'src/assets/styles/_variables.scss';
+
+::v-deep() {
+  .vfm__container {
+    place-items: start center;
+  }
+  .vfm__content {
+    margin: 2% 0;
+    width: 96%;
+    max-width: 420px;
+  }
+  .vfm--overlay.vfm__overlay {
+    // TODO: fix this /\
+    background-color: rgba($color-grey, 0.4);
+  }
+}
+
+.modal {
+  &__wrapper {
+    display: grid;
+    row-gap: 20px;
+    padding: 26px 30px;
+  }
+  &__header {
+    @include font(18px, $color-grey-space, 600);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+  }
+}
