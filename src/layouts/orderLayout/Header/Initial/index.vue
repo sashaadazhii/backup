@@ -98,8 +98,7 @@ export default {
       this.$vfm.show({
         component: Mileage,
         bind: {
-          name: 'Mileage',
-          'esc-to-close': true
+          name: 'Mileage'
         }
       })
     },
@@ -141,8 +140,7 @@ export default {
       this.$vfm.show({
         component: Note,
         bind: {
-          name: 'Note',
-          'esc-to-close': true
+          name: 'Note'
         }
       })
     },

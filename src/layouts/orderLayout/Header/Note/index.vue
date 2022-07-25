@@ -44,16 +44,6 @@ export default {
     ...mapMutations({
       changeNotes: 'workOrder/changeNotes'
     }),
-    // open() {
-    //   this.$vfm.hide('Mileage')
-    //   this.$vfm.show({
-    //     component: Initial,
-    //     bind: {
-    //       name: 'Initial',
-    //       'esc-to-close': true
-    //     }
-    //   })
-    // },
     changeColor() {
       console.log(this.color === 'grey')
       if (this.color === 'grey') {
@@ -74,8 +64,7 @@ export default {
       this.$vfm.show({
         component: Initial,
         bind: {
-          name: 'Initial',
-          'esc-to-close': true
+          name: 'Initial'
         }
       })
     },

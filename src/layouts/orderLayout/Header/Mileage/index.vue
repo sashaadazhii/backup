@@ -48,8 +48,7 @@ export default {
       this.$vfm.show({
         component: Initial,
         bind: {
-          name: 'Initial',
-          'esc-to-close': true
+          name: 'Initial'
         }
       })
     },

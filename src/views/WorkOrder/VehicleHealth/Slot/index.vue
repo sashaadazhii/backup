@@ -1,8 +1,8 @@
 <template>
-  <div class="card__wrapper">
+  <div class="card__wrapper" :class="{viewOnly}">
     <div class="y-check" :class="{'-active': card.select}" @click="select(card.uid)" />
-    <div>
-      <Menu :list="statusesChange">
+    <div class="card__menu">
+      <Menu :list="statusesChange" position="left">
         <template #menu>
           <Label :label="card.status" size="small" class="card__label" :class="labelClass(card.status)" />
         </template>
@@ -23,14 +23,16 @@
       <div class="card__progress-bar"><span :style="{width: card.progress + '%'}" /></div>
       <div class="card__progress-title">{{ card.service }}</div>
     </div>
-    <Menu :list="actionsList" />
+    <div class="card__menu">
+      <Menu :list="actionsList" />
+    </div>
   </div>
 </template>
 
 <script>
 import Menu from '@/components/Yaro/Menu'
 import Label from '@/components/Yaro/Label'
-import {mapMutations} from 'vuex'
+import {mapMutations, mapState} from 'vuex'
 export default {
   name: 'CardSlot',
   props: {
@@ -61,6 +63,11 @@ export default {
         {label: 'Component Unsafe', command: () => this.changeStatus({uid: this.card.uid, status: 'Component Unsafe'})}
       ]
     }
+  },
+  computed: {
+    ...mapState({
+      viewOnly: s => s.workOrder.viewOnly
+    })
   },
   methods: {
     ...mapMutations({

@@ -3,7 +3,8 @@
 .block {
   &__wrapper {
     display: grid;
-    overflow: hidden;
+    overflow: auto;
+    @include hideScrollbar;
   }
   &__header {
     display: flex;
@@ -18,16 +19,19 @@
     display: flex;
     align-items: center;
     column-gap: 8px;
+    transition: opacity .2s ease-in-out;
     & > i {
       @include font(16px, $color-green);
     }
     & > span {
       @include font(16px, $color-grey-space, 600);
     }
+    &:hover {
+      opacity: .6;
+    }
   }
   &__body {
     display: grid;
-    overflow: hidden;
   }
   &__services {
     display: grid;

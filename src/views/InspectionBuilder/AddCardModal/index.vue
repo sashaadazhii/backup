@@ -21,7 +21,7 @@
             >
               Card Relation
             </button>
-            <button
+            <!-- <button
               class="modal__header-item"
               :class="{
                 active: component === 'CardType',
@@ -30,7 +30,7 @@
               @click="component = 'CardType'"
             >
               Card Type
-            </button>
+            </button> -->
           </div>
         </div>
       </div>

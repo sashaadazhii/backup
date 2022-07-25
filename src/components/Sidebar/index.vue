@@ -9,7 +9,6 @@
               <img src="@/assets/icons/logo.svg" />
             </div>
           </router-link>
-          <div class="sidebar__header-title show">Client Connect</div>
         </div>
         <div class="sidebar__main">
           <div class="sidebar__block">
@@ -57,11 +56,11 @@
           </div>
         </div>
         <div class="sidebar__footer">
-          <div v-if="user.firstName" class="customer__wrapper">
-            <div class="customer__icon">{{ user.firstName[0] }}{{ user.lastName[0] }}</div>
-            <div class="customer__title show">
-              <div class="customer__name">{{ user.firstName }} {{ user.lastName }}</div>
-              <div class="customer__position">{{ user.role }}</div>
+          <div class="customer__wrapper">
+            <div class="customer__label">MM</div>
+            <div class="customer__title">
+              <div class="customer__role">SERVICE ADVISOR</div>
+              <div class="customer__name">Maynard Bauman</div>
             </div>
           </div>
         </div>

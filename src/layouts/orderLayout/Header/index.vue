@@ -23,8 +23,8 @@
       <router-link v-if="uid === 'new'" class="header__nav-link" :to="`/work-order/${uid}/finance`">Finance</router-link>
     </div>
     <div v-if="isNew" class="header__menu">
-      <router-link class="header__nav-link" :to="'/work-orders/board'"><Button label="Cancel" border grey /></router-link>
-      <Button label="Save" />
+      <router-link :to="'/work-orders/board'"><Button label="Cancel" border grey /></router-link>
+      <router-link :to="'/work-orders/board'"><Button label="Save" /></router-link>
     </div>
     <div v-else class="header__menu">
       <Label v-if="!isStart" icon="i-lock orange" label="View Only" border class="-orange" size="large" />
@@ -32,7 +32,8 @@
         <div v-if="!isStart" class="header__timer-start"><i class="i-play_circle_filled" /> <span>Start Work Order</span></div>
         <div v-else class="header__timer-stop"><i class="i-power_settings_new red" /> <span>00:05</span></div>
       </div>
-      <router-link :to="'/work-orders/board'"><Button icon="i-circle_close" border circle size="small" /></router-link>
+      <Button icon="i-circle_close" border circle size="small" @click="close" />
+      <!-- <router-link :to="'/work-orders/board'"></router-link> -->
     </div>
   </div>
 </template>
@@ -41,7 +42,7 @@
 import Mileage from './Mileage'
 import Button from '@/components/Yaro/Button'
 import Label from '@/components/Yaro/Label'
-import {mapState} from 'vuex'
+import {mapState, mapMutations} from 'vuex'
 
 export default {
   name: 'OrderHeader',
@@ -49,9 +50,12 @@ export default {
   data() {
     return {
       uid: this.$route.params.uid,
-      isNew: this.uid === 'new',
+      isNew: true,
       isStart: false
     }
+  },
+  created() {
+    if (this.uid !== 'new') this.isNew = false
   },
   computed: {
     ...mapState({
@@ -59,6 +63,9 @@ export default {
     })
   },
   methods: {
+    ...mapMutations({
+      startOrder: 'workOrder/startOrder'
+    }),
     statusClass(status) {
       return {
         card__status: true,
@@ -84,14 +91,26 @@ export default {
       this.$vfm.show({
         component: Mileage,
         bind: {
-          name: 'Mileage',
-          'esc-to-close': true
+          name: 'Mileage'
         }
       })
     },
     start() {
+      this.startOrder()
       this.isStart = !this.isStart
       if (this.isStart) this.open()
+    },
+    close() {
+      this.$confirm.require({
+        title: 'Hey, wait!',
+        message: `Are you sure, you want to close work order?`,
+        acceptLabel: 'Close',
+        rejectLabel: 'Cancel',
+        icon: 'i-volume_up',
+        accept: async () => {
+          this.$router.push('/work-orders/board')
+        }
+      })
     }
   }
 }

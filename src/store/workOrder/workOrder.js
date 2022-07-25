@@ -10,8 +10,9 @@ export default {
     workOrder: localOrder,
     localOrders: localOrders,
     // =========== Initial Walkaround ===========
-    notes: null
+    notes: null,
     // =========== Initial Walkaround ===========
+    viewOnly: true
   },
   mutations: {
     set(state, workOrders) {
@@ -88,8 +89,11 @@ export default {
         return
       }
       state.notes.unshift(note)
-    }
+    },
     // =========== Initial Walkaround ===========
+    startOrder(state) {
+      state.viewOnly = !state.viewOnly
+    }
   },
   actions: {
     async create({commit}, order) {
