@@ -50,7 +50,7 @@
             </template>
           </Filter>
           <Input size="medium" icon-left="i-search1" placeholder="Start typing to search card" />
-          <Button label="Add Card from Library" icon="i-add_circle" @click="addCard" />
+          <Button label="Add Card from Library" icon="i-add_circle" @click="addCard" :disabled="viewOnly" />
         </div>
         <div v-if="activeFilters.length" class="chip__wrapper">
           <div v-for="chip of activeFilters" :key="chip.id" class="chip">
@@ -65,7 +65,7 @@
       </div>
       <div class="health__table table">
         <div class="table__header">
-          <div class="y-check" :class="{'-active': allSelected}" @click="selectAll" />
+          <div class="y-check" :class="{'-active': allSelected, viewOnly}" @click="selectAll" />
           <div class="table__header-cell">Card status</div>
           <div class="table__header-cell">Card name</div>
           <div class="table__header-cell">Approval Status</div>
@@ -196,7 +196,8 @@ export default {
   },
   computed: {
     ...mapState({
-      cards: s => s.company.cards.cards
+      cards: s => s.company.cards.cards,
+      viewOnly: s => s.workOrder.viewOnly
     }),
     selectedCards() {
       return this.cards.filter(c => c.select)
@@ -219,7 +220,7 @@ export default {
       changeStatus: 'company/cards/changeAllStatus'
     }),
     save() {
-      this.changeAllStatus(this.status)
+      this.changeStatus(this.status)
     },
     close() {
       this.display = false
@@ -233,6 +234,7 @@ export default {
       this.activeFilters = this.activeFilters.filter(c => c.id !== id)
     },
     addCard() {
+      if (this.viewOnly) return
       this.$vfm.show({
         component: AddCard,
         bind: {

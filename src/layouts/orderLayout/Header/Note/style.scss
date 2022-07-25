@@ -1,0 +1,65 @@
+@import 'src/assets/styles/_variables.scss';
+
+::v-deep() {
+  .vfm__container {
+    place-items: start center;
+  }
+  .vfm__content {
+    margin: 2% 0;
+    width: 96%;
+    max-width: 620px;
+  }
+  .vfm--overlay.vfm__overlay {
+    // TODO: fix this /\
+    background-color: rgba($color-grey, 0.4);
+  }
+}
+
+.modal {
+  &__wrapper {
+    display: grid;
+    row-gap: 20px;
+    padding: 26px 30px;
+  }
+  &__header {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 24px 1fr 32px;
+    column-gap: 14px;
+    @include font(18px, $color-grey-space, 600);
+    & > i {
+      cursor: pointer;
+      @include font(24px, $color-grey-light);
+    }
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+  &__btn {
+    height: 40px;
+    width: 40px;
+    @include border(10px, $color-grey-flash);
+    background-color: $color-grey-smoke;
+    display: grid;
+    place-items: center;
+    @include font(20px, $color-grey);
+    margin-bottom: 20px;
+    &.-orange {
+      color: $color-orange;
+    }
+    &.-red {
+      color: $color-red;
+    }
+  }
+  &__text {
+    resize: none;
+    width: 100%;
+    height: 100px;
+  }
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+  }
+}

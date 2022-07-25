@@ -6,18 +6,17 @@
     <Label :label="`${part.quantity}`" border size="large" class="-grey" />
     <Label :label="`$ ${part.price}`" border size="large" class="-grey" />
     <span>${{ part.total }}</span>
-    <Dropdown size="medium" :modelValue="part.type" :options="types" @change="change" :disabled="!part.select" />
+    <Label :label="part.type" border size="large" class="-grey" />
   </div>
 </template>
 
 <script>
 import Label from '@/components/Yaro/Label'
-import Dropdown from '@/components/Yaro/Dropdown'
 import {mapMutations} from 'vuex'
 
 export default {
   name: 'CardPageGeneralPart',
-  components: {Label, Dropdown},
+  components: {Label},
   props: {
     part: {
       type: Object,

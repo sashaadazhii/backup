@@ -30,10 +30,14 @@ export default {
     },
     // =================== Local Logic ===================
     select(state, id) {
-      const part = state.parts.find(p => p.id === id)
-      part.select = !part.select
+      if (id) {
+        const part = state.parts.find(p => p.id === id)
+        part.select = !part.select
+      } else {
+        state.parts.forEach(p => p.select = false)
+      }
     },
-    change(state, {value}) {
+    change(state, value) {
       const parts = state.parts.filter(p => p.select)
       parts.forEach(p => {
         p.type = value

@@ -8,6 +8,8 @@
   padding: 20px;
   height: inherit;
   overflow: hidden;
+  background-color: #e5e5e5;
+
   &.requests {
     grid-template-columns: 1fr 3.6fr;
   }
@@ -86,6 +88,9 @@
   &.-active {
     border-color: $color-green;
     background-color: $color-green;
+  }
+  &.viewOnly {
+    pointer-events: none;
   }
 }
 

@@ -8,7 +8,11 @@ export default {
   state: {
     workOrders: {},
     workOrder: localOrder,
-    localOrders: localOrders
+    localOrders: localOrders,
+    // =========== Initial Walkaround ===========
+    notes: null,
+    // =========== Initial Walkaround ===========
+    viewOnly: true
   },
   mutations: {
     set(state, workOrders) {
@@ -72,6 +76,23 @@ export default {
     addNotes(state, note) {
       state.workOrder.notes ||= []
       state.workOrder.notes.unshift(note)
+    },
+    // =========== Initial Walkaround ===========
+    changeNotes(state, {note, action}) {
+      if (!note) {
+        state.notes = null
+        return
+      }
+      state.notes ||= []
+      if (action === 'delete') {
+        state.notes = state.notes.filter(n => n.id !== note.id)
+        return
+      }
+      state.notes.unshift(note)
+    },
+    // =========== Initial Walkaround ===========
+    startOrder(state) {
+      state.viewOnly = !state.viewOnly
     }
   },
   actions: {

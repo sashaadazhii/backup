@@ -32,9 +32,11 @@
       padding: 8px 14px;
       border-radius: 38px;
       transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
       &.router-link-active {
         background-color: $color-white;
         color: $color-grey-space;
+        box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
       }
     }
   }
@@ -43,5 +45,39 @@
     align-items: center;
     column-gap: 10px;
     justify-self: end;
+    & > .-orange {
+      background-color: rgba($color-orange, 0.05);
+      border-color: $color-orange;
+      color: $color-grey-space;
+    }
+  }
+  &__timer {
+    height: 36px;
+
+    background-color: $color-green;
+    @include border(48px, transparent);
+    @include font(14px, $color-white, 600);
+    display: grid;
+    place-items: center;
+    padding-left: 6px;
+    padding-right: 14px;
+    cursor: pointer;
+
+    &.-start {
+      background-color: transparent;
+      border-color: $color-grey-flash;
+      color: $color-grey;
+    }
+    &-start,
+    &-stop {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      & > i {
+        font-size: 24px;
+      }
+      & > span {
+      }
+    }
   }
 }

@@ -1,17 +1,13 @@
 <template>
   <div class="item">
-    <div class="item__label">
-      <Label :label="`#${workOrder.num}`" size="small" circle color="#6B7280" />
-    </div>
-    <div class="item__label">
-      <Label :label="workOrder.status" icon="i-circle" size="small" circle :color="labelColor()" />
-    </div>
+    <Label class="item__label" :label="`#${workOrder.num}`" size="small" circle color="#6B7280" />
+    <Label class="item__label" :label="workOrder.status" icon="i-circle" size="small" circle :color="labelColor()" />
     <div class="item__period">
       <i class="i-calendar" /> <span>{{ workOrder.startsAt }}</span> <span class="dash">-</span> <span>{{ workOrder.endsAt }}</span>
     </div>
     <div class="item__info">
-      <span>{{ workOrder.currentOdometer }}</span
-      ><Label alias="KM" size="small" color="#FFA14E" />
+      <span>{{ workOrder.currentOdometer }}</span>
+      <Label alias="KM" size="small" color="#FFA14E" />
     </div>
     <ul class="item__list">
       <li><Label :alias="workOrder.serviceAdvisor.alias" size="small" circle color="#3EB3BB" /></li>
@@ -37,14 +33,11 @@ export default {
     return {
       actionsList: [
         {
-          label: 'Edit',
-          icon: 'i-edit',
-          command: () => {}
-        },
-        {
-          label: 'Delete',
+          label: 'Archive',
           icon: 'i-remove_circle red',
-          command: () => {}
+          command: () => {
+            this.$emit('archive', this.workOrder.num)
+          }
         }
       ]
     }
