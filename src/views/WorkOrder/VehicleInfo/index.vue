@@ -16,19 +16,19 @@
         <div class="card__section">
           <div class="card__section-title">License:</div>
           <div class="card__row">
-            <div class="card__label">{{ vehicle.license }}</div>
+            <div class="card__label">38492-394-9e45</div>
           </div>
         </div>
         <div class="card__section">
           <div class="card__section-title">VIN:</div>
           <div class="card__row">
-            <div class="card__label">{{ vehicle.vin }}</div>
+            <div class="card__label">1FDXE45F32HA13331</div>
           </div>
         </div>
         <div class="card__section">
           <div class="card__section-title">Type:</div>
           <div class="card__row">
-            <div class="card__label">{{ vehicle.vehicleType }}</div>
+            <div class="card__label">Sedan</div>
           </div>
         </div>
       </div>
@@ -37,19 +37,19 @@
         <div class="card__section">
           <div class="card__section-title">Engine Code:</div>
           <div class="card__row">
-            <div class="card__label">{{ vehicle.engine?.code }}</div>
+            <div class="card__label">8VNAG5.4</div>
           </div>
         </div>
         <div class="card__section">
           <div class="card__section-title">Engine Size:</div>
           <div class="card__row">
-            <div class="card__label">{{ vehicle.engine?.size }}</div>
+            <div class="card__label">5.4</div>
           </div>
         </div>
         <div class="card__section">
           <div class="card__section-title">Cylinders:</div>
           <div class="card__row">
-            <div class="card__label">{{ vehicle.engine?.cylinders }}</div>
+            <div class="card__label">8</div>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@
       <div class="card">
         <div class="card__title">work orders history</div>
         <div class="card__list">
-          <VehicleWorkOrder v-for="workOrder in workOrders" :key="workOrder.num" :workOrder="workOrder" />
+          <VehicleWorkOrder v-for="workOrder in workOrders" :key="workOrder.num" :workOrder="workOrder" @archive="archive" />
         </div>
       </div>
     </div>
@@ -187,6 +187,11 @@ export default {
     customFields() {
       if (!this.vehicle?.customFields) return false
       return Object.entries(this.vehicle?.customFields).map(([key, value]) => ({key, value}))
+    }
+  },
+  methods: {
+    archive(num) {
+      this.workOrders = this.workOrders.filter(w => w.num !== num)
     }
   }
 }

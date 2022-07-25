@@ -1,5 +1,5 @@
 <template>
-  <div class="service__wrapper">
+  <div class="service__wrapper" :class="{'-view': viewOnly}">
     <div class="service__header">
       <i class="i-keyboard_arrow_down" :class="{'-revert': show}" @click="show = !show" />
       <span>Replace left</span>
@@ -8,11 +8,15 @@
       <Label label="1.4hr" icon="i-time orange" iconSize="18px" border size="large" class="-grey" />
       <Label label="Used: 12 times" border size="large" class="-grey -counter" />
       <Label label="24 months /  3000 km" icon="i-shield green" iconSize="18px" border size="large" class="-grey" />
-      <Menu>
+      <Menu :list="actionsList">
         <template #menu>
           <Button icon="i-more_horiz" border size="small" />
         </template>
       </Menu>
+      <!-- <div v-if="viewOnly" class="service__type">
+        <span>Tesla Model S 2020</span>
+        Brakes Back
+      </div> -->
     </div>
     <template v-if="show">
       <div class="service__desc">
@@ -58,6 +62,10 @@ export default {
   name: 'Service',
   components: {Label, Menu, Button},
   props: {
+    viewOnly: {
+      type: Boolean,
+      default: false
+    }
     // service: {
     //   type: Object,
     //   required: true
@@ -65,7 +73,17 @@ export default {
   },
   data() {
     return {
-      show: false
+      show: false,
+      actionsList: [
+        {
+          label: 'Edit',
+          icon: 'i-edit',
+          command: () => {
+            // this.setVehicle(this.vehicle)
+            // this.$router.push(`/customers/${this.vehicle.customerUID}/vehicles/${this.vehicle.uid}/edit`)
+          }
+        }
+      ]
     }
   },
   created() {},

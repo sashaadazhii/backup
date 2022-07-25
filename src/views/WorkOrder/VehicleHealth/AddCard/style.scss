@@ -34,10 +34,12 @@
     }
   }
   &__block {
-    overflow: hidden;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    @include hideScrollbar;
+
     &-title {
       @include font(14px, $color-grey, 600);
       margin-bottom: 18px;
@@ -47,8 +49,10 @@
       flex-direction: column;
       flex-grow: 1;
       row-gap: 10px;
-      overflow-y: auto;
-      @include hideScrollbar;
+      margin-bottom: 3px;
+      &:not(:last-child) {
+        margin-bottom: 18px;
+      }
     }
   }
 }
