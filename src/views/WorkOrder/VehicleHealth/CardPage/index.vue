@@ -7,9 +7,16 @@
           <Button icon="i-keyboard_arrow_down" class="-grey" border iconSize="20px" />
           <Button icon="i-keyboard_arrow_up" class="-grey" border iconSize="20px" />
         </div>
-        <div class="modal__header-cus">
-          <Label alias="MB" border circle size="small" class="-dark" />
-          <Button icon="i-add" border circle size="mini" />
+        <div class="tech__list">
+          <div v-for="(tech, idx) of techs" :key="idx" class="tech__label">{{ tech.firstName[0] }}{{ tech.lastName[0] }}</div>
+          <Multiselect v-model="techs" :options="techList">
+            <template #menu>
+              <div class="tech__add"><i class="i-add" /></div>
+            </template>
+            <template #option="{option}">
+              <div class="y-dropdown-item-custom">{{option.firstName}} {{option.lastName}}</div>
+            </template>
+          </Multiselect>
         </div>
         <Label icon="i-time blue" iconSize="22px" label="00:20:04" border circle size="large" class="-shadow" />
         <Button icon="i-circle_close" border circle iconSize="20px" size="small" @click="close" />
@@ -113,6 +120,7 @@
 </template>
 
 <script>
+import Multiselect from '@/components/Yaro/Multiselect'
 import Button from '@/components/Yaro/Button'
 import Label from '@/components/Yaro/Label'
 import General from './General'
@@ -123,10 +131,12 @@ import Warranty from './Warranty'
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'CardPage',
-  components: {Button, Label, General, Notes, Service, Warranty},
+  components: {Button, Label, General, Notes, Service, Warranty, Multiselect},
   data() {
     return {
-      block: 'General'
+      block: 'General',
+      techs: null
+      // techList: ['AA', 'BB', 'AS']
     }
   },
   async created() {
@@ -134,6 +144,7 @@ export default {
   },
   computed: {
     ...mapState({
+      techList: s => s.company.users.users.filter(u => u.role === 'technician')
       // cards: s => s.company.cards.cards
       // order: s => s.workOrder.workOrder,
       // cards: s => s.company.cardTemplates.templates

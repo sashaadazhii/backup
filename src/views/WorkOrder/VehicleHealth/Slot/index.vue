@@ -1,6 +1,6 @@
 <template>
-  <div class="card__wrapper" :class="{viewOnly}">
-    <div class="y-check" :class="{'-active': card.select}" @click="select(card.uid)" />
+  <div class="card__wrapper">
+    <div class="y-check" :class="{'-active': card.select, '-hide': !isStart}" @click="select(card.uid)" />
     <div class="card__menu">
       <Menu :list="statusesChange" position="left">
         <template #menu>
@@ -66,7 +66,7 @@ export default {
   },
   computed: {
     ...mapState({
-      viewOnly: s => s.workOrder.viewOnly
+      isStart: s => s.workOrder.isStart
     })
   },
   methods: {

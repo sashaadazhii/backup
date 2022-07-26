@@ -14,7 +14,7 @@ export default {
   emits: ['remove'],
   props: {
     label: {
-      type: String
+      type: [String, Number]
     },
     size: {
       type: String

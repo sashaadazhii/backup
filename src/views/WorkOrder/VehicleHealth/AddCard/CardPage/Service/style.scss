@@ -15,7 +15,7 @@
       @include font(20px, $color-grey);
       cursor: pointer;
       &.-revert {
-        transform: rotate(180deg)
+        transform: rotate(180deg);
       }
     }
     & > span {
@@ -73,5 +73,23 @@
       }
     }
   }
+  &__type {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    height: 32px;
+    background-color: $color-grey-flash;
+    padding-left: 6px;
+    padding-right: 12px;
+    border-radius: 8px;
+    @include font(14px, $color-grey-space, 600);
+  }
+}
 
+.service__wrapper.-view {
+  .service {
+    &__header {
+      grid-template-columns: 20px auto 1fr repeat(4, auto);
+    }
+  }
 }

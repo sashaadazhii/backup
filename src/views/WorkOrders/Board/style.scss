@@ -16,7 +16,7 @@
     overflow-x: auto;
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
-    background-color: #e5e5e5;
+    background-color: $color-grey-bg;
     border-top: 1px solid $color-lightgrey;
     @include hideScrollbar;
     &.-three {

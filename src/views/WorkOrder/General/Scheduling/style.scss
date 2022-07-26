@@ -15,7 +15,6 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 14px;
-    border-bottom: 1px solid $color-grey-flash;
     &-title {
       @include font(14px, $color-grey-space, 600);
     }
@@ -67,6 +66,7 @@
 
 .block {
   &__days {
+    border-top: 1px solid $color-grey-flash;
   }
   &__day {
     &-wrapper {

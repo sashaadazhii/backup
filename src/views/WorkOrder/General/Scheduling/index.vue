@@ -11,7 +11,7 @@
           <span v-else class="-grey"><i class="i-time" />{{ order.schedulingTime?.planned }}h</span>
         </div>
       </div>
-      <div class="block__days">
+      <div v-if="order.scheduling" class="block__days">
         <div v-for="(day, idx) of order.scheduling" :key="idx" class="block__day-wrapper">
           <div class="block__day-title">Day {{ idx + 1 }}</div>
           <div class="block__day-inner">

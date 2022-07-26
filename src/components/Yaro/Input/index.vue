@@ -10,7 +10,7 @@
       medium: size === 'medium'
     }"
   >
-    <div v-if="title" class="field__title">{{ title }}</div>
+    <div v-if="title" class="field__title" :class="{required}">{{ title }}</div>
     <input type="text" class="field__input" :placeholder="placeholder" :value="modelValue" @input="updateValue" />
     <div class="field__icon field__icon--error"><i class="i-info" /></div>
 
@@ -74,6 +74,10 @@ export default {
     size: {
       type: String,
       default: null
+    },
+    required: {
+      type: Boolean,
+      default: false
     }
   },
   emits: {

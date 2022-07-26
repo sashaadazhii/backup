@@ -96,7 +96,7 @@ export default {
       })
     },
     start() {
-      this.startOrder()
+      this.startOrder(true)
       this.isStart = !this.isStart
       if (this.isStart) this.open()
     },
@@ -108,6 +108,7 @@ export default {
         rejectLabel: 'Cancel',
         icon: 'i-volume_up',
         accept: async () => {
+          this.startOrder(false)
           this.$router.push('/work-orders/board')
         }
       })

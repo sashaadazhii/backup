@@ -78,8 +78,7 @@
 .y-check {
   height: 16px;
   width: 16px;
-  border: 2px solid $color-grey-light;
-  border-radius: 4px;
+  @include border(4px, $color-grey-light, 2px);
   transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   cursor: pointer;
   &:hover {
@@ -89,8 +88,9 @@
     border-color: $color-green;
     background-color: $color-green;
   }
-  &.viewOnly {
+  &.-hide {
     pointer-events: none;
+    border-color: transparent;
   }
 }
 

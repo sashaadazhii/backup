@@ -12,7 +12,7 @@ export default {
     // =========== Initial Walkaround ===========
     notes: null,
     // =========== Initial Walkaround ===========
-    viewOnly: true
+    isStart: false
   },
   mutations: {
     set(state, workOrders) {
@@ -91,8 +91,8 @@ export default {
       state.notes.unshift(note)
     },
     // =========== Initial Walkaround ===========
-    startOrder(state) {
-      state.viewOnly = !state.viewOnly
+    startOrder(state, type) {
+      state.isStart = !!type
     }
   },
   actions: {

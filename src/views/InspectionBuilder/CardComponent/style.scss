@@ -3,7 +3,6 @@
 .card {
   &__wrapper {
     display: grid;
-    // grid-template-columns: 5fr 5fr 3fr 24px;
     grid-template-columns: minmax(200px, 5fr) minmax(200px, 5fr) minmax(120px, 3fr) 24px;
     align-items: center;
     column-gap: 20px;
@@ -24,25 +23,11 @@
       @include font(14px, $color-space, 600);
       column-gap: 10px;
     }
-    &--icon {
-    }
     &--vehicles {
       display: flex;
       align-items: center;
       column-gap: 10px;
       min-height: 34px;
-    }
-  }
-  &__link {
-    display: inline-flex;
-    align-items: center;
-    & > i {
-      @include font(16px, $color-grey);
-      margin-right: 8px;
-    }
-    & > span {
-      @include font(14px, $color-space, 500);
-      margin-bottom: 1px;
     }
   }
   &__vehicle {
@@ -56,7 +41,7 @@
     & > i {
       @include border(50%, $color-lightgrey, 2px);
       @include font(16px, $color-grey);
-      padding: 6px;
+      padding: 3px;
       margin-right: 4px;
       margin-left: -1px;
     }
@@ -77,76 +62,22 @@
       }
     }
   }
-  &__counter {
-    &-wrapper {
-      position: relative;
-    }
-    &-list {
-      position: absolute;
-      left: 0;
-      top: calc(100% + 8px);
-      @include border(16px);
-      padding: 14px 18px;
-      background-color: $color-white;
-      z-index: 2;
-      display: none;
-      flex-direction: column;
-      row-gap: 12px;
-    }
-    &:hover {
-      border-color: $color-space;
-      & + .card__counter-list {
-        display: flex;
-      }
-    }
-    @include font(12px, $color-grey, 600);
-    @include border(6px);
-    padding: 6px 10px;
-    background-color: $color-bg;
-  }
+
   &__indicators {
     display: flex;
     column-gap: 8px;
   }
-  &__indicator {
-    display: flex;
-    align-items: center;
-    column-gap: 8px;
-    @include font(14px, $color-bluegreen, 500);
-    padding: 8px 12px;
-    background-color: rgba($color-bluegreen, 0.1);
-    border-radius: 8px;
-    & > i {
-      font-size: 18px;
-    }
-    & > span {
-      font-weight: 600;
-    }
-    &.orange {
-      color: $color-orange;
-      background-color: rgba($color-orange, 0.1);
-    }
-  }
-}
-.dropdown__label--icon {
-  display: flex;
-  align-items: center;
-  & > i {
-    @include font(18px);
-    margin-right: 10px;
-    &.red {
-      color: $color-red;
-    }
-    &.green {
-      color: $color-green;
-    }
-  }
-  & > span {
-    @include font(14px, $color-space, 600);
-  }
 }
 
-.i-more_horiz {
-  @include font(24px, $color-grey);
-  opacity: 0.5;
+.-grey {
+  border-color: $color-grey-flash;
+  color: $color-grey;
+}
+.-bluegreen {
+  color: $color-bluegreen;
+  background-color: rgba($color-bluegreen, 0.1);
+}
+.-orange {
+  color: $color-orange;
+  background-color: rgba($color-orange, 0.1);
 }

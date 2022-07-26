@@ -50,7 +50,7 @@
             </template>
           </Filter>
           <Input size="medium" icon-left="i-search1" placeholder="Start typing to search card" />
-          <Button label="Add Card from Library" icon="i-add_circle" @click="addCard" :disabled="viewOnly" />
+          <Button label="Add Card from Library" icon="i-add_circle" @click="addCard" :disabled="!isStart" />
         </div>
         <div v-if="activeFilters.length" class="chip__wrapper">
           <div v-for="chip of activeFilters" :key="chip.id" class="chip">
@@ -65,7 +65,7 @@
       </div>
       <div class="health__table table">
         <div class="table__header">
-          <div class="y-check" :class="{'-active': allSelected, viewOnly}" @click="selectAll" />
+          <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart}" @click="selectAll" />
           <div class="table__header-cell">Card status</div>
           <div class="table__header-cell">Card name</div>
           <div class="table__header-cell">Approval Status</div>
@@ -172,6 +172,7 @@ export default {
   created() {
     const uid = this.$route.params.uid
     if (uid !== 'new') this.showRequests = true
+    if (!this.showRequests) this.startOrder(true)
     const statusList = {
       name: 'Card Status',
       id: this.$getID(),
@@ -197,7 +198,7 @@ export default {
   computed: {
     ...mapState({
       cards: s => s.company.cards.cards,
-      viewOnly: s => s.workOrder.viewOnly
+      isStart: s => s.workOrder.isStart
     }),
     selectedCards() {
       return this.cards.filter(c => c.select)
@@ -217,7 +218,8 @@ export default {
     ...mapMutations({
       selectAll: 'company/cards/selectAll',
       deselectAll: 'company/cards/deselectAll',
-      changeStatus: 'company/cards/changeAllStatus'
+      changeStatus: 'company/cards/changeAllStatus',
+      startOrder: 'workOrder/startOrder'
     }),
     save() {
       this.changeStatus(this.status)
@@ -234,7 +236,7 @@ export default {
       this.activeFilters = this.activeFilters.filter(c => c.id !== id)
     },
     addCard() {
-      if (this.viewOnly) return
+      if (!this.isStart) return
       this.$vfm.show({
         component: AddCard,
         bind: {

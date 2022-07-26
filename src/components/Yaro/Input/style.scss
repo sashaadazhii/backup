@@ -102,6 +102,12 @@
   &__title {
     @include font(14px, $color-grey-space, 600);
     margin-bottom: 12px;
+    &.required {
+      &::after {
+        content: '*';
+        color: $color-red;
+      }
+    }
   }
   &__input {
     display: block;
