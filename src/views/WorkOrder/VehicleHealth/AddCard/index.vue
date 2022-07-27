@@ -42,7 +42,6 @@ export default {
   },
   computed: {
     ...mapState({
-      // cards: s => s.company.cards.cards
       cards: s => s.company.cardTemplates.templates
     })
   },

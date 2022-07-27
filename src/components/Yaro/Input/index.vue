@@ -81,7 +81,8 @@ export default {
     }
   },
   emits: {
-    'update:modelValue': null
+    'update:modelValue': null,
+    'input': null
   },
   data() {
     return {}
@@ -89,6 +90,7 @@ export default {
   methods: {
     updateValue(event) {
       this.$emit('update:modelValue', event.target.value)
+      this.$emit('input', event.target.value)
     }
   }
 }

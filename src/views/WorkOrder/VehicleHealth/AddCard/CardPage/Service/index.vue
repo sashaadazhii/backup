@@ -89,7 +89,6 @@ export default {
   created() {},
   computed: {
     ...mapState({
-      // cards: s => s.company.cards.cards
     })
     // cardRelation() {
     //   if (this.card.cardRelationType === 'all') return 'All Vehicles'

@@ -1,11 +1,11 @@
 <template>
-  <vue-final-modal v-slot="{close}" @before-open="beforeOpen">
+  <vue-final-modal v-slot="{close}">
     <div class="modal__wrapper">
       <div class="modal__header">
-        <div class="modal__header-title">Card 2/24</div>
+        <div class="modal__header-title">Card {{cards.findIndex(c => c.uid === card.uid) + 1}}/{{cards.length}}</div>
         <div class="modal__header-nav">
-          <Button icon="i-keyboard_arrow_down" class="-grey" border iconSize="20px" />
-          <Button icon="i-keyboard_arrow_up" class="-grey" border iconSize="20px" />
+          <Button icon="i-keyboard_arrow_down" class="-grey" border iconSize="20px" @click="changeCard('dec')" />
+          <Button icon="i-keyboard_arrow_up" class="-grey" border iconSize="20px" @click="changeCard('inc')" />
         </div>
         <div class="tech__list">
           <div v-for="(tech, idx) of techs" :key="idx" class="tech__label">{{ tech.firstName[0] }}{{ tech.lastName[0] }}</div>
@@ -14,7 +14,7 @@
               <div class="tech__add"><i class="i-add" /></div>
             </template>
             <template #option="{option}">
-              <div class="y-dropdown-item-custom">{{option.firstName}} {{option.lastName}}</div>
+              <div class="y-dropdown-item-custom">{{ option.firstName }} {{ option.lastName }}</div>
             </template>
           </Multiselect>
         </div>
@@ -23,7 +23,7 @@
       </div>
       <div class="modal__main">
         <div class="modal__main-blocks blocks">
-          <div class="blocks__title">Cabin Filter</div>
+          <div class="blocks__title">{{card.name}}</div>
           <div class="blocks__subtitle">
             The cabin air filter in a vehicle helps remove harmful pollutants, including pollen and dust, from the air you breathe within the car.
           </div>
@@ -136,30 +136,24 @@ export default {
     return {
       block: 'General',
       techs: null
-      // techList: ['AA', 'BB', 'AS']
     }
   },
-  async created() {
-    // await this.fetchCards()
+  created() {
+    console.log(this.card)
+    // this.changeCard()
   },
   computed: {
     ...mapState({
-      techList: s => s.company.users.users.filter(u => u.role === 'technician')
-      // cards: s => s.company.cards.cards
-      // order: s => s.workOrder.workOrder,
-      // cards: s => s.company.cardTemplates.templates
+      techList: s => s.company.users.users.filter(u => u.role === 'technician'),
+      card: s => s.company.cards.card,
+      cards: s => s.company.cards.cards,
     })
   },
   methods: {
-    ...mapActions({
-      // fetchCards: 'company/cardTemplates/fetch'
-    }),
+    ...mapActions({}),
     ...mapMutations({
-      // selectAll: 'company/cards/selectAll',
-    }),
-    beforeOpen(e) {
-      // this.card = e.ref.params._rawValue
-    }
+      changeCard: 'company/cards/changeCard'
+    })
   }
 }
 </script>

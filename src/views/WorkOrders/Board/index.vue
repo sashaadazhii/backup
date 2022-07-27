@@ -2,103 +2,91 @@
   <div class="board__wrapper">
     <TheHeader @changeDay="changeDay" />
     <div v-if="day.type === 'Day'" class="board__inner">
-      <div class="board__col-wrapper">
-        <div class="board__col-title">
+      <div class="board__header">
+        <div class="board__title">
           Not Scheduled <span v-if="orders?.unscheduled" class="y-badge">{{ orders?.unscheduled.length }}</span>
         </div>
-        <div class="board__col-inner">
-          <Card v-for="order of orders?.unscheduled" :key="order.uid" :order="order" @click="selectOrder(order)"  />
-        </div>
-      </div>
-      <div class="board__col-wrapper">
-        <div class="board__col-title">
+        <div class="board__title">
           To do <span v-if="orders?.todo" class="y-badge">{{ orders?.todo.length }}</span>
         </div>
-        <div class="board__col-inner">
-          <Card v-for="order of orders?.todo" :key="order.uid" :order="order" @click="selectOrder(order)"  />
-        </div>
-      </div>
-      <div class="board__col-wrapper">
-        <div class="board__col-title">
+        <div class="board__title">
           In Progress <span v-if="orders?.inProgress" class="y-badge">{{ orders?.inProgress.length }}</span>
         </div>
-        <div class="board__col-inner">
-          <Card v-for="order of orders?.inProgress" :key="order.uid" :order="order" @click="selectOrder(order)" />
-        </div>
-      </div>
-      <div class="board__col-wrapper">
-        <div class="board__col-title">
+        <div class="board__title">
           Done <span v-if="orders?.done" class="y-badge">{{ orders?.done.length }}</span>
         </div>
-        <div class="board__col-inner">
+      </div>
+      <div class="board__body">
+        <div class="board__col">
+          <Card v-for="order of orders?.unscheduled" :key="order.uid" :order="order" @click="selectOrder(order)" />
+        </div>
+        <div class="board__col">
+          <Card v-for="order of orders?.todo" :key="order.uid" :order="order" @click="selectOrder(order)" />
+        </div>
+        <div class="board__col">
+          <Card v-for="order of orders?.inProgress" :key="order.uid" :order="order" @click="selectOrder(order)" />
+        </div>
+        <div class="board__col">
           <Card v-for="order of orders?.done" :key="order.uid" :order="order" @click="selectOrder(order)" />
         </div>
       </div>
     </div>
     <div v-if="day.type === 'Three Days'" class="board__inner -three">
-      <div class="board__col-wrapper">
-        <div class="board__col-title">
+      <div class="board__header">
+        <div class="board__title">
           {{ dayjs(day.date).format('DD MMM YYYY') }} <span v-if="orders?.unscheduled" class="y-badge">{{ orders?.unscheduled.length }}</span>
         </div>
-        <div class="board__col-inner">
-          <Card v-for="order of orders?.unscheduled" :key="order.uid" :order="order" @click="selectOrder(order)"  />
-        </div>
-      </div>
-      <div class="board__col-wrapper">
-        <div class="board__col-title">
+        <div class="board__title">
           {{ dayjs(day.date).add(1, 'day').format('DD MMM YYYY') }} <span v-if="orders?.todo" class="y-badge">{{ orders?.todo.length }}</span>
         </div>
-        <div class="board__col-inner">
-          <Card v-for="order of orders?.todo" :key="order.uid" :order="order" @click="selectOrder(order)"  />
-        </div>
-      </div>
-      <div class="board__col-wrapper">
-        <div class="board__col-title">
+        <div class="board__title">
           {{ dayjs(day.date).add(2, 'day').format('DD MMM YYYY') }}<span v-if="orders?.inProgress" class="y-badge">{{ orders?.inProgress.length }}</span>
         </div>
-        <div class="board__col-inner">
+      </div>
+      <div class="board__body">
+        <div class="board__col">
+          <Card v-for="order of orders?.unscheduled" :key="order.uid" :order="order" @click="selectOrder(order)" />
+        </div>
+        <div class="board__col">
+          <Card v-for="order of orders?.todo" :key="order.uid" :order="order" @click="selectOrder(order)" />
+        </div>
+        <div class="board__col">
           <Card v-for="order of orders?.inProgress" :key="order.uid" :order="order" @click="selectOrder(order)" />
         </div>
       </div>
     </div>
     <div v-if="day.type === 'Five Days'" class="board__inner -five">
-      <div class="board__col-wrapper">
-        <div class="board__col-title">
+      <div class="board__header">
+        <div class="board__title">
           {{ dayjs(day.date).format('DD MMM YYYY') }} <span v-if="orders?.unscheduled" class="y-badge">{{ orders?.unscheduled.length }}</span>
         </div>
-        <div class="board__col-inner">
-          <Card v-for="order of orders?.unscheduled" :key="order.uid" :order="order" @click="selectOrder(order)"  />
-        </div>
-      </div>
-      <div class="board__col-wrapper">
-        <div class="board__col-title">
+        <div class="board__title">
           {{ dayjs(day.date).add(1, 'day').format('DD MMM YYYY') }} <span v-if="orders?.todo" class="y-badge">{{ orders?.todo.length }}</span>
         </div>
-        <div class="board__col-inner">
-          <Card v-for="order of orders?.todo" :key="order.uid" :order="order" @click="selectOrder(order)"  />
+        <div class="board__title">
+          {{ dayjs(day.date).add(2, 'day').format('DD MMM YYYY') }}<span v-if="orders?.inProgress" class="y-badge">{{ orders?.inProgress.length }}</span>
+        </div>
+        <div class="board__title">
+          {{ dayjs(day.date).add(3, 'day').format('DD MMM YYYY') }}<span v-if="orders?.inProgress" class="y-badge">{{ orders?.inProgress.length }}</span>
+        </div>
+        <div class="board__title">
+          {{ dayjs(day.date).add(4, 'day').format('DD MMM YYYY') }}<span v-if="orders?.inProgress" class="y-badge">{{ orders?.inProgress.length }}</span>
         </div>
       </div>
-      <div class="board__col-wrapper">
-        <div class="board__col-title">
-          {{ dayjs(day.date).add(2, 'day').format('DD MMM YYYY') }} <span v-if="orders?.inProgress" class="y-badge">{{ orders?.inProgress.length }}</span>
+      <div class="board__body">
+        <div class="board__col">
+          <Card v-for="order of orders?.unscheduled" :key="order.uid" :order="order" @click="selectOrder(order)" />
         </div>
-        <div class="board__col-inner">
+        <div class="board__col">
+          <Card v-for="order of orders?.todo" :key="order.uid" :order="order" @click="selectOrder(order)" />
+        </div>
+        <div class="board__col">
           <Card v-for="order of orders?.inProgress" :key="order.uid" :order="order" @click="selectOrder(order)" />
         </div>
-      </div>
-      <div class="board__col-wrapper">
-        <div class="board__col-title">
-          {{ dayjs(day.date).add(3, 'day').format('DD MMM YYYY') }} <span v-if="orders?.done" class="y-badge">{{ orders?.done.length }}</span>
-        </div>
-        <div class="board__col-inner">
+        <div class="board__col">
           <Card v-for="order of orders?.done" :key="order.uid" :order="order" @click="selectOrder(order)" />
         </div>
-      </div>
-      <div class="board__col-wrapper">
-        <div class="board__col-title">
-          {{ dayjs(day.date).add(4, 'day').format('DD MMM YYYY') }} <span v-if="orders?.done" class="y-badge">{{ orders?.done.length }}</span>
-        </div>
-        <div class="board__col-inner">
+        <div class="board__col">
           <Card v-for="order of orders?.done" :key="order.uid" :order="order" @click="selectOrder(order)" />
         </div>
       </div>

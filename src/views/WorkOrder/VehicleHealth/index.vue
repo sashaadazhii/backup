@@ -22,7 +22,7 @@
               </div>
             </template>
           </Dropdown>
-          <Dropdown v-model="sortType" :options="sortTypes" size="medium" class="health__header-dropdown">
+          <Dropdown :modelValue="sortType" :options="sortTypes" size="medium" class="health__header-dropdown" @change="changeSort">
             <template #value="{value}">
               <div class="y-dropdown-item-custom">
                 <i class="i-arrow-up-down" />
@@ -49,7 +49,7 @@
               </div>
             </template>
           </Filter>
-          <Input size="medium" icon-left="i-search1" placeholder="Start typing to search card" />
+          <Input :modelValue="searchValue" size="medium" icon-left="i-search1" placeholder="Start typing to search card" @input="changeSearch" />
           <Button label="Add Card from Library" icon="i-add_circle" @click="addCard" :disabled="!isStart" />
         </div>
         <div v-if="activeFilters.length" class="chip__wrapper">
@@ -116,7 +116,7 @@ import Input from '@/components/Yaro/Input'
 import Dialog from '@/components/Yaro/Dialog'
 import Filter from '@/components/Yaro/Filter'
 
-import {mapState, mapMutations} from 'vuex'
+import {mapState, mapMutations, mapActions} from 'vuex'
 import AddCard from './AddCard'
 import CardPage from './CardPage'
 export default {
@@ -126,7 +126,6 @@ export default {
     return {
       viewType: 'Table View',
       viewTypes: ['Table View', 'Card View'],
-      sortType: 'Sort A-Z',
       sortTypes: ['Sort A-Z', 'Sort Z-A'],
       status: 'Good',
       statuses: ['No Status', 'Good', 'Recommended', 'Component Unsafe'],
@@ -136,7 +135,7 @@ export default {
         'Approved By Service Advisor',
         'Temporary Declined',
         'Permanently Declined',
-        'Approved For Next Visi'
+        'Approved For Next Visit'
       ],
       activeFilters: [],
       filtersList: [],
@@ -169,7 +168,7 @@ export default {
       showRequests: false
     }
   },
-  created() {
+  async created() {
     const uid = this.$route.params.uid
     if (uid !== 'new') this.showRequests = true
     if (!this.showRequests) this.startOrder(true)
@@ -194,10 +193,15 @@ export default {
       ]
     }
     this.filtersList.push(statusList, approvalStatusList)
+    this.activeFilters = this.filterParams || []
+    await this.fetch()
   },
   computed: {
     ...mapState({
       cards: s => s.company.cards.cards,
+      searchValue: s => s.company.cards.searchValue,
+      sortType: s => s.company.cards.sortType,
+      filterParams: s => s.company.cards.filterParams,
       isStart: s => s.workOrder.isStart
     }),
     selectedCards() {
@@ -212,10 +216,21 @@ export default {
         else this.display = false
       },
       deep: true
+    },
+    activeFilters(filters) {
+      this.setFilter(filters)
+      this.fetch()
     }
   },
   methods: {
+    ...mapActions({
+      fetch: 'company/cards/fetch'
+    }),
     ...mapMutations({
+      setSort: 'company/cards/setSort',
+      setSearch: 'company/cards/setSearch',
+      setFilter: 'company/cards/setFilter',
+      setCard: 'company/cards/setCard',
       selectAll: 'company/cards/selectAll',
       deselectAll: 'company/cards/deselectAll',
       changeStatus: 'company/cards/changeAllStatus',
@@ -229,8 +244,20 @@ export default {
       this.deselectAll()
       this.status = 'Good'
     },
+    changeSort({value}) {
+      this.setSort(value)
+      this.fetch()
+    },
     changeFilters({value}) {
-      console.log(value)
+      // const params = {
+      //   status: [],
+      //   approvalStatus: []
+      // }
+      // value.forEach(filter => {
+      //   if (filter.type === 'Card Status') params.status.push(filter.status)
+      //   if (filter.type === 'Approval Status') params.approvalStatus.push(filter.name)
+      // })
+      // console.log(params)
     },
     removeChip(id) {
       this.activeFilters = this.activeFilters.filter(c => c.id !== id)
@@ -246,17 +273,19 @@ export default {
       })
     },
     openCard(card) {
-      this.$vfm.show(
-        {
-          component: CardPage,
-          bind: {
-            name: 'CardPage',
-            'click-to-close': false,
-            'esc-to-close': true
-          }
-        },
-        card
-      )
+      this.setCard(card)
+      this.$vfm.show({
+        component: CardPage,
+        bind: {
+          name: 'CardPage',
+          'click-to-close': false,
+          'esc-to-close': true
+        }
+      })
+    },
+    changeSearch(searchValue) {
+      this.setSearch(searchValue)
+      this.fetch()
     }
   }
 }

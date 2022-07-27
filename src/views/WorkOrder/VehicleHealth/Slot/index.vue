@@ -2,9 +2,9 @@
   <div class="card__wrapper">
     <div class="y-check" :class="{'-active': card.select, '-hide': !isStart}" @click="select(card.uid)" />
     <div class="card__menu">
-      <Menu :list="statusesChange" position="left">
+      <Menu :list="statusesChange" position="left" :disabled="!isStart">
         <template #menu>
-          <Label :label="card.status" size="small" class="card__label" :class="labelClass(card.status)" />
+          <Label :label="card.status" size="small" class="card__label -hover" :class="labelClass(card.status)" />
         </template>
       </Menu>
     </div>
@@ -82,7 +82,8 @@ export default {
         '-none': status === 'No Status',
         '-green': status === 'Approved By Service Advisor',
         '-green -border': status === 'Approved By Customer',
-        '-purple': status === 'Approved For Next Visit'
+        '-purple': status === 'Approved For Next Visit',
+        '-disabled': !this.isStart
       }
     }
   }

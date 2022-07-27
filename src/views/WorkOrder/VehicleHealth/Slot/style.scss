@@ -60,9 +60,15 @@
         color: $color-grey;
       }
     }
-    &:hover {
-      cursor: pointer;
-      opacity: 0.6;
+    &.-hover {
+      &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+      }
+    }
+    &.-disabled {
+      opacity: 1 !important;
+      cursor: default !important;
     }
   }
   &__progress {

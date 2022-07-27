@@ -9,9 +9,7 @@ export default {
     workOrders: {},
     workOrder: localOrder,
     localOrders: localOrders,
-    // =========== Initial Walkaround ===========
-    notes: null,
-    // =========== Initial Walkaround ===========
+    notes: null, // Initial Walkaround
     isStart: false
   },
   mutations: {
