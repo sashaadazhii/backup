@@ -18,7 +18,7 @@
     @include font(14px, $color-grey-space, 600);
   }
   &__label {
-    transition: opacity .2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
     &.-red {
       background-color: $color-red;
     }
@@ -60,9 +60,15 @@
         color: $color-grey;
       }
     }
-    &:hover {
-      cursor: pointer;
-      opacity: .6;
+    &.-hover {
+      &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+      }
+    }
+    &.-disabled {
+      opacity: 1 !important;
+      cursor: default !important;
     }
   }
   &__progress {
@@ -94,18 +100,10 @@
   }
 }
 
-.card__wrapper.viewOnly {
-  & > .card__menu,
-  .y-check {
-    pointer-events: none;
-  }
-}
-
 .y-check {
   height: 16px;
   width: 16px;
-  border: 2px solid $color-grey-light;
-  border-radius: 4px;
+  @include border(4px, $color-grey-light, 2px);
   transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   cursor: pointer;
   &:hover {
@@ -114,5 +112,9 @@
   &.-active {
     border-color: $color-green;
     background-color: $color-green;
+  }
+  &.-hide {
+    pointer-events: none;
+    border-color: transparent;
   }
 }

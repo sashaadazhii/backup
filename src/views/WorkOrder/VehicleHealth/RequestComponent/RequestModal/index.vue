@@ -118,7 +118,6 @@ export default {
   },
   computed: {
     ...mapState({
-      // cards: s => s.company.cards.cards
       // order: s => s.workOrder.workOrder,
       // cards: s => s.company.cardTemplates.templates
     }),

@@ -18,7 +18,6 @@
           @asyncSearch="searchCustomer"
           @change="selectCustomer"
         >
-          <!-- v$.vehicle.customFields.$error}" -->
         </Dropdown>
         <Dropdown
           v-model="vehicle"

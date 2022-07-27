@@ -60,7 +60,11 @@ export default {
       type: String,
       default: 'right'
     },
-    styleBtn: String
+    styleBtn: String,
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
@@ -91,6 +95,7 @@ export default {
       this.hide()
     },
     toggle(event) {
+      if (this.disabled) return
       if (this.overlayVisible) this.hide()
       else this.show(event)
     },

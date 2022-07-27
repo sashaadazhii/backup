@@ -2,7 +2,7 @@
   <div class="card__wrapper" @click="openCustomerPage">
     <div class="card__cell card__cell--name">
       <span>{{ card.name }}</span>
-      <div v-if="card.servicesCount" class="card__counter">{{ card.servicesCount }}</div>
+      <Label v-if="card.servicesCount" :label="card.servicesCount" border size="small" class="-grey" />
     </div>
     <div class="card__cell card__cell--vehicles">
       <div v-if="!card.relations.length" class="card__vehicle green">
@@ -28,14 +28,8 @@
     </div>
     <div class="card__cell">
       <div class="card__indicators">
-        <div v-if="card.odometerTrack" class="card__indicator">
-          <i class="i-shutter_speed" />
-          <span>{{ card.odometerTrack.toLocaleString('fr-FR') }}</span> km
-        </div>
-        <div v-if="card.timeTrackLength" class="card__indicator orange">
-          <i class="i-time" />
-          <span>{{ card.timeTrackLength }}</span> {{ card.timeTrackType }}
-        </div>
+        <Label v-if="card.odometerTrack" icon="i-shutter_speed" :label="`${card.odometerTrack.toLocaleString('fr-FR')} KM`" class="-bluegreen" />
+        <Label v-if="card.timeTrackLength" icon="i-time" :label="`${card.timeTrackLength} Month`" class="-orange" />
       </div>
     </div>
     <div class="card__cell" ref="menu">
@@ -47,10 +41,11 @@
 <script>
 import {mapMutations, mapActions} from 'vuex'
 import Menu from '@/components/Yaro/Menu'
+import Label from '@/components/Yaro/Label'
 
 export default {
   name: 'CardComponent',
-  components: {Menu},
+  components: {Menu, Label},
   props: {
     card: {
       type: Object,

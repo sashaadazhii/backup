@@ -486,7 +486,7 @@ var DomHandler = {
       parentNode == 'A' ||
       this.hasClass(element, 'p-button') ||
       this.hasClass(element.parentElement, 'p-button') ||
-      this.hasClass(element.parentElement, 'p-checkbox') ||
+      this.hasClass(element.parentElement, 'y-checkbox') ||
       this.hasClass(element.parentElement, 'p-radiobutton')
     )
   },

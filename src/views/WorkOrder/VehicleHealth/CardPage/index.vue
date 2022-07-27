@@ -1,22 +1,29 @@
 <template>
-  <vue-final-modal v-slot="{close}" @before-open="beforeOpen">
+  <vue-final-modal v-slot="{close}">
     <div class="modal__wrapper">
       <div class="modal__header">
-        <div class="modal__header-title">Card 2/24</div>
+        <div class="modal__header-title">Card {{cards.findIndex(c => c.uid === card.uid) + 1}}/{{cards.length}}</div>
         <div class="modal__header-nav">
-          <Button icon="i-keyboard_arrow_down" class="-grey" border iconSize="20px" />
-          <Button icon="i-keyboard_arrow_up" class="-grey" border iconSize="20px" />
+          <Button icon="i-keyboard_arrow_down" class="-grey" border iconSize="20px" @click="changeCard('dec')" />
+          <Button icon="i-keyboard_arrow_up" class="-grey" border iconSize="20px" @click="changeCard('inc')" />
         </div>
-        <div class="modal__header-cus">
-          <Label alias="MB" border circle size="small" class="-dark" />
-          <Button icon="i-add" border circle size="mini" />
+        <div class="tech__list">
+          <div v-for="(tech, idx) of techs" :key="idx" class="tech__label">{{ tech.firstName[0] }}{{ tech.lastName[0] }}</div>
+          <Multiselect v-model="techs" :options="techList">
+            <template #menu>
+              <div class="tech__add"><i class="i-add" /></div>
+            </template>
+            <template #option="{option}">
+              <div class="y-dropdown-item-custom">{{ option.firstName }} {{ option.lastName }}</div>
+            </template>
+          </Multiselect>
         </div>
         <Label icon="i-time blue" iconSize="22px" label="00:20:04" border circle size="large" class="-shadow" />
         <Button icon="i-circle_close" border circle iconSize="20px" size="small" @click="close" />
       </div>
       <div class="modal__main">
         <div class="modal__main-blocks blocks">
-          <div class="blocks__title">Cabin Filter</div>
+          <div class="blocks__title">{{card.name}}</div>
           <div class="blocks__subtitle">
             The cabin air filter in a vehicle helps remove harmful pollutants, including pollen and dust, from the air you breathe within the car.
           </div>
@@ -113,6 +120,7 @@
 </template>
 
 <script>
+import Multiselect from '@/components/Yaro/Multiselect'
 import Button from '@/components/Yaro/Button'
 import Label from '@/components/Yaro/Label'
 import General from './General'
@@ -123,32 +131,29 @@ import Warranty from './Warranty'
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'CardPage',
-  components: {Button, Label, General, Notes, Service, Warranty},
+  components: {Button, Label, General, Notes, Service, Warranty, Multiselect},
   data() {
     return {
-      block: 'General'
+      block: 'General',
+      techs: null
     }
   },
-  async created() {
-    // await this.fetchCards()
+  created() {
+    console.log(this.card)
+    // this.changeCard()
   },
   computed: {
     ...mapState({
-      // cards: s => s.company.cards.cards
-      // order: s => s.workOrder.workOrder,
-      // cards: s => s.company.cardTemplates.templates
+      techList: s => s.company.users.users.filter(u => u.role === 'technician'),
+      card: s => s.company.cards.card,
+      cards: s => s.company.cards.cards,
     })
   },
   methods: {
-    ...mapActions({
-      // fetchCards: 'company/cardTemplates/fetch'
-    }),
+    ...mapActions({}),
     ...mapMutations({
-      // selectAll: 'company/cards/selectAll',
-    }),
-    beforeOpen(e) {
-      // this.card = e.ref.params._rawValue
-    }
+      changeCard: 'company/cards/changeCard'
+    })
   }
 }
 </script>

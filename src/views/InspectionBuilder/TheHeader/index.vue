@@ -7,10 +7,7 @@
           <div class="header__title">Inspection Builder</div>
         </div>
         <div class="header__right">
-          <button class="header__btn" @click="openNewCardModal">
-            <i class="i-add_circle" />
-            <span>Create New Card</span>
-          </button>
+          <Button icon="i-add_circle" label="Create New Card" @click="openNewCardModal" />
         </div>
       </div>
       <div class="header__middle">
@@ -36,12 +33,14 @@
 </template>
 
 <script>
+import Button from '@/components/Yaro/Button'
 import AddCardModal from '../AddCardModal'
 import {mapActions, mapMutations, mapState} from 'vuex'
 import _ from 'lodash'
 
 export default {
   name: 'InspectionBuilderHeader',
+  components: {Button},
   computed: {
     ...mapState({
       searchParams: s => s.company.cardTemplates.searchParams

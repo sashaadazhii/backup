@@ -94,6 +94,7 @@
 
 <script>
 import Button from '@/components/Yaro/Button'
+import Tooltip from '@/components/Yaro/tooltip'
 import Label from '@/components/Yaro/Label'
 import Menu from '@/components/Yaro/Menu'
 import Parts from './Parts'
@@ -117,6 +118,9 @@ export default {
     select() {
       this.setActiveService({id: 1})
     }
+  },
+  directives: {
+    tooltip: Tooltip
   }
 }
 </script>

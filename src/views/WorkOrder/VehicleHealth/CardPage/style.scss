@@ -237,3 +237,30 @@
     }
   }
 }
+
+.tech {
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+  &__add {
+    height: 32px;
+    width: 32px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    @include font(16px, $color-grey-space);
+    @include border(50%, $color-grey-flash);
+    background-color: $color-white;
+  }
+  &__label {
+    height: 32px;
+    width: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    @include font(12px, $color-white, 600);
+    background: $color-green;
+    margin-right: -4px;
+  }
+}

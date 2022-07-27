@@ -13,7 +13,6 @@
           <Service viewOnly/>
           <Service viewOnly/>
           <Service viewOnly/>
-          <!-- <Card v-for="card of cards" :key="card.templateID" :card="card" @click="openCard(card)" /> -->
         </div>
         <div class="modal__block-title">CARDS</div>
         <div class="modal__block-inner">
@@ -43,7 +42,6 @@ export default {
   },
   computed: {
     ...mapState({
-      // cards: s => s.company.cards.cards
       cards: s => s.company.cardTemplates.templates
     })
   },

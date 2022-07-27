@@ -7,16 +7,16 @@
       <Label label="1.4hr" icon="i-time" iconColor="#3EB3BB" iconSize="18px" border size="large" class="-grey" />
       <Label label="1.4hr" icon="i-time orange" iconSize="18px" border size="large" class="-grey" />
       <Label label="Used: 12 times" border size="large" class="-grey -counter" />
-      <Label label="24 months /  3000 km" icon="i-shield green" iconSize="18px" border size="large" class="-grey" />
-      <Menu :list="actionsList">
+      <Label v-if="!viewOnly" label="24 months /  3000 km" icon="i-shield green" iconSize="18px" border size="large" class="-grey" />
+      <Menu v-if="!viewOnly" :list="actionsList">
         <template #menu>
           <Button icon="i-more_horiz" border size="small" />
         </template>
       </Menu>
-      <!-- <div v-if="viewOnly" class="service__type">
-        <span>Tesla Model S 2020</span>
+      <div v-if="viewOnly" class="service__type">
+        <Label label="Tesla Model S 2020" circle size="mini" class="-grey -counter" />
         Brakes Back
-      </div> -->
+      </div>
     </div>
     <template v-if="show">
       <div class="service__desc">
@@ -89,7 +89,6 @@ export default {
   created() {},
   computed: {
     ...mapState({
-      // cards: s => s.company.cards.cards
     })
     // cardRelation() {
     //   if (this.card.cardRelationType === 'all') return 'All Vehicles'

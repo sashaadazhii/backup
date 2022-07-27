@@ -111,3 +111,10 @@
     }
   }
 }
+
+.y-chip {
+  @include font(14px, $color-white, 600);
+  padding: 6px 8px;
+  background-color: $color-green;
+  border-radius: 30px;
+}

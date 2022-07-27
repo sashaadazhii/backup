@@ -22,8 +22,8 @@
       <template v-slot="{initDrag}">
         <div class="dialog__inner">
           <div class="dialog__move" @mousedown="initDrag" @touchstart="initDrag"><i class="i-open_with" /></div>
-          <!-- <div class="y-chips">{{ selectedCards.length }}</div> -->
-          <div class="dialog__text">Cards Selected:</div>
+          <div class="y-chip">{{ selectedParts.length }}</div>
+          <div class="dialog__text">Parts Selected:</div>
           <div class="dialog__title">Change Card Status to</div>
           <Dropdown v-model="type" :options="types" size="medium" class="health__header-dropdown" theme="grey">
             <template #value="{value}">
