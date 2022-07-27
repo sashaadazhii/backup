@@ -36,7 +36,8 @@
     }
   }
   &__main {
-    overflow-y: scroll;
+    overflow-y: auto;
+    @include hideScrollbar;
   }
   &__block {
     padding: 30px 20px;
