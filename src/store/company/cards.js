@@ -27,13 +27,13 @@ export default {
       state.card = card
     },
     changeCard(state, param) {
-      const uid = state.card.uid
-      const cardIdx = state.cards.findIndex(c => c.uid === uid)
+      const id = state.card.id
+      const cardIdx = state.cards.findIndex(c => c.id === id)
       if (param === 'inc' && cardIdx + 1 < state.cards.length) state.card = state.cards[cardIdx + 1]
       if (param === 'dec' && cardIdx + 1 > 1) state.card = state.cards[cardIdx - 1]
     },
-    select(state, uid) {
-      const card = state.cards.find(c => c.uid === uid)
+    select(state, id) {
+      const card = state.cards.find(c => c.id === id)
       card.select = !card.select
     },
     selectAll(state) {
@@ -43,9 +43,13 @@ export default {
     deselectAll(state) {
       state.cards.forEach(c => (c.select = false))
     },
-    changeStatus(state, {status, uid}) {
-      const card = state.cards.find(c => c.uid === uid)
+    changeStatus(state, {status, id}) {
+      const card = state.cards.find(c => c.id === id)
       card.status = status
+    },
+    changeApprovalStatus(state, {approvalStatus, id}) {
+      const card = state.cards.find(c => c.id === id)
+      card.approvalStatus = approvalStatus
     },
     changeAllStatus(state, status) {
       state.cards.forEach(c => {

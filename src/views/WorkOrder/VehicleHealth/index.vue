@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="health__table table">
-        <div class="table__header">
+        <div class="table__header" :class="{'-check': isStart}">
           <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart}" @click="selectAll" />
           <div class="table__header-cell">Card status</div>
           <div class="table__header-cell">Card name</div>
@@ -72,6 +72,11 @@
           <div class="table__header-cell">Service Tracking</div>
         </div>
         <div class="table__main">
+          <div v-if="initialWalkaround" class="card__wrapper" :class="{'-check': isStart}">
+            <div v-if="isStart" />
+            <Label label="Completed" size="small" class="card__label" />
+            <div class="card__title">Initial Walkaround</div>
+          </div>
           <Slot v-for="card of cards" :key="card.uid" :card="card" @click.self="openCard(card)" />
         </div>
       </div>
@@ -115,13 +120,14 @@ import Button from '@/components/Yaro/Button'
 import Input from '@/components/Yaro/Input'
 import Dialog from '@/components/Yaro/Dialog'
 import Filter from '@/components/Yaro/Filter'
+import Label from '@/components/Yaro/Label'
 
 import {mapState, mapMutations, mapActions} from 'vuex'
 import AddCard from './AddCard'
 import CardPage from './CardPage'
 export default {
   name: 'WorkOrderVehicleHealth',
-  components: {Request, Dropdown, Button, Input, Slot, Dialog, Filter},
+  components: {Request, Dropdown, Button, Input, Slot, Dialog, Filter, Label},
   data() {
     return {
       viewType: 'Table View',
@@ -202,7 +208,8 @@ export default {
       searchValue: s => s.company.cards.searchValue,
       sortType: s => s.company.cards.sortType,
       filterParams: s => s.company.cards.filterParams,
-      isStart: s => s.workOrder.isStart
+      isStart: s => s.workOrder.isStart,
+      initialWalkaround: s => s.workOrder.initialWalkaround
     }),
     selectedCards() {
       return this.cards.filter(c => c.select)

@@ -1,6 +1,6 @@
 <template>
-  <div class="card__wrapper">
-    <div class="y-check" :class="{'-active': card.select, '-hide': !isStart}" @click="select(card.uid)" />
+  <div class="card__wrapper" :class="{'-check': isStart}">
+    <div class="y-check" :class="{'-active': card.select, '-hide': !isStart}" @click="select(card.id)" />
     <div class="card__menu">
       <Menu :list="statusesChange" position="left" :disabled="!isStart">
         <template #menu>
@@ -9,7 +9,9 @@
       </Menu>
     </div>
     <div class="card__title">{{ card.name }}</div>
+    <div v-if="card.status === 'Good'" class="card__empty" />
     <Label
+      v-else
       :label="card.approvalStatus"
       size="small"
       icon="i-rp_done"
@@ -19,12 +21,11 @@
       iconSize="8px"
     />
     <div class="card__progress">
-      <div class="card__progress-title">{{ card.progress }}%</div>
-      <div class="card__progress-bar"><span :style="{width: card.progress + '%'}" /></div>
-      <div class="card__progress-title">{{ card.service }}</div>
-    </div>
-    <div class="card__menu">
-      <Menu :list="actionsList" />
+      <div class="card__progress-title">{{ card.service }}%</div>
+      <div class="card__progress-bar">
+        <span :style="{width: card.service + '%'}" :class="{'-orange': card.service >= 60 && card.service < 89, '-red': card.service > 90}" />
+      </div>
+      <div class="card__progress-title">{{ card.odometerTrack.toLocaleString('fr-FR') }} KM / {{ card.timeTrackLength }} Month</div>
     </div>
   </div>
 </template>
@@ -57,10 +58,10 @@ export default {
         }
       ],
       statusesChange: [
-        {label: 'No Status', command: () => this.changeStatus({uid: this.card.uid, status: 'No Status'})},
-        {label: 'Good', command: () => this.changeStatus({uid: this.card.uid, status: 'Good'})},
-        {label: 'Recommended', command: () => this.changeStatus({uid: this.card.uid, status: 'Recommended'})},
-        {label: 'Component Unsafe', command: () => this.changeStatus({uid: this.card.uid, status: 'Component Unsafe'})}
+        {label: 'No Status', command: () => this.changeStatus({id: this.card.id, status: 'No Status'})},
+        {label: 'Good', command: () => this.changeStatus({id: this.card.id, status: 'Good'})},
+        {label: 'Recommended', command: () => this.changeStatus({id: this.card.id, status: 'Recommended'})},
+        {label: 'Component Unsafe', command: () => this.changeStatus({id: this.card.id, status: 'Component Unsafe'})}
       ]
     }
   },

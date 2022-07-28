@@ -88,7 +88,8 @@ export default {
   },
   methods: {
     ...mapMutations({
-      changeNotes: 'workOrder/changeNotes'
+      changeNotes: 'workOrder/changeNotes',
+      changeInitial: 'workOrder/changeInitial',
     }),
     delNote(note) {
       this.changeNotes({note, action: 'delete'})
@@ -146,7 +147,8 @@ export default {
     },
     hide() {
       this.$vfm.hide('Initial')
-      this.changeNotes({note: null})
+      this.changeNotes({note: null}),
+      this.changeInitial()
     }
   }
 }

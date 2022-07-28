@@ -33,7 +33,6 @@
         <div v-else class="header__timer-stop"><i class="i-power_settings_new red" /> <span>00:05</span></div>
       </div>
       <Button icon="i-circle_close" border circle size="small" @click="close" />
-      <!-- <router-link :to="'/work-orders/board'"></router-link> -->
     </div>
   </div>
 </template>
@@ -96,8 +95,8 @@ export default {
       })
     },
     start() {
-      this.startOrder(true)
       this.isStart = !this.isStart
+      this.startOrder(this.isStart)
       if (this.isStart) this.open()
     },
     close() {

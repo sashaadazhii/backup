@@ -71,6 +71,7 @@
   row-gap: 12px;
   @include hideScrollbar;
   margin-top: 30px;
+  padding-bottom: 3px;
   &__title {
     @include font(18px, $color-grey-space, 600);
     margin-bottom: 14px;
@@ -96,6 +97,7 @@
   }
   &__body {
     @include font(14px, $color-grey-space, 500, 1.4);
+    margin-top: 12px;
   }
 }
 
