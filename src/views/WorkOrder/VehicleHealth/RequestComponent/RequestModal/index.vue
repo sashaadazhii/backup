@@ -22,7 +22,13 @@
           </div>
           <div class="body__status">
             <span>Request Status:</span>
-            <Label :label="request.status" border class="-light" />
+            <!-- <Label :label="request.status" border class="-light" /> -->
+            <Menu :list="statuses" position="left">
+              <template #menu>
+                <!-- :class="labelClass(card.status)" -->
+                <Label :label="status" size="small" class="card__label -hover" />
+              </template>
+            </Menu>
           </div>
         </div>
         <div class="body__request request">
@@ -76,14 +82,20 @@
 import Button from '@/components/Yaro/Button'
 import Label from '@/components/Yaro/Label'
 import Input from '@/components/Yaro/Input'
+import Menu from '@/components/Yaro/Menu'
 import Card from './Card'
 
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'RequestModal',
-  components: {Button, Label, Input, Card},
+  components: {Button, Label, Input, Card, Menu},
   data() {
     return {
+      statuses: [
+        {label: 'Not Processed', command: () => this.changeStatus({uid: this.card.uid, status: 'No Status'})},
+        {label: 'Processed', command: () => this.changeStatus({uid: this.card.uid, status: 'Good'})}
+      ],
+      status: null,
       request: {},
       cardsList: [
         {

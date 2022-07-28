@@ -8,16 +8,16 @@
       </div>
       <div class="block__body">
         <div class="block__services">
-          <div class="service__wrapper" @click.self="select">
+          <div class="service__wrapper" @click="select">
             <div class="y-radio" />
             <span>Replace left</span>
             <Label label="3" border circle class="-grey -counter" />
-            <Label label="1.4hr" icon="i-time" iconColor="#3EB3BB" iconSize="18px" border size="large" class="-grey" />
-            <Label label="1.4hr" icon="i-time orange" iconSize="18px" border size="large" class="-grey" />
-            <Label label="Used: 12 times" border size="large" class="-grey -counter" />
-            <Label label="24 months /  3000 km" icon="i-shield green" iconSize="18px" border size="large" class="-grey" />
+            <Label label="1.4hr" icon="i-time" iconColor="#3EB3BB" iconSize="18px" border size="large" class="-grey" v-tooltip.bottom="'Estimated time'" />
+            <Label label="1.4hr" icon="i-time orange" iconSize="18px" border size="large" class="-grey" v-tooltip.bottom="'Average time'" />
+            <Label label="Used: 12 times" border size="large" class="-grey -counter" v-tooltip.bottom="'Number of times used'" />
+            <Label label="24 months /  3000 km" icon="i-shield green" iconSize="18px" border size="large" class="-grey" v-tooltip.bottom="'Warranty'" />
             <Menu>
-              <template #menu>
+              <template #menu @click.stop >
                 <Button icon="i-more_horiz" border size="small" />
               </template>
             </Menu>
@@ -44,7 +44,7 @@
             <Label label="1.4hr" icon="i-time orange" iconSize="18px" border size="large" class="-grey" />
             <Label label="Used: 12 times" border size="large" class="-grey -counter" />
             <Label label="24 months /  3000 km" icon="i-shield green" iconSize="18px" border size="large" class="-grey" />
-            <Menu>
+            <Menu @click.stop>
               <template #menu>
                 <Button icon="i-more_horiz" border size="small" />
               </template>

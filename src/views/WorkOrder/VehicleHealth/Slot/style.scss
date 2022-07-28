@@ -3,7 +3,7 @@
 .card {
   &__wrapper {
     display: grid;
-    grid-template-columns: 16px minmax(100px, 180px) minmax(200px, 2.2fr) minmax(100px, 204px) minmax(200px, 2fr) 24px;
+    grid-template-columns: minmax(100px, 180px) minmax(200px, 2.2fr) minmax(100px, 204px) minmax(200px, 2fr);
     column-gap: 14px;
     align-items: center;
     padding: 16px;
@@ -12,6 +12,9 @@
     }
     & > div {
       justify-self: start;
+    }
+    &.-check {
+      grid-template-columns: 16px minmax(100px, 180px) minmax(200px, 2.2fr) minmax(100px, 204px) minmax(200px, 2fr);
     }
   }
   &__title {
@@ -95,6 +98,12 @@
         height: 4px;
         background-color: $color-green;
         border-radius: 4px;
+        &.-red {
+          background-color: $color-red;
+        }
+        &.-orange {
+          background-color: $color-orange;
+        }
       }
     }
   }
@@ -114,6 +123,7 @@
     background-color: $color-green;
   }
   &.-hide {
+    display: none;
     pointer-events: none;
     border-color: transparent;
   }

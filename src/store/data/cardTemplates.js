@@ -1,132 +1,32 @@
 /* eslint-disable */
-const cardsListOld = {
-  data: [
-    {
-      templateID: 42,
-      authorID: 12,
-      name: 'Fuel filter',
-      description:
-        'An oil filter is a filter designed to remove contaminants from engine oil, transmission oil, lubricating oil, or hydraulic oil. Their chief use is in internal-combustion engines for motor vehicles (both on- and off-road ), powered aircraft, railway locomotives, ships and boats, and static engines such as generators and pumps.',
-      descriptionForCustomer:
-        'An oil filter is a filter designed to remove contaminants from engine oil, transmission oil, lubricating oil, or hydraulic oil. Their chief use is in internal-combustion engines for motor vehicles (both on- and off-road ), powered aircraft, railway locomotives, ships and boats, and static engines such as generators and pumps.',
-      cardRelationType: 'custom-vehicles',
-      cardType: 'maintenance',
-      odometerTrack: 80000,
-      timeTrackLength: 18,
-      timeTrackType: 'months',
-      vehicleUID: '123e4567-e89b-12d3-a456-426614174000',
-      createdAt: '2022-01-13T10:39:32.000Z',
-      updatedAt: '2022-01-18T10:39:32.000Z',
-      updatedBy: 55,
-      servicesCount: 2,
-      relations: [
-        {
-          id: 313,
-          make: 'Audi',
-          model: 'A4',
-          yearFrom: 2009,
-          yearTo: 2010
-        }
-      ]
-    },
-    {
-      templateID: 44,
-      authorID: 12,
-      name: 'Oil filter',
-      description:
-        'An oil filter is a filter designed to remove contaminants from engine oil, transmission oil, lubricating oil, or hydraulic oil. Their chief use is in internal-combustion engines for motor vehicles (both on- and off-road ), powered aircraft, railway locomotives, ships and boats, and static engines such as generators and pumps.',
-      descriptionForCustomer:
-        'An oil filter is a filter designed to remove contaminants from engine oil, transmission oil, lubricating oil, or hydraulic oil. Their chief use is in internal-combustion engines for motor vehicles (both on- and off-road ), powered aircraft, railway locomotives, ships and boats, and static engines such as generators and pumps.',
-      cardRelationType: 'custom-vehicles',
-      cardType: 'maintenance',
-      odometerTrack: 80000,
-      timeTrackLength: 18,
-      timeTrackType: 'months',
-      vehicleUID: '123e4567-e89b-12d3-a456-426614174000',
-      createdAt: '2022-01-13T10:39:32.000Z',
-      updatedAt: '2022-01-18T10:39:32.000Z',
-      updatedBy: 55,
-      relations: [
-        {
-          id: 313,
-          make: 'Audi',
-          model: 'A4',
-          yearFrom: 2009,
-          yearTo: 2010
-        }
-      ]
-    },
-    {
-      templateID: 45,
-      authorID: 12,
-      name: 'Oil filter',
-      description:
-        'An oil filter is a filter designed to remove contaminants from engine oil, transmission oil, lubricating oil, or hydraulic oil. Their chief use is in internal-combustion engines for motor vehicles (both on- and off-road ), powered aircraft, railway locomotives, ships and boats, and static engines such as generators and pumps.',
-      descriptionForCustomer:
-        'An oil filter is a filter designed to remove contaminants from engine oil, transmission oil, lubricating oil, or hydraulic oil. Their chief use is in internal-combustion engines for motor vehicles (both on- and off-road ), powered aircraft, railway locomotives, ships and boats, and static engines such as generators and pumps.',
-      cardRelationType: 'custom-vehicles',
-      cardType: 'maintenance',
-      odometerTrack: 80000,
-      timeTrackLength: 18,
-      timeTrackType: 'months',
-      vehicleUID: '123e4567-e89b-12d3-a456-426614174000',
-      createdAt: '2022-01-13T10:39:32.000Z',
-      updatedAt: '2022-01-18T10:39:32.000Z',
-      updatedBy: 55,
-      relations: [
-        {
-          id: 313,
-          make: 'Audi',
-          model: 'A4',
-          yearFrom: 2009,
-          yearTo: 2010
-        }
-      ]
-    },
-    {
-      templateID: 43,
-      authorID: 12,
-      name: 'Oil filter',
-      description:
-        'An oil filter is a filter designed to remove contaminants from engine oil, transmission oil, lubricating oil, or hydraulic oil. Their chief use is in internal-combustion engines for motor vehicles (both on- and off-road ), powered aircraft, railway locomotives, ships and boats, and static engines such as generators and pumps.',
-      descriptionForCustomer:
-        'An oil filter is a filter designed to remove contaminants from engine oil, transmission oil, lubricating oil, or hydraulic oil. Their chief use is in internal-combustion engines for motor vehicles (both on- and off-road ), powered aircraft, railway locomotives, ships and boats, and static engines such as generators and pumps.',
-      cardRelationType: 'custom-vehicles',
-      cardType: 'maintenance',
-      odometerTrack: 80000,
-      timeTrackLength: 18,
-      timeTrackType: 'months',
-      vehicleUID: '123e4567-e89b-12d3-a456-426614174000',
-      createdAt: '2022-01-13T10:39:32.000Z',
-      updatedAt: '2022-01-18T10:39:32.000Z',
-      updatedBy: 55,
-      relations: [
-        {
-          id: 313,
-          make: 'Audi',
-          model: 'A4',
-          yearFrom: 2009,
-          yearTo: 2010
-        }
-      ]
-    },
-    {
-      cardRelationType: 'all',
-      cardType: 'inspection',
-      description: 'asf',
-      name: 'Cabin Filter',
-      odometerTrack: 50000,
-      timeTrackLength: 18,
-      relations: [],
-      templateID: 1657639605826
-    }
-  ],
-  pagination: {
-    page: 1,
-    perPage: 20,
-    total: 4
-  }
-}
+// {
+//   templateID: 42,
+//   authorID: 12,
+//   name: 'Fuel filter',
+//   description:
+//     'An oil filter is a filter designed to remove contaminants from engine oil, transmission oil, lubricating oil, or hydraulic oil. Their chief use is in internal-combustion engines for motor vehicles (both on- and off-road ), powered aircraft, railway locomotives, ships and boats, and static engines such as generators and pumps.',
+//   descriptionForCustomer:
+//     'An oil filter is a filter designed to remove contaminants from engine oil, transmission oil, lubricating oil, or hydraulic oil. Their chief use is in internal-combustion engines for motor vehicles (both on- and off-road ), powered aircraft, railway locomotives, ships and boats, and static engines such as generators and pumps.',
+//   cardRelationType: 'custom-vehicles',
+//   cardType: 'maintenance',
+//   odometerTrack: 80000,
+//   timeTrackLength: 18,
+//   timeTrackType: 'months',
+//   vehicleUID: '123e4567-e89b-12d3-a456-426614174000',
+//   createdAt: '2022-01-13T10:39:32.000Z',
+//   updatedAt: '2022-01-18T10:39:32.000Z',
+//   updatedBy: 55,
+//   servicesCount: 2,
+//   relations: [
+//     {
+//       id: 313,
+//       make: 'Audi',
+//       model: 'A4',
+//       yearFrom: 2009,
+//       yearTo: 2010
+//     }
+//   ]
+// }
 
 const cardsList = {
   data: [
@@ -231,6 +131,132 @@ const cardsList = {
     },
     {
       templateID: 12,
+      name: 'Windshield Wipers',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: []
+    },
+    {
+      name: 'Exterior Lights',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 13
+    },
+    {
+      name: 'Battery',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 14
+    },
+    {
+      name: 'Summer Tires',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 15
+    },
+    {
+      name: 'Winter Tires',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 16
+    },
+    {
+      name: 'Accessories Belt',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 17
+    },
+    {
+      name: 'Fluid Leaks',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 18
+    },
+    {
+      name: 'Front Brakes',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 19
+    },
+    {
+      name: 'Rear Brakes',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 20
+    },
+    {
+      name: 'Shocks and Struts',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 21
+    },
+    {
+      name: 'Ball Joints',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 22
+    },
+    {
+      name: 'Tie-rod Ends',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 23
+    },
+    {
+      name: 'Wheel hub and Bearings',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 24
+    },
+    {
+      name: 'Exhaust System',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 25
+    },
+    {
+      templateID: 26,
       name: 'Battery',
       description: '',
       cardRelationType: 'custom-vehicles',
@@ -249,8 +275,8 @@ const cardsList = {
   ],
   pagination: {
     page: 1,
-    perPage: 20,
-    total: 11
+    perPage: 100,
+    total: 26
   }
 }
 export {cardsList}

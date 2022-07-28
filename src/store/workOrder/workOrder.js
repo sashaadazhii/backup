@@ -10,6 +10,7 @@ export default {
     workOrder: localOrder,
     localOrders: localOrders,
     notes: null, // Initial Walkaround
+    initialWalkaround: false,
     isStart: false
   },
   mutations: {
@@ -87,6 +88,9 @@ export default {
         return
       }
       state.notes.unshift(note)
+    },
+    changeInitial(state) {
+      state.initialWalkaround = true
     },
     // =========== Initial Walkaround ===========
     startOrder(state, type) {
