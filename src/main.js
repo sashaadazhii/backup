@@ -5,6 +5,8 @@ import store from './store'
 
 // import axios from 'axios'
 
+import RadialProgress from 'vue3-radial-progress'
+
 import {SetupCalendar} from 'v-calendar'
 
 import Maska from 'maska'
@@ -57,5 +59,6 @@ app
       }
     }
   })
+  .use(RadialProgress)
   .component('y-input', InputComponent)
   .mount('#app')
