@@ -81,7 +81,7 @@ export default {
         '-red': status === 'Component Unsafe' || status === 'Permanently Declined',
         '-bluegreen': status === 'Canned Service Completed' || status === 'Temporary Declined',
         '-none': status === 'No Status',
-        '-green': status === 'Approved By Service Advisor',
+        '-green': status === 'Approved By SA',
         '-green -border': status === 'Approved By Customer',
         '-purple': status === 'Approved For Next Visit',
         '-disabled': !this.isStart

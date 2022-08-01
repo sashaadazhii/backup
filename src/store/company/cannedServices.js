@@ -1,5 +1,4 @@
-import axios from 'axios'
-import {serviceList} from '../data/cannedServices'
+import {serviceList, historyList} from '../data/cannedServices'
 
 export default {
   namespaced: true,
@@ -8,7 +7,8 @@ export default {
     services: [],
     service: {},
     localService: null,
-    activeService: {}
+    activeService: {},
+    history: [],
   },
   mutations: {
     set(state, services) {
@@ -27,6 +27,10 @@ export default {
       state.services.unshift(service)
       serviceList.unshift(service)
     },
+    select(state, id) {
+      const service = state.services.find(s => s.id === id)
+      service.select = !service.select
+    },
     update(state, service) {
       if (state.activeService.id) state.activeService = service
       const serIdx = state.services.findIndex(ser => ser.id === service.id)
@@ -40,7 +44,9 @@ export default {
       const partIdx = service.parts.findIndex(p => p.id === id)
       service.parts.splice(partIdx, 1)
     },
-
+    setHistory(state, history) {
+      state.history = history
+    },
   },
   actions: {
     async fetch({commit}, id) {
@@ -82,6 +88,15 @@ export default {
       try {
         commit('remove', id)
         commit('company/cardTemplates/decrementService', templateID, {root: true})
+      } catch (err) {
+        commit('setError', err, {root: true})
+        throw err
+      }
+    },
+    async fetchHistory({commit}, id) {
+      try {
+        const history = historyList.filter(s => s.templateID === id)
+        commit('setHistory', history)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

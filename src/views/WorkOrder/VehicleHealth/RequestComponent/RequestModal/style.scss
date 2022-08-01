@@ -131,6 +131,24 @@
     margin-bottom: 18px;
     @include font(16px, $color-grey, 500, 1.5);
   }
+  &__label {
+    transition: opacity 0.2s ease-in-out;
+    &.-grey {
+      background-color: $color-grey;
+    }
+    &.-red {
+      background-color: $color-red;
+    }
+    &.-green {
+      background-color: $color-green;
+    }
+    &.-hover {
+      &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+      }
+    }
+  }
   &__desc {
     display: flex;
     align-items: center;
@@ -184,4 +202,31 @@
 .footer__cards {
   margin: 0;
   margin-top: 18px;
+}
+
+.tech {
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+  &__add {
+    height: 32px;
+    width: 32px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    @include font(16px, $color-grey-space);
+    @include border(50%, $color-grey-flash);
+    background-color: $color-white;
+  }
+  &__label {
+    height: 32px;
+    width: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    @include font(12px, $color-white, 600);
+    background: $color-green;
+    margin-right: -4px;
+  }
 }

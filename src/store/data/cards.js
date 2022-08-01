@@ -9,7 +9,7 @@ function getRandom(min, max) {
 const approvalStatuses = [
   'No Status',
   'Approved By Customer',
-  'Approved By Service Advisor',
+  'Approved By SA',
   'Temporary Declined',
   'Permanently Declined',
   'Approved For Next Visit'

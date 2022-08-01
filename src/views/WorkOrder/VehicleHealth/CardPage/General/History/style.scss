@@ -1,0 +1,37 @@
+@import 'src/assets/styles/_variables.scss';
+
+.history {
+  display: grid;
+  overflow: auto;
+  row-gap: 12px;
+  @include hideScrollbar;
+  margin-top: 30px;
+  padding-bottom: 3px;
+  &__title {
+    @include font(18px, $color-grey-space, 600);
+    margin-bottom: 14px;
+  }
+  &__block {
+    @include border(16px, $color-grey-flash);
+    background-color: $color-grey-smoke;
+    padding: 14px;
+    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    & > span {
+      @include font(16px, $color-grey-space, 600);
+    }
+    & > .-light {
+      border-color: $color-grey-flash;
+      background-color: $color-grey-smoke;
+      color: $color-grey;
+    }
+  }
+  &__body {
+    @include font(14px, $color-grey-space, 500, 1.4);
+    margin-top: 12px;
+  }
+}
