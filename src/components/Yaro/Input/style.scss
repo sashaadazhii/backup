@@ -108,6 +108,11 @@
         left: 10px;
       }
     }
+    &.mini {
+      & > .field__input {
+        padding: 5px 10px;
+      }
+    }
   }
   &__title {
     @include font(14px, $color-grey-space, 600);
@@ -134,7 +139,7 @@
       border-color: $color-grey;
     }
     &:focus {
-      border-color:  $color-grey;
+      border-color: $color-grey;
       background-color: $color-white;
       box-shadow: 0 0 0 2px $color-grey-flash;
     }

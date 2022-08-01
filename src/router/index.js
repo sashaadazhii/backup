@@ -300,6 +300,12 @@ const routes = [
         name: 'WorkOrderFinance',
         meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true, header: 'WorkOrder'},
         component: () => import('@/views/WorkOrder/Finance')
+      },
+      {
+        path: ':uid/finance/:id',
+        name: 'WorkOrderFinanceCard',
+        meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true, header: 'WorkOrder'},
+        component: () => import('@/views/WorkOrder/Finance/CardPage')
       }
     ]
   },

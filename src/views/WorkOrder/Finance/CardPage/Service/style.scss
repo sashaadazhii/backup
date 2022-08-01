@@ -1,0 +1,37 @@
+@import 'src/assets/styles/_variables.scss';
+
+.card {
+  &__wrapper {
+    background-color: $color-white;
+    border-radius: 16px;
+    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+  }
+  &__labels {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    & > .-orange {
+      background-color: $color-orange;
+    }
+    & > .-border.-grey {
+      border-color: $color-grey-light;
+      background-color: $color-grey-flash;
+      color: $color-grey;
+    }
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+  }
+  &__title {
+    @include font(16px, $color-grey-space, 600);
+  }
+  &__body {
+    @include font(16px, $color-grey-space, 500, 1.5);
+  }
+}
