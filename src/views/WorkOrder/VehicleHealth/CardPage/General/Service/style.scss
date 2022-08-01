@@ -1,0 +1,41 @@
+@import 'src/assets/styles/_variables.scss';
+
+.service {
+  &__wrapper {
+    background-color: $color-white;
+    @include border(16px, $color-grey-flash);
+
+    display: grid;
+    align-items: center;
+    column-gap: 10px;
+    grid-template-columns: 20px auto 1fr repeat(4, auto) 32px;
+    padding: 10px;
+    & > span {
+      @include font(16px, $color-grey-space, 600);
+    }
+    & > .-grey {
+      border-color: $color-grey-flash;
+      color: $color-grey-space;
+    }
+    & > .-counter {
+      justify-self: start;
+      background-color: $color-grey-smoke;
+    }
+  }
+}
+
+.y-radio {
+  height: 20px;
+  width: 20px;
+  @include border(50%, $color-grey, 2px);
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  position: relative;
+  &:hover {
+    border-color: $color-green;
+  }
+  &.active {
+    border-color: $color-green;
+    background-color: $color-green;
+  }
+}

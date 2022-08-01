@@ -162,7 +162,7 @@ export default {
       approvalStatusChange: [
         {label: 'No Status', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'No Status'})},
         {label: 'Approved By Customer', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By Customer'})},
-        {label: 'Approved By Service Advisor', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By Service Advisor'})},
+        {label: 'Approved By SA', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By SA'})},
         {label: 'Temporary Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Temporary Declined'})},
         {label: 'Permanently Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Permanently Declined'})},
         {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
@@ -177,12 +177,18 @@ export default {
       isStart: s => s.workOrder.isStart
     })
   },
+  watch: {
+    block() {
+      this.setActiveService({})
+    }
+  },
   methods: {
     ...mapActions({}),
     ...mapMutations({
-      changeCard: 'company/cards/changeCard',
+      setCard: 'company/cards/changeCard',
       changeStatus: 'company/cards/changeStatus',
-      changeApprovalStatus: 'company/cards/changeApprovalStatus'
+      changeApprovalStatus: 'company/cards/changeApprovalStatus',
+      setActiveService: 'company/cannedServices/setActiveService'
     }),
     labelClass(status) {
       return {
@@ -190,12 +196,20 @@ export default {
         '-red': status === 'Component Unsafe' || status === 'Permanently Declined',
         '-bluegreen': status === 'Canned Service Completed' || status === 'Temporary Declined',
         '-none': status === 'No Status',
-        '-green': status === 'Approved By Service Advisor',
+        '-green': status === 'Approved By SA',
         '-green -border': status === 'Approved By Customer',
         '-purple': status === 'Approved For Next Visit',
         '-disabled': !this.isStart
       }
+    },
+    changeCard(param) {
+      this.setCard(param)
+      this.setActiveService({})
+      this.block = 'General'
     }
+  },
+  beforeUnmount() {
+    this.setActiveService({})
   }
 }
 </script>

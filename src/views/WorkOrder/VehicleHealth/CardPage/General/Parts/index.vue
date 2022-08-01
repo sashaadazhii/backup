@@ -15,7 +15,7 @@
         <span>Total</span>
       </div>
       <div class="block__parts">
-        <Part v-for="(part, idx) of parts" :key="idx" :part="part" />
+        <Part v-for="(part, idx) of parts" :key="idx" :part="part" @select="select" />
       </div>
     </div>
     <Dialog v-model:visible="display" :dismissableMask="false" position="bottom" :closeOnEsc="false" :modal="false" draggable class="dialog__wrapper">
@@ -65,13 +65,14 @@ export default {
       type: 'Warranty Claim'
     }
   },
-  async created() {
-    await this.fetch(1)
-  },
+  async created() {},
   computed: {
     ...mapState({
-      parts: s => s.company.parts.parts
+      service: s => s.company.cannedServices.activeService
     }),
+    parts() {
+      return this.service.parts
+    },
     selectedParts() {
       return this.parts.filter(p => p.select)
     }
@@ -79,6 +80,7 @@ export default {
   watch: {
     parts: {
       handler(parts) {
+        if (!parts) return
         if (parts.some(p => p.select)) this.display = true
         else this.display = false
       },
@@ -90,16 +92,25 @@ export default {
       fetch: 'company/parts/fetch'
     }),
     ...mapMutations({
-      setActiveService: 'company/cannedServices/setActiveService',
-      select: 'company/parts/select',
-      change: 'company/parts/change',
+      setActiveService: 'company/cannedServices/setActiveService'
     }),
+    select(id) {
+      if (!id) {
+        this.parts.forEach(p => (p.select = false))
+        return
+      }
+      const part = this.parts.find(p => p.id === id)
+      part.select = !part.select
+    },
+    change(type) {
+      this.parts.forEach(p => (p.type = type))
+    },
     back() {
       this.setActiveService({})
     },
     save() {
-      this.display = false
       this.change(this.type)
+      this.close()
       this.type = 'Warranty Claim'
     },
     close() {

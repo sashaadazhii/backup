@@ -2,90 +2,25 @@
   <div class="block__wrapper">
     <Parts v-if="activeService.id" />
     <template v-else>
-      <div class="block__header">
-        <div class="block__title">Canned Services</div>
-        <button class="block__btn"><i class="i-add_circle" /><span>Create New Canned Service</span></button>
-      </div>
       <div class="block__body">
-        <div class="block__services">
-          <div class="service__wrapper" @click="select">
-            <div class="y-radio" />
-            <span>Replace left</span>
-            <Label label="3" border circle class="-grey -counter" />
-            <Label label="1.4hr" icon="i-time" iconColor="#3EB3BB" iconSize="18px" border size="large" class="-grey" v-tooltip.bottom="'Estimated time'" />
-            <Label label="1.4hr" icon="i-time orange" iconSize="18px" border size="large" class="-grey" v-tooltip.bottom="'Average time'" />
-            <Label label="Used: 12 times" border size="large" class="-grey -counter" v-tooltip.bottom="'Number of times used'" />
-            <Label label="24 months /  3000 km" icon="i-shield green" iconSize="18px" border size="large" class="-grey" v-tooltip.bottom="'Warranty'" />
-            <Menu>
-              <template #menu @click.stop >
-                <Button icon="i-more_horiz" border size="small" />
-              </template>
-            </Menu>
+        <div v-if="chooseServices.length" class="block__services services">
+          <div class="block__header">
+            <div class="block__title">Choosen Canned Service</div>
           </div>
-          <div class="service__wrapper" @click.self="select">
-            <div class="y-radio" />
-            <span>Replace left</span>
-            <Label label="3" border circle class="-grey -counter" />
-            <Label label="1.4hr" icon="i-time" iconColor="#3EB3BB" iconSize="18px" border size="large" class="-grey" />
-            <Label label="1.4hr" icon="i-time orange" iconSize="18px" border size="large" class="-grey" />
-            <Label label="Used: 12 times" border size="large" class="-grey -counter" />
-            <Label label="24 months /  3000 km" icon="i-shield green" iconSize="18px" border size="large" class="-grey" />
-            <Menu>
-              <template #menu>
-                <Button icon="i-more_horiz" border size="small" />
-              </template>
-            </Menu>
-          </div>
-          <div class="service__wrapper" @click.self="select">
-            <div class="y-radio" />
-            <span>Replace left</span>
-            <Label label="3" border circle class="-grey -counter" />
-            <Label label="1.4hr" icon="i-time" iconColor="#3EB3BB" iconSize="18px" border size="large" class="-grey" />
-            <Label label="1.4hr" icon="i-time orange" iconSize="18px" border size="large" class="-grey" />
-            <Label label="Used: 12 times" border size="large" class="-grey -counter" />
-            <Label label="24 months /  3000 km" icon="i-shield green" iconSize="18px" border size="large" class="-grey" />
-            <Menu @click.stop>
-              <template #menu>
-                <Button icon="i-more_horiz" border size="small" />
-              </template>
-            </Menu>
-          </div>
+          <Service v-for="service of chooseServices" :key="service.id" :service="service" />
         </div>
-        <div class="block__history history">
-          <div class="history__title">Service History</div>
-          <div class="history__block">
-            <div class="history__header">
-              <Label label="21 Dec 2021" class="-light" />
-              <span>Front Brake Service</span>
-              <Label label="Warranty Service" size="small" />
-            </div>
-            <div class="history__body">
-              Freeup, clean and lube sliders. Clean rust from brake rotors. This is done to extend the life of the brakes and extend your brake warranty to 3
-              years/60000km)
-            </div>
+        <div v-if="services.length" class="block__services services">
+          <div class="block__header">
+            <div class="block__title">Canned Services</div>
+            <button class="block__btn"><i class="i-add_circle" /><span>Create New Canned Service</span></button>
           </div>
-          <div class="history__block">
-            <div class="history__header">
-              <Label label="21 Dec 2021" class="-light" />
-              <span>Front Brake Service</span>
-              <Label label="Warranty Service" size="small" />
-            </div>
-            <div class="history__body">
-              Freeup, clean and lube sliders. Clean rust from brake rotors. This is done to extend the life of the brakes and extend your brake warranty to 3
-              years/60000km)
-            </div>
+          <Service v-for="service of services" :key="service.id" :service="service" />
+        </div>
+        <div v-if="history.length" class="block__history history">
+          <div class="block__header">
+            <div class="block__title">Service History</div>
           </div>
-          <div class="history__block">
-            <div class="history__header">
-              <Label label="21 Dec 2021" class="-light" />
-              <span>Front Brake Service</span>
-              <Label label="Warranty Service" size="small" />
-            </div>
-            <div class="history__body">
-              Freeup, clean and lube sliders. Clean rust from brake rotors. This is done to extend the life of the brakes and extend your brake warranty to 3
-              years/60000km)
-            </div>
-          </div>
+          <History v-for="card of history" :key="card.id" :card="card" />
         </div>
       </div>
     </template>
@@ -93,34 +28,47 @@
 </template>
 
 <script>
-import Button from '@/components/Yaro/Button'
-import Tooltip from '@/components/Yaro/tooltip'
-import Label from '@/components/Yaro/Label'
-import Menu from '@/components/Yaro/Menu'
 import Parts from './Parts'
-import {mapState, mapMutations} from 'vuex'
+import Service from './Service'
+import History from './History'
+import {mapState, mapActions} from 'vuex'
 
 export default {
   name: 'CardPageGeneral',
-  components: {Button, Label, Menu, Parts},
+  components: {Parts, Service, History},
   data() {
     return {}
   },
+  async created() {
+    const cardID = this.card.id
+    await this.fetchServices(cardID)
+    await this.fetchHistory(cardID)
+  },
   computed: {
     ...mapState({
-      activeService: s => s.company.cannedServices.activeService
-    })
-  },
-  methods: {
-    ...mapMutations({
-      setActiveService: 'company/cannedServices/setActiveService'
+      activeService: s => s.company.cannedServices.activeService,
+      allServices: s => s.company.cannedServices.services,
+      history: s => s.company.cannedServices.history,
+      card: s => s.company.cards.card
     }),
-    select() {
-      this.setActiveService({id: 1})
+    chooseServices() {
+      return this.allServices.filter(s => s.select)
+    },
+    services() {
+      return this.allServices.filter(s => !s.select)
     }
   },
-  directives: {
-    tooltip: Tooltip
+  watch: {
+    async card(card) {
+      await this.fetchServices(card.id)
+      await this.fetchHistory(card.id)
+    }
+  },
+  methods: {
+    ...mapActions({
+      fetchServices: 'company/cannedServices/fetch',
+      fetchHistory: 'company/cannedServices/fetchHistory'
+    })
   }
 }
 </script>

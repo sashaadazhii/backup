@@ -7,7 +7,8 @@
       'icon-right': iconRight,
       error,
       'error-message': errorMessage,
-      medium: size === 'medium'
+      medium: size === 'medium',
+      small: size === 'small',
     }"
   >
     <div v-if="title" class="field__title" :class="{required}">{{ title }}</div>

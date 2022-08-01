@@ -1,7 +1,7 @@
 <template>
   <div class="page-inner" :class="{requests: showRequests}">
     <div v-if="showRequests" class="requests__wrapper">
-      <Request v-for="request of requests" :key="request.uid" :request="request" />
+      <Request v-for="request of requests" :key="request.id" :request="request" />
     </div>
     <div class="health__wrapper">
       <div class="health__header">
@@ -135,40 +135,9 @@ export default {
       sortTypes: ['Sort A-Z', 'Sort Z-A'],
       status: 'Good',
       statuses: ['No Status', 'Good', 'Recommended', 'Component Unsafe'],
-      approvalStatuses: [
-        'No Status',
-        'Approved By Customer',
-        'Approved By Service Advisor',
-        'Temporary Declined',
-        'Permanently Declined',
-        'Approved For Next Visit'
-      ],
+      approvalStatuses: ['No Status', 'Approved By Customer', 'Approved By SA', 'Temporary Declined', 'Permanently Declined', 'Approved For Next Visit'],
       activeFilters: [],
       filtersList: [],
-      requests: [
-        {
-          uid: '6c911945-183d-46d0-b79c-eb223f3b9cc5',
-          status: 'Not Processed',
-          customer: {
-            firstName: 'Olaf',
-            lastName: 'Scholz'
-          },
-          notes: 'Weird noise is at the back of the vehicle. It seems like some parts are not being connected.',
-          estimatedTime: '2h',
-          trackedTime: '1h 20min'
-        },
-        {
-          uid: '6c911945-183d-46d0-b79c-eb223f3b9cc5',
-          status: 'Not Processed',
-          customer: {
-            firstName: 'Olaf',
-            lastName: 'Scholz'
-          },
-          notes: 'Weird noise is at the back of the vehicle. It seems like some parts are not being connected.',
-          estimatedTime: '2h',
-          trackedTime: '1h 20min'
-        }
-      ],
       allSelected: false,
       display: false,
       showRequests: false
@@ -201,6 +170,7 @@ export default {
     this.filtersList.push(statusList, approvalStatusList)
     this.activeFilters = this.filterParams || []
     await this.fetch()
+    await this.fetchRequests()
   },
   computed: {
     ...mapState({
@@ -209,7 +179,8 @@ export default {
       sortType: s => s.company.cards.sortType,
       filterParams: s => s.company.cards.filterParams,
       isStart: s => s.workOrder.isStart,
-      initialWalkaround: s => s.workOrder.initialWalkaround
+      initialWalkaround: s => s.workOrder.initialWalkaround,
+      requests: s => s.requests.requests
     }),
     selectedCards() {
       return this.cards.filter(c => c.select)
@@ -231,7 +202,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetch: 'company/cards/fetch'
+      fetch: 'company/cards/fetch',
+      fetchRequests: 'requests/fetch'
     }),
     ...mapMutations({
       setSort: 'company/cards/setSort',
@@ -255,17 +227,7 @@ export default {
       this.setSort(value)
       this.fetch()
     },
-    changeFilters({value}) {
-      // const params = {
-      //   status: [],
-      //   approvalStatus: []
-      // }
-      // value.forEach(filter => {
-      //   if (filter.type === 'Card Status') params.status.push(filter.status)
-      //   if (filter.type === 'Approval Status') params.approvalStatus.push(filter.name)
-      // })
-      // console.log(params)
-    },
+    changeFilters() {},
     removeChip(id) {
       this.activeFilters = this.activeFilters.filter(c => c.id !== id)
     },

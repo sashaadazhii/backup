@@ -98,6 +98,16 @@
         left: 10px;
       }
     }
+    &.small {
+      & > .field__input {
+        padding: 7px 12px;
+      }
+      & > .field__icon.left {
+        font-size: 18px;
+        bottom: 10px;
+        left: 10px;
+      }
+    }
   }
   &__title {
     @include font(14px, $color-grey-space, 600);

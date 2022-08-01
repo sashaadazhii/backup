@@ -2,7 +2,9 @@
   <div class="request__wrapper" @click="open">
     <div class="request__header">
       <Label :label="request.status" border class="request__label" />
-      <Label :alias="`${request.customer.firstName[0]}${request.customer.lastName[0]}`" circle />
+      <div class="tech__list">
+        <Label v-for="tech of request.techs" :key="tech.id" :alias="`${tech.firstName[0]}${tech.lastName[0]}`" circle class="tech__label" />
+      </div>
     </div>
     <div class="request__main">
       <i class="i-device_hub request__main-icon" />
@@ -35,6 +37,8 @@
 <script>
 import Label from '@/components/Yaro/Label'
 import RequestModal from './RequestModal'
+import {mapMutations} from 'vuex'
+
 export default {
   name: 'VehicleRequest',
   components: {Label},
@@ -45,18 +49,19 @@ export default {
     }
   },
   methods: {
+    ...mapMutations({
+      set: 'requests/setRequest'
+    }),
     open() {
-      this.$vfm.show(
-        {
-          component: RequestModal,
-          bind: {
-            name: 'Request',
-            'esc-to-close': true,
-            'click-to-close': false
-          }
-        },
-        this.request
-      )
+      this.set(this.request)
+      this.$vfm.show({
+        component: RequestModal,
+        bind: {
+          name: 'Request',
+          'esc-to-close': true,
+          'click-to-close': false
+        }
+      })
     }
   }
 }

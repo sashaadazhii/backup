@@ -45,7 +45,6 @@ export default {
       changeNotes: 'workOrder/changeNotes'
     }),
     changeColor() {
-      console.log(this.color === 'grey')
       if (this.color === 'grey') {
         this.color = 'orange'
         return
