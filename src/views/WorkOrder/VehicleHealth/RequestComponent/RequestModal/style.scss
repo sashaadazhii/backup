@@ -228,5 +228,6 @@
     @include font(12px, $color-white, 600);
     background: $color-green;
     margin-right: -4px;
+    border: 1px solid $color-white;
   }
 }
