@@ -1,5 +1,5 @@
 <template>
-  <div class="card__wrapper">
+  <div class="card__wrapper" @click="$router.push(`/work-order/${workOrderUid}/finance/${cardID}`)" >
     <div class="card__labels">
       <Label label="Recommended" class="-orange" />
       <Label label="No Customer Status" class="-border -grey" border circle />
@@ -19,7 +19,17 @@
 import Label from '@/components/Yaro/Label'
 export default {
   name: 'FinanceCard',
-  components: {Label}
+  components: {Label},
+  data() {
+    return {
+      workOrderUid: 'new',
+      cardID: '314'
+    }
+  },
+  created() {
+    this.workOrderUid = this.$route.params.uid
+    this.cardID = '314'
+  }
 }
 </script>
 

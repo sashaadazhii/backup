@@ -9,6 +9,7 @@
       'error-message': errorMessage,
       medium: size === 'medium',
       small: size === 'small',
+      mini: size === 'mini',
     }"
   >
     <div v-if="title" class="field__title" :class="{required}">{{ title }}</div>
