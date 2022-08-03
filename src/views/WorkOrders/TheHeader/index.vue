@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="header__right">
-        <router-link to="/work-order/new"><Button icon="i-add_circle" label="Add Work Order" /></router-link>
+        <router-link to="/work-order/new"><Button icon="i-add_circle" label="New Work Order" /></router-link>
       </div>
     </div>
   </div>
