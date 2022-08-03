@@ -34,6 +34,33 @@
               <Switch v-model="settings.initialWalkThrough" @click="updateWalkThrough" />
             </div>
           </div>
+          <div class="services__row">
+            <div class="services__col">
+              <i class="i-fiber_smart_record" :class="{active: settings.hasShifts}"></i>
+              <div class="services__name">Shifts</div>
+            </div>
+            <div class="services__toggle-wrap">
+              <Switch v-model="settings.hasShifts" @click="updateShifts" />
+            </div>
+          </div>
+          <div class="services__row">
+            <div class="services__col">
+              <i class="i-autorenew" :class="{active: settings.winterTires}"></i>
+              <div class="services__name">Winter Tires Card</div>
+            </div>
+            <div class="services__toggle-wrap">
+              <Switch v-model="settings.winterTires" @click="updateWinterTires" />
+            </div>
+          </div>
+          <div class="services__row">
+            <div class="services__col">
+              <i class="i-grid_view" :class="{active: settings.tiresStorage}"></i>
+              <div class="services__name">Tires Storage</div>
+            </div>
+            <div class="services__toggle-wrap">
+              <Switch v-model="settings.tiresStorage" @click="updateTiresStorage" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -48,8 +75,7 @@ export default {
   components: {Switch},
   data() {
     return {
-      isLoading: false,
-      initialWalkThrough: false
+      isLoading: false
     }
   },
   computed: {
@@ -80,9 +106,14 @@ export default {
         hasGlobalWarranty,
         loanVehicles,
         rideToWork,
+        usersQuota,
+        usersCount,
         timeZoneName,
-        initialWalkThrough,
-        hasShifts
+        hasShifts,
+        winterTires,
+        tiresStorage,
+        hourlyRate,
+        initialWalkThrough
       } = this.settings
 
       const settings = {
@@ -100,11 +131,14 @@ export default {
         hasGlobalWarranty,
         loanVehicles,
         rideToWork,
+        usersQuota,
+        usersCount,
         timeZoneName,
         hasShifts,
-        initialWalkThrough,
-        usersQuota: this.settings.usersQuota,
-        usersCount: this.settings.usersCount
+        winterTires,
+        tiresStorage,
+        hourlyRate,
+        initialWalkThrough
       }
       try {
         this.update(settings)
@@ -131,60 +165,13 @@ export default {
         hasGlobalWarranty,
         loanVehicles,
         rideToWork,
-        timeZoneName,
-        initialWalkThrough,
-        hasShifts
-      } = this.settings
-
-      const settings = {
-        slug,
-        isActive,
-        businessName,
-        mainAddress,
-        businessPhoneNumber,
-        ownerName,
-        ownerEmail,
-        ownerPhone,
-        mainContactName,
-        mainContactEmail,
-        mainContactPhone,
-        hasGlobalWarranty,
-        loanVehicles,
-        rideToWork,
+        usersQuota,
+        usersCount,
         timeZoneName,
         hasShifts,
-        initialWalkThrough,
-        usersQuota: this.settings.usersQuota,
-        usersCount: this.settings.usersCount
-      }
-      try {
-        this.isLoading = true
-        this.update(settings)
-      } finally {
-        this.isLoading = false
-      }
-    },
-    updateWalkThrough() {
-      if (this.isLoading) return
-      this.settings.initialWalkThrough = !this.settings.initialWalkThrough
-
-      const {
-        slug,
-        isActive,
-        businessName,
-        mainAddress,
-        businessPhoneNumber,
-        ownerName,
-        ownerEmail,
-        ownerPhone,
-        mainContactName,
-        mainContactEmail,
-        mainContactPhone,
-        hasGlobalWarranty,
-        loanVehicles,
-        rideToWork,
-        timeZoneName,
-        hasShifts,
+        winterTires,
+        tiresStorage,
+        hourlyRate,
         initialWalkThrough
       } = this.settings
 
@@ -203,11 +190,254 @@ export default {
         hasGlobalWarranty,
         loanVehicles,
         rideToWork,
+        usersQuota,
+        usersCount,
         timeZoneName,
         hasShifts,
-        initialWalkThrough,
-        usersQuota: this.settings.usersQuota,
-        usersCount: this.settings.usersCount
+        winterTires,
+        tiresStorage,
+        hourlyRate,
+        initialWalkThrough
+      }
+      try {
+        this.isLoading = true
+        this.update(settings)
+      } finally {
+        this.isLoading = false
+      }
+    },
+    async updateWalkThrough() {
+      if (this.isLoading) return
+      this.settings.initialWalkThrough = !this.settings.initialWalkThrough
+
+      const {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        usersQuota,
+        usersCount,
+        timeZoneName,
+        hasShifts,
+        winterTires,
+        tiresStorage,
+        hourlyRate,
+        initialWalkThrough
+      } = this.settings
+
+      const settings = {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        usersQuota,
+        usersCount,
+        timeZoneName,
+        hasShifts,
+        winterTires,
+        tiresStorage,
+        hourlyRate,
+        initialWalkThrough
+      }
+      try {
+        this.isLoading = true
+        this.update(settings)
+      } finally {
+        this.isLoading = false
+      }
+    },
+    async updateShifts() {
+      if (this.isLoading) return
+      this.settings.hasShifts = !this.settings.hasShifts
+
+      const {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        usersQuota,
+        usersCount,
+        timeZoneName,
+        hasShifts,
+        winterTires,
+        tiresStorage,
+        hourlyRate,
+        initialWalkThrough
+      } = this.settings
+
+      const settings = {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        usersQuota,
+        usersCount,
+        timeZoneName,
+        hasShifts,
+        winterTires,
+        tiresStorage,
+        hourlyRate,
+        initialWalkThrough
+      }
+      try {
+        this.isLoading = true
+        this.update(settings)
+      } finally {
+        this.isLoading = false
+      }
+    },
+    async updateWinterTires() {
+      if (this.isLoading) return
+      this.settings.winterTires = !this.settings.winterTires
+
+      const {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        usersQuota,
+        usersCount,
+        timeZoneName,
+        hasShifts,
+        winterTires,
+        tiresStorage,
+        hourlyRate,
+        initialWalkThrough
+      } = this.settings
+
+      const settings = {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        usersQuota,
+        usersCount,
+        timeZoneName,
+        hasShifts,
+        winterTires,
+        tiresStorage,
+        hourlyRate,
+        initialWalkThrough
+      }
+      try {
+        this.isLoading = true
+        this.update(settings)
+      } finally {
+        this.isLoading = false
+      }
+    },
+    async updateTiresStorage() {
+      if (this.isLoading) return
+      this.settings.tiresStorage = !this.settings.tiresStorage
+
+      const {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        usersQuota,
+        usersCount,
+        timeZoneName,
+        hasShifts,
+        winterTires,
+        tiresStorage,
+        hourlyRate,
+        initialWalkThrough
+      } = this.settings
+
+      const settings = {
+        slug,
+        isActive,
+        businessName,
+        mainAddress,
+        businessPhoneNumber,
+        ownerName,
+        ownerEmail,
+        ownerPhone,
+        mainContactName,
+        mainContactEmail,
+        mainContactPhone,
+        hasGlobalWarranty,
+        loanVehicles,
+        rideToWork,
+        usersQuota,
+        usersCount,
+        timeZoneName,
+        hasShifts,
+        winterTires,
+        tiresStorage,
+        hourlyRate,
+        initialWalkThrough
       }
       try {
         this.isLoading = true
