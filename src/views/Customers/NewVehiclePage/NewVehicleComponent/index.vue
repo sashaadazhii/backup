@@ -114,7 +114,8 @@ export default {
       addVehicleToVehicles: 'company/vehicles/add',
       updateCustomersVehicle: 'company/customers/updateVehicle',
       updateVehicles: 'company/vehicles/update',
-      setNewVehicle: 'company/vehicles/setNewVehicle'
+      setNewVehicle: 'company/vehicles/setNewVehicle',
+      setInterimData: 'workOrder/setInterimData'
     }),
     changeComponent(component) {
       this.component = component
@@ -145,6 +146,8 @@ export default {
           await this.addVehicle({cusUID: this.customer.uid, vehicle})
           // this.addVehicleToCustomer(req?.data)
           // this.addVehicleToVehicles(req?.data)
+          const backtoOrder = this.$route.query.back === 'work-order'
+          if (backtoOrder) this.setInterimData({customer: this.customer, vehicle: this.vehicle})
         }
         this.$router.back()
       } catch (err) {

@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import Label from '@/components/Yaro/Label'
 import Info from './Info'
 export default {
   name: 'FinanceCardPage',

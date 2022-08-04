@@ -22,7 +22,7 @@
                   <textarea v-model="req.notes" class="dialog__textarea" placeholder="Start typing your note here..." />
                   <!-- TODO: Field Number Component -->
                   <div class="y-number__wrapper">
-                    <div class="y-number__title">Estimated Time</div>
+                    <div class="y-number__title">Time Allotted for Inspection</div>
                     <div class="y-number__inner">
                       <i class="i-remove y-number__dec" :class="{'-disabled': !req.time}" @click="dec(idx)" />
                       <span class="y-number__text">{{ req.time }} h</span>

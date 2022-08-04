@@ -129,7 +129,9 @@
               </template>
             </VirtualScroller>
           </div>
-          <slot name="footer" :value="modelValue" :options="visibleOptions"></slot>
+          <div class="y-dropdown-footer" @click="hide">
+            <slot name="footer" :value="modelValue" :options="visibleOptions"> </slot>
+          </div>
         </div>
       </transition>
     </Teleport>

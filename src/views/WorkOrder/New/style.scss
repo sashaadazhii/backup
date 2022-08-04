@@ -39,3 +39,20 @@
     }
   }
 }
+
+.y-dropdown-item-footer {
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.2s ease-in-out;
+  padding: 13px 18px;
+  padding-top: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+  column-gap: 10px;
+  outline: 0;
+  @include font(16px, $color-green, 600);
+}

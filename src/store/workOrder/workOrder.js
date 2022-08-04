@@ -11,7 +11,8 @@ export default {
     localOrders: localOrders,
     notes: null, // Initial Walkaround
     initialWalkaround: false,
-    isStart: false
+    isStart: false,
+    interimData: {}
   },
   mutations: {
     set(state, workOrders) {
@@ -95,6 +96,10 @@ export default {
     // =========== Initial Walkaround ===========
     startOrder(state, type) {
       state.isStart = !!type
+    },
+    // =========== Intermediate Data in Create Car from Work Order===========
+    setInterimData(state, data) {
+      state.interimData = data
     }
   },
   actions: {

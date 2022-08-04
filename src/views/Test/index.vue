@@ -1,33 +1,39 @@
 <template>
   <div class="wrap">
-    <div class="" v-tooltip.bottom="'Enter your username'">asfasfasfasfas</div>
-    <div class="tech__list">
-      <div v-for="(tech, idx) of techs" :key="idx" class="tech__label">{{ tech }}</div>
-      <Multiselect v-model="techs" :options="list" menu>
-        <template #menu>
-          <div class="tech__add"><i class="i-add" /></div>
-        </template>
-      </Multiselect>
-    </div>
-
-    {{ techs }}
+    <Dropdown v-model="item" :options="list" title="Shift">
+      <template #value="{value}">
+        <div class="y-dropdown-label-custom">
+          <i class="i-fire" />
+          <span v-if="value">{{ value }}</span>
+          <span v-else class="-placeholder">Choose Shift</span>
+        </div>
+      </template>
+      <template #option="{option}">
+        <div class="y-dropdown-item-custom">
+          <i class="i-fire" />
+          <span>{{ option }}</span>
+        </div>
+      </template>
+      <template #footer="{option}">
+        <div class="y-dropdown-item-custom">
+          <i class="i-fire" />
+          <span>{{ option }}</span>
+        </div>
+      </template>
+    </Dropdown>
   </div>
 </template>
 
 <script>
-import Tooltip from '@/components/Yaro/tooltip'
-import Multiselect from '@/components/Yaro/Multiselect'
+import Dropdown from '@/components/Yaro/Dropdown'
 export default {
   name: 'test',
-  components: {Multiselect},
+  components: {Dropdown},
   data() {
     return {
-      techs: null,
-      list: ['MM', 'AA', 'BB', 'BO', 'AS']
+      list: [],
+      item: ''
     }
-  },
-  directives: {
-    tooltip: Tooltip
   }
 }
 </script>
@@ -36,33 +42,74 @@ export default {
 .wrap {
   padding: 100px;
 }
+.pool {
+  width: 100px;
+  height: 6px;
+  background-color: red;
+}
+.line {
+  width: 6px;
+  height: 100px;
+  background-color: red;
+}
+.round {
+  height: 100px;
+  width: 100px;
+  // background-color: red;
+  position: relative;
+  &__bottom {
+    position: absolute;
+    width: 50%;
+    height: 6px;
+    background-color: blue;
+    bottom: 0;
+    right: 0;
+  }
+  &__left {
+    position: absolute;
+    width: 6px;
+    height: 50%;
+    background-color: blue;
+    top: 0;
+    left: 0;
+  }
+  &__round {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid blue;
+    border-radius: 50%;
+    transform: rotate(45deg);
 
-.tech {
-  &__list {
-    display: flex;
-    align-items: center;
+    // left: 0;
+    // bottom: 0;
+    // width: 6px;
+    // height: 50%;
+    // background-color: blue;
+    // top: 0;
+    // left: 0;
   }
-  &__add {
-    height: 32px;
-    width: 32px;
-    display: grid;
-    place-items: center;
-    font-size: 16px;
-    border-radius: 50%;
-    border: 1px solid grey;
-    background: white;
-  }
-  &__label {
-    height: 32px;
-    width: 32px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    font-size: 12px;
-    background: #10b981;
-    color: white;
-    margin-right: -4px;
-  }
+
+  // border-radius: 50%;
+  // border-left: 2px solid transparent;
+  // border-right: 2px solid transparent;
+  // border-top: 2px solid transparent;
+  // border-bottom: 2px solid blue;
+  // transform: rotate(45deg);
+  // &::before {
+  // content: '';
+  // position: absolute;
+  // width: 40px;
+  // height: 2px;
+  // background-color: blue;
+  // // transform: rotate(-45deg);
+  // left: 50%;
+  // bottom: -2px;
+  // }
 }
 
 @import '~primevue/resources/themes/lara-light-indigo/theme.css';

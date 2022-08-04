@@ -37,7 +37,7 @@ export default {
 
   async created() {
     const uid = this.$route.params.uid
-    if (!this.customer?.uid) await this.find(uid)
+    if (this.customer?.uid !== uid) await this.find(uid)
     if (this.vehicleUid && !this.vehicle?.uid) await this.findVehicle(this.vehicleUid)
   },
   computed: {
