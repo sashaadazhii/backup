@@ -10,18 +10,10 @@ const users = [
   {
     id: 23465,
     companyID: 1,
-    firstName: 'Dominic ',
+    firstName: 'Dominic',
     lastName: 'Martin',
     role: 'technician',
     email: 'dominic@leroysautocare.net'
-  },
-  {
-    id: 23483,
-    companyID: 1,
-    firstName: 'Enzo',
-    lastName: 'Ferrari',
-    role: 'technician',
-    email: 'enzo@ferr.net'
   },
   {
     id: 23405,

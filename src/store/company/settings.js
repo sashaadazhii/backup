@@ -25,7 +25,7 @@ export default {
       warrantyTime: 18,
       warrantyRange: 30000,
       usersQuota: 5,
-      usersCount: 3,
+      usersCount: 4,
       initialWalkThrough: false,
       initialWalkThrough: false,
       winterTires: false,

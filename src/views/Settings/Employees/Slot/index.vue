@@ -47,6 +47,9 @@ export default {
   },
 
   computed: {
+    ...mapState({
+      company: s => s.company.settings.settings
+    }),
     roleIcon() {
       const role = this.user.role
       switch (role) {
@@ -83,7 +86,8 @@ export default {
       delete: 'company/users/delete'
     }),
     ...mapMutations({
-      set: 'company/users/setUser'
+      set: 'company/users/setUser',
+      updateCompany: 'company/settings/update'
     }),
     openModal() {
       this.$confirm.require({
@@ -92,8 +96,10 @@ export default {
         acceptLabel: 'Delete',
         rejectLabel: 'Cancel',
         icon: 'i-volume_up red',
-        accept: () => {
-          this.delete(this.user.id)
+        accept: async () => {
+          await this.delete(this.user.id)
+          this.updateCompany({...this.company, usersCount: this.company.usersCount - 1})
+          this.set({})
         }
       })
     }

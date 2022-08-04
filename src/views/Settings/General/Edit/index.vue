@@ -208,6 +208,7 @@ export default {
     ...mapMutations({
       update: 'company/settings/update'
     }),
+
     async submit() {
       if (this.isLoading) return
       const result = await this.v$.$validate()

@@ -1,11 +1,10 @@
-import axios from 'axios'
 import {users as usersList} from '../data/users'
 
 export default {
   namespaced: true,
 
   state: {
-    users: usersList,
+    users: [],
     searchingUsers: [],
     technicians: [],
     user: {},
@@ -34,20 +33,22 @@ export default {
       state.page = 1
     },
     remove(state, id) {
-      state.users = state.users.filter(user => user.id !== id)
+      state.users = state.users.filter(u => u.id !== id)
     },
     add(state, user) {
+      state.user = user
       state.users.unshift(user)
     },
     update(state, user) {
-      const userIdx = state.users.findIndex(u => u.id === user.id)
-      state.users.splice(userIdx, 1, user)
+      let userUpdated = state.users.find(u => u.id === user.id)
+      const idx = state.users.indexOf(userUpdated)
+      state.users.splice(idx, 1, user)
     }
   },
   actions: {
-    async fetch({commit, state}) {
+    async fetch({commit}) {
       try {
-        const users = state.users
+        const users = usersList
         commit('pagination', users.pagination)
         commit('set', users)
       } catch (err) {
@@ -56,10 +57,9 @@ export default {
       }
     },
     async find({commit}, id) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const user = await axios.get(`${url}company/users/${id}`)
-        commit('setUser', user.data)
+        const user = usersList.find(u => u.id === id)
+        commit('setUser', user)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err
@@ -76,6 +76,7 @@ export default {
     },
     async create({commit}, user) {
       try {
+        user.id = Math.floor(Math.random() * 1000)
         commit('add', user)
         return user
       } catch (err) {
