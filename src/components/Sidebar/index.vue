@@ -43,6 +43,32 @@
               <div class="sidebar__link-num"></div>
             </router-link>
 
+            <router-link class="sidebar__link" to="/">
+              <div class="sidebar__link-icon"><i class="i-monetization_on" /></div>
+              <div class="sidebar__link-text show">Payroll Overview</div>
+              <div class="sidebar__link-num"></div>
+            </router-link>
+            <router-link class="sidebar__link" to="/">
+              <div class="sidebar__link-icon"><i class="i-perm_contact_calendar" /></div>
+              <div class="sidebar__link-text show">Staff Calendar</div>
+              <div class="sidebar__link-num"></div>
+            </router-link>
+            <router-link class="sidebar__link" to="/">
+              <div class="sidebar__link-icon"><i class="i-time" /></div>
+              <div class="sidebar__link-text show">Time Logs</div>
+              <div class="sidebar__link-num"></div>
+            </router-link>
+            <router-link class="sidebar__link" to="/">
+              <div class="sidebar__link-icon"><i class="i-build_circle" /></div>
+              <div class="sidebar__link-text show">Parts Ordering</div>
+              <div class="sidebar__link-num"></div>
+            </router-link>
+            <router-link class="sidebar__link" to="/">
+              <div class="sidebar__link-icon"><i class="i-calendar" /></div>
+              <div class="sidebar__link-text show">Scheduling</div>
+              <div class="sidebar__link-num"></div>
+            </router-link>
+
             <router-link v-if="isDev" class="sidebar__link" to="/test">
               <div class="sidebar__link-icon"><i class="i-build_circle1" /></div>
               <div class="sidebar__link-text show">Test</div>

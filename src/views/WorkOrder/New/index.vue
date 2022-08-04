@@ -12,7 +12,7 @@
             </div>
           </template>
         </Dropdown>
-        <Dropdown v-model="vehicle" :options="vehicles" @change="selectCustomer" :disabled="!customer">
+        <Dropdown v-model="vehicle" :options="vehicles" :disabled="!customer">
           <template #value="{value}">
             <div class="y-dropdown-label-custom">
               <i class="i-directions_car" />
@@ -24,6 +24,12 @@
             <div class="y-dropdown-item-custom">
               <i class="i-directions_car" />
               <span>{{ option.make }} {{ option.model }} {{ option.year }}</span>
+            </div>
+          </template>
+          <template #footer>
+            <div class="y-dropdown-item-footer" @click="newCar">
+              <i class="i-add_circle green" />
+              <span>Add New Vehicle</span>
             </div>
           </template>
         </Dropdown>
@@ -53,6 +59,13 @@ export default {
     }
   },
   async created() {
+    const {customer, vehicle} = this.interimData
+
+    if (customer) {
+      this.customer = customer
+      this.selectCustomer({value: {uid: customer.uid}})
+      this.vehicle = vehicle
+    }
     try {
       this.isLoading = true
       await this.fetchCustomers()
@@ -68,7 +81,8 @@ export default {
           c.name = `${c.firstName} ${c.lastName}`
           return c
         })
-      }
+      },
+      interimData: s => s.workOrder.interimData
     })
   },
   methods: {
@@ -87,6 +101,9 @@ export default {
       const {customer, vehicle} = this
       this.creaete({customer, vehicle})
       this.$router.push('/work-order/new/general')
+    },
+    newCar() {
+      this.$router.push(`/customers/${this.customer.uid}/new-vehicle?back=work-order`)
     }
   }
 }
