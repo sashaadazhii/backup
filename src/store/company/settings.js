@@ -17,6 +17,7 @@ export default {
       mainContactName: 'Alex Thomson',
       mainContactEmail: 'alex_t@auto-s.com',
       mainContactPhone: 34567876547,
+      timeZoneName: 'America/Toronto',
       loanVehicles: true,
       rideToWork: true,
       hasShifts: true,
@@ -24,8 +25,12 @@ export default {
       warrantyTime: 18,
       warrantyRange: 30000,
       usersQuota: 5,
-      usersCount: 3,
-      initialWalkThrough: false
+      usersCount: 4,
+      initialWalkThrough: false,
+      initialWalkThrough: false,
+      winterTires: false,
+      tiresStorage: false,
+      hourlyRate: 160
     }
   },
   mutations: {

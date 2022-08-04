@@ -7,10 +7,19 @@
             <span>Employees</span>
             <Label :label="`${users.length}/${company.usersQuota || 0}`" circle border color="transparent" class="users__label" />
           </div>
-          <router-link to="/settings/employees/new"><Button label="Add New" icon="i-add_circle" circle size="small" /></router-link>
+          <router-link :to="users.length >= company.usersQuota ? '' : '/settings/employees/new'">
+            <Button
+              label="Add New"
+              icon="i-add_circle"
+              circle
+              size="small"
+              :disabled="users.length >= company.usersQuota"
+              :class="{disabled: users.length >= company.usersQuota}"
+            />
+          </router-link>
         </div>
         <div v-if="users.length" class="users__inner">
-          <User v-for="user of users" :key="user.uid" :user="user" />
+          <User v-for="user of users" :key="user.id" :user="user" />
         </div>
       </div>
     </div>
@@ -24,6 +33,9 @@ import User from './Slot'
 export default {
   name: 'CompanySettingsEmployees',
   components: {Label, User, Button},
+  async created() {
+    if (!this.users.length) await this.fetchUsers()
+  },
   computed: {
     ...mapState({
       company: s => s.company.settings.settings,

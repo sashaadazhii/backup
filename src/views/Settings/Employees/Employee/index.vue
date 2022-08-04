@@ -2,7 +2,8 @@
   <div class="user__wrapper">
     <div class="user__header">
       <div class="user__header-title">
-        <Label icon="i-person" circle size="large" class="user__header-label" />
+        <Label :icon="labelIcon()" circle size="large" :color="labelColor()" class="user__header-label" />
+
         <span v-if="user.id">Update {{ user.firstName }} {{ user.lastName }}</span>
         <span v-else>Create Employee</span>
       </div>
@@ -35,7 +36,7 @@
   </div>
 </template>
 <script>
-import {mapState, mapActions} from 'vuex'
+import {mapState, mapActions, mapMutations} from 'vuex'
 import Label from '@/components/Yaro/Label'
 import Button from '@/components/Yaro/Button'
 import Dropdown from '@/components/Yaro/Dropdown'
@@ -82,7 +83,8 @@ export default {
   },
   computed: {
     ...mapState({
-      user: s => s.company.users.user
+      user: s => s.company.users.user,
+      company: s => s.company.settings.settings
     })
   },
   methods: {
@@ -91,6 +93,11 @@ export default {
       create: 'company/users/create',
       update: 'company/users/update'
     }),
+    ...mapMutations({
+      setUser: 'superAdmin/users/setUser',
+      updateCompany: 'company/settings/update'
+    }),
+
     errorMessage(name) {
       const error = this.v$.$errors.find(err => err.$property === name)
       if (error) return error.$message
@@ -102,11 +109,38 @@ export default {
         'i-headset_mic orange': role === 'service-advisor'
       }
     },
+    labelIcon() {
+      const role = this.role.slug
+      switch (role) {
+        case 'technician':
+          return 'i-build grey'
+        case 'admin':
+          return 'i-admin_panel_settings red'
+        case 'service-advisor':
+          return 'i-headset_mic orange'
+        default:
+          return 'i-person'
+      }
+    },
+    labelColor() {
+      const role = this.role.slug
+      switch (role) {
+        case 'technician':
+          return '#e5e7eb'
+        case 'admin':
+          return '#FEF2F2'
+        case 'service-advisor':
+          return 'rgba(255, 155, 112, 0.1)'
+        default:
+          return '#10B981'
+      }
+    },
     async save() {
       const result = await this.v$.$validate()
       if (!result) return
       const {role, firstName, lastName, email, password} = this
       const user = {
+        id: this.user.id,
         role: role.slug,
         firstName,
         lastName,
@@ -120,6 +154,7 @@ export default {
           await this.update(user)
         } else {
           await this.create(user)
+          this.updateCompany({...this.company, usersCount: this.company.usersCount + 1})
         }
         this.$router.back()
       } finally {
@@ -127,6 +162,7 @@ export default {
       }
     }
   },
+
   validations() {
     return {
       firstName: {

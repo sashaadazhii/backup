@@ -52,10 +52,12 @@ export default {
   async created() {
     const hasShifts = this.info.hasShifts
     if (hasShifts) this.addShiftsPage()
+    else this.navList.splice(2, 1)
   },
   watch: {
     'info.hasShifts'(hasShifts) {
       if (hasShifts) this.addShiftsPage()
+      else this.navList.splice(2, 1)
     }
   },
   computed: {
@@ -71,6 +73,9 @@ export default {
         to: '/settings/shifts'
       }
       this.navList.splice(2, 0, shiftPage)
+    },
+    removeShiftsPage() {
+      this.navList.splice(2, 1)
     }
   }
 }

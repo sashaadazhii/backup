@@ -23,15 +23,26 @@
                 :errorMessage="errorMessage('businessName')"
               />
             </div>
-            <div class="input-wrap input-wrap--static">
-              <Input
-                v-model="settings.slug"
-                placeholder="Domain"
-                title="Domain"
-                rightText=".asn.tech"
-                :error="v$.settings.slug.$error || slugError"
-                :errorMessage="errorMessage('slug') || 'Company with this identifier already exists in a system'"
-              />
+            <div class="info__section-row">
+              <div class="input-wrap input-wrap--static">
+                <Input
+                  v-model="settings.slug"
+                  placeholder="Domain"
+                  title="Domain"
+                  rightText=".asn.tech"
+                  :error="v$.settings.slug.$error || slugError"
+                  :errorMessage="errorMessage('slug') || 'Company with this identifier already exists in a system'"
+                />
+              </div>
+              <div class="input-wrap">
+                <Input
+                  v-model="settings.hourlyRate"
+                  placeholder="Enter hourly rate"
+                  title="Hourly Rate"
+                  :error="v$.settings.hourlyRate.$error"
+                  :errorMessage="errorMessage('hourlyRate')"
+                />
+              </div>
             </div>
           </div>
           <div class="info__block">
@@ -156,7 +167,7 @@
 <script>
 import _ from 'lodash'
 import useVuelidate from '@vuelidate/core'
-import {required, minLength, maxLength, email, helpers} from '@vuelidate/validators'
+import {required, minLength, maxLength, email, numeric, helpers} from '@vuelidate/validators'
 import {mapActions, mapMutations, mapState} from 'vuex'
 import Button from '@/components/Yaro/Button'
 import Input from '@/components/Yaro/Input'
@@ -197,6 +208,7 @@ export default {
     ...mapMutations({
       update: 'company/settings/update'
     }),
+
     async submit() {
       if (this.isLoading) return
       const result = await this.v$.$validate()
@@ -217,7 +229,13 @@ export default {
         loanVehicles,
         rideToWork,
         timeZoneName,
-        hasShifts
+        usersQuota,
+        usersCount,
+        hasShifts,
+        initialWalkThrough,
+        winterTires,
+        tiresStorage,
+        hourlyRate
       } = this.settings
 
       const formattedBusinessPhone = businessPhoneNumber
@@ -254,11 +272,14 @@ export default {
         hasGlobalWarranty: false,
         loanVehicles,
         rideToWork,
-        usersQuota: this.settings.usersQuota,
-        usersCount: this.settings.usersCount,
+        usersQuota,
+        usersCount,
         timeZoneName,
-        initialWalkThrough: this.settings.initialWalkThrough,
-        hasShifts
+        hasShifts,
+        initialWalkThrough,
+        winterTires,
+        tiresStorage,
+        hourlyRate
       }
 
       this.update(settings)
@@ -320,6 +341,10 @@ export default {
       },
       timeZoneName: {
         required: helpers.withMessage('Time Zone is required.', required)
+      },
+      hourlyRate: {
+        required: helpers.withMessage('Hourly Rate is required.', required),
+        numeric
       }
     }
   },
