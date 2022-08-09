@@ -6,6 +6,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    & > .-back {
+      position: absolute;
+      right: 20px;
+      top: 12px;
+      background-color: $color-grey;
+    }
   }
   &__title {
     @include font(24px, $color-grey-dark, 600);

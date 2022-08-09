@@ -310,6 +310,12 @@ const routes = [
     ]
   },
   {
+    path: '/flows',
+    name: 'Flows',
+    meta: {layout: 'admin', header: 'Flows'},
+    component: () => import('@/views/Flows')
+  },
+  {
     path: '/test',
     name: 'TestPage',
     meta: {layout: 'admin', header: 'Test'},
