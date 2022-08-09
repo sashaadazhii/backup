@@ -10,7 +10,22 @@
     </div>
     <div class="card__title">{{ card.name }}</div>
     <div v-if="card.status === 'Good'" class="card__empty" />
-    <Label
+    <div v-else class="card__menu">
+      <Menu :list="approvalStatusesChange" position="left" :disabled="!isStart">
+        <template #menu>
+          <Label
+            :label="card.approvalStatus"
+            size="small"
+            icon="i-rp_done"
+            circle
+            class="card__label -shadow -hover"
+            :class="labelClass(card.approvalStatus)"
+            iconSize="8px"
+          />
+        </template>
+      </Menu>
+    </div>
+    <!-- <Label
       v-else
       :label="card.approvalStatus"
       size="small"
@@ -19,7 +34,7 @@
       class="card__label -shadow"
       :class="labelClass(card.approvalStatus)"
       iconSize="8px"
-    />
+    /> -->
     <div class="card__progress">
       <div class="card__progress-title">{{ card.service }}%</div>
       <div class="card__progress-bar">
@@ -62,6 +77,14 @@ export default {
         {label: 'Good', command: () => this.changeStatus({id: this.card.id, status: 'Good'})},
         {label: 'Recommended', command: () => this.changeStatus({id: this.card.id, status: 'Recommended'})},
         {label: 'Component Unsafe', command: () => this.changeStatus({id: this.card.id, status: 'Component Unsafe'})}
+      ],
+      approvalStatusesChange: [
+        {label: 'No Status', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'No Status'})},
+        {label: 'Approved By Customer', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By Customer'})},
+        {label: 'Approved By SA', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By SA'})},
+        {label: 'Temporary Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Temporary Declined'})},
+        {label: 'Permanently Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Permanently Declined'})},
+        {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
       ]
     }
   },
@@ -73,7 +96,8 @@ export default {
   methods: {
     ...mapMutations({
       select: 'company/cards/select',
-      changeStatus: 'company/cards/changeStatus'
+      changeStatus: 'company/cards/changeStatus',
+      changeApprovalStatus: 'company/cards/changeApprovalStatus'
     }),
     labelClass(status) {
       return {

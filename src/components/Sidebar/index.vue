@@ -43,6 +43,12 @@
               <div class="sidebar__link-num"></div>
             </router-link>
 
+            <router-link class="sidebar__link" to="/flows">
+              <div class="sidebar__link-icon"><i class="i-open_with" /></div>
+              <div class="sidebar__link-text show">Flows</div>
+              <div class="sidebar__link-num"></div>
+            </router-link>
+
             <router-link class="sidebar__link" to="/">
               <div class="sidebar__link-icon"><i class="i-monetization_on" /></div>
               <div class="sidebar__link-text show">Payroll Overview</div>

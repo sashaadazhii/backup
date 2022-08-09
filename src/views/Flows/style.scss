@@ -1,0 +1,63 @@
+@import 'src/assets/styles/_variables.scss';
+
+.flow {
+  &__wrapper {
+    height: inherit;
+    width: inherit;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    padding-left: 60px;
+    border-bottom: 1px solid $color-lightgrey;
+    background-color: $color-white;
+    & > i {
+      padding: 5px;
+      background-color: rgba($color-green, 0.1);
+      line-height: 1;
+      border-radius: 50%;
+      margin-right: 12px;
+      line-height: 0;
+      @include font(20px, $color-green);
+    }
+    & > span {
+      @include font(20px, $color-space, 600);
+    }
+  }
+  &__inner {
+    display: grid;
+    place-items: center;
+    background-color: $color-grey-bg;
+  }
+  &__links {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+  &__link {
+    width: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    padding-left: 18px;
+    background-color: $color-white;
+    border-radius: 16px;
+    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+
+    & > span {
+      @include font(16px, $color-grey-space, 600);
+    }
+    & > i {
+      height: 28px;
+      width: 28px;
+      border-radius: 50%;
+      background-color: $color-grey-flash;
+      display: grid;
+      place-items: center;
+    }
+  }
+}
