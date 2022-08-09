@@ -7,15 +7,14 @@
     grid-template-columns: repeat(4, 1fr);
     column-gap: 20px;
     height: inherit;
-    overflow: hidden;
-    background-color: #e5e5e5;
+    overflow: auto;
+    @include hideScrollbar;
+    background-color: $color-grey-bg;
   }
   &__block {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-    overflow: auto;
-    @include hideScrollbar;
     padding: 20px 0;
   }
 }
