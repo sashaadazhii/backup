@@ -17,7 +17,7 @@
 .table__footer {
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(4, minmax(200px, 1fr)) minmax(300px, 2fr);
+  grid-template-columns: repeat(4, minmax(180px, 1fr)) minmax(300px, 2fr);
   gap: 10px;
 }
 
