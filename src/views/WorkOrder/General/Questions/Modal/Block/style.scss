@@ -1,0 +1,101 @@
+@import 'src/assets/styles/_variables.scss';
+
+.block {
+  &__wrapper {
+    padding: 0 4px;
+  }
+  &__header {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+  }
+  &__num {
+    height: 28px;
+    width: 28px;
+    @include font(18px, $color-green, 600);
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background-color: $color-green-mint;
+  }
+  &__title {
+    @include font(18px, $color-grey-space, 600);
+  }
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  &__elem {
+    grid-area: auto / 3 / auto / 5;
+    &.-half {
+      grid-area: auto / 1 / auto / 3;
+    }
+    &.-first {
+      grid-area: 1 / 1 / 1 / 4;
+    }
+    &.-time {
+      grid-area: 1 / 4 / 1 / 5;
+    }
+  }
+  &__select {
+  }
+}
+
+.select {
+  &__title {
+    @include font(14px, $color-grey-dark, 600);
+    margin-bottom: 14px;
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+  }
+  &__btn {
+    padding: 0 24px;
+  }
+}
+
+.y-number {
+  &__wrapper {
+  }
+  &__title {
+    @include font(14px, $color-grey-dark, 600);
+    margin-bottom: 12px;
+  }
+  &__inner {
+    background-color: $color-grey-smoke;
+    @include border(12px, $color-grey-flash);
+    height: 46px;
+    display: grid;
+    grid-template-columns: 28px 1fr 28px;
+    align-items: center;
+    padding: 0 12px;
+    & > i {
+      height: 28px;
+      width: 28px;
+      display: grid;
+      place-items: center;
+      background-color: $color-green;
+      border-radius: 50%;
+      cursor: pointer;
+      @include font(14px, $color-white);
+
+      &.-disabled {
+        color: $color-grey;
+        background-color: $color-grey-flash;
+        cursor: default;
+      }
+    }
+  }
+  &__text {
+    justify-self: center;
+    @include font(14px, $color-grey, 600);
+  }
+  &__dec {
+  }
+  &__inc {
+  }
+}

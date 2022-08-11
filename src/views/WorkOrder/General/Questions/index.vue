@@ -4,7 +4,7 @@
     <div class="block__row">
       <div class="block__row-inner">
         <div class="block__cell">5 questions</div>
-        <Switch v-model="question" />
+        <Switch :modelValue="question" @click="changeQuestions" />
       </div>
       <div v-if="question" class="section">
         <div class="section__inner">
@@ -37,13 +37,30 @@
 <script>
 import Switch from '@/components/Yaro/Switch'
 import Ripple from '@/components/Yaro/ripple'
-
+import Questions from './Modal'
 export default {
   name: 'WorkOrderGeneralQuestions',
   components: {Switch},
   data() {
     return {
       question: false
+    }
+  },
+  methods: {
+    changeQuestions() {
+      if (this.question) {
+        this.question = false
+      } else this.openModal()
+    },
+    openModal() {
+      this.$vfm.show({
+        component: Questions,
+        bind: {
+          name: 'Questions',
+          'click-to-close': false,
+          'esc-to-close': true
+        }
+      })
     }
   },
   directives: {
