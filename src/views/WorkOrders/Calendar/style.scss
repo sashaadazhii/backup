@@ -3,56 +3,89 @@
 .calendar {
   &__wrapper {
     height: inherit;
+    background-color: $color-grey-bg;
+    padding-top: 14px;
+    padding-left: 20px;
+  }
+  &__header {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) 5fr;
+    column-gap: 20px;
+    row-gap: 14px;
+    overflow: hidden;
   }
   &__inner {
-    &.row {
-      display: grid;
-      grid-template-rows: auto 1fr;
-      height: inherit;
-    }
-    &.col {
-      height: inherit;
-      overflow: auto;
-      padding-top: 20px;
-      position: relative;
-    }
-  }
-  &__days {
-    display: flex;
-    gap: 12px;
-    overflow-x: auto;
-    padding: 20px 0;
-    border-bottom: 1px solid $color-lightgrey;
-    &::-webkit-scrollbar {
-      height: 0;
-    }
-  }
-  &__tasks {
-    flex-grow: 1;
-    padding: 20px;
-    overflow: auto;
-
-    &-inner {
-    }
   }
 }
 
-.col {
-  &-wrapper {
+.header {
+  &__search {
+    background-color: $color-white;
+    grid-area: 1 / auto / 3;
+    @include border(16px, $color-grey-flash);
+  }
+  &__top {
+    @include border(200px, $color-grey-flash);
+    padding: 6px;
+    margin-right: 20px;
+    background-color: $color-white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-left {
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+    }
+  }
+  &__bottom {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    overflow: auto;
+    @include hideScrollbar;
+  }
+  &__year {
+    @include font(14px, $color-grey-space, 600);
+    @include border(20px, $color-grey-flash);
+    background-color: $color-grey-smoke;
+    padding: 6px 12px;
+  }
+  &__month {
+    @include font(14px, $color-grey, 600);
+    padding: 6px 14px;
+    &.-active {
+      background-color: $color-grey-space;
+      color: $color-white;
+      border-radius: 20px;
+    }
+  }
+  &__day {
+    background-color: $color-white;
+    width: 54px;
     display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 20px;
-    padding: 20px 0;
-    padding-right: 20px;
-    &:first-child {
-      padding-top: 0;
+    place-items: center;
+    padding: 20px;
+    @include border(10px, $color-grey-flash);
+
+    & > span:first-child {
+      @include font(12px, $color-grey, 600);
+      margin-bottom: 8px;
     }
-    &:not(:last-child) {
-      border-bottom: 1px solid $color-lightgrey;
+    & > span:last-child {
+      @include font(16px, $color-grey-dark, 600);
     }
-  }
-  &-day {
-  }
-  &-tasks {
+    &.-weekend {
+      border-color: transparent;
+      background-color: rgba($color-orange, 0.1);
+      & > span:first-child {
+        color: $color-orange;
+      }
+    }
+    &:last-child {
+      margin-right: 20px;
+    }
   }
 }
