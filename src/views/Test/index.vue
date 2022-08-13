@@ -1,38 +1,33 @@
 <template>
   <div class="wrap">
-    <Dropdown v-model="item" :options="list" title="Shift">
-      <template #value="{value}">
-        <div class="y-dropdown-label-custom">
-          <i class="i-fire" />
-          <span v-if="value">{{ value }}</span>
-          <span v-else class="-placeholder">Choose Shift</span>
-        </div>
+    <draggable tag="ul" :list="list" class="list-group" handle=".h" item-key="name">
+      <template #item="{element, index}">
+        <li class="list-group-item">
+          <i class="i-add h"></i>
+          <span class="text">{{ element.name }} </span>
+          <input type="text" class="form-control" v-model="element.text" />
+          <i class="fa fa-times close" @click="removeAt(index)"></i>
+        </li>
       </template>
-      <template #option="{option}">
-        <div class="y-dropdown-item-custom">
-          <i class="i-fire" />
-          <span>{{ option }}</span>
-        </div>
-      </template>
-      <template #footer="{option}">
-        <div class="y-dropdown-item-custom">
-          <i class="i-fire" />
-          <span>{{ option }}</span>
-        </div>
-      </template>
-    </Dropdown>
+    </draggable>
   </div>
 </template>
 
 <script>
-import Dropdown from '@/components/Yaro/Dropdown'
+import draggable from 'vuedraggable'
 export default {
   name: 'test',
-  components: {Dropdown},
+  components: {
+    draggable
+  },
   data() {
     return {
-      list: [],
-      item: ''
+      list: [
+        {name: 'John', text: '', id: 0},
+        {name: 'Joao', text: '', id: 1},
+        {name: 'Jean', text: '', id: 2}
+      ],
+      dragging: false
     }
   }
 }
@@ -110,6 +105,27 @@ export default {
   // left: 50%;
   // bottom: -2px;
   // }
+}
+
+.button {
+  margin-top: 35px;
+}
+.handle {
+  float: left;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.close {
+  float: right;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+input {
+  display: inline-block;
+  width: 50%;
+}
+.text {
+  margin: 20px;
 }
 
 @import '~primevue/resources/themes/lara-light-indigo/theme.css';

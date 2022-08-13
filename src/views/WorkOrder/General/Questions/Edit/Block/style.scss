@@ -1,0 +1,51 @@
+@import 'src/assets/styles/_variables.scss';
+
+.block {
+  &__wrapper {
+    @include border(18px, $color-grey-flash);
+    padding: 16px 20px;
+    background-color: $color-grey-smoke;
+    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+  }
+  &__header {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 12px;
+  }
+  &__title {
+    @include font(18px, $color-grey-space, 600);
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+  }
+}
+
+.element {
+  @include border(14px, $color-grey-flash);
+  background-color: $color-white;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  column-gap: 12px;
+
+  &__label {
+    padding: 0 24px;
+    &.-blue {
+      background-color: $color-blue;
+    }
+    &.-orange {
+      background-color: $color-orange;
+    }
+  }
+  &__title {
+    @include font(14px, $color-grey-space, 600);
+  }
+}
+
+.menu-btn {
+  background-color: $color-white;
+}

@@ -1,0 +1,93 @@
+@import 'src/assets/styles/_variables.scss';
+
+::v-deep() {
+  .vfm__container {
+    place-items: start center;
+  }
+  .vfm__content {
+    margin: 2% 0;
+    width: 96%;
+    max-width: 980px;
+  }
+  .vfm--overlay.vfm__overlay {
+    // TODO: fix this /\
+    background-color: rgba($color-grey, 0.4);
+  }
+}
+
+.modal {
+  &__wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    row-gap: 20px;
+    padding: 20px;
+    max-height: inherit;
+    overflow: hidden;
+  }
+  &__header {
+    @include font(18px, $color-grey-space, 600);
+    display: grid;
+    grid-template-columns: 20px 20px auto 1fr;
+    column-gap: 14px;
+    align-items: center;
+    & > i {
+      @include font(20px, $color-grey, 600);
+      &:first-child {
+        cursor: pointer;
+      }
+    }
+  }
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    overflow: auto;
+    @include hideScrollbar;
+    padding-bottom: 20px;
+    background-color: $color-grey-smoke;
+    padding: 16px 20px;
+    @include border(18px, $color-grey-flash);
+    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+  }
+}
+
+.group {
+  &__wrapper {
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  &__title {
+    @include font(18px, $color-grey-space, 600);
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+  &__questions {
+    margin-top: 20px;
+  }
+}
+
+.questions {
+  background-color: $color-white;
+  @include border(14px, $color-grey-flash);
+  &__btn {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    @include font(14px, $color-grey-space, 600);
+    cursor: pointer;
+    margin: 20px;
+    margin-top: 0;
+    & > i {
+      color: $color-grey;
+    }
+    & > span {
+    }
+  }
+}

@@ -13,9 +13,7 @@
             <Button v-for="(btn, idx) of block.list" :key="idx" :label="btn" class="select__btn" border />
           </div>
         </div>
-        <!-- <Dropdown v-model="role" :options="roles" title="List with icons"> -->
         <!-- <Dropdown :modelValue="chosen" :options="roles" placeholder="Roles" optionLabel="title" @change="select" /> -->
-
         <Dropdown v-if="block.type === 'dropdown'" v-model="block.value" :options="block.list" :title="block.title" :placeholder="block.placeholder" />
       </div>
       <div class="block__elem -time">
@@ -63,9 +61,6 @@ export default {
     ...mapState({
       // card: s => s.company.card.card
     })
-  },
-  created() {
-    console.log(this.group)
   },
   methods: {
     ...mapMutations({

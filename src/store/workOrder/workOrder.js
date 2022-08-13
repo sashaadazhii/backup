@@ -1,5 +1,6 @@
 import axios from 'axios'
 import status from './workOrderStatuses'
+import questions from './questions'
 import {workOrders as localOrders} from '../data/workOrders'
 import {workOrder as localOrder} from '../data/workOrder'
 
@@ -152,5 +153,5 @@ export default {
       }
     }
   },
-  modules: {status}
+  modules: {status, questions}
 }

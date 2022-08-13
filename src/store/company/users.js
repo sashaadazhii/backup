@@ -4,7 +4,7 @@ export default {
   namespaced: true,
 
   state: {
-    users: [],
+    users: usersList,
     searchingUsers: [],
     technicians: [],
     user: {},

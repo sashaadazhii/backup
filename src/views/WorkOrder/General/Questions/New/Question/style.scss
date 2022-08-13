@@ -1,0 +1,58 @@
+@import 'src/assets/styles/_variables.scss';
+
+.question {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px;
+    &:not(:first-child) {
+      border-top: 1px solid $color-grey-flash;
+    }
+  }
+  &__title {
+    @include font(16px, $color-grey-space, 600);
+  }
+}
+
+.options {
+  &__list {
+    @include border(14px, $color-grey-flash);
+    padding: 20px;
+  }
+  &__drug {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  &__item {
+    display: grid;
+    gap: 10px 12px;
+    grid-template-columns: 20px 1fr 46px;
+    align-items: center;
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    @include font(14px, $color-grey-space, 600);
+    cursor: pointer;
+    margin-top: 20px;
+    & > i {
+      color: $color-grey;
+    }
+    & > span {
+    }
+  }
+}
+
+.item {
+  &__title {
+    @include font(14px, $color-grey-space, 600);
+    grid-area: auto / 1 / auto / 4;
+  }
+  & > i {
+    font-size: 20px;
+    cursor: pointer;
+  }
+}

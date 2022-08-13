@@ -46,7 +46,6 @@ export default {
     setTimeout(() => {
       this.createLine()
     }, 400)
-    console.log(cards)
   },
   methods: {
     createLine() {
