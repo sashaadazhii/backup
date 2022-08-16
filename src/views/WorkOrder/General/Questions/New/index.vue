@@ -76,7 +76,9 @@ export default {
       const question = {title: null, type: 'Input field', list: []}
       this.questions.push(question)
     },
-    save() {},
+    save() {
+      console.log(this.questions)
+    },
     changeTitle({value, idx}) {
       this.questions[idx].title = value
     },

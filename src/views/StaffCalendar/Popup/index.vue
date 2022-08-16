@@ -27,16 +27,8 @@
             </Dropdown>
           </div>
           <div class="body__block">
-            <!-- <DatePicker :modelValue="order.timeComing" mode="dateTime"
-            :minute-increment="5" locale="en-Ca" @update:modelValue="change({timeComing: $event})"> -->
-            <!-- <DatePicker v-model="date" locale="en-Ca">
-              <template v-slot="{inputValue, inputEvents}">
-                <Input :modelValue="`${inputValue}`" v-on="inputEvents" required placeholder="Choose date" />
-              </template>
-            </DatePicker> -->
             <Input :model-value="dayjs(day.date).format('DD MMMM YYYY')" placeholder="Time" disabled />
-
-            <Input placeholder="Time" v-model="time" v-maska="'#'" :disabled="activity.name === 'Vacation'" />
+            <Input placeholder="Time" v-model="time" v-maska="'##'" :disabled="activity.name !== 'Working day'" />
           </div>
         </div>
       </div>
@@ -46,7 +38,6 @@
 
 <script>
 import {ConnectedOverlayScrollHandler, DomHandler, ZIndexUtils} from '@/components/Yaro/utils'
-import {DatePicker} from 'v-calendar'
 import Button from '@/components/Yaro/Button'
 import Dropdown from '@/components/Yaro/Dropdown'
 import Input from '@/components/Yaro/Input'
@@ -76,19 +67,24 @@ export default {
       activity: {
         name: 'Working day',
         title: '',
-        color: '#5C9B9C'
+        color: '#3eb3bb'
       },
       activities: [
         {
           name: 'Working day',
           title: '',
-          color: '#5C9B9C'
+          color: '#3eb3bb'
         },
         {
           name: 'Vacation',
           title: '',
-          color: '#FDDCBC'
-        }
+          color: '#ff9b70'
+        },
+        {
+          name: 'Sick leave',
+          title: '',
+          color: '#2c9aff'
+        },
       ]
     }
   },
@@ -119,11 +115,15 @@ export default {
     save() {
       const day = {...this.day}
       if (this.activity.name === 'Working day') {
+        if (!this.time) return
         day.work = true
         day.hours = this.time
       }
       if (this.activity.name === 'Vacation') {
         day.vacation = true
+      }
+      if (this.activity.name === 'Sick leave') {
+        day.sick = true
       }
       this.$emit('changeDay', day)
       this.close()
@@ -135,7 +135,7 @@ export default {
       this.activity = {
         name: 'Working day',
         title: '',
-        color: '#5C9B9C'
+        color: '#3eb3bb'
       }
     },
     onEnter(el) {

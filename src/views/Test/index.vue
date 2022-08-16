@@ -1,26 +1,17 @@
 <template>
-  <div class="wrap">
-    <Popup v-model:visible="display" :targetElement="$refs.btn"  />
-    <button @click="open" ref="btn">Open</button>
-  </div>
+  <div class="wrap"></div>
 </template>
 
 <script>
-import Popup from '@/views/WorkOrders/Calendar/Popup'
 export default {
   name: 'test',
-  components: {Popup},
   data() {
     return {
       display: false,
       visible: false
     }
   },
-  methods: {
-    open() {
-      this.display = !this.display
-    }
-  }
+  methods: {}
 }
 </script>
 <style lang="scss" scoped>
