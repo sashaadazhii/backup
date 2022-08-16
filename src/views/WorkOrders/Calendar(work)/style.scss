@@ -1,0 +1,155 @@
+@import 'src/assets/styles/_variables.scss';
+
+.calendar {
+  &__wrapper {
+    height: inherit;
+    background-color: $color-grey-bg;
+    // padding-top: 14px;
+    // padding-left: 20px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+  &__header {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) 5fr;
+    column-gap: 20px;
+    row-gap: 14px;
+    overflow: hidden;
+  }
+  &__inner {
+    overflow: hidden;
+    display: grid;
+  }
+  &__sidebar {
+    border-right: 1px solid $color-grey-space;
+  }
+  &__tech {
+    padding: 20px;
+    border-right: 1px solid $color-grey-space;
+    // height: 66px;
+    position: sticky;
+    left: 0;
+    background-color: $color-grey-bg;
+  }
+  &__body {
+    display: grid;
+    grid-auto-rows: min-content;
+    overflow: auto;
+    // scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+      background-color: red;
+      width: 10px;
+      // height: 10px;
+      // background-color: darkgrey;
+      // outline: 1px solid slategrey;
+    }
+    &::-webkit-scrollbar-track {
+      background: orange; /* color of the tracking area */
+      // margin-left: 260px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: blue; /* color of the scroll thumb */
+      border-radius: 20px; /* roundness of the scroll thumb */
+      border: 3px solid orange; /* creates padding around scroll thumb */
+    }
+    // display: flex;
+    // flex-direction: column;
+    // position: relative;
+    // overflow-x: auto;
+    // overflow-y: hidden;
+  }
+  &__row {
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) 5fr;
+
+    height: 66px;
+    align-items: center;
+    border-bottom: 1px solid $color-grey-space;
+    &.-top {
+      position: sticky;
+      background-color: red;
+      top: 0;
+      z-index: 999;
+    }
+  }
+  &__days {
+    display: flex;
+  }
+  &__day {
+    width: 80px;
+  }
+}
+
+.header {
+  &__search {
+    background-color: $color-white;
+    grid-area: 1 / auto / 3;
+    @include border(16px, $color-grey-flash);
+  }
+  &__top {
+    @include border(200px, $color-grey-flash);
+    padding: 6px;
+    margin-right: 20px;
+    background-color: $color-white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-left {
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+    }
+  }
+  &__bottom {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    overflow: auto;
+    // scroll-behavior: smooth;
+    @include hideScrollbar;
+  }
+  &__year {
+    @include font(14px, $color-grey-space, 600);
+    @include border(20px, $color-grey-flash);
+    background-color: $color-grey-smoke;
+    padding: 6px 12px;
+  }
+  &__month {
+    @include font(14px, $color-grey, 600);
+    padding: 6px 14px;
+    &.-active {
+      background-color: $color-grey-space;
+      color: $color-white;
+      border-radius: 20px;
+    }
+  }
+  &__day {
+    background-color: $color-white;
+    width: 54px;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    @include border(10px, $color-grey-flash);
+
+    & > span:first-child {
+      @include font(12px, $color-grey, 600);
+      margin-bottom: 8px;
+    }
+    & > span:last-child {
+      @include font(16px, $color-grey-dark, 600);
+    }
+    &.-weekend {
+      border-color: transparent;
+      background-color: rgba($color-orange, 0.1);
+      & > span:first-child {
+        color: $color-orange;
+      }
+    }
+    &:last-child {
+      margin-right: 20px;
+    }
+  }
+}

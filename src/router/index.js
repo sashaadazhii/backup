@@ -27,12 +27,12 @@ const routes = [
     redirect: '/work-orders/board',
     meta: {layout: 'admin', access: ['admin', 'service-advisor'], auth: false, header: 'board'}
   },
-  {
-    path: '/work-orders/calendar',
-    name: 'WorkBoardCalendar',
-    meta: {layout: 'admin', access: ['admin', 'service-advisor'], auth: false, header: 'board'},
-    component: () => import('@/views/WorkOrders/Calendar')
-  },
+  // {
+  //   path: '/work-orders/calendar',
+  //   name: 'WorkBoardCalendar',
+  //   meta: {layout: 'admin', access: ['admin', 'service-advisor'], auth: false, header: 'board'},
+  //   component: () => import('@/views/WorkOrders/Calendar')
+  // },
   {
     path: '/work-orders/board',
     name: 'WorkOrdersBoard',
@@ -315,6 +315,13 @@ const routes = [
     meta: {layout: 'admin', header: 'Flows'},
     component: () => import('@/views/Flows')
   },
+  {
+    path: '/staff-calendar',
+    name: 'StaffCalendar',
+    meta: {layout: 'admin', header: 'staffCalendar'},
+    component: () => import('@/views/StaffCalendar')
+  },
+
   {
     path: '/test',
     name: 'TestPage',

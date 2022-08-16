@@ -54,7 +54,7 @@
               <div class="sidebar__link-text show">Payroll Overview</div>
               <div class="sidebar__link-num"></div>
             </router-link>
-            <router-link class="sidebar__link" to="/">
+            <router-link class="sidebar__link" to="/staff-calendar">
               <div class="sidebar__link-icon"><i class="i-perm_contact_calendar" /></div>
               <div class="sidebar__link-text show">Staff Calendar</div>
               <div class="sidebar__link-num"></div>

@@ -113,6 +113,9 @@
         padding: 5px 10px;
       }
     }
+    &.disabled {
+      pointer-events: none;
+    }
   }
   &__title {
     @include font(14px, $color-grey-space, 600);

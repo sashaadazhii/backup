@@ -199,6 +199,70 @@ var DomHandler = {
       }
     }
   },
+  absolutePositionTop(element, target, position = 'right') {
+    let elementDimensions = element.offsetParent ? {width: element.offsetWidth, height: element.offsetHeight} : this.getHiddenElementDimensions(element)
+    let elementOuterHeight = elementDimensions.height
+    let elementOuterWidth = elementDimensions.width
+    let targetOuterHeight = target.offsetHeight
+    let targetOuterWidth = target.offsetWidth
+    let targetOffset = target.getBoundingClientRect()
+    let windowScrollTop = this.getWindowScrollTop()
+    let windowScrollLeft = this.getWindowScrollLeft()
+    let viewport = this.getViewport()
+    let top, left, right
+
+    if (targetOffset.top + targetOuterHeight + elementOuterHeight > viewport.height) {
+      top = targetOffset.bottom + windowScrollTop - elementOuterHeight
+      element.style.transformOrigin = 'bottom'
+      if (top < 0) {
+        top = windowScrollTop
+      }
+    } else {
+      top = targetOffset.top + windowScrollTop
+      element.style.transformOrigin = 'top'
+    }
+
+    // if (position === 'left') {
+    //   if (targetOffset.left + elementOuterWidth > viewport.width)
+    //     left = Math.max(0, targetOffset.left + windowScrollLeft + targetOuterWidth - elementOuterWidth)
+    //   else left = targetOffset.left + windowScrollLeft
+    //   element.style.top = top + 'px'
+    //   element.style.left = left + 'px'
+    // } else if (position === 'right') {
+    //   if (targetOffset.left + elementOuterWidth > viewport.width) {
+    //     left = Math.max(0, targetOffset.left + windowScrollLeft + targetOuterWidth - elementOuterWidth)
+    //     element.style.top = top + 'px'
+    //     element.style.left = left + 'px'
+    //   } else {
+    //     right = viewport.width - targetOffset.right
+    //     element.style.top = top + 'px'
+    //     element.style.right = right + 'px'
+    //     element.style.left = 'auto'
+    //   }
+    // }
+
+    if (position === 'right') {
+      if (targetOffset.left + elementOuterWidth > viewport.width) {
+        left = Math.max(0, targetOffset.left + windowScrollLeft - elementOuterWidth) - 8
+      } else {
+        left = targetOffset.right + windowScrollLeft + 8
+      }
+      element.style.left = left + 'px'
+      element.style.top = top + 'px'
+    }
+    // else if (position === 'right') {
+    //   if (targetOffset.left + elementOuterWidth > viewport.width) {
+    //     left = Math.max(0, targetOffset.left + windowScrollLeft + targetOuterWidth - elementOuterWidth)
+    //     element.style.top = top + 'px'
+    //     element.style.left = left + 'px'
+    //   } else {
+    //     right = viewport.width - targetOffset.right
+    //     element.style.top = top + 'px'
+    //     element.style.right = right + 'px'
+    //     element.style.left = 'auto'
+    //   }
+    // }
+  },
 
   relativePosition(element, target) {
     let elementDimensions = element.offsetParent ? {width: element.offsetWidth, height: element.offsetHeight} : this.getHiddenElementDimensions(element)

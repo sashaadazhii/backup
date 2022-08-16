@@ -10,6 +10,7 @@
       medium: size === 'medium',
       small: size === 'small',
       mini: size === 'mini',
+      disabled
     }"
   >
     <div v-if="title" class="field__title" :class="{required}">{{ title }}</div>
@@ -80,11 +81,15 @@ export default {
     required: {
       type: Boolean,
       default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   emits: {
     'update:modelValue': null,
-    'input': null
+    input: null
   },
   data() {
     return {}

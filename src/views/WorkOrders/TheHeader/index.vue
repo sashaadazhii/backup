@@ -5,13 +5,11 @@
         <div class="header__icon"><i class="i-dashboard"></i></div>
         <div class="header__title">Work Board</div>
         <div class="header__nav">
-          <!-- <router-link class="header__nav-link" to="/work-board/calendar">
-            <i class="i-calendar_stroke" />
-            <span>Calendar</span>
+          <!-- <router-link class="header__nav-link" to="/work-orders/board">
+            <Button icon="i-view_agenda" label="Tasks Board" border />
           </router-link>
-          <router-link class="header__nav-link" to="/work-board/tasks">
-            <i class="i-view_agenda" />
-            <span>Tasks Board</span>
+          <router-link class="header__nav-link" to="/work-orders/calendar">
+            <Button icon="i-calendar_stroke" label="Calendar" border />
           </router-link> -->
         </div>
       </div>
