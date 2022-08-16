@@ -1,5 +1,3 @@
-import {requests} from '../data/workOrders'
-
 export default {
   namespaced: true,
   state: {
@@ -7,21 +5,22 @@ export default {
       {
         title: 'When you feel these vibrations:',
         time: 0,
+        id: 124124,
         blocks: [
           {
-            type: 'input',
+            type: 'Input',
             title: 'At what approximate speed you’re usually going?',
             placeholder: 'Enter Speed',
             value: null
           },
           {
-            type: 'select',
+            type: 'Select',
             title: 'Do you feel it while you’re braking?',
             list: ['Yes', 'No'],
             value: null
           },
           {
-            type: 'select',
+            type: 'Select',
             title: 'Is this vibration constant?',
             list: ['Yes', 'No'],
             value: null
@@ -31,9 +30,10 @@ export default {
       {
         title: 'When you hear these sounds:',
         time: 0,
+        id: 132324,
         blocks: [
           {
-            type: 'input',
+            type: 'Input',
             title: 'Where do you generally hear them from?',
             placeholder: 'Choose Side',
             value: null
@@ -43,9 +43,10 @@ export default {
       {
         title: 'When do you generally hear the noise when you’re driving?',
         time: 0,
+        id: 12412092,
         blocks: [
           {
-            type: 'dropdown',
+            type: 'Drop-Down',
             title: 'Choose option or a few options:',
             placeholder: 'Chose option',
             value: null,
@@ -53,39 +54,24 @@ export default {
           }
         ]
       }
-    ]
+    ],
+    activeQuestions: {}
   },
   mutations: {
-    set(state, requests) {
-      state.requests = requests
+    set(state, questions) {
+      state.activeQuestions = questions
     },
-    setRequest(state, request) {
-      state.request = request
+    add(state, questions) {
+      state.questions.push(questions)
     },
-    changeRequest(state, param) {
-      const id = state.request.id
-      const reqIdx = state.requests.findIndex(r => r.id === id)
-      if (param === 'inc' && reqIdx + 1 < state.requests.length) state.request = state.requests[reqIdx + 1]
-      if (param === 'dec' && reqIdx + 1 > 1) state.request = state.requests[reqIdx - 1]
+    remove(state, id) {
+      const idx = state.questions.findIndex(q => q.id === id)
+      state.questions.splice(idx, 1)
     },
-    changeStatus(state, {status, id}) {
-      const req = state.requests.find(r => r.id === id)
-      req.status = status
-    },
-    changeCards(state, card) {
-      const cards = state.request.cards
-      if (cards.some(c => c.id === card.id)) state.request.cards = cards.filter(c => c.id !== card.id)
-      else cards.unshift(card)
+    update(state, group) {
+      const idx = state.questions.findIndex(q => q.id === group.id)
+      state.questions.splice(idx, 1, group)
     }
   },
-  actions: {
-    async fetch({commit}) {
-      try {
-        commit('set', requests)
-      } catch (err) {
-        commit('setError', err, {root: true})
-        throw err
-      }
-    }
-  }
+  actions: {}
 }

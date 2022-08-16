@@ -10,12 +10,7 @@
     </div>
     <div class="block__body">
       <div v-for="(block, idx) of group.blocks" :key="idx" class="block__elem element">
-        <Label
-          :label="getLabel(block.type)"
-          size="small"
-          class="element__label"
-          :class="{'-orange': block.type === 'select', '-blue': block.type === 'dropdown'}"
-        />
+        <Label :label="block.type" size="small" class="element__label" :class="{'-orange': block.type === 'Select', '-blue': block.type === 'Drop-Down'}" />
         <div class="element__title">{{ block.title }}</div>
       </div>
     </div>
@@ -27,6 +22,7 @@ import {mapMutations, mapState} from 'vuex'
 import Button from '@/components/Yaro/Button'
 import Menu from '@/components/Yaro/Menu'
 import Label from '@/components/Yaro/Label'
+import New from '../../New'
 
 export default {
   name: 'QuestionsModalBlock',
@@ -43,16 +39,12 @@ export default {
         {
           label: 'Edit',
           icon: 'i-edit',
-          command: () => {
-            alert('Edit action')
-          }
+          command: () => this.openEditModal()
         },
         {
           label: 'Remove',
           icon: 'i-remove_circle red',
-          command: () => {
-            alert('Remove action')
-          }
+          command: () => this.openDeleteModal()
         }
       ]
     }
@@ -65,26 +57,28 @@ export default {
   },
   methods: {
     ...mapMutations({
-      // setErrors: 'company/card/setErrors',
+      remove: 'workOrder/questions/remove',
+      set: 'workOrder/questions/set'
     }),
-    // TODO: Field Number Component
-    dec() {
-      if (!this.time) return
-      this.time -= 0.5
+    openDeleteModal() {
+      this.$confirm.require({
+        title: 'Hey, wait!',
+        message: `Are you sure, you want to remove this questions?`,
+        acceptLabel: 'Remove',
+        rejectLabel: 'Cancel',
+        icon: 'i-volume_up',
+        accept: () => this.remove(this.group.id)
+      })
     },
-    inc() {
-      this.time += 0.5
-    },
-    // TODO: Field Number Component
-    getLabel(label) {
-      switch (label) {
-        case 'input':
-          return 'Input'
-        case 'dropdown':
-          return 'Drop-down'
-        case 'select':
-          return 'Select'
-      }
+    openEditModal() {
+      this.set(this.group)
+      this.$vfm.hide('Questions')
+      this.$vfm.show({
+        component: New,
+        bind: {
+          name: 'New'
+        }
+      })
     }
   }
 }

@@ -8,11 +8,11 @@
       @update:modelValue="$emit('changeTitle', {value: $event, idx})"
     />
     <Dropdown :modelValue="question.type" :options="types" title="Choose answer type" @update:modelValue="$emit('changeType', {value: $event, idx})" />
-    <div class="options__list" v-if="question.type !== 'Input field'">
+    <div class="options__list" v-if="question.type !== 'Input'">
       <Draggable :list="question.list" class="options__drug" handle=".drug" item-key="name">
         <template #item="{element, index}">
           <div class="options__item item">
-            <div class="item__title">{{ type }} option {{ element.name }} {{ index + 1 }}</div>
+            <div class="item__title">{{ question.type }} option {{ element.name }} {{ index + 1 }}</div>
             <i class="i-drag_indicator drug" />
             <Input v-model="element.option" placeholder="Option name goes here..." />
             <Button icon="i-remove_circle_outline" border size="large" @click="$emit('delItem', {index, idx})" :disabled="question.list.length <= 2" />
@@ -21,7 +21,7 @@
       </Draggable>
       <div class="options__btn" @click="$emit('addItem', idx)">
         <i class="i-add_circle" />
-        <span>Add {{ type }} option</span>
+        <span>Add {{ question.type }} option</span>
       </div>
     </div>
   </div>
@@ -49,8 +49,8 @@ export default {
   },
   data() {
     return {
-      type: 'Input field',
-      types: ['Input field', 'Drop-down', 'Select'],
+      type: 'Input',
+      types: ['Input', 'Drop-Down', 'Select'],
       list: [{option: null}, {option: null}]
     }
   },

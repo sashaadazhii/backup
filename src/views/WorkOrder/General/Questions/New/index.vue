@@ -11,12 +11,12 @@
           <div class="group__header">
             <div class="group__title">Group</div>
             <div class="group__btns">
-              <Button label="Remove" border @click="back"/>
+              <Button label="Remove" border @click="remove" />
               <Button label="Save" @click="save" />
             </div>
           </div>
           <div class="group__body">
-            <Input title="Enter group title" placeholder="Group title goes here..." />
+            <Input title="Enter group title" placeholder="Group title goes here..." v-model="title" />
             <div class="group__questions questions">
               <Question
                 v-for="(question, idx) of questions"
@@ -52,17 +52,38 @@ export default {
   components: {Button, Input, Question},
   data() {
     return {
+      title: '',
+      id: null,
       questions: [
         {
           title: null,
-          type: 'Input field',
+          type: 'Input',
+          time: 0,
           list: []
         }
       ]
     }
   },
-
+  created() {
+    const {title, blocks, id, time} = this.localQuestions
+    this.id = id
+    this.title = title
+    this.time = time
+    this.questions = blocks
+    this.questions.forEach(q => {
+      if (q.list && q.list.length) q.list = q.list.map(l => ({option: l}))
+    })
+  },
+  computed: {
+    ...mapState({
+      localQuestions: s => s.workOrder.questions.activeQuestions
+    })
+  },
   methods: {
+    ...mapMutations({
+      addQuestions: 'workOrder/questions/add',
+      update: 'workOrder/questions/update'
+    }),
     back() {
       this.$vfm.hide('New')
       this.$vfm.show({
@@ -73,11 +94,36 @@ export default {
       })
     },
     add() {
-      const question = {title: null, type: 'Input field', list: []}
+      const question = {title: null, type: 'Input', list: []}
       this.questions.push(question)
     },
     save() {
-      console.log(this.questions)
+      const {title, questions, id} = this
+      questions.forEach(q => {
+        if (q.list) q.list = q.list.map(l => l.option)
+      })
+      const group = {
+        title,
+        blocks: [...questions]
+      }
+      if (!id) {
+        group.id = this.$getID()
+        this.addQuestions(group)
+      } else {
+        group.id = id
+        this.update(group)
+      }
+      this.back()
+    },
+    remove() {
+      this.title = ''
+      this.questions = [
+        {
+          title: null,
+          type: 'Input',
+          list: []
+        }
+      ]
     },
     changeTitle({value, idx}) {
       this.questions[idx].title = value

@@ -6,15 +6,14 @@
     </div>
     <div class="block__body">
       <div v-for="(block, idx) of group.blocks" :key="idx" class="block__elem" :class="{'-first': idx === 0, '-half': idx % 2}">
-        <Input v-if="block.type === 'input'" :title="block.title" :placeholder="block.placeholder" />
-        <div v-if="block.type === 'select'" class="block__select select">
+        <Input v-if="block.type === 'Input'" :title="block.title" :placeholder="block.placeholder" />
+        <div v-if="block.type === 'Select'" class="block__select select">
           <div class="select__title">{{ block.title }}</div>
           <div class="select__btns">
             <Button v-for="(btn, idx) of block.list" :key="idx" :label="btn" class="select__btn" border />
           </div>
         </div>
-        <!-- <Dropdown :modelValue="chosen" :options="roles" placeholder="Roles" optionLabel="title" @change="select" /> -->
-        <Dropdown v-if="block.type === 'dropdown'" v-model="block.value" :options="block.list" :title="block.title" :placeholder="block.placeholder" />
+        <Dropdown v-if="block.type === 'Drop-Down'" v-model="block.value" :options="block.list" :title="block.title" placeholder="Chose option" />
       </div>
       <div class="block__elem -time">
         <!-- TODO: Field Number Component -->
