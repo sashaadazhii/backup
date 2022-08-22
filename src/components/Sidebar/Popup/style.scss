@@ -1,0 +1,60 @@
+@import 'src/assets/styles/_variables.scss';
+
+.y-popup-enter-from {
+  opacity: 0;
+  transform: scaleY(0.8);
+}
+
+.y-popup-leave-to {
+  opacity: 0;
+}
+
+.y-popup-enter-active {
+  transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.y-popup-leave-active {
+  transition: opacity 0.1s linear;
+}
+
+.y-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include border(20px, $color-grey-flash);
+  background-color: $color-white;
+  min-width: 360px;
+  overflow: hidden;
+  box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+  margin-left: 20px;
+}
+
+.y-popup {
+  &__inner {
+  }
+  &__notice {
+  }
+}
+
+.notice {
+  padding: 14px;
+  border-bottom: 1px solid $color-grey-flash;
+  &__header {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    margin-bottom: 10px;
+    & > .-orange {
+      background-color: $color-orange;
+    }
+    & > .-blue {
+      background-color: $color-blue;
+    }
+  }
+  &__title {
+    @include font(14px, $color-grey-space, 500);
+  }
+  &__main {
+    @include font(14px, $color-grey, 500);
+  }
+}

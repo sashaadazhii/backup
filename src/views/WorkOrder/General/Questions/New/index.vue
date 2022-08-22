@@ -65,14 +65,16 @@ export default {
     }
   },
   created() {
-    const {title, blocks, id, time} = this.localQuestions
-    this.id = id
-    this.title = title
-    this.time = time
-    this.questions = blocks
-    this.questions.forEach(q => {
-      if (q.list && q.list.length) q.list = q.list.map(l => ({option: l}))
-    })
+    if (this.localQuestions.id) {
+      const {title, blocks, id, time} = this.localQuestions
+      this.id = id
+      this.title = title
+      this.time = time
+      this.questions = blocks
+      this.questions.forEach(q => {
+        if (q.list && q.list.length) q.list = q.list.map(l => ({option: l}))
+      })
+    }
   },
   computed: {
     ...mapState({
