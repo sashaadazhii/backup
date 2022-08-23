@@ -101,6 +101,19 @@ export default {
     // =========== Intermediate Data in Create Car from Work Order===========
     setInterimData(state, data) {
       state.interimData = data
+    },
+    // ==================================
+    setFilters(state, techs) {
+      let orders = {}
+      if (techs && techs.length) {
+        orders.done = localOrders.done.filter(od => techs.some(t => t === od.technician?.id))
+        orders.inProgress = localOrders.inProgress.filter(od => techs.some(t => t === od.technician?.id))
+        orders.todo = localOrders.todo.filter(od => techs.some(t => t === od.technician?.id))
+        orders.unscheduled = localOrders.unscheduled.filter(od => techs.some(t => t === od.technician?.id))
+      } else {
+        orders = localOrders
+      }
+      state.workOrders = orders
     }
   },
   actions: {

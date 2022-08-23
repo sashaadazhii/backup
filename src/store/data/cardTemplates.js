@@ -242,12 +242,30 @@ const cardsList = {
           yearTo: 2010
         }
       ]
-    }
+    },
+    {
+      name: 'Inspection & Additional Time',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 27
+    },
+    {
+      name: 'Oil Change',
+      cardRelationType: 'all',
+      odometerTrack: 30_000,
+      timeTrackLength: 18,
+      description: '',
+      relations: [],
+      templateID: 28
+    },
   ],
   pagination: {
     page: 1,
     perPage: 100,
-    total: 26
+    total: 28
   }
 }
 export {cardsList}

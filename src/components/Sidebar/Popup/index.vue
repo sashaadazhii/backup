@@ -54,6 +54,26 @@ export default {
           status: 'Waiting for Customer',
           title: 'Maynard Bauman changed status on Work Order #4',
           time: 'Jun 23, 2022 at 9:18 AM'
+        },
+        {
+          status: 'Waiting for SA',
+          title: 'Maynard Bauman changed status on Work Order #4',
+          time: '24 minutes ago'
+        },
+        {
+          status: 'Waiting for SA',
+          title: 'Maynard Bauman changed status on Work Order #4',
+          time: '36 minutes ago'
+        },
+        {
+          status: 'WO Complete',
+          title: 'Maynard Bauman changed status on Work Order #4',
+          time: '46 minutes ago'
+        },
+        {
+          status: 'Waiting for Customer',
+          title: 'Maynard Bauman changed status on Work Order #4',
+          time: 'Jun 23, 2022 at 9:18 AM'
         }
       ]
     }

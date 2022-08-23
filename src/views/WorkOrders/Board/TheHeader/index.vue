@@ -70,7 +70,7 @@
 import Filter from '@/components/Yaro/Filter'
 import Button from '@/components/Yaro/Button'
 import Dropdown from '@/components/Yaro/Dropdown'
-import {mapActions} from 'vuex'
+import {mapActions, mapState, mapMutations} from 'vuex'
 import {DatePicker} from 'v-calendar'
 import dayjs from 'dayjs'
 
@@ -97,10 +97,18 @@ export default {
     }
     this.filtersList.push(technicians)
   },
+  computed: {
+    ...mapState({
+      orders: s => s.workOrder.workOrders
+    })
+  },
   methods: {
     ...mapActions({
       searchUsers: 'company/users/search',
       fetchBoard: 'workOrder/fetchBoard'
+    }),
+    ...mapMutations({
+      setFilters: 'workOrder/setFilters'
     }),
     removeChip(id) {
       this.activeFilters = this.activeFilters.filter(c => c.id !== id)
@@ -117,25 +125,9 @@ export default {
           return `${date.format('DD MMM YYYY')} ~ ${date.add(5, 'day').format('DD MMM YYYY')}`
       }
     },
-    async changeFilters() {
-      const techsList = value.filter(v => v.type === 'Technitian')
-      const techsIds = techsList.map(t => t.id)
-      // await this.fetchBoard()
-      // const filters = [techsList]
-      //  users: [{name: 'Peter', surname: 'Griffin'}, {name: 'Thomas', surname: 'Anderson'}],
-      // filters: [{technicians: 19}]
-      // const data = {
-      //   x: 1,
-      //   arr: [1, 2, 3],
-      //   arr2: [1, [2], 3],
-      //   users: [
-      //     {name: 'Peter', surname: 'Griffin'},
-      //     {name: 'Thomas', surname: 'Anderson'}
-      //   ]
-      // }
-      // await this.fetchBoard(data)
-      // await this.fetchBoard({filters: [{technicians: techsIds}]})
-      // await this.fetchBoard({'filters[technicians]': techsIds})
+    async changeFilters({value}) {
+      const techs = value.filter(i => i.type === 'Technitian').map(t => t.id)
+      this.setFilters(techs)
     },
     changeDay() {
       const day = {type: this.day, date: this.date}

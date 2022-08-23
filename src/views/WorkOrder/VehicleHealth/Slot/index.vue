@@ -25,16 +25,6 @@
         </template>
       </Menu>
     </div>
-    <!-- <Label
-      v-else
-      :label="card.approvalStatus"
-      size="small"
-      icon="i-rp_done"
-      circle
-      class="card__label -shadow"
-      :class="labelClass(card.approvalStatus)"
-      iconSize="8px"
-    /> -->
     <div class="card__progress">
       <div class="card__progress-title">{{ card.service }}%</div>
       <div class="card__progress-bar">
@@ -42,6 +32,7 @@
       </div>
       <div class="card__progress-title">{{ card.odometerTrack.toLocaleString('fr-FR') }} KM / {{ card.timeTrackLength }} Month</div>
     </div>
+    <Menu :list="actionsList" />
   </div>
 </template>
 
@@ -62,14 +53,10 @@ export default {
     return {
       actionsList: [
         {
-          label: 'Edit',
-          icon: 'i-edit',
-          command: () => {}
+          label: 'Un-Relate Card from Single Vehicle'
         },
         {
-          label: 'Delete',
-          icon: 'i-remove_circle red',
-          command: () => {}
+          label: 'Un-Relate Card from Entire Model Year'
         }
       ],
       statusesChange: [
