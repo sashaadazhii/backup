@@ -14,6 +14,9 @@
     &.active {
       background-color: $color-green-pale;
     }
+    &:hover {
+      background-color: $color-bg;
+    }
   }
   &__cell {
     display: flex;
