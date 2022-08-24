@@ -6,11 +6,11 @@
           <div class="header__icon"><i class="i-sticky_note"></i></div>
           <div class="header__title">Inspection Builder</div>
         </div>
-        <div class="header__right">
+        <!-- <div class="header__right">
           <Button icon="i-add_circle" label="Create New Card" @click="openNewCardModal" />
-        </div>
+        </div> -->
       </div>
-      <div class="header__middle">
+      <!-- <div class="header__middle">
         <div class="header__left">
           <div class="header__field field">
             <label class="field__label">
@@ -27,42 +27,42 @@
           <div class="list-titles__item">Relation</div>
           <div class="list-titles__item">Service Tracker</div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
-import Button from '@/components/Yaro/Button'
-import AddCardModal from '../AddCardModal'
-import {mapActions, mapMutations, mapState} from 'vuex'
+// import Button from '@/components/Yaro/Button'
+// import AddCardModal from '../AddCardModal'
+// import {mapActions, mapMutations, mapState} from 'vuex'
 import _ from 'lodash'
 
 export default {
   name: 'InspectionBuilderHeader',
-  components: {Button},
+  // components: {Button},
   computed: {
-    ...mapState({
-      searchParams: s => s.company.cardTemplates.searchParams
-    })
+    // ...mapState({
+    //   searchParams: s => s.company.cardTemplates.searchParams
+    // })
   },
   methods: {
-    ...mapActions({
-      fetch: 'company/cardTemplates/fetch'
-    }),
-    ...mapMutations({
-      setSearch: 'company/cardTemplates/setSearch',
-      reset: 'company/cardTemplates/reset'
-    }),
-    async search(e) {
-      const param = e.target.value
-      this.setSearch(param)
-      await this.getCards()
-    },
-    getCards: _.debounce(async function () {
-      this.reset()
-      await this.fetch()
-    }, 300),
+    // ...mapActions({
+    //   fetch: 'company/cardTemplates/fetch'
+    // }),
+    // ...mapMutations({
+    //   setSearch: 'company/cardTemplates/setSearch',
+    //   reset: 'company/cardTemplates/reset'
+    // }),
+    // async search(e) {
+    //   const param = e.target.value
+    //   this.setSearch(param)
+    //   await this.getCards()
+    // },
+    // getCards: _.debounce(async function () {
+    //   this.reset()
+    //   await this.fetch()
+    // }, 300),
     async resetInput() {
       this.setSearch(null)
       await this.getCards()

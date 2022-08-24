@@ -433,7 +433,7 @@ const serviceList = [
     description:
       'Remove and replace timeing belt and water pump assembly. Service cooling system. A loose or broken timing belt can will cause serious engine damage.',
     hours: 1.5, // REMOVE / old value
-    estimatedTime: 1.2,
+    estimatedTime: 5,
     averageTime: 2,
     used: 45,
     warrantyType: 'off',
@@ -1317,26 +1317,14 @@ const serviceList = [
       range: 0
     },
     select: false,
-    parts: [
-      {
-        id: 78,
-        serviceID: 35,
-        name: '21539- Muffler',
-        core: 0,
-        quantity: 1,
-        price: 404.38,
-        type: 'Warranty Claim',
-        select: false
-      }
-    ]
+    parts: []
   },
   {
     cardName: 'Oil Change',
     id: 36,
     templateID: 28,
     name: 'Replace engine oil and filter, inspect vehicle',
-    description:
-      'Maintenance service/Change engine oil and filter.  Reset oil life indicator if equipped - car/minivan/SUV',
+    description: 'Maintenance service/Change engine oil and filter.  Reset oil life indicator if equipped - car/minivan/SUV',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 0.7,
     averageTime: 2.2,
@@ -1377,7 +1365,7 @@ const serviceList = [
         price: 4.5,
         type: 'Warranty Claim',
         select: false
-      },
+      }
     ]
   }
 ]

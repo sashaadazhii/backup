@@ -87,9 +87,7 @@ export default {
       //===========================================
     }
   },
-  created() {
-
-  },
+  created() {},
   computed: {
     ...mapState({
       order: s => s.workOrder.workOrder
@@ -106,7 +104,12 @@ export default {
     },
     close() {
       this.display = false
-      this.localRequests = []
+      this.localRequests = [
+        {
+          notes: '',
+          time: 0
+        }
+      ]
     },
     save() {
       this.display = false
