@@ -56,6 +56,10 @@
             <div class="sidebar__link-icon"><i class="i-perm_contact_calendar" /></div>
             <div class="sidebar__link-text">Staff Calendar</div>
           </router-link>
+          <router-link class="sidebar__link" to="/capacity-calendar">
+            <div class="sidebar__link-icon"><i class="i-calendar" /></div>
+            <div class="sidebar__link-text">Capacity Calendar</div>
+          </router-link>
           <router-link class="sidebar__link" to="/">
             <div class="sidebar__link-icon"><i class="i-time" /></div>
             <div class="sidebar__link-text">Time Logs</div>
@@ -122,6 +126,11 @@ export default {
       this.open = !this.open
     },
     openNotification(e) {
+      if (this.display) {
+        this.display = false
+        this.target = null
+        return
+      }
       this.target = this.$refs.btn
       this.display = true
     }

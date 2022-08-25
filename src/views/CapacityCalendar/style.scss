@@ -1,0 +1,114 @@
+@import 'src/assets/styles/_variables.scss';
+.calendar {
+  &__wrapper {
+    overflow: hidden;
+    padding: 20px;
+    background-color: $color-grey-bg;
+    display: grid;
+    height: 100%;
+  }
+  &__inner {
+    background-color: $color-white;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+  }
+  &__header {
+    margin-bottom: 16px;
+    display: flex;
+    & > .y-dropdown {
+      width: auto;
+    }
+  }
+  &__list {
+    @include border(16px, $color-grey-flash);
+    background-color: $color-grey-smoke;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(180px, 1fr));
+    overflow: auto;
+  }
+  &__slot {
+  }
+}
+
+.day {
+  padding: 10px;
+  border-right: 1px solid $color-grey-flash;
+  border-bottom: 1px solid $color-grey-flash;
+  display: flex;
+  column-gap: 10px;
+  height: 216px;
+  &:nth-child(7n) {
+    border-right: none;
+  }
+  &:nth-child(n + 29) {
+    border-bottom: none;
+  }
+  &__num {
+    @include font(16px, $color-grey-space, 600);
+    @include border(6px, $color-grey-flash);
+    display: grid;
+    place-items: center;
+    background-color: $color-white;
+    height: 34px;
+    width: 34px;
+    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+  }
+  &__shifts {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+  &__shift {
+  }
+}
+
+.shift {
+  @include border(6px);
+  background-color: $color-white;
+  &__header {
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+  }
+  &__color {
+    height: 10px;
+    width: 10px;
+    border-radius: 2px;
+    &.-purple {
+      background-color: $color-purple;
+    }
+  }
+  &__name {
+    @include font(12px, $color-grey-space, 600);
+  }
+  &__capacity {
+    margin: 6px 8px;
+    height: 4px;
+    background-color: $color-grey-flash;
+    border-radius: 4px;
+    & > span {
+      border-radius: 4px;
+      height: 4px;
+      display: block;
+      &.-green {
+        background-color: $color-green;
+      }
+      &.-orange {
+        background-color: $color-orange;
+      }
+      &.-red {
+        background-color: $color-red;
+      }
+    }
+  }
+  &__body {
+    @include font(12px, $color-grey-space, 500);
+    margin: 6px 8px;
+  }
+}

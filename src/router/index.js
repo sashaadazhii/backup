@@ -321,7 +321,12 @@ const routes = [
     meta: {layout: 'admin', header: 'staffCalendar'},
     component: () => import('@/views/StaffCalendar')
   },
-
+  {
+    path: '/capacity-calendar',
+    name: 'CapacityCalendar',
+    meta: {layout: 'admin', header: 'capacityCalendar'},
+    component: () => import('@/views/CapacityCalendar')
+  },
   {
     path: '/test',
     name: 'TestPage',

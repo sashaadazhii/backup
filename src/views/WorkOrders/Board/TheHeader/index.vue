@@ -120,9 +120,9 @@ export default {
         case 'Day':
           return date.format('DD MMM YYYY')
         case 'Three Days':
-          return `${date.format('DD MMM YYYY')} ~ ${date.add(3, 'day').format('DD MMM YYYY')}`
+          return `${date.format('DD MMM YYYY')} ~ ${date.add(2, 'day').format('DD MMM YYYY')}`
         case 'Five Days':
-          return `${date.format('DD MMM YYYY')} ~ ${date.add(5, 'day').format('DD MMM YYYY')}`
+          return `${date.format('DD MMM YYYY')} ~ ${date.add(4, 'day').format('DD MMM YYYY')}`
       }
     },
     async changeFilters({value}) {

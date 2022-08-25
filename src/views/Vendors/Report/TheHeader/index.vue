@@ -29,7 +29,7 @@
           </div>
         </template>
       </Dropdown>
-      <DatePicker v-model="range" is-range class="field__label-wrap">
+      <DatePicker v-if="period === 'Custom'" v-model="range" is-range class="field__label-wrap">
         <template v-slot="{inputValue, inputEvents}">
           <label class="field__label">
             <span class="field__placeholder">Date range:</span>
@@ -68,7 +68,7 @@
 import {mapState} from 'vuex'
 import Button from '@/components/Yaro/Button'
 import Dropdown from '@/components/Yaro/Dropdown'
-import {Calendar, DatePicker} from 'v-calendar'
+import {DatePicker} from 'v-calendar'
 export default {
   name: 'ReportHeader',
   components: {Button, Dropdown, DatePicker},
@@ -79,7 +79,7 @@ export default {
         end: new Date()
       },
       vendor: null,
-      periods: ['3 days', 'Week', 'This month', '3 months', '6 months', 'Year'],
+      periods: ['3 days', 'Week', 'This month', '3 months', '6 months', 'Year', 'Custom'],
       period: 'This month',
       sortList: ['Day', 'Expense Account', 'Amount', 'HST'],
       sorted: 'Day'

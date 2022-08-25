@@ -53,10 +53,12 @@ export default {
     return {
       actionsList: [
         {
-          label: 'Un-Relate Card from Single Vehicle'
+          label: 'Un-Relate Card from Single Vehicle',
+          command: () => this.openModal('Un-Relate Card from Single Vehicle')
         },
         {
-          label: 'Un-Relate Card from Entire Model Year'
+          label: 'Un-Relate Card from Entire Model Year',
+          command: () => this.openModal('Un-Relate Card from Entire Model Year')
         }
       ],
       statusesChange: [
@@ -97,6 +99,15 @@ export default {
         '-purple': status === 'Approved For Next Visit',
         '-disabled': !this.isStart
       }
+    },
+    openModal(message) {
+      this.$confirm.require({
+        title: 'Hey, wait!',
+        message: `Are you sure, you want to ${message} ?`,
+        acceptLabel: 'Yes',
+        rejectLabel: 'No',
+        icon: 'i-volume_up'
+      })
     }
   }
 }
