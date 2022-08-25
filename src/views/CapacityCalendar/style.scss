@@ -88,7 +88,7 @@
     @include font(12px, $color-grey-space, 600);
   }
   &__capacity {
-    margin: 6px 8px;
+    margin: 0 8px;
     height: 4px;
     background-color: $color-grey-flash;
     border-radius: 4px;
