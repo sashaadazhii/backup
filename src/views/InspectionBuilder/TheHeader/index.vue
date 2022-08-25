@@ -1,68 +1,24 @@
 <template>
   <div class="header__wrapper">
-    <div class="header__inner">
-      <div class="header__top">
-        <div class="header__left">
-          <div class="header__icon"><i class="i-sticky_note"></i></div>
-          <div class="header__title">Inspection Builder</div>
-        </div>
-        <!-- <div class="header__right">
-          <Button icon="i-add_circle" label="Create New Card" @click="openNewCardModal" />
-        </div> -->
-      </div>
-      <!-- <div class="header__middle">
-        <div class="header__left">
-          <div class="header__field field">
-            <label class="field__label">
-              <i class="i-search1" />
-              <input :value="searchParams" class="field__input" type="search" placeholder="Start by typing card name" @input="search" />
-              <i class="i-close" @click="resetInput" />
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="header__bottom">
-        <div class="list-titles">
-          <div class="list-titles__item">Card Name</div>
-          <div class="list-titles__item">Relation</div>
-          <div class="list-titles__item">Service Tracker</div>
-        </div>
-      </div> -->
+    <div class="header__inner" :class="{'-open': sidebarOpen}">
+      <div class="header__icon"><i class="i-sticky_note"></i></div>
+      <div class="header__title">Inspection Builder</div>
     </div>
   </div>
 </template>
 
 <script>
-// import Button from '@/components/Yaro/Button'
-// import AddCardModal from '../AddCardModal'
-// import {mapActions, mapMutations, mapState} from 'vuex'
+import {mapState} from 'vuex'
 import _ from 'lodash'
 
 export default {
   name: 'InspectionBuilderHeader',
-  // components: {Button},
   computed: {
-    // ...mapState({
-    //   searchParams: s => s.company.cardTemplates.searchParams
-    // })
+    ...mapState({
+      sidebarOpen: s => s.modules.sidebarOpen
+    })
   },
   methods: {
-    // ...mapActions({
-    //   fetch: 'company/cardTemplates/fetch'
-    // }),
-    // ...mapMutations({
-    //   setSearch: 'company/cardTemplates/setSearch',
-    //   reset: 'company/cardTemplates/reset'
-    // }),
-    // async search(e) {
-    //   const param = e.target.value
-    //   this.setSearch(param)
-    //   await this.getCards()
-    // },
-    // getCards: _.debounce(async function () {
-    //   this.reset()
-    //   await this.fetch()
-    // }, 300),
     async resetInput() {
       this.setSearch(null)
       await this.getCards()

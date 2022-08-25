@@ -1,6 +1,7 @@
 <template>
-  <div class="sidebar__wrapper" :class="{open}">
-    <div class="toggle" @click="toggle"><i class="i-menu" /></div>
+  <div class="sidebar__wrapper" :class="{open: sidebarOpen}">
+    <div class="toggle" @click="openSidebar"><i class="i-menu_open" /></div>
+    <div class="toggle -right" @click="openSidebar"><i class="i-menu_open" /></div>
     <div class="sidebar__inner">
       <div class="sidebar__header">
         <router-link to="/">
@@ -98,7 +99,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapMutations} from 'vuex'
 import Popup from './Popup'
 
 export default {
@@ -106,7 +107,6 @@ export default {
   components: {Popup},
   data() {
     return {
-      open: false,
       isDev: false, // TODO: only for development / remove later,
       display: false,
       target: null
@@ -118,13 +118,14 @@ export default {
   },
   computed: {
     ...mapState({
-      user: s => s.login.user
+      user: s => s.login.user,
+      sidebarOpen: s => s.modules.sidebarOpen
     })
   },
   methods: {
-    toggle() {
-      this.open = !this.open
-    },
+    ...mapMutations({
+      openSidebar: 'modules/openSidebar'
+    }),
     openNotification(e) {
       if (this.display) {
         this.display = false

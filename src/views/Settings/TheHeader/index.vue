@@ -1,10 +1,8 @@
 <template>
   <div class="header__wrapper">
-    <div class="header__inner">
-      <div class="header__left">
-        <div class="header__icon"><i class="i-settings_menu" /></div>
-        <div class="header__title">Company Settings</div>
-      </div>
+    <div class="header__inner" :class="{'-open': sidebarOpen}">
+      <div class="header__icon"><i class="i-settings_menu" /></div>
+      <div class="header__title">Company Settings</div>
     </div>
   </div>
 </template>
@@ -25,7 +23,8 @@ export default {
   },
   computed: {
     ...mapState({
-      info: s => s.company.settings.settings
+      info: s => s.company.settings.settings,
+      sidebarOpen: s => s.modules.sidebarOpen
     })
   },
   methods: {

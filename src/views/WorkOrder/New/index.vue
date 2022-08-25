@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    <Button label="Cancel" icon="i-circle_close" circle  class="-back" @click="$router.back()"/>
+    <Button label="Cancel" icon="i-circle_close" circle border size="small" class="-back" @click="$router.back()" />
   </div>
 </template>
 

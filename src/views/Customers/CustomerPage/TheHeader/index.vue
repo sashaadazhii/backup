@@ -1,23 +1,17 @@
 <template>
   <div class="header__wrapper">
-    <div class="header__inner">
+    <div class="header__inner" :class="{'-open': sidebarOpen}">
       <div class="header__left">
-        <!-- <span class="header__close"><i class="i-arrow_back" /></span>Customers</router-link> -->
-        <!-- <div class="header__icon"><i class="i-arrow_back" /></div> -->
-        <router-link to="/customers" class="header__title"
-          ><span class="header__close"><i class="i-arrow_back" /></span>Customers</router-link
-        >
+        <div class="header__icon"><i class="i-customers"></i></div>
+        <div class="header__title" @click="$router.back()">Customers</div>
         <div class="header__line">/</div>
         <div class="header__name">{{ customer?.firstName }} {{ customer?.lastName }}</div>
       </div>
       <div class="header__right">
         <router-link :to="`/customers/${customer.uid}/new-vehicle`" class="header__btn">
-          <i class="i-add_circle" />
-          <span>Add New Vehicle</span>
+          <Button label="Add New Vehicle" icon="i-add_circle" size="small" circle />
         </router-link>
-        <button class="header__close" @click="$router.back()">
-          <i class="i-circle_close" />
-        </button>
+        <Button icon="i-circle_close" @click="$router.back()" border circle size="small" />
       </div>
     </div>
   </div>
@@ -26,9 +20,11 @@
 <script>
 import {mapState, mapActions} from 'vuex'
 import _ from 'lodash'
+import Button from '@/components/Yaro/Button'
 
 export default {
   name: 'CustomerPageHeader',
+  components: {Button},
 
   async created() {
     const uid = this.$route.params.uid
@@ -41,7 +37,8 @@ export default {
   computed: {
     ...mapState({
       customer: s => s.company.customers.customer,
-      vehicles: s => s.company.vehicles.vehicles
+      vehicles: s => s.company.vehicles.vehicles,
+      sidebarOpen: s => s.modules.sidebarOpen
     })
   },
   methods: {

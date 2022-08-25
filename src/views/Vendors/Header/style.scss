@@ -1,30 +1,26 @@
 @import 'src/assets/styles/_variables.scss';
+
+@import 'src/assets/styles/header.scss';
+
 .header {
   &__wrapper {
     border-bottom: 1px solid $color-lightgrey;
   }
   &__inner {
-    padding: 12px 20px;
-    padding-left: 60px;
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
     padding-bottom: 0;
-    transform: translateY(1px);
+    transform: translateY(2px);
+    border-bottom: none;
+    padding-left: 12px;
   }
   &__top {
     display: flex;
     align-items: center;
-  }
-  &__title {
-    @include font(20px, $color-space, 600);
-  }
-  &__icon {
-    padding: 5px;
-    background-color: rgba($color-green, 0.1);
-    line-height: 1;
-    border-radius: 50%;
-    margin-right: 12px;
-    line-height: 0;
-    & > i {
-      @include font(20px, $color-green);
+    padding-left: 48px;
+    &.-open {
+      padding-left: 0;
     }
   }
   &__bottom {
@@ -53,3 +49,58 @@
     }
   }
 }
+
+// .header {
+//   &__wrapper {
+//     border-bottom: 1px solid $color-lightgrey;
+//   }
+//   &__inner {
+//     padding: 12px 20px;
+//     padding-left: 60px;
+//     padding-bottom: 0;
+//     transform: translateY(1px);
+//   }
+//   &__top {
+//     display: flex;
+//     align-items: center;
+//   }
+//   &__title {
+//     @include font(20px, $color-space, 600);
+//   }
+//   &__icon {
+//     padding: 5px;
+//     background-color: rgba($color-green, 0.1);
+//     line-height: 1;
+//     border-radius: 50%;
+//     margin-right: 12px;
+//     line-height: 0;
+//     & > i {
+//       @include font(20px, $color-green);
+//     }
+//   }
+//   &__bottom {
+//     display: grid;
+//     overflow: hidden;
+//     width: 100%;
+//     grid-template-columns: auto;
+//     margin-top: 20px;
+//   }
+//   &__nav {
+//     display: flex;
+//     column-gap: 30px;
+//     width: inherit;
+//     overflow-x: auto;
+//     @include hideScrollbar;
+//     &-link {
+//       @include font(14px, $color-grey, 600);
+//       padding-bottom: 14px;
+//       border-bottom: 2px solid transparent;
+//       transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+//       white-space: nowrap;
+//       &.router-link-active {
+//         color: $color-green;
+//         border-color: $color-green;
+//       }
+//     }
+//   }
+// }

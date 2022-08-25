@@ -247,7 +247,6 @@ export default {
       header.scrollLeft = e.target.scrollLeft
     },
     scrollHeader(e) {
-      console.log(e.deltaX)
       const body = this.$refs.body
       body.scrollLeft = body.scrollLeft + e.deltaX
     },

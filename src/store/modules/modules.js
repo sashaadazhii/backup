@@ -8,7 +8,8 @@ export default {
     weather: null,
     vehicleMakes: [],
     vehicleModels: [],
-    vehicleByVin: null
+    vehicleByVin: null,
+    sidebarOpen: false
   },
   mutations: {
     setWeather(state, weather) {
@@ -22,6 +23,9 @@ export default {
     },
     setVehicleByVin(state, vehicle) {
       state.vehicleByVin = vehicle
+    },
+    openSidebar(state) {
+      state.sidebarOpen = !state.sidebarOpen
     }
   },
   actions: {

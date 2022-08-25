@@ -97,7 +97,6 @@ export default {
         }
         this.days.push(day)
       }
-      console.log(this.days)
     },
     changeMonth({value: month}) {
       this.days.length = 0

@@ -1,21 +1,24 @@
 <template>
   <div class="header__wrapper">
-    <div class="header__inner">
-      <div class="header__top">
-        <div class="header__left">
-          <div class="header__icon"><i class="i-customers"></i></div>
-          <div class="header__title">Customers</div>
-        </div>
-      </div>
+    <div class="header__inner" :class="{'-open': sidebarOpen}">
+      <div class="header__icon"><i class="i-customers"></i></div>
+      <div class="header__title">Customers</div>
     </div>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
   name: 'CustomersPageHeader',
   data() {
     return {}
+  },
+  computed: {
+    ...mapState({
+      sidebarOpen: s => s.modules.sidebarOpen
+    })
   }
 }
 </script>

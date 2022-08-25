@@ -1,18 +1,22 @@
 <template>
   <div class="header__wrapper">
-    <div class="header__inner">
-      <div class="header__left">
-        <div class="header__icon"><i class="i-calendar"></i></div>
-        <div class="header__title">Capacity Calendar</div>
-        <div class="header__nav"></div>
-      </div>
+    <div class="header__inner" :class="{'-open': sidebarOpen}">
+      <div class="header__icon"><i class="i-calendar"></i></div>
+      <div class="header__title">Capacity Calendar</div>
     </div>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
-  name: 'CapacityCalendarHeader'
+  name: 'CapacityCalendarHeader',
+  computed: {
+    ...mapState({
+      sidebarOpen: s => s.modules.sidebarOpen
+    })
+  }
 }
 </script>
 <style lang="scss" scoped>

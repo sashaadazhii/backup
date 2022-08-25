@@ -1,72 +1,13 @@
 @import 'src/assets/styles/_variables.scss';
+
+@import 'src/assets/styles/header.scss';
+
 .header {
   &__inner {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 12px 20px;
-    padding-left: 60px;
-    border-bottom: 1px solid $color-lightgrey;
-  }
-  &__icon {
-    padding: 5px;
-    background-color: rgba($color-green, 0.1);
-    line-height: 1;
-    border-radius: 50%;
-    margin-right: 12px;
-    line-height: 0;
-    & > i {
-      @include font(20px, $color-green);
-    }
-  }
-  &__btn {
-    padding: 6px;
-    padding-right: 14px;
-    background-color: $color-green;
-    border-radius: 48px;
-    display: flex;
-    align-items: center;
-    & > i {
-      @include font(20px, $color-white);
-      margin-right: 8px;
-    }
-    & > span {
-      @include font(14px, $color-white, 400);
-      margin-bottom: 1px;
-    }
   }
   &__left {
     display: flex;
     align-items: center;
   }
-  &__right {
-    display: flex;
-    align-items: center;
-  }
-  &__title {
-    @include font(20px, $color-space, 600);
-  }
-  &__nav {
-    display: flex;
-    align-items: center;
-    column-gap: 10px;
-    margin-left: 24px;
-
-    // &-link {
-    //   display: flex;
-    //   align-items: center;
-    //   column-gap: 8px;
-    //   @include font(14px, $color-grey, 600);
-    //   @include border(10px);
-    //   padding: 10px;
-    //   & > i {
-    //     font-size: 16px;
-    //   }
-    // }
-  }
-}
-
-.router-link-active {
-  border-color: $color-green;
-  color: $color-green;
 }

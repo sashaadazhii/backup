@@ -1,6 +1,6 @@
 <template>
   <div class="flow__wrapper">
-    <div class="flow__header">
+    <div class="flow__header"  :class="{'-open': sidebarOpen}">
       <i class="i-open_with"></i>
       <span>Flows</span>
     </div>
@@ -36,8 +36,15 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
-  name: 'Flows'
+  name: 'Flows',
+  computed: {
+    ...mapState({
+      sidebarOpen: s => s.modules.sidebarOpen
+    })
+  }
 }
 </script>
 
