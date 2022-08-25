@@ -16,6 +16,7 @@ export default {
     ...mapState({
       sidebarOpen: s => s.modules.sidebarOpen
     })
+
   }
 }
 </script>
