@@ -124,7 +124,7 @@ const serviceList = [
     warrantyType: 'global',
     warranty: {
       time: 10,
-      range: 30_000
+      range: 30000
     },
     select: false,
     parts: [
@@ -165,7 +165,7 @@ const serviceList = [
     warrantyType: 'custom',
     warranty: {
       time: 48,
-      range: 140_000
+      range: 140000
     },
     select: false,
     parts: [
