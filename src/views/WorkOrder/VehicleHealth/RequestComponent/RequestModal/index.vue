@@ -103,43 +103,15 @@ export default {
         {label: 'Done', command: () => this.changeStatus({status: 'Done', id: this.request.id})},
         {label: 'Unable to reproduce', command: () => this.changeStatus({status: 'Unable to reproduce', id: this.request.id})}
       ],
-      status: null,
-      cardsList: [
-        {
-          id: 1,
-          name: 'Fuel filter',
-          odometerTrack: 80000,
-          timeTrackLength: 18,
-          relations: 'All Vehicles',
-          select: false
-        },
-        {
-          id: 2,
-          name: 'Oil filter',
-          odometerTrack: 80000,
-          timeTrackLength: 18,
-          relations: 'Toyota Corolla',
-          select: false
-        },
-        {
-          id: 3,
-          name: 'Air filter',
-          odometerTrack: 80000,
-          timeTrackLength: 18,
-          relations: 'Tesla Model S',
-          select: false
-        }
-      ]
+      status: null
     }
-  },
-  async created() {
-    // await this.fetchCards()
   },
   computed: {
     ...mapState({
       request: s => s.requests.request,
       requests: s => s.requests.requests,
-      techList: s => s.company.users.users.filter(u => u.role === 'technician')
+      techList: s => s.company.users.users.filter(u => u.role === 'technician'),
+      cardsList: s => s.company.cards.cards
     }),
     requestIdx() {
       const id = this.request.id

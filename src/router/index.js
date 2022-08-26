@@ -328,6 +328,13 @@ const routes = [
     component: () => import('@/views/CapacityCalendar')
   },
   {
+    path: '/payroll-overview',
+    name: 'PayrollOverview',
+    meta: {layout: 'admin', header: 'payrollOverview'},
+    component: () => import('@/views/PayrollOverview')
+  },
+
+  {
     path: '/test',
     name: 'TestPage',
     meta: {layout: 'admin', header: 'Test'},

@@ -1,16 +1,17 @@
 <template>
-  <div class="card__wrapper" :class="{'-select': selected}">
+  <div class="card__wrapper" :class="{'-select': selected}" @click.self="openCard">
     <i v-if="selected" class="i-device_hub blue" />
     <i v-if="selected" class="i-check_circle green" @click="$emit('select', card)" />
     <i v-else class="i-add_circle grey" @click="$emit('select', card)" />
     <Label label="All Vehicles" size="small" circle />
-    <span>Brake Fluid</span>
-    <Label label="48,000 KM / 24 Months" border size="small" class="-light" />
+    <span>{{ card.name }}</span>
+    <Label :label="`${card.odometerTrack.toLocaleString('fr-FR')} KM / ${card.service} Months`" border size="small" class="-light" />
   </div>
 </template>
 
 <script>
 import Label from '@/components/Yaro/Label'
+import CardPage from '../../../CardPage'
 
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
@@ -41,7 +42,19 @@ export default {
     }),
     ...mapMutations({
       // selectAll: 'company/cards/selectAll',
-    })
+      setCard: 'company/cards/setCard'
+    }),
+    openCard() {
+      this.setCard(this.card)
+      this.$vfm.show({
+        component: CardPage,
+        bind: {
+          name: 'CardPage',
+          'click-to-close': false,
+          'esc-to-close': true
+        }
+      })
+    }
   }
 }
 </script>

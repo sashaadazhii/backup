@@ -11,12 +11,13 @@
 <script>
 import HeaderBoard from '@/views/WorkOrders/TheHeader'
 import HeaderStaff from '@/views/StaffCalendar/Header'
+import HeaderPayroll from '@/views/PayrollOverview/Header'
 import HeaderCapacity from '@/views/CapacityCalendar/Header'
 import TheSidebar from '@/components/Sidebar'
 
 export default {
   name: 'adminLayout',
-  components: {HeaderBoard, TheSidebar, HeaderStaff, HeaderCapacity},
+  components: {HeaderBoard, TheSidebar, HeaderStaff, HeaderCapacity, HeaderPayroll},
   computed: {
     headerName() {
       return this.$route.meta.header
@@ -29,6 +30,8 @@ export default {
           return HeaderStaff
         case 'capacityCalendar':
           return HeaderCapacity
+        case 'payrollOverview':
+          return HeaderPayroll
         default:
           return null
       }

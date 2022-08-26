@@ -49,7 +49,7 @@
             <div class="sidebar__link-icon"><i class="i-open_with" /></div>
             <div class="sidebar__link-text">Flows</div>
           </router-link>
-          <router-link class="sidebar__link" to="/">
+          <router-link class="sidebar__link" to="/payroll-overview">
             <div class="sidebar__link-icon"><i class="i-monetization_on" /></div>
             <div class="sidebar__link-text">Payroll Overview</div>
           </router-link>
