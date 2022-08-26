@@ -91,7 +91,7 @@ export default {
   methods: {
     itemClick(item) {
       if (item.disabled) return
-      if (item.command) item.command()
+      if (item.command) item.command(item)
       this.hide()
     },
     toggle(event) {

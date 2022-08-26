@@ -12,6 +12,10 @@
       <div class="modal__inner">
         <Block v-for="(group, idx) of questions" :key="idx" :group="group" :idx="idx" />
       </div>
+      <div class="modal__btns">
+        <Button class="modal__btn" label="Cancel" border @click="close" />
+        <Button class="modal__btn" label="Save" @click="save" />
+      </div>
     </div>
   </vue-final-modal>
 </template>
@@ -20,7 +24,7 @@
 import Button from '@/components/Yaro/Button'
 import Block from './Block'
 import Edit from '../Edit'
-import {mapState} from 'vuex'
+import {mapState, mapMutations} from 'vuex'
 
 export default {
   name: 'QuestionsModal',
@@ -31,6 +35,9 @@ export default {
     })
   },
   methods: {
+    ...mapMutations({
+      show: 'workOrder/questions/show'
+    }),
     open() {
       this.$vfm.hide('Questions')
       this.$vfm.show({
@@ -39,7 +46,12 @@ export default {
           name: 'Edit'
         }
       })
-    }
+    },
+    save() {
+      this.show(true)
+      this.$vfm.hide('Questions')
+    },
+    close() {}
   }
 }
 </script>

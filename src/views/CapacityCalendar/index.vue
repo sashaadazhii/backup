@@ -15,10 +15,21 @@
           </template>
         </Dropdown>
       </div>
+      <div class="calendar__titles">
+        <div class="calendar__title">Monday</div>
+        <div class="calendar__title">Tuesday</div>
+        <div class="calendar__title">Wednesday</div>
+        <div class="calendar__title">Thursday</div>
+        <div class="calendar__title">Friday</div>
+        <div class="calendar__title">Saturday</div>
+        <div class="calendar__title">Sunday</div>
+      </div>
       <div class="calendar__list">
         <div v-for="(day, idx) of days" :key="idx" class="calendar__slot day">
-          <div class="day__num">{{ day.num }}</div>
-          <div class="day__shifts">
+          <div v-if="day?.num" class="day__num" :class="{'day__num--active': day.date.format('DD MM YYYY') === dayjs().format('DD MM YYYY')}">
+            {{ day.num }}
+          </div>
+          <div v-if="day?.shifts" class="day__shifts">
             <div v-for="(shift, idx) of day.shifts" :key="idx" class="day__shift shift">
               <div class="shift__header">
                 <div class="shift__name">{{ shift.name }}</div>
@@ -44,7 +55,7 @@ export default {
     return {
       dayjs,
       days: [],
-      month: {id: 6, name: 'August'},
+      month: {id: 7, name: 'August'},
       months: [
         {id: 0, name: 'January'},
         {id: 1, name: 'February'},
@@ -67,6 +78,9 @@ export default {
   methods: {
     createCalendar(month = 7, year = 2022) {
       const daysLength = dayjs().year(year).month(month).daysInMonth()
+      const startDay = dayjs().year(year).month(month).startOf('M').day()
+      if (startDay === 0) this.days.length = 6
+      else this.days.length = startDay - 1
       for (let i = 1; i <= daysLength; i++) {
         const day = {
           date: dayjs().year(year).month(month).date(i),

@@ -32,7 +32,19 @@
       </div>
       <div class="card__progress-title">{{ card.odometerTrack.toLocaleString('fr-FR') }} KM / {{ card.timeTrackLength }} Month</div>
     </div>
-    <Menu :list="actionsList" />
+    <Menu v-if="isStart" :list="actionsList">
+      <!-- <template #menu>
+        <Label
+          :label="card.approvalStatus"
+          size="small"
+          icon="i-rp_done"
+          circle
+          class="card__label -shadow -hover"
+          :class="labelClass(card.approvalStatus)"
+          iconSize="8px"
+        />
+      </template> -->
+    </Menu>
   </div>
 </template>
 
@@ -54,7 +66,10 @@ export default {
       actionsList: [
         {
           label: 'Un-Relate Card from Single Vehicle',
-          command: () => this.openModal('Un-Relate Card from Single Vehicle')
+          id: 0,
+          command: () => {
+            this.openModal('Un-Relate Card from Single Vehicle')
+          }
         },
         {
           label: 'Un-Relate Card from Entire Model Year',
@@ -106,7 +121,10 @@ export default {
         message: `Are you sure, you want to ${message} ?`,
         acceptLabel: 'Yes',
         rejectLabel: 'No',
-        icon: 'i-volume_up'
+        icon: 'i-volume_up',
+        accept: () => {
+          console.log(this.card)
+        }
       })
     }
   }

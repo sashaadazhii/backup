@@ -53,4 +53,12 @@
     @include hideScrollbar;
     padding-bottom: 20px;
   }
+  &__btns {
+    display: flex;
+    column-gap: 18px;
+    margin-bottom: 20px;
+    & > button {
+      width: 100%;
+    }
+  }
 }

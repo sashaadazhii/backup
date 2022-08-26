@@ -23,7 +23,7 @@ const cardsList = {
       cardRelationType: 'all',
       description: '',
       name: 'Cooling System Service',
-      odometerTrack: 150000,
+      odometerTrack: 150_000,
       timeTrackLength: 84,
       relations: [],
       templateID: 3

@@ -53,9 +53,52 @@ export default {
             list: ['off road', 'highway', 'when turning']
           }
         ]
+      },
+      {
+        title: 'Check Engine Light',
+        time: 0,
+        id: 12412492,
+        blocks: [
+          {
+            type: 'Input',
+            title: 'First off,  how long has the light been on in your vehicle?',
+            placeholder: 'Enter Answer',
+            value: null,
+            list: []
+          },
+          {
+            type: 'Select',
+            title: 'Is it consostent or does it go off and on occasionally?',
+            placeholder: 'Enter Answer',
+            value: null,
+            list: ['Consistent', 'Occasional']
+          }
+        ]
+      },
+      {
+        title: 'Alignment & Tire Wearing',
+        time: 0,
+        id: 12400492,
+        blocks: [
+          {
+            type: 'Drop-Down',
+            title: 'Where are your tires wearing?',
+            placeholder: 'Chose option',
+            value: null,
+            list: ['Top', 'Side']
+          },
+          {
+            type: 'Select',
+            title: 'Which way does it pull?',
+            placeholder: 'Chose option',
+            value: null,
+            list: ['Yes', 'No']
+          }
+        ]
       }
     ],
-    activeQuestions: {}
+    activeQuestions: {},
+    show: false
   },
   mutations: {
     set(state, questions) {
@@ -71,6 +114,9 @@ export default {
     update(state, group) {
       const idx = state.questions.findIndex(q => q.id === group.id)
       state.questions.splice(idx, 1, group)
+    },
+    show(state, status) {
+      state.show = status
     }
   },
   actions: {}

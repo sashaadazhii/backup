@@ -38,18 +38,23 @@
 import Switch from '@/components/Yaro/Switch'
 import Ripple from '@/components/Yaro/ripple'
 import Questions from './Modal'
+import {mapMutations, mapState} from 'vuex'
+
 export default {
   name: 'WorkOrderGeneralQuestions',
   components: {Switch},
-  data() {
-    return {
-      question: false
-    }
+  computed: {
+    ...mapState({
+      question: s => s.workOrder.questions.show
+    })
   },
   methods: {
+    ...mapMutations({
+      show: 'workOrder/questions/show'
+    }),
     changeQuestions() {
       if (this.question) {
-        this.question = false
+        this.show(false)
       } else this.openModal()
     },
     openModal() {
