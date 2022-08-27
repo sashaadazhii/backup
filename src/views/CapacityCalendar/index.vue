@@ -79,6 +79,7 @@ export default {
     createCalendar(month = 7, year = 2022) {
       const daysLength = dayjs().year(year).month(month).daysInMonth()
       const startDay = dayjs().year(year).month(month).startOf('M').day()
+
       if (startDay === 0) this.days.length = 6
       else this.days.length = startDay - 1
       for (let i = 1; i <= daysLength; i++) {

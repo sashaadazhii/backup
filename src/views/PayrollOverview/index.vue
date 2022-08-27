@@ -16,7 +16,7 @@
             </div>
           </template>
         </Dropdown>
-        <Dropdown v-model="period" :options="periods" size="medium">
+        <Dropdown v-model="period" :options="periods" size="medium" @change="setPeriod">
           <template #value="{value}">
             <div class="y-dropdown-label-custom">
               <span class="-title">Time Period:</span>
@@ -32,14 +32,7 @@
         </Dropdown>
       </div>
       <div class="payroll__body">
-        <div v-for="employee of employees" :key="employee.id" class="employee__wrapper">
-          <Label :alias="`${employee.firstName[0]}${employee.lastName[0]}`" circle size="mini" class="-grey" />
-          <div class="employee__name">{{ employee.firstName }} {{ employee.lastName }}</div>
-          <div class="employee__time" :class="{'-empty': employee.hours === 0}">
-            <i class="i-time" />
-            <span>{{ employee.hours }} hr</span>
-          </div>
-        </div>
+        <Employee v-for="employee of employees" :key="employee.id" :employee="employee" />
       </div>
     </div>
   </div>
@@ -47,28 +40,37 @@
 
 <script>
 import Dropdown from '@/components/Yaro/Dropdown'
-import Label from '@/components/Yaro/Label'
+import Employee from './Employee'
+import dayjs from 'dayjs'
+
 import {mapState, mapActions} from 'vuex'
 
 export default {
   name: 'WorkOrderCalendar',
-  components: {Dropdown, Label},
+  components: {Dropdown, Employee},
   data() {
     return {
       filter: {firstName: 'All'},
-      period: 'This month',
-      periods: ['3 days', 'Week', 'This month', '3 months', '6 months', 'Year', 'Custom'],
+      period: 'Year',
+      periods: ['3 days', 'Week', 'This month', '3 months', '6 months', 'Year'],
       employees: []
     }
   },
   async created() {
     if (!this.users.length) await this.fetchUsers()
-    this.employees = this.users
+    this.employees = this.users.map(u => ({...u, days: this.createDays()}))
   },
   computed: {
     ...mapState({
       company: s => s.company.settings.settings,
-      users: s => s.company.users.users.filter(u => u.role === 'technician').map(u => ({...u, hours: Math.floor(Math.random() * 11)})),
+      users: s =>
+        s.company.users.users
+          .filter(u => u.role === 'technician')
+          .map(u => ({
+            ...u
+            // hours: Math.floor(Math.random() * 11),
+            // days: this.createDays()
+          })),
       filters: s => {
         const users = [...s.company.users.users.filter(u => u.role === 'technician')]
         users.unshift({firstName: 'All'})
@@ -86,6 +88,62 @@ export default {
         return
       }
       this.employees = this.users.filter(u => u.firstName === value.firstName)
+    },
+    createDays() {
+      const days = []
+      if (this.period === '3 days') {
+        for (let i = 0; i < 3; i++) {
+          const day = {
+            hours: Math.floor(Math.random() * 11) + 1,
+            date: dayjs().add(i, 'day').format('DD MMM YYYY')
+          }
+          days.push(day)
+        }
+      } else if (this.period === 'Week') {
+        for (let i = 0; i < 7; i++) {
+          const day = {
+            hours: Math.floor(Math.random() * 11) + 1,
+            date: dayjs().startOf('w').add(i, 'day').format('DD MMM YYYY')
+          }
+          days.push(day)
+        }
+      } else if (this.period === 'This month') {
+        for (let i = 0; i < dayjs().daysInMonth(); i++) {
+          const day = {
+            hours: Math.floor(Math.random() * 11) + 1,
+            date: dayjs().startOf('M').add(i, 'day').format('DD MMM YYYY')
+          }
+          days.push(day)
+        }
+      } else if (this.period === '3 months') {
+        for (let i = 0; i < 3; i++) {
+          const day = {
+            hours: Math.floor(Math.random() * 101) + 1,
+            date: dayjs().add(i, 'M').format('MMM YYYY')
+          }
+          days.push(day)
+        }
+      } else if (this.period === '6 months') {
+        for (let i = 0; i < 6; i++) {
+          const day = {
+            hours: Math.floor(Math.random() * 101) + 1,
+            date: dayjs().add(i, 'M').format('MMM YYYY')
+          }
+          days.push(day)
+        }
+      } else if (this.period === 'Year') {
+        for (let i = 0; i < 12; i++) {
+          const day = {
+            hours: Math.floor(Math.random() * 101) + 1,
+            date: dayjs().startOf('y').add(i, 'M').format('MMM YYYY')
+          }
+          days.push(day)
+        }
+      }
+      return days
+    },
+    setPeriod() {
+      this.employees = this.users.map(u => ({...u, days: this.createDays()}))
     }
   }
 }

@@ -6,12 +6,14 @@
     padding: 20px;
     background-color: $color-grey-bg;
     height: 100%;
-    // display: grid;
-    // grid-template-rows: auto 1fr;
+    display: grid;
   }
   &__inner {
     background-color: $color-white;
     border-radius: 16px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
   }
   &__header {
     display: flex;
@@ -23,45 +25,6 @@
     }
   }
   &__body {
-  }
-}
-
-.employee {
-  &__wrapper {
-    display: grid;
-    grid-template-columns: 20px 1fr auto;
-    align-items: center;
-    column-gap: 8px;
-    padding: 16px;
-    transition: background-color 0.2s ease-in-out;
-    &:not(:last-child) {
-      border-bottom: 1px solid $color-grey-flash;
-    }
-    &:hover {
-      background-color: $color-grey-smoke;
-    }
-    & > .-grey {
-      background-color: $color-grey;
-    }
-  }
-  &__name {
-    @include font(14px, $color-grey-dark, 600);
-  }
-  &__time {
-    display: flex;
-    align-items: center;
-    column-gap: 6px;
-    & > i {
-      @include font(16px, $color-bluegreen);
-    }
-    & > span {
-      @include font(14px, $color-grey-dark, 700);
-    }
-    &.-empty {
-      & > i,
-      & > span {
-        color: $color-grey;
-      }
-    }
+    overflow: auto;
   }
 }

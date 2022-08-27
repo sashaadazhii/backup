@@ -1,0 +1,79 @@
+@import 'src/assets/styles/_variables.scss';
+
+.employee {
+  &__wrapper {
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-grey-flash;
+    }
+  }
+  &__inner {
+    display: grid;
+    grid-template-columns: 20px 1fr auto 28px;
+    align-items: center;
+    column-gap: 8px;
+    padding: 16px;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $color-grey-smoke;
+    }
+    & > .-grey {
+      background-color: $color-grey;
+    }
+  }
+  &__name {
+    @include font(14px, $color-grey-dark, 600);
+  }
+  &__time {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    & > i {
+      @include font(16px, $color-bluegreen);
+    }
+    & > span {
+      @include font(14px, $color-grey-dark, 700);
+    }
+    &.-empty {
+      & > i,
+      & > span {
+        color: $color-grey;
+      }
+    }
+  }
+  &__btn {
+    height: 24px;
+    width: 24px !important;
+  }
+  &__days {
+  }
+  &__day {
+    display: grid;
+    grid-template-columns: 16px 1fr auto;
+    column-gap: 10px;
+    padding: 16px;
+    align-items: center;
+    background-color: $color-grey-smoke;
+    border-top: 1px solid $color-grey-flash;
+  }
+}
+
+.day {
+  &__icon {
+    @include font(16px, $color-grey);
+  }
+  &__date {
+    @include font(14px, $color-grey-space, 600);
+  }
+  &__hours {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    & > i {
+      @include font(16px, $color-grey);
+    }
+    & > span {
+      @include font(14px, $color-grey-space, 700);
+    }
+  }
+}
