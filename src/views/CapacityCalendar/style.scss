@@ -25,16 +25,16 @@
   }
   &__list {
     @include border(16px, $color-grey-flash);
-    background-color: $color-grey-smoke;
+    background-color: $color-grey-bg;
     display: grid;
-    grid-template-columns: repeat(7, minmax(180px, 1fr));
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     overflow: auto;
   }
   &__slot {
   }
   &__titles {
     display: grid;
-    grid-template-columns: repeat(7, minmax(180px, 1fr));
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     @include font(14px, $color-grey, 600);
     text-transform: uppercase;
     margin-bottom: 12px;
@@ -50,13 +50,15 @@
   border-bottom: 1px solid $color-grey-flash;
   display: flex;
   column-gap: 10px;
-  height: 216px;
   &:nth-child(7n) {
     border-right: none;
   }
   // &:nth-child(n + 29) {
   //   border-bottom: none;
   // }
+  &--active {
+    // background-color: $color-grey;
+  }
   &__num {
     @include font(16px, $color-grey-space, 600);
     @include border(6px, $color-grey-flash);
@@ -67,7 +69,9 @@
     width: 34px;
     box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
     &--active {
+      background-color: $color-green;
       border-color: $color-green;
+      color: $color-white;
       box-shadow: 0px 3px 0px rgba($color-green, 0.1);
     }
   }

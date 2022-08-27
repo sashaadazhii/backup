@@ -21,23 +21,24 @@
         <Label icon="i-time blue" iconSize="22px" :label="card.time" border circle size="large" class="-shadow" />
         <Button icon="i-circle_close" border circle iconSize="20px" size="small" @click="close" />
       </div>
-      <div class="modal__main">
+      <div class="modal__main" :class="{'-full': block === 'Parts'}">
         <div class="modal__main-blocks blocks">
-          <div class="blocks__title">{{ card.name }}</div>
-          <div class="blocks__subtitle">
+          <div v-if="block === 'General'" class="blocks__title">{{ card.name }}</div>
+          <div v-if="block === 'General'" class="blocks__subtitle">
             {{ card.description }}
           </div>
-          <div class="blocks__nav">
+          <!-- <div class="blocks__nav">
             <button class="blocks__btn" :class="{'-green': block === 'General'}" @click="block = 'General'">General</button>
             <button class="blocks__btn" :class="{'-green': block === 'Notes'}" @click="block = 'Notes'">Notes</button>
             <button class="blocks__btn" :class="{'-green': block === 'Service'}" @click="block = 'Service'">Service Tracking</button>
             <button class="blocks__btn" :class="{'-green': block === 'Warranty'}" @click="block = 'Warranty'">Warranty</button>
-          </div>
+          </div> -->
           <div class="blocks__inner">
             <component :is="block" />
+            <!-- <General /> -->
           </div>
         </div>
-        <div class="modal__main-requests">
+        <div v-if="block === 'General'" class="modal__main-requests">
           <div class="requests__row">
             <div class="requests__row-title">Card Status:</div>
             <Menu :list="statusesChange" :disabled="!isStart">
@@ -140,6 +141,7 @@ import Multiselect from '@/components/Yaro/Multiselect'
 import Button from '@/components/Yaro/Button'
 import Label from '@/components/Yaro/Label'
 import General from './General'
+import Parts from './Parts'
 import Notes from './Notes'
 import Service from './Service'
 import Warranty from './Warranty'
@@ -148,7 +150,7 @@ import Menu from '@/components/Yaro/Menu'
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'CardPage',
-  components: {Button, Label, General, Notes, Service, Warranty, Multiselect, Menu},
+  components: {Button, Label, General, Multiselect, Menu, Parts},
   data() {
     return {
       block: 'General',
@@ -174,12 +176,17 @@ export default {
       techList: s => s.company.users.users.filter(u => u.role === 'technician'),
       card: s => s.company.cards.card,
       cards: s => s.company.cards.cards,
-      isStart: s => s.workOrder.isStart
+      isStart: s => s.workOrder.isStart,
+      activeService: s => s.company.cannedServices.activeService
     })
   },
   watch: {
-    block() {
-      this.setActiveService({})
+    // block() {
+    // this.setActiveService({})
+    // },
+    activeService(s) {
+      if (s.id) this.block = 'Parts'
+      else this.block = 'General'
     }
   },
   methods: {

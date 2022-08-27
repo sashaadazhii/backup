@@ -77,6 +77,10 @@
       display: grid;
       grid-template-rows: auto auto auto 1fr;
     }
+    &.-full {
+      padding-top: 0;
+      grid-template-columns: 1fr;
+    }
   }
 }
 .blocks {

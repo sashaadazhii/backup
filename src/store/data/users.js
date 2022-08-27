@@ -30,6 +30,30 @@ const users = [
     lastName: 'Macron',
     role: 'service-advisor',
     email: 'emma@macron.net'
-  }
+  },
+  {
+    id: 23425,
+    companyID: 1,
+    firstName: 'Soham',
+    lastName: 'Lee',
+    role: 'technician',
+    email: 'soham.lee@example.com'
+  },
+  {
+    id: 23495,
+    companyID: 1,
+    firstName: 'Dennis',
+    lastName: 'Fuller',
+    role: 'technician',
+    email: 'dennis.fuller@example.com'
+  },
+  {
+    id: 23415,
+    companyID: 1,
+    firstName: 'Wilma',
+    lastName: 'Reid',
+    role: 'technician',
+    email: 'wilma.reid@example.com'
+  },
 ]
 export {users}

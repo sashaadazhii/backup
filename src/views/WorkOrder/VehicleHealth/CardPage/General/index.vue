@@ -1,41 +1,37 @@
 <template>
   <div class="block__wrapper">
-    <Parts v-if="activeService.id" />
-    <template v-else>
-      <div class="block__body">
-        <div v-if="chooseServices.length" class="block__services services">
-          <div class="block__header">
-            <div class="block__title">Choosen Canned Service</div>
-          </div>
-          <Service v-for="service of chooseServices" :key="service.id" :service="service" />
+    <div class="block__body">
+      <div v-if="chooseServices.length" class="block__services services">
+        <div class="block__header">
+          <div class="block__title">Choosen Canned Service</div>
         </div>
-        <div v-if="services.length" class="block__services services">
-          <div class="block__header">
-            <div class="block__title">Canned Services</div>
-            <button class="block__btn"><i class="i-add_circle" /><span>Create New Canned Service</span></button>
-          </div>
-          <Service v-for="service of services" :key="service.id" :service="service" />
-        </div>
-        <div v-if="history.length" class="block__history history">
-          <div class="block__header">
-            <div class="block__title">Service History</div>
-          </div>
-          <History v-for="card of history" :key="card.id" :card="card" />
-        </div>
+        <Service v-for="service of chooseServices" :key="service.id" :service="service" />
       </div>
-    </template>
+      <div v-if="services.length" class="block__services services">
+        <div class="block__header">
+          <div class="block__title">Canned Services</div>
+          <button class="block__btn"><i class="i-add_circle" /><span>Create New Canned Service</span></button>
+        </div>
+        <Service v-for="service of services" :key="service.id" :service="service" />
+      </div>
+      <div v-if="history.length" class="block__history history">
+        <div class="block__header">
+          <div class="block__title">Service History</div>
+        </div>
+        <History v-for="card of history" :key="card.id" :card="card" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Parts from './Parts'
 import Service from './Service'
 import History from './History'
 import {mapState, mapActions} from 'vuex'
 
 export default {
   name: 'CardPageGeneral',
-  components: {Parts, Service, History},
+  components: {Service, History},
   data() {
     return {}
   },
