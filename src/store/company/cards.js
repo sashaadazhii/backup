@@ -74,6 +74,9 @@ export default {
         if (approvalStatusList.length) return approvalStatusList.some(status => status === card.approvalStatus)
         return true
       })
+    },
+    remove(state, id) {
+      state.cards = state.cards.filter(c => c.id !== id)
     }
   },
   actions: {

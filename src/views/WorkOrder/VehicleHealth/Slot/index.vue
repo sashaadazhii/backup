@@ -101,7 +101,8 @@ export default {
     ...mapMutations({
       select: 'company/cards/select',
       changeStatus: 'company/cards/changeStatus',
-      changeApprovalStatus: 'company/cards/changeApprovalStatus'
+      changeApprovalStatus: 'company/cards/changeApprovalStatus',
+      remove: 'company/cards/remove'
     }),
     labelClass(status) {
       return {
@@ -123,7 +124,7 @@ export default {
         rejectLabel: 'No',
         icon: 'i-volume_up',
         accept: () => {
-          console.log(this.card)
+          this.remove(this.card.id)
         }
       })
     }
