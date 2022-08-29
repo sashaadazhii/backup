@@ -70,7 +70,7 @@
         <div class="body__footer footer">
           <!-- :modelValue="searchParams" -->
           <!-- @update:modelValue="searchVendors" -->
-          <Input placeholder="Search by card to add" iconLeft="i-search1" type="search" />
+          <Input v-model="search" placeholder="Search by card to add" iconLeft="i-search1" type="search" />
           <div class="footer__cards cards">
             <div class="cards__title">ALL CARDS RELATED</div>
             <div class="cards__list">
@@ -103,8 +103,13 @@ export default {
         {label: 'Done', command: () => this.changeStatus({status: 'Done', id: this.request.id})},
         {label: 'Unable to reproduce', command: () => this.changeStatus({status: 'Unable to reproduce', id: this.request.id})}
       ],
-      status: null
+      status: null,
+      search: ''
     }
+  },
+  mounted() {
+    console.log(this.request)
+    console.log(this.cardsList.length, this.cards.length)
   },
   computed: {
     ...mapState({
@@ -118,7 +123,8 @@ export default {
       return this.requests.findIndex(r => r.id === id) + 1
     },
     cards() {
-      return this.cardsList.filter(card => this.request.cards.every(c => !(c.id === card.id)))
+      return this.cardsList.filter(c => c.name.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()))
+      // return this.cardsList.filter(card => this.request.cards.every(c => !(c.id === card.id)))
     }
   },
   methods: {

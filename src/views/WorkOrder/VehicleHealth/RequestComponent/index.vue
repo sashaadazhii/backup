@@ -1,9 +1,9 @@
 <template>
   <div class="request__wrapper" @click="open">
     <div class="request__header">
-      <Label :label="request.status" border class="request__label" />
+      <Label :label="request.status" border class="request__label" size="small" />
       <div class="tech__list">
-        <Label v-for="tech of request.techs" :key="tech.id" :alias="`${tech.firstName[0]}${tech.lastName[0]}`" circle class="tech__label" />
+        <Label v-for="tech of request.techs" :key="tech.id" :alias="`${tech.firstName[0]}${tech.lastName[0]}`" circle class="tech__label"  size="small"/>
       </div>
     </div>
     <div class="request__main">
