@@ -1,7 +1,7 @@
 <template>
   <div class="board__wrapper">
     <TheHeader @changeDay="changeDay" />
-    <div v-if="day.type === 'Day'" class="board__inner">
+    <div v-if="day.type === 'Today' || day.type === 'Custom'" class="board__inner">
       <div class="board__header">
         <div class="board__title">
           Not Scheduled <span v-if="orders?.unscheduled" class="y-badge">{{ orders?.unscheduled.length }}</span>
@@ -106,7 +106,7 @@ export default {
   data() {
     return {
       dayjs,
-      day: {type: 'Day'}
+      day: {type: 'Today'}
     }
   },
   async created() {
