@@ -141,3 +141,46 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+
+.y-number {
+  &__wrapper {
+  }
+  &__title {
+    @include font(14px, $color-grey-dark, 600);
+    margin-bottom: 12px;
+  }
+  &__inner {
+    background-color: $color-grey-smoke;
+    @include border(12px, $color-grey-flash);
+    height: 46px;
+    display: grid;
+    grid-template-columns: 28px 1fr 28px;
+    align-items: center;
+    padding: 0 12px;
+    & > i {
+      height: 28px;
+      width: 28px;
+      display: grid;
+      place-items: center;
+      background-color: $color-green;
+      border-radius: 50%;
+      cursor: pointer;
+      @include font(14px, $color-white);
+
+      &.-disabled {
+        color: $color-grey;
+        background-color: $color-grey-flash;
+        cursor: default;
+      }
+    }
+  }
+  &__text {
+    justify-self: center;
+    @include font(14px, $color-grey, 600);
+  }
+  &__dec {
+  }
+  &__inc {
+  }
+}

@@ -14,12 +14,11 @@
             <button
               class="modal__header-item"
               :class="{
-                active: component === 'CardRelation',
-                error: v$.card.vehicleUID.$error || v$.card.relations.$error
+                active: component === 'CardAdditional'
               }"
-              @click="component = 'CardRelation'"
+              @click="component = 'CardAdditional'"
             >
-              Card Relation
+              Additional
             </button>
             <!-- <button
               class="modal__header-item"
@@ -46,6 +45,7 @@
 import {mapActions, mapMutations, mapState} from 'vuex'
 import CardGeneral from './CardGeneral'
 import CardRelation from './CardRelation'
+import CardAdditional from './CardAdditional'
 import CardType from './CardType'
 import useVuelidate from '@vuelidate/core'
 import {required, requiredIf, helpers} from '@vuelidate/validators'
@@ -53,7 +53,7 @@ import Button from '@/components/Yaro/Button'
 
 export default {
   name: 'AddCardTemplateModal',
-  components: {CardGeneral, CardRelation, CardType, Button},
+  components: {CardGeneral, CardRelation, CardType, CardAdditional, Button},
   data() {
     return {
       v$: useVuelidate(),

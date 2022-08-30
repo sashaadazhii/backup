@@ -2,10 +2,10 @@
   <div class="block__wrapper">
     <div class="block__lsit">
       <Vehicle v-for="(vehicle, idx) of vehicles" :key="idx" :vehicle="vehicle" :idx="idx" />
-      <button class="block__add" @click="add">
+      <!-- <button class="block__add" @click="add">
         <i class="i-add_circle_outline" />
         <span>Add Vehicle</span>
-      </button>
+      </button> -->
     </div>
   </div>
 </template>

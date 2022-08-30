@@ -10,6 +10,7 @@
       medium: size === 'medium',
       small: size === 'small',
       mini: size === 'mini',
+      '--theme-white': theme === 'white',
       disabled
     }"
   >
@@ -85,6 +86,9 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    theme: {
+      type: String
     }
   },
   emits: {

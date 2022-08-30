@@ -900,7 +900,8 @@ export default {
           'y-dropdown--error-message': this.errorMessage,
           'y-dropdown--title': this.title,
           'y-dropdown--search': this.search,
-          '--theme-grey': this.theme === 'grey'
+          '--theme-grey': this.theme === 'grey',
+          '--theme-white': this.theme === 'white',
         }
       ]
     },
@@ -914,7 +915,7 @@ export default {
       ]
     },
     panelStyleClass() {
-      return ['y-dropdown-panel', this.panelClass, {'--theme-grey': this.theme === 'grey'}]
+      return ['y-dropdown-panel', this.panelClass, {'--theme-grey': this.theme === 'grey', '--theme-white': this.theme === 'white'}]
     },
     label() {
       if (this.modelValue) return this.getOptionLabel(this.modelValue)

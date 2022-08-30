@@ -1,0 +1,9 @@
+@import 'src/assets/styles/_variables.scss';
+
+.block {
+  &__wrapper {
+    display: grid;
+    row-gap: 24px;
+    padding-bottom: 6px;
+  }
+}

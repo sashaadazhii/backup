@@ -371,3 +371,27 @@
   }
 }
 //===========================================
+
+//=========== Theme: white ===================
+.y-dropdown.--theme-white {
+  .y-dropdown {
+    &-inner {
+      background-color: $color-white;
+    }
+    &-trigger-icon {
+      // color: $color-white;
+    }
+  }
+}
+.y-dropdown-panel.--theme-white {
+  background-color: $color-white;
+
+  .y-dropdown {
+    &-item {
+      &:hover {
+        // background-color: rgba($color-grey-light, 0.2);
+      }
+    }
+  }
+}
+//===========================================

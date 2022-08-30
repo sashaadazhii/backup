@@ -12,6 +12,7 @@
               @change="selectMake"
               searchPlaceholder="Search or select the brand"
               :class="{error: errorRelations({idx, name: 'make'})}"
+              theme="white"
             >
               <!-- <template #value="{value}">
                 <div class="field__dropdown-option">
@@ -20,7 +21,7 @@
                 </div>
               </template> -->
               <template #option="{option}">
-                <div class="field__dropdown-label">
+                <div class="y-dropdown-item-custom">
                   <i class="i-directions_car" />
                   <span>{{ option }}</span>
                 </div>
@@ -35,34 +36,39 @@
               :disabled="!vehicle.make || !vehicleModelsFormatted.length"
               placeholder="Model"
               @change="setRelationModel({idx, model: $event.value})"
+              theme="white"
             />
           </div>
           <div class="field__dropdown">
             <div class="field__title">Selection</div>
-            <Dropdown v-model="choice" :options="choiceList" />
+
+            <Dropdown v-model="choice" :options="choiceList" theme="white" />
           </div>
           <y-input
             v-if="choice === 'Range'"
             title="From"
+            theme="white"
             :modelValue="vehicle.yearFrom"
             @update:modelValue="setRelationYearFrom({idx, year: $event})"
           />
-          <y-input
+          <Input
             v-if="choice === 'Range'"
             title="to"
+            theme="white"
             :modelValue="vehicle.yearTo"
             @update:modelValue="setRelationYearTo({idx, year: $event})"
           />
-          <y-input
+          <Input
             v-if="choice === 'Year'"
             title="Year"
+            theme="white"
             :modelValue="vehicle.yearFrom"
             @update:modelValue="setRelationYearFrom({idx, year: $event}), setRelationYearTo({idx, year: $event})"
           />
         </div>
-        <div class="card__close" @click="remove(idx)">
+        <!-- <div class="card__close" @click="remove(idx)">
           <i class="i-remove_circle_outline" />
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -70,11 +76,12 @@
 
 <script>
 import Dropdown from '@/components/Yaro/Dropdown'
+import Input from '@/components/Yaro/Input'
 import {mapActions, mapMutations, mapState} from 'vuex'
 
 export default {
   name: 'AddCardRelation',
-  components: {Dropdown},
+  components: {Dropdown, Input},
   props: {
     idx: {
       type: Number,

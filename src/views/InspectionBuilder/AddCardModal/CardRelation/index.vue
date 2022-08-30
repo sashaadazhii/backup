@@ -1,10 +1,10 @@
 <template>
-  <div class="main__wrapper">
-    <div class="main__dropdown">
-      <div class="main__dropdown-title">Relation to Vehicles</div>
-      <Dropdown v-model="type" :options="typesList" :filterFields="['label']" @change="changeType">
+  <div class="section__wrapper">
+    <div class="section__dropdown">
+      <div class="section__dropdown-title">Relation to Vehicles</div>
+      <Dropdown v-model="type" :options="typesList" :filterFields="['label']" @change="changeType" theme="white">
         <template #value="{value}">
-          <div class="main__dropdown-option">
+          <div class="y-dropdown-label-custom">
             <i v-if="value.id === 'all'" class="i-directions_car" />
             <i v-if="value.id === 'custom-vehicles'" class="i-construction" />
             <i v-if="value.id === 'specific-vehicle'" class="i-user" />
@@ -12,7 +12,7 @@
           </div>
         </template>
         <template #option="{option}">
-          <div class="main__dropdown-label">
+          <div class="y-dropdown-item-custom">
             <i v-if="option.id === 'all'" class="i-directions_car" />
             <i v-if="option.id === 'custom-vehicles'" class="i-construction" />
             <i v-if="option.id === 'specific-vehicle'" class="i-user" />
@@ -21,7 +21,7 @@
         </template>
       </Dropdown>
     </div>
-    <div class="main__component">
+    <div class="section__component">
       <CustomerVehicle v-if="type.id === 'specific-vehicle'" />
       <SpecifyVehicles v-if="type.id === 'custom-vehicles'" />
     </div>

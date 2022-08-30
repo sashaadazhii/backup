@@ -186,3 +186,9 @@
     margin-top: 8px;
   }
 }
+
+.field__label.--theme-white {
+  & > .field__input {
+    background-color: $color-white;
+  }
+}

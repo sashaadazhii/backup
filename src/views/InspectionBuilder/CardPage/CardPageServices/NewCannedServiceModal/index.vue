@@ -12,7 +12,15 @@
           <div class="field__title">Description</div>
           <textarea class="field__text" placeholder="Description" v-model="description"></textarea>
         </label>
-        <div class="field__label">
+        <div class="y-number__wrapper">
+          <div class="y-number__title">Estimated Time</div>
+          <div class="y-number__inner">
+            <i class="i-remove y-number__dec" :class="{'-disabled': !time}" @click="decTime()" />
+            <span class="y-number__text">{{ hours }} h</span>
+            <i class="i-add y-number__inc" @click="incTime()" />
+          </div>
+        </div>
+        <!-- <div class="field__label">
           <div class="field__title">Service Time</div>
           <div class="field__counter">
             <div class="field__counter-dec" :class="{disabled: hours <= 0.5}" @click="decTime">
@@ -24,7 +32,7 @@
             </div>
             <div class="field__counter-inc" @click="incTime"><i class="i-add" /></div>
           </div>
-        </div>
+        </div> -->
         <div class="field__select">
           <div class="field__title">Warranty</div>
           <Dropdown v-model="warranty" :options="warrantyList" @change="selectWarranty">
@@ -69,6 +77,8 @@
           rightText="months"
           :error="v$.time.$error"
         />
+        <Textarea title="Temporarily Declined Message" placeholder="Enter message" />
+        <Textarea title="Permanently Declined Message" placeholder="Enter message" />
       </div>
       <div class="modal__footer">
         <button class="modal__button" @click="Save"><span>Save</span><Loader :show="isLoading" /></button>
@@ -81,12 +91,13 @@
 import {mapActions, mapState} from 'vuex'
 import Loader from '@/components/loader'
 import Dropdown from '@/components/Yaro/Dropdown'
+import Textarea from '@/components/Yaro/Textarea'
 import useVuelidate from '@vuelidate/core'
 import {required, requiredIf} from '@vuelidate/validators'
 
 export default {
   name: 'AddNewCannedServiceModal',
-  components: {Loader, Dropdown},
+  components: {Loader, Dropdown, Textarea},
   data() {
     return {
       v$: useVuelidate(),
