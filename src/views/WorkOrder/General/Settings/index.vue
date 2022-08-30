@@ -37,7 +37,7 @@
         <div class="y-dropdown-label-custom">
           <i class="i-user1 green" />
           <span v-if="value">{{ value.firstName }} {{ value.lastName }}</span>
-          <span v-else class="-placeholder">Choose Technitian</span>
+          <span v-else class="-placeholder">Choose Technician</span>
         </div>
       </template>
       <template #option="{option}">

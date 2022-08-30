@@ -333,6 +333,12 @@ const routes = [
     meta: {layout: 'admin', header: 'payrollOverview'},
     component: () => import('@/views/PayrollOverview')
   },
+  {
+    path: '/employee-productivity',
+    name: 'EmployeeProductivity',
+    meta: {layout: 'admin', header: 'employeeProductivity'},
+    component: () => import('@/views/EmployeeProductivity')
+  },
 
   {
     path: '/test',

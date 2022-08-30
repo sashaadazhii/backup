@@ -61,6 +61,10 @@
             <div class="sidebar__link-icon"><i class="i-calendar" /></div>
             <div class="sidebar__link-text">Capacity Calendar</div>
           </router-link>
+          <router-link class="sidebar__link" to="/employee-productivity">
+            <div class="sidebar__link-icon"><i class="i-timelapse" /></div>
+            <div class="sidebar__link-text">Employee Productivity</div>
+          </router-link>
           <router-link class="sidebar__link" to="/">
             <div class="sidebar__link-icon"><i class="i-time" /></div>
             <div class="sidebar__link-text">Time Logs</div>

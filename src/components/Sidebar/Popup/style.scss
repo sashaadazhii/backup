@@ -32,7 +32,6 @@
 .y-popup {
   max-height: 70%;
   overflow: auto;
-  @include hideScrollbar;
   &__inner {
   }
   &__notice {

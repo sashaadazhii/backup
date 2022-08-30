@@ -6,7 +6,7 @@
       <Label label="3" border circle size="large" class="-grey -counter" />
       <Label label="1.4hr" icon="i-time" iconColor="#3EB3BB" iconSize="18px" border size="large" class="-grey" />
       <Label label="1.4hr" icon="i-time orange" iconSize="18px" border size="large" class="-grey" />
-      <Label label="Used: 12 times" border size="large" class="-grey -counter" />
+      <Label label="12 times" border size="large" class="-grey -counter" />
       <Label v-if="!viewOnly" label="24 months /  3000 km" icon="i-shield green" iconSize="18px" border size="large" class="-grey" />
       <Menu v-if="!viewOnly" :list="actionsList">
         <template #menu>

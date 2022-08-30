@@ -1,0 +1,48 @@
+@import 'src/assets/styles/_variables.scss';
+
+.header {
+  &__inner {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: $color-white;
+    column-gap: 10px;
+    & > .y-dropdown {
+      width: auto;
+    }
+  }
+}
+
+.picker {
+  &__wrap {
+    @include border(10px, $color-grey-flash);
+    display: flex;
+    column-gap: 6px;
+    align-items: center;
+    height: 36px;
+    padding: 0 12px;
+    background-color: $color-grey-smoke;
+    transition: border-color 0.2s ease-in-out;
+    position: relative;
+    &:hover {
+      border-color: $color-grey;
+    }
+    & > span {
+      display: block;
+      @include font(14px, $color-grey, 500);
+      &:last-child {
+        @include font(14px, $color-grey-space, 600);
+      }
+    }
+    & > i {
+      @include font(18px, $color-grey);
+    }
+    & > input {
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+  }
+}

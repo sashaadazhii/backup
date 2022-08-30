@@ -9,12 +9,15 @@
         </div>
         <div class="tech__list">
           <div v-for="(tech, idx) of card.techs" :key="idx" class="tech__label">{{ tech.firstName[0] }}{{ tech.lastName[0] }}</div>
-          <Multiselect v-model="card.techs" :options="techList" dataKey="id">
+          <Multiselect v-model="card.techs" :options="techList" dataKey="id" :showCheckbox="false">
             <template #menu>
               <div class="tech__add"><i class="i-add" /></div>
             </template>
             <template #option="{option}">
-              <div class="y-dropdown-item-custom">{{ option.firstName }} {{ option.lastName }}</div>
+              <div class="y-dropdown-item-custom">
+                <Label :alias="`${option.firstName[0]}${option.lastName[0]}`" circle size="mini" />
+                <span>{{ option.firstName }} {{ option.lastName }}</span>
+              </div>
             </template>
           </Multiselect>
         </div>

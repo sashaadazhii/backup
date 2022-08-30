@@ -1,5 +1,15 @@
 const shifts = [
   {
+    id: '1dcf15a3-ab46-4324-a366-79459eb9b07f',
+    name: 'Day Shift',
+    shortName: 'Day',
+    description: 'Full working day',
+    startTime: '07:30AM',
+    endTime: '05:30PM',
+    deactivated: false,
+    color: '#2C9AFF'
+  },
+  {
     id: '1dcf15b3-ab46-4324-a366-79459eb9b07f',
     name: 'Standard Base Shift',
     shortName: 'Base',

@@ -49,7 +49,7 @@
             :key="idx"
             class="calendar__day day"
             :class="{day__work: day.work, day__vacation: day.vacation, day__sick: day.sick}"
-            :style="{width: day.length * 46 + 16 * (day.length - 1) + 'px', width: day.length * 46 + 16 * (day.length - 1) + 'px',}"
+            :style="{width: day.length * 46 + 16 * (day.length - 1) + 'px', width: day.length * 46 + 16 * (day.length - 1) + 'px'}"
             @click="open($event, day)"
           >
             <div class="day__inner">
@@ -73,8 +73,9 @@ import dayjs from 'dayjs'
 import Label from '@/components/Yaro/Label'
 import Dropdown from '@/components/Yaro/Dropdown'
 import Button from '@/components/Yaro/Button'
-
 import Popup from './Popup'
+import {mapState, mapActions} from 'vuex'
+
 export default {
   name: 'WorkOrderCalendar',
   components: {Label, Popup, Dropdown, Button},
@@ -85,61 +86,61 @@ export default {
       activeDay: null,
       days: [],
       techs: [
-        {
-          info: {
-            name: 'Leroy Martin',
-            alias: 'LM',
-            uid: this.$getID()
-          },
-          days: [
-            {
-              work: true,
-              hours: 8,
-              vacation: false
-            },
-            {
-              vacation: true,
-              length: 4
-            },
-            {
-              work: true,
-              hours: 8
-            },
-            {
-              vacation: true
-            },
-            {
-              work: true,
-              hours: 8
-            },
-            {
-              work: true,
-              hours: 8
-            },
-            {
-              vacation: true,
-              length: 2
-            },
-            {
-              sick: true,
-              length: 2
-            },
-            {},
-            {},
-            {},
-            {},
-            {},
-            {
-              vacation: true,
-              length: 8
-            },
-            {},
-            {},
-            {},
-            {},
-            {}
-          ]
-        }
+        // {
+        //   info: {
+        //     name: 'Leroy Martin',
+        //     alias: 'LM',
+        //     uid: this.$getID()
+        //   },
+        //   days: [
+        //     {
+        //       work: true,
+        //       hours: 8,
+        //       vacation: false
+        //     },
+        //     {
+        //       vacation: true,
+        //       length: 4
+        //     },
+        //     {
+        //       work: true,
+        //       hours: 8
+        //     },
+        //     {
+        //       vacation: true
+        //     },
+        //     {
+        //       work: true,
+        //       hours: 8
+        //     },
+        //     {
+        //       work: true,
+        //       hours: 8
+        //     },
+        //     {
+        //       vacation: true,
+        //       length: 2
+        //     },
+        //     {
+        //       sick: true,
+        //       length: 2
+        //     },
+        //     {},
+        //     {},
+        //     {},
+        //     {},
+        //     {},
+        //     {
+        //       vacation: true,
+        //       length: 8
+        //     },
+        //     {},
+        //     {},
+        //     {},
+        //     {},
+        //     {}
+        //   ]
+        // }
       ],
       month: 'August',
       months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -147,20 +148,25 @@ export default {
       years: ['2022', '2023']
     }
   },
-  created() {
+  async created() {
     this.createCalendar()
-    this.createTechs()
-    this.createTechs()
-    this.createTechs()
-    this.createTechs()
-    this.createTechs()
-    this.createTechs()
-    this.createTechs()
-    this.createTechs()
-    this.createTechs()
-    this.createTechs()
+    if (!this.users.length) await this.fetchUsers()
+    const techs = this.users.filter(e => e.role === 'technician')
+    techs.forEach(t => {
+      const name = `${t.firstName} ${t.lastName}`
+      this.createTechs(name)
+    })
+  },
+  computed: {
+    ...mapState({
+      company: s => s.company.settings.settings,
+      users: s => s.company.users.users
+    })
   },
   methods: {
+    ...mapActions({
+      fetchUsers: 'company/users/fetch'
+    }),
     createCalendar(month = '08') {
       const daysLength = dayjs().daysInMonth()
       for (let i = 1; i <= daysLength; i++) {

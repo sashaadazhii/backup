@@ -38,7 +38,7 @@
         >
           <template #optionlist="{option}">
             <div class="filter__option">
-              <i v-if="option.name === 'Technitian'" class="i-build" />
+              <i v-if="option.name === 'Technician'" class="i-build" />
               <i v-if="option.name === 'Service Advisor'" class="i-headset_mic" />
               <span>{{ option.name }}</span>
             </div>
@@ -56,7 +56,7 @@
     <div v-if="activeFilters.length" class="header__chips">
       <div v-for="chip of activeFilters" :key="chip.id" class="chip">
         <div class="chip__icon">
-          <i v-if="chip.type === 'Technitian'" class="i-build" />
+          <i v-if="chip.type === 'Technician'" class="i-build" />
           <i v-if="chip.type === 'Service Advisor'" class="i-headset_mic green" />
         </div>
         <div class="chip__name">{{ chip.firstName }} {{ chip.lastName }}</div>
@@ -89,7 +89,7 @@ export default {
   async created() {
     const techsList = await this.searchUsers({role: 'technician'})
     const technicians = {
-      name: 'Technitian',
+      name: 'Technician',
       id: this.$getID(),
       mods: ['filter', 'multiple'],
       filterPlaceholder: 'Search Tech',
@@ -126,7 +126,7 @@ export default {
       }
     },
     async changeFilters({value}) {
-      const techs = value.filter(i => i.type === 'Technitian').map(t => t.id)
+      const techs = value.filter(i => i.type === 'Technician').map(t => t.id)
       this.setFilters(techs)
     },
     changeDay() {

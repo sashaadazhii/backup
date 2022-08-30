@@ -55,31 +55,6 @@
       >
         <div :ref="overlayRef" :class="panelStyleClass" v-if="overlayVisible" @click="onOverlayClick">
           <slot name="header" :value="modelValue" :options="visibleOptions"></slot>
-          <!-- <div class="p-multiselect-header" v-if="(showToggleAll && selectionLimit == null) || filter">
-            <div class="p-checkbox p-component" @click="onToggleAll" role="checkbox" :aria-checked="allSelected" v-if="showToggleAll && selectionLimit == null">
-              <div class="p-hidden-accessible">
-                <input type="checkbox" readonly @focus="onHeaderCheckboxFocus" @blur="onHeaderCheckboxBlur" />
-              </div>
-              <div :class="['p-checkbox-box', {'p-highlight': allSelected, 'p-focus': headerCheckboxFocused}]" role="checkbox" :aria-checked="allSelected">
-                <span :class="['p-checkbox-icon', {'pi pi-check': allSelected}]"></span>
-              </div>
-            </div>
-            <div v-if="filter" class="p-multiselect-filter-container">
-              <input
-                type="text"
-                ref="filterInput"
-                v-model="filterValue"
-                autoComplete="on"
-                class="p-multiselect-filter p-inputtext p-component"
-                :placeholder="filterPlaceholder"
-                @input="onFilterChange"
-              />
-              <span class="p-multiselect-filter-icon pi pi-search"></span>
-            </div>
-            <button class="p-multiselect-close p-link" @click="onCloseClick" type="button">
-              <span class="p-multiselect-close-icon pi pi-times" />
-            </button>
-          </div> -->
           <div class="y-multiselect-items-wrapper" :style="{'max-height': virtualScrollerDisabled ? scrollHeight : ''}">
             <VirtualScroller
               :ref="virtualScrollerRef"
@@ -105,17 +80,10 @@
                       :tabindex="tabindex || '0'"
                       :aria-label="getOptionLabel(option)"
                     >
-                      <!-- <div class="p-checkbox">
-                        <div :class="['p-checkbox-box', {'p-highlight': isSelected(option)}]">
-                          <span :class="['p-checkbox-icon', {'pi pi-check': isSelected(option)}]"></span>
-                        </div>
-                      </div> -->
-
-                      <div class="y-checkbox" :class="{checked: isSelected(option)}">
+                      <div v-if="showCheckbox" class="y-checkbox" :class="{checked: isSelected(option)}">
                         <i class="i-check_box" />
                         <i class="i-check_box_outline_blank" />
                       </div>
-
                       <slot name="option" :option="option" :index="getOptionIndex(i, getItemOptions)">
                         <span>{{ getOptionLabel(option) }}</span>
                       </slot>
@@ -261,6 +229,10 @@ export default {
       default: null
     },
     menu: {
+      type: Boolean,
+      default: true
+    },
+    showCheckbox: {
       type: Boolean,
       default: true
     }

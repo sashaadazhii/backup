@@ -9,12 +9,15 @@
         </div>
         <div class="tech__list">
           <div v-for="(tech, idx) of request.techs" :key="idx" class="tech__label">{{ tech.firstName[0] }}{{ tech.lastName[0] }}</div>
-          <Multiselect v-model="request.techs" :options="techList" dataKey="id">
+          <Multiselect v-model="request.techs" :options="techList" dataKey="id" :showCheckbox="false">
             <template #menu>
               <div class="tech__add"><i class="i-add" /></div>
             </template>
             <template #option="{option}">
-              <div class="y-dropdown-item-custom">{{ option.firstName }} {{ option.lastName }}</div>
+              <div class="y-dropdown-item-custom">
+                <Label :alias="`${option.firstName[0]}${option.lastName[0]}`" circle size="mini" />
+                <span>{{ option.firstName }} {{ option.lastName }}</span>
+              </div>
             </template>
           </Multiselect>
         </div>
@@ -107,10 +110,6 @@ export default {
       search: ''
     }
   },
-  mounted() {
-    console.log(this.request)
-    console.log(this.cardsList.length, this.cards.length)
-  },
   computed: {
     ...mapState({
       request: s => s.requests.request,
@@ -124,7 +123,6 @@ export default {
     },
     cards() {
       return this.cardsList.filter(c => c.name.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()))
-      // return this.cardsList.filter(card => this.request.cards.every(c => !(c.id === card.id)))
     }
   },
   methods: {
