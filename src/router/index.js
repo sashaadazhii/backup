@@ -339,6 +339,12 @@ const routes = [
     meta: {layout: 'admin', header: 'employeeProductivity'},
     component: () => import('@/views/EmployeeProductivity')
   },
+  {
+    path: '/shift-management',
+    name: 'ShiftManagement',
+    meta: {layout: 'admin', header: 'shiftManagement'},
+    component: () => import('@/views/ShiftManagement')
+  },
 
   {
     path: '/test',

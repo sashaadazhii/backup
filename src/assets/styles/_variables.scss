@@ -34,11 +34,15 @@ $mobile-screen-width: 480px;
   line-height: $line-height;
 }
 
-@mixin border($radius: 12px, $color: $color-lightgrey, $size: 1px, $style: solid) {
+@mixin border($radius: 12px, $color: $color-grey-flash, $size: 1px, $style: solid) {
   border: $size $style $color;
   @if $radius != _ {
     border-radius: $radius;
   }
+}
+
+@mixin shadow($color: $color-grey-space, $opacity: .05) {
+  box-shadow: 0px 3px 0px rgba($color, $opacity);
 }
 
 @mixin hideScrollbar {

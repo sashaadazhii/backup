@@ -7,7 +7,7 @@ const shifts = [
     startTime: '07:30AM',
     endTime: '05:30PM',
     deactivated: false,
-    color: '#2C9AFF'
+    color: '#10b981'
   },
   {
     id: '1dcf15b3-ab46-4324-a366-79459eb9b07f',

@@ -13,7 +13,8 @@ import HeaderBoard from '@/views/WorkOrders/TheHeader'
 import HeaderStaff from '@/views/StaffCalendar/Header'
 import HeaderPayroll from '@/views/PayrollOverview/Header'
 import HeaderCapacity from '@/views/CapacityCalendar/Header'
-import EmployeeProductivity from '@/views/EmployeeProductivity/Header'
+import HedaerProductivity from '@/views/EmployeeProductivity/Header'
+import HeaderShift from '@/views/ShiftManagement/Header'
 import TheSidebar from '@/components/Sidebar'
 
 export default {
@@ -34,7 +35,9 @@ export default {
         case 'payrollOverview':
           return HeaderPayroll
         case 'employeeProductivity':
-          return EmployeeProductivity
+          return HedaerProductivity
+        case 'shiftManagement':
+          return HeaderShift
         default:
           return null
       }

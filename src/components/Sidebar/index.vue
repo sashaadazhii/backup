@@ -65,6 +65,11 @@
             <div class="sidebar__link-icon"><i class="i-timelapse" /></div>
             <div class="sidebar__link-text">Employee Productivity</div>
           </router-link>
+          <router-link class="sidebar__link" to="/shift-management">
+            <div class="sidebar__link-icon"><i class="i-view_stream" /></div>
+            <div class="sidebar__link-text">Shift Management</div>
+          </router-link>
+
           <router-link class="sidebar__link" to="/">
             <div class="sidebar__link-icon"><i class="i-time" /></div>
             <div class="sidebar__link-text">Time Logs</div>
