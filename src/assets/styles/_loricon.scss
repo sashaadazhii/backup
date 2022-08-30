@@ -35,7 +35,9 @@
     color: $color-purple;
   }
 }
-
+.i-square:before {
+  content: '\edfd';
+}
 .i-view_module1:before {
   content: '\eb6e';
 }

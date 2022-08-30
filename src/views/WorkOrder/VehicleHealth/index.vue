@@ -1,6 +1,17 @@
 <template>
   <div class="page-inner" :class="{requests: showRequests}">
     <div v-if="showRequests" class="requests__wrapper">
+      <div class="part__wrapper">
+        <div class="part__header">
+          <i class="i-archive" />
+          <span>Assign bin for parts</span>
+        </div>
+        <div class="part__label" :class="{'-disablec': !isStart}">
+          <input v-model="bin" v-maska="'######'" type="text" class="part__input" placeholder="Enter bin number" :disabled="!isStart" />
+          <Button v-if="bin" label="Reset" class="part__btn -grey" size="mini" @click="bin = null"/>
+          <Button v-else label="Assign" class="part__btn" size="mini" :disabled="!isStart" />
+        </div>
+      </div>
       <Request v-for="request of requests" :key="request.id" :request="request" />
     </div>
     <div class="health__wrapper">
@@ -140,7 +151,8 @@ export default {
       filtersList: [],
       allSelected: false,
       display: false,
-      showRequests: false
+      showRequests: false,
+      bin: null
     }
   },
   async created() {
