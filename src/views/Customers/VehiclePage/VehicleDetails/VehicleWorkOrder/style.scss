@@ -2,7 +2,7 @@
 
 .item {
   display: grid;
-  grid-template-columns: 60px 120px 400px repeat(3, 1fr) 24px;
+  grid-template-columns: 60px 120px minmax(240px, 30px) repeat(3, 1fr) 24px;
   align-items: center;
   gap: 16px;
   padding: 11px 15px;

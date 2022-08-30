@@ -2,6 +2,19 @@
   <div class="header__wrapper">
     <div class="header__inner">
       <div class="header__left">
+        <Dropdown v-model="shift" :options="shifts" size="medium">
+          <template #value="{value}">
+            <div class="y-dropdown-label-custom">
+              <span class="-title">Shifts:</span>
+              <span>{{ value.name }} </span>
+            </div>
+          </template>
+          <template #option="{option}">
+            <div class="y-dropdown-item-custom">
+              <span>{{ option.name }}</span>
+            </div>
+          </template>
+        </Dropdown>
         <Dropdown v-model="day" :options="days" size="medium" @change="changeDay">
           <template #value="{value}">
             <div class="y-dropdown-label-custom">
@@ -15,16 +28,28 @@
             </div>
           </template>
         </Dropdown>
-        <DatePicker v-model="date" locale="en-Ca" @dayclick="changeDay">
+        <DatePicker v-if="day === 'Custom'" v-model="date" locale="en-Ca" @dayclick="changeDay">
           <template v-slot="{inputValue, inputEvents}">
             <label class="picker__wrap">
               <span>Date:</span>
               <i class="i-calendar" />
               <input :value="inputValue" v-on="inputEvents" />
-              <span class="picker__value">{{ formattedRange(inputValue) }}</span>
+              <span class="picker__value">{{ inputValue }}</span>
             </label>
           </template>
         </DatePicker>
+        <!-- TODO: do -->
+        <!-- <div v-if="day === 'Today'" class="header__timimg">
+          <div class="progress-wrap">
+            <div class="progress__item">
+              <div class="progress__text">ACG</div>
+              <div class="progress">
+                <div class="progress__bar"></div>
+              </div>
+              <div class="progress__text">5.5/11 h</div>
+            </div>
+          </div>
+        </div> -->
       </div>
       <div class="header__right">
         <Filter
@@ -82,8 +107,9 @@ export default {
       activeFilters: [],
       filtersList: [],
       date: new Date(),
-      day: 'Day',
-      days: ['Day', 'Three Days', 'Five Days']
+      day: 'Today',
+      days: ['Today', 'Three Days', 'Five Days', 'Custom'],
+      shift: {name: 'Day Shift'}
     }
   },
   async created() {
@@ -99,7 +125,11 @@ export default {
   },
   computed: {
     ...mapState({
-      orders: s => s.workOrder.workOrders
+      orders: s => s.workOrder.workOrders,
+      shifts: s => {
+        const shifts = s.company.shifts.shifts
+        return [{name: 'All'}, ...shifts]
+      }
     })
   },
   methods: {
