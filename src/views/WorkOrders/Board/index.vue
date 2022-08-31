@@ -18,16 +18,16 @@
       </div>
       <div class="board__body">
         <div class="board__col">
-          <Card v-for="order of orders?.unscheduled" :key="order.uid" :order="order" @click="selectOrder(order)" />
+          <Card v-for="order of orders?.unscheduled" :key="order.uid" :order="order" />
         </div>
         <div class="board__col">
-          <Card v-for="order of orders?.todo" :key="order.uid" :order="order" @click="selectOrder(order)" />
+          <Card v-for="order of orders?.todo" :key="order.uid" :order="order" />
         </div>
         <div class="board__col">
-          <Card v-for="order of orders?.inProgress" :key="order.uid" :order="order" @click="selectOrder(order)" />
+          <Card v-for="order of orders?.inProgress" :key="order.uid" :order="order" />
         </div>
         <div class="board__col">
-          <Card v-for="order of orders?.done" :key="order.uid" :order="order" @click="selectOrder(order)" />
+          <Card v-for="order of orders?.done" :key="order.uid" :order="order" />
         </div>
       </div>
     </div>
@@ -45,13 +45,13 @@
       </div>
       <div class="board__body">
         <div class="board__col">
-          <Card v-for="order of orders?.unscheduled" :key="order.uid" :order="order" @click="selectOrder(order)" />
+          <Card v-for="order of orders?.unscheduled" :key="order.uid" :order="order" />
         </div>
         <div class="board__col">
-          <Card v-for="order of orders?.todo" :key="order.uid" :order="order" @click="selectOrder(order)" />
+          <Card v-for="order of orders?.todo" :key="order.uid" :order="order" />
         </div>
         <div class="board__col">
-          <Card v-for="order of orders?.inProgress" :key="order.uid" :order="order" @click="selectOrder(order)" />
+          <Card v-for="order of orders?.inProgress" :key="order.uid" :order="order" />
         </div>
       </div>
     </div>
@@ -75,19 +75,19 @@
       </div>
       <div class="board__body">
         <div class="board__col">
-          <Card v-for="order of orders?.unscheduled" :key="order.uid" :order="order" @click="selectOrder(order)" />
+          <Card v-for="order of orders?.unscheduled" :key="order.uid" :order="order" />
         </div>
         <div class="board__col">
-          <Card v-for="order of orders?.todo" :key="order.uid" :order="order" @click="selectOrder(order)" />
+          <Card v-for="order of orders?.todo" :key="order.uid" :order="order" />
         </div>
         <div class="board__col">
-          <Card v-for="order of orders?.inProgress" :key="order.uid" :order="order" @click="selectOrder(order)" />
+          <Card v-for="order of orders?.inProgress" :key="order.uid" :order="order" />
         </div>
         <div class="board__col">
-          <Card v-for="order of orders?.done" :key="order.uid" :order="order" @click="selectOrder(order)" />
+          <Card v-for="order of orders?.done" :key="order.uid" :order="order" />
         </div>
         <div class="board__col">
-          <Card v-for="order of orders?.done" :key="order.uid" :order="order" @click="selectOrder(order)" />
+          <Card v-for="order of orders?.done" :key="order.uid" :order="order" />
         </div>
       </div>
     </div>
@@ -128,13 +128,13 @@ export default {
       scheduleOrder: 'workOrder/scheduleOrder',
       feetchStatuses: 'workOrder/status/fetch'
     }),
-    ...mapMutations({
-      set: 'workOrder/setOrder'
-    }),
-    selectOrder(order) {
-      this.set(order)
-      this.$router.push(`/work-order/${order.uid}/vehicle-health`)
-    },
+    // ...mapMutations({
+    //   set: 'workOrder/setOrder'
+    // }),
+    // selectOrder(order) {
+    //   this.set(order)
+    //   this.$router.push(`/work-order/${order.uid}/vehicle-health`)
+    // },
     changeDay(day) {
       this.day = day
     }

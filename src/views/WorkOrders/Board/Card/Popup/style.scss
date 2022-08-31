@@ -1,0 +1,86 @@
+@import 'src/assets/styles/_variables.scss';
+
+.y-popup-enter-from {
+  opacity: 0;
+  transform: scaleY(0.8);
+}
+
+.y-popup-leave-to {
+  opacity: 0;
+}
+
+.y-popup-enter-active {
+  transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.y-popup-leave-active {
+  transition: opacity 0.1s linear;
+}
+
+.y-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include border(20px, $color-grey-flash);
+  background-color: $color-white;
+  min-width: 360px;
+  max-width: 600px;
+  overflow: hidden;
+  box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+  padding: 20px;
+}
+
+.y-popup {
+  &__header {
+    display: grid;
+    row-gap: 8px;
+    margin-bottom: 20px;
+    & > i {
+      @include font(40px, $color-orange);
+    }
+  }
+  &__title {
+    @include font(18px, $color-grey-space, 600);
+  }
+  &__body {
+    display: grid;
+    row-gap: 8px;
+  }
+}
+
+.note {
+  &__wrapper {
+    @include border(12px);
+    background-color: $color-grey-smoke;
+    padding: 14px;
+  }
+  &__header {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    column-gap: 10px;
+    & > .-grey {
+      background-color: $color-grey;
+      height: 20px;
+      width: 20px;
+    }
+  }
+  &__author {
+    @include font(14px, $color-grey-space, 500);
+  }
+  &__date {
+    grid-column-start: 2;
+    @include font(12px, $color-grey, 500);
+  }
+  &__body {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    column-gap: 10px;
+    & > i {
+      @include font(18px, $color-orange);
+    }
+  }
+  &__text {
+    @include font(14px, $color-grey-space, 500, 1.5);
+  }
+}

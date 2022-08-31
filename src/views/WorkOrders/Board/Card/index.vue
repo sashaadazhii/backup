@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="selectOrder">
     <div class="card__header">
       <Label
         :label="order.customStatus?.name || order.logicalStatus"
@@ -65,21 +65,29 @@
         size="small"
         class="-grey"
         iconSize="16px"
+        ref="notes"
+        @click.prevent="open"
       />
+
       <div class="-full" />
+
       <Label v-if="order.serviceAdvisor" :alias="order.serviceAdvisor.alias" size="small" circle />
       <Label v-if="order.technician" :alias="order.technician.alias" size="small" circle color="#6B7280" />
     </div>
+    <Popup v-model:visible="display" :targetElement="target" :notes="order.notes" />
   </div>
 </template>
 
 <script>
 import Label from '@/components/Yaro/Label'
 import Menu from '@/components/Yaro/Menu'
+import Popup from './Popup'
+import {mapMutations} from 'vuex'
+
 import dayjs from 'dayjs'
 export default {
   name: 'WorkOrderCard',
-  components: {Label, Menu},
+  components: {Label, Menu, Popup},
   props: {
     order: {
       type: Object,
@@ -92,7 +100,9 @@ export default {
       showAdditional: false,
       showMainBlock: false,
       showFooterBlock: false,
-      actionsList: []
+      actionsList: [],
+      display: false,
+      target: null
     }
   },
   created() {
@@ -116,6 +126,16 @@ export default {
     if (customerRequests || notes || serviceAdvisor || technician) this.showFooterBlock = true
   },
   methods: {
+    ...mapMutations({
+      set: 'workOrder/setOrder'
+    }),
+    selectOrder(e) {
+      if (this.$refs.notes) {
+        if (!this.$refs.notes || this.$refs.notes?.$el.contains(e.target)) return
+      }
+      this.set(this.order)
+      this.$router.push(`/work-order/${this.order.uid}/vehicle-health`)
+    },
     statusClass(status) {
       return {
         card__status: true,
@@ -136,6 +156,15 @@ export default {
         case 'Done':
           return 'i-rp_done'
       }
+    },
+    open(e) {
+      if (this.display) {
+        this.display = false
+        this.target = null
+        return
+      }
+      this.target = e.currentTarget
+      this.display = true
     }
   }
 }
