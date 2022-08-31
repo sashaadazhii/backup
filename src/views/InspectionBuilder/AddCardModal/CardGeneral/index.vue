@@ -1,7 +1,11 @@
 <template>
   <div class="main__wrapper">
     <y-input title="Name" placeholder="Name" :modelValue="card.name" @update:modelValue="setName" :error="error('name')" />
-    <Dropdown title="Card Type" v-model="type" :options="typesList" optionLabel="label" @change="changeType" />
+    <Dropdown title="Card Type" v-model="type" :options="typesList" optionLabel="label" @change="setCardType($event.value.id)" />
+    <div v-if="type.id === 'public'" class="main__label">
+      <i class="i-info"></i>
+      <span>Thanks for helping your network! Card is going to be undergoing review process, though, you can can use it as your local card.</span>
+    </div>
     <CardRelation />
 
     <div class="field__label">
@@ -24,7 +28,7 @@
 <script>
 import {mapMutations, mapState} from 'vuex'
 import Dropdown from '@/components/Yaro/Dropdown'
-import CardRelation from '../CardRelation'
+import CardRelation from './CardRelation'
 
 export default {
   name: 'AddCardGeneral',
@@ -33,11 +37,10 @@ export default {
   data() {
     return {
       isLoading: false,
-      type: {id: 'inspection', label: 'Inspection'},
+      type: {id: 'local', label: 'Local'},
       typesList: [
-        {id: 'inspection', label: 'Inspection'},
-        {id: 'maintenance', label: 'Maintenance'},
-        {id: 'repair', label: 'Repair'}
+        {id: 'public', label: 'Public'},
+        {id: 'local', label: 'Local'}
       ]
     }
   },
@@ -51,13 +54,13 @@ export default {
     ...mapMutations({
       setName: 'company/card/setName',
       setDesc: 'company/card/setDesc',
-      setCusDesc: 'company/card/setCusDesc'
+      setCusDesc: 'company/card/setCusDesc',
+      setCardType: 'company/card/setCardType'
     }),
     error(name) {
       const error = this.errors.find(err => err.$property === name)
       if (error) return true
-    },
-    changeType() {}
+    }
   }
 }
 </script>

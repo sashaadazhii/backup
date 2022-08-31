@@ -1,5 +1,9 @@
 <template>
   <div class="block__wrapper">
+    <div class="block__header">
+      <span>Card has service tracking</span>
+      <Switch :modelValue="hasService" @click="setService(!hasService)" />
+    </div>
     <Input
       title="Odometer Track"
       v-maska="'########'"
@@ -9,6 +13,7 @@
       iconColor="bluegreen"
       rightText="kilometers"
       :error="error('odometerTrack')"
+      theme="white"
       @update:modelValue="setOdometerTrack"
     />
 
@@ -21,6 +26,7 @@
       iconColor="orange"
       rightText="months"
       :error="error('timeTrackLength')"
+      theme="white"
       @update:modelValue="setTimeTrackLength"
     />
   </div>
@@ -29,21 +35,24 @@
 <script>
 import {mapMutations, mapState} from 'vuex'
 import Input from '@/components/Yaro/Input'
+import Switch from '@/components/Yaro/Switch'
 
 export default {
   name: 'AddCardRelation',
-  components: {Input},
+  components: {Input, Switch},
   computed: {
     ...mapState({
       odometerTrack: s => s.company.card.card.odometerTrack,
       timeTrackLength: s => s.company.card.card.timeTrackLength,
+      hasService: s => s.company.card.card.hasService,
       errors: s => s.company.card.errors
     })
   },
   methods: {
     ...mapMutations({
       setTimeTrackLength: 'company/card/setTimeTrackLength',
-      setOdometerTrack: 'company/card/setOdometerTrack'
+      setOdometerTrack: 'company/card/setOdometerTrack',
+      setService: 'company/card/setService',
     }),
     error(name) {
       const error = this.errors.find(err => err.$property === name)

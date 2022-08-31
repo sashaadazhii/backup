@@ -1,0 +1,91 @@
+@import 'src/assets/styles/_variables.scss';
+
+.service {
+  &__wrapper {
+    @include border(16px, $color-grey-flash);
+    overflow: hidden;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color-white;
+    padding: 10px;
+    padding-left: 12px;
+    &-left {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+      & > i {
+        @include font(20px, $color-grey);
+        cursor: pointer;
+        &.-revert {
+          transform: rotate(180deg);
+        }
+      }
+      & > .-grey {
+        border-color: $color-grey-flash;
+        background-color: $color-grey-smoke;
+        color: $color-grey-space;
+      }
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+      & > .-grey {
+        border-color: $color-grey-flash;
+        color: $color-grey-space;
+      }
+    }
+  }
+  &__title {
+    @include font(16px, $color-grey-space, 600);
+  }
+  &__body {
+    background-color: $color-grey-smoke;
+    border-top: 1px solid $color-grey-flash;
+  }
+  &__desc {
+    background-color: $color-white;
+    padding: 20px;
+    border-bottom: 1px solid $color-grey-flash;
+    &-title {
+      @include font(12px, $color-grey, 600);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    &-text {
+      @include font(14px, $color-grey-space, 500, 1.4);
+    }
+  }
+  &__parts {
+    margin: 20px;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $color-grey-flash;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    &-btn {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+      cursor: pointer;
+      & > i {
+        @include font(16px, $color-grey);
+      }
+      & > span {
+        @include font(14px, $color-grey-space, 600);
+      }
+    }
+  }
+  &__guids {
+    &-title {
+      @include font(12px, $color-grey, 600);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    padding: 20px;
+  }
+}

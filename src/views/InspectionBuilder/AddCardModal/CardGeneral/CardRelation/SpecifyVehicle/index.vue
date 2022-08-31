@@ -8,18 +8,12 @@
             <Dropdown
               :modelValue="vehicle.make"
               :options="vehicleMakes"
+              :class="{error: errorRelations('make')}"
               search
               @change="selectMake"
               searchPlaceholder="Search or select the brand"
-              :class="{error: errorRelations({idx, name: 'make'})}"
               theme="white"
             >
-              <!-- <template #value="{value}">
-                <div class="field__dropdown-option">
-                  <i class="i-directions_car" />
-                  <span>{{ value?.name }}</span>
-                </div>
-              </template> -->
               <template #option="{option}">
                 <div class="y-dropdown-item-custom">
                   <i class="i-directions_car" />
@@ -35,40 +29,24 @@
               :options="vehicleModelsFormatted"
               :disabled="!vehicle.make || !vehicleModelsFormatted.length"
               placeholder="Model"
-              @change="setRelationModel({idx, model: $event.value})"
+              @change="setRelationModel($event.value)"
               theme="white"
             />
           </div>
           <div class="field__dropdown">
             <div class="field__title">Selection</div>
-
             <Dropdown v-model="choice" :options="choiceList" theme="white" />
           </div>
-          <y-input
-            v-if="choice === 'Range'"
-            title="From"
-            theme="white"
-            :modelValue="vehicle.yearFrom"
-            @update:modelValue="setRelationYearFrom({idx, year: $event})"
-          />
-          <Input
-            v-if="choice === 'Range'"
-            title="to"
-            theme="white"
-            :modelValue="vehicle.yearTo"
-            @update:modelValue="setRelationYearTo({idx, year: $event})"
-          />
+          <y-input v-if="choice === 'Range'" title="From" theme="white" :modelValue="vehicle.yearFrom" @update:modelValue="setRelationYearFrom($event)" />
+          <Input v-if="choice === 'Range'" title="to" theme="white" :modelValue="vehicle.yearTo" @update:modelValue="setRelationYearTo($event)" />
           <Input
             v-if="choice === 'Year'"
             title="Year"
             theme="white"
             :modelValue="vehicle.yearFrom"
-            @update:modelValue="setRelationYearFrom({idx, year: $event}), setRelationYearTo({idx, year: $event})"
+            @update:modelValue="setRelationYearFrom($event), setRelationYearTo($event)"
           />
         </div>
-        <!-- <div class="card__close" @click="remove(idx)">
-          <i class="i-remove_circle_outline" />
-        </div> -->
       </div>
     </div>
   </div>
@@ -82,16 +60,6 @@ import {mapActions, mapMutations, mapState} from 'vuex'
 export default {
   name: 'AddCardRelation',
   components: {Dropdown, Input},
-  props: {
-    idx: {
-      type: Number,
-      required: true
-    },
-    vehicle: {
-      type: Object,
-      required: true
-    }
-  },
   data() {
     return {
       make: null,
@@ -100,49 +68,24 @@ export default {
       choice: 'Year'
     }
   },
-
-  // computed: {
-  //   ...mapState({})
-  // },
-  // methods: {
-  //   ...mapActions({}),
-  // ...mapMutations({})
-  // }
-
   async created() {
-    // TODO: reduce queries -> props from parent
-    // await this.fetchVehicleMakes()
-  },
-  mounted() {
-    // this.car.yearFrom === this.car.yearTo ? (this.carInfo.choice = 'Year') : (this.carInfo.choice = 'Range')
+    await this.fetchVehicleMakes()
+    console.log(this.card)
   },
   computed: {
     ...mapState({
       vehicleMakes: s => s.modules.vehicleMakes,
       vehicleModels: s => s.modules.vehicleModels,
-      errors: s => s.company.card.errors
+      errors: s => s.company.card.errors,
+      vehicle: s => s.company.card.card.relation
     })
-  },
-  watch: {
-    // errors(err) {
-    //   const errorRelations = err.find(err => err.$property === 'relations')
-    // }
-    // vehicleModels(models) {
-    //   if (models.length) this.vehicleModelsFormatted = models
-    // },
-    // carInfo: {
-    //   handler(info) {
-    //     this.$emit('changeCar', info)
-    //   },
-    //   deep: true
-    // }
   },
   methods: {
     ...mapActions({
-      fetchVehicleModels: 'modules/fetchVehicleModels'
+      fetchVehicleModels: 'modules/fetchVehicleModels',
+      fetchVehicleMakes: 'modules/fetchVehicleMakes',
     }),
     ...mapMutations({
-      remove: 'company/card/removeRelation',
       setRelationMake: 'company/card/setRelationMake',
       setRelationModel: 'company/card/setRelationModel',
       setRelationYearFrom: 'company/card/setRelationYearFrom',
@@ -150,15 +93,15 @@ export default {
     }),
     async selectMake(e) {
       if (this.vehicle.make === e.value) return
-      this.setRelationMake({idx: this.idx, make: e.value})
-      this.setRelationModel({idx: this.idx, model: ''})
+      this.setRelationMake(e.value)
+      this.setRelationModel('')
       await this.fetchVehicleModels(e.value)
       this.vehicleModelsFormatted = this.vehicleModels
     },
-    errorRelations({idx, name}) {
-      const errorRelations = this.errors.find(err => err.$property === 'relations')
-      if (!errorRelations) return
-      if (errorRelations.$response.$errors[idx][name]) return true
+    errorRelations(name) {
+      // const errorRelations = this.errors.find(err => err.$property === 'relations')
+      // if (!errorRelations) return
+      // if (errorRelations.$response.$errors[idx][name]) return true
     }
   }
 }

@@ -5,22 +5,23 @@ const getDefaultCard = () => {
     name: null,
     description: null,
     descriptionForCustomer: null,
-    cardRelationType: 'all',
-    cardType: 'inspection',
-    relations: [
-      {
-        make: null,
-        model: null,
-        yearFrom: null,
-        yearTo: null
-      }
-    ],
+    cardRelationType: 'global',
+    cardType: 'local',
+    relation: {
+      make: null,
+      model: null,
+      yearFrom: null,
+      yearTo: null
+    },
     customer: null,
     vehicle: null,
     vehicleUID: null,
     odometerTrack: null,
     timeTrackLength: null,
-    timeTrackType: 'months'
+    timeTrackType: 'months',
+    hasService: false,
+    hasOptions: false,
+    options: []
   }
 }
 
@@ -44,35 +45,26 @@ export default {
       state.card.descriptionForCustomer = desc
     },
     setCardType(state, type) {
+      console.log(type)
       state.card.cardType = type
     },
     setCardRelationType(state, type) {
       state.card.cardRelationType = type
     },
-    addRelation(state) {
-      const vehicle = {
-        make: null,
-        model: null,
-        yearFrom: null,
-        yearTo: null
-      }
-      if (!state.card.relations) state.card.relations = []
-      state.card.relations.push(vehicle)
+    setRelationMake(state, make) {
+      state.card.relation.make = make
     },
-    removeRelation(state, idx) {
-      state.card.relations.splice(idx, 1)
+    setRelationModel(state, model) {
+      state.card.relation.model = model
     },
-    setRelationMake(state, {idx, make}) {
-      state.card.relations[idx].make = make
+    setRelationYearFrom(state, year) {
+      state.card.relation.yearFrom = year
     },
-    setRelationModel(state, {idx, model}) {
-      state.card.relations[idx].model = model
+    setRelationYearTo(state, year) {
+      state.card.relation.yearTo = year
     },
-    setRelationYearFrom(state, {idx, year}) {
-      state.card.relations[idx].yearFrom = year
-    },
-    setRelationYearTo(state, {idx, year}) {
-      state.card.relations[idx].yearTo = year
+    setService(state, hasService) {
+      state.card.hasService = hasService
     },
     setErrors(state, errors) {
       state.errors = errors
@@ -118,7 +110,7 @@ export default {
       }
     }
   },
-  getters: {
-    relations: s => s.card.relations
-  }
+  // getters: {
+  //   relations: s => s.card.relations
+  // }
 }

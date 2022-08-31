@@ -31,7 +31,7 @@ export default {
     ...mapState({
     }),
     cardRelation() {
-      if (this.card.cardRelationType === 'all') return 'All Vehicles'
+      if (this.card.cardRelationType === 'global') return 'Global'
       const relations = this.card.relations.map(r => `${r.make} ${r.model} ${r.yearFrom}`)
       return relations.join(' ')
     },

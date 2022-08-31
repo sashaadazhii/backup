@@ -1,0 +1,71 @@
+@import 'src/assets/styles/_variables.scss';
+
+.info {
+  &__wrapper {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 18px;
+  }
+  &__side {
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
+  }
+  &__block {
+    background-color: $color-white;
+    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+    border-radius: 16px;
+    padding: 16px;
+
+    &-title {
+      @include font(14px, $color-grey-space, 600);
+      margin-bottom: 16px;
+    }
+    &-main {
+    }
+    &-lbs {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      & > .-shadow {
+        box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+        border-color: $color-grey-flash;
+        color: $color-grey-space;
+      }
+    }
+    &-row {
+      display: grid;
+      grid-template-columns: minmax(140px, 1fr) 16px 2fr;
+      align-items: center;
+      column-gap: 8px;
+      &:not(:last-child) {
+        margin-bottom: 14px;
+      }
+      & > span {
+        &:first-child {
+          @include font(14px, $color-grey, 600);
+        }
+        &:last-child {
+          @include font(14px, $color-grey-space, 600);
+        }
+      }
+      & > i {
+        @include font(16px, $color-grey);
+      }
+      & > .-mini {
+        height: 16px;
+        width: 16px;
+        background-color: $color-grey-space;
+      }
+    }
+    &-line {
+      height: 1px;
+      background-color: $color-grey-flash;
+      margin-bottom: 14px;
+    }
+    &-text {
+      @include font(14px, $color-grey-space, 500, 1.5);
+    }
+  }
+}

@@ -2,7 +2,7 @@
 const cardsList = {
   data: [
     {
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       description: '',
       name: 'Air Filter',
       odometerTrack: 48000,
@@ -11,7 +11,7 @@ const cardsList = {
       templateID: 1
     },
     {
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       description: '',
       name: 'Cabin Filter',
       odometerTrack: 48000,
@@ -20,7 +20,7 @@ const cardsList = {
       templateID: 2
     },
     {
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       description: '',
       name: 'Cooling System Service',
       odometerTrack: 150_000,
@@ -30,7 +30,7 @@ const cardsList = {
     },
     {
       name: 'Transmission Service',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 150000,
       timeTrackLength: 84,
       description: '',
@@ -39,7 +39,7 @@ const cardsList = {
     },
     {
       name: 'Power Steering System Service',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 150000,
       timeTrackLength: 84,
       description: '',
@@ -48,7 +48,7 @@ const cardsList = {
     },
     {
       name: 'Engine Tuneup/Spark Plugs',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 150000,
       timeTrackLength: 84,
       description: '',
@@ -57,7 +57,7 @@ const cardsList = {
     },
     {
       name: 'Engine Timing Belt',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 150000,
       timeTrackLength: 84,
       description: '',
@@ -66,7 +66,7 @@ const cardsList = {
     },
     {
       name: 'Direct Injection System Service',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 150000,
       timeTrackLength: 84,
       description: '',
@@ -75,7 +75,7 @@ const cardsList = {
     },
     {
       name: 'Brake Fluid System Service',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 150000,
       timeTrackLength: 84,
       description: '',
@@ -84,7 +84,7 @@ const cardsList = {
     },
     {
       name: 'Front Brake Service',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -93,7 +93,7 @@ const cardsList = {
     },
     {
       name: 'Rear Brake Service',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -103,7 +103,7 @@ const cardsList = {
     {
       templateID: 12,
       name: 'Windshield Wipers',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -111,7 +111,7 @@ const cardsList = {
     },
     {
       name: 'Exterior Lights',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -120,7 +120,7 @@ const cardsList = {
     },
     {
       name: 'Battery',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -129,7 +129,7 @@ const cardsList = {
     },
     {
       name: 'Summer Tires',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -138,7 +138,7 @@ const cardsList = {
     },
     {
       name: 'Winter Tires',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -147,7 +147,7 @@ const cardsList = {
     },
     {
       name: 'Accessories Belt',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -156,7 +156,7 @@ const cardsList = {
     },
     {
       name: 'Fluid Leaks',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -165,7 +165,7 @@ const cardsList = {
     },
     {
       name: 'Front Brakes',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -174,7 +174,7 @@ const cardsList = {
     },
     {
       name: 'Rear Brakes',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -183,7 +183,7 @@ const cardsList = {
     },
     {
       name: 'Shocks and Struts',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -192,7 +192,7 @@ const cardsList = {
     },
     {
       name: 'Ball Joints',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -201,7 +201,7 @@ const cardsList = {
     },
     {
       name: 'Tie-rod Ends',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -210,7 +210,7 @@ const cardsList = {
     },
     {
       name: 'Wheel hub and Bearings',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -219,7 +219,7 @@ const cardsList = {
     },
     {
       name: 'Exhaust System',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -245,7 +245,7 @@ const cardsList = {
     },
     {
       name: 'Inspection & Additional Time',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
@@ -254,7 +254,7 @@ const cardsList = {
     },
     {
       name: 'Oil Change',
-      cardRelationType: 'all',
+      cardRelationType: 'global',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',

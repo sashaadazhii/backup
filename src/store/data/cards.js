@@ -16,7 +16,7 @@ const approvalStatuses = [
 ]
 
 const cardsList = cards.data
-  .filter(c => c.cardRelationType === 'all')
+  .filter(c => c.cardRelationType === 'global')
   .map(card => {
     return {
       ...card,

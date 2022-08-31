@@ -3,7 +3,7 @@
     <div class="modal__wrapper">
       <div class="modal__header">
         <div class="modal__header-top">
-          <div class="modal__title">Add New Card</div>
+          <div class="modal__title">Create New Card</div>
           <div class="modal__close" @click="close"><i class="i-circle_close" /></div>
         </div>
         <div class="modal__header-bottom">
@@ -14,22 +14,13 @@
             <button
               class="modal__header-item"
               :class="{
-                active: component === 'CardAdditional'
+                active: component === 'CardAdditional',
+                error: additionalError
               }"
               @click="component = 'CardAdditional'"
             >
               Additional
             </button>
-            <!-- <button
-              class="modal__header-item"
-              :class="{
-                active: component === 'CardType',
-                error: v$.card.odometerTrack.$error || v$.card.timeTrackLength.$error
-              }"
-              @click="component = 'CardType'"
-            >
-              Card Type
-            </button> -->
           </div>
         </div>
       </div>
@@ -44,16 +35,14 @@
 <script>
 import {mapActions, mapMutations, mapState} from 'vuex'
 import CardGeneral from './CardGeneral'
-import CardRelation from './CardRelation'
 import CardAdditional from './CardAdditional'
-import CardType from './CardType'
 import useVuelidate from '@vuelidate/core'
-import {required, requiredIf, helpers} from '@vuelidate/validators'
+import {required, requiredIf} from '@vuelidate/validators'
 import Button from '@/components/Yaro/Button'
 
 export default {
   name: 'AddCardTemplateModal',
-  components: {CardGeneral, CardRelation, CardType, CardAdditional, Button},
+  components: {CardGeneral, CardAdditional, Button},
   data() {
     return {
       v$: useVuelidate(),
@@ -72,6 +61,14 @@ export default {
       if (!this.v$.$errors.length) return false
       const errors = this.v$.$errors.map(error => error.$property)
       const elementList = ['name', 'description']
+      const error = elementList.some(el => errors.find(err => err === el))
+      return error
+    },
+    additionalError() {
+      if (!this.v$.$errors.length) return false
+      const errors = this.v$.$errors.map(error => error.$property)
+      console.log(errors)
+      const elementList = ['odometerTrack', 'timeTrackLength']
       const error = elementList.some(el => errors.find(err => err === el))
       return error
     }
@@ -95,31 +92,21 @@ export default {
       if (this.isLoading) return
       const result = await this.v$.$validate()
       if (!result) return
-      const {name, description, cardType, cardRelationType} = this.card
+      const {name, description, cardType, cardRelationType, relation, vehicleUID, odometerTrack, timeTrackLength, timeTrackType} = this.card
       const card = {name, description, cardType, cardRelationType}
       if (this.card.descriptionForCustomer) card.descriptionForCustomer = this.card.descriptionForCustomer
-      if (this.card.cardRelationType === 'custom-vehicles') {
-        card.relations = this.card.relations.map(r => {
-          const newCar = {make: r.make}
-          if (r.model) newCar.model = r.model
-          if (r.yearFrom) newCar.yearFrom = r.yearFrom
-          if (r.yearTo) newCar.yearTo = r.yearTo
-          return newCar
-        })
-      }
-      if (this.card.cardRelationType === 'specific-vehicle') card.vehicleUID = this.card.vehicleUID
-      if (this.card.cardType === 'maintenance' && this.card.odometerTrack) card.odometerTrack = this.card.odometerTrack
-      if (this.card.cardType === 'maintenance' && this.card.timeTrackLength) card.timeTrackLength = this.card.timeTrackLength
-      if (this.card.cardType === 'maintenance' && this.card.timeTrackLength) card.timeTrackType = this.card.timeTrackType
+      if (this.card.cardRelationType === 'custom-vehicles') card.relation = relation
+      if (this.card.cardRelationType === 'specific-vehicle') card.vehicleUID = vehicleUID
+      if (this.card.hasService && this.card.odometerTrack) card.odometerTrack = odometerTrack
+      if (this.card.hasService && this.card.timeTrackLength) card.timeTrackLength = timeTrackLength
+      if (this.card.hasService && this.card.timeTrackLength) card.timeTrackType = timeTrackType
 
       try {
         this.isLoading = true
-        const req = await this.create(card)
-        // this.setTemplate(req)
+        await this.create(card)
         this.v$.$reset()
         this.reset()
         this.$vfm.hide('AddCardModal')
-        // this.$router.push(`/inspection-builder/card/${req.templateID}`)
       } finally {
         this.isLoading = false
       }
@@ -131,14 +118,12 @@ export default {
         name: {required},
         description: {required},
         vehicleUID: {requiredIf: requiredIf(() => this.card.cardRelationType === 'specific-vehicle')},
-        relations: {
+        relation: {
           requiredIf: requiredIf(() => this.card.cardRelationType === 'custom-vehicles'),
-          $each: helpers.forEach({
-            make: {requiredIf: requiredIf(() => this.card.cardRelationType === 'custom-vehicles')}
-          })
+          make: {requiredIf: requiredIf(() => this.card.cardRelationType === 'custom-vehicles')}
         },
-        odometerTrack: {requiredIf: requiredIf(() => this.card.cardType === 'maintenance' && !this.card.timeTrackLength)},
-        timeTrackLength: {requiredIf: requiredIf(() => this.card.cardType === 'maintenance' && !this.card.odometerTrack)}
+        odometerTrack: {requiredIf: requiredIf(() => this.card.hasService && !this.card.timeTrackLength)},
+        timeTrackLength: {requiredIf: requiredIf(() => this.card.hasService && !this.card.odometerTrack)}
       }
     }
   }

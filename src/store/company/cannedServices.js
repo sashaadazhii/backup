@@ -8,7 +8,7 @@ export default {
     service: {},
     localService: null,
     activeService: {},
-    history: [],
+    history: []
   },
   mutations: {
     set(state, services) {
@@ -39,14 +39,33 @@ export default {
     remove(state, id) {
       state.services = state.services.filter(service => service.id !== id)
     },
-    removePart(state, {id, serviceID}) {
-      const service = state.services.find(ser => ser.id === serviceID)
-      const partIdx = service.parts.findIndex(p => p.id === id)
-      service.parts.splice(partIdx, 1)
+    // ================ Parts =================
+    addPart(state, part) {
+      const service = state.services.find(s => s.id === part.serviceID)
+      service.parts.push(part)
     },
+    removePart(state, part) {
+      const service = state.services.find(s => s.id === part.serviceID)
+      service.parts = service.parts.filter(p => p.id !== part.id)
+    },
+    updatePart(state, part) {
+      const service = state.services.find(s => s.id === part.serviceID)
+      const partIdx = service.parts.findIndex(p => p.id === part.id)
+      service.parts.splice(partIdx, 1, part)
+    },
+    // =======================================
+
+    // addPart(state, part) {
+
+    // },
+    // removePart(state, {id, serviceID}) {
+    //   const service = state.services.find(ser => ser.id === serviceID)
+    //   const partIdx = service.parts.findIndex(p => p.id === id)
+    //   service.parts.splice(partIdx, 1)
+    // },
     setHistory(state, history) {
       state.history = history
-    },
+    }
   },
   actions: {
     async fetch({commit}, id) {

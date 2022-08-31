@@ -42,7 +42,7 @@
 import {mapMutations, mapActions} from 'vuex'
 import Menu from '@/components/Yaro/Menu'
 import Label from '@/components/Yaro/Label'
-
+import CardModal from '../CardModal'
 export default {
   name: 'CardComponent',
   components: {Menu, Label},
@@ -60,8 +60,8 @@ export default {
           label: 'Edit',
           icon: 'i-edit',
           command: () => {
-            this.setTemplate(this.card)
-            this.$router.push(`/inspection-builder/card/${this.card.templateID}`)
+            // this.setTemplate(this.card)
+            // this.$router.push(`/inspection-builder/card/${this.card.templateID}`)
           }
         },
         {
@@ -83,7 +83,17 @@ export default {
     openCustomerPage(e) {
       if (!this.$refs.menu || this.$refs.menu.contains(e.target)) return
       this.setTemplate(this.card)
-      this.$router.push(`/inspection-builder/card/${this.card.templateID}`)
+      this.$vfm.show({
+        component: CardModal,
+        bind: {
+          name: 'CardModal',
+          'click-to-close': false,
+          'esc-to-close': true,
+          // 'hide-overlay': true,
+          // 'focus-trap': true
+        }
+      })
+      // this.$router.push(`/inspection-builder/card/${this.card.templateID}`)
     },
     openModal() {
       this.$confirm.require({

@@ -2,10 +2,10 @@
   <div class="section__wrapper">
     <div class="section__dropdown">
       <div class="section__dropdown-title">Relation to Vehicles</div>
-      <Dropdown v-model="type" :options="typesList" :filterFields="['label']" @change="changeType" theme="white">
+      <Dropdown v-model="type" :options="typesList" :filterFields="['label']" @change="setCardRelationType($event.value.id)" theme="white">
         <template #value="{value}">
           <div class="y-dropdown-label-custom">
-            <i v-if="value.id === 'all'" class="i-directions_car" />
+            <i v-if="value.id === 'global'" class="i-directions_car" />
             <i v-if="value.id === 'custom-vehicles'" class="i-construction" />
             <i v-if="value.id === 'specific-vehicle'" class="i-user" />
             <span>{{ value.label }}</span>
@@ -13,7 +13,7 @@
         </template>
         <template #option="{option}">
           <div class="y-dropdown-item-custom">
-            <i v-if="option.id === 'all'" class="i-directions_car" />
+            <i v-if="option.id === 'global'" class="i-directions_car" />
             <i v-if="option.id === 'custom-vehicles'" class="i-construction" />
             <i v-if="option.id === 'specific-vehicle'" class="i-user" />
             <span>{{ option.label }}</span>
@@ -23,7 +23,7 @@
     </div>
     <div class="section__component">
       <CustomerVehicle v-if="type.id === 'specific-vehicle'" />
-      <SpecifyVehicles v-if="type.id === 'custom-vehicles'" />
+      <SpecifyVehicle v-if="type.id === 'custom-vehicles'" />
     </div>
   </div>
 </template>
@@ -31,17 +31,17 @@
 <script>
 import Dropdown from '@/components/Yaro/Dropdown'
 import CustomerVehicle from './CustomerVehicle'
-import SpecifyVehicles from './SpecifyVehicles'
-import {mapActions, mapGetters, mapMutations, mapState} from 'vuex'
+import SpecifyVehicle from './SpecifyVehicle'
+import {mapMutations, mapState} from 'vuex'
 
 export default {
   name: 'AddCardRelation',
-  components: {Dropdown, SpecifyVehicles, CustomerVehicle},
+  components: {Dropdown, SpecifyVehicle, CustomerVehicle},
   data() {
     return {
-      type: {id: 'all', label: 'All Vehicles'},
+      type: {id: 'global', label: 'Global'},
       typesList: [
-        {id: 'all', label: 'All Vehicles'},
+        {id: 'global', label: 'Global'},
         {id: 'custom-vehicles', label: 'Specify Vehicle'},
         {id: 'specific-vehicle', label: 'Customer’s Vehicle'}
       ]
@@ -54,16 +54,27 @@ export default {
   },
   computed: {
     ...mapState({
-      cardRelationType: s => s.company.card.card.cardRelationType
+      cardRelationType: s => s.company.card.card.cardRelationType,
+      cardType: s => s.company.card.card.cardType
     })
+  },
+  watch: {
+    cardType(type) {
+      if (type === 'public') {
+        this.typesList = this.typesList.filter(t => t.id !== 'specific-vehicle')
+        if (this.type.id === 'specific-vehicle') {
+          this.type = {id: 'global', label: 'Global'}
+        }
+      }
+      if (type === 'local') {
+        this.typesList.push({id: 'specific-vehicle', label: 'Customer’s Vehicle'})
+      }
+    }
   },
   methods: {
     ...mapMutations({
       setCardRelationType: 'company/card/setCardRelationType'
-    }),
-    changeType(e) {
-      this.setCardRelationType(e.value.id)
-    }
+    })
   }
 }
 </script>

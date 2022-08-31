@@ -8,6 +8,20 @@
     display: grid;
     row-gap: 24px;
   }
+  &__label {
+    @include border(10px, $color-violet);
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    padding: 12px;
+    background-color: rgba($color-violet, 0.1);
+    & > i {
+      @include font(16px, $color-violet, 600);
+    }
+    & > span {
+      @include font(14px, $color-grey-space, 600);
+    }
+  }
 }
 
 .field {
@@ -30,7 +44,7 @@
     }
     &.error {
       border-color: $color-red;
-      background-color: rgba($color-red, .1);
+      background-color: rgba($color-red, 0.1);
       &::placeholder {
         color: $color-red;
       }
