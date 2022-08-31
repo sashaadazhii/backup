@@ -54,7 +54,7 @@
   }
   &__cell {
     @include font(14px, $color-grey-space, 600);
-    white-space: nowrap;
+    // white-space: nowrap;
     &--icon {
       display: flex;
       align-items: center;
