@@ -30,15 +30,16 @@
           <div v-if="block === 'General'" class="blocks__subtitle">
             {{ card.description }}
           </div>
-          <!-- <div class="blocks__nav">
+          <div class="blocks__nav">
             <button class="blocks__btn" :class="{'-green': block === 'General'}" @click="block = 'General'">General</button>
             <button class="blocks__btn" :class="{'-green': block === 'Notes'}" @click="block = 'Notes'">Notes</button>
-            <button class="blocks__btn" :class="{'-green': block === 'Service'}" @click="block = 'Service'">Service Tracking</button>
+            <button class="blocks__btn" :class="{'-green': block === 'Info'}">Info</button>
+            <button class="blocks__btn" :class="{'-green': block === 'Media'}">Media</button>
             <button class="blocks__btn" :class="{'-green': block === 'Warranty'}" @click="block = 'Warranty'">Warranty</button>
-          </div> -->
+            <button class="blocks__btn" :class="{'-green': block === 'Service'}" @click="block = 'Service'">Service Tracking</button>
+          </div>
           <div class="blocks__inner">
             <component :is="block" />
-            <!-- <General /> -->
           </div>
         </div>
         <div v-if="block === 'General'" class="modal__main-requests">
@@ -153,7 +154,7 @@ import Menu from '@/components/Yaro/Menu'
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'CardPage',
-  components: {Button, Label, General, Multiselect, Menu, Parts},
+  components: {Button, Label, General, Multiselect, Menu, Parts, Notes, Service, Warranty},
   data() {
     return {
       block: 'General',
