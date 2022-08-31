@@ -7,12 +7,12 @@
       placeholder="Field title goes here..."
       @update:modelValue="$emit('changeTitle', {value: $event, idx})"
     />
-    <Dropdown :modelValue="field.type" :options="types" title="Choose answer type" @update:modelValue="$emit('changeType', {value: $event, idx})" />
+    <!-- <Dropdown :modelValue="field.type" :options="types" title="Choose answer type" @update:modelValue="$emit('changeType', {value: $event, idx})" /> -->
     <div class="options__list" v-if="field.type !== 'Input'">
       <Draggable :list="field.list" class="options__drug" handle=".drug" item-key="name">
         <template #item="{element, index}">
           <div class="options__item item">
-            <div class="item__title">{{ field.type }} option {{ element.name }} {{ index + 1 }}</div>
+            <div class="item__title">option {{ index + 1 }}</div>
             <i class="i-drag_indicator drug" />
             <Input v-model="element.option" placeholder="Option name goes here..." />
             <Button icon="i-remove_circle_outline" border size="large" @click="$emit('delItem', {index, idx})" :disabled="field.list.length <= 2" />
@@ -36,7 +36,7 @@ import Draggable from 'vuedraggable'
 
 export default {
   name: 'QuestionsModalBlock',
-  components: {Input, Dropdown, Button, Draggable},
+  components: {Input, Button, Draggable},
   props: {
     field: {
       type: Object,
@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      type: 'Input',
+      type: 'Drop-Down',
       types: ['Input', 'Drop-Down', 'Select'],
       list: [{option: null}, {option: null}]
     }

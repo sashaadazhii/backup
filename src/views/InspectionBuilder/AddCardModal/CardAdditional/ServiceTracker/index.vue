@@ -5,6 +5,7 @@
       <Switch :modelValue="hasService" @click="setService(!hasService)" />
     </div>
     <Input
+      :disabled="!hasService"
       title="Odometer Track"
       v-maska="'########'"
       :modelValue="odometerTrack"
@@ -16,8 +17,8 @@
       theme="white"
       @update:modelValue="setOdometerTrack"
     />
-
     <Input
+      :disabled="!hasService"
       title="Time Track"
       :modelValue="timeTrackLength"
       v-maska="'####'"
@@ -52,7 +53,7 @@ export default {
     ...mapMutations({
       setTimeTrackLength: 'company/card/setTimeTrackLength',
       setOdometerTrack: 'company/card/setOdometerTrack',
-      setService: 'company/card/setService',
+      setService: 'company/card/setService'
     }),
     error(name) {
       const error = this.errors.find(err => err.$property === name)

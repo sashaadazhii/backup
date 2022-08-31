@@ -18,7 +18,10 @@
         <Multiselect v-model="shift" :options="shifts" dataKey="id" notEmpty size="medium" :menu="false" @change="changeCalendar">
           <template #value="{value}">
             <div class="y-dropdown-label-custom">
-              <span v-for="(item, idx) of value" :key="idx">{{ item.name }}</span>
+              <span v-for="(item, idx) of value" :key="idx">
+                {{ item.name }}
+                <span>,</span>
+              </span>
             </div>
           </template>
           <template #option="{option}">

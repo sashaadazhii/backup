@@ -1,0 +1,46 @@
+@import 'src/assets/styles/_variables.scss';
+
+.card {
+  &__wrapper {
+    display: grid;
+    column-gap: 20px;
+  }
+  &__main {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 24px;
+  }
+  // &__close {
+  //   @include border;
+  //   padding: 12px;
+  //   align-self: start;
+  //   line-height: 0;
+  //   margin-top: 26px;
+  //   cursor: pointer;
+  //   & > i {
+  //     @include font(20px, $color-lightgrey);
+  //   }
+  // }
+}
+// .field {
+//   &__title {
+//     @include font(14px, $color-space, 600);
+//     margin-bottom: 12px;
+//   }
+//   &__dropdown {
+//     &-option,
+//     &-label {
+//       display: flex;
+//       align-items: center;
+//       column-gap: 8px;
+//       & > i {
+//         margin-top: -3px;
+//         margin-bottom: -3px;
+//       }
+//     }
+//     &.main {
+//       grid-area: 1 / 1 / 1 / 5;
+//     }
+//   }
+// }

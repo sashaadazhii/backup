@@ -1,0 +1,26 @@
+@import 'src/assets/styles/_variables.scss';
+
+.block {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    @include border(16px);
+    background-color: $color-grey-smoke;
+    padding: 20px;
+    & > .-full {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
+  &__header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    & > span {
+      @include font(14px, $color-grey-space, 600);
+    }
+  }
+}

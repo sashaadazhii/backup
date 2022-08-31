@@ -7,6 +7,7 @@
       <span>Thanks for helping your network! Card is going to be undergoing review process, though, you can can use it as your local card.</span>
     </div>
     <CardRelation />
+    <CardInclude />
 
     <div class="field__label">
       <div class="field__title">Description</div>
@@ -29,10 +30,11 @@
 import {mapMutations, mapState} from 'vuex'
 import Dropdown from '@/components/Yaro/Dropdown'
 import CardRelation from './CardRelation'
+import CardInclude from './CardInclude'
 
 export default {
   name: 'AddCardGeneral',
-  components: {Dropdown, CardRelation},
+  components: {Dropdown, CardRelation, CardInclude},
 
   data() {
     return {

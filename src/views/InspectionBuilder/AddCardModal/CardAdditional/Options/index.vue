@@ -4,7 +4,7 @@
       <span>Card has has extra options</span>
       <Switch v-model="hasOptions" />
     </div>
-    <div class="block__fields fields">
+    <div class="block__fields fields" :class="{'-disabled': !hasOptions}">
       <Field
         v-for="(field, idx) of fields"
         :key="idx"
@@ -39,8 +39,8 @@ export default {
       fields: [
         {
           title: null,
-          type: 'Input',
-          list: []
+          type: 'Drop-Down',
+          list: [{option: null}, {option: null}, {option: null}]
         }
       ]
     }

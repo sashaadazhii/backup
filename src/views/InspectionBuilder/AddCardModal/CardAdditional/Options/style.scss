@@ -19,6 +19,9 @@
 .fields {
   background-color: $color-white;
   @include border(16px);
+  &.-disabled {
+    pointer-events: none;
+  }
   &__btn {
     display: flex;
     align-items: center;

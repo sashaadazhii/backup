@@ -1,9 +1,5 @@
 <template>
   <div class="block__wrapper">
-    <div class="block__header">
-      <span> Include on every work order</span>
-      <Switch v-model="every" />
-    </div>
     <div class="field__dropdown">
       <Dropdown
         theme="white"
@@ -56,17 +52,15 @@
 <script>
 import Dropdown from '@/components/Yaro/Dropdown'
 import {mapActions, mapMutations, mapState} from 'vuex'
-import Switch from '@/components/Yaro/Switch'
 
 export default {
   name: 'AddCardRelation',
-  components: {Dropdown, Switch},
+  components: {Dropdown},
   data() {
     return {
       customer: null,
       vehicle: null,
-      vehicles: [],
-      every: false,
+      vehicles: []
     }
   },
   async created() {
