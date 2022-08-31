@@ -14,6 +14,19 @@
             </div>
           </template>
         </Dropdown>
+
+        <Multiselect v-model="shift" :options="shifts" dataKey="id" notEmpty size="medium" :menu="false" @change="changeCalendar">
+          <template #value="{value}">
+            <div class="y-dropdown-label-custom">
+              <span v-for="(item, idx) of value" :key="idx">{{ item.name }}</span>
+            </div>
+          </template>
+          <template #option="{option}">
+            <div class="y-dropdown-item-custom">
+              <span>{{ option.name }}</span>
+            </div>
+          </template>
+        </Multiselect>
       </div>
       <div class="calendar__titles">
         <div class="calendar__title">Monday</div>
@@ -47,10 +60,13 @@
 <script>
 import dayjs from 'dayjs'
 import Dropdown from '@/components/Yaro/Dropdown'
+import Multiselect from '@/components/Yaro/Multiselect'
+
+import {mapState} from 'vuex'
 
 export default {
   name: 'CapacityCalendar',
-  components: {Dropdown},
+  components: {Dropdown, Multiselect},
   data() {
     return {
       dayjs,
@@ -69,11 +85,19 @@ export default {
         {id: 9, name: 'October'},
         {id: 10, name: 'November'},
         {id: 11, name: 'December'}
-      ]
+      ],
+      shift: null
     }
   },
   created() {
+    this.shift = this.shifts
     this.createCalendar(this.month.id)
+    console.log(this.shifts)
+  },
+  computed: {
+    ...mapState({
+      shifts: s => s.company.shifts.shifts
+    })
   },
   methods: {
     createCalendar(month = 7, year = 2022) {
@@ -86,29 +110,9 @@ export default {
         const day = {
           date: dayjs().year(year).month(month).date(i),
           num: i,
-          shifts: [
-            {
-              name: 'Morning Shift',
-              color: '#ff9b70',
-              capacity: Math.floor(Math.random() * 101),
-              hours: Math.floor(Math.random() * 8) + 1,
-              allHours: Math.floor(Math.random() * 8) + 1
-            },
-            {
-              name: 'Day Shift',
-              color: '#ba8ae7',
-              capacity: Math.floor(Math.random() * 101),
-              hours: Math.floor(Math.random() * 8) + 1,
-              allHours: Math.floor(Math.random() * 8) + 1
-            },
-            {
-              name: 'Night Shift',
-              color: '#3eb3bb',
-              capacity: Math.floor(Math.random() * 101),
-              hours: Math.floor(Math.random() * 8) + 1,
-              allHours: Math.floor(Math.random() * 8) + 1
-            }
-          ]
+          shifts: this.shift.map(s => {
+            return {...s, capacity: Math.floor(Math.random() * 101), hours: Math.floor(Math.random() * 8) + 1, allHours: Math.floor(Math.random() * 8) + 1}
+          })
         }
         this.days.push(day)
       }
@@ -121,6 +125,9 @@ export default {
       if (capacity <= 50) return '-green'
       if (capacity <= 80) return '-orange'
       if (capacity <= 100) return '-red'
+    },
+    changeCalendar() {
+      this.createCalendar()
     }
   }
 }

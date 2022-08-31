@@ -21,12 +21,18 @@
       <div class="y-multiselect-menu"><i class="i-add" /></div>
     </slot>
 
-    <div v-else class="y-multiselect-inner">
+    <div v-else class="y-multiselect-inner" :class="{'y-multiselect-inner--medium': size === 'medium'}">
       <div class="y-multiselect-label-container">
         <div :class="labelClass">
           <slot name="value" :value="modelValue" :placeholder="placeholder">
             <template v-if="display === 'comma'">
-              {{ label || 'empty' }}
+              <div v-for="item of modelValue" class="p-multiselect-token" :key="getLabelByValue(item)">
+                <!-- <slot name="chip" :value="item"> -->
+                <span class="p-multiselect-token-label">{{ getLabelByValue(item) }}</span>
+                <!-- </slot> -->
+                <span v-if="!disabled" class="p-multiselect-token-icon pi pi-times-circle" @click="removeChip(item)"></span>
+              </div>
+              <!-- {{ label || 'empty' }} -->
             </template>
             <template v-else-if="display === 'chip'">
               <div v-for="item of modelValue" class="p-multiselect-token" :key="getLabelByValue(item)">
@@ -235,6 +241,14 @@ export default {
     showCheckbox: {
       type: Boolean,
       default: true
+    },
+    notEmpty: {
+      type: Boolean,
+      default: false
+    },
+    size: {
+      type: String,
+      default: null
     }
   },
   data() {
@@ -403,9 +417,12 @@ export default {
       let selected = this.isSelected(option)
       let value = null
 
-      if (selected) value = this.modelValue.filter(val => !ObjectUtils.equals(val, this.getOptionValue(option), this.equalityKey))
-      else value = [...(this.modelValue || []), this.getOptionValue(option)]
-
+      if (selected) {
+        value = this.modelValue.filter(val => !ObjectUtils.equals(val, this.getOptionValue(option), this.equalityKey))
+        if (this.notEmpty && !value.length) return
+      } else {
+        value = [...(this.modelValue || []), this.getOptionValue(option)]
+      }
       this.$emit('update:modelValue', value)
       this.$emit('change', {originalEvent: event, value: value})
     },

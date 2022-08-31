@@ -1,7 +1,7 @@
 const shifts = [
   {
     id: '1dcf15a3-ab46-4324-a366-79459eb9b07f',
-    name: 'Day Shift',
+    name: 'Morning Shift',
     shortName: 'Day',
     description: 'Full working day',
     startTime: '07:30AM',
@@ -11,7 +11,7 @@ const shifts = [
   },
   {
     id: '1dcf15b3-ab46-4324-a366-79459eb9b07f',
-    name: 'Standard Base Shift',
+    name: 'Day Shift',
     shortName: 'Base',
     description: 'Full working day',
     startTime: '07:30AM',
@@ -21,7 +21,7 @@ const shifts = [
   },
   {
     id: '9fd5510b-663a-46de-ba72-3d3adba313d2',
-    name: 'Best Shift',
+    name: 'Night Shift',
     shortName: 'Best',
     startTime: '09:30AM',
     endTime: '04:00PM',
