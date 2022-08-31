@@ -142,8 +142,45 @@
 
 .progress {
   &-wrap {
-    padding: 8px 12px;
-    @include border(8px);
+    display: flex;
+    align-items: center;
+    margin-left: 80px;
+    @include border(8px, $color-grey-light);
     box-shadow: 0 0 0 4px $color-grey-flash;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    padding: 8px 12px;
+    border-left: 1px solid $color-grey-light;
+    &:first-child {
+      border: none;
+    }
+  }
+  &__bar {
+    width: 64px;
+    height: 20px;
+    background: $color-grey-light;
+    border-radius: 6px;
+    & > span {
+      display: block;
+      height: 20px;
+      border-radius: 6px;
+      background-color: $color-orange;
+    }
+    &.green {
+      & > span {
+        background-color: $color-green;
+      }
+    }
+    &.red {
+      & > span {
+        background-color: $color-red;
+      }
+    }
+  }
+  &__text {
+    @include font(14px, $color-grey-space, 600);
   }
 }
