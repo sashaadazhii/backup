@@ -45,7 +45,6 @@ export default {
       state.card.descriptionForCustomer = desc
     },
     setCardType(state, type) {
-      console.log(type)
       state.card.cardType = type
     },
     setCardRelationType(state, type) {

@@ -21,10 +21,7 @@
     <div v-if="show" class="service__body">
       <div class="service__desc">
         <div class="service__desc-title">Service Description</div>
-        <div class="service__desc-text">
-          Weird noise is at the back of the vehicle. It seems like some parts are not being connected. Firts time happened a week ago, then disappeared and now
-          is there again.
-        </div>
+        <div class="service__desc-text">{{service.description}}</div>
       </div>
       <div class="service__parts">
         <Part v-for="(part, idx) of service.parts" :key="idx" :part="part" />
@@ -50,6 +47,7 @@ import Guid from './Guid'
 import Button from '@/components/Yaro/Button'
 import Menu from '@/components/Yaro/Menu'
 import NewPart from './NewPart'
+import CreateService from '../CreateService'
 
 export default {
   name: 'CardModalService',
@@ -67,13 +65,34 @@ export default {
         {
           label: 'Edit',
           icon: 'i-edit',
-          command: () => {}
+          command: () => {
+            this.$vfm.show(
+              {
+                component: CreateService,
+                bind: {
+                  name: 'CreateService',
+                  'esc-to-close': true,
+                  'click-to-close': false
+                }
+              },
+              this.service
+            )
+          }
         },
         {
           label: 'Remove',
           icon: 'i-remove_circle red',
           command: () => {
-            // this.remove({id: this.service.id, templateID: this.service.templateID})
+            this.$confirm.require({
+              title: 'Hey, wait!',
+              message: `Are you sure, you want to delete this service?`,
+              acceptLabel: 'Yes',
+              rejectLabel: 'No',
+              icon: 'i-volume_up',
+              accept: async () => {
+                this.remove(this.service.id)
+              }
+            })
           }
         }
       ],
@@ -90,7 +109,7 @@ export default {
   methods: {
     ...mapActions({}),
     ...mapMutations({
-      // remove: 'cards/removeService'
+      remove: 'company/cannedServices/remove'
     }),
     open() {
       if (this.isNewPart) this.localPart = null

@@ -92,7 +92,6 @@ export default {
   created() {
     this.shift = this.shifts
     this.createCalendar(this.month.id)
-    console.log(this.shifts)
   },
   computed: {
     ...mapState({

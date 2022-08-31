@@ -101,11 +101,14 @@ export default {
       range: null,
       templateID: null,
       id: null,
-      isLoading: false
+      isLoading: false,
+      averageTime: null,
+      used: 1,
+      parts: [],
+      guides: []
     }
   },
   async created() {
-    console.log(this.card)
     // if (!this.company.id) await this.fetchCompanySettings()
     // if (this.company.hasGlobalWarranty) {
     //   const {warrantyRange, warrantyTime} = this.company
@@ -119,15 +122,14 @@ export default {
   },
   computed: {
     ...mapState({
-      card: s => s.cards.card
-
+      card: s => s.company.cardTemplates.template
       // company: s => s.company.settings.settings
     })
   },
   methods: {
     ...mapMutations({
-      add: 'cards/addService',
-      get: 'cards/getServices'
+      add: 'company/cannedServices/add',
+      update: 'company/cannedServices/update'
     }),
 
     async selectWarranty(warranty) {
@@ -148,17 +150,17 @@ export default {
       const result = await this.v$.$validate()
       if (!result) return
       const id = this.card.templateID
-      const {name, estimatedTime, warranty, time, range, description} = this
+      const {name, estimatedTime, warranty, time, range, description, averageTime, used, parts, guides} = this
       const service = {
         name,
         estimatedTime,
         warrantyType: warranty.id,
         warranty: {},
         description,
-        averageTime: null,
-        used: 1,
-        parts: [],
-        guides: []
+        averageTime,
+        used,
+        parts,
+        guides
       }
 
       if (warranty.id === 'custom') {
@@ -170,22 +172,21 @@ export default {
           range: 40_000
         }
       }
+      if (this.templateID) {
+      } else {
+      }
 
       try {
         this.isLoading = true
         if (this.templateID) {
-          // service.templateID = this.templateID
-          // service.id = this.id
-          // await this.update({id: this.id, service, templateID: this.templateID})
-          // this.$vfm.hide('EditModal')
+          service.templateID = this.templateID
+          service.id = this.id
+          this.update(service)
+          this.$vfm.hide('CreateService')
         } else {
-          console.log(service)
           service.templateID = id
           service.id = this.$getID()
           this.add(service)
-          console.log(id)
-          this.get(id)
-          // await this.create({id, service})
           this.$vfm.hide('CreateService')
         }
       } finally {
@@ -193,20 +194,23 @@ export default {
       }
     },
     beforeOpen(e) {
-      // const service = e.ref.params._rawValue
-      // if (service) {
-      //   const {name, estimatedTime, warranty, templateID, id} = service
-      //   this.templateID = templateID
-      //   this.id = id
-      //   this.name = name
-      //   this.estimatedTime = estimatedTime
-      //   if (typeof warranty === 'string') this.warranty = this.warrantyList.find(warr => warr.id === warranty)
-      //   else {
-      //     this.warranty = this.warrantyList.find(warr => warr.id === 'custom')
-      //     this.time = warranty.time
-      //     this.range = warranty.range
-      //   }
-      // }
+      const service = e.ref.params._rawValue
+
+      if (service) {
+        const {name, estimatedTime, warrantyType, description, warranty, templateID, id, averageTime, used, parts, guides} = service
+        this.templateID = templateID
+        this.id = id
+        this.name = name
+        this.estimatedTime = estimatedTime
+        this.description = description
+        this.warranty = this.warrantyList.find(w => w.id === warrantyType)
+        this.time = warranty.time
+        this.range = warranty.range
+        this.averageTime = averageTime
+        this.used = used
+        this.parts = parts
+        this.guides = guides
+      }
     }
   },
   validations() {

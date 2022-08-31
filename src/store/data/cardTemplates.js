@@ -7,7 +7,7 @@ const cardsList = {
       name: 'Air Filter',
       odometerTrack: 48000,
       timeTrackLength: 24,
-      relations: [],
+      relation: {},
       templateID: 1
     },
     {
@@ -16,7 +16,7 @@ const cardsList = {
       name: 'Cabin Filter',
       odometerTrack: 48000,
       timeTrackLength: 24,
-      relations: [],
+      relation: {},
       templateID: 2
     },
     {
@@ -25,7 +25,7 @@ const cardsList = {
       name: 'Cooling System Service',
       odometerTrack: 150_000,
       timeTrackLength: 84,
-      relations: [],
+      relation: {},
       templateID: 3
     },
     {
@@ -34,7 +34,7 @@ const cardsList = {
       odometerTrack: 150000,
       timeTrackLength: 84,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 4
     },
     {
@@ -43,7 +43,7 @@ const cardsList = {
       odometerTrack: 150000,
       timeTrackLength: 84,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 5
     },
     {
@@ -52,7 +52,7 @@ const cardsList = {
       odometerTrack: 150000,
       timeTrackLength: 84,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 6
     },
     {
@@ -61,7 +61,7 @@ const cardsList = {
       odometerTrack: 150000,
       timeTrackLength: 84,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 7
     },
     {
@@ -70,7 +70,7 @@ const cardsList = {
       odometerTrack: 150000,
       timeTrackLength: 84,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 8
     },
     {
@@ -79,7 +79,7 @@ const cardsList = {
       odometerTrack: 150000,
       timeTrackLength: 84,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 9
     },
     {
@@ -88,7 +88,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 10
     },
     {
@@ -97,7 +97,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 11
     },
     {
@@ -115,7 +115,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 13
     },
     {
@@ -124,7 +124,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 14
     },
     {
@@ -133,7 +133,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 15
     },
     {
@@ -142,7 +142,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 16
     },
     {
@@ -151,7 +151,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 17
     },
     {
@@ -160,7 +160,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 18
     },
     {
@@ -169,7 +169,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 19
     },
     {
@@ -178,7 +178,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 20
     },
     {
@@ -187,7 +187,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 21
     },
     {
@@ -196,7 +196,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 22
     },
     {
@@ -205,7 +205,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 23
     },
     {
@@ -214,7 +214,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 24
     },
     {
@@ -223,7 +223,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 25
     },
     {
@@ -234,14 +234,12 @@ const cardsList = {
       odometerTrack: 150000,
       timeTrackLength: 84,
       servicesCount: 2,
-      relations: [
-        {
-          make: 'Audi',
-          model: 'A4',
-          yearFrom: 2009,
-          yearTo: 2010
-        }
-      ]
+      relation: {
+        make: 'Audi',
+        model: 'A4',
+        yearFrom: 2009,
+        yearTo: 2010
+      }
     },
     {
       name: 'Inspection & Additional Time',
@@ -249,7 +247,7 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 27
     },
     {
@@ -258,9 +256,9 @@ const cardsList = {
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relations: [],
+      relation: {},
       templateID: 28
-    },
+    }
   ],
   pagination: {
     page: 1,

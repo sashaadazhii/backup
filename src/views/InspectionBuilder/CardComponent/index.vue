@@ -5,17 +5,17 @@
       <Label v-if="card.servicesCount" :label="card.servicesCount" border size="small" class="-grey" />
     </div>
     <div class="card__cell card__cell--vehicles">
-      <div v-if="!card.relations.length" class="card__vehicle green">
+      <div v-if="card.cardRelationType === 'global'" class="card__vehicle green">
         <i class="i-directions_car" />
-        <span>All Vehicles</span>
+        <span>Global</span>
       </div>
       <div v-else class="card__vehicle">
         <i class="i-directions_car" />
-        <span v-if="!card.relations[0].model" class="space">All </span>
-        <span> {{ card.relations[0]?.make }} {{ card.relations[0]?.model }} {{ card.relations[0]?.yearFrom }} </span>
-        <span v-if="card.relations[0].yearFrom !== card.relations[0].yearTo"> - {{ card.relations[0].yearTo }}</span>
+        <!-- <span v-if="card.relation.model" class="space">All </span> -->
+        <span> {{ card.relation.make }} {{ card.relation.model }} {{ card.relation.yearFrom }} </span>
+        <span v-if="card.relation.yearFrom !== card.relation.yearTo"> - {{ card.relation.yearTo }}</span>
       </div>
-      <div class="card__counter-wrapper">
+      <!-- <div class="card__counter-wrapper">
         <div v-if="card.relations.length > 1" class="card__counter">+ {{ card.relations.length - 1 }}</div>
         <div class="card__counter-list">
           <div v-for="car of card.relations.slice(1)" :key="car.uid" class="card__vehicle">
@@ -24,7 +24,7 @@
             <span v-if="car.yearFrom !== car.yearTo"> - {{ car.yearTo }} </span>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="card__cell">
       <div class="card__indicators">

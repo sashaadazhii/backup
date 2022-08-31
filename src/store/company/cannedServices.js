@@ -34,7 +34,7 @@ export default {
     update(state, service) {
       if (state.activeService.id) state.activeService = service
       const serIdx = state.services.findIndex(ser => ser.id === service.id)
-      state.services.splice(serIdx, 1, service)
+      state.services.splice(serIdx, 1, Object.assign(state.services[serIdx], service))
     },
     remove(state, id) {
       state.services = state.services.filter(service => service.id !== id)
@@ -54,15 +54,6 @@ export default {
       service.parts.splice(partIdx, 1, part)
     },
     // =======================================
-
-    // addPart(state, part) {
-
-    // },
-    // removePart(state, {id, serviceID}) {
-    //   const service = state.services.find(ser => ser.id === serviceID)
-    //   const partIdx = service.parts.findIndex(p => p.id === id)
-    //   service.parts.splice(partIdx, 1)
-    // },
     setHistory(state, history) {
       state.history = history
     }

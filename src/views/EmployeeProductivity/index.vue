@@ -52,8 +52,6 @@ export default {
   },
   async created() {
     await this.fetch()
-    // console.log(this.tehcs)
-    // console.log(this.orders)
     // await this.feetchStatuses()
     // await this.find()
     // await this.updateStatus({uid: '30751a8c-c5bf-456d-9032-aea569073d1a', params: {logicalStatus: 'in-progress'}})

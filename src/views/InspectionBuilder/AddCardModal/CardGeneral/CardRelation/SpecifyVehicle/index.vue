@@ -70,7 +70,6 @@ export default {
   },
   async created() {
     await this.fetchVehicleMakes()
-    console.log(this.card)
   },
   computed: {
     ...mapState({

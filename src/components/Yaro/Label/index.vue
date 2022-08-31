@@ -3,7 +3,7 @@
     <slot>
       <i v-if="icon" :class="iconClass" :style="{color: iconColor, fontSize: iconSize}" />
       <span v-if="alias && !icon" class="y-label__alias">{{ alias }}</span>
-      <span v-if="label" class="y-label__text">{{ label }}</span>
+      <span v-if="label || label === 0" class="y-label__text">{{ label }}</span>
     </slot>
   </div>
 </template>

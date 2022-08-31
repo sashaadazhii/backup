@@ -67,7 +67,6 @@ export default {
     additionalError() {
       if (!this.v$.$errors.length) return false
       const errors = this.v$.$errors.map(error => error.$property)
-      console.log(errors)
       const elementList = ['odometerTrack', 'timeTrackLength']
       const error = elementList.some(el => errors.find(err => err === el))
       return error
