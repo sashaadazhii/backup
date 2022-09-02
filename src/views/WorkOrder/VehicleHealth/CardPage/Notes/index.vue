@@ -23,16 +23,16 @@ export default {
   components: {Input, Button, Note, NewNote},
   data() {
     return {
-      notes: [],
       showNew: false
     }
   },
   async created() {
-    this.notes = await this.fetch(this.cardID)
+    await this.fetch(this.cardID)
   },
   computed: {
     ...mapState({
-      cardID: s => s.company.cards.card.templateID
+      cardID: s => s.company.cards.card.templateID,
+      notes: s => s.company.notes.notes
     })
   },
   methods: {
@@ -41,7 +41,7 @@ export default {
     }),
     async close() {
       this.showNew = false
-      this.notes = await this.fetch(this.cardID)
+      // this.notes = await this.fetch(this.cardID)
     }
   }
 }

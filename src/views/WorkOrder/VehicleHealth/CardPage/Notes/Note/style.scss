@@ -24,6 +24,10 @@
       @include font(14px, $color-grey-space, 600);
     }
   }
+  &__menu {
+    justify-self: end;
+    align-self: center
+  }
   &__body {
     @include font(14px, $color-grey-space, 500, 1.5);
   }

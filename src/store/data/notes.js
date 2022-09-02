@@ -100,6 +100,6 @@ const notes = [
   }
 ]
 
-notes.forEach((n, idx) => n.id = idx)
+notes.forEach((n, idx) => n.id = idx + 1)
 
 export {notes}

@@ -57,8 +57,7 @@ export default {
       function drop(e) {
         e.stopPropagation()
         e.preventDefault()
-        console.log(e.dataTransfer.files)
-        // addFile(e.dataTransfer.files)
+        addFile(e.dataTransfer.files)
       }
     },
     addFile(files) {

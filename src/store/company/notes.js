@@ -11,8 +11,10 @@ export default {
     set(state, notes) {
       state.notes = notes
     },
+    setNote(state, note) {
+      state.note = note
+    },
     add(state, notes) {
-      state.notes.push(notes)
       state.notes.push(notes)
     },
     update(state, note) {
@@ -24,8 +26,9 @@ export default {
     }
   },
   actions: {
-    async fetch(_, id) {
-      return notes.filter(n => n.templateID === id )
+    async fetch({commit}, id) {
+      const filteredNotes = notes.filter(n => n.templateID === id)
+      commit('set', filteredNotes)
     }
   }
 }
