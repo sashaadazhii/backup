@@ -15,13 +15,13 @@
             </template>
             <template #option="{option}">
               <div class="y-dropdown-item-custom">
+                <i v-if="request.techs.some(t => t.id === option.id)" class="i-check_circle1" />
                 <Label :alias="`${option.firstName[0]}${option.lastName[0]}`" circle size="mini" />
                 <span>{{ option.firstName }} {{ option.lastName }}</span>
               </div>
             </template>
           </Multiselect>
         </div>
-        <Label icon="i-time blue" iconSize="22px" label="00:20:04" border circle size="large" class="-shadow" />
         <Button icon="i-circle_close" border circle iconSize="20px" size="small" @click="close" />
       </div>
       <div class="modal__body body">
@@ -73,9 +73,15 @@
         <div class="body__footer footer">
           <!-- :modelValue="searchParams" -->
           <!-- @update:modelValue="searchVendors" -->
-          <Input v-model="search" placeholder="Search by card to add" iconLeft="i-search1" type="search" />
+          <Input v-model="search" placeholder="Search by card to add" iconLeft="i-search1" type="search" theme="white" />
           <div class="footer__cards cards">
-            <div class="cards__title">ALL CARDS RELATED</div>
+            <div class="cards__title">
+              <span>ALL CARDS RELATED</span>
+              <div class="cards__btn" @click="open">
+                <i class="i-add_circle" />
+                <span>Add new card</span>
+              </div>
+            </div>
             <div class="cards__list">
               <Card v-for="(card, idx) of cards" :key="idx" :card="card" @select="changeCards" />
             </div>
@@ -92,6 +98,7 @@ import Label from '@/components/Yaro/Label'
 import Input from '@/components/Yaro/Input'
 import Menu from '@/components/Yaro/Menu'
 import Multiselect from '@/components/Yaro/Multiselect'
+import AddCardModal from '@/views/InspectionBuilder/AddCardModal'
 
 import Card from './Card'
 
@@ -143,6 +150,14 @@ export default {
         '-red': status === 'Unable to reproduce',
         '-green': status === 'Done'
       }
+    },
+    open() {
+      this.$vfm.show({
+        component: AddCardModal,
+        bind: {
+          name: 'AddCardModal'
+        }
+      })
     }
   }
 }

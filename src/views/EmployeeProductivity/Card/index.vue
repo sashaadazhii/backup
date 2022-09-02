@@ -9,7 +9,6 @@
         :class="statusClass(order.logicalStatus)"
         :icon="statusIcon(order.logicalStatus)"
       />
-      <!-- <Menu :list="actionsList" /> -->
     </div>
     <div v-if="showMainBlock" class="card__main">
       <div v-if="order.startsAt" class="card__date">
@@ -25,24 +24,9 @@
         <span>{{ order.vehicle.make }} {{ order.vehicle.model }} {{ order.vehicle.year }}</span>
       </div>
       <div v-if="showAdditional" class="card__additional">
-        <i v-if="order.needRide" class="i-local_taxi" />
-        <i v-if="order.courtesyVehicle" class="i-car_rental" />
         <i v-if="order.vehicleInShop" class="i-directions_car" />
         <i v-if="order.talkSA" class="i-headset_mic" />
         <i v-if="order.partsOrdered" class="i-build" />
-      </div>
-      <div v-if="order.scheduling" class="card__scheduling">
-        <div class="card__scheduling-time">
-          <i class="i-time" />
-          <span>{{ order.scheduling.allTime }}</span>
-        </div>
-        <div class="card__scheduling-time" :class="`${order.scheduling.spendedTime ? '-green' : '-grey'} ${order.scheduling.percent > 100 ? '-red' : null}`">
-          <i class="i-time" />
-          <span>{{ order.scheduling.spendedTime || '—' }}</span>
-        </div>
-        <div class="card__scheduling-percent" :class="{'-green': order.scheduling.percent, '-red': order.scheduling.percent > 100}">
-          {{ order.scheduling.percent || 0 }}%
-        </div>
       </div>
     </div>
     <div v-if="showFooterBlock" class="card__footer">
@@ -75,7 +59,6 @@
 
 <script>
 import Label from '@/components/Yaro/Label'
-import Menu from '@/components/Yaro/Menu'
 import dayjs from 'dayjs'
 export default {
   name: 'WorkOrderCard',
@@ -100,8 +83,6 @@ export default {
       vehicleInShop,
       talkSA,
       partsOrdered,
-      courtesyVehicle,
-      needRide,
       customerRequests,
       startsAt,
       customer,
@@ -111,7 +92,7 @@ export default {
       technician,
       serviceAdvisor
     } = this.order
-    if (vehicleInShop || talkSA || partsOrdered || courtesyVehicle || needRide || customerRequests) this.showAdditional = true
+    if (vehicleInShop || talkSA || partsOrdered || customerRequests) this.showAdditional = true
     if (startsAt || customer || vehicle || this.showAdditional || scheduling) this.showMainBlock = true
     if (customerRequests || notes || serviceAdvisor || technician) this.showFooterBlock = true
   },

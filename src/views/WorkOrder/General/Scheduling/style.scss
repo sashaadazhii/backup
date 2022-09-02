@@ -5,6 +5,7 @@
     background-color: $color-white;
     padding: 16px;
     border-radius: 16px;
+    @include shadow;
   }
   &__inner {
     display: flex;

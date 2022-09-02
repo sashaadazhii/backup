@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 12px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   &:hover {
     box-shadow: none;
   }
@@ -143,11 +143,13 @@
   &__footer {
     display: flex;
     column-gap: 4px;
+    border-top: 1px dashed $color-grey-flash;
+    padding-top: 12px;
     & > .-full {
       flex-grow: 1;
     }
     & > .-blue {
-      border-color: rgba($color-blue, .1);
+      border-color: rgba($color-blue, 0.1);
       background-color: $color-blue-light;
       color: $color-grey-space;
     }
@@ -155,6 +157,17 @@
       border-color: $color-grey-flash;
       background-color: $color-grey-smoke;
       color: $color-grey-space;
+      cursor: pointer;
+      transition: border-color .2s ease-in-out;
+      &:hover {
+        border-color: $color-grey;
+      }
+      &.-active {
+        background-color: $color-grey;
+        border-color: $color-grey;
+        color: $color-white;
+
+      }
     }
   }
 }

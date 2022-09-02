@@ -1,20 +1,5 @@
 @import 'src/assets/styles/_variables.scss';
 
-.section__wrapper {
-}
-.section__body {
-}
-.section__label {
-}
-.section__input {
-}
-.section__btn {
-}
-.-grey {
-}
-.section__footer {
-}
-
 .section {
   &__body {
     display: grid;
@@ -51,7 +36,4 @@
     column-gap: 14px;
     margin-top: 14px;
   }
-}
-
-.section {
 }

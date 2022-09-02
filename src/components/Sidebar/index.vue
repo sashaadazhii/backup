@@ -13,83 +13,74 @@
       <div class="sidebar__main">
         <div class="sidebar__block">
           <div class="sidebar__link" :class="{'router-link-active': display}" ref="btn" @click="openNotification">
-            <div class="sidebar__link-icon"><i class="i-notification_bell" /></div>
+            <i class="sidebar__link-icon i-notification_bell" />
             <div class="sidebar__link-text">Updates</div>
             <div class="sidebar__link-num">2</div>
           </div>
           <router-link v-if="user.role === 'admin'" class="sidebar__link" to="/settings">
-            <div class="sidebar__link-icon"><i class="i-settings_menu" /></div>
+            <i class="i-settings_menu" />
             <div class="sidebar__link-text">Company Settings</div>
           </router-link>
         </div>
         <div class="sidebar__block">
           <router-link class="sidebar__link" to="/inspection-builder">
-            <div class="sidebar__link-icon"><i class="i-article" /></div>
+            <i class="i-article" />
             <div class="sidebar__link-text">Inspection Builder</div>
           </router-link>
           <router-link class="sidebar__link" to="/customers">
-            <div class="sidebar__link-icon"><i class="i-user" /></div>
+            <i class="i-user" />
             <div class="sidebar__link-text">Customers</div>
           </router-link>
           <router-link class="sidebar__link" to="/work-orders/board">
-            <div class="sidebar__link-icon"><i class="i-dashboard" /></div>
+            <i class="i-dashboard" />
             <div class="sidebar__link-text">Work Board</div>
           </router-link>
         </div>
         <div class="sidebar__block">
           <router-link v-if="user.role === 'admin'" class="sidebar__link" to="/reports">
-            <div class="sidebar__link-icon"><i class="i-report" /></div>
+            <i class="i-report" />
             <div class="sidebar__link-text">Reports</div>
           </router-link>
           <router-link v-if="user.role === 'admin'" class="sidebar__link" to="/vendors">
-            <div class="sidebar__link-icon"><i class="i-article" /></div>
+            <i class="i-article" />
             <div class="sidebar__link-text">Vendors</div>
           </router-link>
           <router-link class="sidebar__link" to="/flows">
-            <div class="sidebar__link-icon"><i class="i-open_with" /></div>
+            <i class="i-open_with" />
             <div class="sidebar__link-text">Flows</div>
           </router-link>
           <router-link class="sidebar__link" to="/payroll-overview">
-            <div class="sidebar__link-icon"><i class="i-monetization_on" /></div>
+            <i class="i-monetization_on" />
             <div class="sidebar__link-text">Payroll Overview</div>
           </router-link>
           <router-link class="sidebar__link" to="/staff-calendar">
-            <div class="sidebar__link-icon"><i class="i-perm_contact_calendar" /></div>
+            <i class="i-perm_contact_calendar" />
             <div class="sidebar__link-text">Staff Calendar</div>
           </router-link>
           <router-link class="sidebar__link" to="/capacity-calendar">
-            <div class="sidebar__link-icon"><i class="i-calendar" /></div>
+            <i class="i-calendar" />
             <div class="sidebar__link-text">Capacity Calendar</div>
           </router-link>
           <router-link class="sidebar__link" to="/employee-productivity">
-            <div class="sidebar__link-icon"><i class="i-timelapse" /></div>
+            <i class="i-timelapse" />
             <div class="sidebar__link-text">Employee Productivity</div>
           </router-link>
           <router-link class="sidebar__link" to="/shift-management">
-            <div class="sidebar__link-icon"><i class="i-view_stream" /></div>
+            <i class="i-view_stream" />
             <div class="sidebar__link-text">Shift Management</div>
           </router-link>
-
           <router-link class="sidebar__link" to="/">
-            <div class="sidebar__link-icon"><i class="i-time" /></div>
-            <div class="sidebar__link-text">Time Logs</div>
-          </router-link>
-          <router-link class="sidebar__link" to="/">
-            <div class="sidebar__link-icon"><i class="i-build_circle" /></div>
+            <i class="i-build_circle" />
             <div class="sidebar__link-text">Parts Ordering</div>
-          </router-link>
-          <router-link class="sidebar__link" to="/">
-            <div class="sidebar__link-icon"><i class="i-calendar" /></div>
-            <div class="sidebar__link-text">Scheduling</div>
           </router-link>
         </div>
 
         <router-link v-if="isDev" class="sidebar__link" to="/test">
-          <div class="sidebar__link-icon"><i class="i-build_circle1" /></div>
+          <i class="i-build_circle1" />
           <div class="sidebar__link-text">Test</div>
         </router-link>
         <router-link v-if="isDev" class="sidebar__link" to="/documentation">
-          <div class="sidebar__link-icon"><i class="i-sticky_note" /></div>
+          <i class="i-sticky_note" />
           <div class="sidebar__link-text">Documentation</div>
         </router-link>
       </div>

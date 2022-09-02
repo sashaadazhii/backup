@@ -18,3 +18,48 @@
     padding: 20px 0;
   }
 }
+
+
+.part {
+  &__wrapper {
+    border-radius: 16px;
+    padding: 16px 14px;
+    @include shadow;
+    background-color: $color-white;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    margin-bottom: 12px;
+    & > i {
+      @include font(16px, $color-grey);
+    }
+    & > span {
+      @include font(14px, $color-grey-space, 600);
+    }
+  }
+  &__label {
+    @include border(10px);
+    background-color: $color-white;
+    overflow: hidden;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 6px;
+    &.-disabled {
+      background-color: $color-grey-smoke;
+    }
+    & > .-grey {
+      background-color: $color-grey;
+    }
+  }
+  &__input {
+    background-color: transparent;
+    max-width: 160px;
+    @include font(14px, $color-grey-space, 600);
+  }
+  &__btn {
+  }
+}

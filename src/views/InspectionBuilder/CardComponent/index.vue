@@ -11,25 +11,14 @@
       </div>
       <div v-else class="card__vehicle">
         <i class="i-directions_car" />
-        <!-- <span v-if="card.relation.model" class="space">All </span> -->
         <span> {{ card.relation.make }} {{ card.relation.model }} {{ card.relation.yearFrom }} </span>
         <span v-if="card.relation.yearFrom !== card.relation.yearTo"> - {{ card.relation.yearTo }}</span>
       </div>
-      <!-- <div class="card__counter-wrapper">
-        <div v-if="card.relations.length > 1" class="card__counter">+ {{ card.relations.length - 1 }}</div>
-        <div class="card__counter-list">
-          <div v-for="car of card.relations.slice(1)" :key="car.uid" class="card__vehicle">
-            <i class="i-directions_car" />
-            <span> {{ car.make }} {{ car.model }} {{ car.yearFrom }} </span>
-            <span v-if="car.yearFrom !== car.yearTo"> - {{ car.yearTo }} </span>
-          </div>
-        </div>
-      </div> -->
     </div>
     <div class="card__cell">
       <div class="card__indicators">
-        <Label v-if="card.odometerTrack" icon="i-shutter_speed" :label="`${card.odometerTrack.toLocaleString('fr-FR')} KM`" class="-bluegreen" />
-        <Label v-if="card.timeTrackLength" icon="i-time" :label="`${card.timeTrackLength} Month`" class="-orange" />
+        <Label v-if="card.timeTrackLength" icon="i-time" iconColor="#3EB3BB" :label="`${card.timeTrackLength} Month`" border class="-shadow" />
+        <Label v-if="card.odometerTrack" icon="i-shutter_speed" iconColor="#3EB3BB" :label="`${card.odometerTrack.toLocaleString('fr-FR')} KM`" border class="-shadow" />
       </div>
     </div>
     <div class="card__cell" ref="menu">
@@ -88,7 +77,7 @@ export default {
         bind: {
           name: 'CardModal',
           'click-to-close': false,
-          'esc-to-close': true,
+          'esc-to-close': true
           // 'hide-overlay': true,
           // 'focus-trap': true
         }

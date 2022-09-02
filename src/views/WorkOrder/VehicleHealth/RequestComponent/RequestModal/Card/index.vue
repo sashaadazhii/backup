@@ -5,7 +5,10 @@
     <i v-else class="i-add_circle grey" @click="$emit('select', card)" />
     <Label label="All Vehicles" size="small" circle />
     <span>{{ card.name }}</span>
-    <Label :label="`${card.odometerTrack.toLocaleString('fr-FR')} KM / ${card.service} Months`" border size="small" class="-light" />
+    <div class="card__wrapper-labels">
+      <Label icon="i-shutter_speed" iconColor="#3EB3BB" :label="`${card.timeTrackLength} Months`" border class="-shadow" />
+      <Label icon="i-timer" iconColor="#3EB3BB" :label="`${card.odometerTrack.toLocaleString('fr-FR')} KM`" border class="-shadow" />
+    </div>
   </div>
 </template>
 
@@ -30,7 +33,9 @@ export default {
   data() {
     return {}
   },
-  async created() {},
+  async created() {
+    console.log(this.card)
+  },
   computed: {
     ...mapState({
       // cards: s => s.company.cardTemplates.templates

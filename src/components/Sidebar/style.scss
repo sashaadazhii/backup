@@ -56,7 +56,7 @@
       background-color: $color-grey-flash;
       border-radius: 10px;
     }
-    &-icon {
+    & > i {
       @include font(20px, $color-grey);
     }
     &-text {

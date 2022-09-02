@@ -17,7 +17,7 @@
       <Label v-if="order.partsOrdered" class="header__label" icon="i-build" border iconColor="#6B7280" iconSize="18px" size="large" />
     </div>
     <div class="header__nav">
-      <router-link v-if="uid === 'new'" class="header__nav-link" :to="`/work-order/${uid}/general`">General</router-link>
+      <router-link v-if="uid === 'new'" class="header__nav-link" :to="`/work-order/${uid}/general`">Settings</router-link>
       <router-link class="header__nav-link" :to="`/work-order/${uid}/vehicle-health`">Vehicle Health</router-link>
       <router-link class="header__nav-link" :to="`/work-order/${uid}/vehicle-info`">Vehicle Info</router-link>
       <router-link v-if="uid !== 'new'" class="header__nav-link" :to="`/work-order/${uid}/finance`">Finance</router-link>
@@ -30,7 +30,6 @@
       <Label v-if="!isStart" icon="i-lock orange" label="View Only" border class="-orange" size="large" />
       <div class="header__timer" :class="{'-start': isStart}" @click="start">
         <div v-if="!isStart" class="header__timer-start"><i class="i-play_circle_filled" /> <span>Start Work Order</span></div>
-        <div v-else class="header__timer-stop"><i class="i-power_settings_new red" /> <span>00:05</span></div>
       </div>
       <Button icon="i-circle_close" border circle size="small" @click="close" />
     </div>

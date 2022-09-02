@@ -15,13 +15,13 @@
             </template>
             <template #option="{option}">
               <div class="y-dropdown-item-custom">
+                <i v-if="card.techs.some(t => t.id === option.id)" class="i-check_circle1" />
                 <Label :alias="`${option.firstName[0]}${option.lastName[0]}`" circle size="mini" />
                 <span>{{ option.firstName }} {{ option.lastName }}</span>
               </div>
             </template>
           </Multiselect>
         </div>
-        <Label icon="i-time blue" iconSize="22px" :label="card.time" border circle size="large" class="-shadow" />
         <Button icon="i-circle_close" border circle iconSize="20px" size="small" @click="close" />
       </div>
       <div class="modal__main" :class="{'-full': block === 'Service'}">

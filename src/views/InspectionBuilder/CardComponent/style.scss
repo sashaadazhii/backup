@@ -75,11 +75,8 @@
   border-color: $color-grey-flash;
   color: $color-grey;
 }
-.-bluegreen {
-  color: $color-bluegreen;
-  background-color: rgba($color-bluegreen, 0.1);
-}
-.-orange {
-  color: $color-orange;
-  background-color: rgba($color-orange, 0.1);
+.-shadow {
+  box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+  border-color: $color-grey-flash;
+  color: $color-grey-space;
 }

@@ -14,7 +14,7 @@
       v-tooltip.bottom="'Estimated time'"
     />
     <Label :label="`${service.averageTime} hr`" icon="i-time orange" iconSize="18px" border size="large" class="-grey" v-tooltip.bottom="'Average time'" />
-    <Label :label="`${service.used} times`" border size="large" class="-grey -counter" v-tooltip.bottom="'Number of times used'" />
+    <Label :label="`${service.used}`" border size="large" class="-grey -counter" v-tooltip.bottom="'Number of times used'" />
     <Label
       :label="`${service.warranty?.time || 0} Months /  ${service.warranty?.range.toLocaleString('fr-FR') || 0} KM`"
       :icon="labelIcon"
