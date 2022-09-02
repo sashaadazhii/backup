@@ -1,41 +1,58 @@
 <template>
   <div class="block__wrapper">
-    <div class="warranty__wrapper">
-      <div class="warranty__header">Lights</div>
-      <div class="warranty__body">
-        Freeup, clean and lube sliders. Clean rust from brake rotors. This is done to extend the life of the brakes and extend your brake warranty to 3
-        years/60000km)
-      </div>
-      <div class="warranty__progress red"><span style="width: 90%" /></div>
-      <div class="warranty__time">
-        <Label icon="i-shutter_speed" iconColor="#3EB3BB" :label="`24 Months`" border class="-shadow" />
-        <Label icon="i-timer" iconColor="#3EB3BB" :label="`40 000 KM`" border class="-shadow" />
-      </div>
+    <div class="block__header">
+      <i class="i-arrow_circle_left" @click="back" />
+      <div class="block__title">{{ service.name }}</div>
+      <div class="block__desc">{{ service.description || 'service description ' }}</div>
     </div>
-    <div class="warranty__wrapper">
-      <div class="warranty__header">Front Brake Service</div>
-      <div class="warranty__body">
-        Freeup, clean and lube sliders. Clean rust from brake rotors. This is done to extend the life of the brakes and extend your brake warranty to 3
-        years/60000km)
-      </div>
-      <div class="warranty__progress green"><span style="width: 40%" /></div>
-      <div class="warranty__time">
-        <Label icon="i-shutter_speed" iconColor="#3EB3BB" :label="`24 Months`" border class="-shadow" />
-        <Label icon="i-timer" iconColor="#3EB3BB" :label="`40 000 KM`" border class="-shadow" />
-      </div>
+    <div class="block__nav">
+      <button class="block__nav-link" :class="{'-green': section === 'Parts'}" @click="section = 'Parts'">Parts</button>
+      <button class="block__nav-link" :class="{'-green': section === 'Guides'}" @click="section = 'Guides'">Service Guide (2)</button>
+      <button class="block__nav-link" :class="{'-green': section === 'Warranty'}" @click="section = 'Warranty'">Warranty</button>
+    </div>
+    <div class="block__section">
+      <component :is="section" />
     </div>
   </div>
 </template>
 
 <script>
+import {mapState, mapMutations} from 'vuex'
+import Parts from './Parts'
+import Warranty from './Warranty'
+
 import Label from '@/components/Yaro/Label'
 
 export default {
   name: 'CardPageService',
-  components: {Label},
+  components: {Parts, Warranty},
 
   data() {
-    return {}
+    return {
+      section: 'Parts'
+    }
+  },
+  computed: {
+    ...mapState({
+      service: s => s.company.cannedServices.activeService
+    })
+    // parts() {
+    //   return this.service.parts
+    // },
+    // selectedParts() {
+    //   return this.parts.filter(p => p.select)
+    // }
+  },
+  methods: {
+    ...mapMutations({
+      setActiveService: 'company/cannedServices/setActiveService'
+    }),
+    back() {
+      // this.service.parts.forEach(p => {
+      //   p.select = false
+      // })
+      this.setActiveService({})
+    }
   }
 }
 </script>

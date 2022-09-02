@@ -24,14 +24,14 @@
         <Label icon="i-time blue" iconSize="22px" :label="card.time" border circle size="large" class="-shadow" />
         <Button icon="i-circle_close" border circle iconSize="20px" size="small" @click="close" />
       </div>
-      <div class="modal__main" :class="{'-full': block === 'Parts'}">
+      <div class="modal__main" :class="{'-full': block === 'Service'}">
         <div class="modal__main-blocks blocks">
-          <div v-if="block !== 'Parts'" class="blocks__title">{{ card.name }}</div>
-          <div v-if="block !== 'Parts'" class="blocks__subtitle">{{ card.description }}</div>
-          <div v-if="block !== 'Parts'" class="blocks__nav">
+          <div v-if="block !== 'Service'" class="blocks__title">{{ card.name }}</div>
+          <div v-if="block !== 'Service'" class="blocks__subtitle">{{ card.description }}</div>
+          <div v-if="block !== 'Service'" class="blocks__nav">
             <button class="blocks__btn" :class="{'-green': block === 'General'}" @click="block = 'General'">General</button>
             <button class="blocks__btn" :class="{'-green': block === 'Notes'}" @click="block = 'Notes'">Canned Notes</button>
-            <button class="blocks__btn" :class="{'-green': block === 'Service'}" @click="block = 'Service'">Service Tracking</button>
+            <button class="blocks__btn" :class="{'-green': block === 'Tracking'}" @click="block = 'Tracking'">Service Tracking</button>
             <button class="blocks__btn" :class="{'-green': block === 'Media'}" @click="block = 'Media'">Media</button>
             <button class="blocks__btn" :class="{'-green': block === 'Warranty'}" @click="block = 'Warranty'">Warranty <span>2</span></button>
             <button class="blocks__btn" :class="{'-green': block === 'Info'}">Specific Info</button>
@@ -40,7 +40,7 @@
             <component :is="block" />
           </div>
         </div>
-        <div v-if="block !== 'Parts'" class="modal__main-requests">
+        <div v-if="block !== 'Service'" class="modal__main-requests">
           <div class="requests__row">
             <div class="requests__row-title">Card Status:</div>
             <Menu :list="statusesChange" :disabled="!isStart">
@@ -143,9 +143,9 @@ import Multiselect from '@/components/Yaro/Multiselect'
 import Button from '@/components/Yaro/Button'
 import Label from '@/components/Yaro/Label'
 import General from './General'
-import Parts from './Parts'
 import Notes from './Notes'
 import Service from './Service'
+import Tracking from './Tracking'
 import Warranty from './Warranty'
 import Media from './Media'
 import Menu from '@/components/Yaro/Menu'
@@ -153,7 +153,7 @@ import Menu from '@/components/Yaro/Menu'
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'CardPage',
-  components: {Button, Label, General, Multiselect, Menu, Parts, Notes, Service, Warranty, Media},
+  components: {Button, Label, General, Multiselect, Menu, Notes, Service, Warranty, Media, Tracking},
   data() {
     return {
       block: 'General',
@@ -188,7 +188,7 @@ export default {
     // this.setActiveService({})
     // },
     activeService(s) {
-      if (s.id) this.block = 'Parts'
+      if (s.id) this.block = 'Service'
       else this.block = 'General'
     }
   },

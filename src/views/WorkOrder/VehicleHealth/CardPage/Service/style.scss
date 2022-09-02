@@ -8,50 +8,56 @@
     @include hideScrollbar;
     margin-top: 30px;
   }
-}
-
-.warranty {
-  &__wrapper {
-    @include border(16px, $color-grey-flash);
-    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
-    background-color: $color-grey-smoke;
-    padding: 20px;
-    display: grid;
-    row-gap: 14px;
-  }
   &__header {
-    @include font(20px, $color-grey-space, 600);
-  }
-  &__body {
-    @include font(16px, $color-grey, 500, 1.5);
-  }
-  &__progress {
-    background-color: $color-grey-flash;
-    height: 8px;
-    border-radius: 10px;
-    & > span {
-      border-radius: 10px;
-      display: block;
-      height: 8px;
-    }
-    &.green {
-      & > span {
-        background-color: $color-green;
-      }
-    }
-    &.red {
-      & > span {
-        background-color: $color-red;
-      }
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    column-gap: 10px;
+    align-items: center;
+    row-gap: 8px;
+    & > i {
+      @include font(24px, $color-grey);
+      cursor: pointer;
     }
   }
-  &__time {
+  &__title {
+    @include font(18px, $color-grey-space, 600);
+  }
+  &__desc {
+    grid-column-start: 2;
+    @include font(14px, $color-grey-space, 500);
+  }
+  &__nav {
     display: flex;
-    column-gap: 8px;
-    & > .-shadow {
-      box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
-      border-color: $color-grey-flash;
-      color: $color-grey-space;
+    align-items: center;
+    column-gap: 12px;
+    &-link {
+      height: 36px;
+      padding: 0 10px;
+      @include border(10px, $color-grey-flash);
+      @include font(16px, $color-grey, 600);
+      transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      &:hover {
+        border-color: $color-green;
+      }
+      &.-green {
+        border-color: $color-green;
+        color: $color-green;
+      }
+      & > span {
+        height: 20px;
+        width: 20px;
+        display: grid;
+        place-items: center;
+        @include font(12px, $color-white, 600);
+        background-color: $color-green;
+        border-radius: 50%;
+      }
     }
+  }
+  &__section {
+    padding-bottom: 30px;
   }
 }

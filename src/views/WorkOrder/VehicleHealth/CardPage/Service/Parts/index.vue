@@ -1,12 +1,10 @@
 <template>
-  <div class="block__wrapper">
-    <div class="block__header">
-      <div class="block__back" @click="back"><i class="i-arrow_back" /></div>
-      <div class="block__title">{{ service.name }}</div>
-      <button class="block__btn"><i class="i-add_circle" /><span>Add New part</span></button>
+  <div class="section__wrapper">
+    <div class="section__header">
+      <!-- <button class="section__btn"><i class="i-add_circle" /><span>Add New part</span></button> -->
     </div>
-    <div class="block__body">
-      <div class="block__subheader">
+    <div class="section__body">
+      <div class="section__subheader">
         <span></span>
         <span>Part #</span>
         <span>Core</span>
@@ -14,7 +12,7 @@
         <span>Price</span>
         <span>Total</span>
       </div>
-      <div class="block__parts">
+      <div class="section__parts">
         <Part v-for="(part, idx) of parts" :key="idx" :part="part" @select="select" />
       </div>
     </div>

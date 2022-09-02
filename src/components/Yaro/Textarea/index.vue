@@ -1,7 +1,15 @@
 <template>
   <div :class="containerClass">
     <div v-if="title" class="y-textarea__title">{{ title }}</div>
-    <textarea class="y-textarea__text" v-bind="$attrs" :value="modelValue" @input="onInput" :placeholder="placeholder" :disabled="disabled" />
+    <textarea
+      class="y-textarea__text"
+      v-bind="$attrs"
+      :value="modelValue"
+      @input="onInput"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :style="{height: `${height}px`}"
+    />
     <i v-if="error" class="i-info y-textarea__error-icon" />
     <div v-if="error && errorMessage" class="y-textarea__error">{{ errorMessage }}</div>
   </div>
@@ -39,7 +47,8 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    }
+    },
+    height: String
   },
   emits: {
     'update:modelValue': null
