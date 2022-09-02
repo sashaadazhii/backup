@@ -26,23 +26,21 @@
       </div>
       <div class="modal__main" :class="{'-full': block === 'Parts'}">
         <div class="modal__main-blocks blocks">
-          <div v-if="block === 'General'" class="blocks__title">{{ card.name }}</div>
-          <div v-if="block === 'General'" class="blocks__subtitle">
-            {{ card.description }}
-          </div>
-          <div class="blocks__nav">
+          <div v-if="block !== 'Parts'" class="blocks__title">{{ card.name }}</div>
+          <div v-if="block !== 'Parts'" class="blocks__subtitle">{{ card.description }}</div>
+          <div v-if="block !== 'Parts'" class="blocks__nav">
             <button class="blocks__btn" :class="{'-green': block === 'General'}" @click="block = 'General'">General</button>
-            <button class="blocks__btn" :class="{'-green': block === 'Notes'}" @click="block = 'Notes'">Notes</button>
-            <button class="blocks__btn" :class="{'-green': block === 'Info'}">Info</button>
-            <button class="blocks__btn" :class="{'-green': block === 'Media'}">Media</button>
-            <button class="blocks__btn" :class="{'-green': block === 'Warranty'}" @click="block = 'Warranty'">Warranty</button>
+            <button class="blocks__btn" :class="{'-green': block === 'Notes'}" @click="block = 'Notes'">Canned Notes</button>
             <button class="blocks__btn" :class="{'-green': block === 'Service'}" @click="block = 'Service'">Service Tracking</button>
+            <button class="blocks__btn" :class="{'-green': block === 'Media'}" @click="block = 'Media'">Media</button>
+            <button class="blocks__btn" :class="{'-green': block === 'Warranty'}" @click="block = 'Warranty'">Warranty <span>2</span></button>
+            <button class="blocks__btn" :class="{'-green': block === 'Info'}">Specific Info</button>
           </div>
           <div class="blocks__inner">
             <component :is="block" />
           </div>
         </div>
-        <div v-if="block === 'General'" class="modal__main-requests">
+        <div v-if="block !== 'Parts'" class="modal__main-requests">
           <div class="requests__row">
             <div class="requests__row-title">Card Status:</div>
             <Menu :list="statusesChange" :disabled="!isStart">
@@ -149,12 +147,13 @@ import Parts from './Parts'
 import Notes from './Notes'
 import Service from './Service'
 import Warranty from './Warranty'
+import Media from './Media'
 import Menu from '@/components/Yaro/Menu'
 
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'CardPage',
-  components: {Button, Label, General, Multiselect, Menu, Parts, Notes, Service, Warranty},
+  components: {Button, Label, General, Multiselect, Menu, Parts, Notes, Service, Warranty, Media},
   data() {
     return {
       block: 'General',

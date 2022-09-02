@@ -1,7 +1,7 @@
 <template>
   <div class="block__wrapper">
     <div class="block__header">
-      <span>Card has has extra options</span>
+      <span>Card has extra options</span>
       <Switch v-model="hasOptions" />
     </div>
     <div class="block__fields fields" :class="{'-disabled': !hasOptions}">
@@ -15,7 +15,7 @@
         @addItem="addItem"
         @delItem="delItem"
       />
-      <div class="fields__btn" @click="add">
+      <div v-if="fields.length < 4" class="fields__btn" @click="add">
         <i class="i-add_circle" />
         <span>Add field</span>
       </div>
@@ -77,7 +77,7 @@ export default {
     //   })
     // },
     add() {
-      const field = {title: null, type: 'Input', list: []}
+      const field = {title: null, type: 'Drop-Down', list: [{option: null}, {option: null}, {option: null}]}
       this.fields.push(field)
     },
     // save() {
@@ -120,6 +120,7 @@ export default {
       this.fields[idx].type = value
     },
     addItem(idx) {
+      if (this.fields[idx].list.length >= 10) return
       this.fields[idx].list.push({option: null})
     },
     delItem({index, idx}) {

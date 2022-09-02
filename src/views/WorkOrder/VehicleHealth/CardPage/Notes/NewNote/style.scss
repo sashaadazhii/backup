@@ -1,0 +1,24 @@
+@import 'src/assets/styles/_variables.scss';
+
+.note {
+  &__wrapper {
+    @include border(18px);
+    padding: 16px;
+    @include shadow;
+  }
+  &__footer {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    column-gap: 12px;
+    margin-top: 16px;
+  }
+  &__switch {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    & > span {
+      @include font(14px, $color-grey-space, 600);
+    }
+  }
+}

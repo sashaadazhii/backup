@@ -12,6 +12,7 @@ import shifts from './shifts'
 import card from './card'
 import cards from './cards'
 import markups from './markups'
+import notes from './notes'
 
 export default {
   namespaced: true,
@@ -32,6 +33,7 @@ export default {
     shifts,
     card,
     cards,
-    markups
+    markups,
+    notes
   }
 }

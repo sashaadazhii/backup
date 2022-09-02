@@ -6,87 +6,20 @@
     overflow: hidden;
   }
   &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 20px 0;
-  }
-  &__title {
-    @include font(18px, $color-grey-space, 600);
-  }
-  &__btn {
-    display: flex;
-    align-items: center;
-    column-gap: 8px;
-    & > i {
-      @include font(16px, $color-green);
-    }
-    & > span {
-      @include font(16px, $color-grey-space, 600);
-    }
+    @include border(14px);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 10px;
+    padding: 8px;
+    margin-top: 30px;
+    margin-bottom: 14px;
   }
   &__body {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     overflow: auto;
     @include hideScrollbar;
     row-gap: 16px;
-  }
-}
-
-.note {
-  &__wrapper {
-    @include border(12px, $color-grey-flash);
-    padding: 16px;
-    padding-right: 36px;
-    display: flex;
-    column-gap: 12px;
-    background-color: $color-grey-smoke;
-    &.-bluegreen {
-      border-color: $color-bluegreen;
-      background-color: rgba($color-bluegreen, 0.05);
-      & > .note__line {
-        background-color: $color-bluegreen;
-      }
-    }
-    &.-orange {
-      border-color: $color-orange;
-      background-color: rgba($color-orange, 0.05);
-      & > .note__line {
-        background-color: $color-orange;
-      }
-    }
-  }
-  &__line {
-    width: 8px;
-    background-color: $color-grey-flash;
-    border-radius: 10px;
-    height: 16px;
-  }
-  &__inner {
-    display: grid;
-    row-gap: 12px;
-  }
-  &__header {
-    @include font(16px, $color-grey-dark, 600);
-  }
-  &__body {
-    @include font(16px, $color-grey-space, 500, 1.4);
-  }
-  &__footer {
-    display: flex;
-    column-gap: 10px;
-    align-items: center;
-    & > .-dark {
-      background-color: $color-grey-space;
-      color: $color-white;
-    }
-    & > span {
-      &:first-of-type {
-        @include font(14px, $color-grey-space, 600);
-      }
-      &:last-of-type {
-        @include font(14px, $color-grey, 600);
-      }
-    }
+    padding-bottom: 20px;
   }
 }

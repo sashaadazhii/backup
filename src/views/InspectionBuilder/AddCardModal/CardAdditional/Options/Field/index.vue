@@ -19,7 +19,7 @@
           </div>
         </template>
       </Draggable>
-      <div class="options__btn" @click="$emit('addItem', idx)">
+      <div v-if="field.list.length < 10" class="options__btn" @click="$emit('addItem', idx)">
         <i class="i-add_circle" />
         <span>Add {{ field.type }} option</span>
       </div>

@@ -1,50 +1,48 @@
 <template>
   <div class="block__wrapper">
     <div class="block__header">
-      <div class="block__title">Notes</div>
-      <button class="block__btn"><i class="i-add_circle" /><span>Add New Note</span></button>
+      <Input iconLeft="i-search1" type="search" size="medium" />
+      <Button icon="i-add_circle" label="New Note" @click="showNew = true" />
     </div>
     <div class="block__body">
-      <div class="note__wrapper -bluegreen">
-        <div class="note__line" />
-        <div class="note__inner">
-          <div class="note__header">Lorem ipsum dolor sit amet</div>
-          <div class="note__body">
-            Praesent et dolor non justo commodo ultrices. Quisque laoreet ante non neque aliquet, sit amet hendrerit tellus tristique. Nulla fermentum ...
-          </div>
-          <div class="note__footer">
-            <Label alias="MB" circle size="small" class="-dark" />
-            <span>Maynard Bauman</span>
-            <span>at 22 Sep 2019 </span>
-          </div>
-        </div>
-      </div>
-      <div class="note__wrapper -orange">
-        <div class="note__line" />
-        <div class="note__inner">
-          <div class="note__header">Lorem ipsum dolor sit amet</div>
-          <div class="note__body">
-            Praesent et dolor non justo commodo ultrices. Quisque laoreet ante non neque aliquet, sit amet hendrerit tellus tristique. Nulla fermentum ...
-          </div>
-          <div class="note__footer">
-            <Label alias="MB" circle size="small" class="-dark" />
-            <span>Maynard Bauman</span>
-            <span>at 22 Sep 2019 </span>
-          </div>
-        </div>
-      </div>
+      <NewNote v-if="showNew" @close="close" />
+      <Note v-for="note of notes" :key="note.id" :note="note" />
     </div>
   </div>
 </template>
 
 <script>
-import Label from '@/components/Yaro/Label'
+import Input from '@/components/Yaro/Input'
+import Button from '@/components/Yaro/Button'
+import Note from './Note'
+import NewNote from './NewNote'
+import {mapState, mapMutations, mapActions} from 'vuex'
 
 export default {
   name: 'CardPageNotes',
-  components: {Label},
+  components: {Input, Button, Note, NewNote},
   data() {
-    return {}
+    return {
+      notes: [],
+      showNew: false
+    }
+  },
+  async created() {
+    this.notes = await this.fetch(this.cardID)
+  },
+  computed: {
+    ...mapState({
+      cardID: s => s.company.cards.card.templateID
+    })
+  },
+  methods: {
+    ...mapActions({
+      fetch: 'company/notes/fetch'
+    }),
+    async close() {
+      this.showNew = false
+      this.notes = await this.fetch(this.cardID)
+    }
   }
 }
 </script>

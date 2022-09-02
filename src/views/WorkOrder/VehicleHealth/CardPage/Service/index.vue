@@ -7,7 +7,10 @@
         years/60000km)
       </div>
       <div class="warranty__progress red"><span style="width: 90%" /></div>
-      <div class="warranty__time">3 Years / 60,000KM</div>
+      <div class="warranty__time">
+        <Label icon="i-shutter_speed" iconColor="#3EB3BB" :label="`24 Months`" border class="-shadow" />
+        <Label icon="i-timer" iconColor="#3EB3BB" :label="`40 000 KM`" border class="-shadow" />
+      </div>
     </div>
     <div class="warranty__wrapper">
       <div class="warranty__header">Front Brake Service</div>
@@ -16,14 +19,21 @@
         years/60000km)
       </div>
       <div class="warranty__progress green"><span style="width: 40%" /></div>
-      <div class="warranty__time">3 Years / 60,000KM</div>
+      <div class="warranty__time">
+        <Label icon="i-shutter_speed" iconColor="#3EB3BB" :label="`24 Months`" border class="-shadow" />
+        <Label icon="i-timer" iconColor="#3EB3BB" :label="`40 000 KM`" border class="-shadow" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Label from '@/components/Yaro/Label'
+
 export default {
   name: 'CardPageService',
+  components: {Label},
+
   data() {
     return {}
   }

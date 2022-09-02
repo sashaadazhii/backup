@@ -6,6 +6,7 @@
         <span>Initial Walk Around:</span>
         <Button icon="i-circle_close" border grey circle iconSize="20px" size="small" @click="close" />
       </div>
+
       <div class="modal__qr">
         <i class="i-qr_code_2" />
         <div class="modal__qr-title">Scan this QR code to upload photos from your phone</div>
