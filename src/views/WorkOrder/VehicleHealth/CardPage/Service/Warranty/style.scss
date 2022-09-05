@@ -5,30 +5,10 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 14px;
+    padding-left: 3px;
     & > .y-textarea {
       grid-area: 2 / 1 / 2 / 4;
     }
-  }
-  &__label {
-    @include border(10px);
-    background-color: $color-white;
-    overflow: hidden;
-    padding: 12px 14px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    column-gap: 6px;
-    &.-disabled {
-      background-color: $color-grey-smoke;
-    }
-    & > .-grey {
-      background-color: $color-grey;
-    }
-  }
-  &__input {
-    background-color: transparent;
-    max-width: 160px;
-    @include font(14px, $color-grey-space, 600);
   }
   &__footer {
     display: flex;

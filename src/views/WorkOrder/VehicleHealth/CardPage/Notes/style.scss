@@ -13,6 +13,7 @@
     padding: 8px;
     margin-top: 30px;
     margin-bottom: 14px;
+    @include shadow;
   }
   &__body {
     display: flex;

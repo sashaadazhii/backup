@@ -45,9 +45,6 @@ export default {
       ]
     }
   },
-  created() {
-    console.log(this.options)
-  },
   computed: {
     ...mapState({
       options: s => s.company.card.card.options

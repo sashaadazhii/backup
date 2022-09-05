@@ -5,7 +5,7 @@ const notes = [
     author: 'Jason Momoa',
     alias: 'JM',
     date: '31 Aug 2022 at 2:30 PM',
-    text: 'oil filter stops impurities in the oil which are passed on from the combustion chamber and are created during the friction of the engine parts. oil filter stops impurities in the oil which are passed on from the combustion chamber and are created during the friction of the engine parts...'
+    text: 'air filter stops impurities in the oil which are passed on from the combustion chamber and are created during the friction of the engine parts. oil filter stops impurities in the oil which are passed on from the combustion chamber and are created during the friction of the engine parts...'
   },
   {
     templateID: 1,
