@@ -30,6 +30,7 @@
           <div v-if="block !== 'Service'" class="blocks__subtitle">{{ card.description }}</div>
           <div v-if="block !== 'Service'" class="blocks__nav">
             <button class="blocks__btn" :class="{'-green': block === 'General'}" @click="block = 'General'">General</button>
+            <button class="blocks__btn" :class="{'-green': block === 'Additional'}" @click="block = 'Additional'">Additional Info</button>
             <button class="blocks__btn" :class="{'-green': block === 'Notes'}" @click="block = 'Notes'">Canned Notes</button>
             <button class="blocks__btn" :class="{'-green': block === 'Tracking'}" @click="block = 'Tracking'">Service Tracking</button>
             <button class="blocks__btn" :class="{'-green': block === 'Media'}" @click="block = 'Media'">Media</button>
@@ -148,12 +149,13 @@ import Service from './Service'
 import Tracking from './Tracking'
 import Warranty from './Warranty'
 import Media from './Media'
+import Additional from './Additional'
 import Menu from '@/components/Yaro/Menu'
 
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'CardPage',
-  components: {Button, Label, General, Multiselect, Menu, Notes, Service, Warranty, Media, Tracking},
+  components: {Button, Label, General, Multiselect, Menu, Notes, Service, Warranty, Media, Tracking, Additional},
   data() {
     return {
       block: 'General',
@@ -184,9 +186,6 @@ export default {
     })
   },
   watch: {
-    // block() {
-    // this.setActiveService({})
-    // },
     activeService(s) {
       if (s.id) this.block = 'Service'
       else this.block = 'General'

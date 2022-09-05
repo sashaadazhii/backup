@@ -1,8 +1,6 @@
 <template>
   <div class="section__wrapper">
-    <div class="section__header">
-      <!-- <button class="section__btn"><i class="i-add_circle" /><span>Add New part</span></button> -->
-    </div>
+    <div class="section__header"></div>
     <div class="section__body">
       <div class="section__subheader">
         <span></span>
@@ -14,6 +12,8 @@
       </div>
       <div class="section__parts">
         <Part v-for="(part, idx) of parts" :key="idx" :part="part" @select="select" />
+        <NewPart v-if="isNew" @close="isNew = false"/>
+        <button v-if="!isNew" class="section__btn" @click="isNew = true"><i class="i-add_circle" /><span>Add New part</span></button>
       </div>
     </div>
     <Dialog v-model:visible="display" :dismissableMask="false" position="bottom" :closeOnEsc="false" :modal="false" draggable class="dialog__wrapper">
@@ -49,18 +49,20 @@
 
 <script>
 import Part from './Part'
+import NewPart from './NewPart'
 import {mapState, mapActions, mapMutations} from 'vuex'
 import Dialog from '@/components/Yaro/Dialog'
 import Dropdown from '@/components/Yaro/Dropdown'
 
 export default {
   name: 'CardPageGeneralParts',
-  components: {Part, Dialog, Dropdown},
+  components: {Part, Dialog, Dropdown, NewPart},
   data() {
     return {
       display: false,
       types: ['Warranty Claim', 'In-house', 'Manufacturers'],
-      type: 'Warranty Claim'
+      type: 'Warranty Claim',
+      isNew: false
     }
   },
   computed: {

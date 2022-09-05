@@ -34,9 +34,6 @@ export default {
       editRange: false
     }
   },
-  created() {
-    console.log(this.service)
-  },
   computed: {
     ...mapState({
       service: s => s.company.cannedServices.activeService

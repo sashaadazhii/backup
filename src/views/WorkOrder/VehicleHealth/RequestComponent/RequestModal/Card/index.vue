@@ -33,9 +33,6 @@ export default {
   data() {
     return {}
   },
-  async created() {
-    console.log(this.card)
-  },
   computed: {
     ...mapState({
       // cards: s => s.company.cardTemplates.templates

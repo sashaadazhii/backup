@@ -6,7 +6,8 @@
     <Input v-model="quantity" size="small" />
     <Input v-model="price" size="small" />
     <span>${{ total }}</span>
-    <Label :label="part.type" border size="large" class="-grey" />
+    <Label v-if="part.type" :label="part.type" border size="large" class="-grey" />
+    <div v-else />
   </div>
 </template>
 
@@ -25,18 +26,21 @@ export default {
     }
   },
   created() {
-    this.price = this.part.price
+    const {price, core, quantity} = this.part
+    this.price = price
+    this.core = core
+    this.quantity = quantity
   },
   data() {
     return {
-      core: null,
-      quantity: null,
-      price: null
+      core: 0,
+      quantity: 0,
+      price: 0
     }
   },
   computed: {
     total() {
-      return this.quantity * this.price
+      return (this.quantity || 0 * this.price).toFixed(2)
     }
   }
 }

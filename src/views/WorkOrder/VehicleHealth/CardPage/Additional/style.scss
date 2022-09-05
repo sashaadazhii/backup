@@ -1,0 +1,12 @@
+@import 'src/assets/styles/_variables.scss';
+
+.block {
+  &__wrapper {
+    display: grid;
+    overflow: auto;
+    row-gap: 20px;
+    @include hideScrollbar;
+    margin-top: 30px;
+    padding: 3px;
+  }
+}

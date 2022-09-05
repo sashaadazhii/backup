@@ -46,68 +46,21 @@ export default {
     }
   },
   created() {
-    // if (this.localQuestions.id) {
-    //   const {title, blocks, id, time} = this.localQuestions
-    //   this.id = id
-    //   this.title = title
-    //   this.time = time
-    //   this.questions = blocks
-    //   this.questions.forEach(q => {
-    //     if (q.list && q.list.length) q.list = q.list.map(l => ({option: l}))
-    //   })
-    // }
+    console.log(this.options)
   },
   computed: {
     ...mapState({
-      // localQuestions: s => s.workOrder.questions.activeQuestions
+      options: s => s.company.card.card.options
     })
   },
   methods: {
     ...mapMutations({
-      // addQuestions: 'workOrder/questions/add',
-      // update: 'workOrder/questions/update'
+      setOptions: 'company/card/setOptions'
     }),
-    // back() {
-    //   this.$vfm.hide('New')
-    //   this.$vfm.show({
-    //     component: Edit,
-    //     bind: {
-    //       name: 'Edit'
-    //     }
-    //   })
-    // },
     add() {
       const field = {title: null, type: 'Drop-Down', list: [{option: null}, {option: null}, {option: null}]}
       this.fields.push(field)
     },
-    // save() {
-    //   const {title, questions, id} = this
-    //   questions.forEach(q => {
-    //     if (q.list) q.list = q.list.map(l => l.option)
-    //   })
-    //   const group = {
-    //     title,
-    //     blocks: [...questions]
-    //   }
-    //   if (!id) {
-    //     group.id = this.$getID()
-    //     this.addQuestions(group)
-    //   } else {
-    //     group.id = id
-    //     this.update(group)
-    //   }
-    //   this.back()
-    // },
-    // remove() {
-    //   this.title = ''
-    //   this.field = [
-    //     {
-    //       title: null,
-    //       type: 'Input',
-    //       list: []
-    //     }
-    //   ]
-    // },
     changeTitle({value, idx}) {
       this.fields[idx].title = value
     },

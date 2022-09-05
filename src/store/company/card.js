@@ -91,6 +91,10 @@ export default {
     },
     seTtimeTrackType(state, type) {
       state.card.timeTrackType = type
+    },
+    //========== Additional Options ==========//
+    setOptions(state, options) {
+      state.card.options = options
     }
   },
   actions: {
