@@ -3,7 +3,7 @@
     <y-input title="Name" placeholder="Name" :modelValue="card.name" @update:modelValue="setName" :error="error('name')" />
     <Dropdown title="Card Type" v-model="type" :options="typesList" optionLabel="label" @change="setCardType($event.value.id)" />
     <div v-if="type.id === 'public'" class="main__label">
-      <i class="i-info"></i>
+      <i class="i-information-fill" />
       <span>Thanks for helping your network! Card is going to be undergoing review process, though, you can can use it as your local card.</span>
     </div>
     <CardRelation />

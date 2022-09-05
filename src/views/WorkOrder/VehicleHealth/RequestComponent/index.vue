@@ -1,9 +1,10 @@
 <template>
   <div class="request__wrapper" @click="open">
     <div class="request__header">
-      <Label :label="request.status" border class="request__label" size="small" />
+      <Label :label="request.status" size="small" class="request__label" :class="labelClass(request.status)" />
+
       <div class="tech__list">
-        <Label v-for="tech of request.techs" :key="tech.id" :alias="`${tech.firstName[0]}${tech.lastName[0]}`" circle class="tech__label"  size="small"/>
+        <Label v-for="tech of request.techs" :key="tech.id" :alias="`${tech.firstName[0]}${tech.lastName[0]}`" circle class="tech__label" size="small" />
       </div>
     </div>
     <div class="request__main">
@@ -49,6 +50,13 @@ export default {
     }
   },
   methods: {
+    labelClass(status) {
+      return {
+        '-grey': status === 'Not Processed',
+        '-red': status === 'Unable to reproduce',
+        '-green': status === 'Done'
+      }
+    },
     ...mapMutations({
       set: 'requests/setRequest'
     }),

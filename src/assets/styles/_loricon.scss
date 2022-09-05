@@ -35,6 +35,13 @@
     color: $color-purple;
   }
 }
+
+.i-information-fill:before {
+  content: "\edff";
+}
+.i-pushpin-fill:before {
+  content: "\ee01";
+}
 .i-square:before {
   content: '\edfd';
 }

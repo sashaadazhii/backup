@@ -14,7 +14,7 @@
               <div class="note__date">{{ dayjs(note.date).format('HH:MM DD MMM YYYY') }}</div>
             </div>
             <div class="note__body">
-              <i class="i-push_pin" />
+              <i class="i-pushpin-fill" />
               <div class="note__text">{{ note.text }}</div>
             </div>
           </div>

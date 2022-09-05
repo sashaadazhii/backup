@@ -15,9 +15,22 @@
     padding-bottom: 12px;
   }
   &__label {
-    border-color: $color-grey-flash;
-    color: $color-grey;
-    background-color: $color-grey-smoke;
+    transition: opacity 0.2s ease-in-out;
+    &.-grey {
+      background-color: $color-grey;
+    }
+    &.-red {
+      background-color: $color-red;
+    }
+    &.-green {
+      background-color: $color-green;
+    }
+    &.-hover {
+      &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+      }
+    }
   }
   &__main {
     display: grid;
