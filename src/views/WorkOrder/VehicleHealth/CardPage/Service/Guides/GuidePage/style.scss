@@ -1,0 +1,22 @@
+@import 'src/assets/styles/_variables.scss';
+
+
+.guide {
+  &__wrapper {
+    // min-height: 70vh;
+  }
+  &__header {
+    display: grid;
+    grid-template-columns: 24px 1fr 24px;
+    column-gap: 10px;
+    align-items: center;
+    row-gap: 8px;
+    & > i {
+      @include font(24px, $color-grey);
+      cursor: pointer;
+    }
+  }
+  &__title {
+    @include font(18px, $color-grey-space, 600);
+  }
+}

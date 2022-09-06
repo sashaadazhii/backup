@@ -1,17 +1,17 @@
 <template>
   <div class="block__wrapper">
-    <div class="block__header">
+    <div v-if="section !== 'NewGuide' && section !== 'Guide'" class="block__header">
       <i class="i-arrow_circle_left" @click="back" />
       <div class="block__title">{{ service.name }}</div>
       <div class="block__desc">{{ service.description || 'service description ' }}</div>
     </div>
-    <div class="block__nav">
+    <div v-if="section !== 'NewGuide' && section !== 'Guide'" class="block__nav">
       <button class="block__nav-link" :class="{'-green': section === 'Parts'}" @click="section = 'Parts'">Parts</button>
       <button class="block__nav-link" :class="{'-green': section === 'Guides'}" @click="section = 'Guides'">Service Guide (2)</button>
       <button class="block__nav-link" :class="{'-green': section === 'Warranty'}" @click="section = 'Warranty'">Warranty</button>
     </div>
     <div class="block__section">
-      <component :is="section" />
+      <component :is="section" @changeSection="section = $event" />
     </div>
   </div>
 </template>
@@ -21,11 +21,12 @@ import {mapState, mapMutations} from 'vuex'
 import Parts from './Parts'
 import Warranty from './Warranty'
 import Guides from './Guides'
+import NewGuide from './Guides/NewGuide'
+import Guide from './Guides/GuidePage'
 
 export default {
   name: 'CardPageService',
-  components: {Parts, Warranty, Guides},
-
+  components: {Parts, Warranty, Guides, NewGuide, Guide},
   data() {
     return {
       section: 'Parts'

@@ -1,0 +1,36 @@
+@import 'src/assets/styles/_variables.scss';
+
+.guide {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 46px 1fr auto;
+    align-items: center;
+    column-gap: 20px;
+    padding: 20px;
+    @include border(16px);
+    background-color: $color-grey-smoke;
+    & > .-grey {
+      background-color: $color-grey;
+      align-self: start;
+    }
+  }
+  &__icon {
+    @include font(20px, $color-grey);
+    height: 46px;
+    width: 46px;
+    display: grid;
+    place-items: center;
+    @include border(12px);
+    @include shadow;
+    background-color: $color-white;
+  }
+  &__body {
+  }
+  &__name {
+    @include font(14px, $color-grey-space, 700);
+    margin-bottom: 8px;
+  }
+  &__desc {
+    @include font(12px, $color-grey, 500);
+  }
+}

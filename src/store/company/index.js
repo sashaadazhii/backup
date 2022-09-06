@@ -13,6 +13,7 @@ import card from './card'
 import cards from './cards'
 import markups from './markups'
 import notes from './notes'
+import guides from './guides'
 
 export default {
   namespaced: true,
@@ -34,6 +35,7 @@ export default {
     card,
     cards,
     markups,
-    notes
+    notes,
+    guides
   }
 }

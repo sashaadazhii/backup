@@ -1,9 +1,3 @@
-.ql-editor {
-  & img {
-    display: inline-block;
-  }
-}
-
 @import '@/components/Yaro/styles/style.scss';
 
 //=================== Dropdown ===================
@@ -140,3 +134,55 @@
   border-color: transparent;
 }
 //===================================================
+
+// ================== QUIll ======================
+@import '~@vueup/vue-quill/dist/vue-quill.snow.css';
+
+.ql-container {
+  font-size: 16px;
+  font-family: $mainFont;
+}
+
+.ql-editor {
+  min-height: 60vh;
+  padding: 16px 0;
+  line-height: 1.6;
+  & img {
+    display: inline-block;
+    // max-width: 33%;
+  }
+}
+
+.ql-toolbar.ql-snow {
+  border: none;
+  border-bottom: 1px solid $color-grey-flash;
+}
+
+.ql-container.ql-snow {
+  border: none;
+}
+
+.ql-snow.ql-toolbar button.ql-active,
+.ql-snow .ql-toolbar button.ql-active,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+  background-color: $color-green-mint;
+  color: $color-green;
+}
+
+.ql-snow.ql-toolbar button.ql-active .ql-stroke,
+.ql-snow .ql-toolbar button.ql-active .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke-miter,
+.ql-snow .ql-toolbar button.ql-active .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
+  stroke: $color-green;
+}

@@ -2,113 +2,32 @@
 
 .section {
   &__wrapper {
-    // display: grid;
-    // overflow: hidden;
   }
-  &__header {
-    // display: grid;
-    // grid-template-columns: 20px 1fr auto;
-    // align-items: center;
-    // margin: 20px 0;
+  &__list {
+    margin-bottom: 14px;
+    display: grid;
+    row-gap: 14px;
   }
-
+  &__footer {
+  }
   &__btn {
+    @include border(16px);
+    @include shadow;
+    padding: 20px;
     display: flex;
     align-items: center;
-    column-gap: 8px;
-    transition: opacity .2s ease-in-out;
-    & > i {
-      @include font(16px, $color-green);
-    }
-    & > span {
-      @include font(16px, $color-grey-space, 600);
-    }
+    justify-content: center;
+    column-gap: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out;
     &:hover {
-      opacity: .6;
+      border-color: $color-grey;
     }
-  }
-  &__body {
-    display: grid;
-    overflow: hidden;
-    @include border(16px, $color-grey-flash);
-    padding: 12px;
-    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
-    margin-bottom: 3px;
-  }
-  &__subheader {
-    display: grid;
-    grid-template-columns: 16px 3fr repeat(4, minmax(80px, 1fr)) 160px;
-    column-gap: 12px;
-    padding: 0 10px;
-    margin-bottom: 12px;
-    @include font(14px, $color-grey, 500);
-  }
-
-  &__parts {
-    display: grid;
-    overflow: auto;
-    row-gap: 12px;
-    @include hideScrollbar;
-  }
-}
-
-.dialog {
-  &__inner {
-    display: flex;
-    align-items: center;
-    column-gap: 14px;
-    padding: 18px 14px;
-    background-color: $color-grey-space;
-    border-radius: 20px;
-  }
-  &__move {
-    padding-right: 14px;
-    border-right: 1px solid $color-grey;
     & > i {
       @include font(18px, $color-grey);
-      cursor: move;
+    }
+    & > span {
+      @include font(16px, $color-grey-space, 700);
     }
   }
-  &__text {
-    @include font(14px, $color-grey-light, 600);
-    white-space: nowrap;
-  }
-  &__title {
-    @include font(14px, $color-grey-smoke, 600);
-    @include border(10px, $color-grey-light);
-    background-color: $color-grey;
-    height: 36px;
-    padding: 0 12px;
-    display: grid;
-    place-items: center;
-    white-space: nowrap;
-  }
-  &__btns {
-    display: flex;
-    align-items: center;
-    column-gap: 14px;
-    margin-left: 60px;
-  }
-  &__btn {
-    height: 36px;
-    padding: 0 12px;
-    display: grid;
-    place-items: center;
-    background-color: $color-white;
-    @include font(14px, $color-grey-space, 600);
-    @include border(10px, transparent);
-    white-space: nowrap;
-    &--border {
-      border-color: $color-grey;
-      background-color: transparent;
-      color: $color-white;
-    }
-  }
-}
-
-.y-chip {
-  @include font(14px, $color-white, 600);
-  padding: 6px 8px;
-  background-color: $color-green;
-  border-radius: 30px;
 }
