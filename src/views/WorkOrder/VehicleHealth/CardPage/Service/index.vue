@@ -20,12 +20,11 @@
 import {mapState, mapMutations} from 'vuex'
 import Parts from './Parts'
 import Warranty from './Warranty'
-
-import Label from '@/components/Yaro/Label'
+import Guides from './Guides'
 
 export default {
   name: 'CardPageService',
-  components: {Parts, Warranty},
+  components: {Parts, Warranty, Guides},
 
   data() {
     return {
