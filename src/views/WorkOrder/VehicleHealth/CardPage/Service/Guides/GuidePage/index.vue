@@ -30,9 +30,13 @@ export default {
           }
         },
         {
-          label: 'Delete',
-          icon: 'i-remove_circle red'
-          // command: () => this.openDeleteModal()
+          label: 'Remove',
+          icon: 'i-remove_circle red',
+          command: () => {
+            this.remove(this.guide.id)
+            this.$emit('changeSection', 'Guides')
+            this.set({})
+          }
         }
       ]
     }
@@ -44,7 +48,8 @@ export default {
   },
   methods: {
     ...mapMutations({
-      set: 'company/guides/setGuide'
+      set: 'company/guides/setGuide',
+      remove: 'company/guides/remove'
     })
   }
 }

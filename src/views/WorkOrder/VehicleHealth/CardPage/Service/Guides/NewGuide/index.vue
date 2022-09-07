@@ -66,7 +66,10 @@ export default {
       this.set({})
       this.$emit('changeSection', 'Guides')
     },
-    cancel() {}
+    cancel() {
+      this.set({})
+      this.$emit('changeSection', 'Guides')
+    }
   }
 }
 </script>
