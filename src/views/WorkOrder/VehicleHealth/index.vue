@@ -199,6 +199,9 @@ export default {
       this.changeRequestStatusInTechStart()
     }
   },
+  beforeUnmount() {
+    this.setFilter([])
+  },
   computed: {
     ...mapState({
       cards: s => s.company.cards.cards,
@@ -243,7 +246,7 @@ export default {
       startOrder: 'workOrder/startOrder',
       changeStatusInTechFlow: 'company/cards/changeApprovalStatusInTechFlow',
       changeStatusInTechStart: 'company/cards/changeApprovalStatusInTechStart',
-      changeRequestStatusInTechStart: 'requests/changeStatusInTechStart',
+      changeRequestStatusInTechStart: 'requests/changeStatusInTechStart'
     }),
     save() {
       this.changeStatus(this.status)

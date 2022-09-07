@@ -14,10 +14,10 @@
           <span>Work Order Technician Flow</span>
           <i class="i-arrow_forward" />
         </router-link>
-        <div class="flow__link">
+        <router-link to="/work-order/sa-flow/vehicle-health" class="flow__link">
           <span>Service Advisor Review Flow</span>
           <i class="i-arrow_forward" />
-        </div>
+        </router-link>
         <a href="https://asn-customer.vercel.app/" target="_blank" class="flow__link">
           <span>Customer Approval Flow</span>
           <i class="i-arrow_forward" />
@@ -30,10 +30,10 @@
           <span>Technician Starts Work Flow</span>
           <i class="i-arrow_forward" />
         </router-link>
-        <div class="flow__link">
+        <router-link to="/work-order/sa-billing/finance" class="flow__link">
           <span>Service Advisor Invoicing and Billing Flow</span>
           <i class="i-arrow_forward" />
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
