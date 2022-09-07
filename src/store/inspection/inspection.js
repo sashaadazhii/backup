@@ -350,24 +350,21 @@ export default {
             name: 'Front Brake Service',
             date: '21 Dec 2021',
             status: 'Warranty Service',
-            description:
-              'Freeup, clean and lube sliders. Clean rust from brake rotors. This is done to extend the life of the bo 3 years/60000km)'
+            description: 'Freeup, clean and lube sliders. Clean rust from brake rotors. This is done to extend the life of the bo 3 years/60000km)'
           },
           {
             id: 1,
             name: 'Front Brake Service',
             date: '21 Dec 2021',
             status: 'Warranty Service',
-            description:
-              'Freeup, clean and lube sliders. Clean rust from brake rotors. This is done ake warranty to 3 years/60000km)'
+            description: 'Freeup, clean and lube sliders. Clean rust from brake rotors. This is done ake warranty to 3 years/60000km)'
           },
           {
             id: 2,
             name: 'Front Brake Service',
             date: '11 Dec 2020',
             status: 'Warranty Service',
-            description:
-              'Freeup, clean and lube sliders. Clean rust from brake rotors. This is done to and extend your brake warranty to 3 years/60000km)'
+            description: 'Freeup, clean and lube sliders. Clean rust from brake rotors. This is done to and extend your brake warranty to 3 years/60000km)'
           }
         ],
         tires: true
