@@ -11,7 +11,7 @@
     <div class="card__title">{{ card.name }}</div>
     <div v-if="card.status === 'Good'" class="card__empty" />
     <div v-else class="card__menu">
-      <Menu :list="approvalStatusesChange" position="left" :disabled="!isStart">
+      <Menu :list="approvalStatusesChange" position="left" :disabled="!isStart || $route.params.uid === 'tech-flow'">
         <template #menu>
           <Label
             :label="card.approvalStatus"

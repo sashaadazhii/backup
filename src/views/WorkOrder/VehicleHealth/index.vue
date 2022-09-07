@@ -199,6 +199,7 @@ export default {
     activeFilters(filters) {
       this.setFilter(filters)
       this.fetch()
+      if (this.$route.params.uid === 'tech-flow') this.changeStatusInFlow()
     }
   },
   methods: {
@@ -214,7 +215,9 @@ export default {
       selectAll: 'company/cards/selectAll',
       deselectAll: 'company/cards/deselectAll',
       changeStatus: 'company/cards/changeAllStatus',
-      startOrder: 'workOrder/startOrder'
+      startOrder: 'workOrder/startOrder',
+      changeStatusInFlow: 'company/cards/changeApprovalStatusInFlow'
+
     }),
     save() {
       this.changeStatus(this.status)

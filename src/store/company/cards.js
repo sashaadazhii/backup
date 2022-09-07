@@ -77,6 +77,14 @@ export default {
     },
     remove(state, id) {
       state.cards = state.cards.filter(c => c.id !== id)
+    },
+    // ================ FLOWS ==================
+    changeApprovalStatusInFlow(state) {
+      state.cards.forEach((c, idx) => {
+        c.approvalStatus = 'No Status'
+        if (idx === 1) c.approvalStatus = 'Approved For Next Visit'
+        if (idx === 3) c.approvalStatus = 'Approved By SA'
+      })
     }
   },
   actions: {
