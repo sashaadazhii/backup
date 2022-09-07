@@ -67,6 +67,39 @@
             />
           </div>
           <div class="requests__list">
+            <div v-if="card.isRequest" class="requests__list-title">Customer Requests:</div>
+            <div v-if="card.isRequest" class="request__wrapper">
+              <div class="request__header">
+                <i class="i-device_hub" />
+                <span>Custom</span>
+              </div>
+              <div class="request__row">
+                <div class="request__row-title">Speed:</div>
+                <div class="request__row-text">75 km/h</div>
+              </div>
+              <div class="request__row">
+                <div class="request__row-title">While braking:</div>
+                <div class="request__row-text -green">Yes</div>
+              </div>
+              <div class="request__row">
+                <div class="request__row-title">Constant:</div>
+                <div class="request__row-text -red">No</div>
+              </div>
+              <div class="request__tracker tracker">
+                <div class="tracker__header">
+                  <div class="tracker__header-cell">
+                    <i class="i-time" />
+                    <span>Est:</span>
+                    <span>2h</span>
+                  </div>
+                  <div class="tracker__header-cell">
+                    <span>Tracked:</span>
+                    <span>1h 20min</span>
+                  </div>
+                </div>
+                <div class="tracker__progress"><span class="-green" /><span class="-green" /><span class="-green" /><span /><span /></div>
+              </div>
+            </div>
             <div class="requests__list-title">Assigned Requests:</div>
             <div class="request__wrapper">
               <div class="request__header">
@@ -173,8 +206,13 @@ export default {
         {label: 'Temporary Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Temporary Declined'})},
         {label: 'Permanently Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Permanently Declined'})},
         {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
-      ]
+      ],
+      request: {}
     }
+  },
+  async created() {
+    const uid = this.$route.params.uid
+    if (uid === 'tech-start') this.request = await this.findRequest(1)
   },
   computed: {
     ...mapState({
@@ -192,7 +230,9 @@ export default {
     }
   },
   methods: {
-    ...mapActions({}),
+    ...mapActions({
+      findRequest: 'requests/find'
+    }),
     ...mapMutations({
       setCard: 'company/cards/changeCard',
       changeStatus: 'company/cards/changeStatus',

@@ -19,6 +19,13 @@
   }
   &__title {
     @include font(14px, $color-grey-space, 600);
+    position: relative;
+    & > i {
+      position: absolute;
+      @include font(16px, $color-blue);
+      left: -22px;
+      top: -2px;
+    }
   }
   &__label {
     transition: opacity 0.2s ease-in-out;

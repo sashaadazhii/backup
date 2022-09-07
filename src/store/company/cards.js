@@ -79,11 +79,30 @@ export default {
       state.cards = state.cards.filter(c => c.id !== id)
     },
     // ================ FLOWS ==================
-    changeApprovalStatusInFlow(state) {
+    changeApprovalStatusInTechFlow(state) {
       state.cards.forEach((c, idx) => {
         c.approvalStatus = 'No Status'
         if (idx === 1) c.approvalStatus = 'Approved For Next Visit'
         if (idx === 3) c.approvalStatus = 'Approved By SA'
+      })
+    },
+    changeApprovalStatusInTechStart(state) {
+      state.cards.forEach((c, idx) => {
+        c.approvalStatus = 'No Status'
+        if (idx === 1) {
+          c.status = 'Recommended'
+          c.approvalStatus = 'Approved By Customer'
+          c.isRequest = true
+        }
+        if (idx === 3) {
+          c.status = 'Recommended'
+          c.approvalStatus = 'Approved By Customer'
+          c.isRequest = true
+        }
+        if (idx === 5) {
+          c.approvalStatus = 'Permanently Declined'
+          c.status = 'Recommended'
+        }
       })
     }
   },

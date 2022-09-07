@@ -26,10 +26,10 @@
           <span>Ordering Parts Flow</span>
           <i class="i-arrow_forward" />
         </div>
-        <div class="flow__link">
+        <router-link to="/work-order/tech-start/vehicle-health" class="flow__link">
           <span>Technician Starts Work Flow</span>
           <i class="i-arrow_forward" />
-        </div>
+        </router-link>
         <div class="flow__link">
           <span>Service Advisor Invoicing and Billing Flow</span>
           <i class="i-arrow_forward" />

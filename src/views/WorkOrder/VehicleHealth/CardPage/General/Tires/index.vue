@@ -1,6 +1,6 @@
 <template>
   <div class="block__wrapper">
-    <div class="block__title">Summer Tires</div>
+    <div class="block__title">Tires</div>
     <div class="block__grid"><Tire v-for="tire in tires" :key="tire.id" :tire="tire" /></div>
   </div>
 </template>

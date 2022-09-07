@@ -24,9 +24,8 @@ export default {
       guides.splice(guideIdx, 1, guide)
     },
     remove(state, id) {
-      console.log(id)
       state.guides = state.guides.filter(g => g.id !== id)
-      // guides = guides.filter(g => g.id !== id)
+      guides = guides.filter(g => g.id !== id)
     }
   },
   actions: {

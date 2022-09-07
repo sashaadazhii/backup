@@ -153,8 +153,8 @@ export default {
       id: this.$getID(),
       mods: ['multiple'],
       list: [
-        ...this.statuses.map(s => {
-          return {name: s, id: this.$getID()}
+        ...this.statuses.map((s, idx) => {
+          return {name: s, id: idx + 1}
         })
       ]
     }
@@ -163,8 +163,8 @@ export default {
       id: this.$getID(),
       mods: ['multiple'],
       list: [
-        ...this.approvalStatuses.map(s => {
-          return {name: s, id: this.$getID()}
+        ...this.approvalStatuses.map((s, idx) => {
+          return {name: s, id: idx + 1}
         })
       ]
     }
@@ -172,6 +172,32 @@ export default {
     this.activeFilters = this.filterParams || []
     await this.fetch()
     await this.fetchRequests()
+    if (this.$route.params.uid === 'tech-flow') this.changeStatusInTechFlow()
+    if (this.$route.params.uid === 'tech-start') {
+      this.changeStatusInTechStart()
+      const activeFilters = [
+        {
+          name: 'Approved By Customer',
+          id: 2,
+          type: 'Approval Status'
+        },
+        {
+          name: 'Permanently Declined',
+          id: 5,
+          type: 'Approval Status'
+        },
+        {
+          name: 'Recommended',
+          id: 3,
+          type: 'Card Status'
+        }
+      ]
+      this.activeFilters.push(...activeFilters)
+      this.setFilter(activeFilters)
+      this.fetch()
+
+      this.changeRequestStatusInTechStart()
+    }
   },
   computed: {
     ...mapState({
@@ -199,7 +225,6 @@ export default {
     activeFilters(filters) {
       this.setFilter(filters)
       this.fetch()
-      if (this.$route.params.uid === 'tech-flow') this.changeStatusInFlow()
     }
   },
   methods: {
@@ -216,8 +241,9 @@ export default {
       deselectAll: 'company/cards/deselectAll',
       changeStatus: 'company/cards/changeAllStatus',
       startOrder: 'workOrder/startOrder',
-      changeStatusInFlow: 'company/cards/changeApprovalStatusInFlow'
-
+      changeStatusInTechFlow: 'company/cards/changeApprovalStatusInTechFlow',
+      changeStatusInTechStart: 'company/cards/changeApprovalStatusInTechStart',
+      changeRequestStatusInTechStart: 'requests/changeStatusInTechStart',
     }),
     save() {
       this.changeStatus(this.status)

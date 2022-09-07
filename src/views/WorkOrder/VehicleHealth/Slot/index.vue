@@ -8,7 +8,10 @@
         </template>
       </Menu>
     </div>
-    <div class="card__title">{{ card.name }}</div>
+    <div class="card__title">
+      <i v-if="card.isRequest" class="i-device_hub" />
+      {{ card.name }}
+    </div>
     <div v-if="card.status === 'Good'" class="card__empty" />
     <div v-else class="card__menu">
       <Menu :list="approvalStatusesChange" position="left" :disabled="!isStart || $route.params.uid === 'tech-flow'">

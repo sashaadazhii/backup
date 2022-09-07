@@ -27,6 +27,14 @@ export default {
       const cards = state.request.cards
       if (cards.some(c => c.id === card.id)) state.request.cards = cards.filter(c => c.id !== card.id)
       else cards.unshift(card)
+    },
+    // ============== Flows ====================
+    changeStatusInTechStart(state) {
+      state.requests.forEach((r, idx) => {
+        if (idx === 0) r.status = 'Done'
+        if (idx === 1) r.status = 'Done'
+        if (idx === 2) r.status = 'Unable to reproduce'
+      })
     }
   },
   actions: {
@@ -37,6 +45,9 @@ export default {
         commit('setError', err, {root: true})
         throw err
       }
+    },
+    async find(_, id) {
+      return requests.find(r => r.id === id)
     }
   }
 }
