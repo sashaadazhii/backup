@@ -1,6 +1,7 @@
 <template>
   <div class="block__wrapper">
     <div class="block__body">
+      <Tires />
       <div v-if="chooseServices.length" class="block__services services">
         <div class="block__header">
           <div class="block__title">Choosen Canned Service</div>
@@ -27,11 +28,12 @@
 <script>
 import Service from './Service'
 import History from './History'
+import Tires from './Tires'
 import {mapState, mapActions} from 'vuex'
 
 export default {
   name: 'CardPageGeneral',
-  components: {Service, History},
+  components: {Service, History, Tires},
   data() {
     return {}
   },
