@@ -94,7 +94,6 @@
                     </div>
                   </template>
                 </Dropdown>
-                <!-- TODO: Field Number Component -->
                 <div class="y-number__wrapper">
                   <div class="y-number__title">Allowed Time</div>
                   <div class="y-number__inner">
@@ -103,7 +102,6 @@
                     <i class="i-add y-number__inc" :class="{'-disabled': schedulingTime.all === schedulingTime.planned}" @click="inc(idx)" />
                   </div>
                 </div>
-                <!-- TODO: Field Number Component -->
               </div>
             </div>
           </div>
@@ -119,6 +117,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import {DatePicker} from 'v-calendar'
 import Input from '@/components/Yaro/Input'
 import Dropdown from '@/components/Yaro/Dropdown'
@@ -162,8 +161,9 @@ export default {
       changeScheduling: 'workOrder/changeScheduling'
     }),
     open() {
+      console.log(this.order.scheduling)
       this.display = true
-      this.localDays = [...this.order.scheduling]
+      if (this.order.scheduling) this.localDays = [...this.order.scheduling]
     },
     close() {
       this.display = false

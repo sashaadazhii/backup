@@ -61,6 +61,7 @@ export default {
     changeScheduling(state, param) {
       param ? (state.workOrder.scheduling = [...param]) : (state.workOrder.scheduling = null)
       const time = param.reduce((sum, current) => sum + current.time, 0)
+      state.workOrder.schedulingTime ||= {all: 12, planned: 0}
       state.workOrder.schedulingTime.planned = time
     },
     // =================================

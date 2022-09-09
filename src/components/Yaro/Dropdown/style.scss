@@ -395,3 +395,90 @@
   }
 }
 //===========================================
+
+//=========== Theme: green ===================
+.y-dropdown.--theme-green {
+  .y-dropdown {
+    &-inner {
+      background-color: $color-green-mint;
+      border-color: $color-green-pale;
+      &:hover {
+        border-color: $color-green;
+      }
+    }
+    &-trigger-icon {
+      color: $color-green;
+    }
+    &-label {
+      & > span {
+        color: $color-green;
+      }
+    }
+  }
+}
+.y-dropdown--focus.--theme-green {
+  .y-dropdown {
+    &-inner {
+      box-shadow: 0 0 0 2px $color-green-mint;
+    }
+  }
+}
+//===========================================
+
+//=========== Theme: orange ===================
+.y-dropdown.--theme-orange {
+  .y-dropdown {
+    &-inner {
+      background-color: rgba($color-orange, 0.2);
+      border-color: rgba($color-orange, 0.3);
+      &:hover {
+        border-color: $color-orange;
+      }
+    }
+    &-trigger-icon {
+      color: $color-orange;
+    }
+    &-label {
+      & > span {
+        color: $color-orange;
+      }
+    }
+  }
+}
+.y-dropdown--focus.--theme-orange {
+  .y-dropdown {
+    &-inner {
+      box-shadow: 0 0 0 2px rgba($color-orange, 0.1);
+    }
+  }
+}
+//===========================================
+
+//=========== Theme: red ===================
+.y-dropdown.--theme-red {
+  .y-dropdown {
+    &-inner {
+      background-color: rgba($color-red, 0.2);
+      border-color: rgba($color-red, 0.3);
+      &:hover {
+        border-color: $color-red;
+      }
+    }
+    &-trigger-icon {
+      color: $color-red;
+    }
+    &-label {
+      & > span {
+        color: $color-red;
+      }
+    }
+  }
+}
+.y-dropdown--focus.--theme-red {
+  .y-dropdown {
+    &-inner {
+      box-shadow: 0 0 0 2px rgba($color-red, 0.1);
+    }
+  }
+}
+//===========================================

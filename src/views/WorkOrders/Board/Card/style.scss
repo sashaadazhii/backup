@@ -152,13 +152,22 @@
       border-color: rgba($color-blue, 0.1);
       background-color: $color-blue-light;
       color: $color-grey-space;
+      cursor: pointer;
+      transition: border-color 0.2s ease-in-out;
+      &:hover {
+        border-color: $color-blue;
+      }
+      &.-active {
+        border-color: $color-blue;
+        color: $color-blue;
+      }
     }
     & > .-grey {
       border-color: $color-grey-flash;
       background-color: $color-grey-smoke;
       color: $color-grey-space;
       cursor: pointer;
-      transition: border-color .2s ease-in-out;
+      transition: border-color 0.2s ease-in-out;
       &:hover {
         border-color: $color-grey;
       }
@@ -166,7 +175,6 @@
         background-color: $color-grey;
         border-color: $color-grey;
         color: $color-white;
-
       }
     }
   }

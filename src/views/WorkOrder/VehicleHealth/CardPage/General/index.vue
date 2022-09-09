@@ -41,7 +41,6 @@ export default {
     const cardID = this.card.id
     await this.fetchServices(cardID)
     await this.fetchHistory(cardID)
-    console.log(this.card)
   },
   computed: {
     ...mapState({

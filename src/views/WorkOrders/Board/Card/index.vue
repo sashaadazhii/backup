@@ -40,6 +40,9 @@
         size="small"
         class="-blue"
         iconSize="16px"
+        :class="{'-active': displayReq}"
+        ref="reqs"
+        @click.prevent="openReq"
       />
       <Label
         v-if="order.notes"
@@ -56,11 +59,11 @@
       />
 
       <div class="-full" />
-
       <Label v-if="order.serviceAdvisor" :alias="order.serviceAdvisor.alias" size="small" circle />
       <Label v-if="order.technician" :alias="order.technician.alias" size="small" circle color="#6B7280" />
     </div>
     <Popup v-model:visible="display" :targetElement="target" :notes="order.notes" />
+    <PopupReq v-model:visible="displayReq" :targetElement="target" :requests="order.customerRequests" />
   </div>
 </template>
 
@@ -68,12 +71,13 @@
 import Label from '@/components/Yaro/Label'
 import Menu from '@/components/Yaro/Menu'
 import Popup from './Popup'
+import PopupReq from './PopupRequest'
 import {mapMutations} from 'vuex'
 
 import dayjs from 'dayjs'
 export default {
   name: 'WorkOrderCard',
-  components: {Label, Menu, Popup},
+  components: {Label, Menu, Popup, PopupReq},
   props: {
     order: {
       type: Object,
@@ -88,24 +92,13 @@ export default {
       showFooterBlock: false,
       actionsList: [],
       display: false,
+      displayReq: false,
       target: null
     }
   },
   created() {
-    const {
-      vehicleInShop,
-      talkSA,
-      partsOrdered,
-      customerRequests,
-      startsAt,
-      customer,
-      vehicle,
-      scheduling,
-      notes,
-      technician,
-      serviceAdvisor
-    } = this.order
-    if (vehicleInShop || talkSA || partsOrdered ) this.showAdditional = true
+    const {vehicleInShop, talkSA, partsOrdered, customerRequests, startsAt, customer, vehicle, scheduling, notes, technician, serviceAdvisor} = this.order
+    if (vehicleInShop || talkSA || partsOrdered) this.showAdditional = true
     if (startsAt || customer || vehicle || this.showAdditional || scheduling) this.showMainBlock = true
     if (customerRequests || notes || serviceAdvisor || technician) this.showFooterBlock = true
   },
@@ -116,6 +109,9 @@ export default {
     selectOrder(e) {
       if (this.$refs.notes) {
         if (!this.$refs.notes || this.$refs.notes?.$el.contains(e.target)) return
+      }
+      if (this.$refs.reqs) {
+        if (!this.$refs.reqs || this.$refs.reqs?.$el.contains(e.target)) return
       }
       this.set(this.order)
       this.$router.push(`/work-order/${this.order.uid}/vehicle-health`)
@@ -149,6 +145,15 @@ export default {
       }
       this.target = e.currentTarget
       this.display = true
+    },
+    openReq(e) {
+      if (this.displayReq) {
+        this.displayReq = false
+        this.target = null
+        return
+      }
+      this.target = e.currentTarget
+      this.displayReq = true
     }
   }
 }

@@ -902,6 +902,9 @@ export default {
           'y-dropdown--search': this.search,
           '--theme-grey': this.theme === 'grey',
           '--theme-white': this.theme === 'white',
+          '--theme-green': this.theme === 'green',
+          '--theme-orange': this.theme === 'orange',
+          '--theme-red': this.theme === 'red'
         }
       ]
     },
@@ -915,7 +918,17 @@ export default {
       ]
     },
     panelStyleClass() {
-      return ['y-dropdown-panel', this.panelClass, {'--theme-grey': this.theme === 'grey', '--theme-white': this.theme === 'white'}]
+      return [
+        'y-dropdown-panel',
+        this.panelClass,
+        {
+          '--theme-grey': this.theme === 'grey',
+          '--theme-white': this.theme === 'white',
+          '--theme-green': this.theme === 'green',
+          '--theme-orange': this.theme === 'orange',
+          '--theme-red': this.theme === 'red',
+        }
+      ]
     },
     label() {
       if (this.modelValue) return this.getOptionLabel(this.modelValue)
