@@ -1,7 +1,7 @@
 <template>
   <div class="employee__wrapper" @click="show = !show">
     <div class="employee__inner">
-      <Label :alias="`${employee.firstName[0]}${employee.lastName[0]}`" circle size="mini" class="-grey" />
+      <Label :alias="`${employee.firstName[0]}${employee.lastName[0]}`" circle size="small" class="-grey" />
       <div class="employee__name">{{ employee.firstName }} {{ employee.lastName }}</div>
       <div class="employee__time" :class="{'-empty': employee.hours === 0}">
         <i class="i-time" />

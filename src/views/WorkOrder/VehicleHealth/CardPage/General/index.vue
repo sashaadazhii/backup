@@ -1,7 +1,7 @@
 <template>
   <div class="block__wrapper">
     <div class="block__body">
-      <Tires />
+      <Tires v-if="card.name === 'Summer Tires' || card.name === 'Winter Tires'" />
       <div v-if="chooseServices.length" class="block__services services">
         <div class="block__header">
           <div class="block__title">Choosen Canned Service</div>
@@ -41,6 +41,7 @@ export default {
     const cardID = this.card.id
     await this.fetchServices(cardID)
     await this.fetchHistory(cardID)
+    console.log(this.card)
   },
   computed: {
     ...mapState({
