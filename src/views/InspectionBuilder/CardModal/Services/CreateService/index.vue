@@ -172,10 +172,6 @@ export default {
           range: 40_000
         }
       }
-      if (this.templateID) {
-      } else {
-      }
-
       try {
         this.isLoading = true
         if (this.templateID) {

@@ -11,7 +11,7 @@
       <div v-if="services.length" class="block__services services">
         <div class="block__header">
           <div class="block__title">Canned Services</div>
-          <button class="block__btn"><i class="i-add_circle" /><span>Create New Canned Service</span></button>
+          <button class="block__btn" @click="open"><i class="i-add_circle" /><span>Create New Canned Service</span></button>
         </div>
         <Service v-for="service of services" :key="service.id" :service="service" />
       </div>
@@ -29,6 +29,7 @@
 import Service from './Service'
 import History from './History'
 import Tires from './Tires'
+import CreateService from '@/views/InspectionBuilder/CardModal/Services/CreateService'
 import {mapState, mapActions} from 'vuex'
 
 export default {
@@ -66,7 +67,17 @@ export default {
     ...mapActions({
       fetchServices: 'company/cannedServices/fetch',
       fetchHistory: 'company/cannedServices/fetchHistory'
-    })
+    }),
+    open() {
+      this.$vfm.show({
+        component: CreateService,
+        bind: {
+          name: 'CreateService',
+          'esc-to-close': true,
+          'click-to-close': false
+        }
+      })
+    }
   }
 }
 </script>
