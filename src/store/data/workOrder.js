@@ -22,22 +22,22 @@ const workOrder = {
   timePromised: null,
   technician: null,
   serviceAdvisor: null,
-  // notes: [
-  //   {
-  //     author: 'Maynard Bauman',
-  //     alias: 'MB',
-  //     date: '14:53 23 Jun 2022',
-  //     pin: false,
-  //     text: "Call her on her cellphone but keep trying until she answers because she can't get messages."
-  //   },
-  //   {
-  //     author: 'Maynard Bauman',
-  //     alias: 'MB',
-  //     date: '14:53 23 Jun 2022',
-  //     pin: false,
-  //     text: "Call her on her cellphone but keep trying until she answers because she can't get messages."
-  //   }
-  // ],
+  notes: [
+    {
+      author: 'Maynard Bauman',
+      alias: 'MB',
+      date: '14:53 23 Jun 2022',
+      pin: false,
+      text: "Call her on her cellphone but keep trying until she answers because she can't get messages."
+    },
+    {
+      author: 'Brett Ostrander',
+      alias: 'MB',
+      date: '11:34 24 Jun 2022',
+      pin: false,
+      text: "Call her on her cellphone but keep trying until she answers because she can't get messages."
+    }
+  ]
   // schedulingTime: {
   //   all: 12,
   //   planned: 0

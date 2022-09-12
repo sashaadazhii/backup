@@ -17,10 +17,13 @@
       <Label v-if="order.partsOrdered" class="header__label" icon="i-build" border iconColor="#6B7280" iconSize="18px" size="large" />
     </div>
     <div class="header__nav">
-      <router-link v-if="uid === 'new'" class="header__nav-link" :to="`/work-order/${uid}/general`">Settings</router-link>
+      <!-- <router-link v-if="uid === 'new'" class="header__nav-link" :to="`/work-order/${uid}/general`">Settings</router-link> -->
+      <router-link class="header__nav-link" :to="`/work-order/${uid}/general`">Settings</router-link>
       <router-link class="header__nav-link" :to="`/work-order/${uid}/vehicle-health`">Vehicle Health</router-link>
       <router-link class="header__nav-link" :to="`/work-order/${uid}/vehicle-info`">Vehicle Info</router-link>
-      <router-link v-if="uid !== 'new' && uid !== 'tech-flow' && uid !== 'tech-start'" class="header__nav-link" :to="`/work-order/${uid}/finance`">Finance</router-link>
+      <router-link v-if="uid !== 'new' && uid !== 'tech-flow' && uid !== 'tech-start'" class="header__nav-link" :to="`/work-order/${uid}/finance`"
+        >Finance</router-link
+      >
     </div>
     <div v-if="isNew" class="header__menu">
       <router-link :to="'/work-orders/board'"><Button label="Cancel" border grey /></router-link>
