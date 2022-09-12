@@ -39,11 +39,12 @@
         <div v-for="(tech, idx) of techs" :key="idx" class="calendar__tech tech">
           <Label :alias="tech.info.alias" circle size="small" class="tech__label" />
           <div class="tech__name">{{ tech.info.name }}</div>
-          <i class="i-remove_red_eye tech__icon" />
+          <i v-if="tech.disabled" class="i-eye-off-fill tech__icon" @click="disableTech(tech)" />
+          <i v-else class="i-eye-fill tech__icon" @click="disableTech(tech)" />
         </div>
       </div>
       <div class="calendar__body" ref="body" id="body" @scroll="scrollBody">
-        <div v-for="({days}, idx) of techs" :key="idx" class="calendar__row">
+        <div v-for="({days, disabled}, idx) of techs" :key="idx" class="calendar__row" :class="{'-disabled': disabled}">
           <div
             v-for="(day, idx) of days"
             :key="idx"
@@ -186,7 +187,8 @@ export default {
           uid,
           alias: 'LM'
         },
-        days: this.createDays(uid)
+        days: this.createDays(uid),
+        disabled: false
       }
       this.techs.push(tech)
     },
@@ -270,7 +272,10 @@ export default {
       tech.days = this.formatDays(days)
     },
     changeMonth() {},
-    changeYear() {}
+    changeYear() {},
+    disableTech(tech) {
+      tech.disabled = !tech.disabled
+    }
   }
 }
 </script>
