@@ -8,7 +8,7 @@
     <div class="block__body">
       <div class="block__subheader">
         <span></span>
-        <span>Part #</span>
+        <span>Part Description</span>
         <span>Core</span>
         <span>Quantity</span>
         <span>Price</span>

@@ -4,15 +4,16 @@
     <div class="section__body">
       <div class="section__subheader">
         <span></span>
-        <span>Part #</span>
+        <span>Part Description</span>
         <span>Core</span>
         <span>Quantity</span>
         <span>Price</span>
         <span>Total</span>
+        <span>Parts Markup</span>
       </div>
       <div class="section__parts">
         <Part v-for="(part, idx) of parts" :key="idx" :part="part" @select="select" />
-        <NewPart v-if="isNew" @close="isNew = false"/>
+        <NewPart v-if="isNew" @close="isNew = false" />
         <button v-if="!isNew" class="section__btn" @click="isNew = true"><i class="i-add_circle" /><span>Add New part</span></button>
       </div>
     </div>

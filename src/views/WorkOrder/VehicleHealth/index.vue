@@ -53,7 +53,9 @@
           <Button label="Add Card from Library" icon="i-add_circle" @click="addCard" :disabled="!isStart" />
         </div>
         <div v-if="activeFilters.length" class="chip__wrapper">
-          <div v-for="chip of activeFilters" :key="chip.id" class="chip">
+          <!--  -->
+
+          <div v-for="chip of activeFilters" :key="chip.id" class="chip" :class="statusClass(chip.name, chip.type)">
             <div class="chip__icon">
               <i v-if="chip.type === 'Card Status'" class="i-layers" />
               <i v-if="chip.type === 'Approval Status'" class="i-mark" />
@@ -288,6 +290,20 @@ export default {
     changeSearch(searchValue) {
       this.setSearch(searchValue)
       this.fetch()
+    },
+    statusClass(name, type) {
+      return {
+        '-orange -square': name === 'Recommended', //st
+        '-red': name === 'Permanently Declined',
+        '-red -square': name === 'Component Unsafe', //st
+        '-bluegreen': name === 'Canned Service Completed' || name === 'Temporary Declined',
+        '-none': name === 'No Status',
+        '-none -square': name === 'No Status' && type === 'Card Status', //st
+        '-green': name === 'Approved By SA',
+        '-green -square': name === 'Good', //st
+        '-green -border': name === 'Approved By Customer',
+        '-purple': name === 'Approved For Next Visit'
+      }
     }
   }
 }
