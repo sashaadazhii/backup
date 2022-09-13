@@ -2,10 +2,6 @@
 
 .request {
   &__wrapper {
-    // display: grid;
-    // grid-template-columns: 40px 1fr;
-    // row-gap: 14px;
-    // column-gap: 8px;
   }
   &__inner {
     background-color: $color-white;
@@ -16,7 +12,6 @@
     flex-direction: column;
     margin-bottom: 14px;
     row-gap: 12px;
-    // grid-column: 1 / 3;
   }
   &__title {
     @include font(16px, $color-grey-space, 600);
@@ -44,7 +39,6 @@
   }
 
   &__line {
-    // background-color: $color-grey;
   }
   &__cards {
     position: relative;
@@ -63,24 +57,6 @@
 .line {
   position: relative;
   margin-left: 20px;
-  // border-left: 1px solid red;
   &__horizontal {
-    // height: 1px;
-    // width: 30px;
-    // position: absolute;
-    // top: 30px;
-    // background-color: $color-blue;
   }
-  // &__line {
-  //   width: 1px;
-  //   height: 100%;
-  //   background-color: $color-grey;
-  // }
-  // &__round {
-    // height: 40px;
-    // width: 40px;
-    // border-left: 1px solid red;
-    // border-bottom: 1px solid red;
-    // border-radius: 0 0 0 20px;
-  // }
 }
