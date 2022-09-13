@@ -1,17 +1,25 @@
 <template>
-  <div class="card__wrapper" @click="$router.push(`/work-order/${workOrderUid}/finance/${cardID}`)" >
+  <div class="card__wrapper" @click="$router.push(`/work-order/${workOrderUid}/finance/${card.id}`)">
     <div class="card__labels">
-      <Label label="Recommended" class="-orange" />
-      <Label label="No Customer Status" class="-border -grey" border circle />
+      <Label :label="card.status" size="small" class="card__label" :class="labelClass(card.status)" />
+      <Label :label="card.approvalStatus" size="small" class="card__label -shadow" :class="labelClass(card.approvalStatus)" />
+      <Label v-if="card.done" size="small" label="Done" icon="i-check_circle" border circle class="card__label -shadow -green -end" />
+      <Label
+        v-else
+        size="small"
+        label="Mark as Done"
+        icon="i-check_circle_outline"
+        border
+        circle
+        class="card__label -hover -shadow -grey -end"
+        @click.stop="$emit('onCardDone')"
+      />
     </div>
     <div class="card__header">
-      <Label label="$43" />
-      <div class="card__title">Air filter change</div>
+      <Label size="small" :label="card.price" />
+      <div class="card__title">{{ card.title }}</div>
     </div>
-    <div class="card__body">
-      Complete engine Tune-up and induction system service. Recommended to improve fuel mileage, emissions, prevent misfires and improve overall engine
-      performance
-    </div>
+    <div class="card__body">{{ card.description }}</div>
   </div>
 </template>
 
@@ -20,15 +28,33 @@ import Label from '@/components/Yaro/Label'
 export default {
   name: 'FinanceCard',
   components: {Label},
+  emits: ['onCardDone'],
+  props: {
+    card: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
-      workOrderUid: 'new',
-      cardID: '314'
+      workOrderUid: 'new'
     }
   },
   created() {
     this.workOrderUid = this.$route.params.uid
-    this.cardID = '314'
+  },
+  methods: {
+    labelClass(status) {
+      return {
+        '-orange': status === 'Recommended',
+        '-red': status === 'Component Unsafe' || status === 'Permanently Declined',
+        '-bluegreen': status === 'Canned Service Completed' || status === 'Temporary Declined',
+        '-none': status === 'No Status',
+        '-green': status === 'Approved By SA',
+        '-green -border': status === 'Approved By Customer',
+        '-purple': status === 'Approved For Next Visit'
+      }
+    }
   }
 }
 </script>

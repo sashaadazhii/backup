@@ -1,10 +1,9 @@
 @import 'src/assets/styles/_variables.scss';
 
-.total {
+.totals {
   &__wrapper {
     background-color: $color-white;
     border-radius: 16px;
-    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -19,26 +18,18 @@
 }
 
 .block {
-  @include border(14px, $color-grey-flash);
-  background-color: $color-grey-smoke;
-  padding: 0 12px;
   &__row {
     display: grid;
     grid-template-columns: 14px 1fr auto;
     padding: 12px 0;
     column-gap: 10px;
     align-items: center;
-    @include font(14px, $color-grey-space, 500);
-    &.-request {
-      grid-template-columns: 14px 1fr auto auto;
-      font-weight: 600;
-      & > .block__name,
-      & > .block__desc > i {
-        color: $color-purple;
-      }
-    }
-    &.-border:not(:last-child) {
+    @include font(14px, $color-grey-space, 600);
+    &:not(:last-child) {
       border-bottom: 1px solid $color-grey-flash;
+    }
+    &:last-child {
+      padding-bottom: 0;
     }
   }
   &__icon {
@@ -46,9 +37,7 @@
     width: 14px;
     border-radius: 4px;
     background-color: $color-green;
-    &.-purple {
-      background-color: $color-purple;
-    }
+
     &.-grey {
       background-color: $color-grey;
     }
