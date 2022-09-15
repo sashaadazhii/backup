@@ -1,0 +1,12 @@
+@import 'src/assets/styles/_variables.scss';
+
+.totals {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+  }
+  &__title {
+    @include font(16px, $color-grey-space, 700);
+  }
+}

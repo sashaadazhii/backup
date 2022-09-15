@@ -44,6 +44,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    textLeft: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -80,6 +84,7 @@ export default {
           'y-switch--disabled': this.$attrs.disabled,
           'y-switch--focus': this.focused,
           'y-switch--disabled': this.disabled,
+          'y-switch--left': this.textLeft,
         }
       ]
     },

@@ -19,46 +19,15 @@ import Card from './Card'
 import Request from './Request'
 import Totals from './Totals'
 import Label from '@/components/Yaro/Label'
+import {mapState} from 'vuex'
 
 export default {
   name: 'FinancePage',
-  /* eslint-disable  */
   components: {Card, Totals, Request, Label},
-
-  data() {
-    return {
-      cards: [
-        {
-          id: 1,
-          status: 'Recommended',
-          approvalStatus: 'Approved For Next Visit',
-          title: 'Cooling System Service',
-          price: 320,
-          description:
-            'Complete engine Tune-up and induction system service. Recommended to improve fuel mileage, emissions, prevent misfires and improve overall engine performance',
-          isDone: false
-        },
-        {
-          id: 2,
-          status: 'Recommended',
-          approvalStatus: 'Approved By SA',
-          title: 'Air filter change',
-          price: 380,
-          description:
-            'Complete engine Tune-up and induction system service. Recommended to improve fuel mileage, emissions, prevent misfires and improve overall engine performance',
-          isDone: false
-        },
-        {
-          id: 4,
-          status: 'Component Unsafe',
-          approvalStatus: 'Permanently Declined',
-          title: 'Engine Belt',
-          price: 200,
-          description:
-            'Complete engine Tune-up and induction system service. Recommended to improve fuel mileage, emissions, prevent misfires and improve overall engine performance'
-        }
-      ]
-    }
+  computed: {
+    ...mapState({
+      cards: s => s.finance.cards
+    })
   }
 }
 </script>

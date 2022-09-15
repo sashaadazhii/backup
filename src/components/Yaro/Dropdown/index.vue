@@ -17,7 +17,7 @@
       />
     </div>
     <div v-if="title" class="y-dropdown-title">{{ title }}</div>
-    <div class="y-dropdown-inner" :class="{'y-dropdown-inner--medium': size === 'medium'}">
+    <div class="y-dropdown-inner" :class="{'y-dropdown-inner--medium': size === 'medium', 'y-dropdown-inner--small': size === 'small'}">
       <div v-if="search" class="y-dropdown-search-container">
         <i class="y-dropdown-search-icon i-search1" />
         <input

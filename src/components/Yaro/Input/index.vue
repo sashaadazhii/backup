@@ -11,6 +11,8 @@
       small: size === 'small',
       mini: size === 'mini',
       '--theme-white': theme === 'white',
+      '--theme-red': theme === 'red',
+      '--theme-blue': theme === 'blue',
       disabled
     }"
   >

@@ -6,6 +6,7 @@
 
 <script>
 import Info from './Info'
+
 export default {
   name: 'FinanceCardPage',
   components: {Info}

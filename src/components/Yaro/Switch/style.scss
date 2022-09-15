@@ -5,6 +5,10 @@
   align-items: center;
   column-gap: 12px;
   position: relative;
+  &--left {
+    flex-direction: row-reverse;
+  }
+
   &__slider {
     cursor: pointer;
     position: relative;

@@ -1,0 +1,14 @@
+@import 'src/assets/styles/_variables.scss';
+
+.part {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1.6fr repeat(5, 1fr) 24px;
+    column-gap: 10px;
+    padding: 10px 0;
+    border-top: 1px solid $color-grey-flash;
+  }
+  &__title {
+    @include font(14px, $color-grey-space, 600);
+  }
+}
