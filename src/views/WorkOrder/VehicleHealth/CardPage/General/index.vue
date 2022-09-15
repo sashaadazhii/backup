@@ -15,7 +15,7 @@
         </div>
         <Service v-for="service of services" :key="service.id" :service="service" />
       </div>
-      <div v-if="history.length" class="block__history history">
+      <div v-if="history.length && $route.params.uid !== 'tech-start'" class="block__history history">
         <div class="block__header">
           <div class="block__title">Service History</div>
         </div>
@@ -30,7 +30,7 @@ import Service from './Service'
 import History from './History'
 import Tires from './Tires'
 import CreateService from '@/views/InspectionBuilder/CardModal/Services/CreateService'
-import {mapState, mapActions} from 'vuex'
+import {mapState, mapActions, mapMutations} from 'vuex'
 
 export default {
   name: 'CardPageGeneral',
@@ -42,6 +42,7 @@ export default {
     const cardID = this.card.id
     await this.fetchServices(cardID)
     await this.fetchHistory(cardID)
+    if (this.$route.params.uid === 'tech-start') this.select(5)
   },
   computed: {
     ...mapState({
@@ -67,6 +68,9 @@ export default {
     ...mapActions({
       fetchServices: 'company/cannedServices/fetch',
       fetchHistory: 'company/cannedServices/fetchHistory'
+    }),
+    ...mapMutations({
+      select: 'company/cannedServices/select'
     }),
     open() {
       this.$vfm.show({
