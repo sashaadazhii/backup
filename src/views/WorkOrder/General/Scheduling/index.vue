@@ -161,7 +161,6 @@ export default {
       changeScheduling: 'workOrder/changeScheduling'
     }),
     open() {
-      console.log(this.order.scheduling)
       this.display = true
       if (this.order.scheduling) this.localDays = [...this.order.scheduling]
     },

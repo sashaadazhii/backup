@@ -192,3 +192,21 @@
     background-color: $color-white;
   }
 }
+.field__label.--theme-red {
+  & > .field__title {
+    color: $color-red;
+  }
+  & > .field__input {
+    background-color: $color-red-blush;
+    border-color: $color-red;
+  }
+}
+.field__label.--theme-blue {
+  & > .field__title {
+    color: $color-blue;
+  }
+  & > .field__input {
+    background-color: rgba($color-blue, 0.1);
+    border-color: $color-blue;
+  }
+}

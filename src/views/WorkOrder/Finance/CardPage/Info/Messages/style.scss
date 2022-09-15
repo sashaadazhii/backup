@@ -1,0 +1,36 @@
+@import 'src/assets/styles/_variables.scss';
+
+::v-deep(.vfm__container) {
+  place-items: start center;
+}
+
+::v-deep(.vfm__content) {
+  width: 96%;
+  max-width: 960px;
+  display: grid;
+  border-radius: 20px;
+  margin: 2% 0;
+}
+
+.modal {
+  &__wrapper {
+    // background-color: $color-grey-smoke;
+    padding: 20px;
+    display: grid;
+    // grid-template-rows: auto auto 1fr;
+    // overflow: hidden;
+    // max-height: inherit;
+  }
+  &__list {
+    display: grid;
+    row-gap: 10px;
+    margin: 10px 0;
+  }
+  &__item {
+    @include border(12px);
+    @include shadow;
+    padding: 10px;
+    @include font(16px, $color-grey-space, 500, 1.5);
+    background-color: $color-grey-smoke;
+  }
+}

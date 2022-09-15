@@ -8,6 +8,7 @@ import company from './company'
 import reports from './reports/reports'
 import vendors from './vendors/vendors'
 import requests from './workOrder/requests'
+import finance from './workOrder/finance'
 
 export default createStore({
   state: {},
@@ -22,6 +23,7 @@ export default createStore({
     company,
     reports,
     vendors,
-    requests
+    requests,
+    finance
   }
 })

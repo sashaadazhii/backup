@@ -34,6 +34,14 @@
         font-size: 16px;
       }
     }
+    &--small {
+      height: 24px;
+      padding: 0 8px;
+      border-radius: 8px;
+      .y-dropdown-search-icon {
+        font-size: 14px;
+      }
+    }
   }
   &-dots {
     cursor: pointer;
@@ -98,11 +106,17 @@
     }
   }
   &-label {
+    &-empty {
+      display: flex;
+      align-items: center;
+    }
     & > span {
       @include font(14px, $color-grey-space, 500);
     }
   }
   &-placeholder {
+    display: flex;
+    align-items: center;
     & > span {
       color: $color-grey;
     }
@@ -349,27 +363,27 @@
 //==============================
 
 //=========== Theme: grey ===================
-.y-dropdown.--theme-grey {
-  .y-dropdown {
-    &-inner {
-      background-color: $color-grey;
-    }
-    &-trigger-icon {
-      color: $color-white;
-    }
-  }
-}
-.y-dropdown-panel.--theme-grey {
-  background-color: $color-grey;
+// .y-dropdown.--theme-grey {
+//   .y-dropdown {
+//     &-inner {
+//       background-color: $color-grey;
+//     }
+//     &-trigger-icon {
+//       color: $color-white;
+//     }
+//   }
+// }
+// .y-dropdown-panel.--theme-grey {
+//   background-color: $color-grey;
 
-  .y-dropdown {
-    &-item {
-      &:hover {
-        background-color: rgba($color-grey-light, 0.2);
-      }
-    }
-  }
-}
+//   .y-dropdown {
+//     &-item {
+//       &:hover {
+//         background-color: rgba($color-grey-light, 0.2);
+//       }
+//     }
+//   }
+// }
 //===========================================
 
 //=========== Theme: white ===================
@@ -481,4 +495,33 @@
     }
   }
 }
+//===========================================
+
+//=========== Theme: grey ===================
+.y-dropdown.--theme-grey {
+  .y-dropdown {
+    &-inner {
+      background-color: $color-grey;
+      border-color: $color-grey;
+      &:hover {
+        border-color: $color-grey;
+      }
+    }
+    &-trigger-icon {
+      color: $color-white;
+    }
+    &-label {
+      & > span {
+        color: $color-white;
+      }
+    }
+  }
+}
+// .y-dropdown--focus.--theme-red {
+//   .y-dropdown {
+//     &-inner {
+//       box-shadow: 0 0 0 2px rgba($color-red, 0.1);
+//     }
+//   }
+// }
 //===========================================

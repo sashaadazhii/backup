@@ -6,7 +6,8 @@
       'icon-left': iconLeft,
       'icon-right': iconRight,
       error,
-      'error-message': errorMessage
+      'error-message': errorMessage,
+      theme
     }"
   >
     <div v-if="title" class="field__title">{{ title }}</div>
@@ -69,7 +70,8 @@ export default {
     errorMessage: {
       type: String,
       default: null
-    }
+    },
+    theme: String,
   },
   emits: {
     'update:modelValue': null
@@ -81,6 +83,9 @@ export default {
     updateValue(event) {
       this.$emit('update:modelValue', event.target.value)
     }
+  },
+  created() {
+    console.log(this.theme)
   }
 }
 // export default {

@@ -1,5 +1,5 @@
 <template>
-  <div class="card__wrapper" @click="$router.push(`/work-order/${workOrderUid}/finance/${card.id}`)">
+  <div class="card__wrapper" @click="open">
     <div class="card__labels">
       <Label :label="card.status" size="small" class="card__label" :class="labelClass(card.status)" />
       <Label :label="card.approvalStatus" size="small" class="card__label -shadow" :class="labelClass(card.approvalStatus)" />
@@ -16,7 +16,7 @@
       />
     </div>
     <div class="card__header">
-      <Label size="small" :label="card.price" />
+      <Label size="small" :label="`$${card.price}`" />
       <div class="card__title">{{ card.title }}</div>
     </div>
     <div class="card__body">{{ card.description }}</div>
@@ -25,6 +25,7 @@
 
 <script>
 import Label from '@/components/Yaro/Label'
+import {mapMutations} from 'vuex'
 export default {
   name: 'FinanceCard',
   components: {Label},
@@ -44,6 +45,9 @@ export default {
     this.workOrderUid = this.$route.params.uid
   },
   methods: {
+    ...mapMutations({
+      set: 'finance/set'
+    }),
     labelClass(status) {
       return {
         '-orange': status === 'Recommended',
@@ -54,6 +58,10 @@ export default {
         '-green -border': status === 'Approved By Customer',
         '-purple': status === 'Approved For Next Visit'
       }
+    },
+    open() {
+      this.set(this.card)
+      this.$router.push(`/work-order/${this.workOrderUid}/finance/${this.card.id}`)
     }
   }
 }
