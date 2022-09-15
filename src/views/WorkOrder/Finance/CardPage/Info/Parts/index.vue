@@ -2,7 +2,7 @@
   <div class="parts__wrapper">
     <div class="parts__header">
       <div class="parts__title">Parts</div>
-      <Button label="Add Part manually" icon="i-add_circle" size="small" grey border />
+      <Button label="Add Part manually" icon="i-add_circle" size="small" grey />
     </div>
     <div class="parts__list">
       <div class="parts__head">

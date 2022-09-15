@@ -1,11 +1,11 @@
 @import 'src/assets/styles/_variables.scss';
 
-.card {
+.finance {
   &__wrapper {
-    background-color: #e5e5e5;
+    background-color: $color-grey-bg;
     height: 100%;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 1fr;
     column-gap: 20px;
     padding: 20px;
     overflow: auto;

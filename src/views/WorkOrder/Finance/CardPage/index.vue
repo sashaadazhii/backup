@@ -1,15 +1,17 @@
 <template>
-  <div class="card__wrapper">
+  <div class="finance__wrapper">
     <Info />
+    <Notes />
   </div>
 </template>
 
 <script>
 import Info from './Info'
+import Notes from './Notes'
 
 export default {
   name: 'FinanceCardPage',
-  components: {Info}
+  components: {Info, Notes}
 }
 </script>
 
