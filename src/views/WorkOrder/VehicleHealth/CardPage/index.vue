@@ -67,7 +67,7 @@
             />
           </div>
           <div class="requests__list">
-            <div v-if="card.isRequest" class="requests__list-title">Customer Requests:</div>
+            <!-- <div v-if="card.isRequest" class="requests__list-title">Customer Requests:</div>
             <div v-if="card.isRequest" class="request__wrapper">
               <div class="request__header">
                 <i class="i-device_hub" />
@@ -99,9 +99,9 @@
                 </div>
                 <div class="tracker__progress"><span class="-green" /><span class="-green" /><span class="-green" /><span /><span /></div>
               </div>
-            </div>
+            </div> -->
             <div class="requests__list-title">Assigned Requests:</div>
-            <div class="request__wrapper">
+            <div v-if="!card.isRequest" class="request__wrapper">
               <div class="request__header">
                 <i class="i-device_hub" />
                 <span>Noise</span>
@@ -133,7 +133,7 @@
                 <div class="tracker__progress"><span class="-green" /><span class="-green" /><span class="-green" /><span /><span /></div>
               </div>
             </div>
-            <div class="request__wrapper">
+            <div v-if="!card.isRequest" class="request__wrapper">
               <div class="request__header">
                 <i class="i-device_hub" />
                 <span>Vibrations</span>

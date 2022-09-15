@@ -35,4 +35,15 @@
     flex-direction: column;
     row-gap: 20px;
   }
+  &__label {
+    transition: opacity 0.2s ease-in-out;
+    &.-orange {
+      background-color: $color-orange;
+    }
+    &.-none {
+      border-color: $color-grey-flash;
+      background-color: $color-grey-smoke;
+      color: $color-grey;
+    }
+  }
 }

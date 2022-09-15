@@ -1,0 +1,37 @@
+@import 'src/assets/styles/_variables.scss';
+
+.note {
+  &__wrapper {
+    @include border(18px);
+    padding: 16px;
+    @include shadow;
+  }
+  &__hedaer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__label {
+    @include border(12px);
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    background-color: $color-grey-smoke;
+    min-height: 38px;
+    & > span {
+      @include font(14px, $color-grey-space, 600);
+    }
+  }
+  &__menu {
+    justify-self: end;
+    align-self: center;
+  }
+  &__body {
+    @include font(14px, $color-grey-space, 500, 1.5);
+    margin: 12px 0;
+  }
+  &__footer {
+    display: flex;
+  }
+}
