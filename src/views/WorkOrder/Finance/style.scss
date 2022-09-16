@@ -58,6 +58,8 @@
     align-items: center;
     column-gap: 16px;
   }
+  &__right {
+  }
 }
 .chip {
   display: flex;
@@ -68,6 +70,9 @@
   transition: opacity 0.2s ease-in-out;
   &.-square {
     border-radius: 8px;
+    // &.-none .chip__close {
+    //   color: $color-grey-flash;
+    // }
   }
   &.-red {
     background-color: rgba($color-red, 0.1);
@@ -166,6 +171,9 @@
   &.-square {
     .chip__close i {
       color: $color-white;
+    }
+    &.-none .chip__close i {
+      color: $color-grey;
     }
   }
 }

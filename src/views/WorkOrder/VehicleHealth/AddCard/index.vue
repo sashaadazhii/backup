@@ -10,9 +10,9 @@
       <div class="modal__block">
         <div class="modal__block-title">CANNED SERVICES</div>
         <div class="modal__block-inner">
-          <Service viewOnly/>
-          <Service viewOnly/>
-          <Service viewOnly/>
+          <Service viewOnly />
+          <Service viewOnly />
+          <Service viewOnly />
         </div>
         <div class="modal__block-title">CARDS</div>
         <div class="modal__block-inner">
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import Input from '@/components/Yaro/Input'
 import Button from '@/components/Yaro/Button'
 import Card from './Card'

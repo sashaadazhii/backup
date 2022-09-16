@@ -25,15 +25,14 @@ export default {
   data() {
     return {}
   },
-  created() {
-  },
+  created() {},
   computed: {
-    ...mapState({
-    }),
+    ...mapState({}),
     cardRelation() {
       if (this.card.cardRelationType === 'global') return 'Global'
-      const relations = this.card.relations.map(r => `${r.make} ${r.model} ${r.yearFrom}`)
-      return relations.join(' ')
+      const {make, model, yearFrom, yearTo} = this.card.relation
+      const relation = `${make} ${model} ${yearFrom} ${yearFrom === yearTo ? '' : '- ' +  yearTo}`
+      return relation
     },
     cardWarranty() {
       const {odometerTrack, timeTrackLength} = this.card

@@ -219,11 +219,15 @@ const cardsList = {
     },
     {
       name: 'Exhaust System',
-      cardRelationType: 'global',
+      cardRelationType: 'custom-vehicles',
       odometerTrack: 30000,
       timeTrackLength: 18,
       description: '',
-      relation: {},
+      relation: {
+        make: 'Audi',
+        model: 'A4',
+        yearTo: 2009
+      },
       templateID: 25
     },
     {

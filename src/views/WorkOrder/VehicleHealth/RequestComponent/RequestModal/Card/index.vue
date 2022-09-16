@@ -3,7 +3,7 @@
     <i v-if="selected" class="i-device_hub blue" />
     <i v-if="selected" class="i-check_circle green" @click="$emit('select', card)" />
     <i v-else class="i-add_circle grey" @click="$emit('select', card)" />
-    <Label label="All Vehicles" size="small" circle />
+    <Label label="Ford F150 2021" size="small" circle />
     <span>{{ card.name }}</span>
     <div class="card__wrapper-labels">
       <Label icon="i-shutter_speed" iconColor="#3EB3BB" :label="`${card.timeTrackLength} Months`" border class="-shadow" />

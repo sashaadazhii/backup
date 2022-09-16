@@ -19,7 +19,6 @@
             optionListLabel="name"
             optionListChildren="list"
             size="medium"
-            openPosition="left"
             @change="changeFilters"
           >
             <template #optionlist="{option}">

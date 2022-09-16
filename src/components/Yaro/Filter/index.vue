@@ -654,7 +654,7 @@ export default {
         DomHandler.relativePosition(this.overlay, this.$el)
       } else {
         this.overlay.style.minWidth = DomHandler.getOuterWidth(this.$el) + 'px'
-        DomHandler.absolutePosition(this.overlay, this.$el, this.openPosition)
+        DomHandler.absolutePositionFilter(this.overlay, this.$el, this.openPosition)
       }
     },
     updateModel(event, value) {
