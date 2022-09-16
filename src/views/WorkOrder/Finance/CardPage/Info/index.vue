@@ -6,10 +6,15 @@
       <Label :label="card.status" size="small" class="info__label" :class="labelClass(card.status)" />
       <Label :label="card.approvalStatus" size="small" class="info__label -shadow" :class="labelClass(card.approvalStatus)" />
     </div>
-    <Input :modelValue="card.title" disabled />
-    <Textarea :modelValue="card.description" disabled />
-    <Input :modelValue="card.permanentDenialMessage?.note" title="Permanent Denial Message:" theme="red" @click="open('pMessage')" />
-    <Input :modelValue="card.temporalDenialMessage?.note" title="Temporal Denial Message:" theme="blue" @click="open('tMessage')" />
+    <Input :modelValue="card.title" />
+    <Textarea :modelValue="card.description" />
+    <Additional />
+    <div class="info__body">
+      <Textarea title="Technician Notes" height="100" />
+      <Textarea title="Quote Notes" height="100" />
+      <Input :modelValue="card.permanentDenialMessage?.note" title="Permanent Denial Message:" theme="red" @click="open('pMessage')" />
+      <Input :modelValue="card.temporalDenialMessage?.note" title="Temporal Denial Message:" theme="blue" @click="open('tMessage')" />
+    </div>
     <Parts />
     <Totals />
   </div>
@@ -25,10 +30,11 @@ import {mapState} from 'vuex'
 import Messages from './Messages'
 import Parts from './Parts'
 import Totals from './Totals'
+import Additional from './Additional'
 
 export default {
   name: 'FinanceCardPageInfo',
-  components: {Label, Button, Parts, Totals, Input, Textarea},
+  components: {Label, Button, Parts, Totals, Additional, Input, Textarea},
   created() {},
   computed: {
     ...mapState({

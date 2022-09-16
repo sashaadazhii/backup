@@ -27,49 +27,68 @@
       color: $color-grey;
     }
   }
-}
-
-.block {
-  &__header {
-    @include font(16px, $color-grey-space, 600);
-    margin-bottom: 8px;
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 18px;
+    column-gap: 14px;
   }
-  &__inner {
-    @include border(10px, $color-grey-flash);
-    padding: 14px;
-    background-color: $color-grey-smoke;
-    &-title {
-      @include font(14px, $color-grey-space, 600);
-      margin-bottom: 10px;
-      &.-bold {
-        font-size: 18px;
-        margin-bottom: 0;
+  &__label {
+    transition: opacity 0.2s ease-in-out;
+    &.-red {
+      background-color: $color-red;
+    }
+    &.-orange {
+      background-color: $color-orange;
+    }
+    &.-bluegreen {
+      background-color: $color-bluegreen;
+    }
+    &.-none {
+      border-color: $color-grey-flash;
+      background-color: $color-grey-smoke;
+      color: $color-grey;
+    }
+    &.-shadow {
+      padding-right: 10px;
+      &.-green {
+        background-color: $color-green-mint;
+        color: $color-green;
+        &.-border {
+          border-color: $color-green;
+        }
       }
-    }
-    &-body {
-      @include font(16px, $color-grey-space, 500, 1.5);
-    }
-  }
-  &.-red {
-    & > .block {
-      &__header {
+      &.-red {
         color: $color-red;
+        background-color: rgba($color-red, 0.1);
       }
-      &__inner {
-        border-color: $color-red;
-        background-color: $color-red-blush;
+      &.-purple {
+        color: $color-purple;
+        background-color: rgba($color-purple, 0.1);
+      }
+      &.-bluegreen {
+        color: $color-bluegreen;
+        background-color: rgba($color-bluegreen, 0.1);
+      }
+      &.-none {
+        border-color: transparent;
+        background-color: $color-grey-smoke;
+        color: $color-grey;
+      }
+      &.-grey {
+        border-color: $color-grey-flash;
+        background-color: $color-grey-smoke;
+        color: $color-grey;
       }
     }
-  }
-  &.-blue {
-    & > .block {
-      &__header {
-        color: $color-blue;
+    &.-hover {
+      &:hover {
+        cursor: pointer;
+        opacity: 0.6;
       }
-      &__inner {
-        border-color: $color-blue;
-        background-color: $color-blue-light;
-      }
+    }
+    &.-end {
+      justify-self: end;
     }
   }
 }
