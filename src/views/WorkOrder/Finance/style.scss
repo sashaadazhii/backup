@@ -14,9 +14,6 @@
     column-gap: 20px;
   }
   &__header {
-    display: flex;
-    align-items: center;
-    column-gap: 16px;
     margin-bottom: 20px;
     & > .-orange {
       background-color: $color-orange;
@@ -44,6 +41,131 @@
       border-color: $color-grey-flash;
       background-color: $color-grey-smoke;
       color: $color-grey;
+    }
+  }
+}
+.header {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  &__bottom {
+  }
+  &__left {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+  }
+}
+.chip {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: $color-white;
+  transition: opacity 0.2s ease-in-out;
+  &.-square {
+    border-radius: 8px;
+  }
+  &.-red {
+    background-color: rgba($color-red, 0.1);
+    .chip__name,
+    .chip__icon i {
+      color: $color-red;
+    }
+    &.-square {
+      background-color: $color-red;
+      .chip__name,
+      .chip__icon i {
+        color: $color-white;
+      }
+    }
+  }
+  &.-purple {
+    background-color: rgba($color-purple, 0.1);
+
+    .chip__name,
+    .chip__icon i {
+      color: $color-purple;
+    }
+  }
+  &.-bluegreen {
+    background-color: rgba($color-bluegreen, 0.1);
+
+    .chip__name,
+    .chip__icon i {
+      color: $color-bluegreen;
+    }
+  }
+  &.-orange {
+    &.-square {
+      background-color: $color-orange;
+      .chip__name,
+      .chip__icon i {
+        color: $color-white;
+      }
+    }
+  }
+  &.-green {
+    background-color: rgba($color-green, 0.1);
+    .chip__name,
+    .chip__icon i {
+      color: $color-green;
+    }
+    &.-border {
+      border: 1px solid $color-green;
+    }
+    &.-square {
+      background-color: $color-green;
+      .chip__name,
+      .chip__icon i {
+        color: $color-white;
+      }
+    }
+  }
+  &.-none {
+    border-color: $color-grey-flash;
+    background-color: $color-grey-smoke;
+    color: $color-grey;
+  }
+  &__wrapper {
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 12px;
+    overflow-x: auto;
+    width: 100%;
+    @include hideScrollbar;
+  }
+  &__icon {
+    line-height: 0;
+    margin: -2px;
+    margin-right: 8px;
+    & > i {
+      @include font(16px, $color-grey);
+      &.green {
+        color: $color-green;
+      }
+    }
+  }
+  &__name {
+    @include font(12px, $color-space, 600);
+    white-space: nowrap;
+  }
+  &__close {
+    margin-left: 12px;
+    line-height: 0;
+    cursor: pointer;
+    & > i {
+      @include font(18px, rgba($color-grey, 0.6), 500);
+    }
+  }
+  &.-square {
+    .chip__close i {
+      color: $color-white;
     }
   }
 }

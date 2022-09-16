@@ -83,9 +83,11 @@ export default {
         cost: 12,
         price: 12
       }
-    ]
+    ],
+    filterParams: null
   },
   mutations: {
+    //was card
     set(state, card) {
       state.card = card
     },
@@ -101,6 +103,9 @@ export default {
     },
     addStateNote(state, note) {
       state.stateNotes.push(note)
+    },
+    setFilter(state, params) {
+      state.filterParams = params
     }
 
     // add(state, questions) {
@@ -118,5 +123,35 @@ export default {
     //   state.show = status
     // }
   },
-  actions: {}
+  actions: {
+    async fetch({commit, state}) {
+      let cards = state.cards
+      // ============ Filter ============
+      const filterParams = state.filterParams || []
+      const filter = {
+        statusList: [],
+        approvalStatusList: []
+      }
+      filterParams.forEach(f => {
+        if (f.type === 'Card Status') filter.statusList.push(f.name)
+        if (f.type === 'Approval Status') filter.approvalStatusList.push(f.name)
+      })
+      const {statusList, approvalStatusList} = filter
+
+      cards = cards.filter(card => {
+        if (statusList.length && approvalStatusList.length)
+          return statusList.some(status => status === card.status) && approvalStatusList.some(status => status === card.approvalStatus)
+        if (statusList.length) return statusList.some(status => status === card.status)
+        if (approvalStatusList.length) return approvalStatusList.some(status => status === card.approvalStatus)
+        return true
+      })
+
+      try {
+        commit('set', cards)
+      } catch (err) {
+        commit('setError', err, {root: true})
+        throw err
+      }
+    }
+  }
 }
