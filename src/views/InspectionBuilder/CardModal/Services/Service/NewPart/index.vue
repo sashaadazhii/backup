@@ -2,7 +2,7 @@
   <div class="npart__wrapper">
     <div class="npart__top">
       <i class="i-build" />
-      <Input v-model="name" placeholder="Enter npart #" />
+      <Input v-model="name" placeholder="Enter part #" />
       <Input v-model="quantity" placeholder="Quantity" v-maska="'####'" />
       <Input v-model="price" placeholder="$ Price" v-maska="{mask: 'HHHHHHHH', tokens: {H: {pattern: /[0-9.]/}}}" />
     </div>

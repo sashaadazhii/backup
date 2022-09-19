@@ -39,11 +39,18 @@
       }
     }
   }
+  &__buttons {
+    padding: 20px 0 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
   &__title {
     @include font(16px, $color-grey-space, 600);
   }
   &__body {
-    background-color: $color-grey-smoke;
+    background-color: $color-white;
     border-top: 1px solid $color-grey-flash;
   }
   &__desc {
@@ -63,10 +70,8 @@
     margin: 20px;
     margin-bottom: 0;
     padding-bottom: 20px;
-    border-bottom: 1px solid $color-grey-flash;
     display: flex;
     flex-direction: column;
-    row-gap: 12px;
     &-btn {
       display: flex;
       align-items: center;

@@ -7,6 +7,8 @@
     column-gap: 14px;
     align-items: center;
     padding: 16px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
     &:not(:last-child) {
       border-bottom: 1px solid $color-grey-flash;
     }
@@ -15,6 +17,10 @@
     }
     &.-check {
       grid-template-columns: 16px minmax(100px, 180px) minmax(200px, 2.2fr) minmax(100px, 204px) minmax(200px, 2fr) 20px;
+    }
+    &:hover,
+    &:active {
+      background-color: rgba($color-grey-flash, 0.2);
     }
   }
   &__title {

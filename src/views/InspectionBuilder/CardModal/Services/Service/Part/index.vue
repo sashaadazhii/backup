@@ -3,11 +3,10 @@
   <div v-else class="part__wrapper">
     <i class="i-build" />
     <div class="part__name">{{ part.name }}</div>
-    <div class="part__num">{{ part.quantity }}</div>
     <div class="part__num">${{ part.price }}</div>
     <Menu :list="actionsList">
       <template #menu>
-        <Button icon="i-more_horiz" border size="small" />
+        <Button icon="i-more_horiz" size="small" border class="clear" />
       </template>
     </Menu>
   </div>

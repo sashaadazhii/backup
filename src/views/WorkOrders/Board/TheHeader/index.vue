@@ -43,23 +43,9 @@
             <div class="progress__item">
               <div class="progress__text">ACG</div>
               <div class="progress">
-                <div class="progress__bar orange"><span style="width: 50%" /></div>
+                <div class="progress__bar red"><span style="width: 66%" /></div>
               </div>
-              <div class="progress__text">5.5/11 h</div>
-            </div>
-            <div class="progress__item">
-              <div class="progress__text">ASD</div>
-              <div class="progress">
-                <div class="progress__bar green"><span style="width: 18%" /></div>
-              </div>
-              <div class="progress__text">2/11 h</div>
-            </div>
-            <div class="progress__item">
-              <div class="progress__text">ACG</div>
-              <div class="progress">
-                <div class="progress__bar red"><span style="width: 90%" /></div>
-              </div>
-              <div class="progress__text">10/11 h</div>
+              <div class="progress__text">6.5/11 h</div>
             </div>
           </div>
         </div>

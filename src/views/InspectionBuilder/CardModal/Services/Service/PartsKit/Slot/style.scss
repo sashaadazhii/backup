@@ -1,27 +1,28 @@
 @import 'src/assets/styles/_variables.scss';
 
 .part {
-  &__wrapper {
+  padding: 12px 0;
+  border-bottom: 1px solid $color-grey-flash;
+
+  &__inner {
     display: grid;
-    grid-template-columns: 16px 1fr minmax(70px, auto) 32px;
     align-items: center;
     column-gap: 12px;
-    padding: 16px 0;
-    border-bottom: 1px solid $color-grey-flash;
+    grid-template-columns: 16px minmax(200px, 1fr) repeat(2, 70px) 32px;
 
     & > i {
-      @include font(14px, $color-grey);
+      @include font(14px, $color-violet);
     }
   }
   &__name {
-    @include font(14px, $color-grey-space, 600, 1.3);
+    @include font(14px, $color-grey-space, 600);
   }
   &__num {
     @include font(14px, $color-grey-space, 700);
     text-align: right;
   }
 }
-.clear {
+.clearp {
   background-color: transparent;
   border: none;
 }

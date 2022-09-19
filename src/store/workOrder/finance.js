@@ -60,30 +60,31 @@ export default {
         id: 1,
         cardID: 1,
         name: 'Part #2323-342-234',
-        markup: '',
-        quantity: 12,
-        cost: 12,
-        price: 12
+        markup: 'Warranty Claim',
+        quantity: 11,
+        cost: 15,
+        price: 12.5
       },
       {
         id: 2,
         cardID: 1,
         name: 'Part #2323-342-232',
-        markup: '',
+        markup: 'Manufactures',
         quantity: 12,
         cost: 12,
-        price: 12
+        price: 13
       },
       {
         id: 3,
         cardID: 1,
         name: 'Part #2323-342-231',
-        markup: '',
-        quantity: 12,
+        markup: 'In-house',
+        quantity: 10,
         cost: 12,
-        price: 12
+        price: 14
       }
     ],
+    // part: {},
     filterParams: null
   },
   mutations: {
@@ -106,6 +107,16 @@ export default {
     },
     setFilter(state, params) {
       state.filterParams = params
+    },
+    // setPart(state, part) {
+    //   state.part = part
+    // },
+    addPart(state, part) {
+      state.parts.push(part)
+    },
+    removePart(state, id) {
+      const idx = state.parts.findIndex(p => p.id === id)
+      state.parts.splice(idx, 1)
     }
 
     // add(state, questions) {

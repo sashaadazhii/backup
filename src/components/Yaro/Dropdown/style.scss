@@ -525,3 +525,8 @@
 //   }
 // }
 //===========================================
+.dropdown--part {
+  .y-dropdown-inner {
+    display: inline-flex;
+  }
+}

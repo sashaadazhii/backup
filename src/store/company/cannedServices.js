@@ -1,4 +1,5 @@
-import {serviceList, historyList} from '../data/cannedServices'
+import {serviceList, historyList, partsKitsList} from '../data/cannedServices'
+import _ from 'lodash'
 
 export default {
   namespaced: true,
@@ -8,7 +9,8 @@ export default {
     service: {},
     localService: null,
     activeService: {},
-    history: []
+    history: [],
+    partsKits: []
   },
   mutations: {
     set(state, services) {
@@ -56,6 +58,25 @@ export default {
     // =======================================
     setHistory(state, history) {
       state.history = history
+    },
+    // ================ PartsKit =================
+    setPartsKits(state, partsKits) {
+      state.partsKits = partsKits
+    },
+    //not working
+    addPartsKit(state, parts, serviceID) {
+      state.partsKits = state.partsKits.forEach(arr => {
+        console.log(arr) //???
+      })
+      console.log(state.partsKits)
+    },
+    //not working
+    removePartsKit(state, id) {
+      state.partsKits = state.partsKits.forEach(arr => {
+        let dlt = arr.find(a => a.id === id)
+        console.log(dlt) //Proxy {}
+        arr.filter(a => a.id !== dlt.id) // dlt - undefind
+      })
     }
   },
   actions: {
@@ -68,6 +89,24 @@ export default {
         throw err
       }
     },
+    async fetchPartsKits({commit}, serviceID) {
+      try {
+        let serviceParts = []
+        partsKitsList.forEach(part => {
+          part.find(p => {
+            if (p.serviceID === serviceID) {
+              serviceParts.push(part)
+            }
+          })
+        })
+        serviceParts = _.uniqWith(serviceParts, _.isEqual)
+        commit('setPartsKits', serviceParts)
+      } catch (err) {
+        commit('setError', err, {root: true})
+        throw err
+      }
+    },
+
     async find({commit}, id) {
       try {
         const services = serviceList.find(s => s.id === id)

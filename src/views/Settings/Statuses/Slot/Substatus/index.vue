@@ -1,9 +1,14 @@
 <template>
   <div class="substatus__wrapper">
-    <div class="substatus__icon" :style="{backgroundColor: status.color}" />
-    <div class="substatus__title">{{ status.name }}</div>
-    <div class="substatus__description">{{ status.description }}</div>
-    <Menu :list="actionsList" />
+    <div class="substatus__left">
+      <div class="substatus__title-top">
+        <div class="substatus__icon" :style="{backgroundColor: status.color}" />
+        <div class="substatus__title">{{ status.name }}</div>
+      </div>
+
+      <div v-if="status.description" class="substatus__description">{{ status.description }}</div>
+    </div>
+    <div class="substatus__right"><Menu :list="actionsList" /></div>
   </div>
 </template>
 <script>

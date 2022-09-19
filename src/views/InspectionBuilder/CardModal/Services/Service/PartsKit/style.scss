@@ -1,0 +1,113 @@
+@import 'src/assets/styles/_variables.scss';
+
+.service {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color-white;
+    padding: 10px;
+    padding-left: 12px;
+    &-left {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+      & > i {
+        @include font(20px, $color-grey);
+        cursor: pointer;
+        &.-revert {
+          transform: rotate(180deg);
+        }
+      }
+      & > .-grey {
+        border-color: $color-grey-flash;
+        background-color: $color-grey-smoke;
+        color: $color-grey-space;
+      }
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+      & > .-grey {
+        border-color: $color-grey-flash;
+        color: $color-grey-space;
+      }
+    }
+  }
+  &__buttons {
+    padding: 20px 0 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  &__kit {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    margin-top: 16px;
+    @include border(16px);
+    background-color: $color-grey-smoke;
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    &-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      & i {
+        color: $color-violet;
+        font-size: 14px;
+      }
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    &-inner {
+      padding-bottom: 16px;
+      border-bottom: 1px solid $color-grey-flash;
+      transition: 0.3s ease-in-out;
+      &:last-child {
+        padding-bottom: 0;
+        border: none;
+      }
+    }
+    &-title {
+      @include font(14px, $color-grey-space, 600);
+    }
+    &-num {
+      @include font(14px, $color-grey-space, 700);
+    }
+    &-icon {
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      @include border(50%);
+      background-color: $color-grey-smoke;
+      i {
+        color: $color-grey;
+        font-size: 16px;
+        &.-revert {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  &__partkit {
+    &:first-child {
+      padding-top: 0;
+    }
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+}
