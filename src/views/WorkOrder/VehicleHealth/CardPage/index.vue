@@ -31,11 +31,10 @@
           <div v-if="block !== 'Service'" class="blocks__nav">
             <button class="blocks__btn" :class="{'-green': block === 'General'}" @click="block = 'General'">General</button>
             <button class="blocks__btn" :class="{'-green': block === 'Additional'}" @click="block = 'Additional'">Additional Info</button>
-            <button class="blocks__btn" :class="{'-green': block === 'Notes'}" @click="block = 'Notes'">Canned Notes</button>
+            <button class="blocks__btn" :class="{'-green': block === 'Notes'}" @click="block = 'Notes'">Notes</button>
             <button class="blocks__btn" :class="{'-green': block === 'Tracking'}" @click="block = 'Tracking'">Service Tracking</button>
             <button class="blocks__btn" :class="{'-green': block === 'Media'}" @click="block = 'Media'">Media</button>
             <button class="blocks__btn" :class="{'-green': block === 'Warranty'}" @click="block = 'Warranty'">Warranty <span>2</span></button>
-            <button class="blocks__btn" :class="{'-green': block === 'Info'}">Specific Info</button>
           </div>
           <div class="blocks__inner">
             <component :is="block" />

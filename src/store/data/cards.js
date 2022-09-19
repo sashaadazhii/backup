@@ -6,18 +6,37 @@ function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min)) + min
 }
 
-const approvalStatuses = [
-  'No Status',
-  'Approved By Customer',
-  'Approved By SA',
-  'Temporary Declined',
-  'Permanently Declined',
-  'Approved For Next Visit'
-]
+const approvalStatuses = ['No Status', 'Approved By Customer', 'Approved By SA', 'Temporary Declined', 'Permanently Declined', 'Approved For Next Visit']
 
 const cardsList = cards.data
   .filter(c => c.cardRelationType === 'global')
   .map(card => {
+    let additional = null
+    let archive = null
+    if (card.name.toLowerCase().includes('brakes')) {
+      additional = [
+        {
+          title: 'Left - Brakepad Width',
+          list: ['5mm', '5.5mm', '6mm', '6.5mm', '7mm', '7.5mm'],
+          value: ''
+        },
+        {
+          title: 'Right - Brakepad Width',
+          list: ['5mm', '5.5mm', '6mm', '6.5mm', '7mm', '7.5mm'],
+          value: ''
+        }
+      ]
+      archive = [
+        {
+          date: '12 October 2021',
+          fields: ['Left - Brakepad Width — 5.5mm', 'Right - Brakepad Width — 5mm']
+        },
+        {
+          date: '12 August 2021',
+          fields: ['Left - Brakepad Width — 6mm', 'Right - Brakepad Width — 7mm']
+        }
+      ]
+    }
     return {
       ...card,
       id: card.templateID,
@@ -33,7 +52,9 @@ const cardsList = cards.data
         }
       ],
       time: '00:00:24',
-      description: 'The cabin air filter in a vehicle helps remove harmful pollutants, including pollen and dust, from the air you breathe within the car.'
+      description: 'The cabin air filter in a vehicle helps remove harmful pollutants, including pollen and dust, from the air you breathe within the car.',
+      additional,
+      archive
     }
   })
 
