@@ -50,10 +50,7 @@
               </template>
             </Menu>
           </div>
-          <div class="requests__row">
-            <div class="requests__row-title">Customer Status:</div>
-            <Label label="No status" size="small" class="requests__label -shadow -none" />
-          </div>
+
           <div class="requests__row">
             <div class="requests__row-title">Approval Status:</div>
             <Label

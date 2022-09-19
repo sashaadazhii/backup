@@ -11,9 +11,11 @@
     background-color: $color-white;
   }
   &__left {
-    display: flex;
-    align-items: center;
+    display: grid;
     column-gap: 10px;
+    grid-template-columns: 1fr 1fr 2fr;
+    align-items: center;
+
     & > .y-dropdown {
       width: auto;
     }

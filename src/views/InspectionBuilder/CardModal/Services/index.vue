@@ -1,6 +1,6 @@
 <template>
   <div class="services__wrapper">
-    <Button icon="i-add_circle" label="Create Canned Service" border style="background-color: #fff" @click="open" />
+    <Button icon="i-add_circle" label="Create Canned Service" border style="background-color: #e5e7eb" @click="open" />
     <div class="services__list">
       <Service v-for="(service, idx) of services" :key="idx" :service="service" />
     </div>

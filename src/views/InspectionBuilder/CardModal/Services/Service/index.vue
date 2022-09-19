@@ -21,15 +21,20 @@
     <div v-if="show" class="service__body">
       <div class="service__desc">
         <div class="service__desc-title">Service Description</div>
-        <div class="service__desc-text">{{service.description}}</div>
+        <div class="service__desc-text">{{ service.description }}</div>
+      </div>
+      <div class="service__buttons">
+        <Button v-if="!isNewPart" icon="i-add_circle" label="Add new part" border style="background-color: #e5e7eb" @click="open" />
+        <Button v-if="!isNewKit" icon="i-add_circle" label="Add New Part Kit" border style="background-color: #e5e7eb" @click="openKit" />
       </div>
       <div class="service__parts">
-        <Part v-for="(part, idx) of service.parts" :key="idx" :part="part" />
-        <div v-if="!isNewPart" class="service__parts-btn" @click="open">
-          <i class="i-add_circle" />
-          <span>Add new part</span>
+        <Part v-for="(part, idx) of service.parts" :key="idx" :part="part" class="service__part" />
+        <!-- PARTSKIT -->
+        <div v-if="partsKits && partsKits.length" class="service__kit-wrap">
+          <PartsKit v-for="kit of partsKits" :key="kit.id" :kit="kit" />
         </div>
         <NewPart v-if="isNewPart" :serviceID="service.id" @close="open" />
+        <NewPartKit v-if="isNewKit" :serviceID="service.id" @closeNew="isNewKit = false" />
       </div>
       <div v-if="service.guides && service.guides.length" class="service__guids">
         <div class="service__guids-title">Service guides</div>
@@ -43,15 +48,17 @@
 import {mapState, mapActions, mapMutations} from 'vuex'
 import Label from '@/components/Yaro/Label'
 import Part from './Part'
+import PartsKit from './PartsKit'
 import Guid from './Guid'
 import Button from '@/components/Yaro/Button'
 import Menu from '@/components/Yaro/Menu'
 import NewPart from './NewPart'
+import NewPartKit from './NewPartKit'
 import CreateService from '../CreateService'
 
 export default {
   name: 'CardModalService',
-  components: {Label, Part, Guid, Button, Menu, NewPart},
+  components: {Label, Part, Guid, Button, Menu, NewPart, NewPartKit, PartsKit},
   props: {
     service: {
       type: Object,
@@ -97,17 +104,25 @@ export default {
         }
       ],
       isNewPart: false,
-      localPart: null
+      isNewKit: false,
+      localPart: null,
+      localKit: null,
+      localPartsKit: []
     }
   },
-
+  async created() {
+    await this.fetchPartsKits(this.service.id)
+  },
   computed: {
     ...mapState({
-      card: s => s.company.cardTemplates.template
+      card: s => s.company.cardTemplates.template,
+      partsKits: s => s.company.cannedServices.partsKits
     })
   },
   methods: {
-    ...mapActions({}),
+    ...mapActions({
+      fetchPartsKits: 'company/cannedServices/fetchPartsKits'
+    }),
     ...mapMutations({
       remove: 'company/cannedServices/remove'
     }),
@@ -115,9 +130,17 @@ export default {
       if (this.isNewPart) this.localPart = null
       this.isNewPart = !this.isNewPart
     },
+    openKit() {
+      if (this.isNewKit) this.localKit = null
+      this.isNewKit = !this.isNewKit
+    },
     showService(e) {
       if (!this.$refs.menu || this.$refs.menu.contains(e.target)) return
       this.show = !this.show
+    },
+    formatter(val) {
+      const price = new Intl.NumberFormat('en-CA', {style: 'currency', currency: 'CAD'}).format(val)
+      return price
     }
   }
 }

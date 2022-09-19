@@ -10,6 +10,11 @@
     align-items: center;
     margin-bottom: 16px;
   }
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
   &__title {
     @include font(16px, $color-grey-space, 700);
   }
