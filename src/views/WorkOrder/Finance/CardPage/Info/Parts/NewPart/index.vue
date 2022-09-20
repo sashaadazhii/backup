@@ -49,7 +49,6 @@ export default {
         cost,
         markup
       }
-      console.log(part)
       this.add(part)
       this.$emit('close')
     },

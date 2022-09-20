@@ -72,7 +72,7 @@
           <div class="table__header-cell">Service Tracking</div>
         </div>
         <div class="table__main">
-          <div v-if="initialWalkaround" class="card__wrapper" :class="{'-check': isStart}">
+          <div v-if="initialWalkaround" class="card__wrapper" :class="{'-check': isStart}" @click="open">
             <div v-if="isStart" />
             <Label label="Completed" size="small" class="card__label" />
             <div class="card__title">Initial Walkaround</div>
@@ -114,6 +114,7 @@
 
 <script>
 import Request from './RequestComponent'
+import InitialWalkaround from './InitialWalkaround'
 import Slot from './Slot'
 import Dropdown from '@/components/Yaro/Dropdown'
 import Button from '@/components/Yaro/Button'
@@ -302,6 +303,15 @@ export default {
         '-green -border': name === 'Approved By Customer',
         '-purple': name === 'Approved For Next Visit'
       }
+    },
+    open() {
+      this.$vfm.show({
+        component: InitialWalkaround,
+        bind: {
+          name: 'InitialWalkaround',
+          'esc-to-close': true
+        }
+      })
     }
   }
 }

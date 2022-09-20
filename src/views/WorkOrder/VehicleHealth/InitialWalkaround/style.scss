@@ -1,0 +1,72 @@
+@import 'src/assets/styles/_variables.scss';
+
+::v-deep() {
+  .vfm__container {
+    place-items: start center;
+  }
+  .vfm__content {
+    margin: 1% 0;
+    width: 98%;
+    max-width: 1460px;
+    border-radius: 20px;
+    max-height: 96vh;
+  }
+  .vfm--overlay {
+    background-color: rgba($color-grey, 0.4);
+  }
+}
+
+.modal {
+  &__wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    max-height: inherit;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: $color-grey-smoke;
+    border-bottom: 1px solid $color-grey-flash;
+    &-title {
+      @include font(16px, $color-grey, 600);
+    }
+  }
+  &__main {
+    padding-top: 20px;
+    display: grid;
+    overflow: auto;
+    padding: 30px;
+    &-title {
+      @include font(16px, $color-grey-dark, 600);
+      margin-bottom: 16px;
+    }
+    &-list {
+      display: grid;
+      row-gap: 12px;
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
+    &-item {
+      @include border(16px);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+      @include shadow;
+    }
+    &-label {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      min-height: 42px;
+      @include border(12px);
+      background-color: $color-grey-smoke;
+      padding: 10px;
+      @include font(14px, $color-grey-space, 600);
+    }
+  }
+}

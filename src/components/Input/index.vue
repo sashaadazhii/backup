@@ -71,7 +71,7 @@ export default {
       type: String,
       default: null
     },
-    theme: String,
+    theme: String
   },
   emits: {
     'update:modelValue': null
@@ -83,9 +83,6 @@ export default {
     updateValue(event) {
       this.$emit('update:modelValue', event.target.value)
     }
-  },
-  created() {
-    console.log(this.theme)
   }
 }
 // export default {

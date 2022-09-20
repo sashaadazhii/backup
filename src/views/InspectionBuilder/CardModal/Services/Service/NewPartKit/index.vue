@@ -26,7 +26,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 import Button from '@/components/Yaro/Button'
 import Part from './Part'
 import {mapState, mapMutations} from 'vuex'
