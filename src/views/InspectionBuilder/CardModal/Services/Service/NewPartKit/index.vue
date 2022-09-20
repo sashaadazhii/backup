@@ -61,7 +61,7 @@ export default {
     }),
     add() {
       const part = {id: this.$getID(), name: null, quantity: null, price: null, link: null}
-      this.partsKit.push(part)
+      this.parts.push(part)
     },
     remove(id) {
       this.partsKit.splice(this.partsKit.indexOf(id), 1)
