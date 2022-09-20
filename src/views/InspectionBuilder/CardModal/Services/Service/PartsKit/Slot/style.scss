@@ -1,14 +1,14 @@
 @import 'src/assets/styles/_variables.scss';
 
 .part {
-  padding: 12px 0;
+  padding: 14px 0;
   border-bottom: 1px solid $color-grey-flash;
 
   &__inner {
     display: grid;
     align-items: center;
     column-gap: 12px;
-    grid-template-columns: 16px minmax(200px, 1fr) repeat(2, 70px) 32px;
+    grid-template-columns: 16px minmax(200px, 1fr) repeat(2, 70px);
 
     & > i {
       @include font(14px, $color-violet);

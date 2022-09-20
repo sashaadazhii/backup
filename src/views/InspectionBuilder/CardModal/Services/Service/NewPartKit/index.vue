@@ -1,44 +1,48 @@
 <template>
-  <div class="npart__wrapper">
-    <div class="npart__header">
-      <div class="npart__title">Add Parts Kit to Replace all</div>
-      <Button icon="i-circle_close" border circle @click="$emit('closeNew')" size="small" />
+  <vue-final-modal v-slot="{close}" @before-open="beforeOpen" @before-close="$emit('hide')">
+    <div class="npart__wrapper">
+      <div class="npart__header">
+        <div class="npart__title">Add Parts Kit to {{ service.name }}</div>
+        <Button icon="i-circle_close" border circle @click="close" size="small" />
+      </div>
+      <Part
+        v-for="(part, idx) in parts"
+        :key="part.id"
+        v-model:name="part.name"
+        v-model:quantity="part.quantity"
+        v-model:price="part.price"
+        v-model:link="part.link"
+        :counter="idx + 1"
+        :part="part"
+        @onRemove="remove(id)"
+      />
+      <Button label="Add part" grey position="center" icon="i-add_circle" size="large" @click="add" />
+      <div class="npart__bottom">
+        <Button label="Save" @click="save" />
+        <Button label="Cancel" border @click="close" />
+      </div>
     </div>
-
-    <Slot :counter="1" :serviceID="serviceID" @hideSlot="hideSlot(part)" @addPart="addPart" />
-    <Slot v-for="(part, idx) in partsKit" :key="part.id" :counter="idx + 2" :serviceID="serviceID" @hideSlot="hideSlot(part)" @addPart="addPart" />
-
-    <div class="npart__bottom">
-      <Button label="Save" @click="save" />
-      <Button label="Cancel" border @click="$emit('closeNew')" />
-    </div>
-  </div>
+  </vue-final-modal>
 </template>
 
 <script>
+/* eslint-disable */
 import Button from '@/components/Yaro/Button'
-import Slot from './Slot'
+import Part from './Part'
 import {mapState, mapMutations} from 'vuex'
 
 export default {
   name: 'CardModalServicePartKitNew',
-  components: {Button, Slot},
-  emits: ['closeNew'],
-  props: {
-    serviceID: {
-      type: Number,
-      required: true
-    }
-  },
+  components: {Button, Part},
   data() {
     return {
-      // partsKit: [{id: this.$getID(), name: null, quantity: null, price: null, link: null}],
-      partsKit: [],
-      part: null,
-      isAdded: false
+      service: {},
+      parts: [{id: this.$getID(), name: null, quantity: null, price: null, link: null}]
     }
   },
-  computed: {},
+  computed: {
+    ...mapState({})
+  },
   created() {
     // if (this.localPart) {
     //   const {name, quantity, price} = this.localPart
@@ -48,24 +52,32 @@ export default {
     // }
   },
   methods: {
+    beforeOpen(e) {
+      this.service = e.ref.params.value
+    },
     ...mapMutations({
-      add: 'company/cannedServices/addPartsKit'
+      addPartsKit: 'company/cannedServices/addPartsKit'
       // update: 'company/cannedServices/updatePart'
     }),
-    addPart(part) {
-      this.part = part
-      if (this.partsKit.length === 1 && !this.isAdded) {
-        this.partsKit.push(this.part)
-        this.isAdded = true
-      } else this.partsKit.push(this.part)
+    add() {
+      const part = {id: this.$getID(), name: null, quantity: null, price: null, link: null}
+      this.partsKit.push(part)
     },
-    hideSlot(el) {
-      let idx = this.partsKit.findIndex(c => c.id === el.id)
-      this.partsKit.splice(idx, 1)
+    remove(id) {
+      this.partsKit.splice(this.partsKit.indexOf(id), 1)
     },
+    // hideSlot(el) {
+    //   let idx = this.partsKit.findIndex(c => c.id === el.id)
+    //   this.partsKit.splice(idx, 1)
+    // },
     save() {
-      //TODO: not finished
-      this.add(this.partsKit, this.serviceID)
+      const partsKit = {
+        id: this.$getID(),
+        serviceID: this.service.id,
+        partsList: this.parts
+      }
+      this.addPartsKit(partsKit)
+      this.$vfm.hide('NewPartKit')
     }
   }
 }

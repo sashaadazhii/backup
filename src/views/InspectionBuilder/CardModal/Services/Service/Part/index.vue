@@ -4,23 +4,18 @@
     <i class="i-build" />
     <div class="part__name">{{ part.name }}</div>
     <div class="part__num">${{ part.price }}</div>
-    <Menu :list="actionsList">
-      <template #menu>
-        <Button icon="i-more_horiz" size="small" border class="clear" />
-      </template>
-    </Menu>
+    <Menu :list="actionsList" />
   </div>
 </template>
 
 <script>
-import Button from '@/components/Yaro/Button'
 import Menu from '@/components/Yaro/Menu'
 import {mapState, mapMutations} from 'vuex'
 import NewPart from '../NewPart'
 
 export default {
   name: 'CardModalServicePart',
-  components: {Button, Menu, NewPart},
+  components: {Menu, NewPart},
   data() {
     return {
       actionsList: [

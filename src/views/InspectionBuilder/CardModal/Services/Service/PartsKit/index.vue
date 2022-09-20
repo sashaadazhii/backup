@@ -3,16 +3,15 @@
     <div class="service__kit-top" @click="showParts">
       <div class="service__kit-left">
         <i class="i-build" />
-        <div class="service__kit-title">Parts Kit #121212</div>
+        <div class="service__kit-title">Parts Kit #{{ kit.id }}</div>
       </div>
       <div class="service__kit-right">
-        <div class="service__kit-num">{{ formatter(kit.reduce((sum, current) => sum + current.price * current.quantity, 0)) }}</div>
+        <div class="service__kit-num">{{ formatter(kit.partsList.reduce((sum, current) => sum + current.price * current.quantity, 0)) }}</div>
         <div class="service__kit-icon"><i class="i-keyboard_arrow_down" :class="{'-revert': showKit}" /></div>
       </div>
     </div>
-
     <div v-if="showKit" class="service__kit">
-      <Slot v-for="part of kit" :key="part.id" :part="part" class="service__partkit" />
+      <Slot v-for="part of kit.partsList" :key="part.id" :part="part" class="service__partkit" />
     </div>
   </div>
 </template>
@@ -31,36 +30,10 @@ export default {
   },
   data() {
     return {
-      // isEdit: false,
-      showKit: false,
-      actionsList: [
-        {
-          label: 'Edit',
-          icon: 'i-edit',
-          command: () => {
-            this.isEdit = true
-          }
-        },
-        {
-          label: 'Remove',
-          icon: 'i-remove_circle red',
-          command: () => {
-            this.removePartKit(this.part)
-          }
-        }
-      ]
+      showKit: false
     }
   },
-
-  // computed: {
-  //   ...mapState({
-  //     card: s => s.cards.card
-  //   })
-  // },
   methods: {
-    // ...mapMutations({
-    //   removePartKit: 'company/cannedServices/removePartsKit'
-    // }),
     showParts() {
       this.showKit = !this.showKit
     },

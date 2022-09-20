@@ -6,6 +6,7 @@
     padding: 16px;
     @include border(16px, $color-grey-flash);
     box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+    margin-top: 10px;
   }
   &__top {
     display: grid;

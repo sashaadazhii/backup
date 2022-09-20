@@ -63,20 +63,16 @@ export default {
     setPartsKits(state, partsKits) {
       state.partsKits = partsKits
     },
-    //not working
-    addPartsKit(state, parts, serviceID) {
-      state.partsKits = state.partsKits.forEach(arr => {
-        console.log(arr) //???
-      })
-      console.log(state.partsKits)
+    addPartsKit(_, partsKit) {
+      partsKitsList.push(partsKit)
     },
     //not working
     removePartsKit(state, id) {
-      state.partsKits = state.partsKits.forEach(arr => {
-        let dlt = arr.find(a => a.id === id)
-        console.log(dlt) //Proxy {}
-        arr.filter(a => a.id !== dlt.id) // dlt - undefind
-      })
+      // state.partsKits = state.partsKits.forEach(arr => {
+      //   let dlt = arr.find(a => a.id === id)
+      //   console.log(dlt) //Proxy {}
+      //   arr.filter(a => a.id !== dlt.id) // dlt - undefind
+      // })
     }
   },
   actions: {
@@ -89,24 +85,6 @@ export default {
         throw err
       }
     },
-    async fetchPartsKits({commit}, serviceID) {
-      try {
-        let serviceParts = []
-        partsKitsList.forEach(part => {
-          part.find(p => {
-            if (p.serviceID === serviceID) {
-              serviceParts.push(part)
-            }
-          })
-        })
-        serviceParts = _.uniqWith(serviceParts, _.isEqual)
-        commit('setPartsKits', serviceParts)
-      } catch (err) {
-        commit('setError', err, {root: true})
-        throw err
-      }
-    },
-
     async find({commit}, id) {
       try {
         const services = serviceList.find(s => s.id === id)
@@ -150,6 +128,11 @@ export default {
         commit('setError', err, {root: true})
         throw err
       }
+    },
+    // ================ PartsKit =================
+    async fetchPartsKits(_, id) {
+      const serviceParts = partsKitsList.filter(k => k.serviceID === id)
+      return serviceParts
     }
   }
 }

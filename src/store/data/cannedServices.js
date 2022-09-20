@@ -1369,522 +1369,567 @@ const serviceList = [
     ]
   }
 ]
+// const partsKitsList = [
+//   [
+//     {
+//       id: 1,
+//       serviceID: 1,
+//       partsKitID: 1,
+//       quantity: 10,
+//       name: 'Full Synthetic Oil',
+//       price: 108.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 2,
+//       serviceID: 1,
+//       partsKitID: 1,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 148,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 3,
+//       serviceID: 1,
+//       partsKitID: 2,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 12.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 4,
+//       serviceID: 1,
+//       partsKitID: 2,
+//       quantity: 5,
+//       name: 'Full Synthetic Oil',
+//       price: 10,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 5,
+//       serviceID: 1,
+//       partsKitID: 2,
+//       quantity: 15,
+//       name: 'Full Synthetic Oil',
+//       price: 2.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 6,
+//       serviceID: 2,
+//       partsKitID: 3,
+//       quantity: 10,
+//       name: 'Full Synthetic Oil',
+//       price: 108.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 7,
+//       serviceID: 2,
+//       partsKitID: 3,
+//       quantity: 2,
+//       name: 'Full Synthetic Oil',
+//       price: 148,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 8,
+//       serviceID: 2,
+//       partsKitID: 3,
+//       quantity: 7,
+//       name: 'Full Synthetic Oil',
+//       price: 12.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 9,
+//       serviceID: 2,
+//       partsKitID: 3,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 12.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 10,
+//       serviceID: 3,
+//       partsKitID: 4,
+//       quantity: 10,
+//       name: 'Full Synthetic Oil',
+//       price: 108.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 11,
+//       serviceID: 3,
+//       partsKitID: 4,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 148,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 12,
+//       serviceID: 3,
+//       partsKitID: 5,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 148,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 13,
+//       serviceID: 3,
+//       partsKitID: 5,
+//       quantity: 4,
+//       name: 'Full Synthetic Oil',
+//       price: 73,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 14,
+//       serviceID: 3,
+//       partsKitID: 5,
+//       quantity: 10,
+//       name: 'Full Synthetic Oil',
+//       price: 18,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 15,
+//       serviceID: 7,
+//       partsKitID: 6,
+//       quantity: 10,
+//       name: 'Full Synthetic Oil',
+//       price: 108.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 16,
+//       serviceID: 7,
+//       partsKitID: 6,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 148,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 17,
+//       serviceID: 7,
+//       partsKitID: 6,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 12.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 18,
+//       serviceID: 7,
+//       partsKitID: 6,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 12.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 18,
+//       serviceID: 7,
+//       partsKitID: 6,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 8,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 20,
+//       serviceID: 9,
+//       partsKitID: 7,
+//       quantity: 10,
+//       name: 'Full Synthetic Oil',
+//       price: 108.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 21,
+//       serviceID: 9,
+//       partsKitID: 7,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 148,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 22,
+//       serviceID: 9,
+//       partsKitID: 8,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 12.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 23,
+//       serviceID: 9,
+//       partsKitID: 8,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 11,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 24,
+//       serviceID: 9,
+//       partsKitID: 8,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 8,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+
+//   [
+//     {
+//       id: 25,
+//       serviceID: 10,
+//       partsKitID: 9,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 10.3,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 26,
+//       serviceID: 10,
+//       partsKitID: 9,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 12.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 27,
+//       serviceID: 10,
+//       partsKitID: 9,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 13.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 28,
+//       serviceID: 10,
+//       partsKitID: 9,
+//       quantity: 9,
+//       name: 'Full Synthetic Oil',
+//       price: 8,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 29,
+//       serviceID: 12,
+//       partsKitID: 10,
+//       quantity: 10,
+//       name: 'Full Synthetic Oil',
+//       price: 108.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 30,
+//       serviceID: 12,
+//       partsKitID: 10,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 148,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 31,
+//       serviceID: 12,
+//       partsKitID: 10,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 12.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 32,
+//       serviceID: 13,
+//       partsKitID: 11,
+//       quantity: 7,
+//       name: 'Full Synthetic Oil',
+//       price: 108.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 33,
+//       serviceID: 13,
+//       partsKitID: 11,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 148,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+
+//   [
+//     {
+//       id: 34,
+//       serviceID: 13,
+//       partsKitID: 12,
+//       quantity: 6,
+//       name: 'Full Synthetic Oil',
+//       price: 8,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 35,
+//       serviceID: 13,
+//       partsKitID: 12,
+//       quantity: 1,
+//       name: 'Full Synthetic Oil',
+//       price: 90,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 36,
+//       serviceID: 13,
+//       partsKitID: 12,
+//       quantity: 5,
+//       name: 'Full Synthetic Oil',
+//       price: 13,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 37,
+//       serviceID: 14,
+//       partsKitID: 13,
+//       quantity: 10,
+//       name: 'Full Synthetic Oil',
+//       price: 108.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 38,
+//       serviceID: 14,
+//       partsKitID: 13,
+//       quantity: 6,
+//       name: 'Full Synthetic Oil',
+//       price: 18,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 39,
+//       serviceID: 14,
+//       partsKitID: 13,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 12.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 40,
+//       serviceID: 14,
+//       partsKitID: 13,
+//       quantity: 1,
+//       name: 'Full Synthetic Oil',
+//       price: 19.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 41,
+//       serviceID: 15,
+//       partsKitID: 14,
+//       quantity: 1,
+//       name: 'Full Synthetic Oil',
+//       price: 64,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 42,
+//       serviceID: 15,
+//       partsKitID: 14,
+//       quantity: 4,
+//       name: 'Full Synthetic Oil',
+//       price: 12,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 43,
+//       serviceID: 15,
+//       partsKitID: 15,
+//       quantity: 4,
+//       name: 'Full Synthetic Oil',
+//       price: 23,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 44,
+//       serviceID: 15,
+//       partsKitID: 15,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 12.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 45,
+//       serviceID: 15,
+//       partsKitID: 15,
+//       quantity: 10,
+//       name: 'Full Synthetic Oil',
+//       price: 3,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 46,
+//       serviceID: 22,
+//       partsKitID: 16,
+//       quantity: 10,
+//       name: 'Full Synthetic Oil',
+//       price: 108.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 47,
+//       serviceID: 22,
+//       partsKitID: 16,
+//       quantity: 2,
+//       name: 'Full Synthetic Oil',
+//       price: 34,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 48,
+//       serviceID: 22,
+//       partsKitID: 16,
+//       quantity: 12,
+//       name: 'Full Synthetic Oil',
+//       price: 12.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 49,
+//       serviceID: 23,
+//       partsKitID: 17,
+//       quantity: 10,
+//       name: 'Full Synthetic Oil',
+//       price: 76.5,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 50,
+//       serviceID: 23,
+//       partsKitID: 17,
+//       quantity: 23,
+//       name: 'Full Synthetic Oil',
+//       price: 30,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ],
+//   [
+//     {
+//       id: 51,
+//       serviceID: 25,
+//       partsKitID: 18,
+//       quantity: 10,
+//       name: 'Full Synthetic Oil',
+//       price: 67.6,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 52,
+//       serviceID: 25,
+//       partsKitID: 18,
+//       quantity: 9,
+//       name: 'Full Synthetic Oil',
+//       price: 3,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     },
+//     {
+//       id: 53,
+//       serviceID: 25,
+//       partsKitID: 18,
+//       quantity: 2,
+//       name: 'Full Synthetic Oil',
+//       price: 34,
+//       createdAt: '2022-01-18T10:39:32.000Z'
+//     }
+//   ]
+// ]
+
 const partsKitsList = [
-  [
-    {
-      id: 1,
-      serviceID: 1,
-      partsKitID: 1,
-      quantity: 10,
-      name: 'Full Synthetic Oil',
-      price: 108.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 2,
-      serviceID: 1,
-      partsKitID: 1,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 148,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 3,
-      serviceID: 1,
-      partsKitID: 2,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 12.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 4,
-      serviceID: 1,
-      partsKitID: 2,
-      quantity: 5,
-      name: 'Full Synthetic Oil',
-      price: 10,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 5,
-      serviceID: 1,
-      partsKitID: 2,
-      quantity: 15,
-      name: 'Full Synthetic Oil',
-      price: 2.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 6,
-      serviceID: 2,
-      partsKitID: 3,
-      quantity: 10,
-      name: 'Full Synthetic Oil',
-      price: 108.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 7,
-      serviceID: 2,
-      partsKitID: 3,
-      quantity: 2,
-      name: 'Full Synthetic Oil',
-      price: 148,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 8,
-      serviceID: 2,
-      partsKitID: 3,
-      quantity: 7,
-      name: 'Full Synthetic Oil',
-      price: 12.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 9,
-      serviceID: 2,
-      partsKitID: 3,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 12.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 10,
-      serviceID: 3,
-      partsKitID: 4,
-      quantity: 10,
-      name: 'Full Synthetic Oil',
-      price: 108.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 11,
-      serviceID: 3,
-      partsKitID: 4,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 148,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 12,
-      serviceID: 3,
-      partsKitID: 5,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 148,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 13,
-      serviceID: 3,
-      partsKitID: 5,
-      quantity: 4,
-      name: 'Full Synthetic Oil',
-      price: 73,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 14,
-      serviceID: 3,
-      partsKitID: 5,
-      quantity: 10,
-      name: 'Full Synthetic Oil',
-      price: 18,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 15,
-      serviceID: 7,
-      partsKitID: 6,
-      quantity: 10,
-      name: 'Full Synthetic Oil',
-      price: 108.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 16,
-      serviceID: 7,
-      partsKitID: 6,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 148,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 17,
-      serviceID: 7,
-      partsKitID: 6,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 12.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 18,
-      serviceID: 7,
-      partsKitID: 6,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 12.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 18,
-      serviceID: 7,
-      partsKitID: 6,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 8,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 20,
-      serviceID: 9,
-      partsKitID: 7,
-      quantity: 10,
-      name: 'Full Synthetic Oil',
-      price: 108.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 21,
-      serviceID: 9,
-      partsKitID: 7,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 148,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 22,
-      serviceID: 9,
-      partsKitID: 8,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 12.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 23,
-      serviceID: 9,
-      partsKitID: 8,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 11,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 24,
-      serviceID: 9,
-      partsKitID: 8,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 8,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-
-  [
-    {
-      id: 25,
-      serviceID: 10,
-      partsKitID: 9,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 10.3,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 26,
-      serviceID: 10,
-      partsKitID: 9,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 12.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 27,
-      serviceID: 10,
-      partsKitID: 9,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 13.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 28,
-      serviceID: 10,
-      partsKitID: 9,
-      quantity: 9,
-      name: 'Full Synthetic Oil',
-      price: 8,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 29,
-      serviceID: 12,
-      partsKitID: 10,
-      quantity: 10,
-      name: 'Full Synthetic Oil',
-      price: 108.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 30,
-      serviceID: 12,
-      partsKitID: 10,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 148,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 31,
-      serviceID: 12,
-      partsKitID: 10,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 12.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 32,
-      serviceID: 13,
-      partsKitID: 11,
-      quantity: 7,
-      name: 'Full Synthetic Oil',
-      price: 108.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 33,
-      serviceID: 13,
-      partsKitID: 11,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 148,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-
-  [
-    {
-      id: 34,
-      serviceID: 13,
-      partsKitID: 12,
-      quantity: 6,
-      name: 'Full Synthetic Oil',
-      price: 8,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 35,
-      serviceID: 13,
-      partsKitID: 12,
-      quantity: 1,
-      name: 'Full Synthetic Oil',
-      price: 90,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 36,
-      serviceID: 13,
-      partsKitID: 12,
-      quantity: 5,
-      name: 'Full Synthetic Oil',
-      price: 13,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 37,
-      serviceID: 14,
-      partsKitID: 13,
-      quantity: 10,
-      name: 'Full Synthetic Oil',
-      price: 108.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 38,
-      serviceID: 14,
-      partsKitID: 13,
-      quantity: 6,
-      name: 'Full Synthetic Oil',
-      price: 18,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 39,
-      serviceID: 14,
-      partsKitID: 13,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 12.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 40,
-      serviceID: 14,
-      partsKitID: 13,
-      quantity: 1,
-      name: 'Full Synthetic Oil',
-      price: 19.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 41,
-      serviceID: 15,
-      partsKitID: 14,
-      quantity: 1,
-      name: 'Full Synthetic Oil',
-      price: 64,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 42,
-      serviceID: 15,
-      partsKitID: 14,
-      quantity: 4,
-      name: 'Full Synthetic Oil',
-      price: 12,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 43,
-      serviceID: 15,
-      partsKitID: 15,
-      quantity: 4,
-      name: 'Full Synthetic Oil',
-      price: 23,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 44,
-      serviceID: 15,
-      partsKitID: 15,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 12.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 45,
-      serviceID: 15,
-      partsKitID: 15,
-      quantity: 10,
-      name: 'Full Synthetic Oil',
-      price: 3,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 46,
-      serviceID: 22,
-      partsKitID: 16,
-      quantity: 10,
-      name: 'Full Synthetic Oil',
-      price: 108.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 47,
-      serviceID: 22,
-      partsKitID: 16,
-      quantity: 2,
-      name: 'Full Synthetic Oil',
-      price: 34,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 48,
-      serviceID: 22,
-      partsKitID: 16,
-      quantity: 12,
-      name: 'Full Synthetic Oil',
-      price: 12.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 49,
-      serviceID: 23,
-      partsKitID: 17,
-      quantity: 10,
-      name: 'Full Synthetic Oil',
-      price: 76.5,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 50,
-      serviceID: 23,
-      partsKitID: 17,
-      quantity: 23,
-      name: 'Full Synthetic Oil',
-      price: 30,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ],
-  [
-    {
-      id: 51,
-      serviceID: 25,
-      partsKitID: 18,
-      quantity: 10,
-      name: 'Full Synthetic Oil',
-      price: 67.6,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 52,
-      serviceID: 25,
-      partsKitID: 18,
-      quantity: 9,
-      name: 'Full Synthetic Oil',
-      price: 3,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    },
-    {
-      id: 53,
-      serviceID: 25,
-      partsKitID: 18,
-      quantity: 2,
-      name: 'Full Synthetic Oil',
-      price: 34,
-      createdAt: '2022-01-18T10:39:32.000Z'
-    }
-  ]
+  {
+    serviceID: 5,
+    id: 1,
+    partsList: [
+      {
+        id: 6,
+        serviceID: 5,
+        partsKitID: 1,
+        quantity: 10,
+        name: 'Full Synthetic Oil',
+        price: 108.5,
+        createdAt: '2022-01-18T10:39:32.000Z'
+      },
+      {
+        id: 7,
+        serviceID: 5,
+        partsKitID: 1,
+        quantity: 2,
+        name: 'Full Synthetic Oil',
+        price: 148,
+        createdAt: '2022-01-18T10:39:32.000Z'
+      },
+      {
+        id: 8,
+        serviceID: 5,
+        partsKitID: 1,
+        quantity: 7,
+        name: 'Full Synthetic Oil',
+        price: 12.5,
+        createdAt: '2022-01-18T10:39:32.000Z'
+      },
+      {
+        id: 9,
+        serviceID: 5,
+        partsKitID: 1,
+        quantity: 12,
+        name: 'Full Synthetic Oil',
+        price: 12.5,
+        createdAt: '2022-01-18T10:39:32.000Z'
+      }
+    ]
+  }
 ]
 const historyList = [
   {

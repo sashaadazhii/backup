@@ -25,16 +25,15 @@
       </div>
       <div class="service__buttons">
         <Button v-if="!isNewPart" icon="i-add_circle" label="Add new part" border style="background-color: #e5e7eb" @click="open" />
-        <Button v-if="!isNewKit" icon="i-add_circle" label="Add New Part Kit" border style="background-color: #e5e7eb" @click="openKit" />
+        <Button icon="i-add_circle" label="Add New Part Kit" border style="background-color: #e5e7eb" @click="openKit" />
       </div>
       <div class="service__parts">
         <Part v-for="(part, idx) of service.parts" :key="idx" :part="part" class="service__part" />
         <!-- PARTSKIT -->
-        <div v-if="partsKits && partsKits.length" class="service__kit-wrap">
+        <div v-if="partsKits.length" class="service__kit-wrap">
           <PartsKit v-for="kit of partsKits" :key="kit.id" :kit="kit" />
         </div>
         <NewPart v-if="isNewPart" :serviceID="service.id" @close="open" />
-        <NewPartKit v-if="isNewKit" :serviceID="service.id" @closeNew="isNewKit = false" />
       </div>
       <div v-if="service.guides && service.guides.length" class="service__guids">
         <div class="service__guids-title">Service guides</div>
@@ -58,7 +57,7 @@ import CreateService from '../CreateService'
 
 export default {
   name: 'CardModalService',
-  components: {Label, Part, Guid, Button, Menu, NewPart, NewPartKit, PartsKit},
+  components: {Label, Part, Guid, Button, Menu, NewPart, PartsKit},
   props: {
     service: {
       type: Object,
@@ -106,17 +105,15 @@ export default {
       isNewPart: false,
       isNewKit: false,
       localPart: null,
-      localKit: null,
-      localPartsKit: []
+      partsKits: []
     }
   },
   async created() {
-    await this.fetchPartsKits(this.service.id)
+    this.partsKits = await this.fetchPartsKits(this.service.id)
   },
   computed: {
     ...mapState({
-      card: s => s.company.cardTemplates.template,
-      partsKits: s => s.company.cannedServices.partsKits
+      card: s => s.company.cardTemplates.template
     })
   },
   methods: {
@@ -131,8 +128,23 @@ export default {
       this.isNewPart = !this.isNewPart
     },
     openKit() {
-      if (this.isNewKit) this.localKit = null
-      this.isNewKit = !this.isNewKit
+      const hide = async () => {
+        this.partsKits = await this.fetchPartsKits(this.service.id)
+      }
+      this.$vfm.show(
+        {
+          component: NewPartKit,
+          bind: {
+            name: 'NewPartKit',
+            'esc-to-close': true,
+            'click-to-close': false
+          },
+          on: {
+            hide
+          }
+        },
+        this.service
+      )
     },
     showService(e) {
       if (!this.$refs.menu || this.$refs.menu.contains(e.target)) return

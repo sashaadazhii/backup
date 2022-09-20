@@ -1,18 +1,29 @@
 @import 'src/assets/styles/_variables.scss';
 
+::v-deep(.vfm__container) {
+  place-items: start center;
+}
+
+::v-deep(.vfm__content) {
+  width: 96%;
+  max-width: 960px;
+  display: grid;
+  border-radius: 20px;
+  margin: 2% 0;
+}
+
 .npart {
   &__wrapper {
     background-color: $color-white;
     padding: 16px;
-    margin-top: 16px;
-    @include border(16px, $color-grey-flash);
-    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+    display: grid;
+    overflow: auto;
+    max-height: inherit;
   }
   &__header {
     display: flex;
     align-items: center;
     padding-bottom: 18px;
-
     justify-content: space-between;
   }
   &__block {
