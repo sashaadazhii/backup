@@ -9,8 +9,7 @@ export default {
     service: {},
     localService: null,
     activeService: {},
-    history: [],
-    partsKits: []
+    history: []
   },
   mutations: {
     set(state, services) {
@@ -60,19 +59,8 @@ export default {
       state.history = history
     },
     // ================ PartsKit =================
-    setPartsKits(state, partsKits) {
-      state.partsKits = partsKits
-    },
     addPartsKit(_, partsKit) {
       partsKitsList.push(partsKit)
-    },
-    //not working
-    removePartsKit(state, id) {
-      // state.partsKits = state.partsKits.forEach(arr => {
-      //   let dlt = arr.find(a => a.id === id)
-      //   console.log(dlt) //Proxy {}
-      //   arr.filter(a => a.id !== dlt.id) // dlt - undefind
-      // })
     }
   },
   actions: {

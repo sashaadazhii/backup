@@ -14,7 +14,7 @@
         v-model:link="part.link"
         :counter="idx + 1"
         :part="part"
-        @onRemove="remove(id)"
+        @onRemove="remove(part.id)"
       />
       <Button label="Add part" grey position="center" icon="i-add_circle" size="large" @click="add" />
       <div class="npart__bottom">
@@ -43,33 +43,24 @@ export default {
   computed: {
     ...mapState({})
   },
-  created() {
-    // if (this.localPart) {
-    //   const {name, quantity, price} = this.localPart
-    //   this.name = name
-    //   this.quantity = quantity
-    //   this.price = price
-    // }
-  },
+
   methods: {
     beforeOpen(e) {
       this.service = e.ref.params.value
     },
     ...mapMutations({
       addPartsKit: 'company/cannedServices/addPartsKit'
-      // update: 'company/cannedServices/updatePart'
     }),
     add() {
       const part = {id: this.$getID(), name: null, quantity: null, price: null, link: null}
       this.parts.push(part)
     },
     remove(id) {
-      this.partsKit.splice(this.partsKit.indexOf(id), 1)
+      const partIdx = this.parts.findIndex(p => p.id === id)
+      if (this.parts.length === 1) this.$vfm.hide('NewPartKit')
+      this.parts.splice(partIdx, 1)
     },
-    // hideSlot(el) {
-    //   let idx = this.partsKit.findIndex(c => c.id === el.id)
-    //   this.partsKit.splice(idx, 1)
-    // },
+
     save() {
       const partsKit = {
         id: this.$getID(),
