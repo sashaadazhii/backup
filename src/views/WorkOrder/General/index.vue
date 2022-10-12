@@ -8,9 +8,6 @@
       <Notes />
     </div>
     <div class="general__block">
-      <Scheduling />
-    </div>
-    <div class="general__block">
       <div class="part__wrapper">
         <div class="part__header">
           <i class="i-archive" />
@@ -22,7 +19,6 @@
           <Button v-else label="Assign" class="part__btn" size="mini" />
         </div>
       </div>
-      <Questions />
       <Requests />
     </div>
   </div>
@@ -32,14 +28,12 @@
 import Info from './Info'
 import Notes from './Notes'
 import Settings from './Settings'
-import Scheduling from './Scheduling'
 import Requests from './Requests'
-import Questions from './Questions'
 import Button from '@/components/Yaro/Button'
 
 export default {
   name: 'WorkOrderGeneral',
-  components: {Info, Settings, Notes, Scheduling, Requests, Questions, Button},
+  components: {Info, Settings, Notes, Requests, Button},
   data() {
     return {
       bin: null

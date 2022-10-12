@@ -40,26 +40,21 @@ export default {
           icon: 'i-construction',
           label: 'Services',
           to: '/settings/services'
-        },
-        {
-          icon: 'i-monetization_on',
-          label: 'Markups',
-          to: '/settings/markups'
         }
       ]
     }
   },
   async created() {
-    const hasShifts = this.info.hasShifts
-    if (hasShifts) this.addShiftsPage()
-    else this.navList.splice(2, 1)
+    // const hasShifts = this.info.hasShifts
+    // if (hasShifts) this.addShiftsPage()
+    // else this.navList.splice(2, 1)
   },
-  watch: {
-    'info.hasShifts'(hasShifts) {
-      if (hasShifts) this.addShiftsPage()
-      else this.navList.splice(2, 1)
-    }
-  },
+  // watch: {
+  //   'info.hasShifts'(hasShifts) {
+  //     if (hasShifts) this.addShiftsPage()
+  //     else this.navList.splice(2, 1)
+  //   }
+  // },
   computed: {
     ...mapState({
       info: s => s.company.settings.settings

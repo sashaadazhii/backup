@@ -36,44 +36,6 @@
             <div class="sidebar__link-text">Work Board</div>
           </router-link>
         </div>
-        <div class="sidebar__block">
-          <router-link v-if="user.role === 'admin'" class="sidebar__link" to="/reports">
-            <i class="i-report" />
-            <div class="sidebar__link-text">Reports</div>
-          </router-link>
-          <router-link v-if="user.role === 'admin'" class="sidebar__link" to="/vendors">
-            <i class="i-article" />
-            <div class="sidebar__link-text">Vendors</div>
-          </router-link>
-          <router-link class="sidebar__link" to="/flows">
-            <i class="i-open_with" />
-            <div class="sidebar__link-text">Flows</div>
-          </router-link>
-          <router-link class="sidebar__link" to="/payroll-overview">
-            <i class="i-monetization_on" />
-            <div class="sidebar__link-text">Payroll Overview</div>
-          </router-link>
-          <router-link class="sidebar__link" to="/staff-calendar">
-            <i class="i-perm_contact_calendar" />
-            <div class="sidebar__link-text">Staff Calendar</div>
-          </router-link>
-          <router-link class="sidebar__link" to="/capacity-calendar">
-            <i class="i-calendar" />
-            <div class="sidebar__link-text">Capacity Calendar</div>
-          </router-link>
-          <router-link class="sidebar__link" to="/employee-productivity">
-            <i class="i-timelapse" />
-            <div class="sidebar__link-text">Employee Productivity</div>
-          </router-link>
-          <router-link class="sidebar__link" to="/shift-management">
-            <i class="i-view_stream" />
-            <div class="sidebar__link-text">Shift Management</div>
-          </router-link>
-          <router-link class="sidebar__link" to="/">
-            <i class="i-build_circle" />
-            <div class="sidebar__link-text">Parts Ordering</div>
-          </router-link>
-        </div>
 
         <router-link v-if="isDev" class="sidebar__link" to="/test">
           <i class="i-build_circle1" />
