@@ -7,7 +7,6 @@ export default {
   name: 'Home'
 }
 </script>
-
 <style lang="scss" scoped>
 @import 'style';
 </style>
