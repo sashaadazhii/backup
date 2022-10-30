@@ -115,6 +115,13 @@ export default {
         orders = localOrders
       }
       state.workOrders = orders
+    },
+    addNewOrder(state, order) {
+      if(order.startsAt && order.endsAt) {
+        state.localOrders.todo.unshift(order)
+      } else {
+        state.localOrders.unscheduled.unshift(order)
+      }
     }
   },
   actions: {
