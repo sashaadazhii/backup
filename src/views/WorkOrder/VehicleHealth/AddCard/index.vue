@@ -8,12 +8,6 @@
       </div>
       <Input icon-left="i-search1" placeholder="Start typing to search card" />
       <div class="modal__block">
-        <div class="modal__block-title">CANNED SERVICES</div>
-        <div class="modal__block-inner">
-          <Service viewOnly />
-          <Service viewOnly />
-          <Service viewOnly />
-        </div>
         <div class="modal__block-title">CARDS</div>
         <div class="modal__block-inner">
           <Card v-for="card of cards" :key="card.templateID" :card="card" @click="openCard(card)" />
