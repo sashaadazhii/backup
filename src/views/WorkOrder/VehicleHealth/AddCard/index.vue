@@ -6,7 +6,7 @@
         <Button label="Create New Card" icon="i-add_circle" size="small" />
         <Button icon="i-circle_close" border grey circle iconSize="20px" size="small" @click="close" />
       </div>
-      <Input icon-left="i-search1" placeholder="Start typing to search card" />
+      <Input v-model="cardSearch" icon-left="i-search1" placeholder="Start typing to search card" />
       <div class="modal__block">
         <div class="modal__block-title">CANNED SERVICES</div>
         <div class="modal__block-inner">
@@ -16,7 +16,7 @@
         </div>
         <div class="modal__block-title">CARDS</div>
         <div class="modal__block-inner">
-          <Card v-for="card of cards" :key="card.templateID" :card="card" @click="openCard(card)" />
+          <Card v-for="card of filteredCards" :key="card.templateID" :card="card" @click="openCard(card)" />
         </div>
       </div>
     </div>
@@ -36,7 +36,9 @@ export default {
   name: 'AddCard',
   components: {Button, Input, Card, Service},
   data() {
-    return {}
+    return {
+        cardSearch: '',
+    }
   },
   async created() {
     await this.fetchCards()
@@ -44,7 +46,12 @@ export default {
   computed: {
     ...mapState({
       cards: s => s.company.cardTemplates.templates
-    })
+    }),
+      filteredCards() {
+          return this.cards.filter(card => {
+              return card.name.toLowerCase().includes(this.cardSearch.toLowerCase());
+          });
+      },
   },
   methods: {
     ...mapActions({
