@@ -76,7 +76,6 @@ export default {
             addNewWorkOrder: 'workOrder/addNewOrder'
         }),
         saveNewOrder() {
-            console.log(this.order.customRequests)
             const formattedOrderToSave = {
                 ...this.order,
                 uid: uuidv4(),
