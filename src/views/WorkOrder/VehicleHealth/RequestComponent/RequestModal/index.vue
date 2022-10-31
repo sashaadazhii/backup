@@ -39,27 +39,6 @@
             </Menu>
           </div>
         </div>
-        <div class="body__request request">
-          <div class="request__body">{{ request.notes }}</div>
-          <div class="request__desc">
-            <div class="request__time">
-              <i class="i-time" />
-              <span>Est:</span>
-              <span>{{ request.estimatedTime }}</span>
-            </div>
-            <div class="request__time">
-              <span>Tracked:</span>
-              <span>{{ request.trackedTime }}</span>
-            </div>
-          </div>
-          <div class="request__progress">
-            <span class="fill" />
-            <span class="fill" />
-            <span class="fill" />
-            <span />
-            <span />
-          </div>
-        </div>
         <div class="body__notes">
           <div>TECHNICIAN NOTES</div>
           <textarea placeholder="Start typing to add notes"></textarea>
