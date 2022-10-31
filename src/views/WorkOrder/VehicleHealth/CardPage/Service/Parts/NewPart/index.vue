@@ -1,13 +1,18 @@
 <template>
   <div class="part__wrapper">
     <div class="part__main">
-      <i class="i-build" />
-      <Input v-model="name" size="small" placeholder="Name" />
-      <Input v-model="core" size="small" placeholder="Core" />
-      <Input v-model="quantity" size="small" placeholder="Quantity" />
-      <Input v-model="price" size="small" placeholder="Price" />
-      <span>${{ total }}</span>
+      <div class="part__top">
+        <i class="i-build" />
+        <Input v-model="name" size="small" placeholder="Name" />
+        <Input v-model="quantity" size="small" placeholder="Quantity" v-maska="'####'" />
+        <Input v-model="price" size="small" placeholder="Price" v-maska="{mask: 'HHHHHHHH', tokens: {H: {pattern: /[0-9.]/}}}" />
+        <span>${{ total }}</span>
+      </div>
+      <div class="part__bottom">
+        <textarea v-model="description" class="part__textarea" placeholder="Description"></textarea>
+      </div>
     </div>
+
     <div class="part__footer">
       <Button label="Save" size="small" @click="addPart" />
       <Button label="Cancel" border size="small" @click="$emit('close')" />
@@ -34,7 +39,8 @@ export default {
       name: null,
       core: null,
       quantity: null,
-      price: null
+      price: null,
+      description: null
     }
   },
   computed: {
@@ -50,13 +56,13 @@ export default {
       add: 'company/cannedServices/addPart'
     }),
     addPart() {
-      const {name, price, core, quantity} = this
+      const {name, price, quantity, description} = this
       const part = {
         serviceID: this.service.id,
         id: this.$getID(),
         name,
-        core,
         quantity,
+        description,
         price,
         select: false
       }

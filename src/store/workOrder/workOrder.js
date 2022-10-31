@@ -117,7 +117,7 @@ export default {
       state.workOrders = orders
     },
     addNewOrder(state, order) {
-      if(order.startsAt && order.endsAt) {
+      if (order.startsAt && order.endsAt) {
         state.localOrders.todo.unshift(order)
       } else {
         state.localOrders.unscheduled.unshift(order)
@@ -146,10 +146,9 @@ export default {
       }
     },
     async find({commit}, uid) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const order = await axios.get(`${url}work-orders/${uid}/`)
-        commit('setOrder', order.data)
+        const order = localOrders.todo.find(s => s.uid === uid)
+        commit('setOrder', order)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

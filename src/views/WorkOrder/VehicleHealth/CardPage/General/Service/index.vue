@@ -1,33 +1,35 @@
 <template>
-  <div class="service__wrapper" @click="open">
-    <div class="y-radio" :class="{active: service.select}" @click.stop="chose" />
+  <div class="service__wrapper" :class="{active: service.select}" @click="open">
+    <!--   v-if="(isStart && card.status !== 'Good') || (isStart && card.status !== 'No Status')" -->
+    <div v-if="isStart && card.status !== 'Good' && card.status !== 'No Status'" class="y-radio" :class="{active: service.select}" @click.stop="chose" />
+    <div v-else></div>
     <div class="service__name">
       <div class="service__title">{{ service.name }}</div>
       <div class="service__subtitle">{{ service.description }}</div>
     </div>
 
-    <Label :label="service.parts.length" border circle class="-grey -counter" />
+    <Label :label="service.parts.length" circle class="-grey -counter" color="#fff" />
     <Label
       :label="`${service.estimatedTime} hr`"
       icon="i-time"
       iconColor="#3EB3BB"
       iconSize="18px"
-      border
       size="large"
       class="-grey"
+      color="#fff"
       v-tooltip.bottom="'Estimated time'"
     />
-    <Label :label="`${service.averageTime} hr`" icon="i-time orange" iconSize="18px" border size="large" class="-grey" v-tooltip.bottom="'Average time'" />
-    <Label :label="`${service.used}`" border size="large" class="-grey -counter" v-tooltip.bottom="'Number of times used'" />
     <Label
-      :label="`${service.warranty?.time || 0} Months /  ${service.warranty?.range.toLocaleString('fr-FR') || 0} KM`"
-      :icon="labelIcon"
+      :label="`${service.averageTime} hr`"
+      icon="i-time orange"
       iconSize="18px"
       border
       size="large"
       class="-grey"
-      v-tooltip.bottom="'Warranty'"
+      color="#fff"
+      v-tooltip.bottom="'Average time'"
     />
+    <Label :label="`${service.used} times`" size="large" class="-grey -counter" color="#fff" v-tooltip.bottom="'Number of times used'" />
     <div @click.stop>
       <Menu :list="actionsList">
         <template #menu @click.stop>
@@ -61,12 +63,15 @@ export default {
           label: 'Edit',
           icon: 'i-edit'
         }
-      ]
+      ],
+      cannedServices: []
     }
   },
   computed: {
     ...mapState({
-      activeService: s => s.company.cannedServices.activeService
+      activeService: s => s.company.cannedServices.activeService,
+      isStart: s => s.workOrder.isStart,
+      card: s => s.company.cards.card
     }),
     labelIcon() {
       switch (this.service?.warrantyType) {
@@ -86,12 +91,15 @@ export default {
       set: 'company/cannedServices/setActiveService',
       select: 'company/cannedServices/select'
     }),
+
     open() {
       this.set(this.service)
     },
     chose() {
       const serviceID = this.service.id
       this.select(serviceID)
+      this.$emit('chose')
+      this.$emit('unchoose')
     }
   },
   directives: {
