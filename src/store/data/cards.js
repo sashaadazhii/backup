@@ -43,7 +43,7 @@ const cardsList = cards.data
       select: false,
       status: 'No Status',
       service: getRandom(0, 101),
-      approvalStatus: approvalStatuses[getRandom(0, 6)],
+      approvalStatus: approvalStatuses[getRandom(0, 0)],
       techs: [
         {
           id: 23483,
