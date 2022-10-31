@@ -58,7 +58,7 @@
               <span>ALL CARDS RELATED</span>
               <div class="cards__btn" @click="open">
                 <i class="i-add_circle" />
-                <span>Add new card</span>
+                <span>Create new card</span>
               </div>
             </div>
             <div class="cards__list">
