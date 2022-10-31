@@ -2,9 +2,10 @@
   <div class="request__wrapper" @click="open">
     <div class="request__header">
       <Label :label="request.status" size="small" class="request__label" :class="labelClass(request.status)" />
-
       <div class="tech__list">
-        <Label v-for="tech of request.techs" :key="tech.id" :alias="`${tech.firstName[0]}${tech.lastName[0]}`" circle class="tech__label" size="small" />
+        <Label :alias="order.technician.alias" circle class="tech__label" size="small" />
+        <!-- <Label v-for="tech of request.techs" :key="tech.id" 
+        :alias="`${tech.firstName[0]}${tech.lastName[0]}`" circle class="tech__label" size="small" /> -->
       </div>
     </div>
     <div class="request__main">
@@ -31,7 +32,7 @@
 <script>
 import Label from '@/components/Yaro/Label'
 import RequestModal from './RequestModal'
-import {mapMutations} from 'vuex'
+import {mapMutations, mapState} from 'vuex'
 
 export default {
   name: 'VehicleRequest',
@@ -41,6 +42,11 @@ export default {
       type: Object,
       required: true
     }
+  },
+  computed: {
+    ...mapState({
+      order: s => s.workOrder.workOrder
+    })
   },
   methods: {
     labelClass(status) {
@@ -58,7 +64,7 @@ export default {
       this.$vfm.show({
         component: RequestModal,
         bind: {
-          name: 'Request',
+          name: 'RequestModal',
           'esc-to-close': true,
           'click-to-close': false
         }

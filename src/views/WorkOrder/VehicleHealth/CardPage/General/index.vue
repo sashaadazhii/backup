@@ -27,7 +27,6 @@
         </div>
         <Service v-for="service of services" :key="service.id" :service="service" @chose="addService(service)" />
       </div>
-
       <div v-if="history.length && $route.params.uid !== 'tech-start'" class="block__history history">
         <div class="block__header">
           <div class="block__title">Service History</div>

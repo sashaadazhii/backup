@@ -1,7 +1,9 @@
 <template>
   <div class="page-inner" :class="{requests: showRequests}">
     <div v-if="showRequests" class="requests__wrapper">
-      <Request v-for="request of requests" :key="request.id" :request="request" />
+      <!-- <Request v-for="request of requests" :key="request.id" :request="request" /> -->
+      <Request v-for="request of order.customerRequests" :key="request.id" :request="request" />
+      <!-- {{ requests }} -->
     </div>
     <div class="health__wrapper">
       <div class="health__header">
@@ -211,7 +213,8 @@ export default {
       filterParams: s => s.company.cards.filterParams,
       isStart: s => s.workOrder.isStart,
       initialWalkaround: s => s.workOrder.initialWalkaround,
-      requests: s => s.requests.requests
+      requests: s => s.requests.requests,
+      order: s => s.workOrder.workOrder
     }),
     selectedCards() {
       return this.cards.filter(c => c.select)

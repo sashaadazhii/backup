@@ -8,7 +8,9 @@
           <Button icon="i-keyboard_arrow_up" class="-grey" border iconSize="20px" @click="changeRequest('inc')" />
         </div>
         <div class="tech__list">
-          <div v-for="(tech, idx) of request.techs" :key="idx" class="tech__label">{{ tech.firstName[0] }}{{ tech.lastName[0] }}</div>
+          <Label :alias="order.technician.alias" circle class="tech__label" />
+          <!-- TODO: add correct multiselect -->
+
           <Multiselect v-model="request.techs" :options="techList" dataKey="id" :showCheckbox="false">
             <template #menu>
               <div class="tech__add"><i class="i-add" /></div>
@@ -28,21 +30,22 @@
         <div class="body__header">
           <div class="body__title">
             <i class="i-device_hub blue" />
-            <span>Customer Request {{ requestIdx }}</span>
+            <div class="body__text">{{ request.notes }}</div>
           </div>
           <div class="body__status">
             <span>Request Status:</span>
-            <Menu :list="statuses">
+            <Menu v-if="isStart" :list="statuses">
               <template #menu>
                 <Label :label="request.status" size="small" class="request__label -hover" :class="labelClass(request.status)" />
               </template>
             </Menu>
+            <Label v-else :label="request.status" size="small" class="request__label -hover" :class="labelClass(request.status)" />
           </div>
         </div>
-        <div class="body__notes">
+        <!-- <div class="body__notes">
           <div>TECHNICIAN NOTES</div>
           <textarea placeholder="Start typing to add notes"></textarea>
-        </div>
+        </div> -->
         <div v-if="request.cards.length" class="body__cards cards">
           <div class="cards__title">ADDED CARDS</div>
           <div class="cards__list">
@@ -56,13 +59,13 @@
           <div class="footer__cards cards">
             <div class="cards__title">
               <span>ALL CARDS RELATED</span>
-              <div class="cards__btn" @click="open">
+              <div v-if="isStart" class="cards__btn" @click="open">
                 <i class="i-add_circle" />
                 <span>Create new card</span>
               </div>
             </div>
             <div class="cards__list">
-              <Card v-for="(card, idx) of cards" :key="idx" :card="card" @select="changeCards" />
+              <Card v-for="(card, idx) of formattedCards" :key="idx" :card="card" @select="changeCards" />
             </div>
           </div>
         </div>
@@ -78,13 +81,12 @@ import Input from '@/components/Yaro/Input'
 import Menu from '@/components/Yaro/Menu'
 import Multiselect from '@/components/Yaro/Multiselect'
 import AddCardModal from '@/views/InspectionBuilder/AddCardModal'
-
 import Card from './Card'
-
 import {mapState, mapMutations, mapActions} from 'vuex'
+import {serviceList} from '@/store/data/cannedServices.js'
 export default {
   name: 'RequestModal',
-  components: {Button, Label, Input, Card, Menu, Multiselect},
+  components: {Button, Label, Input, Card, Menu}, //Multiselect
   data() {
     return {
       statuses: [
@@ -101,7 +103,10 @@ export default {
       request: s => s.requests.request,
       requests: s => s.requests.requests,
       techList: s => s.company.users.users.filter(u => u.role === 'technician'),
-      cardsList: s => s.company.cards.cards
+      cardsList: s => s.company.cards.cards,
+      order: s => s.workOrder.workOrder,
+      services: s => s.company.cannedServices.services,
+      isStart: s => s.workOrder.isStart
     }),
     requestIdx() {
       const id = this.request.id
@@ -109,15 +114,26 @@ export default {
     },
     cards() {
       return this.cardsList.filter(c => c.name.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()))
+    },
+    formattedCards() {
+      return this.cardsList.map(card => {
+        return {
+          ...card,
+          services: serviceList.filter(s => s.templateID === card.id)
+        }
+      })
     }
   },
+
   methods: {
     ...mapMutations({
       set: 'requests/setRequest',
       changeRequest: 'requests/changeRequest',
-      changeStatus: 'requests/changeStatus',
+      // changeStatus: 'requests/changeStatus',
+      changeStatus: 'workOrder/changeRequestStatus',
       changeCards: 'requests/changeCards'
     }),
+
     select(id) {
       // console.log(id)
       // const card = this.cardsList.find(c => c.id === id)

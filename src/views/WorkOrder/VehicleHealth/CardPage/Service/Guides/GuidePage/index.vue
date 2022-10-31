@@ -3,7 +3,7 @@
     <div class="guide__header">
       <i class="i-arrow_circle_left" @click="$emit('changeSection', 'Guides')" />
       <div class="guide__title" @click="$emit('changeSection', 'Guides')">Back to all</div>
-      <Menu :list="actionsList" />
+      <Menu v-if="isStart" :list="actionsList" />
     </div>
     <div class="guide__inner ql-editor ql-snow" v-html="guide.text" />
   </div>
@@ -43,9 +43,11 @@ export default {
   },
   computed: {
     ...mapState({
-      guide: s => s.company.guides.guide
+      guide: s => s.company.guides.guide,
+      isStart: s => s.workOrder.isStart
     })
   },
+
   methods: {
     ...mapMutations({
       set: 'company/guides/setGuide',

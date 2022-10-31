@@ -44,7 +44,7 @@ export default {
         courtesyVehicle: null,
         // =============== Questions =============
         // =============== Requests =============
-        customRequests: null
+        customerRequests: null
       }
       state.workOrder = order
     },
@@ -63,6 +63,10 @@ export default {
       const time = param.reduce((sum, current) => sum + current.time, 0)
       state.workOrder.schedulingTime ||= {all: 12, planned: 0}
       state.workOrder.schedulingTime.planned = time
+    },
+    changeRequestStatus(state, {status, id}) {
+      const req = state.workOrder.customerRequests.find(r => r.id === id)
+      req.status = status
     },
     // =================================
     setOrder(state, order) {
