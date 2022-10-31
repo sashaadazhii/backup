@@ -290,7 +290,6 @@ export default {
           <div v-if="block !== 'Service'" class="blocks__subtitle">{{ card.description }}</div>
           <div v-if="block !== 'Service'" class="blocks__nav">
             <button class="blocks__btn" :class="{'-green': block === 'General'}" @click="block = 'General'">General</button>
-            <!-- <button class="blocks__btn" :class="{'-green': block === 'Additional'}" @click="block = 'Additional'">Additional Info</button> -->
             <button class="blocks__btn" :class="{'-green': block === 'Notes'}" @click="block = 'Notes'">Notes</button>
             <button class="blocks__btn" :class="{'-green': block === 'Tracking'}" @click="block = 'Tracking'">Service Tracking</button>
             <button class="blocks__btn" :class="{'-green': block === 'Media'}" @click="block = 'Media'">Media</button>
@@ -340,7 +339,7 @@ export default {
               <div class="request__header">
                 <span>Tech's Notes</span>
               </div>
-              <textarea v-model="card.techNotes" placeholder="Start typing here..." class="request__textarea" :disabled="!isStart"></textarea>
+              <textarea v-model="card.techNotes" ref="textarea" placeholder="Start typing here..." class="request__textarea" :disabled="!isStart"></textarea>
             </div>
             <div v-if="card.additional" class="request__dropdowns">
               <Additional />
@@ -389,10 +388,6 @@ export default {
         {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
       ],
       request: {},
-      notes: 'The cabin air filter in a vehicle helps remove harmful pollutants, including pollen and dust, from the air you breathe within the car.',
-      brakePads: ['5mm', '5.5mm', '6mm', '6.5mm', '7mm', '7.5mm'],
-      // brakePadLeft: '5mm',
-      // brakePadLRight: '5mm',
       uid: null
     }
   },
@@ -415,14 +410,24 @@ export default {
     }),
     quotes() {
       return this.order.quotes
+    },
+    notes() {
+      return this.card.techNotes
     }
   },
   watch: {
     activeService(s) {
       if (s.id) this.block = 'Service'
       else this.block = 'General'
+    },
+    notes: function () {
+      this.$refs.textarea.style.height = '80px'
+      this.$nextTick(() => {
+        this.$refs.textarea.style.height = this.$refs.textarea.scrollHeight + 'px'
+      })
     }
   },
+
   methods: {
     ...mapActions({
       findRequest: 'requests/find',

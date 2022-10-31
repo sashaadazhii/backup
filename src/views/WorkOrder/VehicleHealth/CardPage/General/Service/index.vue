@@ -1,6 +1,5 @@
 <template>
   <div class="service__wrapper" :class="{active: service.select}" @click="open">
-    <!--   v-if="(isStart && card.status !== 'Good') || (isStart && card.status !== 'No Status')" -->
     <div v-if="isStart && card.status !== 'Good' && card.status !== 'No Status'" class="y-radio" :class="{active: service.select}" @click.stop="chose" />
     <div v-else></div>
     <div class="service__name">

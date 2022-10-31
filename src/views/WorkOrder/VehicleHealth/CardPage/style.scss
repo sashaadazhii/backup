@@ -226,6 +226,7 @@
   }
   &__list {
     margin-top: 20px;
+    padding-bottom: 6px;
     overflow: auto;
     @include hideScrollbar;
     &-title {
