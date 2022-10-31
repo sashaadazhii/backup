@@ -4,8 +4,10 @@
     <div class="section__body">
       <div class="section__parts">
         <Part v-for="(part, idx) of parts" :key="idx" :part="part" @select="select" />
-        <NewPart v-if="isNew" @close="isNew = false" />
-        <div v-if="!isNew && isStart" class="section__btn" @click="isNew = true"><i class="i-add_circle" /><span>Add new part</span></div>
+        <NewPart v-if="isNew && card.status !== 'No Status' && card.status !== 'Good'" @close="isNew = false" />
+        <div v-if="!isNew && isStart && card.status !== 'No Status' && card.status !== 'Good'" class="section__btn" @click="isNew = true">
+          <i class="i-add_circle" /><span>Add new part</span>
+        </div>
       </div>
     </div>
 
@@ -63,7 +65,8 @@ export default {
   computed: {
     ...mapState({
       service: s => s.company.cannedServices.activeService,
-      isStart: s => s.workOrder.isStart
+      isStart: s => s.workOrder.isStart,
+      card: s => s.company.cards.card
     }),
     parts() {
       return this.service.parts

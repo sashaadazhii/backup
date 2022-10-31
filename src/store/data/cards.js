@@ -13,15 +13,15 @@ const cardsList = cards.data
   .map(card => {
     let additional = null
     let archive = null
-    if (card.name.toLowerCase().includes('brakes')) {
+    if (card.name.toLowerCase().includes('brake')) {
       additional = [
         {
-          title: 'Left - Brakepad Width',
+          title: 'Brake Pad Width - Left',
           list: ['5mm', '5.5mm', '6mm', '6.5mm', '7mm', '7.5mm'],
           value: ''
         },
         {
-          title: 'Right - Brakepad Width',
+          title: 'Brake Pad Width - Right',
           list: ['5mm', '5.5mm', '6mm', '6.5mm', '7mm', '7.5mm'],
           value: ''
         }
@@ -44,6 +44,7 @@ const cardsList = cards.data
       status: 'No Status',
       service: getRandom(0, 101),
       approvalStatus: approvalStatuses[getRandom(0, 0)],
+      techNotes: `Technician is writing a bunch of notes right here. Technician is writing a bunch of notes right here.Technician is writing a bunch of notes right here.`,
       techs: [
         {
           id: 23483,
