@@ -4,12 +4,22 @@
   &__wrapper {
     @include border(16px, $color-grey-flash);
     padding: 12px 16px;
+    background-color: $color-white;
+    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+    &.-select .card__top {
+      grid-template-columns: 32px 20px auto 1fr 1fr;
+      & > i:first-child {
+        padding-right: 12px;
+        border-right: 1px dashed $color-grey-flash;
+      }
+    }
+  }
+  &__top {
     display: grid;
     column-gap: 12px;
     grid-template-columns: 20px auto 1fr 1fr;
     align-items: center;
-    background-color: $color-white;
-    box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+    margin-bottom: 10px;
 
     & > * {
       justify-self: start;
@@ -17,22 +27,13 @@
     & > i {
       font-size: 20px;
     }
-    & > span {
-      @include font(14px, $color-grey-space, 600);
-    }
+
     & > .-light {
       border-color: $color-grey-flash;
       background-color: $color-grey-smoke;
       color: $color-grey;
     }
 
-    &.-select {
-      grid-template-columns: 32px 20px auto 1fr 1fr;
-      & > i:first-child {
-        padding-right: 12px;
-        border-right: 1px dashed $color-grey-flash;
-      }
-    }
     &-labels {
       display: flex;
       align-items: center;
@@ -43,5 +44,11 @@
         color: $color-grey-space;
       }
     }
+  }
+  &__title {
+    @include font(14px, $color-grey-space, 600);
+  }
+  &__text {
+    @include font(14px, $color-grey-space, 500);
   }
 }

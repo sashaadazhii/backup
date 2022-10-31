@@ -1,7 +1,11 @@
 <template>
   <div class="service__wrapper" @click="open">
     <div class="y-radio" :class="{active: service.select}" @click.stop="chose" />
-    <span>{{ service.name }}</span>
+    <div class="service__name">
+      <div class="service__title">{{ service.name }}</div>
+      <div class="service__subtitle">{{ service.description }}</div>
+    </div>
+
     <Label :label="service.parts.length" border circle class="-grey -counter" />
     <Label
       :label="`${service.estimatedTime} hr`"

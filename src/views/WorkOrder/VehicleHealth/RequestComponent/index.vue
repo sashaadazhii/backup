@@ -24,13 +24,6 @@
           <span>{{ request.trackedTime }}</span>
         </div>
       </div>
-      <div class="request__footer-progress">
-        <span class="fill" />
-        <span class="fill" />
-        <span class="fill" />
-        <span />
-        <span />
-      </div>
     </div>
   </div>
 </template>
