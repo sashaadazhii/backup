@@ -90,11 +90,13 @@ export default {
   created() {},
   computed: {
     ...mapState({
-      order: s => s.workOrder.workOrder
+      order: s => s.workOrder.workOrder,
     })
   },
   methods: {
-    ...mapMutations({}),
+      ...mapMutations({
+          change: 'workOrder/change',
+      }),
     changeRequest() {
       if (this.request) this.request = false
       else this.open()
@@ -115,6 +117,7 @@ export default {
       this.display = false
       this.requests = this.localRequests
       this.request = true
+      this.change({customRequests: this.requests})
     },
     // TODO: Field Number Component
     dec(idx) {
