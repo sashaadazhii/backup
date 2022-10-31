@@ -340,25 +340,10 @@ export default {
               <div class="request__header">
                 <span>Tech's Notes</span>
               </div>
-              <!-- <textarea v-model="order.technicianNotes" placeholder="Start typing here..." class="request__textarea" :disabled="!isStart"></textarea> -->
+              <textarea v-model="card.techNotes" placeholder="Start typing here..." class="request__textarea" :disabled="!isStart"></textarea>
             </div>
-            <div class="request__dropdowns">
-              <!-- <Dropdown
-                v-model="order.quotes.brakePadLeft"
-                :options="brakePads"
-                size="medium"
-                :disabled="!isStart"
-                title="Brake Pad Width - Left"
-                theme="white"
-              /> -->
-              <!-- <Dropdown
-                v-model="order.quotes.brakePadRight"
-                :options="brakePads"
-                size="medium"
-                :disabled="!isStart"
-                title="Brake Pad Width - Right"
-                theme="white"
-              /> -->
+            <div v-if="card.additional" class="request__dropdowns">
+              <Additional />
             </div>
           </div>
         </div>
@@ -406,8 +391,8 @@ export default {
       request: {},
       notes: 'The cabin air filter in a vehicle helps remove harmful pollutants, including pollen and dust, from the air you breathe within the car.',
       brakePads: ['5mm', '5.5mm', '6mm', '6.5mm', '7mm', '7.5mm'],
-      brakePadLeft: '5mm',
-      brakePadLRight: '5mm',
+      // brakePadLeft: '5mm',
+      // brakePadLRight: '5mm',
       uid: null
     }
   },

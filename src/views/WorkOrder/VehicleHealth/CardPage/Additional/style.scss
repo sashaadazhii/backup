@@ -2,17 +2,11 @@
 
 .block {
   &__wrapper {
-    display: grid;
-    overflow: auto;
-    row-gap: 20px;
-    @include hideScrollbar;
-    margin-top: 30px;
-    padding: 3px;
   }
   &__additional {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
   &__archive {
     &-title {
