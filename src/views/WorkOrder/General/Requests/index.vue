@@ -24,8 +24,8 @@
                   <div class="y-number__wrapper">
                     <div class="y-number__title">Time Allotted for Inspection</div>
                     <div class="y-number__inner">
-                      <i class="i-remove y-number__dec" :class="{'-disabled': !req.time}" @click="dec(idx)" />
-                      <span class="y-number__text">{{ req.time }} h</span>
+                      <i class="i-remove y-number__dec" :class="{'-disabled': !req.estimatedTime}" @click="dec(idx)" />
+                      <span class="y-number__text">{{ req.estimatedTime }} h</span>
                       <i class="i-add y-number__inc" @click="inc(idx)" />
                     </div>
                   </div>
@@ -48,7 +48,7 @@
         <div class="section__desc">{{ requests[0].notes }}</div>
         <div class="section__row">
           <div class="section__title"><i class="i-time" /> <span>Estimate</span></div>
-          <div class="section__text">{{ requests[0].time }} h</div>
+          <div class="section__text">{{ requests[0].estimatedTime }} h</div>
         </div>
 
         <button v-ripple class="section__btn" @click="open">
@@ -80,23 +80,26 @@ export default {
       localRequests: [
         {
           notes: '',
-          time: 0
+          estimatedTime: 0,
+          id: Date.now(),
+          status: 'Not Processed',
+          trackedTime: '1h 20min',
+          cards: []
         }
       ],
       requests: []
       //===========================================
     }
   },
-  created() {},
   computed: {
     ...mapState({
-      order: s => s.workOrder.workOrder,
+      order: s => s.workOrder.workOrder
     })
   },
   methods: {
-      ...mapMutations({
-          change: 'workOrder/change',
-      }),
+    ...mapMutations({
+      change: 'workOrder/change'
+    }),
     changeRequest() {
       if (this.request) this.request = false
       else this.open()
@@ -109,7 +112,10 @@ export default {
       this.localRequests = [
         {
           notes: '',
-          time: 0
+          estimatedTime: 0,
+          trackedTime: '1h 20min',
+          id: Date.now(),
+          cards: []
         }
       ]
     },
@@ -117,19 +123,27 @@ export default {
       this.display = false
       this.requests = this.localRequests
       this.request = true
-      this.change({customRequests: this.requests})
+      console.log(this.requests)
+      this.change({customerRequests: this.requests})
     },
     // TODO: Field Number Component
     dec(idx) {
-      if (!this.localRequests[idx].time) return
-      this.localRequests[idx].time -= 0.5
+      if (!this.localRequests[idx].estimatedTime) return
+      this.localRequests[idx].estimatedTime -= 0.5
     },
     inc(idx) {
-      this.localRequests[idx].time += 0.5
+      this.localRequests[idx].estimatedTime += 0.5
     },
     // TODO: Field Number Component
     add() {
-      const req = {notes: '', time: 0}
+      const req = {
+        notes: '',
+        estimatedTime: 0,
+        trackedTime: '1h 20min',
+        id: Date.now(),
+        status: 'Not Processed',
+        cards: []
+      }
       this.localRequests.push(req)
     },
     remove(idx) {

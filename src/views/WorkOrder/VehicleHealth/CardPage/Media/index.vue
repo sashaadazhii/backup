@@ -2,7 +2,7 @@
   <div class="block__wrapper">
     <div class="block__header">
       <label id="dropbox" class="block__drop">
-        <input class="block__drop-input" multiple type="file" accept="image/*" @change="handleFileUpload" />
+        <input class="block__drop-input" multiple type="file" accept="image/*" @change="handleFileUpload" :disabled="!isStart" />
         <i class="i-cloud_upload" />
         <span>Upload Media</span>
       </label>
@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
   name: 'CardPageMedia',
   components: {},
@@ -38,6 +40,11 @@ export default {
   },
   mounted() {
     this.drop()
+  },
+  computed: {
+    ...mapState({
+      isStart: s => s.workOrder.isStart
+    })
   },
   methods: {
     drop() {

@@ -1,145 +1,145 @@
 /* eslint-disable */
 const serviceList = [
-  {
-    id: 1,
-    templateID: 42,
-    name: 'Replace oil Filter',
-    description: 'description for this canned service',
-    hours: 1.5,
-    createdAt: '2022-01-18T10:39:32.000Z',
-    warrantyType: 'global',
-    warranty: {
-      time: 10,
-      range: 30000
-    },
-    parts: [
-      {
-        id: 1,
-        serviceID: 1,
-        name: 'Filtron OP-595',
-        price: 150,
-        quantity: 2,
-        description: 'per axle',
-        core: 0,
-        createdAt: '2022-01-18T10:39:32.000Z'
-      },
-      {
-        id: 2,
-        serviceID: 1,
-        name: 'Filtron OP-575',
-        price: 10,
-        quantity: 2,
-        description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
-        core: 2,
-        createdAt: '2022-01-18T10:39:32.000Z'
-      }
-    ]
-  },
-  {
-    id: 2,
-    templateID: 42,
-    name: 'Replace oil Filter',
-    description: 'description for this canned service',
-    hours: 1.5,
-    createdAt: '2022-01-18T10:39:32.000Z',
-    warrantyType: 'global',
-    warranty: {
-      time: 10,
-      range: 30000
-    },
-    parts: [
-      {
-        id: 3,
-        serviceID: 2,
-        name: 'Filtron OP-595',
-        price: 40,
-        quantity: 1,
-        description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
-        core: 3,
-        createdAt: '2022-01-18T10:39:32.000Z'
-      },
-      {
-        id: 4,
-        serviceID: 2,
-        name: 'Filtron OP-575',
-        price: 150,
-        quantity: 1,
-        description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
-        core: 1,
-        createdAt: '2022-01-18T10:39:32.000Z'
-      }
-    ]
-  },
-  {
-    id: 3,
-    templateID: 43,
-    name: 'Replace oil Filter',
-    description: 'description for this canned service',
-    hours: 1.5,
-    createdAt: '2022-01-18T10:39:32.000Z',
-    warrantyType: 'global',
-    warranty: {
-      time: 10,
-      range: 30000
-    },
-    parts: [
-      {
-        id: 5,
-        serviceID: 3,
-        name: 'Filtron OP-595',
-        price: 150,
-        quantity: 1,
-        description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
-        core: 0,
-        createdAt: '2022-01-18T10:39:32.000Z'
-      },
-      {
-        id: 6,
-        serviceID: 3,
-        name: 'Filtron OP-575',
-        price: 90,
-        quantity: 3,
-        description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
-        core: 2,
-        createdAt: '2022-01-18T10:39:32.000Z'
-      }
-    ]
-  },
-  {
-    id: 4,
-    templateID: 43,
-    name: 'Replace oil Filter',
-    description: 'description for this canned service',
-    hours: 1.5,
-    createdAt: '2022-01-18T10:39:32.000Z',
-    warrantyType: 'global',
-    warranty: {
-      time: 10,
-      range: 30000
-    },
-    parts: [
-      {
-        id: 7,
-        serviceID: 4,
-        name: 'Filtron OP-595',
-        price: 10,
-        quantity: 12,
-        description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
-        core: 3,
-        createdAt: '2022-01-18T10:39:32.000Z'
-      },
-      {
-        id: 8,
-        serviceID: 4,
-        name: 'Filtron OP-575',
-        price: 140,
-        quantity: 2,
-        description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
-        core: 3,
-        createdAt: '2022-01-18T10:39:32.000Z'
-      }
-    ]
-  },
+  // {
+  //   id: 1,
+  //   templateID: 42,
+  //   name: 'Replace oil Filter',
+  //   description: 'description for this canned service',
+  //   hours: 1.5,
+  //   createdAt: '2022-01-18T10:39:32.000Z',
+  //   warrantyType: 'global',
+  //   warranty: {
+  //     time: 10,
+  //     range: 30000
+  //   },
+  //   parts: [
+  //     {
+  //       id: 1,
+  //       serviceID: 1,
+  //       name: 'Filtron OP-595',
+  //       price: 150,
+  //       quantity: 2,
+  //       description: 'per axle',
+  //       core: 0,
+  //       createdAt: '2022-01-18T10:39:32.000Z'
+  //     },
+  //     {
+  //       id: 2,
+  //       serviceID: 1,
+  //       name: 'Filtron OP-575',
+  //       price: 10,
+  //       quantity: 2,
+  //       description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
+  //       core: 2,
+  //       createdAt: '2022-01-18T10:39:32.000Z'
+  //     }
+  //   ]
+  // },
+  // {
+  //   id: 2,
+  //   templateID: 42,
+  //   name: 'Replace oil Filter',
+  //   description: 'description for this canned service',
+  //   hours: 1.5,
+  //   createdAt: '2022-01-18T10:39:32.000Z',
+  //   warrantyType: 'global',
+  //   warranty: {
+  //     time: 10,
+  //     range: 30000
+  //   },
+  //   parts: [
+  //     {
+  //       id: 3,
+  //       serviceID: 2,
+  //       name: 'Filtron OP-595',
+  //       price: 40,
+  //       quantity: 1,
+  //       description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
+  //       core: 3,
+  //       createdAt: '2022-01-18T10:39:32.000Z'
+  //     },
+  //     {
+  //       id: 4,
+  //       serviceID: 2,
+  //       name: 'Filtron OP-575',
+  //       price: 150,
+  //       quantity: 1,
+  //       description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
+  //       core: 1,
+  //       createdAt: '2022-01-18T10:39:32.000Z'
+  //     }
+  //   ]
+  // },
+  // {
+  //   id: 3,
+  //   templateID: 43,
+  //   name: 'Replace oil Filter',
+  //   description: 'description for this canned service',
+  //   hours: 1.5,
+  //   createdAt: '2022-01-18T10:39:32.000Z',
+  //   warrantyType: 'global',
+  //   warranty: {
+  //     time: 10,
+  //     range: 30000
+  //   },
+  //   parts: [
+  //     {
+  //       id: 5,
+  //       serviceID: 3,
+  //       name: 'Filtron OP-595',
+  //       price: 150,
+  //       quantity: 1,
+  //       description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
+  //       core: 0,
+  //       createdAt: '2022-01-18T10:39:32.000Z'
+  //     },
+  //     {
+  //       id: 6,
+  //       serviceID: 3,
+  //       name: 'Filtron OP-575',
+  //       price: 90,
+  //       quantity: 3,
+  //       description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
+  //       core: 2,
+  //       createdAt: '2022-01-18T10:39:32.000Z'
+  //     }
+  //   ]
+  // },
+  // {
+  //   id: 4,
+  //   templateID: 43,
+  //   name: 'Replace oil Filter',
+  //   description: 'description for this canned service',
+  //   hours: 1.5,
+  //   createdAt: '2022-01-18T10:39:32.000Z',
+  //   warrantyType: 'global',
+  //   warranty: {
+  //     time: 10,
+  //     range: 30000
+  //   },
+  //   parts: [
+  //     {
+  //       id: 7,
+  //       serviceID: 4,
+  //       name: 'Filtron OP-595',
+  //       price: 10,
+  //       quantity: 12,
+  //       description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
+  //       core: 3,
+  //       createdAt: '2022-01-18T10:39:32.000Z'
+  //     },
+  //     {
+  //       id: 8,
+  //       serviceID: 4,
+  //       name: 'Filtron OP-575',
+  //       price: 140,
+  //       quantity: 2,
+  //       description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
+  //       core: 3,
+  //       createdAt: '2022-01-18T10:39:32.000Z'
+  //     }
+  //   ]
+  // },
   //============= new ================
   {
     id: 5,
@@ -248,7 +248,6 @@ const serviceList = [
     id: 7,
     templateID: 1,
     name: 'Remove and replace engine air filter',
-    description: 'Remove and replace engine air filter. A dirty engine air filter will cause poor engine performance and potentially damage the engine',
     description: 'description for this canned service',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 0.3,
@@ -279,8 +278,6 @@ const serviceList = [
     id: 8,
     templateID: 2,
     name: 'Remove and replace cabin air filter',
-    description:
-      'Remove and replace the cabin air filter. Recommended to filter out dust debris in passenger compartment heating and cooling system, control odours, and improve cabin airflow performance',
     description: 'description for this canned service',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 0.5,
