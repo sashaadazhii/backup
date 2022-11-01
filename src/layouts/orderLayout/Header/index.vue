@@ -77,8 +77,10 @@ export default {
   watch: {
     cards: {
       handler(cards) {
-        if (cards.filter(c => c.status === 'No Status' && c.status === 'Good').length === 0) this.cardsApproved = true
-        else this.cardsApproved = false
+        let statuses = cards.map(c => c.status)
+        if (cards.every(c => c.status === 'Good')) this.cardsApproved = false
+        else if (statuses.includes('No Status')) this.cardsApproved = false
+        else this.cardsApproved = true
       },
       deep: true
     }
