@@ -345,7 +345,14 @@ const routes = [
     meta: {layout: 'admin', header: 'shiftManagement'},
     component: () => import('@/views/ShiftManagement')
   },
+  {
+    path: '/service-advisor/:uid',
+    name: 'SAView',
+    meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true, header: 'WorkOrder'},
+    component: () => import('@/views/WorkOrder/AdvisorView'),
 
+    children: []
+  },
   {
     path: '/test',
     name: 'TestPage',

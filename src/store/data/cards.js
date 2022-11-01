@@ -44,6 +44,7 @@ const cardsList = cards.data
       status: 'No Status',
       service: getRandom(0, 101),
       approvalStatus: approvalStatuses[getRandom(0, 0)],
+      advisorApprove: false,
       techNotes: `Technician is writing a bunch of notes right here. Technician is writing a bunch of notes right here.Technician is writing a bunch of notes right here.`,
       techs: [
         {
