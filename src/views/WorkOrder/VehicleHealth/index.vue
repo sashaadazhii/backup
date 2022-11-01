@@ -1,9 +1,7 @@
 <template>
   <div class="page-inner" :class="{requests: showRequests}">
     <div v-if="showRequests" class="requests__wrapper">
-      <!-- <Request v-for="request of requests" :key="request.id" :request="request" /> -->
-      <Request v-for="request of order.customerRequests" :key="request.id" :request="request" />
-      <!-- {{ requests }} -->
+      <Request v-for="request of requests" :key="request.id" :request="request" />
     </div>
     <div class="health__wrapper">
       <div class="health__header">

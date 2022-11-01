@@ -86,7 +86,7 @@ import {mapState, mapMutations, mapActions} from 'vuex'
 import {serviceList} from '@/store/data/cannedServices.js'
 export default {
   name: 'RequestModal',
-  components: {Button, Label, Input, Card, Menu}, //Multiselect
+  components: {Button, Label, Input, Card, Menu, Multiselect}, //
   data() {
     return {
       statuses: [
