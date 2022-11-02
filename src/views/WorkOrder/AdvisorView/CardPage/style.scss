@@ -257,7 +257,7 @@
     @include font(16px, $color-grey-space, 500, 1.2);
     resize: vertical;
     &.blue {
-      border-color: #2c9aff;
+      border-color: $color-blue;
     }
     &.orange {
       border-color: $color-orange;
@@ -494,7 +494,7 @@
       color: $color-violet;
     }
     &.blue i {
-      color: #2c9aff;
+      color: $color-blue;
     }
   }
 }
