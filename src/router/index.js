@@ -345,7 +345,24 @@ const routes = [
     meta: {layout: 'admin', header: 'shiftManagement'},
     component: () => import('@/views/ShiftManagement')
   },
-
+  {
+    path: '/service-advisor/:uid',
+    name: 'SAView',
+    meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true, header: 'WorkOrder'},
+    component: () => import('@/views/WorkOrder/AdvisorView')
+  },
+  // {
+  //   path: '/customer-view/:uid',
+  //   name: 'CustomerView',
+  //   meta: {layout: 'customer', access: ['admin', 'technician', 'service-advisor'], auth: true},
+  //   component: () => import('@/views/WorkOrder/CustomerView')
+  // },
+  // {
+  //   path: '/customer-view/:uid/card/:cardID',
+  //   name: 'CustomerCardPage',
+  //   meta: {layout: 'customer', access: ['admin', 'technician', 'service-advisor'], auth: true},
+  //   component: () => import('@/views/WorkOrder/CustomerView/CardPage')
+  // },
   {
     path: '/test',
     name: 'TestPage',
