@@ -60,7 +60,7 @@ export default {
       await this.update({
         id: this.card.id,
         workOrderID: this.card.workOrderID,
-        params: {status: 'Component Unsafe', approvedWith: 'Permanently Decline by You'}
+        params: {status: 'Component Unsafe', approvalStatus: 'Permanently Decline by You'}
       })
       this.$vfm.hide('AskingDeclineModal')
       this.$vfm.show({
@@ -74,7 +74,7 @@ export default {
       await this.update({
         id: this.card.id,
         workOrderID: this.card.workOrderID,
-        params: {status: 'Component Unsafe', approvedWith: 'Declined by You until next visit'}
+        params: {status: 'Component Unsafe', approvalStatus: 'Declined by You until next visit'}
       })
       this.$vfm.hide('AskingDeclineModal')
       this.$vfm.show({

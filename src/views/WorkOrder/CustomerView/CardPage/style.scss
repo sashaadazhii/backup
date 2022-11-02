@@ -302,6 +302,11 @@
     }
   }
   &__item {
+    &.hide {
+      display: none;
+    }
+  }
+  &__inner {
     display: grid;
     grid-template-columns: 36px 1fr 60px;
     column-gap: 12px;
@@ -313,6 +318,9 @@
       .list__icon {
         background: $color-white;
       }
+    }
+    &.wide {
+      grid-template-columns: 36px 1fr;
     }
   }
   &__text {

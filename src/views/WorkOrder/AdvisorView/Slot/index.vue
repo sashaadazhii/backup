@@ -14,7 +14,7 @@
       <!-- TODO: add additional logic for cause -->
       <!-- <div :style="card.services.length ? 'pointer-events: auto' : 'pointer-events: none'"> -->
       <div class="card__status" @click.self="$emit('changeStatus', card)" :class="card.advisorApprove ? 'green' : ''">
-        <i class="i-check_circle_outline" /> {{ card.advisorApprove ? 'Ready for Customer' : 'Mark as Ready for Customer' }}
+        <i class="i-check_circle_outline" /> {{ card.advisorApprove ? 'Ready' : 'Not Ready' }}
       </div>
     </div>
     <div class="card__menu text">{{ formatter(parts.reduce((sum, current) => sum + current.price * current.quantity, 0)) }}</div>

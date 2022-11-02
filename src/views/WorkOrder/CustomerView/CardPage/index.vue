@@ -71,29 +71,33 @@
             </div>
           </div>
           <div class="list__wrap">
-            <ul class="card__list list">
-              <li v-for="part in parts" :key="part.id" class="list__item">
-                <div class="list__icon"><i class="i-build" /></div>
-                <div class="list__info">
-                  <div class="list__desc">{{ part.description }}</div>
+            <div class="card__list list">
+              <!-- parts -->
+              <li v-for="part in parts" :key="part.id" class="list__item" :class="{hide: card.partsForCustomer === 'Display Total Price Only'}">
+                <div v-if="card.partsForCustomer === 'Display Total Price & Parts'" class="list__inner wide">
+                  <div class="list__icon">
+                    <i v-if="part.isService || part.isLabour" class="i-monetization_on" :style="[part.isService ? 'color: #BA8AE7' : 'color: #2C9AFF']" />
+                    <i v-else class="i-build" />
+                  </div>
+                  <div class="list__info">
+                    <div class="list__desc">{{ part.description }}</div>
+                  </div>
                 </div>
-                <div class="list__text amount">{{ formatter(part.price) }}</div>
-              </li>
-              <li class="list__item">
-                <div class="list__icon blue"><i class="i-monetization_on" /></div>
-                <div class="list__info">
-                  <div class="list__desc">Service Name</div>
+
+                <div v-else-if="card.partsForCustomer === 'Display Total Price Only'" class="list__inner"></div>
+
+                <div v-else-if="card.partsForCustomer === 'Display Parts & Pricing'" class="list__inner">
+                  <div class="list__icon">
+                    <i v-if="part.isService || part.isLabour" class="i-monetization_on" :style="[part.isService ? 'color: #BA8AE7' : 'color: #2C9AFF']" />
+                    <i v-else class="i-build" />
+                  </div>
+                  <div class="list__info">
+                    <div class="list__desc">{{ part.description }}</div>
+                  </div>
+                  <div class="list__text amount">{{ formatter(part.price) }}</div>
                 </div>
-                <div class="list__text amount">$52.25</div>
               </li>
-              <li class="list__item">
-                <div class="list__icon violet"><i class="i-monetization_on" /></div>
-                <div class="list__info">
-                  <div class="list__desc">Labour Name</div>
-                </div>
-                <div class="list__text amount">$52.25</div>
-              </li>
-            </ul>
+            </div>
             <div class="card__accent">
               <div class="card__accent-left"><i class="i-shield" /></div>
               <div class="card__accent-right">
@@ -103,7 +107,9 @@
             </div>
             <div class="list__footer">
               <div class="list__text">Total Price</div>
-              <div class="list__text">{{ formatter(parts.reduce((sum, current) => sum + current.price, 0)) }}</div>
+              <div v-if="card.partsForCustomer === 'Display Total Price Only'" class="list__text 1">{{ formatter(card.customPrice) }}</div>
+
+              <div v-else class="list__text 2">{{ formatter(parts.reduce((sum, current) => sum + current.price, 0)) }}</div>
             </div>
           </div>
         </div>
@@ -114,7 +120,7 @@
           </div>
           <!-- <div >
         <Label
-          :label="card.approvedWith"
+          :label="card.approvalStatus"
           :icon="card.status === 'Done' ? 'i-check_circle' : 'i-circle_close'"
           :color="card.status === 'Done' ? '#E7F8F2' : '#FEF2F2'"
           :style="card.status === 'Done' ? 'border-color : #9FE3CD' : 'border-color: #FAC9C9'"
@@ -143,45 +149,7 @@ export default {
       selectedMedia: {},
       showControls: true,
       parts: [],
-      readyParts: [],
-      assets: [
-        {
-          id: '28904mnbr',
-          type: 'image',
-          src: 'img0.jpg'
-        },
-        {
-          id: '289043r',
-          type: 'image',
-          src: 'img1.png'
-        },
-        {
-          id: '12r43r2',
-          type: 'video',
-          src: `video1.mp4`
-        },
-        {
-          id: '389srqq43r',
-          type: 'image',
-          src: 'img2.png'
-        },
-
-        {
-          id: '389sr95q43r',
-          type: 'image',
-          src: 'img3.png'
-        },
-        {
-          id: '389srvcqq43r',
-          type: 'image',
-          src: 'img4.jpeg'
-        },
-        {
-          id: '38569srqq43r',
-          type: 'image',
-          src: 'img5.png'
-        }
-      ]
+      readyParts: []
     }
   },
   async created() {
@@ -195,6 +163,8 @@ export default {
         part.forEach(p => this.parts.push(p))
       })
     }
+
+    await this.fetchAssets()
     // this.order.cannedServices.forEach(c => {
     //   let part = c.parts
     //   part.forEach(p => this.parts.push(p))
@@ -203,12 +173,15 @@ export default {
   computed: {
     ...mapState({
       order: s => s.workOrder.workOrder,
-      card: s => s.company.cards.card
+      card: s => s.company.cards.card,
+      assets: s => s.company.cards.assets
     })
   },
 
   methods: {
-    ...mapActions({}),
+    ...mapActions({
+      fetchAssets: 'company/cards/fetchAssets'
+    }),
     labelColor() {
       const status = this.card.status
       switch (status) {

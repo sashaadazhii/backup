@@ -56,7 +56,11 @@ const cardsList = cards.data
       time: '00:00:24',
       description: 'The cabin air filter in a vehicle helps remove harmful pollutants, including pollen and dust, from the air you breathe within the car.',
       additional,
-      archive
+      archive,
+      partsForCustomer: null,
+      customPrice: null,
+      displayLabour: false,
+      displayFees: false
     }
   })
 
