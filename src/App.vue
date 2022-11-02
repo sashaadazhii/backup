@@ -11,6 +11,7 @@ import LoginLayout from '@/layouts/loginLayout'
 import mainLayout from '@/layouts/mainLayout'
 import adminLayout from '@/layouts/adminLayout' // TODO: Rename layout
 import orderLayout from '@/layouts/orderLayout'
+import customerLayout from '@/layouts/customerLayout'
 import {ModalsContainer} from 'vue-final-modal'
 import {mapMutations, mapState} from 'vuex'
 import ConfirmModal from '@/components/Yaro/Dialog/Confirm'
@@ -23,6 +24,7 @@ export default {
     adminLayout,
     orderLayout,
     LoginLayout,
+    customerLayout,
     ModalsContainer,
     ConfirmModal
   },

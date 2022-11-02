@@ -44,7 +44,7 @@ export default {
         courtesyVehicle: null,
         // =============== Questions =============
         // =============== Requests =============
-        customRequests: null
+        customerRequests: null
       }
       state.workOrder = order
     },
@@ -52,6 +52,7 @@ export default {
     change(state, param) {
       state.workOrder = {...state.workOrder, ...param}
     },
+
     changeNeedRide(state, param) {
       param ? (state.workOrder.needRide = {...state.workOrder.needRide, ...param}) : (state.workOrder.needRide = null)
     },
@@ -63,6 +64,10 @@ export default {
       const time = param.reduce((sum, current) => sum + current.time, 0)
       state.workOrder.schedulingTime ||= {all: 12, planned: 0}
       state.workOrder.schedulingTime.planned = time
+    },
+    changeRequestStatus(state, {status, id}) {
+      const req = state.workOrder.customerRequests.find(r => r.id === id)
+      req.status = status
     },
     // =================================
     setOrder(state, order) {
@@ -117,11 +122,16 @@ export default {
       state.workOrders = orders
     },
     addNewOrder(state, order) {
-      if(order.startsAt && order.endsAt) {
+      if (order.startsAt && order.endsAt) {
         state.localOrders.todo.unshift(order)
       } else {
         state.localOrders.unscheduled.unshift(order)
       }
+    },
+    updateOrder(state, order) {
+      //  const orderIdx = state.workOrders.findIndex(o => o.uid === order.uid)
+      const orderIdx = state.localOrders.todo.findIndex(o => o.uid === order.uid)
+      state.localOrders.todo.splice(orderIdx, 1, order)
     }
   },
   actions: {
@@ -146,10 +156,10 @@ export default {
       }
     },
     async find({commit}, uid) {
-      const url = process.env.VUE_APP_BACKEND
       try {
-        const order = await axios.get(`${url}work-orders/${uid}/`)
-        commit('setOrder', order.data)
+        // const order = localOrders.todo.find(s => s.uid === uid)
+        const order = localOrders.todo.length ? localOrders.todo.find(s => s.uid === uid) : localOrders.unscheduled.find(s => s.uid === uid)
+        commit('setOrder', order)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

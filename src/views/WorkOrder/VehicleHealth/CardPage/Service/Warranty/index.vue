@@ -1,11 +1,11 @@
 <template>
   <div class="section__wrapper">
     <div class="section__body">
-      <Input title="Time" v-maska="'####'" v-model="time" placeholder="36 months" />
-      <Input title="Range" v-maska="'####'" v-model="range" placeholder="60,000 KM" />
-      <Textarea placeholder="Notes" height="120" />
+      <Input title="Time" v-maska="'####'" v-model="time" placeholder="36 months" :disabled="!isStart" />
+      <Input title="Range" v-maska="'####'" v-model="range" placeholder="60,000 KM" :disabled="!isStart" />
+      <Textarea placeholder="Notes" height="120" :disabled="!isStart" />
     </div>
-    <div class="section__footer">
+    <div v-if="isStart" class="section__footer">
       <Button label="Cancel" border @click="cancel" />
       <Button label="Save" @click="save" />
     </div>
@@ -36,7 +36,8 @@ export default {
   },
   computed: {
     ...mapState({
-      warranty: s => s.company.cannedServices.activeService.warranty
+      warranty: s => s.company.cannedServices.activeService.warranty,
+      isStart: s => s.workOrder.isStart
     })
   },
 

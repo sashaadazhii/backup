@@ -3,7 +3,7 @@
     <div class="section__list">
       <Guide v-for="(guide, idx) of guides" :key="idx" :guide="guide" @openGuide="$emit('changeSection', 'Guide')" />
     </div>
-    <div class="section__footer">
+    <div v-if="isStart" class="section__footer">
       <div class="section__btn" @click="open">
         <i class="i-add_circle" />
         <span>Create New Service Guide</span>
@@ -25,9 +25,11 @@ export default {
   },
   computed: {
     ...mapState({
-      guides: s => s.company.guides.guides
+      guides: s => s.company.guides.guides,
+      isStart: s => s.workOrder.isStart
     })
   },
+
   methods: {
     ...mapActions({
       // fetch: 'company/guides/fetch'

@@ -147,6 +147,19 @@
       }
     }
   }
+  &.-smooth {
+    border-radius: 78px;
+  }
+  &.dark {
+    border-color: $color-grey-light;
+    & > .y-label__text {
+      color: $color-grey;
+    }
+  }
 }
-
+.y-label.-large-text {
+  .y-label__alias {
+    font-size: 16px;
+  }
+}
 //==============================

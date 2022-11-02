@@ -1,9 +1,17 @@
 <template>
   <div class="block__wrapper">
     <div class="block__additional">
-      <Dropdown v-for="(info, idx) of additional" :key="idx" v-model="info.value" :options="info.list" :title="info.title" placeholder="Select" />
+      <Dropdown
+        v-for="(info, idx) of additional"
+        :key="idx"
+        v-model="info.value"
+        :options="info.list"
+        :title="info.title"
+        placeholder="Select"
+        :disabled="!isStart"
+      />
     </div>
-    <div class="block__archive">
+    <!-- <div class="block__archive">
       <div class="block__archive-title">Archive Notes</div>
       <div class="block__archive-list">
         <div v-for="(info, idx) of archive" :key="idx" class="block__archive-item">
@@ -13,7 +21,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -34,7 +42,8 @@ export default {
   computed: {
     ...mapState({
       additional: s => s.company.cards.card.additional,
-      archive: s => s.company.cards.card.archive
+      archive: s => s.company.cards.card.archive,
+      isStart: s => s.workOrder.isStart
     })
   }
 }

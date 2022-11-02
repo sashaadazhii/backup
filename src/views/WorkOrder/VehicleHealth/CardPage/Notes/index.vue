@@ -2,7 +2,7 @@
   <div class="block__wrapper">
     <div class="block__header">
       <Input v-model="searchValue" iconLeft="i-search1" type="search" size="medium" ref="input" @click="open" @input="search" />
-      <Button icon="i-add_circle" label="New Note" @click="showNew = true" />
+      <Button v-if="isStart" icon="i-add_circle" label="New Note" @click="showNew = true" />
     </div>
     <div class="block__body">
       <NewNote v-if="showNew" @close="close" />
@@ -39,7 +39,8 @@ export default {
   computed: {
     ...mapState({
       cardID: s => s.company.cards.card.templateID,
-      notes: s => s.company.notes.notes
+      notes: s => s.company.notes.notes,
+      isStart: s => s.workOrder.isStart
     }),
     listNotes() {
       const filteredNotes = []

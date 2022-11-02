@@ -5,15 +5,27 @@
       <div v-if="chooseServices.length" class="block__services services">
         <div class="block__header">
           <div class="block__title">Choosen Canned Service</div>
+          <button v-if="(isStart || card.status !== 'No Status' || card.status !== 'Good') && !chooseServices.length" class="block__btn" @click="open">
+            <i class="i-add_circle" /><span>Create New Canned Service</span>
+          </button>
         </div>
-        <Service v-for="service of chooseServices" :key="service.id" :service="service" />
+        <Service v-for="service of chooseServices" :key="service.id" :service="service" @unchoose="removeService(service)" />
       </div>
+
       <div v-if="services.length" class="block__services services">
-        <div class="block__header">
-          <div class="block__title">Canned Services</div>
-          <button class="block__btn" @click="open"><i class="i-add_circle" /><span>Create New Canned Service</span></button>
+        <div v-if="chooseServices.length" class="block__toggle" @click="isActive = !isActive">
+          {{ isActive ? 'Hide' : 'View' }} all Canned Services
+          <i class="i-keyboard_arrow_down" :style="[isActive ? {transform: 'rotateX(180deg)'} : {transform: 'rotateX(0)'}]" />
         </div>
-        <Service v-for="service of services" :key="service.id" :service="service" />
+      </div>
+      <div v-if="(services.length && !chooseServices.length) || isActive" class="block__toggle-inner">
+        <div v-if="services.length" class="block__header">
+          <div class="block__title">Canned Services</div>
+          <button v-if="isStart || card.status !== 'No Status'" class="block__btn" @click="open">
+            <i class="i-add_circle" /><span>Create New Canned Service</span>
+          </button>
+        </div>
+        <Service v-for="service of services" :key="service.id" :service="service" @chose="addService(service)" />
       </div>
       <div v-if="history.length && $route.params.uid !== 'tech-start'" class="block__history history">
         <div class="block__header">
@@ -36,20 +48,30 @@ export default {
   name: 'CardPageGeneral',
   components: {Service, History, Tires},
   data() {
-    return {}
+    return {
+      isActive: false,
+      orderParts: [],
+      cannedServices: [],
+      uid: null
+    }
   },
   async created() {
     const cardID = this.card.id
     await this.fetchServices(cardID)
     await this.fetchHistory(cardID)
     if (this.$route.params.uid === 'tech-start') this.select(5)
+
+    this.uid = this.$route.params.uid
+    await this.findOrder(this.uid)
   },
   computed: {
     ...mapState({
       activeService: s => s.company.cannedServices.activeService,
       allServices: s => s.company.cannedServices.services,
       history: s => s.company.cannedServices.history,
-      card: s => s.company.cards.card
+      card: s => s.company.cards.card,
+      order: s => s.workOrder.workOrder,
+      isStart: s => s.workOrder.isStart
     }),
     chooseServices() {
       return this.allServices.filter(s => s.select)
@@ -67,10 +89,12 @@ export default {
   methods: {
     ...mapActions({
       fetchServices: 'company/cannedServices/fetch',
-      fetchHistory: 'company/cannedServices/fetchHistory'
+      fetchHistory: 'company/cannedServices/fetchHistory',
+      findOrder: 'workOrder/find' //??
     }),
     ...mapMutations({
-      select: 'company/cannedServices/select'
+      select: 'company/cannedServices/select',
+      updateOrder: 'workOrder/change'
     }),
     open() {
       this.$vfm.show({
@@ -81,6 +105,21 @@ export default {
           'click-to-close': false
         }
       })
+    },
+    addService(service) {
+      if (service.select) {
+        this.cannedServices.push(service)
+        this.updateOrder({cannedServices: this.cannedServices})
+      }
+    },
+    removeService(service) {
+      if (!service.select) {
+        this.cannedServices.splice(
+          this.cannedServices.findIndex(s => s.id === service.id),
+          1
+        )
+        this.updateOrder({cannedServices: this.cannedServices})
+      }
     }
   }
 }

@@ -211,7 +211,8 @@ export default {
       filterParams: s => s.company.cards.filterParams,
       isStart: s => s.workOrder.isStart,
       initialWalkaround: s => s.workOrder.initialWalkaround,
-      requests: s => s.requests.requests
+      requests: s => s.requests.requests,
+      order: s => s.workOrder.workOrder
     }),
     selectedCards() {
       return this.cards.filter(c => c.select)
