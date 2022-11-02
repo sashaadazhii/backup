@@ -488,6 +488,27 @@
     }
   }
 }
+.y-dropdown.--theme-border-red {
+  .y-dropdown {
+    &-inner {
+      border-color: $color-red;
+    }
+    &-title {
+      color: $color-red;
+    }
+  }
+}
+.y-dropdown.--theme-border-blue {
+  .y-dropdown {
+    &-inner {
+      border-color: #2c9aff;
+    }
+    &-title {
+      color: #2c9aff;
+      //$color-blue-secondary: #2c9aff;
+    }
+  }
+}
 .y-dropdown--focus.--theme-red {
   .y-dropdown {
     &-inner {

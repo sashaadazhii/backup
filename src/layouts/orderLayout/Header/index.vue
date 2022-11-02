@@ -3,11 +3,19 @@
     <div class="header__title">
       <span v-if="isNew">Create new Work Order</span>
       <Label
-        v-else
+        v-else-if="order.logicalStatus === 'Not Started'"
         :label="order.customStatus?.name || order.logicalStatus"
         size="small"
         :color="order.customStatus?.color"
         circle
+        :class="statusClass(order.logicalStatus)"
+        :icon="statusIcon(order.logicalStatus)"
+      />
+      <Label
+        v-else
+        :label="order.customStatus?.name || order.logicalStatus"
+        size="small"
+        color="#FF9B70"
         :class="statusClass(order.logicalStatus)"
         :icon="statusIcon(order.logicalStatus)"
       />
@@ -153,6 +161,8 @@ export default {
           return 'i-rp_in_progress'
         case 'Done':
           return 'i-rp_done'
+        case 'Inspection':
+          return ''
       }
     },
     open() {
@@ -166,6 +176,7 @@ export default {
     start() {
       this.isStart = !this.isStart
       this.startOrder(this.isStart)
+      this.order.logicalStatus = 'Inspection'
       if (this.isStart) this.open()
     },
     close() {

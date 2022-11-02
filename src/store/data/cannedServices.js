@@ -145,7 +145,7 @@ const serviceList = [
     id: 5,
     templateID: 1,
     name: 'Replace air Filter',
-    description: 'description for this canned service',
+    description: 'description for this canned service 1',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 1.2,
     averageTime: 1.2,
@@ -248,7 +248,7 @@ const serviceList = [
     id: 7,
     templateID: 1,
     name: 'Remove and replace engine air filter',
-    description: 'description for this canned service',
+    description: 'description for this canned service 2',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 0.3,
     averageTime: 0.2,
@@ -278,7 +278,7 @@ const serviceList = [
     id: 8,
     templateID: 2,
     name: 'Remove and replace cabin air filter',
-    description: 'description for this canned service',
+    description: 'description for this canned service 3',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 0.5,
     averageTime: 0.3,
@@ -310,7 +310,7 @@ const serviceList = [
     name: 'Cooling System Service',
     description:
       'Cooling system service and coolant exchange. Recommended to improve cooling system performance and keep the engine running at proper temperatures. Also provides proper lubrication to cooling systems components for longer component life',
-    description: 'description for this canned service',
+    description: 'description for this canned service 01',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 1,
     averageTime: 0.7,
@@ -364,7 +364,7 @@ const serviceList = [
     name: 'Transmission Service',
     description:
       'Transmission service and fluid exchange ( synthetic Fluid)  Recommended to remove any debris and metal filings from old fluid and to improve transmission shifting/performance and prolong the life of transmission components',
-    description: 'description for this canned service',
+    description: 'description for this canned service 02',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 1.2,
     averageTime: 1.1,
@@ -418,7 +418,7 @@ const serviceList = [
     name: 'Power Steering System Service',
     description:
       'Power steering system service. Recommended to protect power steering components from premature failure/leakage as fluid can become contaminated with dirt/debris over time.',
-    description: 'description for this canned service',
+    description: 'description for this canned service 01',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 0.6,
     averageTime: 0.5,
@@ -460,7 +460,7 @@ const serviceList = [
     templateID: 6,
     name: 'Engine Tuneup/Spark Plugs',
     description: 'Complete engine tuneup. Recommended to improve fuel mileage, emissions, prevent misfires and improve overall engine performance.',
-    description: 'description for this canned service',
+    description: 'description for this service',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 2.5,
     averageTime: 2,
@@ -525,7 +525,7 @@ const serviceList = [
     name: 'Replace timing belt and Water pump',
     description:
       'Remove and replace timeing belt and water pump assembly. Service cooling system. A loose or broken timing belt can will cause serious engine damage.',
-    description: 'description for this canned service',
+    description: 'description for service',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 5,
     averageTime: 2,
@@ -644,7 +644,7 @@ const serviceList = [
     name: 'Brake Fluid System Service',
     description:
       'Brake fluid system flush and fluid exchange. Recommended to clean contaminated, moisture saturated brake fluid from the system and protect brake calipers,  brake lines, and other brake components from premature failure and leakage.',
-    description: 'description for this canned service',
+    description: 'description for this service',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 0.5,
     averageTime: 0.4,
@@ -687,7 +687,7 @@ const serviceList = [
     name: 'Front Brake System',
     description:
       'Front brake service (Freeup, clean and lube sliders.  Clean rust from brake rotors. This is done to extend the life of the brakes and extend your brake warranty to 3 years/60000km)',
-    description: 'description for this canned service',
+    description: 'description for canned service',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 1.2,
     averageTime: 1.0,
@@ -719,7 +719,7 @@ const serviceList = [
     name: 'Rear Brake System',
     description:
       'Rear brake service (Freeup, clean and lube sliders.  Clean rust from brake rotors. This is done to extend the life of the brakes and extend your brake warranty to 3 years/60000km)',
-    description: 'description for this canned service',
+    description: 'description for this service',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 1.2,
     averageTime: 1.0,
@@ -750,7 +750,7 @@ const serviceList = [
     templateID: 12,
     name: 'Windshield Wipers',
     description: 'Install new windshield wiper blades',
-    description: 'description for this canned service',
+    description: 'description for this canned service 1',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 0.1,
     averageTime: 0.1,
@@ -792,7 +792,7 @@ const serviceList = [
     templateID: 13,
     name: 'Left head light',
     description: 'Remove and replace left headlight bulb',
-    description: 'description for this canned service',
+    description: 'description for this canned service 2',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 0.5,
     averageTime: 0.4,
@@ -823,7 +823,7 @@ const serviceList = [
     templateID: 14,
     name: 'Replace Battery',
     description: 'Remove and replace battery',
-    description: 'description for this canned service',
+    description: 'description for this canned service 3',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 0.5,
     averageTime: 0.4,
@@ -855,7 +855,7 @@ const serviceList = [
     name: 'Install new tires',
     description:
       'Install and balance four new P205/65R16 Summer tires. Clean and lube wheel hub and rim surface. Torque wheel lug nuts. (Includes complimentary suspension and alignment inspection)',
-    description: 'description for this canned service',
+    description: 'description for this service 4',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 1.5,
     averageTime: 1.4,
@@ -972,7 +972,7 @@ const serviceList = [
     name: 'Replace rear brake lines',
     description:
       'Remove old leaking brake lines. Frabricate and install new brake lines from brake master cylinder to rear axle. Bleed out air from brake system.  Road test and verify repair',
-    description: 'description for this canned service',
+    description: 'description for this canned service 4',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 4,
     averageTime: 3.2,
@@ -1025,7 +1025,7 @@ const serviceList = [
     templateID: 19,
     name: 'Replace front brake pads and rotors',
     description: 'Remove and replace front brake pads and rotors. Clean and lube front brake caliper sliders.',
-    description: 'description for this canned service',
+    description: 'description for this canned service 5',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 1.8,
     averageTime: 1.2,
@@ -1078,7 +1078,7 @@ const serviceList = [
     templateID: 20,
     name: 'Replace rear brake pads and rotors, service rear calipers.',
     description: 'Remove and replace rear brake pads and rotors. Clean and service rear brake calipers sliders.',
-    description: 'description for this canned service',
+    description: 'description for this canned service 6',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 1.8,
     averageTime: 1.2,
@@ -1131,7 +1131,7 @@ const serviceList = [
     templateID: 21,
     name: 'Replace shocks and struts, perform wheel alignment.',
     description: 'Remove front stabilzer links then replace front strut assemblies. Replace rear shocks then perform wheel alignment.',
-    description: 'description for this canned service',
+    description: 'description for this canned service 7',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 5,
     averageTime: 4.2,
@@ -1196,7 +1196,7 @@ const serviceList = [
     name: 'Replace lower ball joints, perform alignment',
     description:
       'Separate lower ball joints from steering knuckle, then replace lower control arm/ball joint assemblys. Perform wheel alignment after all parts are reassembled',
-    description: 'description for this canned service',
+    description: 'description for this canned service 8',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 4,
     averageTime: 3.4,
@@ -1238,7 +1238,7 @@ const serviceList = [
     templateID: 23,
     name: 'Replace tierod ends, perform wheel alignment',
     description: 'Remove both outer tierod ends for access to remove and replace inner tierod ends, adjust wheel alignment to correct specification.',
-    description: 'description for this canned service',
+    description: 'description for this canned service 9',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 3.2,
     averageTime: 3,
@@ -1278,7 +1278,7 @@ const serviceList = [
     name: 'Replace wheel bearing',
     description:
       'Remove spindle assembly from vehicle, press out centre hub then wheel bearing. Press in new wheel bearing and hub then reinstall spindle assembly into vehicle.',
-    description: 'description for this canned service',
+    description: 'description for canned service 10',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 2.6,
     averageTime: 2.2,
@@ -1320,7 +1320,7 @@ const serviceList = [
     templateID: 13,
     name: 'Right Tail light',
     description: 'Remove and replace right tail light bulb',
-    description: 'description for this canned service',
+    description: 'description for this canned service 12',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 0.3,
     averageTime: 0.4,
@@ -1352,7 +1352,7 @@ const serviceList = [
     name: 'Replace leaking power steering pressure line',
     description:
       'Remove power steering pump to can access to power steering pressure line.  Remove and replace line.  Reinstall power steering pump and install new fluid.   Road test and verify repair',
-    description: 'description for this canned service',
+    description: 'description for this service 13',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 2.5,
     averageTime: 3.2,
@@ -1405,7 +1405,7 @@ const serviceList = [
     templateID: 19,
     name: 'Replace front brake pads, rotors and Brake calipers',
     description: 'Remove and replace front brake pads, rotors, and brake calipers.  Bleed air from brake hydraulic system.',
-    description: 'description for this canned service',
+    description: 'description for canned service 15',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 2,
     averageTime: 1.2,
@@ -1481,7 +1481,7 @@ const serviceList = [
     name: 'Replace exhaust pipes and muffler',
     description:
       'The muffler is rotten causing tail pipe to be loose. The front exhaust pipe has a crack right after the Y-pipe - Remove and replace the exhaust from the Y-pipe back',
-    description: 'description for this canned service',
+    description: 'description for this canned service 25',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 2,
     averageTime: 2.2,
@@ -1557,7 +1557,7 @@ const serviceList = [
     name: 'Inspect entire vehicle condition',
     description:
       'Overall vehicle condition inspection.   We do this inspection so we are able to give you an exact cost of all repairs needed to get your vehicle in like new condition.   We will also prioritize and give you a time frame on when each of the repairs need to be done.',
-    description: 'description for this canned service',
+    description: 'description for this canned service 27',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 1.5,
     averageTime: 2.2,
@@ -1576,7 +1576,7 @@ const serviceList = [
     templateID: 28,
     name: 'Replace engine oil and filter, inspect vehicle',
     description: 'Maintenance service/Change engine oil and filter.  Reset oil life indicator if equipped - car/minivan/SUV',
-    description: 'description for this canned service',
+    description: 'description for this canned service 28',
     hours: 1.2, // REMOVE / old value
     estimatedTime: 0.7,
     averageTime: 2.2,

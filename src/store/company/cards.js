@@ -104,6 +104,10 @@ export default {
           c.status = 'Recommended'
         }
       })
+    },
+    updateCard(state, card) {
+      const cardIdx = state.cards.findIndex(c => c.id === card.id)
+      state.cards.splice(cardIdx, 1, card)
     }
   },
   actions: {
