@@ -130,7 +130,8 @@ export default {
         },
         startsAt: this.order?.timeComing || '',
         endsAt: this.order?.timePromised || '',
-        logicalStatus: 'Not Started'
+        logicalStatus: 'Not Started',
+        customerCards: this.cards
       }
       this.addNewWorkOrder(formattedOrderToSave)
     },

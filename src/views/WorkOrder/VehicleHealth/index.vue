@@ -1,7 +1,7 @@
 <template>
   <div class="page-inner" :class="{requests: showRequests}">
     <div v-if="showRequests" class="requests__wrapper">
-      <Request v-for="request of requests" :key="request.id" :request="request" />
+      <Request v-for="request of requests" :key="request.id" :request="request" :isViewOnlyMode="isViewOnlyMode"/>
     </div>
     <div class="health__wrapper">
       <div class="health__header">
@@ -50,7 +50,7 @@
             </template>
           </Filter>
           <Input :modelValue="searchValue" size="medium" icon-left="i-search1" placeholder="Start typing to search card" @input="changeSearch" />
-          <Button label="Add Card from Library" icon="i-add_circle" @click="addCard" :disabled="!isStart" />
+          <Button label="Add Card from Library" icon="i-add_circle" @click="addCard" :disabled="!isStart || isViewOnlyMode" />
         </div>
         <div v-if="activeFilters.length" class="chip__wrapper">
           <div v-for="chip of activeFilters" :key="chip.id" class="chip" :class="statusClass(chip.name, chip.type)">
@@ -65,7 +65,7 @@
       </div>
       <div class="health__table table">
         <div class="table__header" :class="{'-check': isStart}">
-          <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart}" @click="selectAll" />
+          <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart || isViewOnlyMode}" @click="selectAll" />
           <div class="table__header-cell">Card status</div>
           <div class="table__header-cell">Card name</div>
           <div class="table__header-cell">Approval Status</div>
@@ -77,7 +77,7 @@
             <Label label="Completed" size="small" class="card__label" />
             <div class="card__title">Initial Walkaround</div>
           </div>
-          <Slot v-for="card of cards" :key="card.uid" :card="card" @click.self="openCard(card)" />
+          <Slot v-for="card of cards" :key="card.uid" :card="card" :isViewOnlyMode="isViewOnlyMode" @click.self="openCard(card)" />
         </div>
       </div>
     </div>
@@ -173,7 +173,6 @@ export default {
     this.activeFilters = this.filterParams || []
     await this.fetch()
     await this.fetchRequests()
-    if (this.$route.params.uid === 'tech-flow') this.changeStatusInTechFlow()
     if (this.$route.params.uid === 'tech-start') {
       this.changeStatusInTechStart()
       const activeFilters = [
@@ -200,20 +199,38 @@ export default {
       this.changeRequestStatusInTechStart()
     }
   },
-  beforeUnmount() {
+    beforeMount() {
+        if(this.$route.params.uid === 'new') {
+            this.changeStatusInTechFlow()
+        }
+    },
+    beforeUnmount() {
     this.setFilter([])
   },
   computed: {
     ...mapState({
-      cards: s => s.company.cards.cards,
+      localCards: s => s.company.cards.cards,
       searchValue: s => s.company.cards.searchValue,
       sortType: s => s.company.cards.sortType,
       filterParams: s => s.company.cards.filterParams,
       isStart: s => s.workOrder.isStart,
       initialWalkaround: s => s.workOrder.initialWalkaround,
-      requests: s => s.requests.requests,
+      localRequests: s => s.requests.requests,
       order: s => s.workOrder.workOrder
     }),
+      requests() {
+          return this.order.customerRequests && this.order.customerRequests.length > 0 ?
+              this.order.customerRequests : []
+      },
+      cards() {
+      return this.order.cards && this.order.cards.length > 0 ? this.order.cards : this.localCards
+      },
+      isViewOnlyMode() {
+        if(this.order.uid) {
+            return this.$route.params.uid === this.order.uid
+        }
+        return false
+      },
     selectedCards() {
       return this.cards.filter(c => c.select)
     }

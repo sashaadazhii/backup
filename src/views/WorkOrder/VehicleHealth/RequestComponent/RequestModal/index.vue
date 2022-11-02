@@ -26,10 +26,10 @@
         </div>
         <Button icon="i-circle_close" border circle iconSize="20px" size="small" @click="close" />
       </div>
-      <div class="modal__body body">
+      <div class="modal__body body" >
         <div class="body__header">
           <div class="body__title">
-            <i class="i-device_hub blue" />
+            <i v-if="isStart" class="i-device_hub blue" />
             <div class="body__text">{{ request.notes }}</div>
           </div>
           <div class="body__status">
@@ -55,8 +55,8 @@
         <div class="body__footer footer">
           <!-- :modelValue="searchParams" -->
           <!-- @update:modelValue="searchVendors" -->
-          <Input v-model="search" placeholder="Search by card to add" iconLeft="i-search1" type="search" theme="white" />
-          <div class="footer__cards cards">
+          <Input v-if="isStart" v-model="search" placeholder="Search by card to add" iconLeft="i-search1" type="search" theme="white" />
+          <div class="footer__cards cards" v-if="isStart">
             <div class="cards__title">
               <span>ALL CARDS RELATED</span>
               <div v-if="isStart" class="cards__btn" @click="open">

@@ -84,8 +84,7 @@ export default {
     changeApprovalStatusInTechFlow(state) {
       state.cards.forEach((c, idx) => {
         c.approvalStatus = 'No Status'
-        if (idx === 1) c.approvalStatus = 'Approved For Next Visit'
-        if (idx === 3) c.approvalStatus = 'Approved By SA'
+        c.status = 'No Status'
       })
     },
     changeApprovalStatusInTechStart(state) {
