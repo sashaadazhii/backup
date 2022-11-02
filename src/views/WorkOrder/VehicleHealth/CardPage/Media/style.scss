@@ -43,9 +43,10 @@
     grid-template-columns: repeat(4, 1fr);
     column-gap: 10px;
     padding-bottom: 30px;
+    overflow: hidden;
   }
   &__img {
-    height: 200px;
+    height: 160px;
     border-radius: 10px;
     position: relative;
     overflow: hidden;

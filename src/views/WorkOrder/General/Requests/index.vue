@@ -123,7 +123,6 @@ export default {
       this.display = false
       this.requests = this.localRequests
       this.request = true
-      console.log(this.requests)
       this.change({customerRequests: this.requests})
     },
     // TODO: Field Number Component

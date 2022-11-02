@@ -44,6 +44,7 @@ const cardsList = cards.data
       status: 'No Status',
       service: getRandom(0, 101),
       approvalStatus: approvalStatuses[getRandom(0, 0)],
+      advisorApprove: false,
       techNotes: `Technician is writing a bunch of notes right here. Technician is writing a bunch of notes right here.Technician is writing a bunch of notes right here.`,
       techs: [
         {
@@ -55,10 +56,52 @@ const cardsList = cards.data
       time: '00:00:24',
       description: 'The cabin air filter in a vehicle helps remove harmful pollutants, including pollen and dust, from the air you breathe within the car.',
       additional,
-      archive
+      archive,
+      partsForCustomer: null,
+      customPrice: null,
+      displayLabour: false,
+      displayFees: false
     }
   })
 
+const assets = [
+  {
+    id: '28904mnbr',
+    type: 'image',
+    src: 'img0.jpg'
+  },
+  {
+    id: '289043r',
+    type: 'image',
+    src: 'img1.png'
+  },
+  {
+    id: '389srqq43r',
+    type: 'image',
+    src: 'img2.png'
+  },
+
+  {
+    id: '389sr95q43r',
+    type: 'image',
+    src: 'img3.png'
+  },
+  {
+    id: '389srvcqq43r',
+    type: 'image',
+    src: 'img4.jpeg'
+  },
+  {
+    id: '38569srqq43r',
+    type: 'image',
+    src: 'img5.png'
+  },
+  {
+    id: '12r43r2',
+    type: 'video',
+    src: `video1.mp4`
+  }
+]
 // const cardsList = [
 //   {
 //     uid: '33d68e8e-34cf-42d8-837a-fa7914acd8ce',
@@ -134,4 +177,4 @@ const cardsList = cards.data
 //   }
 // ]
 
-export {cardsList}
+export {cardsList, assets}

@@ -73,6 +73,7 @@ export default {
       order: s => s.workOrder.workOrder,
       isStart: s => s.workOrder.isStart
     }),
+
     chooseServices() {
       return this.allServices.filter(s => s.select)
     },

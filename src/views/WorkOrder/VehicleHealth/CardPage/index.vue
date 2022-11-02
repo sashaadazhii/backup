@@ -101,6 +101,7 @@
                 <span>Tech's Notes</span>
               </div>
               <textarea v-model="card.techNotes" ref="textarea" placeholder="Start typing here..." class="request__textarea" :disabled="!isStart"></textarea>
+              <!-- <textarea v-model="notes" ref="textarea" placeholder="Start typing here..." class="request__textarea" :disabled="!isStart"></textarea> -->
             </div>
             <div v-if="card.additional" class="request__dropdowns">
               <Additional />
@@ -182,7 +183,7 @@ export default {
       else this.block = 'General'
     },
     notes: function () {
-      this.$refs.textarea.style.height = '80px'
+      this.$refs.textarea.style.height = '100px'
       this.$nextTick(() => {
         this.$refs.textarea.style.height = this.$refs.textarea.scrollHeight + 'px'
       })
