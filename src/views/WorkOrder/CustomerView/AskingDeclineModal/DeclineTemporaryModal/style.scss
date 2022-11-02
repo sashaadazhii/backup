@@ -1,0 +1,26 @@
+@import 'src/assets/styles/_variables.scss';
+
+::v-deep(.vfm__content) {
+  width: calc(100% - 32px);
+  border-radius: 20px;
+  box-shadow: 0px 4px 84px rgba(99, 99, 112, 0.16);
+}
+
+.modal {
+  padding: 30px 40px 16px;
+  background: $color-white;
+  box-shadow: 0px 4px 84px rgba(99, 99, 112, 0.16);
+  border-radius: 20px;
+  text-align: center;
+  i {
+    font-size: 70px;
+    color: $color-bluegreen;
+  }
+  &__title {
+    padding: 30px 0 12px;
+    @include font(18px, $color-grey-space, 600);
+  }
+  &__text {
+    @include font(15px, $color-grey, 500, 1.5);
+  }
+}

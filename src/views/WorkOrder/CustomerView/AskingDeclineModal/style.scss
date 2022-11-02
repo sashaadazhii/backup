@@ -1,0 +1,82 @@
+@import 'src/assets/styles/_variables.scss';
+
+::v-deep(.vfm__content) {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px 20px 0px 0px;
+  box-shadow: 0px 4px 84px rgba(99, 99, 112, 0.16);
+}
+
+.modal {
+  height: 370px;
+  padding: 30px 16px 16px;
+  background: $color-white;
+  box-shadow: 0px 4px 84px rgba(99, 99, 112, 0.16);
+  text-align: center;
+  &__icon {
+    i {
+      font-size: 70px;
+      color: $color-violet;
+    }
+  }
+  &__title {
+    padding: 30px 0 12px;
+    @include font(18px, $color-grey-space, 600);
+  }
+  &__text {
+    @include font(15px, $color-grey, 500, 1.5);
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-top: 20px;
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 4px;
+    gap: 16px;
+    background: $color-red-blush;
+    @include border(12px, $color-red);
+    @include font(14px, $color-grey-space, 600);
+
+    &-icon {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      background: $color-red-pink;
+      border-radius: 8px;
+      i {
+        font-size: 16px;
+        color: $color-red;
+      }
+    }
+  }
+  .blue {
+    border-color: $color-bluegreen;
+    background: transparent;
+    .modal__btn-icon {
+      background: rgba($color-bluegreen, 0.1);
+
+      i {
+        color: $color-bluegreen;
+      }
+    }
+  }
+  .green {
+    border-color: $color-green;
+    background: transparent;
+    .modal__btn-icon {
+      background: rgba($color-green, 0.1);
+
+      i {
+        color: $color-green;
+      }
+    }
+  }
+}
