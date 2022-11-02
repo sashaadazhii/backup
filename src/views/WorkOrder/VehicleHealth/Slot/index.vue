@@ -1,6 +1,6 @@
 <template>
-  <div class="card__wrapper" :class="{'-check': isStart}">
-    <div class="y-check" :class="{'-active': card.select, '-hide': !isStart}" @click="select(card.id)" />
+  <div class="card__wrapper flex-column" :class="{'-check': isStart}">
+    <div class="y-check" :class="{'-active': card.select, '-hide': isViewOnlyMode || !isStart }" @click="select(card.id)" />
     <div class="card__menu">
       <Menu :list="statusesChange" position="left" :disabled="!isStart">
         <template #menu>
@@ -61,7 +61,11 @@ export default {
     card: {
       type: Object,
       required: true
-    }
+    },
+      isViewOnlyMode: {
+        type: Boolean,
+          default: false
+      }
   },
   components: {Label, Menu},
   data() {
