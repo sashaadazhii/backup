@@ -501,11 +501,10 @@
 .y-dropdown.--theme-border-blue {
   .y-dropdown {
     &-inner {
-      border-color: #2c9aff;
+      border-color: $color-blue;
     }
     &-title {
-      color: #2c9aff;
-      //$color-blue-secondary: #2c9aff;
+      color: $color-blue;
     }
   }
 }

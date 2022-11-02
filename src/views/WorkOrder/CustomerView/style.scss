@@ -1,0 +1,137 @@
+@import 'src/assets/styles/_variables.scss';
+.checkout {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: $color-grey-smoke;
+  &-wrapper {
+    background-color: $color-white;
+  }
+}
+.inspections {
+  height: inherit;
+  overflow: hidden;
+
+  &__wrapper {
+    height: inherit;
+    overflow-y: auto;
+    background: $color-grey-smoke;
+    @include hideScrollbar();
+    border-left: 1px solid $color-grey-smoke;
+    border-right: 1px solid $color-grey-smoke;
+  }
+}
+.header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 440px;
+  padding: 16px;
+  background: $color-white;
+  border-radius: 0px 0px 20px 20px;
+  text-align: center;
+  z-index: 101;
+  &__title {
+    @include font(14px, $color-grey-space, 700);
+  }
+
+  &__link {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    background: $color-grey-smoke;
+    border-radius: 8px;
+    i {
+      font-size: 20px;
+      color: $color-grey-space;
+    }
+  }
+}
+.message {
+  padding: 20px;
+  background: $color-grey-dark;
+  border-radius: 0 16px 16px 16px;
+
+  &__wrapper {
+    padding: 78px 16px 16px;
+    background-color: $color-white;
+  }
+  &__icon {
+    margin-bottom: 12px;
+    i {
+      font-size: 30px;
+      color: $color-green;
+    }
+  }
+  &__title {
+    @include font(20px, $color-white, 600);
+  }
+  &__subtitle {
+    padding: 10px 0;
+    @include font(16px, $color-white, 600);
+  }
+  &__text {
+    @include font(14px, $color-white, 500, 1.5);
+  }
+}
+.cards {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+.card {
+  padding: 12px;
+  background: $color-white;
+  box-shadow: 0px 3px 0px rgba(48, 50, 73, 0.05);
+  border-radius: 16px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: $color-grey-smoke;
+    @include border(8px);
+  }
+  &__title {
+    @include font(16px, $color-grey-space, 600);
+  }
+  &__subtitle {
+    @include font(14px, $color-grey-space, 600);
+  }
+  &__text {
+    padding: 4px 0 12px;
+    @include font(14px, $color-grey, 500, 1.5);
+    &--thin {
+      padding: 0;
+    }
+  }
+  &__footer {
+    margin-top: 16px;
+
+    &-button {
+    }
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px;
+    @include border(8px);
+    @include font(12px, $color-grey-space, 600);
+    box-shadow: 0px 3px 0px rgba(48, 50, 73, 0.05);
+    & > i {
+      font-size: 16px;
+      color: $color-green;
+    }
+  }
+}
