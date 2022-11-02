@@ -89,7 +89,6 @@ export default {
     },
     async beforeOpen(e) {
       this.id = e.ref.params._value
-      console.log(this.id)
       await this.findCard(this.id)
       await this.fetch(this.card.workOrderID)
     },

@@ -10,7 +10,7 @@
         <div v-if="assets.length" class="slider__wrapper slider">
           <div class="slider__view">
             <div v-if="showControls && selectedMedia.type === 'video'" class="slider__controls">
-              <span @click="play"><i class="i-play" /></span>
+              <span @click="play"></span>
             </div>
             <video
               v-if="selectedMedia.type === 'video'"
@@ -41,16 +41,57 @@
           </div>
           <div class="card__main"></div>
           <div class="card__title">{{ card.name }}</div>
+          <div class="card__widgets">
+            <div class="card__widget">
+              <div class="card__widget-top">
+                <div class="card__widget-icon"></div>
+                <div class="card__widget-title">Concern (Customer Request):</div>
+              </div>
+              <div class="card__widget-bottom">
+                <div class="card__widget-text">Customer can hear noise while breaking.</div>
+              </div>
+            </div>
+            <div class="card__widget">
+              <div class="card__widget-top">
+                <div class="card__widget-icon orange"></div>
+                <div class="card__widget-title">Cause:</div>
+              </div>
+              <div class="card__widget-bottom">
+                <div class="card__widget-text">Customer can hear noise while breaking.</div>
+              </div>
+            </div>
+            <div class="card__widget">
+              <div class="card__widget-top">
+                <div class="card__widget-icon green"></div>
+                <div class="card__widget-title">Solution:</div>
+              </div>
+              <div class="card__widget-bottom">
+                <div class="card__widget-text">Service descirption</div>
+              </div>
+            </div>
+          </div>
           <div class="list__wrap">
-            <!-- {{ parts }} -->
             <ul class="card__list list">
               <li v-for="part in parts" :key="part.id" class="list__item">
                 <div class="list__icon"><i class="i-build" /></div>
                 <div class="list__info">
-                  <div class="list__text">{{ part.title }}</div>
                   <div class="list__desc">{{ part.description }}</div>
                 </div>
                 <div class="list__text amount">{{ formatter(part.price) }}</div>
+              </li>
+              <li class="list__item">
+                <div class="list__icon blue"><i class="i-monetization_on" /></div>
+                <div class="list__info">
+                  <div class="list__desc">Service Name</div>
+                </div>
+                <div class="list__text amount">$52.25</div>
+              </li>
+              <li class="list__item">
+                <div class="list__icon violet"><i class="i-monetization_on" /></div>
+                <div class="list__info">
+                  <div class="list__desc">Labour Name</div>
+                </div>
+                <div class="list__text amount">$52.25</div>
               </li>
             </ul>
             <div class="card__accent">

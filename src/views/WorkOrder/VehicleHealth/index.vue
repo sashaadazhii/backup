@@ -149,6 +149,10 @@ export default {
     const uid = this.$route.params.uid
     if (uid !== 'new') this.showRequests = true
     if (!this.showRequests) this.startOrder(true)
+
+    await this.findOrder(uid)
+    // this.cards = this.order.cards
+
     const statusList = {
       name: 'Card Status',
       id: this.$getID(),
@@ -235,6 +239,7 @@ export default {
   methods: {
     ...mapActions({
       fetch: 'company/cards/fetch',
+      findOrder: 'workOrder/find',
       fetchRequests: 'requests/fetch'
     }),
     ...mapMutations({

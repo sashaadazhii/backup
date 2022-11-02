@@ -110,12 +110,14 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba($color-grey-dark, 0.6);
     display: grid;
     place-items: center;
     z-index: 2;
     & > span {
-      font-size: 46px;
+      width: 46px;
+      height: 46px;
+      background: url('../../../../assets/icons/play.svg') 50% no-repeat;
+      background-size: contain;
       cursor: pointer;
     }
   }
@@ -240,12 +242,45 @@
       @include font(14px, $color-white, 600);
     }
   }
+  &__widget {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 16px 16px 0;
+    border-bottom: 1px solid $color-grey-flash;
+
+    &:last-child {
+      border-bottom: none;
+    }
+    &-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    &-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      background-color: $color-blue-secondary;
+      &.orange {
+        background-color: $color-orange;
+      }
+      &.green {
+        background-color: $color-green;
+      }
+    }
+    &-title {
+      @include font(14px, $color-grey-space, 600);
+    }
+    &-text {
+      @include font(14px, $color-grey-space, 500, 1.4);
+    }
+  }
 }
 .list {
   border-radius: 20px 20px 0px 0px;
   background-color: $color-white;
   &__wrap {
-    margin-top: 16px;
     @include border(16px);
   }
   &__icon {
@@ -258,6 +293,12 @@
     i {
       font-size: 16px;
       color: $color-grey;
+    }
+    &.blue i {
+      color: $color-blue-secondary;
+    }
+    &.violet i {
+      color: $color-violet;
     }
   }
   &__item {
