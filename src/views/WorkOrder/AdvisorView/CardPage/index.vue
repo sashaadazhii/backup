@@ -15,7 +15,7 @@
             size="small"
             icon="i-rp_done"
             circle
-            class="requests__label -shadow"
+            class="modal__label -shadow"
             :class="labelClass(card.approvalStatus)"
             iconSize="8px"
           />
@@ -233,11 +233,13 @@
               <div class="block__labels">
                 <div class="modal__label-wrap">
                   <div class="modal__label-title">Months:</div>
-                  <div class="modal__label blue">24 months</div>
+                  <!-- <div class="modal__label blue">24 months</div> -->
+                  <input v-model="warrantyMonths" class="modal__label blue" />
                 </div>
                 <div class="modal__label-wrap">
                   <div class="modal__label-title">KMs:</div>
-                  <div class="modal__label blue">20 000</div>
+                  <!-- <div class="modal__label blue">20 000</div> -->
+                  <input v-model="warrantyKm" v-maska="{mask: 'HHHHHHH', tokens: {H: {pattern: /[0-9.]/}}}" class="modal__label blue" />
                 </div>
               </div>
             </div>
@@ -285,8 +287,16 @@
             </div>
             <Button label="Mark as Ready for Customer" size="large" @click="approve" :disabled="cause.length <= 10 || !solutionList.length" />
           </div>
-          <div v-if="card.additional" class="sidebar__dropdowns">
-            <Additional />
+          <div class="sidebar__bottom">
+            <div class="sidebar__notes">
+              <div class="sidebar__notes-header">
+                <span>Tech's Notes</span>
+              </div>
+              <textarea v-model="card.techNotes" ref="textarea" placeholder="Start typing here..." class="sidebar__textarea" :disabled="!isStart"></textarea>
+            </div>
+            <div v-if="card.additional" class="sidebar__dropdowns">
+              <Additional />
+            </div>
           </div>
         </div>
       </div>
@@ -331,7 +341,7 @@ export default {
       ],
       request: 'Customer request connected with card here',
       // request: null,
-      notes: 'The cabin air filter in a vehicle helps remove harmful pollutants, including pollen and dust, from the air you breathe within the car.',
+      // notes: 'The cabin air filter in a vehicle helps remove harmful pollutants, including pollen and dust, from the air you breathe within the car.',
       brakePads: ['5mm', '5.5mm', '6mm', '6.5mm', '7mm', '7.5mm'],
       brakePadLeft: '5mm',
       brakePadLRight: '5mm',
@@ -403,7 +413,9 @@ export default {
         {id: '02', name: 'shop Rate', description: 'Labour 2 description', price: 70, quantity: 1}
       ],
       showBlock: true,
-      isNew: false
+      isNew: false,
+      warrantyMonths: '24 month',
+      warrantyKm: 20000
     }
   },
   async created() {
@@ -432,12 +444,21 @@ export default {
     },
     solutionList() {
       return this.services.map(s => s.description)
+    },
+    notes() {
+      return this.card.techNotes
     }
   },
   watch: {
     activeService(s) {
       if (s.id) this.block = 'Service'
       else this.block = 'General'
+    },
+    notes: function () {
+      this.$refs.textarea.style.height = '80px'
+      this.$nextTick(() => {
+        this.$refs.textarea.style.height = this.$refs.textarea.scrollHeight + 'px'
+      })
     }
   },
   methods: {
@@ -467,6 +488,7 @@ export default {
       this.card.advisorApprove = true
       this.updateCard(this.card)
       this.$vfm.hide('AdvisorCardPage')
+      this.$router.push(`/customer-view/${this.uid}`)
     },
     play() {
       this.$refs.video.play()

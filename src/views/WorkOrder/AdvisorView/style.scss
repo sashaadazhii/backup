@@ -1,6 +1,19 @@
 @import 'src/assets/styles/_variables.scss';
 .page-inner {
   height: 100%;
+  &.requests {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+  }
+}
+.requests {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    overflow: auto;
+    @include hideScrollbar;
+  }
 }
 .health {
   &__wrapper {
@@ -36,7 +49,7 @@
 .table {
   &__header {
     display: grid;
-    grid-template-columns: 140px minmax(250px, 500px) 200px 200px 300px 24px;
+    grid-template-columns: 140px minmax(280px, 400px) 90px 100px 300px 24px;
     column-gap: 14px;
     align-items: center;
     padding: 14px 16px;

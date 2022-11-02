@@ -101,6 +101,7 @@
                 <span>Tech's Notes</span>
               </div>
               <textarea v-model="card.techNotes" ref="textarea" placeholder="Start typing here..." class="request__textarea" :disabled="!isStart"></textarea>
+              <!-- <textarea v-model="notes" ref="textarea" placeholder="Start typing here..." class="request__textarea" :disabled="!isStart"></textarea> -->
             </div>
             <div v-if="card.additional" class="request__dropdowns">
               <Additional />

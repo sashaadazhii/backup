@@ -1,5 +1,9 @@
 <template>
-  <div class="page-inner">
+  <div class="page-inner" :class="{requests: requests.length}">
+    <!-- TODO: replace with actual requsrs -->
+    <div v-if="requests && requests.length" class="requests__wrapper">
+      <Request v-for="request of requests" :key="request.id" :request="request" />
+    </div>
     <div class="health__wrapper">
       <div class="health__header">
         <Input :modelValue="searchValue" size="medium" icon-left="i-search1" placeholder="Start typing to search card" @input="changeSearch" />
@@ -32,19 +36,19 @@ import Label from '@/components/Yaro/Label'
 import Slot from './Slot'
 import AddCard from './AddCard'
 import CardPage from './CardPage'
+import Request from './RequestComponent'
 import {serviceList} from '@/store/data/cannedServices.js'
 import _ from 'lodash'
 
 export default {
   name: 'SAView',
-  components: {Button, Input, Slot},
+  components: {Button, Input, Slot, Request},
 
   data() {
     return {}
   },
   async created() {
     await this.fetch()
-    console.log(this.order)
   },
   mounted() {
     // console.log(this.order.cannedServices)
@@ -58,7 +62,8 @@ export default {
       cards: s => s.company.cards.cards,
       card: s => s.company.cards.card,
       searchValue: s => s.company.cards.searchValue,
-      isStart: s => s.workOrder.isStart
+      isStart: s => s.workOrder.isStart,
+      requests: s => s.requests.requests
     }),
     actualCards() {
       return this.cards.filter(c => c.status !== 'Good')

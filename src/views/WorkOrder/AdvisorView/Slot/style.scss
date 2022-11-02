@@ -3,10 +3,10 @@
 .card {
   &__wrapper {
     display: grid;
-    grid-template-columns: 140px minmax(280px, 500px) 150px 150px minmax(300px, 330px) 24px;
+    grid-template-columns: 140px minmax(280px, 400px) 90px 100px 300px 24px;
     column-gap: 14px;
     align-items: center;
-    justify-items: self-end;
+    justify-content: space-between;
     padding: 16px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
@@ -80,6 +80,12 @@
       &.-none {
         border-color: transparent;
         background-color: $color-grey-smoke;
+        color: $color-grey;
+      }
+      &.-dashed {
+        border-color: $color-grey-light;
+        border-style: dashed;
+        background-color: transparent;
         color: $color-grey;
       }
     }

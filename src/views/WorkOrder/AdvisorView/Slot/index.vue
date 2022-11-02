@@ -19,7 +19,7 @@
     </div>
     <div class="card__menu text">{{ formatter(parts.reduce((sum, current) => sum + current.price * current.quantity, 0)) }}</div>
     <div class="card__menu">
-      <Label :label="card.approvalStatus" size="small" circle class="card__label -shadow -hover" :class="labelClass(card.approvalStatus)" />
+      <Label :label="card.approvalStatus" size="small" circle class="card__label -shadow -hover -dashed" :class="labelClass(card.approvalStatus)" />
     </div>
     <div class="card__progress">
       <div class="card__progress-title">{{ card.service }}%</div>
