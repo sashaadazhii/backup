@@ -11,6 +11,7 @@
         :class="statusClass(order.logicalStatus)"
         :icon="statusIcon(order.logicalStatus)"
       />
+        
       <span v-if="!isNew">Work Order</span>
       <Label v-if="order.vehicleInShop" class="header__label" icon="i-directions_car" border iconSize="18px" size="large" />
       <Label v-if="order.talkSA" class="header__label" icon="i-help" border iconColor="#FF9B70" iconSize="18px" size="large" />

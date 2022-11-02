@@ -12,14 +12,16 @@
     </div>
     <div class="block__body">
       <div class="block__imgs">
-        <div v-for="(img, idx) of images" :key="idx" class="block__img">
-          <img :src="img" />
-          <div class="block__img-hover" @click="del(idx)">
+        <!-- <div v-for="(img, idx) of images" :key="idx" class="block__img">
+          <img :src="img" /> -->
+        <div v-for="asset of assets.slice(0, 4)" :key="asset.id" class="block__img">
+          <img v-if="asset.type === 'image'" :src="require(`@/assets/images/${asset.src}`)" :alt="asset.src" />
+          <!-- <div class="block__img-hover" @click="del(idx)">
             <div class="block__img-remove">
               <i class="i-delete_forever" />
               <span>Remove</span>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -27,7 +29,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 
 export default {
   name: 'CardPageMedia',
@@ -38,15 +40,22 @@ export default {
       images: []
     }
   },
+  async created() {
+    await this.fetchAssets()
+  },
   mounted() {
     this.drop()
   },
   computed: {
     ...mapState({
-      isStart: s => s.workOrder.isStart
+      isStart: s => s.workOrder.isStart,
+      assets: s => s.company.cards.assets //assets
     })
   },
   methods: {
+    ...mapActions({
+      fetchAssets: 'company/cards/fetchAssets'
+    }),
     drop() {
       const dropbox = document.getElementById('dropbox')
       const addFile = this.addFile
