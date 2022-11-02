@@ -114,7 +114,10 @@
           </div>
         </div>
         <div class="card__footer">
-          <div class="card__footer-buttons"></div>
+          <div class="card__footer-buttons">
+            <Button icon="i-circle_close" border grey @click="openDeclineModal" />
+            <Button label="Approve" @click="openApproveModal" />
+          </div>
         </div>
       </div>
     </div>
@@ -124,10 +127,13 @@
 <script>
 import {mapState, mapActions} from 'vuex'
 import Label from '@/components/Yaro/Label'
+import Button from '@/components/Yaro/Button'
+import AskingDeclineModal from '../AskingDeclineModal'
+import AskingApproveModal from '../AskingApproveModal'
 
 export default {
   name: 'CustomerCardPage',
-  components: {Label},
+  components: {Label, Button},
   data() {
     return {
       selectedMedia: {},
@@ -193,6 +199,28 @@ export default {
     },
     show(id) {
       if (this.selectedMedia.id === id) return true
+    },
+    openApproveModal() {
+      this.$vfm.show(
+        {
+          component: AskingApproveModal,
+          bind: {
+            name: 'AskingApproveModal'
+          }
+        },
+        this.card.id
+      )
+    },
+    openDeclineModal() {
+      this.$vfm.show(
+        {
+          component: AskingDeclineModal,
+          bind: {
+            name: 'AskingDeclineModal'
+          }
+        },
+        this.card.id
+      )
     }
   }
 }

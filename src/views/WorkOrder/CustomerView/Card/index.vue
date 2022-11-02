@@ -17,7 +17,10 @@
       </div>
     </div>
     <div class="card__footer">
-      <div v-if="card.status === 'Recommended'" class="card__footer-buttons"></div>
+      <div v-if="card.status === 'Recommended'" class="card__footer-buttons">
+        <Button icon="i-circle_close" border grey @click="openDeclineModal" />
+        <Button label="Approve" @click="openApproveModal" />
+      </div>
       <div v-else>
         <Label
           :label="card.approvalStatus"
@@ -36,6 +39,8 @@
 import {mapActions} from 'vuex'
 import Label from '@/components/Yaro/Label'
 import Button from '@/components/Yaro/Button'
+import AskingDeclineModal from '../AskingDeclineModal'
+import AskingApproveModal from '../AskingApproveModal'
 
 export default {
   name: 'WorkOrderCard',
@@ -73,6 +78,28 @@ export default {
     formatter(val) {
       const price = new Intl.NumberFormat('en-CA', {style: 'currency', currency: 'CAD'}).format(val)
       return price
+    },
+    openApproveModal() {
+      this.$vfm.show(
+        {
+          component: AskingApproveModal,
+          bind: {
+            name: 'AskingApproveModal'
+          }
+        },
+        this.card.id
+      )
+    },
+    openDeclineModal() {
+      this.$vfm.show(
+        {
+          component: AskingDeclineModal,
+          bind: {
+            name: 'AskingDeclineModal'
+          }
+        },
+        this.card.id
+      )
     }
   }
 }

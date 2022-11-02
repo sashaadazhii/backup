@@ -17,7 +17,6 @@ import {mapMutations, mapState} from 'vuex'
 import ConfirmModal from '@/components/Yaro/Dialog/Confirm'
 
 // import axios from 'axios'
-
 export default {
   components: {
     mainLayout,
