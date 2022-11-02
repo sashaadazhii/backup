@@ -146,13 +146,15 @@
                     <i class="i-keyboard_arrow_down" />
                   </div>
                 </div>
+                <!-- SHOW PARTS FOR CUSTOMER -->
                 <div v-if="showBlock" class="block__hidden">
                   <div
                     v-for="(option, idx) in customerOptions"
+                    :data-option="option"
                     :key="option"
                     class="option"
                     :class="{active: idx === activeOptionIdx}"
-                    @click.stop="select(idx)"
+                    @click="select(idx, $event)"
                   >
                     <div class="option__left">
                       <div class="y-radio" :class="{active: idx === activeOptionIdx}" />
@@ -160,25 +162,23 @@
                     </div>
                     <div v-if="option === 'Display Total Price Only'" class="option__right">
                       <div class="option__text">Enter Total:</div>
-                      <input v-model="price" type="text" class="option__input" v-maska="{mask: 'HHHHHHHH', tokens: {H: {pattern: /[0-9.]/}}}" />
+                      <input v-model="card.customPrice" type="text" class="option__input" v-maska="{mask: 'HHHHHHHH', tokens: {H: {pattern: /[0-9.]/}}}" />
                     </div>
                   </div>
                   <div class="block__halfs">
                     <div class="block__half">
                       <div class="block__half-title">Display Labour</div>
-                      <Switch v-model="displayLabour" @click="displayLabour = !displayLabour" />
+                      <Switch v-model="card.displayLabour" @click="updateSwitch(card.displayLabour)" />
                     </div>
                     <div class="block__half">
                       <div class="block__half-title">Display Fees & Services</div>
-                      <Switch v-model="displayFees" @click="displayFees = !displayFees" />
+                      <Switch v-model="card.displayFees" @click="updateSwitch(card.displayFees)" />
                     </div>
                   </div>
                 </div>
               </div>
               <div class="parts">
                 <Part v-for="part in parts" :key="part.uid" :part="part" />
-                <ServiceSlot v-for="service in servicesFee" :key="service.id" :service="service" />
-                <LabourSlot v-for="labour in labours" :key="labour.id" :labour="labour" />
                 <NewPart v-if="isNew" @close="isNew = false" />
 
                 <div class="parts__buttons">
@@ -233,12 +233,10 @@
               <div class="block__labels">
                 <div class="modal__label-wrap">
                   <div class="modal__label-title">Months:</div>
-                  <!-- <div class="modal__label blue">24 months</div> -->
                   <input v-model="warrantyMonths" class="modal__label blue" />
                 </div>
                 <div class="modal__label-wrap">
                   <div class="modal__label-title">KMs:</div>
-                  <!-- <div class="modal__label blue">20 000</div> -->
                   <input v-model="warrantyKm" v-maska="{mask: 'HHHHHHH', tokens: {H: {pattern: /[0-9.]/}}}" class="modal__label blue" />
                 </div>
               </div>
@@ -312,15 +310,14 @@ import Multiselect from '@/components/Yaro/Multiselect'
 import Switch from '@/components/Yaro/Switch'
 import Dropdown from '@/components/Yaro/Dropdown'
 import Part from '../Part'
-import ServiceSlot from '../ServiceSlot'
-import LabourSlot from '../LabourSlot'
+
 import Additional from './Additional'
 import NewPart from '../NewPart'
 import {mapState, mapMutations, mapActions} from 'vuex'
 
 export default {
   name: 'AdvisorCardPage',
-  components: {Button, Label, Menu, Multiselect, Switch, Part, Dropdown, Additional, ServiceSlot, LabourSlot, NewPart},
+  components: {Button, Label, Menu, Multiselect, Switch, Part, Dropdown, Additional, NewPart},
   data() {
     return {
       block: 'General',
@@ -351,8 +348,6 @@ export default {
       customerOptions: ['Display Total Price Only', 'Display Total Price & Parts', 'Display Parts & Pricing'],
       activeOptionIdx: 0,
       actionsList: [],
-      displayLabour: false,
-      displayFees: false,
       denialMessages1: [
         'In case you decline this card your car is just not going to be able to ride.',
         'In case you decline this card your air filter will be broken.'
@@ -365,14 +360,6 @@ export default {
       denailMessage1: '',
       denailMessage2: '',
       cause: '',
-      servicesFee: [
-        {id: '01', name: 'Service 1', description: 'Service 1 description', price: 52.2, quantity: 2},
-        {id: '02', name: 'Service 2', description: 'Service 2 description', price: 20.5, quantity: 1}
-      ],
-      labours: [
-        {id: '01', name: 'Diagnostic Rate', description: 'Labour 1 description', price: 120, quantity: 2},
-        {id: '02', name: 'shop Rate', description: 'Labour 2 description', price: 70, quantity: 1}
-      ],
       showBlock: true,
       isNew: false,
       warrantyMonths: '24 month',
@@ -390,6 +377,8 @@ export default {
     })
     const [firstMedia] = this.assets
     this.selectMedia(firstMedia)
+
+    this.card.partsForCustomer = 'Display Total Price Only'
   },
   computed: {
     ...mapState({
@@ -456,6 +445,7 @@ export default {
     },
     approve() {
       this.card.advisorApprove = true
+      console.log(this.card)
       this.updateCard(this.card)
       this.$vfm.hide('AdvisorCardPage')
       this.$router.push(`/customer-view/${this.uid}`)
@@ -491,8 +481,17 @@ export default {
     back() {
       this.setActiveService({})
     },
-    select(i) {
+    select(i, e) {
       this.activeOptionIdx = i
+      this.card.partsForCustomer = e.target.dataset.option
+      if (!this.card.partsForCustomer) this.card.partsForCustomer = 'Display Total Price Only'
+      else this.card.customPrice = null
+      this.updateCard(this.card)
+    },
+    updateSwitch(param) {
+      param = !param
+
+      this.updateCard(this.card)
     },
     formatter(val) {
       const price = new Intl.NumberFormat('en-CA', {style: 'currency', currency: 'CAD'}).format(val)

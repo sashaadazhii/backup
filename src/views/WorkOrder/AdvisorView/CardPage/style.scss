@@ -512,7 +512,12 @@
   @include border(14px);
   background-color: $color-white;
   transition: 0.2s;
-  &__left,
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    pointer-events: none;
+  }
   &__right {
     display: flex;
     align-items: center;

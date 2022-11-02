@@ -2,7 +2,8 @@
   <div class="part__wrapper" :class="{'-select': part.select}">
     <div class="part__left">
       <div class="part__title">
-        <i class="i-build" />
+        <i v-if="part.isService || part.isLabour" class="i-monetization_on" :style="[part.isService ? 'color: #BA8AE7' : 'color: #2C9AFF']" />
+        <i v-else class="i-build" />
         <span> # {{ part.name }}</span>
       </div>
       <div class="part__subtitle">{{ part.description }}</div>

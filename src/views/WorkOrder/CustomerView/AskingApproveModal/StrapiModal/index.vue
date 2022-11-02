@@ -78,7 +78,7 @@ export default {
       getCardPrice: 'cards/getCardPrice'
     }),
     async approve() {
-      await this.update({id: this.card.id, workOrderID: this.card.workOrderID, params: {status: 'Done', approvedWith: 'Approved by You'}})
+      await this.update({id: this.card.id, workOrderID: this.card.workOrderID, params: {status: 'Done', approvalStatus: 'Approved by You'}})
       this.$vfm.hide('StrapiModal')
       this.$vfm.show({
         component: ApproveModal,

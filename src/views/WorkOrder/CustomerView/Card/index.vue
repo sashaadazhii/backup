@@ -23,7 +23,7 @@
       </div>
       <div v-else>
         <Label
-          :label="card.approvedWith"
+          :label="card.approvalStatus"
           :icon="card.status === 'Done' ? 'i-check_circle' : 'i-circle_close'"
           :color="card.status === 'Done' ? '#E7F8F2' : '#FEF2F2'"
           :style="card.status === 'Done' ? 'border-color : #9FE3CD' : 'border-color: #FAC9C9'"

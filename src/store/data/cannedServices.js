@@ -165,6 +165,8 @@ const serviceList = [
         quantity: 1,
         description: 'Front brake rotors',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -176,6 +178,8 @@ const serviceList = [
         quantity: 1,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'In-house',
         select: false
       },
@@ -187,8 +191,46 @@ const serviceList = [
         quantity: 31,
         description: 'Front brake rotors',
         core: 11,
+        isLabour: false,
+        isService: false,
         type: 'Manufacturers',
         select: false
+      },
+      {
+        id: 114,
+        serviceID: 5,
+        name: 'service brakes',
+        price: 20,
+        quantity: 4,
+        description: 'service name 1',
+        type: 'Manufacturers',
+        select: false,
+        isService: true,
+        isLabour: false
+      },
+      {
+        id: 115,
+        serviceID: 5,
+        name: 'service brakes',
+        price: 100,
+        quantity: 1,
+        description: 'service name 2',
+        type: 'Manufacturers',
+        select: false,
+        isService: true,
+        isLabour: false
+      },
+      {
+        id: 116,
+        serviceID: 5,
+        name: 'service brakes',
+        price: 50,
+        quantity: 2,
+        description: 'service name 3',
+        type: 'Manufacturers',
+        select: false,
+        isService: true,
+        isLabour: false
       }
     ]
   },
@@ -216,6 +258,8 @@ const serviceList = [
         quantity: 11,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -227,6 +271,8 @@ const serviceList = [
         quantity: 4,
         description: 'Front brake rotors',
         core: 3,
+        isLabour: false,
+        isService: false,
         type: 'In-house',
         select: false
       },
@@ -238,8 +284,22 @@ const serviceList = [
         quantity: 4,
         description: 'Front brake rotors',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'Manufacturers',
         select: false
+      },
+      {
+        id: 117,
+        serviceID: 5,
+        name: 'Labour title',
+        price: 50,
+        quantity: 2,
+        description: 'labour name 1',
+        type: 'Manufacturers',
+        select: false,
+        isService: false,
+        isLabour: true
       }
     ]
   },
@@ -268,8 +328,22 @@ const serviceList = [
         quantity: 3,
         description: 'Front brake rotors',
         core: 2,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
+      },
+      {
+        id: 118,
+        serviceID: 5,
+        name: 'Labour title',
+        price: 30,
+        quantity: 1,
+        description: 'labour name 2',
+        type: 'Manufacturers',
+        select: false,
+        isService: false,
+        isLabour: true
       }
     ]
   },
@@ -298,6 +372,34 @@ const serviceList = [
         quantity: 2,
         description: 'Front brake rotors',
         core: 1,
+        isLabour: false,
+        isService: false,
+        type: 'Warranty Claim',
+        select: false
+      },
+      {
+        id: 118,
+        serviceID: 8,
+        name: 'Labour Cabin Air filter',
+        price: 30,
+        quantity: 2,
+        description: 'Labour description',
+        core: 1,
+        isLabour: true,
+        isService: false,
+        type: 'Warranty Claim',
+        select: false
+      },
+      {
+        id: 119,
+        serviceID: 8,
+        name: 'Service Cabin Air filter',
+        price: 59.65,
+        quantity: 1,
+        description: 'Service description for filter',
+        core: 1,
+        isLabour: false,
+        isService: true,
         type: 'Warranty Claim',
         select: false
       }
@@ -330,6 +432,8 @@ const serviceList = [
         quantity: 3,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 4,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -341,17 +445,47 @@ const serviceList = [
         quantity: 7,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 5,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
       {
         id: 16,
         serviceID: 9,
-        name: 'Environmental  Charge',
+        name: 'Environmental Charge',
         price: 5.5,
         quantity: 2,
         description: 'Front brake rotors',
         core: 2,
+        isLabour: false,
+        isService: false,
+        type: 'Warranty Claim',
+        select: false
+      },
+      {
+        id: 119,
+        serviceID: 9,
+        name: 'Environmental Charge Labour',
+        price: 59,
+        quantity: 2,
+        description: 'Labour details',
+        core: 2,
+        isLabour: true,
+        isService: false,
+        type: 'Warranty Claim',
+        select: false
+      },
+      {
+        id: 120,
+        serviceID: 9,
+        name: 'Environmental Charge service',
+        price: 12,
+        quantity: 3,
+        description: 'Servide details',
+        core: 2,
+        isLabour: false,
+        isService: true,
         type: 'Warranty Claim',
         select: false
       }
@@ -384,6 +518,8 @@ const serviceList = [
         quantity: 1,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -395,6 +531,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -406,6 +544,34 @@ const serviceList = [
         quantity: 3,
         description: 'Front brake rotors',
         core: 4,
+        isLabour: false,
+        isService: false,
+        type: 'Warranty Claim',
+        select: false
+      },
+      {
+        id: 122,
+        serviceID: 10,
+        name: 'Environmental Charge',
+        price: 34,
+        quantity: 1,
+        description: 'Environmental Charge service 1',
+        core: 4,
+        isLabour: false,
+        isService: true,
+        type: 'Warranty Claim',
+        select: false
+      },
+      {
+        id: 122,
+        serviceID: 10,
+        name: 'Charge service',
+        price: 42,
+        quantity: 2,
+        description: 'Environmental Charge service 2',
+        core: 4,
+        isLabour: false,
+        isService: true,
         type: 'Warranty Claim',
         select: false
       }
@@ -438,6 +604,8 @@ const serviceList = [
         quantity: 1,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 10,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -449,6 +617,34 @@ const serviceList = [
         quantity: 1,
         description: 'Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs',
         core: 10,
+        isLabour: false,
+        isService: false,
+        type: 'Warranty Claim',
+        select: false
+      },
+      {
+        id: 123,
+        serviceID: 11,
+        name: 'Get kit',
+        price: 55,
+        quantity: 1,
+        description: 'kit description',
+        core: 10,
+        isLabour: true,
+        isService: false,
+        type: 'Warranty Claim',
+        select: false
+      },
+      {
+        id: 124,
+        serviceID: 11,
+        name: 'Get kit 2',
+        price: 17.8,
+        quantity: 2,
+        description: 'kit labour description 2',
+        core: 10,
+        isLabour: true,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -480,6 +676,8 @@ const serviceList = [
         quantity: 3,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 4,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -491,6 +689,8 @@ const serviceList = [
         quantity: 3,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 2,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -502,6 +702,8 @@ const serviceList = [
         quantity: 5,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 19,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -513,6 +715,34 @@ const serviceList = [
         quantity: 5,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 15,
+        isLabour: false,
+        isService: false,
+        type: 'Warranty Claim',
+        select: false
+      },
+      {
+        id: 125,
+        serviceID: 12,
+        name: 'Engine service ',
+        price: 70,
+        quantity: 5,
+        description: 'description service',
+        core: 15,
+        isLabour: false,
+        isService: true,
+        type: 'Warranty Claim',
+        select: false
+      },
+      {
+        id: 126,
+        serviceID: 12,
+        name: 'Engine service 2',
+        price: 15,
+        quantity: 3,
+        description: 'description service 2',
+        core: 15,
+        isLabour: false,
+        isService: true,
         type: 'Warranty Claim',
         select: false
       }
@@ -545,6 +775,8 @@ const serviceList = [
         quantity: 1,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 15,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -556,6 +788,8 @@ const serviceList = [
         quantity: 5,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 6,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -567,6 +801,8 @@ const serviceList = [
         quantity: 1,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 10,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -578,6 +814,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 5,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -589,6 +827,34 @@ const serviceList = [
         quantity: 6,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 9,
+        isLabour: false,
+        isService: false,
+        type: 'Warranty Claim',
+        select: false
+      },
+      {
+        id: 127,
+        serviceID: 13,
+        name: 'Enviromental Charge Sevice 1',
+        price: 20,
+        quantity: 6,
+        description: 'description sevice 1',
+        core: 9,
+        isLabour: false,
+        isService: true,
+        type: 'Warranty Claim',
+        select: false
+      },
+      {
+        id: 128,
+        serviceID: 13,
+        name: 'Enviromental Charge Labour 1',
+        price: 550,
+        quantity: 1,
+        description: 'description labour 1',
+        core: 9,
+        isLabour: true,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -621,6 +887,8 @@ const serviceList = [
         quantity: 1,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 14,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -632,6 +900,8 @@ const serviceList = [
         quantity: 21,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 3,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -664,6 +934,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 12,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -675,6 +947,8 @@ const serviceList = [
         quantity: 1,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 14,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -707,6 +981,8 @@ const serviceList = [
         quantity: 5,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 13,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -739,6 +1015,8 @@ const serviceList = [
         quantity: 10,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 7,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -770,6 +1048,8 @@ const serviceList = [
         quantity: 3,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 31,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -781,6 +1061,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 19,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -812,6 +1094,8 @@ const serviceList = [
         quantity: 10,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 4,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -843,6 +1127,8 @@ const serviceList = [
         quantity: 4,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 34,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -875,6 +1161,8 @@ const serviceList = [
         quantity: 34,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 13,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -886,6 +1174,8 @@ const serviceList = [
         quantity: 32,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 7,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -918,6 +1208,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 5,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -929,6 +1221,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 9,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -960,6 +1254,8 @@ const serviceList = [
         quantity: 4,
         description: 'Front brake rotors',
         core: 90,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -992,6 +1288,8 @@ const serviceList = [
         quantity: 8,
         description: 'Front brake rotors',
         core: 2,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1003,6 +1301,8 @@ const serviceList = [
         quantity: 14,
         description: 'Front brake rotors',
         core: 12,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1014,6 +1314,8 @@ const serviceList = [
         quantity: 3,
         description: 'Front brake rotors',
         core: 12,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -1045,6 +1347,8 @@ const serviceList = [
         quantity: 1,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1056,6 +1360,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 13,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1067,6 +1373,8 @@ const serviceList = [
         quantity: 6,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 7,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -1098,6 +1406,8 @@ const serviceList = [
         quantity: 1,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1109,6 +1419,8 @@ const serviceList = [
         quantity: 1,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1120,6 +1432,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -1151,6 +1465,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1162,6 +1478,8 @@ const serviceList = [
         quantity: 1,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1173,6 +1491,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 3,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1184,6 +1504,8 @@ const serviceList = [
         quantity: 12,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -1216,6 +1538,8 @@ const serviceList = [
         quantity: 3,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 4,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1227,6 +1551,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle ',
         core: 4,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -1255,6 +1581,8 @@ const serviceList = [
         serviceID: 29,
         name: '269-3916 front inner tie-rod',
         price: 115.94,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1266,6 +1594,8 @@ const serviceList = [
         quantity: 3,
         description: 'Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs',
         core: 4,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -1298,6 +1628,8 @@ const serviceList = [
         quantity: 3,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 4,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1309,6 +1641,8 @@ const serviceList = [
         quantity: 7,
         description: 'Brake cleaner, hardware, lubricants',
         core: 4,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -1340,6 +1674,8 @@ const serviceList = [
         quantity: 10,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 4,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -1369,6 +1705,8 @@ const serviceList = [
         serviceID: 32,
         name: 'Part: 20 ft 3/16 Brake line',
         price: 12.09,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         quantity: 20,
         select: false
@@ -1381,6 +1719,8 @@ const serviceList = [
         quantity: 4,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 7,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         quantity: 6,
         select: false
@@ -1393,6 +1733,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 7,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         quantity: 1,
         select: false
@@ -1425,6 +1767,8 @@ const serviceList = [
         quantity: 1,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 30.55,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1436,6 +1780,8 @@ const serviceList = [
         quantity: 2,
         description: 'per axle (Brake cleaner, hardware, lubricants, anti-squeal compound, roloc discs)',
         core: 30.55,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1447,6 +1793,8 @@ const serviceList = [
         core: 40.25,
         price: 123.45,
         quantity: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1458,6 +1806,8 @@ const serviceList = [
         core: 40.25,
         price: 123.45,
         quantity: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1469,6 +1819,8 @@ const serviceList = [
         core: 0,
         price: 19.09,
         quantity: 1,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -1501,6 +1853,8 @@ const serviceList = [
         core: 2,
         quantity: 1,
         price: 52,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1512,6 +1866,8 @@ const serviceList = [
         core: 1,
         quantity: 1,
         price: 43.63,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1523,6 +1879,8 @@ const serviceList = [
         core: 1,
         quantity: 2,
         price: 41.4,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1534,6 +1892,8 @@ const serviceList = [
         core: 2,
         quantity: 3,
         price: 131.67,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1545,6 +1905,8 @@ const serviceList = [
         core: 3,
         quantity: 3,
         price: 34.38,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -1596,6 +1958,8 @@ const serviceList = [
         core: 0,
         quantity: 1,
         price: 12.35,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1607,6 +1971,8 @@ const serviceList = [
         core: 0,
         quantity: 4.5,
         price: 15.95,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       },
@@ -1618,6 +1984,8 @@ const serviceList = [
         core: 0,
         quantity: 1,
         price: 4.5,
+        isLabour: false,
+        isService: false,
         type: 'Warranty Claim',
         select: false
       }
@@ -2192,6 +2560,8 @@ const historyList = [
     templateID: 1,
     name: 'Air Filter Service',
     date: '28 Jun 2022',
+    isLabour: false,
+    isService: false,
     type: 'Warranty Service',
     description:
       'Freeup, clean and lube sliders. Clean rust from brake rotors. This is done to extend the life of the brakes and extend your brake warranty to 3 years/60000km)'
@@ -2201,6 +2571,8 @@ const historyList = [
     templateID: 1,
     name: 'Air Filter Service',
     date: '28 Jun 2022',
+    isLabour: false,
+    isService: false,
     type: 'Warranty Service',
     description:
       'Freeup, clean and lube sliders. Clean rust from brake rotors. This is done to extend the life of the brakes and extend your brake warranty to 3 years/60000km)'
@@ -2210,6 +2582,8 @@ const historyList = [
     templateID: 1,
     name: 'Air Filter Service',
     date: '28 Jun 2022',
+    isLabour: false,
+    isService: false,
     type: 'Warranty Service',
     description:
       'Freeup, clean and lube sliders. Clean rust from brake rotors. This is done to extend the life of the brakes and extend your brake warranty to 3 years/60000km)'
