@@ -261,6 +261,7 @@
     }
     &.orange {
       border-color: $color-orange;
+      @include hideScrollbar();
     }
     &.green {
       height: auto;
@@ -381,14 +382,17 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba($color-grey-dark, 0.6);
     display: grid;
     place-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
     z-index: 2;
     & > span {
-      font-size: 46px;
+      width: 46px;
+      height: 46px;
+      background: url('../../../../assets/icons/play.svg') 50% no-repeat;
+      background-size: contain;
       cursor: pointer;
     }
   }
@@ -581,7 +585,7 @@
   }
   &__textarea {
     width: 100%;
-    min-height: 80px;
+    min-height: 100px;
     padding: 16px;
     resize: vertical;
     @include font(14px, $color-grey, 500, 1.4);

@@ -61,7 +61,7 @@
           <div v-if="assets.length" class="slider__wrapper slider">
             <div class="slider__view">
               <div v-if="showControls && selectedMedia.type === 'video'" class="slider__controls">
-                <span @click="play"><i class="i-play" /></span>
+                <span @click="play"></span>
               </div>
               <video
                 v-if="selectedMedia.type === 'video'"
@@ -107,7 +107,7 @@
               </div>
             </div>
             <div class="block__main">
-              <textarea v-model="cause" class="block__textarea orange"></textarea>
+              <textarea v-model="cause" ref="cause" class="block__textarea orange"></textarea>
             </div>
           </div>
           <div class="block">
@@ -341,7 +341,6 @@ export default {
       ],
       request: 'Customer request connected with card here',
       // request: null,
-      // notes: 'The cabin air filter in a vehicle helps remove harmful pollutants, including pollen and dust, from the air you breathe within the car.',
       brakePads: ['5mm', '5.5mm', '6mm', '6.5mm', '7mm', '7.5mm'],
       brakePadLeft: '5mm',
       brakePadLRight: '5mm',
@@ -349,44 +348,6 @@ export default {
       parts: [],
       selectedMedia: {},
       showControls: true,
-      assets: [
-        {
-          id: '28904mnbr',
-          type: 'image',
-          src: 'img0.jpg'
-        },
-        {
-          id: '289043r',
-          type: 'image',
-          src: 'img1.png'
-        },
-        {
-          id: '12r43r2',
-          type: 'video',
-          src: `video1.mp4`
-        },
-        {
-          id: '389srqq43r',
-          type: 'image',
-          src: 'img2.png'
-        },
-
-        {
-          id: '389sr95q43r',
-          type: 'image',
-          src: 'img3.png'
-        },
-        {
-          id: '389srvcqq43r',
-          type: 'image',
-          src: 'img4.jpeg'
-        },
-        {
-          id: '38569srqq43r',
-          type: 'image',
-          src: 'img5.png'
-        }
-      ],
       customerOptions: ['Display Total Price Only', 'Display Total Price & Parts', 'Display Parts & Pricing'],
       activeOptionIdx: 0,
       actionsList: [],
@@ -421,6 +382,7 @@ export default {
   async created() {
     const cardID = this.card.id
     await this.fetchServices(cardID)
+    await this.fetchAssets()
 
     this.services.forEach(c => {
       let part = c.parts
@@ -434,6 +396,7 @@ export default {
       techList: s => s.company.users.users.filter(u => u.role === 'technician'),
       card: s => s.company.cards.card,
       cards: s => s.company.cards.cards,
+      assets: s => s.company.cards.assets,
       isStart: s => s.workOrder.isStart,
       activeService: s => s.company.cannedServices.activeService,
       order: s => s.workOrder.workOrder,
@@ -455,9 +418,15 @@ export default {
       else this.block = 'General'
     },
     notes: function () {
-      this.$refs.textarea.style.height = '80px'
+      this.$refs.textarea.style.height = '100px'
       this.$nextTick(() => {
         this.$refs.textarea.style.height = this.$refs.textarea.scrollHeight + 'px'
+      })
+    },
+    cause: function () {
+      this.$refs.cause.style.height = '58px'
+      this.$nextTick(() => {
+        this.$refs.cause.style.height = this.$refs.cause.scrollHeight + 'px'
       })
     }
   },
@@ -466,7 +435,8 @@ export default {
       findRequest: 'requests/find',
       findOrder: 'workOrder/find',
       fetchServices: 'company/cannedServices/fetch',
-      fetch: 'company/parts/fetch'
+      fetch: 'company/parts/fetch',
+      fetchAssets: 'company/cards/fetchAssets'
     }),
     ...mapMutations({
       setCard: 'company/cards/changeCard',

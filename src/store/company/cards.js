@@ -1,4 +1,5 @@
 import {cardsList} from '../data/cards'
+import {assets as assetsList} from '../data/cards'
 
 export default {
   namespaced: true,
@@ -6,6 +7,7 @@ export default {
   state: {
     cards: [],
     card: {},
+    assets: [],
     searchValue: null,
     filterParams: null,
     sortType: 'Sort A-Z'
@@ -108,6 +110,9 @@ export default {
     updateCard(state, card) {
       const cardIdx = state.cards.findIndex(c => c.id === card.id)
       state.cards.splice(cardIdx, 1, card)
+    },
+    setAssets(state, assets) {
+      state.assets = assets
     }
   },
   actions: {
@@ -142,6 +147,14 @@ export default {
 
       try {
         commit('set', cards)
+      } catch (err) {
+        commit('setError', err, {root: true})
+        throw err
+      }
+    },
+    async fetchAssets({commit}) {
+      try {
+        commit('setAssets', assetsList)
       } catch (err) {
         commit('setError', err, {root: true})
         throw err

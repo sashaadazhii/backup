@@ -43,7 +43,6 @@
         <div v-if="!isStart" class="header__timer-start"><i class="i-play_circle_filled" /> <span>Start Work Order</span></div>
       </div>
       <div v-if="cardsApproved && isStart">
-        <!-- <router-link :to="`/work-order/${uid}/vehicle-health/checkout`"> -->
         <router-link :to="`/service-advisor/${uid}`">
           <Button label="Ready for Service Advisor Review" icon="i-check_circle" class="mint" color="#10B981" />
         </router-link>
@@ -96,7 +95,8 @@ export default {
   methods: {
     ...mapMutations({
       startOrder: 'workOrder/startOrder',
-      addNewWorkOrder: 'workOrder/addNewOrder'
+      addNewWorkOrder: 'workOrder/addNewOrder',
+      updateOrder: 'workOrder/updateOrder'
     }),
     ...mapActions({
       fetch: 'company/cards/fetch'
@@ -177,6 +177,7 @@ export default {
       this.isStart = !this.isStart
       this.startOrder(this.isStart)
       this.order.logicalStatus = 'Inspection'
+      this.updateOrder(this.order)
       if (this.isStart) this.open()
     },
     close() {

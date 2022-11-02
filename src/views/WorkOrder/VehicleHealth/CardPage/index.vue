@@ -183,7 +183,7 @@ export default {
       else this.block = 'General'
     },
     notes: function () {
-      this.$refs.textarea.style.height = '80px'
+      this.$refs.textarea.style.height = '100px'
       this.$nextTick(() => {
         this.$refs.textarea.style.height = this.$refs.textarea.scrollHeight + 'px'
       })

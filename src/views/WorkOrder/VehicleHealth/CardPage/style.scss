@@ -280,7 +280,7 @@
   }
   &__textarea {
     width: 100%;
-    min-height: 80px;
+    min-height: 100px;
     resize: vertical;
     @include font(14px, $color-grey, 500, 1.4);
     @include hideScrollbar;

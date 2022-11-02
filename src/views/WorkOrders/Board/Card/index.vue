@@ -4,8 +4,7 @@
       <Label
         :label="order.customStatus?.name || order.logicalStatus"
         size="small"
-        :color="order.customStatus?.color"
-        circle
+        :color="order.customStatus?.color || order.logicalStatus"
         :class="statusClass(order.logicalStatus)"
         :icon="statusIcon(order.logicalStatus)"
       />
@@ -120,7 +119,8 @@ export default {
       return {
         card__status: true,
         '-none': status === 'Not Scheduled',
-        '-grey': status === 'Not Started'
+        '-grey': status === 'Not Started',
+        '-orange': status === 'Inspection'
       }
     },
     statusIcon(status) {
