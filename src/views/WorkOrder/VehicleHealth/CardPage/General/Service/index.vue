@@ -1,39 +1,46 @@
 <template>
   <div class="service__wrapper" :class="[card.status !== 'Good' && card.status !== 'No Status' ? 'editable' : '']" @click="open">
-    <div v-if="isStart && card.status !== 'Good' && card.status !== 'No Status'" class="y-radio" @click.stop="choose" />
-    <div v-else></div>
-    <div class="service__name">
-      <div class="service__title">{{ service.name }}</div>
-      <div class="service__subtitle">{{ service.description }}</div>
+    <div class="service__top">
+      <div class="service__top-left">
+        <div class="service__name">
+          <div v-if="isStart && card.status !== 'Good' && card.status !== 'No Status'" class="y-radio" :class="{active: service.select}" @click.stop="choose" />
+          <div v-else></div>
+          <div class="service__title">{{ service.name }}</div>
+        </div>
+        <div class="service__subtitle">{{ service.description }}</div>
+      </div>
+      <div class="service__top-right">
+        <div @click.stop>
+          <Menu :list="actionsList">
+            <template #menu @click.stop>
+              <Button icon="i-more_horiz" border size="small" />
+            </template>
+          </Menu>
+        </div>
+      </div>
     </div>
-
-    <Label
-      :label="`${service.estimatedTime} hr`"
-      icon="i-time"
-      iconColor="#3EB3BB"
-      iconSize="18px"
-      size="large"
-      class="-grey"
-      color="#fff"
-      v-tooltip.bottom="'Estimated time'"
-    />
-    <Label
-      :label="`${service.averageTime} hr`"
-      icon="i-time orange"
-      iconSize="18px"
-      border
-      size="large"
-      class="-grey"
-      color="#fff"
-      v-tooltip.bottom="'Average time'"
-    />
-    <Label :label="`${service.used} times`" size="large" class="-grey -counter" color="#fff" v-tooltip.bottom="'Number of times used'" />
-    <div @click.stop>
-      <Menu :list="actionsList">
-        <template #menu @click.stop>
-          <Button icon="i-more_horiz" border size="small" />
-        </template>
-      </Menu>
+    <div class="service__bottom">
+      <Label
+        :label="`${service.estimatedTime} hr`"
+        icon="i-time"
+        iconColor="#3EB3BB"
+        iconSize="18px"
+        size="large"
+        class="-grey"
+        color="#fff"
+        v-tooltip.bottom="'Estimated time'"
+      />
+      <Label
+        :label="`${service.averageTime} hr`"
+        icon="i-time orange"
+        iconSize="18px"
+        border
+        size="large"
+        class="-grey"
+        color="#fff"
+        v-tooltip.bottom="'Average time'"
+      />
+      <Label :label="`${service.used} times`" size="large" class="-grey -counter" color="#fff" v-tooltip.bottom="'Number of times used'" />
     </div>
   </div>
 </template>
@@ -87,13 +94,16 @@ export default {
   methods: {
     ...mapMutations({
       setActive: 'company/cannedServices/setActiveService',
-      set: 'company/cannedServices/setService'
+      set: 'company/cannedServices/setService',
+      select: 'company/cannedServices/select'
     }),
 
     open() {
       this.setActive(this.service)
     },
     choose() {
+      const serviceID = this.service.id
+      this.select(serviceID)
       this.set(this.service)
       this.$emit('choose')
       this.$emit('unchoose')

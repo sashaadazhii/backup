@@ -37,6 +37,10 @@ export default {
       const serIdx = state.services.findIndex(ser => ser.id === service.id)
       state.services.splice(serIdx, 1, service)
     },
+    updateService(state, service) {
+      const serviceIdx = state.services.findIndex(s => s.id === service.id)
+      state.services.splice(serviceIdx, 1, service)
+    },
     remove(state, id) {
       state.services = state.services.filter(service => service.id !== id)
     },
