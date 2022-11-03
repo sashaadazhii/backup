@@ -17,7 +17,7 @@
       <div class="request__footer-desc">
         <div class="request__footer-time">
           <i class="i-time" />
-          <span>Est:</span>
+          <span>Time Allotted:</span>
           <span>{{ request.estimatedTime }}h</span>
         </div>
       </div>
@@ -38,10 +38,10 @@ export default {
       type: Object,
       required: true
     },
-      isViewOnlyMode: {
-        type: Boolean,
-        default: false
-      }
+    isViewOnlyMode: {
+      type: Boolean,
+      default: false
+    }
   },
   computed: {
     ...mapState({

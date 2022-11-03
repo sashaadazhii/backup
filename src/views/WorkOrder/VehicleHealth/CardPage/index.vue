@@ -92,7 +92,6 @@
                     <span>1h 20min</span>
                   </div>
                 </div>
-                <div class="tracker__progress"><span class="-green" /><span class="-green" /><span class="-green" /><span /><span /></div>
               </div>
             </div>
 
