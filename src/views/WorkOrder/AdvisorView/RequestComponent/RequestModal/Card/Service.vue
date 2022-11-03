@@ -27,7 +27,7 @@ export default {
   &__icon {
     width: 12px;
     height: 12px;
-    background: url('../../../../../../assets/icons/focus.svg') 50% no-repeat;
+    background: url('../../../../../../assets/icons/focus-green.svg') 50% no-repeat;
     background-size: contain;
   }
   &__title {

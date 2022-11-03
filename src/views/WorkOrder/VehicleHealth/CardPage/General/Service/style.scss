@@ -7,11 +7,15 @@
     display: grid;
     align-items: center;
     column-gap: 10px;
-    grid-template-columns: 20px auto 1fr repeat(3, auto) 32px;
-    padding: 10px;
+    grid-template-columns: 0px auto repeat(3, auto) 32px;
+    padding: 12px;
     &.active {
       background-color: $color-green-mint;
       border-color: $color-green;
+      grid-template-columns: 20px auto repeat(3, auto) 32px;
+    }
+    &.editable {
+      grid-template-columns: 20px auto repeat(3, auto) 32px;
     }
     & > span {
     }
@@ -45,6 +49,7 @@
   cursor: pointer;
   transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   position: relative;
+  align-self: start;
   &:hover {
     border-color: $color-green;
   }

@@ -26,7 +26,7 @@
         </div>
         <Button icon="i-circle_close" border circle iconSize="20px" size="small" @click="close" />
       </div>
-      <div class="modal__body body" >
+      <div class="modal__body body">
         <div class="body__header">
           <div class="body__title">
             <i v-if="isStart" class="i-device_hub blue" />
@@ -98,6 +98,10 @@ export default {
       search: ''
     }
   },
+  async created() {
+    const uid = this.$route.params.uid
+    await this.findOrder(uid)
+  },
   computed: {
     ...mapState({
       request: s => s.requests.request,
@@ -116,7 +120,9 @@ export default {
       return this.cardsList.filter(c => c.name.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()))
     },
     formattedCards() {
-      return this.cardsList.map(card => {
+      return this.order.customerCards.map(card => {
+        //return this.cardsList.map(card => {
+        console.log(card)
         return {
           ...card,
           services: serviceList.filter(s => s.templateID === card.id)
@@ -132,6 +138,9 @@ export default {
       // changeStatus: 'requests/changeStatus',
       changeStatus: 'workOrder/changeRequestStatus',
       changeCards: 'requests/changeCards'
+    }),
+    ...mapActions({
+      findOrder: 'workOrder/find'
     }),
 
     select(id) {

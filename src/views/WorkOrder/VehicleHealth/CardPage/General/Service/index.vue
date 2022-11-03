@@ -1,5 +1,6 @@
 <template>
-  <div class="service__wrapper" :class="{active: service.select}" @click="open">
+  <!-- <div class="service__wrapper" :class="{active: service.select}" @click="open"> -->
+  <div class="service__wrapper" :class="[{active: service.select}, [card.status !== 'Good' && card.status !== 'No Status' ? 'editable' : '']]" @click="open">
     <div v-if="isStart && card.status !== 'Good' && card.status !== 'No Status'" class="y-radio" :class="{active: service.select}" @click.stop="chose" />
     <div v-else></div>
     <div class="service__name">
@@ -7,7 +8,6 @@
       <div class="service__subtitle">{{ service.description }}</div>
     </div>
 
-    <Label :label="service.parts.length" circle class="-grey -counter" color="#fff" />
     <Label
       :label="`${service.estimatedTime} hr`"
       icon="i-time"

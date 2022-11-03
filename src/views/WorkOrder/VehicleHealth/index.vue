@@ -1,7 +1,7 @@
 <template>
   <div class="page-inner" :class="{requests: showRequests}">
     <div v-if="showRequests" class="requests__wrapper">
-      <Request v-for="request of requests" :key="request.id" :request="request" :isViewOnlyMode="isViewOnlyMode"/>
+      <Request v-for="request of requests" :key="request.id" :request="request" :isViewOnlyMode="isViewOnlyMode" />
     </div>
     <div class="health__wrapper">
       <div class="health__header">
@@ -65,7 +65,8 @@
       </div>
       <div class="health__table table">
         <div class="table__header" :class="{'-check': isStart}">
-          <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart || isViewOnlyMode}" @click="selectAll" />
+          <!-- <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart || isViewOnlyMode}" @click="selectAll" /> -->
+          <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart}" @click="selectAll" />
           <div class="table__header-cell">Card status</div>
           <div class="table__header-cell">Card name</div>
           <div class="table__header-cell">Approval Status</div>
@@ -199,12 +200,12 @@ export default {
       this.changeRequestStatusInTechStart()
     }
   },
-    beforeMount() {
-        if(this.$route.params.uid === 'new') {
-            this.changeStatusInTechFlow()
-        }
-    },
-    beforeUnmount() {
+  beforeMount() {
+    if (this.$route.params.uid === 'new') {
+      this.changeStatusInTechFlow()
+    }
+  },
+  beforeUnmount() {
     this.setFilter([])
   },
   computed: {
@@ -218,19 +219,18 @@ export default {
       localRequests: s => s.requests.requests,
       order: s => s.workOrder.workOrder
     }),
-      requests() {
-          return this.order.customerRequests && this.order.customerRequests.length > 0 ?
-              this.order.customerRequests : []
-      },
-      cards() {
+    requests() {
+      return this.order.customerRequests && this.order.customerRequests.length > 0 ? this.order.customerRequests : []
+    },
+    cards() {
       return this.order.cards && this.order.cards.length > 0 ? this.order.cards : this.localCards
-      },
-      isViewOnlyMode() {
-        if(this.order.uid) {
-            return this.$route.params.uid === this.order.uid
-        }
-        return false
-      },
+    },
+    isViewOnlyMode() {
+      if (this.order.uid) {
+        return this.$route.params.uid === this.order.uid
+      }
+      return false
+    },
     selectedCards() {
       return this.cards.filter(c => c.select)
     }
