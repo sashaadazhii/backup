@@ -1,6 +1,6 @@
 <template>
-  <div class="page-inner" :class="{requests: showRequests}">
-    <div v-if="showRequests" class="requests__wrapper">
+  <div class="page-inner" :class="{requests: showRequests && requests.length}">
+    <div v-if="showRequests && requests.length" class="requests__wrapper">
       <Request v-for="request of requests" :key="request.id" :request="request" :isViewOnlyMode="isViewOnlyMode" />
     </div>
     <div class="health__wrapper">
