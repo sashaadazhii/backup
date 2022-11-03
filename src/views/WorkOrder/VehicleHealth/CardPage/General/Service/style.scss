@@ -4,10 +4,10 @@
   &__wrapper {
     background-color: $color-white;
     @include border(16px, $color-grey-flash);
-    display: grid;
-    align-items: center;
-    column-gap: 10px;
-    grid-template-columns: 0px auto repeat(3, auto) 32px;
+    // display: grid;
+    // align-items: center;
+    // column-gap: 10px;
+    // grid-template-columns: 0px auto repeat(3, auto) 32px;
     padding: 12px;
     &.active {
       background-color: $color-green-mint;
@@ -19,6 +19,17 @@
     }
     & > span {
     }
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  &__bottom {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     & > .-grey {
       border-color: $color-grey-flash;
       color: $color-grey-space;
@@ -30,9 +41,8 @@
   }
   &__name {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-right: 10px;
+    align-items: center;
+    margin-bottom: 8px;
   }
   &__title {
     @include font(16px, $color-grey-space, 600);
@@ -45,6 +55,7 @@
 .y-radio {
   height: 16px;
   width: 16px;
+  margin-right: 12px;
   @include border(50%, $color-grey, 2px);
   cursor: pointer;
   transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
