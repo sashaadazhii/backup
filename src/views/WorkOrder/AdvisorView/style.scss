@@ -1,6 +1,11 @@
 @import 'src/assets/styles/_variables.scss';
 .page-inner {
   height: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+
   &.requests {
     display: grid;
     grid-template-columns: 1fr 4fr;

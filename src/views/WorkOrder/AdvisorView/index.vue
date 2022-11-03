@@ -1,6 +1,5 @@
 <template>
   <div class="page-inner" :class="{requests: requests.length}">
-    <!-- TODO: replace with actual requsrs -->
     <div v-if="requests && requests.length" class="requests__wrapper">
       <Request v-for="request of requests" :key="request.id" :request="request" />
     </div>
@@ -28,11 +27,8 @@
 
 <script>
 import {mapState, mapActions, mapMutations} from 'vuex'
-import Dropdown from '@/components/Yaro/Dropdown'
 import Button from '@/components/Yaro/Button'
 import Input from '@/components/Yaro/Input'
-import Filter from '@/components/Yaro/Filter'
-import Label from '@/components/Yaro/Label'
 import Slot from './Slot'
 import AddCard from './AddCard'
 import CardPage from './CardPage'
@@ -48,30 +44,30 @@ export default {
     return {}
   },
   async created() {
+    const uid = this.$route.params.uid
     await this.fetch()
+    await this.findOrder(uid)
   },
-  mounted() {
-    // console.log(this.order.cannedServices)
-    // console.log(this.order.cannedServices)
-    // let cannedServices = _.cloneDeep(this.order)
-    // console.log(cannedServices.cannedServices)
-  },
+
   computed: {
     ...mapState({
       order: s => s.workOrder.workOrder,
       cards: s => s.company.cards.cards,
       card: s => s.company.cards.card,
       searchValue: s => s.company.cards.searchValue,
-      isStart: s => s.workOrder.isStart,
-      requests: s => s.requests.requests
+      isStart: s => s.workOrder.isStart
     }),
     actualCards() {
       return this.cards.filter(c => c.status !== 'Good')
+    },
+    requests() {
+      return this.order.customerRequests && this.order.customerRequests.length > 0 ? this.order.customerRequests : []
     }
   },
   methods: {
     ...mapActions({
-      fetch: 'company/cards/fetch'
+      fetch: 'company/cards/fetch',
+      findOrder: 'workOrder/find'
     }),
     ...mapMutations({
       setSearch: 'company/cards/setSearch',
