@@ -131,7 +131,6 @@ import Label from '@/components/Yaro/Label'
 import Button from '@/components/Yaro/Button'
 import AskingDeclineModal from '../AskingDeclineModal'
 import AskingApproveModal from '../AskingApproveModal'
-import Part from './Part'
 
 export default {
   name: 'CustomerCardPage',

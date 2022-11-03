@@ -310,7 +310,6 @@ import Multiselect from '@/components/Yaro/Multiselect'
 import Switch from '@/components/Yaro/Switch'
 import Dropdown from '@/components/Yaro/Dropdown'
 import Part from '../Part'
-
 import Additional from './Additional'
 import NewPart from '../NewPart'
 import {mapState, mapMutations, mapActions} from 'vuex'
@@ -337,7 +336,6 @@ export default {
         {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
       ],
       request: 'Customer request connected with card here',
-      // request: null,
       brakePads: ['5mm', '5.5mm', '6mm', '6.5mm', '7mm', '7.5mm'],
       brakePadLeft: '5mm',
       brakePadLRight: '5mm',
@@ -487,6 +485,7 @@ export default {
       else this.card.customPrice = null
       this.updateCard(this.card)
     },
+
     updateSwitch(param) {
       param = !param
 

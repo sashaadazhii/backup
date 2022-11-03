@@ -2,30 +2,30 @@
   <div class="block__wrapper">
     <div class="block__body">
       <Tires v-if="card.name === 'Summer Tires' || card.name === 'Winter Tires'" />
-      <div v-if="chooseServices.length" class="block__services services">
+      <div v-if="service.id" class="block__services services">
         <div class="block__header">
           <div class="block__title">Choosen Canned Service</div>
-          <button v-if="(isStart || card.status !== 'No Status' || card.status !== 'Good') && !chooseServices.length" class="block__btn" @click="open">
+          <button v-if="(isStart || card.status !== 'No Status' || card.status !== 'Good') && !service.id" class="block__btn" @click="open">
             <i class="i-add_circle" /><span>Create New Canned Service</span>
           </button>
         </div>
-        <Service v-for="service of chooseServices" :key="service.id" :service="service" @unchoose="removeService(service)" />
+        <Service :service="service" @unchoose="removeService(service)" class="active" />
       </div>
 
       <div v-if="services.length" class="block__services services">
-        <div v-if="chooseServices.length" class="block__toggle" @click="isActive = !isActive">
+        <div v-if="service.id" class="block__toggle" @click="isActive = !isActive">
           {{ isActive ? 'Hide' : 'View' }} all Canned Services
           <i class="i-keyboard_arrow_down" :style="[isActive ? {transform: 'rotateX(180deg)'} : {transform: 'rotateX(0)'}]" />
         </div>
       </div>
-      <div v-if="(services.length && !chooseServices.length) || isActive" class="block__toggle-inner">
+      <div v-if="(services.length && !service.id) || isActive" class="block__toggle-inner">
         <div v-if="services.length" class="block__header">
           <div class="block__title">Canned Services</div>
           <button v-if="isStart || card.status !== 'No Status'" class="block__btn" @click="open">
             <i class="i-add_circle" /><span>Create New Canned Service</span>
           </button>
         </div>
-        <Service v-for="service of services" :key="service.id" :service="service" @chose="addService(service)" />
+        <Service v-for="service of services" :key="service.id" :service="service" @choose="addService(service)" />
       </div>
       <div v-if="history.length && $route.params.uid !== 'tech-start'" class="block__history history">
         <div class="block__header">
@@ -67,6 +67,7 @@ export default {
   computed: {
     ...mapState({
       activeService: s => s.company.cannedServices.activeService,
+      service: s => s.company.cannedServices.service,
       allServices: s => s.company.cannedServices.services,
       history: s => s.company.cannedServices.history,
       card: s => s.company.cards.card,
@@ -77,7 +78,7 @@ export default {
       return this.allServices.filter(s => s.select)
     },
     services() {
-      return this.allServices.filter(s => !s.select)
+      return this.allServices.filter(s => s.id !== this.service.id)
     }
   },
   watch: {
@@ -90,11 +91,13 @@ export default {
     ...mapActions({
       fetchServices: 'company/cannedServices/fetch',
       fetchHistory: 'company/cannedServices/fetchHistory',
-      findOrder: 'workOrder/find' //??
+      findOrder: 'workOrder/find'
     }),
     ...mapMutations({
       select: 'company/cannedServices/select',
-      updateOrder: 'workOrder/change'
+      updateOrder: 'workOrder/change',
+      updateService: 'company/cannedServices/update',
+      setService: 'company/cannedServices/setService'
     }),
     open() {
       this.$vfm.show({
@@ -107,9 +110,9 @@ export default {
       })
     },
     addService(service) {
-      if (service.select) {
-        this.cannedServices.push(service)
-        this.updateOrder({cannedServices: this.cannedServices})
+      if (this.service) {
+        this.setService({})
+        this.setService(service)
       }
     },
     removeService(service) {
@@ -118,6 +121,7 @@ export default {
           this.cannedServices.findIndex(s => s.id === service.id),
           1
         )
+        this.setService({})
         this.updateOrder({cannedServices: this.cannedServices})
       }
     }

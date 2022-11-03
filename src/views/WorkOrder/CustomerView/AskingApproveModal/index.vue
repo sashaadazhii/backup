@@ -52,7 +52,8 @@ export default {
       )
     },
     async beforeOpen(e) {
-      this.id = e.ref.params._value
+      // this.id = e.ref.params._value
+      this.id = this.$route.params.id
       await this.findCard(this.id)
       await this.fetch(this.card.workOrderID)
     }
