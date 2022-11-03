@@ -1,7 +1,6 @@
 <template>
-  <!-- <div class="service__wrapper" :class="{active: service.select}" @click="open"> -->
-  <div class="service__wrapper" :class="[{active: service.select}, [card.status !== 'Good' && card.status !== 'No Status' ? 'editable' : '']]" @click="open">
-    <div v-if="isStart && card.status !== 'Good' && card.status !== 'No Status'" class="y-radio" :class="{active: service.select}" @click.stop="chose" />
+  <div class="service__wrapper" :class="[card.status !== 'Good' && card.status !== 'No Status' ? 'editable' : '']" @click="open">
+    <div v-if="isStart && card.status !== 'Good' && card.status !== 'No Status'" class="y-radio" @click.stop="choose" />
     <div v-else></div>
     <div class="service__name">
       <div class="service__title">{{ service.name }}</div>
@@ -87,17 +86,16 @@ export default {
   },
   methods: {
     ...mapMutations({
-      set: 'company/cannedServices/setActiveService',
-      select: 'company/cannedServices/select'
+      setActive: 'company/cannedServices/setActiveService',
+      set: 'company/cannedServices/setService'
     }),
 
     open() {
-      this.set(this.service)
+      this.setActive(this.service)
     },
-    chose() {
-      const serviceID = this.service.id
-      this.select(serviceID)
-      this.$emit('chose')
+    choose() {
+      this.set(this.service)
+      this.$emit('choose')
       this.$emit('unchoose')
     }
   },
