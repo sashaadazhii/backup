@@ -73,7 +73,7 @@
           <div class="list__wrap">
             <div class="card__list list">
               <!-- parts -->
-              <div v-for="part in parts" :key="part.id" class="list__item" :class="{hide: card.partsForCustomer === 'Display Total Price Only'}">
+              <div v-for="part in showedParts" :key="part.id" class="list__item" :class="{hide: card.partsForCustomer === 'Display Total Price Only'}">
                 <div v-if="card.partsForCustomer === 'Display Total Price & Parts'" class="list__inner wide">
                   <div class="list__icon">
                     <i v-if="part.isService || part.isLabour" class="i-monetization_on" :style="[part.isService ? 'color: #BA8AE7' : 'color: #2C9AFF']" />
@@ -112,6 +112,7 @@
               <div v-else class="list__text 2">{{ formatter(parts.reduce((sum, current) => sum + current.price, 0)) }}</div>
             </div>
           </div>
+          <!-- end parts -->
         </div>
         <div class="card__footer">
           <div class="card__footer-buttons">
@@ -130,6 +131,7 @@ import Label from '@/components/Yaro/Label'
 import Button from '@/components/Yaro/Button'
 import AskingDeclineModal from '../AskingDeclineModal'
 import AskingApproveModal from '../AskingApproveModal'
+import Part from './Part'
 
 export default {
   name: 'CustomerCardPage',
@@ -143,6 +145,9 @@ export default {
     }
   },
   async created() {
+    const uid = this.$route.params.uid
+    await this.findOrder(uid)
+
     const [firstMedia] = this.assets
     this.selectMedia(firstMedia)
 
@@ -160,12 +165,30 @@ export default {
       order: s => s.workOrder.workOrder,
       card: s => s.company.cards.card,
       assets: s => s.company.cards.assets
-    })
+    }),
+    partsWithoutLabour() {
+      return this.parts.filter(p => !p.isLabour)
+    },
+    partsWithoutFee() {
+      return this.parts.filter(p => !p.isService)
+    },
+    partsWithoutFeeLabour() {
+      return this.parts.filter(p => {
+        return !p.isService && !p.isLabour
+      })
+    },
+    showedParts() {
+      if (!this.card.displayLabour && !this.card.displayFees) return this.partsWithoutFeeLabour
+      else if (!this.card.displayLabour) return this.partsWithoutLabour
+      else if (!this.card.displayFees) return this.partsWithoutFee
+      else return this.parts
+    }
   },
 
   methods: {
     ...mapActions({
-      fetchAssets: 'company/cards/fetchAssets'
+      fetchAssets: 'company/cards/fetchAssets',
+      findOrder: 'workOrder/find'
     }),
     labelColor() {
       const status = this.card.status

@@ -445,7 +445,6 @@ export default {
     },
     approve() {
       this.card.advisorApprove = true
-      console.log(this.card)
       this.updateCard(this.card)
       this.$vfm.hide('AdvisorCardPage')
       this.$router.push(`/customer-view/${this.uid}`)
