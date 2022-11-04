@@ -57,7 +57,7 @@
                 <div class="card__widget-title">Cause:</div>
               </div>
               <div class="card__widget-bottom">
-                <div class="card__widget-text">Customer can hear noise while breaking.</div>
+                <div class="card__widget-text">{{ card.cause }}</div>
               </div>
             </div>
             <div class="card__widget">
@@ -66,7 +66,7 @@
                 <div class="card__widget-title">Solution:</div>
               </div>
               <div class="card__widget-bottom">
-                <div class="card__widget-text">Service descirption</div>
+                <div class="card__widget-text">{{ card.description }}</div>
               </div>
             </div>
           </div>
@@ -102,7 +102,7 @@
               <div class="card__accent-left"><i class="i-shield" /></div>
               <div class="card__accent-right">
                 <div class="card__accent-subtitle">Warranty</div>
-                <div class="card__accent-title">24 months/30 000 KM</div>
+                <div class="card__accent-title">{{ card.chosenService.warranty.time }} months/{{ card.chosenService.warranty.range }} KM</div>
               </div>
             </div>
             <div class="list__footer">
@@ -140,29 +140,26 @@ export default {
       selectedMedia: {},
       showControls: true,
       parts: [],
-      readyParts: []
+      readyParts: [],
+      card: {}
     }
   },
   async created() {
     const uid = this.$route.params.uid
     await this.findOrder(uid)
+    const cardID = this.$route.params.cardID
 
+    this.card = this.order.cannedServices.find(c => c.id.toString() === cardID)
+
+    await this.fetchAssets()
     const [firstMedia] = this.assets
     this.selectMedia(firstMedia)
 
-    let cardServices = this.card.services
-    if (cardServices.length) {
-      cardServices.forEach(c => {
-        let part = c.parts
-        part.forEach(p => this.parts.push(p))
-      })
-    }
-    await this.fetchAssets()
+    this.parts = this.card.chosenService.parts
   },
   computed: {
     ...mapState({
       order: s => s.workOrder.workOrder,
-      card: s => s.company.cards.card,
       assets: s => s.company.cards.assets
     }),
     partsWithoutLabour() {

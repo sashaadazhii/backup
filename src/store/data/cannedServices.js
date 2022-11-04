@@ -144,7 +144,7 @@ const serviceList = [
   {
     id: 5,
     templateID: 1,
-    name: 'Replace air Filter',
+    name: 'Cleaning the air filter',
     description: 'description for this canned service 1',
     hours: 1.5, // REMOVE / old value
     estimatedTime: 1.2,
@@ -246,7 +246,7 @@ const serviceList = [
     warrantyType: 'custom',
     warranty: {
       time: 48,
-      range: 140000
+      range: 1400
     },
     select: false,
     parts: [

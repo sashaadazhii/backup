@@ -92,7 +92,7 @@ export default {
     }),
     ...mapMutations({
       select: 'company/cannedServices/select',
-      updateOrder: 'workOrder/change',
+      updateOrder: 'workOrder/updateOrder',
       update: 'company/cannedServices/update',
       updateService: 'company/cannedServices/updateService',
       setService: 'company/cannedServices/setService'
@@ -115,12 +115,11 @@ export default {
           }
         })
         this.select(service.id)
+        this.order.cannedServices.push({...this.card, chosenService: service})
+        this.updateOrder(this.order)
       }
     },
     removeService(service) {}
-  },
-  beforeUnmount() {
-    // this.service = {}
   }
 }
 </script>

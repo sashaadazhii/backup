@@ -122,7 +122,6 @@ export default {
     formattedCards() {
       return this.order.customerCards.map(card => {
         //return this.cardsList.map(card => {
-        console.log(card)
         return {
           ...card,
           services: serviceList.filter(s => s.templateID === card.id)
@@ -144,7 +143,6 @@ export default {
     }),
 
     select(id) {
-      // console.log(id)
       // const card = this.cardsList.find(c => c.id === id)
       // card.select = !card.select
     },

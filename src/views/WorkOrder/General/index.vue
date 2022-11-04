@@ -13,7 +13,8 @@
           <i class="i-archive" />
           <span>Assign bin for parts</span>
         </div>
-        <div class="part__label" :class="{'-disablec': !isStart}">
+        <!-- <div class="part__label" :class="{'-disablec': !isStart}"> -->
+        <div class="part__label">
           <input v-model="binValue" v-maska="'######'" type="text" class="part__input" placeholder="Enter bin number" />
           <Button v-if="bin" label="Reset" class="part__btn -grey" size="mini" @click="bin = null" />
           <Button v-else label="Assign" class="part__btn" size="mini" />
@@ -30,32 +31,32 @@ import Notes from './Notes'
 import Settings from './Settings'
 import Requests from './Requests'
 import Button from '@/components/Yaro/Button'
-import {mapMutations} from "vuex";
+import {mapMutations} from 'vuex'
 
 export default {
   name: 'WorkOrderGeneral',
   components: {Info, Settings, Notes, Requests, Button},
-    data() {
-        return {
-            bin: null
-        }
-    },
-    computed: {
-        binValue: {
-            set(val) {
-                this.bin = val
-                this.change( { bin: this.bin } )
-            },
-            get() {
-                return this.bin
-            }
-        }
-    },
-    methods: {
-        ...mapMutations({
-            change: 'workOrder/change'
-        }),
-    },
+  data() {
+    return {
+      bin: null
+    }
+  },
+  computed: {
+    binValue: {
+      set(val) {
+        this.bin = val
+        this.change({bin: this.bin})
+      },
+      get() {
+        return this.bin
+      }
+    }
+  },
+  methods: {
+    ...mapMutations({
+      change: 'workOrder/change'
+    })
+  }
 }
 </script>
 

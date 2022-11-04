@@ -135,7 +135,6 @@ export default {
     }),
 
     select(id) {
-      // console.log(id)
       // const card = this.cardsList.find(c => c.id === id)
       // card.select = !card.select
     },
