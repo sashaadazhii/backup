@@ -18,29 +18,6 @@
       </div>
 
       <div class="cards">
-        <!-- <div class="card">
-          <div class="card__header">
-            <Label label="card.status" size="small" color="#FFA14E" />
-            <router-link :to="{name: 'CustomerCardPage', params: {id: id, cardID: cardID}}">
-              <div class="card__arrow">
-                <Button icon="i-keyboard_arrow_right" border grey class="button--arrow" />
-              </div>
-            </router-link>
-          </div>
-          <div class="card__main">
-            <div class="card__title">card.title</div>
-            <div class="card__text">card.description card.description card.description card.description card.description</div>
-            <div class="card__row">
-              <div class="card__text card__text--thin">Total Price</div>
-              <div class="card__subtitle">$350.00</div>
-            </div>
-          </div>
-          <div class="card__footer">
-            <div class="card__footer-button">
-              <div class="card__btn"><i class="i-check_circle_outline" /><span>Approved by Customer</span></div>
-            </div>
-          </div>
-        </div> -->
         <Card v-for="card in order.cannedServices" :key="card.id" :card="card" />
       </div>
     </div>
@@ -49,13 +26,11 @@
 
 <script>
 import Card from './Card'
-import Label from '@/components/Yaro/Label'
-import Button from '@/components/Yaro/Button'
 import {mapState, mapActions} from 'vuex'
 
 export default {
   name: 'CustomerView',
-  components: {Card}, //{Card},
+  components: {Card},
   data() {
     return {
       cardID: 3456,

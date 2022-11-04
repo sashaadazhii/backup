@@ -6,22 +6,6 @@
     <div class="health__wrapper">
       <div class="health__header">
         <div class="health__header-top">
-          <!-- <Dropdown v-model="viewType" :options="viewTypes" size="medium" class="health__header-dropdown">
-            <template #value="{value}">
-              <div class="y-dropdown-item-custom">
-                <i v-if="value === 'Card View'" class="i-view_module1 green" />
-                <i v-else class="i-view_stream1 green" />
-                <span>{{ value }} </span>
-              </div>
-            </template>
-            <template #option="{option}">
-              <div class="y-dropdown-label-custom">
-                <i v-if="option === 'Card View'" class="i-view_module1 green" />
-                <i v-else class="i-view_stream1 green" />
-                <span>{{ option }}</span>
-              </div>
-            </template>
-          </Dropdown> -->
           <Dropdown :modelValue="sortType" :options="sortTypes" size="medium" class="health__header-dropdown" @change="changeSort">
             <template #value="{value}">
               <div class="y-dropdown-item-custom">

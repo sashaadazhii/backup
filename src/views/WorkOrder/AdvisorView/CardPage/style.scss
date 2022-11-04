@@ -97,9 +97,6 @@
     }
   }
   &__sidebar {
-    // display: grid;
-    // grid-template-rows: auto auto auto 1fr;
-    margin-top: 60px;
     padding: 16px 20px;
     height: auto;
     overflow-y: auto;
@@ -217,7 +214,7 @@
     }
     &-accent {
       font-weight: 600;
-      color: $color-grey-space;
+      color: $color-grey;
     }
   }
   &__text {
@@ -256,16 +253,17 @@
     background-color: $color-white;
     @include font(16px, $color-grey-space, 500, 1.2);
     resize: vertical;
+    @include hideScrollbar();
     &.blue {
+      min-height: 58px;
       border-color: $color-blue;
     }
     &.orange {
       min-height: 58px;
       border-color: $color-orange;
-      @include hideScrollbar();
     }
     &.green {
-      height: auto;
+      min-height: 100px;
       padding-top: 36px;
       border-color: $color-green;
     }
