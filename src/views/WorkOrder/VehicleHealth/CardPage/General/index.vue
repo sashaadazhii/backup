@@ -115,11 +115,20 @@ export default {
           }
         })
         this.select(service.id)
-        this.order.cannedServices.push({...this.card, chosenService: service})
+        //canned
+        const idx = this.order.cannedServices.findIndex(s => s.templateID === service.templateID)
+        if (idx !== -1) {
+          this.order.cannedServices.splice(idx, 1)
+          this.order.cannedServices.push({...this.card, chosenService: service})
+        } else this.order.cannedServices.push({...this.card, chosenService: service})
         this.updateOrder(this.order)
       }
     },
-    removeService(service) {}
+    removeService(service) {
+      // this.order.cannedServices.filter((s = !s.id !== service.id))
+      // this.updateOrder(this.order)
+      // console.log(this.order.cannedServices)
+    }
   }
 }
 </script>
