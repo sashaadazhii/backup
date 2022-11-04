@@ -135,9 +135,6 @@
             <div class="block__main textarea">
               <div class="textarea__title">Service Description</div>
               <textarea v-model="solution" ref="solution" class="block__textarea green"></textarea>
-              <!-- <div class="block__textarea green">
-                <div class="block__textarea-item">{{ card.chosenService.description }}</div>
-              </div> -->
 
               <div class="block__inner">
                 <div class="block__inner-header" @click="showBlock = !showBlock">

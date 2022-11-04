@@ -18,7 +18,6 @@
           <div></div>
         </div>
         <div class="table__main">
-          <!-- <Slot v-for="card of formattedCards()" :key="card.id" :card="card" @click.self="openCard(card)" @changeStatus="changeStatus(card)" /> -->
           <Slot v-for="card of order.cannedServices" :key="card.id" :card="card" @click.self="openCard(card)" @changeStatus="changeStatus(card)" />
         </div>
       </div>
@@ -75,14 +74,6 @@ export default {
       setCard: 'company/cards/setCard',
       updateCard: 'company/cards/updateCard'
     }),
-    formattedCards() {
-      // return this.actualCards.map(card => {
-      //   return {
-      //     ...card,
-      //     services: serviceList.filter(s => s.templateID === card.id)
-      //   }
-      // })
-    },
     changeSearch(searchValue) {
       this.setSearch(searchValue)
       this.fetch()
