@@ -102,7 +102,7 @@
               <div class="card__accent-left"><i class="i-shield" /></div>
               <div class="card__accent-right">
                 <div class="card__accent-subtitle">Warranty</div>
-                <div class="card__accent-title">{{ card.chosenService.warranty.time }} months/{{ card.chosenService.warranty.range }} KM</div>
+                <div class="card__accent-title">{{ card.chosenService.warranty.time || 0 }} months/{{ card.chosenService.warranty.range || 0 }} KM</div>
               </div>
             </div>
             <div class="list__footer">

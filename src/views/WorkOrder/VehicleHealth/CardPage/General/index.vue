@@ -115,7 +115,6 @@ export default {
           }
         })
         this.select(service.id)
-        //canned
         const idx = this.order.cannedServices.findIndex(s => s.templateID === service.templateID)
         if (idx !== -1) {
           this.order.cannedServices.splice(idx, 1)
@@ -125,9 +124,11 @@ export default {
       }
     },
     removeService(service) {
-      // this.order.cannedServices.filter((s = !s.id !== service.id))
-      // this.updateOrder(this.order)
-      // console.log(this.order.cannedServices)
+      if (!this.chooseServices.length) {
+        const idx = this.order.cannedServices.findIndex(s => s.templateID === service.templateID)
+        this.order.cannedServices.splice(idx, 1)
+        this.updateOrder(this.order)
+      }
     }
   }
 }
