@@ -260,6 +260,7 @@
       border-color: $color-blue;
     }
     &.orange {
+      min-height: 58px;
       border-color: $color-orange;
       @include hideScrollbar();
     }

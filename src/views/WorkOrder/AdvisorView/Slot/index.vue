@@ -1,6 +1,4 @@
 <template>
-  <!-- {{ order }} -->
-
   <div class="card__wrapper">
     <div class="card__menu">
       <Menu :list="statusesChange" position="left">
@@ -17,7 +15,7 @@
         <i class="i-check_circle_outline" /> {{ card.advisorApprove ? 'Ready' : 'Not Ready' }}
       </div>
     </div>
-    <div class="card__menu text">{{ formatter(parts.reduce((sum, current) => sum + current.price * current.quantity, 0)) }}</div>
+    <div class="card__menu text">{{ formatter(card.chosenService.parts?.reduce((sum, current) => sum + current.price * current.quantity, 0)) }}</div>
     <div class="card__menu">
       <Label :label="card.approvalStatus" size="small" circle class="card__label -shadow -hover -dashed" :class="labelClass(card.approvalStatus)" />
     </div>
@@ -79,16 +77,7 @@ export default {
       parts: []
     }
   },
-  async created() {
-    //TODO: parts only for selected service, not all  !!!
-    let cardServices = this.card.services
-    if (cardServices.length) {
-      cardServices.forEach(c => {
-        let part = c.parts
-        part.forEach(p => this.parts.push(p))
-      })
-    }
-  },
+
   computed: {
     ...mapState({
       isStart: s => s.workOrder.isStart,

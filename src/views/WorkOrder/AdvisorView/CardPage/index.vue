@@ -54,8 +54,8 @@
             <i class="i-time" />
             <div class="modal__body-info">
               <div class="modal__text">Time Required:</div>
-              <div class="modal__label">{{ `${services[0].estimatedTime}hr` }}</div>
-              <div class="modal__label light"><span>Time used: </span>{{ `${services[0].averageTime}` }}</div>
+              <div class="modal__label">{{ `${card.chosenService.estimatedTime}hr` }}</div>
+              <div class="modal__label light"><span>Time used: </span>{{ `${card.chosenService.hours}` }}</div>
             </div>
           </div>
           <div v-if="assets.length" class="slider__wrapper slider">
@@ -94,7 +94,6 @@
             </div>
             <div class="block__main">
               <!-- TODO: add customer request from order when  ready
-               <textarea v-model="request" class="block__textarea blue"></textarea>
                -->
               <textarea v-model="request" class="block__textarea blue" disabled></textarea>
             </div>
@@ -120,14 +119,14 @@
                 <div class="modal__label large">
                   <span>Diagnostic Time (optional): </span>
                   <div class="modal__label-right">
-                    <input v-model="services[0].estimatedTime" v-maska="{mask: 'HHHHH', tokens: {H: {pattern: /[0-9.]/}}}" />
+                    <input v-model="card.chosenService.estimatedTime" v-maska="{mask: 'HHHHH', tokens: {H: {pattern: /[0-9.]/}}}" />
                     <span class="modal__label-accent">hours</span>
                   </div>
                 </div>
                 <div class="modal__label large">
                   <span>Time required:</span>
                   <div class="modal__label-right">
-                    <input v-model="services[0].averageTime" v-maska="{mask: 'HHHHH', tokens: {H: {pattern: /[0-9.]/}}}" />
+                    <input v-model="card.chosenService.averageTime" v-maska="{mask: 'HHHHH', tokens: {H: {pattern: /[0-9.]/}}}" />
                     <span class="modal__label-accent">hours</span>
                   </div>
                 </div>
@@ -136,7 +135,7 @@
             <div class="block__main textarea">
               <div class="textarea__title">Service Description</div>
               <div class="block__textarea green">
-                <div v-for="(item, idx) of solutionList" :key="idx" class="block__textarea-item">{{ item }}</div>
+                <div class="block__textarea-item">{{ card.chosenService.description }}</div>
               </div>
 
               <div class="block__inner">
@@ -233,11 +232,11 @@
               <div class="block__labels">
                 <div class="modal__label-wrap">
                   <div class="modal__label-title">Months:</div>
-                  <input v-model="warrantyMonths" class="modal__label blue" />
+                  <input v-model="card.chosenService.warranty.time" class="modal__label blue" />
                 </div>
                 <div class="modal__label-wrap">
                   <div class="modal__label-title">KMs:</div>
-                  <input v-model="warrantyKm" v-maska="{mask: 'HHHHHHH', tokens: {H: {pattern: /[0-9.]/}}}" class="modal__label blue" />
+                  <input v-model="card.chosenService.warranty.range" v-maska="{mask: 'HHHHHHH', tokens: {H: {pattern: /[0-9.]/}}}" class="modal__label blue" />
                 </div>
               </div>
             </div>
@@ -369,10 +368,12 @@ export default {
     await this.fetchServices(cardID)
     await this.fetchAssets()
 
-    this.services.forEach(c => {
-      let part = c.parts
-      part.forEach(p => this.parts.push(p))
-    })
+    // this.services.forEach(c => {
+    //   let part = c.parts
+    //   part.forEach(p => this.parts.push(p))
+    // })
+    this.parts = this.card.chosenService.parts
+    this.card.cause = ''
     const [firstMedia] = this.assets
     this.selectMedia(firstMedia)
 
@@ -398,6 +399,9 @@ export default {
     notes() {
       return this.card.techNotes
     }
+    // cause() {
+    //   return this.card.cause
+    // }
   },
   watch: {
     activeService(s) {
@@ -443,6 +447,7 @@ export default {
     },
     approve() {
       this.card.advisorApprove = true
+      this.card.cause = this.cause
       this.updateCard(this.card)
       this.$vfm.hide('AdvisorCardPage')
       this.$router.push(`/customer-view/${this.uid}`)

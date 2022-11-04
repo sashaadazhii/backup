@@ -129,6 +129,7 @@ export default {
       }
     },
     updateOrder(state, order) {
+      //TODO logic for other statuses
       //  const orderIdx = state.workOrders.findIndex(o => o.uid === order.uid)
       const orderIdx = state.localOrders.todo.findIndex(o => o.uid === order.uid)
       state.localOrders.todo.splice(orderIdx, 1, order)

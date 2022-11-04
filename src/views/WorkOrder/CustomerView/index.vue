@@ -18,7 +18,7 @@
       </div>
 
       <div class="cards">
-        <div class="card">
+        <!-- <div class="card">
           <div class="card__header">
             <Label label="card.status" size="small" color="#FFA14E" />
             <router-link :to="{name: 'CustomerCardPage', params: {id: id, cardID: cardID}}">
@@ -40,8 +40,8 @@
               <div class="card__btn"><i class="i-check_circle_outline" /><span>Approved by Customer</span></div>
             </div>
           </div>
-        </div>
-        <!-- <Card v-for="card in cards" :key="card.id" :card="card" /> -->
+        </div> -->
+        <Card v-for="card in order.cannedServices" :key="card.id" :card="card" />
       </div>
     </div>
   </div>
@@ -55,27 +55,27 @@ import {mapState, mapActions} from 'vuex'
 
 export default {
   name: 'CustomerView',
-  components: {Label, Button}, //{Card},
+  components: {Card}, //{Card},
   data() {
     return {
       cardID: 3456,
-      id: null
+      uid: null
     }
   },
   async created() {
-    this.id = this.$route.params.id
-    // await this.fetch(id)
+    this.uid = this.$route.params.uid
+    await this.findOrder(this.uid)
+  },
+  computed: {
+    ...mapState({
+      order: s => s.workOrder.workOrder
+    })
+  },
+  methods: {
+    ...mapActions({
+      findOrder: 'workOrder/find'
+    })
   }
-  // computed: {
-  //   ...mapState({
-  //     cards: s => s.cards.cards
-  //   })
-  // },
-  // methods: {
-  //   ...mapActions({
-  //     fetch: 'cards/fetch'
-  //   })
-  // }
 }
 </script>
 <style scoped lang="scss">
