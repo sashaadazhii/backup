@@ -148,7 +148,6 @@ export default {
     const uid = this.$route.params.uid
     await this.findOrder(uid)
     const cardID = this.$route.params.cardID
-
     this.card = this.order.cannedServices.find(c => c.id.toString() === cardID)
 
     await this.fetchAssets()
