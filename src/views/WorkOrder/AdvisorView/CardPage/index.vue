@@ -95,7 +95,7 @@
             <div class="block__main">
               <!-- TODO: add customer request from order when  ready
                -->
-              <textarea v-model="request" class="block__textarea blue" disabled></textarea>
+              <textarea v-model="request" ref="request" class="block__textarea blue"></textarea>
             </div>
           </div>
           <div class="block">
@@ -134,9 +134,10 @@
             </div>
             <div class="block__main textarea">
               <div class="textarea__title">Service Description</div>
-              <div class="block__textarea green">
+              <textarea v-model="solution" ref="solution" class="block__textarea green"></textarea>
+              <!-- <div class="block__textarea green">
                 <div class="block__textarea-item">{{ card.chosenService.description }}</div>
-              </div>
+              </div> -->
 
               <div class="block__inner">
                 <div class="block__inner-header" @click="showBlock = !showBlock">
@@ -334,7 +335,7 @@ export default {
         {label: 'Permanently Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Permanently Declined'})},
         {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
       ],
-      request: 'Customer request connected with card here',
+      request: '',
       brakePads: ['5mm', '5.5mm', '6mm', '6.5mm', '7mm', '7.5mm'],
       brakePadLeft: '5mm',
       brakePadLRight: '5mm',
@@ -357,6 +358,7 @@ export default {
       denailMessage1: '',
       denailMessage2: '',
       cause: '',
+      solution: '',
       showBlock: true,
       isNew: false,
       warrantyMonths: '24 month',
@@ -368,12 +370,14 @@ export default {
     await this.fetchServices(cardID)
     await this.fetchAssets()
 
-    // this.services.forEach(c => {
-    //   let part = c.parts
-    //   part.forEach(p => this.parts.push(p))
-    // })
     this.parts = this.card.chosenService.parts
     this.card.cause = ''
+    this.solution = this.card.chosenService.description
+    //TODO: update logic with 1 request connected with card
+    if (this.order.customerRequests.length) {
+      this.request = this.order.customerRequests.map(r => r.notes)
+    } else this.request = 'No requests'
+
     const [firstMedia] = this.assets
     this.selectMedia(firstMedia)
 
@@ -399,9 +403,6 @@ export default {
     notes() {
       return this.card.techNotes
     }
-    // cause() {
-    //   return this.card.cause
-    // }
   },
   watch: {
     activeService(s) {
@@ -418,6 +419,18 @@ export default {
       this.$refs.cause.style.height = '58px'
       this.$nextTick(() => {
         this.$refs.cause.style.height = this.$refs.cause.scrollHeight + 'px'
+      })
+    },
+    solution: function () {
+      this.$refs.solution.style.height = '100px'
+      this.$nextTick(() => {
+        this.$refs.solution.style.height = this.$refs.solution.scrollHeight + 'px'
+      })
+    },
+    request: function () {
+      this.$refs.request.style.height = '58'
+      this.$nextTick(() => {
+        this.$refs.request.style.height = this.$refs.request.scrollHeight + 'px'
       })
     }
   },
@@ -448,6 +461,7 @@ export default {
     approve() {
       this.card.advisorApprove = true
       this.card.cause = this.cause
+      this.card.chosenService.description = this.solution
       this.updateCard(this.card)
       this.$vfm.hide('AdvisorCardPage')
       this.$router.push(`/customer-view/${this.uid}`)
