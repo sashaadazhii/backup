@@ -18,11 +18,14 @@ export default {
 .customer-layout {
   display: grid;
   width: 100%;
-  max-width: 440px;
-  margin: 0 auto;
 }
 .page-wrapper {
-  background-color: $color-white;
   overflow: hidden;
+  background: url('../../assets/images/mobile-bg.svg') 50% no-repeat;
+  background-size: contain;
+  height: 740px;
+  max-width: 340px;
+  margin: auto;
+  filter: drop-shadow(0px 12.2059px 104.622px rgba(0, 0, 0, 0.35));
 }
 </style>

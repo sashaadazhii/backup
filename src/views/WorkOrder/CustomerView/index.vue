@@ -5,20 +5,22 @@
         <i class="i-keyboard_arrow_left" />
       </div>
       <div class="header__title">Work Order #<span>24</span></div>
-      <div class="header__icon"></div>
+      <div class="header__icon"><i class="i-question_answer" /></div>
     </header>
     <div class="inspections__wrapper">
-      <div class="message__wrapper">
-        <div class="message">
-          <div class="message__icon"><i class="i-customers" /></div>
-          <div class="message__title">Hello, Brett!</div>
-          <div class="message__subtitle">Inspection Done! 🚀</div>
-          <div class="message__text">We’ve finished the inspection of your car. Here are the service technicians recommended action:</div>
+      <div class="inspections__inner">
+        <div class="message__wrapper">
+          <div class="message">
+            <div class="message__icon"><i class="i-customers" /></div>
+            <div class="message__title">Hello, Brett!</div>
+            <div class="message__subtitle">Inspection Done! 🚀</div>
+            <div class="message__text">We’ve finished the inspection of your car. Here are the service technicians recommended action:</div>
+          </div>
         </div>
-      </div>
 
-      <div class="cards">
-        <Card v-for="card in order.cannedServices" :key="card.id" :card="card" />
+        <div class="cards">
+          <Card v-for="card in order.cannedServices" :key="card.id" :card="card" />
+        </div>
       </div>
     </div>
   </div>

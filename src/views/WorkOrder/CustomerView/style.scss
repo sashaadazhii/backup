@@ -9,28 +9,53 @@
   }
 }
 .inspections {
-  height: inherit;
+  position: relative;
   overflow: hidden;
+  height: 740px;
+  margin-top: 40px;
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 108px;
+    height: 54px;
+    background: url('../../../assets/images/mic.svg') no-repeat;
+    background-size: 108px auto;
+    background-position: center top;
+  }
   &__wrapper {
-    height: inherit;
-    overflow-y: auto;
-    background: $color-grey-smoke;
+    overflow: hidden;
+    height: 660px;
     @include hideScrollbar();
-    border-left: 1px solid $color-grey-smoke;
-    border-right: 1px solid $color-grey-smoke;
+    padding-bottom: 80px;
+    width: calc(100% - 32px);
+    margin: 0 auto;
+    background: $color-grey-smoke;
+    border-radius: 48px;
+  }
+  &__inner {
+    height: inherit;
+    overflow: auto;
+    @include hideScrollbar();
   }
 }
 .header {
   position: fixed;
+  left: 50%;
+  top: 70px;
+  transform: translateX(-50%);
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 440px;
+  max-width: 290px;
   padding: 16px;
   background: $color-white;
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 16px;
   text-align: center;
   z-index: 101;
   &__title {
@@ -56,8 +81,7 @@
   border-radius: 0 16px 16px 16px;
 
   &__wrapper {
-    padding: 78px 16px 16px;
-    background-color: $color-white;
+    padding: 104px 16px 16px;
   }
   &__icon {
     margin-bottom: 12px;

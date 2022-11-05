@@ -485,7 +485,7 @@ export default {
       this.card.chosenService.description = this.solution
       this.updateCard(this.card)
       this.$vfm.hide('AdvisorCardPage')
-      this.$router.push(`/customer-view/${this.uid}`)
+      this.$router.push(`/service-advisor/${this.uid}/preview/${this.card.id}`)
     },
     play() {
       this.$refs.video.play()
