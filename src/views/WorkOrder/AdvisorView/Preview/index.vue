@@ -182,7 +182,7 @@ export default {
       else return this.parts
     },
     warranty() {
-      return _.cloneDeep(this.card.chosenService.warranty)
+      return _.cloneDeep(this.card.chosenService?.warranty)
     }
   },
 

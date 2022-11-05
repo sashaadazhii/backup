@@ -31,9 +31,10 @@
 </template>
 
 <script>
-import {mapState, mapActions} from 'vuex'
+import {mapState, mapActions, mapMutations} from 'vuex'
 import Button from '@/components/Yaro/Button'
-
+import DeclineModal from './DeclineModal'
+import DeclineTemporaryModal from './DeclineTemporaryModal'
 export default {
   name: 'AskingDeclineModal',
   components: {Button},
@@ -52,24 +53,24 @@ export default {
   },
   computed: {
     ...mapState({
-      cards: s => s.cards.cards,
       order: s => s.workOrder.workOrder
     })
   },
   methods: {
     ...mapActions({
-      fetch: 'cards/fetch',
-      findOrder: 'workOrder/find',
-      updateCard: 'cards/updateCard'
+      findOrder: 'workOrder/find'
     }),
+    ...mapMutations({updateCard: 'company/cards/updateCard'}),
     async decline() {
       this.card.approvalStatus = 'Permanently Decline'
       this.updateCard(this.card)
+      this.$vfm.hide('AskingDeclineModal')
       this.$router.push(`/customer-view/${this.uid}`)
     },
     async declineTemporary() {
       this.card.approvalStatus = 'Temporarily Declined'
       this.updateCard(this.card)
+      this.$vfm.hide('AskingDeclineModal')
       this.$router.push(`/customer-view/${this.uid}`)
     }
   }
