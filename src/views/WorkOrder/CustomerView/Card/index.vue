@@ -13,7 +13,10 @@
       <div class="card__text">{{ card.description }}</div>
       <div class="card__row">
         <div class="card__text card__text--thin">Total Price</div>
-        <div class="card__subtitle">
+        <div v-if="card.customPrice" class="card__subtitle">
+          {{ formatter(card.customPrice) }}
+        </div>
+        <div v-else class="card__subtitle">
           {{ formatter(card.chosenService.parts?.reduce((sum, current) => sum + current.price * current.quantity, 0)) }}
         </div>
       </div>

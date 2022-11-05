@@ -104,15 +104,16 @@
                 <div class="card__accent-left"><i class="i-shield" /></div>
                 <div class="card__accent-right">
                   <div class="card__accent-subtitle">Warranty</div>
-                  <!-- <div class="card__accent-title">
-                  {{ card.chosenService.warranty.time || 0 }} months/{{ card.chosenService.warranty.range || 0 }} KM</div> -->
+                  <div class="card__accent-title">{{ warranty?.time || 0 }} months/{{ warranty?.range || 0 }} KM</div>
                 </div>
               </div>
               <div class="list__footer">
                 <div class="list__text">Total Price</div>
-                <div v-if="card.partsForCustomer === 'Display Total Price Only'" class="list__text 1">{{ formatter(card.customPrice) }}</div>
+                <div v-if="card.partsForCustomer === 'Display Total Price Only'" class="list__text 1">
+                  {{ formatter(card.customPrice) }}
+                </div>
 
-                <div v-else class="list__text 2">{{ formatter(parts.reduce((sum, current) => sum + current.price, 0)) }}</div>
+                <div v-else class="list__text 2">{{ formatter(parts.reduce((sum, current) => sum + current.price * current.quantity, 0)) }}</div>
               </div>
             </div>
             <!-- end parts -->
@@ -132,6 +133,7 @@ import {mapState, mapActions} from 'vuex'
 import Label from '@/components/Yaro/Label'
 import Button from '@/components/Yaro/Button'
 import CardPage from '../CardPage'
+import _ from 'lodash'
 
 export default {
   name: 'SAPreview',
@@ -178,6 +180,9 @@ export default {
       else if (!this.card.displayLabour) return this.partsWithoutLabour
       else if (!this.card.displayFees) return this.partsWithoutFee
       else return this.parts
+    },
+    warranty() {
+      return _.cloneDeep(this.card.chosenService.warranty)
     }
   },
 

@@ -315,8 +315,8 @@ const serviceList = [
     used: 4,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 6,
+      range: 3000
     },
     select: false,
     parts: [
@@ -359,8 +359,8 @@ const serviceList = [
     used: 4,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 9,
+      range: 12000
     },
     select: false,
     parts: [
@@ -419,8 +419,8 @@ const serviceList = [
     used: 7,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 4,
+      range: 3000
     },
     select: false,
     parts: [
@@ -505,8 +505,8 @@ const serviceList = [
     used: 12,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 18,
+      range: 10000
     },
     select: false,
     parts: [
@@ -591,8 +591,8 @@ const serviceList = [
     used: 5,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 8,
+      range: 9000
     },
     select: false,
     parts: [
@@ -663,8 +663,8 @@ const serviceList = [
     used: 45,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 12,
+      range: 15000
     },
     select: false,
     parts: [
@@ -762,8 +762,8 @@ const serviceList = [
     used: 45,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 12,
+      range: 13000
     },
     select: false,
     parts: [
@@ -874,8 +874,8 @@ const serviceList = [
     used: 45,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 5,
+      range: 6000
     },
     select: false,
     parts: [
@@ -921,8 +921,8 @@ const serviceList = [
     used: 65,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 8,
+      range: 8000
     },
     select: false,
     parts: [
@@ -968,8 +968,8 @@ const serviceList = [
     used: 25,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 3,
+      range: 2000
     },
     select: false,
     parts: [
@@ -1002,8 +1002,8 @@ const serviceList = [
     used: 65,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 3,
+      range: 5000
     },
     select: false,
     parts: [
@@ -1035,8 +1035,8 @@ const serviceList = [
     used: 165,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 3,
+      range: 4000
     },
     select: false,
     parts: [
@@ -1081,8 +1081,8 @@ const serviceList = [
     used: 16,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 12,
+      range: 24000
     },
     select: false,
     parts: [
@@ -1114,8 +1114,8 @@ const serviceList = [
     used: 16,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 12,
+      range: 20000
     },
     select: false,
     parts: [
@@ -1148,8 +1148,8 @@ const serviceList = [
     used: 62,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 12,
+      range: 18000
     },
     select: false,
     parts: [
@@ -1195,8 +1195,8 @@ const serviceList = [
     used: 69,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 9,
+      range: 15000
     },
     select: false,
     parts: [
@@ -1241,8 +1241,8 @@ const serviceList = [
     used: 9,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 6,
+      range: 10000
     },
     select: false,
     parts: [
@@ -1275,8 +1275,8 @@ const serviceList = [
     used: 19,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 12,
+      range: 4500
     },
     select: false,
     parts: [
@@ -1334,8 +1334,8 @@ const serviceList = [
     used: 119,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 6,
+      range: 6000
     },
     select: false,
     parts: [
@@ -1393,8 +1393,8 @@ const serviceList = [
     used: 119,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 7,
+      range: 9000
     },
     select: false,
     parts: [
@@ -1452,8 +1452,8 @@ const serviceList = [
     used: 90,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 12,
+      range: 24000
     },
     select: false,
     parts: [
@@ -1525,8 +1525,8 @@ const serviceList = [
     used: 20,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 12,
+      range: 20000
     },
     select: false,
     parts: [
@@ -1571,8 +1571,8 @@ const serviceList = [
     used: 20,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 12,
+      range: 20000
     },
     select: false,
     parts: [
@@ -1615,8 +1615,8 @@ const serviceList = [
     used: 24,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 18,
+      range: 12000
     },
     select: false,
     parts: [
@@ -1661,8 +1661,8 @@ const serviceList = [
     used: 16,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 18,
+      range: 30000
     },
     select: false,
     parts: [
@@ -1695,8 +1695,8 @@ const serviceList = [
     used: 19,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 12,
+      range: 20000
     },
     select: false,
     parts: [
@@ -1754,8 +1754,8 @@ const serviceList = [
     used: 119,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 12,
+      range: 60000
     },
     select: false,
     parts: [
@@ -1840,8 +1840,8 @@ const serviceList = [
     used: 24,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 12,
+      range: 20000
     },
     select: false,
     parts: [
@@ -1926,8 +1926,8 @@ const serviceList = [
     used: 24,
     warrantyType: 'off',
     warranty: {
-      time: 0,
-      range: 0
+      time: 2,
+      range: 3000
     },
     select: false,
     parts: []
@@ -1945,7 +1945,7 @@ const serviceList = [
     used: 24,
     warrantyType: 'off',
     warranty: {
-      time: 0,
+      time: 9,
       range: 0
     },
     select: false,
