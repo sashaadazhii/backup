@@ -41,48 +41,35 @@ export default {
   data() {
     return {
       showSecondModal: false,
-      id: null
+      uid: null,
+      card: {}
     }
+  },
+  async created() {
+    this.uid = this.$route.params.uid
+    await this.findOrder(this.uid)
+    const cardID = this.$route.params.cardID
+    this.card = this.order.cannedServices.find(c => c.id.toString() === cardID)
   },
   computed: {
     ...mapState({
-      card: s => s.cards.card,
-      cards: s => s.cards.cards
+      cards: s => s.cards.cards,
+      order: s => s.workOrder.workOrder
     })
   },
   methods: {
     ...mapActions({
       fetch: 'cards/fetch',
-      findCard: 'cards/find',
-      update: 'cards/updateCard'
+      findOrder: 'workOrder/find',
+      updateCard: 'cards/updateCard'
     }),
     async decline() {
-      await this.update({
-        id: this.card.id,
-        workOrderID: this.card.workOrderID,
-        params: {status: 'Component Unsafe', approvalStatus: 'Permanently Decline by You'}
-      })
-      this.$vfm.hide('AskingDeclineModal')
-      this.$vfm.show({
-        component: DeclineModal,
-        bind: {
-          name: 'DeclineModal'
-        }
-      })
+      this.card.approvalStatus = 'Permanently Decline'
+      this.updateCard(this.card)
     },
     async declineTemporary() {
-      await this.update({
-        id: this.card.id,
-        workOrderID: this.card.workOrderID,
-        params: {status: 'Component Unsafe', approvalStatus: 'Declined by You until next visit'}
-      })
-      this.$vfm.hide('AskingDeclineModal')
-      this.$vfm.show({
-        component: DeclineTemporaryModal,
-        bind: {
-          name: 'DeclineTemporaryModal'
-        }
-      })
+      this.card.approvalStatus = 'Temporarily Declined'
+      this.updateCard(this.card)
     },
     async beforeOpen(e) {
       this.id = e.ref.params._value

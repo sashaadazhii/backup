@@ -120,7 +120,7 @@
         <div class="card__footer">
           <div class="card__footer-buttons">
             <Button icon="i-circle_close" border grey @click="openDeclineModal" />
-            <Button label="Approve" @click="openApproveModal" />
+            <Button label="Approve" @click="approve" />
           </div>
         </div>
       </div>
@@ -129,7 +129,7 @@
 </template>
 
 <script>
-import {mapState, mapActions} from 'vuex'
+import {mapState, mapActions, mapMutations} from 'vuex'
 import Label from '@/components/Yaro/Label'
 import Button from '@/components/Yaro/Button'
 import AskingDeclineModal from '../AskingDeclineModal'
@@ -192,6 +192,9 @@ export default {
       fetchAssets: 'company/cards/fetchAssets',
       findOrder: 'workOrder/find'
     }),
+    ...mapMutations({
+      updateCard: 'company/cards/updateCard'
+    }),
     labelColor() {
       const status = this.card.status
       switch (status) {
@@ -225,17 +228,11 @@ export default {
     show(id) {
       if (this.selectedMedia.id === id) return true
     },
-    openApproveModal() {
-      this.$vfm.show(
-        {
-          component: AskingApproveModal,
-          bind: {
-            name: 'AskingApproveModal'
-          }
-        },
-        this.card.id
-      )
+    approve() {
+      this.card.approvalStatus = 'Approved by Customer'
+      this.updateCard(this.card)
     },
+
     openDeclineModal() {
       this.$vfm.show(
         {
@@ -243,8 +240,8 @@ export default {
           bind: {
             name: 'AskingDeclineModal'
           }
-        },
-        this.card.id
+        }
+        // this.card.id
       )
     }
   }
