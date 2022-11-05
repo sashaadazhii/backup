@@ -44,13 +44,14 @@
           </div>
         </Dialog>
       </div>
-      <div v-if="request" class="section">
-        <div class="section__desc">{{ requests[0].notes }}</div>
-        <div class="section__row">
-          <div class="section__title"><i class="i-time" /> <span>Estimate</span></div>
-          <div class="section__text">{{ requests[0].estimatedTime }} h</div>
+      <div v-if="request" class="section-wrap">
+        <div v-for="request in requests" :key="request.id" class="section">
+          <div class="section__desc">{{ request.notes }}</div>
+          <div class="section__row">
+            <div class="section__title"><i class="i-time" /> <span>Estimate</span></div>
+            <div class="section__text">{{ request.estimatedTime }} h</div>
+          </div>
         </div>
-
         <button v-ripple class="section__btn" @click="open">
           <i class="i-edit" />
           <span>Edit Info</span>

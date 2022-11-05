@@ -34,7 +34,8 @@
             </template>
           </Filter>
           <Input :modelValue="searchValue" size="medium" icon-left="i-search1" placeholder="Start typing to search card" @input="changeSearch" />
-          <Button label="Add Card from Library" icon="i-add_circle" @click="addCard" :disabled="!isStart || isViewOnlyMode" />
+          <!-- <Button label="Add Card from Library" icon="i-add_circle" @click="addCard" :disabled="!isStart || isViewOnlyMode" /> -->
+          <Button label="Add Card from Library" icon="i-add_circle" @click="addCard" :disabled="!isStart" />
         </div>
         <div v-if="activeFilters.length" class="chip__wrapper">
           <div v-for="chip of activeFilters" :key="chip.id" class="chip" :class="statusClass(chip.name, chip.type)">

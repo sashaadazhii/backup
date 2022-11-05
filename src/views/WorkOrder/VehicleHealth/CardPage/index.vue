@@ -1,7 +1,7 @@
 <template>
   <vue-final-modal v-slot="{close}" @before-open="beforeOpen">
     <div class="modal__wrapper">
-      <div class="modal__header">
+      <div class="modal__header" :class="labelClass(card.status)">
         <div class="modal__header-left">
           <div class="requests__row-title">Card Status:</div>
           <Menu :list="statusesChange" :disabled="!isStart">
@@ -209,7 +209,7 @@ export default {
         '-red': status === 'Component Unsafe' || status === 'Permanently Declined',
         '-bluegreen': status === 'Canned Service Completed' || status === 'Temporary Declined',
         '-none': status === 'No Status',
-        '-green': status === 'Approved By SA',
+        '-green': status === 'Approved By SA' || status === 'Good',
         '-green -border': status === 'Approved By Customer',
         '-purple': status === 'Approved For Next Visit',
         '-disabled': !this.isStart
