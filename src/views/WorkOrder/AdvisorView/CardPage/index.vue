@@ -1,12 +1,12 @@
 <template>
   <vue-final-modal v-slot="{close}" @before-open="beforeOpen">
     <div class="modal__wrapper">
-      <div class="modal__header">
+      <div class="modal__header" :class="labelClass(card.status)">
         <div class="modal__header-left">
           <div class="modal__header-title">Card Status:</div>
-          <Menu :list="statusesChange" :disabled="!isStart">
+          <Menu :list="statusesChange">
             <template #menu>
-              <Label :label="card.status" size="small" class="modal__label -hover" :class="labelClass(card.status)" />
+              <Label :label="card.status" size="small" class="modal__label" :class="labelClass(card.status)" />
             </template>
           </Menu>
           <div class="modal__header-title">Approval Status:</div>
@@ -319,10 +319,34 @@ export default {
       block: 'General',
       techs: null,
       statusesChange: [
-        {label: 'No Status', command: () => this.changeStatus({id: this.card.id, status: 'No Status'})},
-        {label: 'Good', command: () => this.changeStatus({id: this.card.id, status: 'Good'})},
-        {label: 'Recommended', command: () => this.changeStatus({id: this.card.id, status: 'Recommended'})},
-        {label: 'Component Unsafe', command: () => this.changeStatus({id: this.card.id, status: 'Component Unsafe'})}
+        {
+          label: 'No Status',
+          command: () => {
+            this.card.status = 'No Status'
+            this.updateCard(this.card)
+          }
+        },
+        {
+          label: 'Good',
+          command: () => {
+            this.card.status = 'Good'
+            this.updateCard(this.card)
+          }
+        },
+        {
+          label: 'Recommended',
+          command: () => {
+            this.card.status = 'Recommended'
+            this.updateCard(this.card)
+          }
+        },
+        {
+          label: 'Component Unsafe',
+          command: () => {
+            this.card.status = 'Component Unsafe'
+            this.updateCard(this.card)
+          }
+        }
       ],
       approvalStatusChange: [
         {label: 'No Status', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'No Status'})},
@@ -480,7 +504,7 @@ export default {
         '-red': status === 'Component Unsafe' || status === 'Permanently Declined',
         '-bluegreen': status === 'Canned Service Completed' || status === 'Temporary Declined',
         '-none': status === 'No Status',
-        '-green': status === 'Approved By SA',
+        '-green': status === 'Approved By SA' || status === 'Good',
         '-green -border': status === 'Approved By Customer',
         '-purple': status === 'Approved For Next Visit',
         '-disabled': !this.isStart

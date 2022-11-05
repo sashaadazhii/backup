@@ -32,6 +32,18 @@
     padding-right: 20px;
     background-color: rgba($color-orange, 0.14);
     border-bottom: 1px solid $color-grey-flash;
+    &.-orange {
+      background-color: rgba($color-orange, 0.14);
+    }
+    &.-green {
+      background-color: rgba($color-green, 0.14);
+    }
+    &.-red {
+      background-color: rgba($color-red, 0.14);
+    }
+    &.-none {
+      background-color: $color-grey-flash;
+    }
     &-right {
       display: flex;
       column-gap: 20px;
@@ -128,6 +140,11 @@
     }
     &.-orange {
       background-color: $color-orange;
+      color: $color-white;
+      border-color: transparent;
+    }
+    &.-green {
+      background-color: $color-green;
       color: $color-white;
       border-color: transparent;
     }

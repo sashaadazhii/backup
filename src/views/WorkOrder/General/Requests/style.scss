@@ -30,7 +30,7 @@
     align-items: center;
     justify-content: space-between;
     column-gap: 8px;
-    @include font(14px, $color-grey-space,600);
+    @include font(14px, $color-grey-space, 600);
   }
 }
 
@@ -78,6 +78,8 @@
     align-items: center;
     justify-content: center;
     column-gap: 8px;
+    margin-top: 14px;
+    padding: 12px;
     overflow: hidden;
     position: relative;
 
