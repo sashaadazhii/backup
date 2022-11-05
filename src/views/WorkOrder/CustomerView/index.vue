@@ -1,7 +1,7 @@
 <template>
   <div class="inspections">
     <header class="header">
-      <div @click="$router.back()" class="header__link">
+      <div @click="$router.push(`/service-advisor/${this.uid}`)" class="header__link">
         <i class="i-keyboard_arrow_left" />
       </div>
       <div class="header__title">Work Order #<span>24</span></div>

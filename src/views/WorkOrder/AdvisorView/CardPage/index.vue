@@ -397,7 +397,7 @@ export default {
     //TODO: update logic with 1 request connected with card
     if (this.order.customerRequests.length) {
       this.request = this.order.customerRequests.map(r => r.notes)
-    } else this.request = 'No requests'
+    } else this.request = ''
 
     const [firstMedia] = this.assets
     this.selectMedia(firstMedia)
