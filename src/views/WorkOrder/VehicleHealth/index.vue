@@ -77,13 +77,13 @@
           <Dropdown v-model="status" :options="statuses" size="medium" class="health__header-dropdown" theme="grey">
             <template #value="{value}">
               <div class="y-dropdown-item-custom --theme-grey">
-                <i class="i-layers bluegreen" />
+                <i class="i-layers" :class="iconColor(value)" />
                 <span>{{ value }} </span>
               </div>
             </template>
             <template #option="{option}">
               <div class="y-dropdown-label-custom --theme-grey">
-                <i class="i-layers bluegreen" />
+                <i class="i-layers" :class="iconColor(option)" />
                 <span>{{ option }}</span>
               </div>
             </template>
@@ -307,6 +307,15 @@ export default {
         '-purple': name === 'Approved For Next Visit'
       }
     },
+      iconColor(status) {
+        const colorsMapByStatus = {
+            ['No Status']: 'none square',
+            ['Good']: 'green square',
+            ['Recommended']: 'orange square',
+            ['Component Unsafe']: 'red square',
+        }
+        return colorsMapByStatus[status]
+      },
     open() {
       this.$vfm.show({
         component: InitialWalkaround,
