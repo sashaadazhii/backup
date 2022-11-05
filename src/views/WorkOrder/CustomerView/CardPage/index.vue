@@ -133,7 +133,6 @@ import {mapState, mapActions, mapMutations} from 'vuex'
 import Label from '@/components/Yaro/Label'
 import Button from '@/components/Yaro/Button'
 import AskingDeclineModal from '../AskingDeclineModal'
-import AskingApproveModal from '../AskingApproveModal'
 import _ from 'lodash'
 
 export default {
@@ -145,12 +144,13 @@ export default {
       showControls: true,
       parts: [],
       readyParts: [],
-      card: {}
+      card: {},
+      uid: null
     }
   },
   async created() {
-    const uid = this.$route.params.uid
-    await this.findOrder(uid)
+    this.uid = this.$route.params.uid
+    await this.findOrder(this.uid)
     const cardID = this.$route.params.cardID
     this.card = this.order.cannedServices.find(c => c.id.toString() === cardID)
 
@@ -202,7 +202,7 @@ export default {
           return '#F37878'
         case 'Recommended':
           return ' #FFA14E'
-        case 'Done':
+        case 'Good':
           return '#10B981'
         default:
           return '#6b7280'
@@ -231,18 +231,16 @@ export default {
     approve() {
       this.card.approvalStatus = 'Approved by Customer'
       this.updateCard(this.card)
+      this.$router.push(`/customer-view/${this.uid}`)
     },
 
     openDeclineModal() {
-      this.$vfm.show(
-        {
-          component: AskingDeclineModal,
-          bind: {
-            name: 'AskingDeclineModal'
-          }
+      this.$vfm.show({
+        component: AskingDeclineModal,
+        bind: {
+          name: 'AskingDeclineModal'
         }
-        // this.card.id
-      )
+      })
     }
   }
 }

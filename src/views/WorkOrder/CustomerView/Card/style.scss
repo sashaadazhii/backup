@@ -33,12 +33,26 @@
     }
   }
   &__footer {
+    display: grid;
     margin-top: 16px;
 
-    &-buttons {
-      display: grid;
-      grid-template-columns: 40px 1fr;
-      column-gap: 8px;
+    & > .-green {
+      background-color: transparent;
+      border-color: $color-bluegreen;
+      color: $color-bluegreen;
+      justify-content: flex-start;
     }
+    & > .-red {
+      background-color: transparent;
+      border-color: $color-red;
+      color: $color-red;
+      justify-content: flex-start;
+    }
+
+    // &-buttons {
+    //   display: grid;
+    //   grid-template-columns: 40px 1fr;
+    //   column-gap: 8px;
+    // }
   }
 }
