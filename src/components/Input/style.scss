@@ -102,7 +102,7 @@
     &:focus {
       border-color: $color-grey;
       background-color: $color-white;
-      box-shadow: 0 0 0 2px $color-grey-flash;
+      box-shadow: 0 0 0 1px $color-grey-flash;
     }
   }
   &__icon {
