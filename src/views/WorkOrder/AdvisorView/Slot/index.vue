@@ -17,7 +17,7 @@
     </div>
     <div class="card__menu text">{{ formatter(card.chosenService.parts?.reduce((sum, current) => sum + current.price * current.quantity, 0)) }}</div>
     <div class="card__menu">
-      <Label :label="card.approvalStatus" size="small" circle class="card__label -shadow -hover -dashed" :class="labelClass(card.approvalStatus)" />
+      <Label :label="card.approvalStatus" size="small" circle class="card__label -shadow -hover" :class="labelClass(card.approvalStatus)" />
     </div>
     <div class="card__progress">
       <div class="card__progress-title">{{ card.service }}%</div>
@@ -34,7 +34,6 @@
 import Menu from '@/components/Yaro/Menu'
 import Label from '@/components/Yaro/Label'
 import {mapMutations, mapState, mapActions} from 'vuex'
-// import {serviceList} from '@/store/data/cannedServices.js'
 
 export default {
   name: 'CardSlot',
@@ -95,15 +94,13 @@ export default {
       findOrder: 'workOrder/find',
       fetchServices: 'company/cannedServices/fetch'
     }),
-    // changeStatus(card) {},
     labelClass(status) {
       return {
         '-orange': status === 'Recommended',
         '-red': status === 'Component Unsafe' || status === 'Permanently Declined',
-        '-bluegreen': status === 'Canned Service Completed' || status === 'Temporary Declined',
         '-none': status === 'No Status',
-        '-green': status === 'Approved By SA',
-        '-green -border': status === 'Approved By Customer',
+        '-green -border': status === 'Approved by Customer',
+        '-red -border': status === 'Permanently Decline' || status === 'Temporarily Declined',
         '-purple': status === 'Approved For Next Visit',
         '-disabled': !this.isStart
       }

@@ -42,20 +42,8 @@
   }
   &__label {
     transition: opacity 0.2s ease-in-out;
-    &.-red {
-      background-color: $color-red;
-    }
-    &.-orange {
-      background-color: $color-orange;
-    }
-    &.-bluegreen {
-      background-color: $color-bluegreen;
-    }
-    &.-none {
-      border-color: $color-grey-flash;
-      background-color: $color-grey-smoke;
-      color: $color-grey;
-    }
+    border-style: dashed;
+
     &.-shadow {
       padding-right: 10px;
       &.-green {
@@ -88,6 +76,29 @@
         background-color: transparent;
         color: $color-grey;
       }
+    }
+    &.-red {
+      background-color: $color-red;
+      &.-border {
+        border: 1px solid $color-red;
+      }
+    }
+    &.-green {
+      background-color: $color-green-mint;
+      &.-border {
+        border: 1px solid $color-green;
+      }
+    }
+    &.-orange {
+      background-color: $color-orange;
+    }
+    &.-bluegreen {
+      background-color: $color-bluegreen;
+    }
+    &.-none {
+      border-color: $color-grey-flash;
+      background-color: $color-grey-smoke;
+      color: $color-grey;
     }
     &.-hover {
       &:hover {

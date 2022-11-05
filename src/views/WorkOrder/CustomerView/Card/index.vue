@@ -22,17 +22,13 @@
       </div>
     </div>
     <div class="card__footer">
-      <div>
-        <!-- TODO: update logic after approve -->
-        <Label
-          v-if="card.approvalStatus !== 'No Status'"
-          :label="card.approvalStatus"
-          :icon="card.approvalStatus === 'Approved by Customer' ? 'i-check_circle' : 'i-circle_close'"
-          :style="card.approvalStatus === 'Approved by Customer' ? 'border-color : #E5E7EB' : 'border-color: #F37878'"
-          color="#fff"
-          size="large"
-        />
-      </div>
+      <Label
+        v-if="card.approvalStatus !== 'No Status'"
+        :label="card.approvalStatus === 'Approved by Customer' ? 'Pre-approved' : card.approvalStatus"
+        :icon="card.approvalStatus === 'Approved by Customer' ? 'i-check_circle_outline' : 'i-circle_close'"
+        :class="[card.approvalStatus === 'Approved by Customer' ? '-green' : '-red']"
+        size="large"
+      />
     </div>
   </div>
 </template>

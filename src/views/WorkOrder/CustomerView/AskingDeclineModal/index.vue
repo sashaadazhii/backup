@@ -1,5 +1,5 @@
 <template>
-  <vue-final-modal @before-open="beforeOpen">
+  <vue-final-modal>
     <div class="modal">
       <div v-if="!showSecondModal" class="modal__first">
         <div class="modal__icon"><i class="i-circle_close" /></div>
@@ -33,8 +33,7 @@
 <script>
 import {mapState, mapActions} from 'vuex'
 import Button from '@/components/Yaro/Button'
-import DeclineModal from './DeclineModal'
-import DeclineTemporaryModal from './DeclineTemporaryModal'
+
 export default {
   name: 'AskingDeclineModal',
   components: {Button},
@@ -66,15 +65,12 @@ export default {
     async decline() {
       this.card.approvalStatus = 'Permanently Decline'
       this.updateCard(this.card)
+      this.$router.push(`/customer-view/${this.uid}`)
     },
     async declineTemporary() {
       this.card.approvalStatus = 'Temporarily Declined'
       this.updateCard(this.card)
-    },
-    async beforeOpen(e) {
-      this.id = e.ref.params._value
-      await this.findCard(this.id)
-      await this.fetch(this.card.workOrderID)
+      this.$router.push(`/customer-view/${this.uid}`)
     }
   }
 }
