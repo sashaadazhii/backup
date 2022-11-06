@@ -18,6 +18,7 @@ export default {
     },
     addCard(state, card) {
       state.cards.unshift(card)
+      console.log(state.cards)
     },
     setSort(state, params) {
       state.sortType = params
