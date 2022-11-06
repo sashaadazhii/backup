@@ -176,13 +176,15 @@
               </div>
               <div class="parts">
                 <Part v-for="part in parts" :key="part.uid" :part="part" />
-                <NewPart v-if="isNew" :service="card.chosenService" @close="isNew = false" @addPart="addPart" />
+                <NewPart v-if="isNewPart" :service="card.chosenService" @close="isNewPart = false" @addPart="addPart" />
+                <NewPart v-if="isNewLabour" :service="card.chosenService" :isNewLabour="isNewLabour" @close="isNewLabour = false" @addPart="addPart" />
+                <NewPart v-if="isNewService" :service="card.chosenService" :isNewService="isNewService" @close="isNewService = false" @addPart="addPart" />
 
                 <div class="parts__buttons">
-                  <div class="parts__btn" @click="isNew = true"><i class="i-add_circle" /><span>Add new part</span></div>
+                  <div class="parts__btn" @click="isNewPart = true"><i class="i-add_circle" /><span>Add new part</span></div>
                   <div class="parts__btn"><i class="i-add_circle" /><span>Add parts kit</span></div>
-                  <div class="parts__btn violet"><i class="i-add_circle" /><span>Add Services & Fees</span></div>
-                  <div class="parts__btn blue"><i class="i-add_circle" /><span>Add Labour</span></div>
+                  <div class="parts__btn violet" @click="isNewService = true"><i class="i-add_circle" /><span>Add Services & Fees</span></div>
+                  <div class="parts__btn blue" @click="isNewLabour = true"><i class="i-add_circle" /><span>Add Labour</span></div>
                 </div>
               </div>
             </div>
@@ -383,7 +385,9 @@ export default {
       cause: '',
       solution: '',
       showBlock: true,
-      isNew: false,
+      isNewPart: false,
+      isNewLabour: false,
+      isNewService: false,
       warrantyMonths: '24 month',
       warrantyKm: 20000
     }
