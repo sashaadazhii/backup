@@ -277,7 +277,9 @@
                   <Label alias="5" size="large" color="#3EB3BB" class="-large-text" />
                   <div class="item__title">Warranty</div>
                 </div>
-                <div class="item__right"><i class="i-check_circle" /></div>
+                <div class="item__right" :class="{active: card.chosenService.warranty.time || card.chosenService.warranty.range}">
+                  <i class="i-check_circle" />
+                </div>
               </div>
             </div>
             <Button label="Mark as Ready for Customer" size="large" @click="approve" :disabled="cause.length <= 10 || !solutionList.length" />
@@ -392,13 +394,14 @@ export default {
     await this.fetchAssets()
 
     this.parts = this.card.chosenService.parts
-    this.card.cause = ''
+    this.cause = this.card.cause || ''
     this.solution = this.card.chosenService.description
     //TODO: update logic with 1 request connected with card
     if (this.order.customerRequests.length) {
       this.request = this.order.customerRequests.map(r => r.notes)
     } else this.request = ''
 
+    if (this.card.cause === '' || this.card.request === '') this.card.advisorApprove = false
     const [firstMedia] = this.assets
     this.selectMedia(firstMedia)
 
@@ -468,7 +471,8 @@ export default {
       changeStatus: 'company/cards/changeStatus',
       changeApprovalStatus: 'company/cards/changeApprovalStatus',
       setActiveService: 'company/cannedServices/setActiveService',
-      updateCard: 'company/cards/updateCard'
+      updateCard: 'company/cards/updateCard',
+      updateOrder: 'workOrder/updateOrder'
     }),
     async beforeOpen() {
       this.uid = this.$route.params.uid
@@ -483,6 +487,10 @@ export default {
       this.card.advisorApprove = true
       this.card.cause = this.cause
       this.card.chosenService.description = this.solution
+      if (this.request && !this.order.customerRequests.length) {
+        this.order.customerRequests.push({notes: this.request})
+      }
+      this.updateOrder(this.order)
       this.updateCard(this.card)
       this.$vfm.hide('AdvisorCardPage')
       this.$router.push(`/service-advisor/${this.uid}/preview/${this.card.id}`)
@@ -537,6 +545,9 @@ export default {
     }
   },
   beforeUnmount() {
+    // if (this.cause.length < 10 || !this.card.request) this.card.advisorApprove = false
+    this.updateCard(this.card)
+
     this.setActiveService({})
   }
 }

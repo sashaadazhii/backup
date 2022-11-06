@@ -10,8 +10,13 @@
     <div class="card__title-wrap">
       <div class="card__title"><i v-if="card.isRequest" class="i-device_hub" /> {{ card.name }}</div>
       <!-- TODO: add additional logic for cause -->
-      <!-- <div :style="card.services.length ? 'pointer-events: auto' : 'pointer-events: none'"> -->
-      <div class="card__status" @click.self="$emit('changeStatus', card)" :class="card.advisorApprove ? 'green' : ''">
+      <!-- <div :style="card.services.length ? 'pointer-events: auto' : 'pointer-events: none'"> && !order.customerRequests.length-->
+      <div
+        class="card__status"
+        :style="!card.advisorApprove && (!card.cause || !order.customerRequests.length) ? 'pointer-events:none' : 'pointer-events:auto'"
+        @click.self="$emit('changeStatus', card)"
+        :class="card.advisorApprove ? 'green' : ''"
+      >
         <i class="i-check_circle_outline" /> {{ card.advisorApprove ? 'Ready' : 'Not Ready' }}
       </div>
     </div>
@@ -73,7 +78,8 @@ export default {
         {label: 'Permanently Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Permanently Declined'})},
         {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
       ],
-      parts: []
+      parts: [],
+      uid: null
     }
   },
 
@@ -91,7 +97,7 @@ export default {
       remove: 'company/cards/remove'
     }),
     ...mapActions({
-      findOrder: 'workOrder/find',
+      // findOrder: 'workOrder/find',
       fetchServices: 'company/cannedServices/fetch'
     }),
     labelClass(status) {

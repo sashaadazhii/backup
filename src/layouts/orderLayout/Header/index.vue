@@ -34,11 +34,18 @@
       <div v-if="!isStart" class="header__timer" :class="{'-start': isStart}" @click="start">
         <div v-if="!isStart" class="header__timer-start"><i class="i-play_circle_filled" /> <span>Start Work Order</span></div>
       </div>
-      <div v-if="cardsApproved && isStart">
+
+      <div v-if="cardsApproved && isStart && !isReady">
         <router-link :to="`/service-advisor/${uid}`">
           <Button label="Ready for Service Advisor Review" icon="i-check_circle" class="mint" color="#10B981" />
         </router-link>
       </div>
+      <!-- <div v-else-if="cardsApproved && isStart && !isReady">11</div> -->
+      <!-- <div v-else-if="cardsApproved && isStart && isReady"> -->
+      <div v-else-if="isStart && isReady">
+        <Button label="Send for customer approval" icon="i-check_circle" class="mint" color="#10B981" />
+      </div>
+
       <Button icon="i-circle_close" border circle size="small" @click="close" />
     </div>
   </div>
@@ -58,7 +65,7 @@ export default {
     return {
       uid: this.$route.params.uid,
       isNew: true,
-      isStart: false,
+      // isStart: false,
       isFlow: false,
       cardsApproved: false
     }
@@ -70,8 +77,15 @@ export default {
   computed: {
     ...mapState({
       order: s => s.workOrder.workOrder,
-      cards: s => s.company.cards.cards
-    })
+      cards: s => s.company.cards.cards,
+      isStart: s => s.workOrder.isStart
+    }),
+    isReady() {
+      return this.order.cannedServices.find(s => s.advisorApprove) ? true : false
+    },
+    isNotReady() {
+      return this.order.cannedServices.find(s => s.advisorApprove) ? false : true
+    }
   },
   watch: {
     cards: {
@@ -90,7 +104,8 @@ export default {
       addNewWorkOrder: 'workOrder/addNewOrder'
     }),
     ...mapActions({
-      fetch: 'company/cards/fetch'
+      fetch: 'company/cards/fetch',
+      findOrder: 'workOrder/find'
     }),
     saveNewOrder() {
       const formattedOrderToSave = {
@@ -164,10 +179,16 @@ export default {
         }
       })
     },
-    start() {
+    async start() {
       this.isStart = !this.isStart
-      this.startOrder(this.isStart)
+      // this.startOrder(this.isStart)
+      this.startOrder(true)
       if (this.isStart) this.open()
+
+      if (this.$route.params.uid) {
+        this.uid = this.$route.params.uid
+        await this.findOrder(this.uid)
+      }
     },
     close() {
       this.$confirm.require({
