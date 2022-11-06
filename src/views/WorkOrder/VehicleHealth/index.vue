@@ -208,10 +208,10 @@ export default {
       return this.order.customerRequests && this.order.customerRequests.length > 0 ? this.order.customerRequests : []
     },
     cards() {
-      return this.order.cards && this.order.cards.length > 0 ? this.order.cards : this.localCards
+      return this.order?.cards && this.order?.cards.length > 0 ? this.order.cards : this.localCards
     },
     isViewOnlyMode() {
-      if (this.order.uid) {
+      if (!!this.order?.uid) {
         return this.$route.params.uid === this.order.uid
       }
       return false
@@ -250,7 +250,7 @@ export default {
       startOrder: 'workOrder/startOrder',
       changeStatusInTechFlow: 'company/cards/changeApprovalStatusInTechFlow',
       changeStatusInTechStart: 'company/cards/changeApprovalStatusInTechStart',
-      changeRequestStatusInTechStart: 'requests/changeStatusInTechStart'
+      changeRequestStatusInTechStart: 'requests/changeStatusInTechStart',
     }),
     save() {
       this.changeStatus(this.status)
