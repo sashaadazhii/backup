@@ -63,7 +63,8 @@
         <div v-if="block !== 'Service'" class="modal__main-requests">
           <div class="requests__list">
             <div class="requests__list-title">Assigned Requests:</div>
-            <div v-if="!card.isRequest" class="request__wrapper">
+            <!-- <div v-if="!card.isRequest" class="request__wrapper"> -->
+            <div v-if="card.request.notes" class="request__wrapper">
               <div class="request__header">
                 <i class="i-device_hub" />
                 <span>Noise</span>

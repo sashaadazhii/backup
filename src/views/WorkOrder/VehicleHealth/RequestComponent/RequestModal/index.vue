@@ -50,6 +50,7 @@
           <div class="cards__title">ADDED CARDS</div>
           <div class="cards__list">
             <Card v-for="(card, idx) of request.cards" :key="idx" :card="card" selected @select="changeCards" />
+            <!-- <Card v-for="(card, idx) of request.cards" :key="idx" :card="card" selected @select="addCardToOrder(card)" /> -->
           </div>
         </div>
         <div class="body__footer footer">
@@ -65,7 +66,8 @@
               </div>
             </div>
             <div class="cards__list">
-              <Card v-for="(card, idx) of formattedCards" :key="idx" :card="card" @select="changeCards" />
+              <!-- <Card v-for="(card, idx) of formattedCards" :key="idx" :card="card" @select="changeCards" /> -->
+              <Card v-for="(card, idx) of formattedCards" :key="idx" :card="card" @select="addCardToOrder(card)" />
             </div>
           </div>
         </div>
@@ -136,15 +138,29 @@ export default {
       changeRequest: 'requests/changeRequest',
       // changeStatus: 'requests/changeStatus',
       changeStatus: 'workOrder/changeRequestStatus',
-      changeCards: 'requests/changeCards'
+      changeCards: 'requests/changeCards',
+      updateCard: 'company/cards/updateCard'
     }),
     ...mapActions({
       findOrder: 'workOrder/find'
     }),
 
-    select(id) {
-      // const card = this.cardsList.find(c => c.id === id)
-      // card.select = !card.select
+    addCardToOrder(card) {
+      this.changeCards(card)
+      //estimatedTime id notes trackedTime status
+      const request = {
+        id: this.request.id,
+        estimatedTime: this.request.estimatedTime,
+        notes: this.request.notes,
+        status: this.request.status,
+        trackedTime: this.request.trackedTime
+      }
+      // card.requests.push(request)
+      card.request = request
+      this.updateCard(card)
+      console.log(card)
+      console.log(this.cards)
+      // console.log(this.order)
     },
     labelClass(status) {
       return {

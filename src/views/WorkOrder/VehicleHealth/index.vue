@@ -307,15 +307,15 @@ export default {
         '-purple': name === 'Approved For Next Visit'
       }
     },
-      iconColor(status) {
-        const colorsMapByStatus = {
-            ['No Status']: 'none square',
-            ['Good']: 'green square',
-            ['Recommended']: 'orange square',
-            ['Component Unsafe']: 'red square',
-        }
-        return colorsMapByStatus[status]
-      },
+    iconColor(status) {
+      const colorsMapByStatus = {
+        ['No Status']: 'none square',
+        ['Good']: 'green square',
+        ['Recommended']: 'orange square',
+        ['Component Unsafe']: 'red square'
+      }
+      return colorsMapByStatus[status]
+    },
     open() {
       this.$vfm.show({
         component: InitialWalkaround,

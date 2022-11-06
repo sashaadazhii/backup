@@ -10,7 +10,8 @@
       </Menu>
     </div>
     <div class="card__title">
-      <i v-if="card.isRequest" class="i-device_hub" />
+      <!-- <i v-if="card.isRequest" class="i-device_hub" /> -->
+      <i v-if="card.request.notes" class="i-device_hub" />
       {{ card.name }}
     </div>
     <div v-if="card.status === 'Good'" class="card__empty" />
