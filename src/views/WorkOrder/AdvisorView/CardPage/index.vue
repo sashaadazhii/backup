@@ -176,7 +176,7 @@
               </div>
               <div class="parts">
                 <Part v-for="part in parts" :key="part.uid" :part="part" />
-                <NewPart v-if="isNew" @close="isNew = false" />
+                <NewPart v-if="isNew" :service="card.chosenService" @close="isNew = false" @addPart="addPart" />
 
                 <div class="parts__buttons">
                   <div class="parts__btn" @click="isNew = true"><i class="i-add_circle" /><span>Add new part</span></div>
@@ -494,6 +494,10 @@ export default {
       this.updateCard(this.card)
       this.$vfm.hide('AdvisorCardPage')
       this.$router.push(`/service-advisor/${this.uid}/preview/${this.card.id}`)
+    },
+    addPart(part) {
+      this.card.chosenService.parts.push(part)
+      this.updateCard(this.card)
     },
     play() {
       this.$refs.video.play()

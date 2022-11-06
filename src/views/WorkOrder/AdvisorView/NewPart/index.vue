@@ -32,7 +32,16 @@ export default {
   props: {
     part: {
       type: Object
+    },
+    service: {
+      type: Object
     }
+    // isService: {
+    //   type: Boolean
+    // },
+    // isLabour: {
+    //   type: Boolean
+    // }
   },
   data() {
     return {
@@ -52,9 +61,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations({
-      add: 'company/cannedServices/addPart'
-    }),
+    ...mapMutations({}),
     addPart() {
       const {name, price, quantity, description} = this
       const part = {
@@ -64,9 +71,11 @@ export default {
         quantity,
         description,
         price,
-        select: false
+        select: false,
+        isLabour: false,
+        isService: false
       }
-      this.add(part)
+      this.$emit('addPart', part)
       this.$emit('close')
     },
     formatter(val) {
