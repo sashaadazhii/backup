@@ -53,7 +53,7 @@
 
 <script>
 import Dropdown from '@/components/Yaro/Dropdown'
-import {mapActions, mapState} from 'vuex'
+import {mapActions, mapMutations, mapState} from 'vuex'
 import Switch from '@/components/Yaro/Switch'
 
 export default {
@@ -85,6 +85,9 @@ export default {
     })
   },
   methods: {
+      ...mapMutations({
+          setCardLevel: 'company/card/setCardLevel',
+      }),
     ...mapActions({
       fetchCustomers: 'company/card/fetchCustomers',
       fetchVehicles: 'company/vehicles/fetchVehicles'
@@ -94,7 +97,16 @@ export default {
       else this.vehicles = []
       this.vehicle = null
     }
-  }
+  },
+    watch: {
+        every: {
+            handler(val) {
+                if(val) {
+                    this.setCardLevel(val)
+                }
+            }
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
