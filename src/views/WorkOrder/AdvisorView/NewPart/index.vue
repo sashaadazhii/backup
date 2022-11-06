@@ -2,7 +2,8 @@
   <div class="part__wrapper">
     <div class="part__main">
       <div class="part__top">
-        <i class="i-build" />
+        <i v-if="isNewLabour || isNewService" class="i-monetization_on" :style="[isNewService ? 'color: #BA8AE7' : 'color: #2C9AFF']" />
+        <i v-else class="i-build" />
         <Input v-model="name" size="small" placeholder="Name" />
         <Input v-model="quantity" size="small" placeholder="Quantity" v-maska="'####'" />
         <Input v-model="price" size="small" placeholder="Price" v-maska="{mask: 'HHHHHHHH', tokens: {H: {pattern: /[0-9.]/}}}" />
@@ -35,13 +36,13 @@ export default {
     },
     service: {
       type: Object
+    },
+    isNewService: {
+      type: Boolean
+    },
+    isNewLabour: {
+      type: Boolean
     }
-    // isService: {
-    //   type: Boolean
-    // },
-    // isLabour: {
-    //   type: Boolean
-    // }
   },
   data() {
     return {
@@ -64,7 +65,8 @@ export default {
     ...mapMutations({}),
     addPart() {
       const {name, price, quantity, description} = this
-      const part = {
+
+      let part = {
         serviceID: this.service.id,
         id: this.$getID(),
         name,
@@ -74,6 +76,32 @@ export default {
         select: false,
         isLabour: false,
         isService: false
+      }
+      if (this.isNewLabour) {
+        part = {
+          serviceID: this.service.id,
+          id: this.$getID(),
+          name,
+          quantity,
+          description,
+          price,
+          select: false,
+          isLabour: true,
+          isService: false
+        }
+      }
+      if (this.isNewService) {
+        part = {
+          serviceID: this.service.id,
+          id: this.$getID(),
+          name,
+          quantity,
+          description,
+          price,
+          select: false,
+          isLabour: false,
+          isService: true
+        }
       }
       this.$emit('addPart', part)
       this.$emit('close')
