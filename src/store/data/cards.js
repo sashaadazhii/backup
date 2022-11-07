@@ -60,7 +60,8 @@ const cardsList = cards.data
       partsForCustomer: null,
       customPrice: null,
       displayLabour: false,
-      displayFees: false
+      displayFees: false,
+      request: {}
     }
   })
 

@@ -4,7 +4,7 @@
       <div class="modal__header" :class="labelClass(card.status)">
         <div class="modal__header-left">
           <div class="requests__row-title">Card Status:</div>
-          <Menu :list="statusesChange" :disabled="!isStart">
+          <Menu :list="statusesChange" :disabled="!isStart || !isReady">
             <template #menu>
               <Label :label="card.status" size="small" class="requests__label -hover" :class="labelClass(card.status)" />
             </template>
@@ -63,23 +63,13 @@
         <div v-if="block !== 'Service'" class="modal__main-requests">
           <div class="requests__list">
             <div class="requests__list-title">Assigned Requests:</div>
-            <div v-if="!card.isRequest" class="request__wrapper">
+            <!-- <div v-if="!card.isRequest" class="request__wrapper"> -->
+            <div v-if="card.request.notes" class="request__wrapper">
               <div class="request__header">
                 <i class="i-device_hub" />
-                <span>Noise</span>
+                <span>Customer request</span>
               </div>
-              <div class="request__row">
-                <div class="request__row-title">Speed:</div>
-                <div class="request__row-text">75 km/h</div>
-              </div>
-              <div class="request__row">
-                <div class="request__row-title">While braking:</div>
-                <div class="request__row-text -green">Yes</div>
-              </div>
-              <div class="request__row">
-                <div class="request__row-title">Constant:</div>
-                <div class="request__row-text -red">No</div>
-              </div>
+              <div class="request__text">{{ card.request.notes }}</div>
               <div class="request__tracker tracker">
                 <div class="tracker__header">
                   <div class="tracker__header-cell">
@@ -148,7 +138,8 @@ export default {
         {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
       ],
       request: {},
-      uid: null
+      uid: null,
+      isReady: false
     }
   },
   async created() {
@@ -202,6 +193,8 @@ export default {
     async beforeOpen(e) {
       this.uid = this.$route.params.uid
       await this.findOrder(this.uid)
+
+      this.isReady = e.ref.params._rawValue
     },
     labelClass(status) {
       return {

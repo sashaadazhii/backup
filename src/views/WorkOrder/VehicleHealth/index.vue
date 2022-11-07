@@ -49,21 +49,22 @@
         </div>
       </div>
       <div class="health__table table">
-        <div class="table__header" :class="{'-check': isStart}">
+        <div class="table__header" :class="{'-check': isStart && isReady}">
           <!-- <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart || isViewOnlyMode}" @click="selectAll" /> -->
-          <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart}" @click="selectAll" />
+          <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart || !isReady}" @click="selectAll" />
           <div class="table__header-cell">Card status</div>
           <div class="table__header-cell">Card name</div>
           <div class="table__header-cell">Approval Status</div>
           <div class="table__header-cell">Service Tracking</div>
         </div>
         <div class="table__main">
-          <div v-if="initialWalkaround" class="card__wrapper" :class="{'-check': isStart}" @click="open">
-            <div v-if="isStart" />
+          <div v-if="initialWalkaround" class="card__wrapper small" :class="{'-check': isStart && isReady}" @click="open">
+            <!-- <div v-if="isStart" /> -->
             <Label label="Completed" size="small" class="card__label" />
             <div class="card__title">Initial Walkaround</div>
           </div>
-          <Slot v-for="card of cards" :key="card.uid" :card="card" :isViewOnlyMode="isViewOnlyMode" @click.self="openCard(card)" />
+
+          <Slot v-for="card of cards" :key="card.uid" :card="card" :isViewOnlyMode="isViewOnlyMode" :isReady="isReady" @click.self="openCard(card)" />
         </div>
       </div>
     </div>
@@ -218,6 +219,11 @@ export default {
     },
     selectedCards() {
       return this.cards.filter(c => c.select)
+    },
+    isReady() {
+      if (this.order.customerRequests.filter(r => r.status === 'Not Processed').length === 0) {
+        return true
+      } else return false
     }
   },
   watch: {
@@ -280,14 +286,17 @@ export default {
     },
     openCard(card) {
       this.setCard(card)
-      this.$vfm.show({
-        component: CardPage,
-        bind: {
-          name: 'CardPage',
-          'click-to-close': false,
-          'esc-to-close': true
-        }
-      })
+      this.$vfm.show(
+        {
+          component: CardPage,
+          bind: {
+            name: 'CardPage',
+            'click-to-close': false,
+            'esc-to-close': true
+          }
+        },
+        this.isReady
+      )
     },
     changeSearch(searchValue) {
       this.setSearch(searchValue)
@@ -307,15 +316,15 @@ export default {
         '-purple': name === 'Approved For Next Visit'
       }
     },
-      iconColor(status) {
-        const colorsMapByStatus = {
-            ['No Status']: 'none square',
-            ['Good']: 'green square',
-            ['Recommended']: 'orange square',
-            ['Component Unsafe']: 'red square',
-        }
-        return colorsMapByStatus[status]
-      },
+    iconColor(status) {
+      const colorsMapByStatus = {
+        ['No Status']: 'none square',
+        ['Good']: 'green square',
+        ['Recommended']: 'orange square',
+        ['Component Unsafe']: 'red square'
+      }
+      return colorsMapByStatus[status]
+    },
     open() {
       this.$vfm.show({
         component: InitialWalkaround,

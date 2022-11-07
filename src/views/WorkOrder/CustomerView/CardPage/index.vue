@@ -48,7 +48,7 @@
                 <div class="card__widget-title">Concern (Customer Request):</div>
               </div>
               <div class="card__widget-bottom">
-                <div class="card__widget-text">Customer can hear noise while breaking.</div>
+                <div class="card__widget-text">{{ card.request.notes }}</div>
               </div>
             </div>
             <div class="card__widget">
@@ -66,7 +66,7 @@
                 <div class="card__widget-title">Solution:</div>
               </div>
               <div class="card__widget-bottom">
-                <div class="card__widget-text">{{ card.description }}</div>
+                <div class="card__widget-text">{{ card.chosenService.description }}</div>
               </div>
             </div>
           </div>
