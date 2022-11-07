@@ -1,16 +1,15 @@
 <template>
-  <div class="card__wrapper flex-column" :class="{'-check': isStart}">
+  <div class="card__wrapper flex-column" :class="{'-check': isStart && isReady}">
     <!-- <div class="y-check" :class="{'-active': card.select, '-hide': isViewOnlyMode || !isStart}" @click="select(card.id)" /> -->
-    <div class="y-check" :class="{'-active': card.select, '-hide': !isStart}" @click="select(card.id)" />
+    <div class="y-check" :class="{'-active': card.select, '-hide': !isStart || !isReady}" @click="select(card.id)" />
     <div class="card__menu">
-      <Menu :list="statusesChange" position="left" :disabled="!isStart">
+      <Menu :list="statusesChange" position="left" :disabled="!isStart || !isReady">
         <template #menu>
           <Label :label="card.status" size="small" class="card__label -hover" :class="labelClass(card.status)" />
         </template>
       </Menu>
     </div>
     <div class="card__title">
-      <!-- <i v-if="card.isRequest" class="i-device_hub" /> -->
       <i v-if="card.request.notes" class="i-device_hub" />
       {{ card.name }}
     </div>
@@ -67,6 +66,10 @@ export default {
     isViewOnlyMode: {
       type: Boolean,
       default: false
+    },
+    isReady: {
+      type: Boolean,
+      default: false
     }
   },
   components: {Label, Menu},
@@ -104,6 +107,7 @@ export default {
   computed: {
     ...mapState({
       isStart: s => s.workOrder.isStart
+      // order: s => s.workOrder.workOrder
     })
   },
   methods: {

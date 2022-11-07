@@ -93,8 +93,6 @@
               </div>
             </div>
             <div class="block__main">
-              <!-- TODO: add customer request from order when  ready
-               -->
               <textarea v-model="request" ref="request" class="block__textarea blue"></textarea>
             </div>
           </div>
@@ -360,7 +358,6 @@ export default {
         {label: 'Permanently Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Permanently Declined'})},
         {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
       ],
-      request: '',
       brakePads: ['5mm', '5.5mm', '6mm', '6.5mm', '7mm', '7.5mm'],
       brakePadLeft: '5mm',
       brakePadLRight: '5mm',
@@ -382,6 +379,7 @@ export default {
       ],
       denailMessage1: '',
       denailMessage2: '',
+      request: '',
       cause: '',
       solution: '',
       showBlock: true,
@@ -400,9 +398,8 @@ export default {
     this.parts = this.card.chosenService.parts
     this.cause = this.card.cause || ''
     this.solution = this.card.chosenService.description
-    //TODO: update logic with 1 request connected with card
-    if (this.order.customerRequests.length) {
-      this.request = this.order.customerRequests.map(r => r.notes)
+    if (this.card.request.notes) {
+      this.request = this.card.request.notes
     } else this.request = ''
 
     if (this.card.cause === '' || this.card.request === '') this.card.advisorApprove = false
@@ -491,9 +488,7 @@ export default {
       this.card.advisorApprove = true
       this.card.cause = this.cause
       this.card.chosenService.description = this.solution
-      if (this.request && !this.order.customerRequests.length) {
-        this.order.customerRequests.push({notes: this.request})
-      }
+      this.card.request.notes = this.request
       this.updateOrder(this.order)
       this.updateCard(this.card)
       this.$vfm.hide('AdvisorCardPage')
@@ -544,7 +539,6 @@ export default {
 
     updateSwitch(param) {
       param = !param
-
       this.updateCard(this.card)
     },
     formatter(val) {
