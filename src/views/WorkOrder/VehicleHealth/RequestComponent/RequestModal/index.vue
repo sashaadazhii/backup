@@ -29,7 +29,7 @@
       <div class="modal__body body">
         <div class="body__header">
           <div class="body__title">
-            <i v-if="isStart" class="i-device_hub blue" />
+            <i v-if="isStart && request.cards.length" class="i-device_hub blue" />
             <div class="body__text">{{ request.notes }}</div>
           </div>
           <div class="body__status">
@@ -49,8 +49,7 @@
         <div v-if="request.cards.length" class="body__cards cards">
           <div class="cards__title">ADDED CARDS</div>
           <div class="cards__list">
-            <Card v-for="(card, idx) of request.cards" :key="idx" :card="card" selected @select="changeCards" />
-            <!-- <Card v-for="(card, idx) of request.cards" :key="idx" :card="card" selected @select="addCardToOrder(card)" /> -->
+            <Card v-for="(card, idx) of request.cards" :key="idx" :card="card" selected @unselect="removeCardFromOrder(card)" />
           </div>
         </div>
         <div class="body__footer footer">
@@ -66,7 +65,6 @@
               </div>
             </div>
             <div class="cards__list">
-              <!-- <Card v-for="(card, idx) of formattedCards" :key="idx" :card="card" @select="changeCards" /> -->
               <Card v-for="(card, idx) of formattedCards" :key="idx" :card="card" @select="addCardToOrder(card)" />
             </div>
           </div>
@@ -158,9 +156,11 @@ export default {
       // card.requests.push(request)
       card.request = request
       this.updateCard(card)
-      console.log(card)
-      console.log(this.cards)
-      // console.log(this.order)
+    },
+    removeCardFromOrder(card) {
+      this.changeCards(card)
+      card.request = {}
+      this.updateCard(card)
     },
     labelClass(status) {
       return {

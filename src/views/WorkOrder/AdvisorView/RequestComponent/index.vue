@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="request__main">
-      <i class="i-device_hub request__main-icon" />
+      <i v-if="request.cards.length" class="i-device_hub request__main-icon" />
       <div class="request__main-title">Customer Request</div>
       <div class="request__main-text">{{ request.notes }}</div>
     </div>

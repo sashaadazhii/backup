@@ -35,13 +35,12 @@
         <div v-if="!isStart" class="header__timer-start"><i class="i-play_circle_filled" /> <span>Start Work Order</span></div>
       </div>
 
-      <div v-if="cardsApproved && isStart && !isReady">
+      <div v-if="isStart && !isReady && cardsApproved">
         <router-link :to="`/service-advisor/${uid}`">
-          <Button label="Ready for Service Advisor Review" icon="i-check_circle" class="mint" color="#10B981" />
+          <Button label="Ready for Service Advisor Review" icon="i-check_circle" class="mint" color="#10B981" @click="isSAView" />
         </router-link>
       </div>
-      <!-- <div v-else-if="cardsApproved && isStart && !isReady">11</div> -->
-      <!-- <div v-else-if="cardsApproved && isStart && isReady"> -->
+
       <div v-else-if="isStart && isReady">
         <Button label="Send for customer approval" icon="i-check_circle" class="mint" color="#10B981" />
       </div>
@@ -65,9 +64,9 @@ export default {
     return {
       uid: this.$route.params.uid,
       isNew: true,
-      // isStart: false,
       isFlow: false,
-      cardsApproved: false
+      cardsApproved: false,
+      isSAView: false
     }
   },
   async created() {
@@ -81,11 +80,13 @@ export default {
       isStart: s => s.workOrder.isStart
     }),
     isReady() {
-      return this.order.cannedServices.find(s => s.advisorApprove) ? true : false
-    },
-    isNotReady() {
-      return this.order.cannedServices.find(s => s.advisorApprove) ? false : true
+      return this.order.cannedServices.filter(s => s.advisorApprove).length !== 0 ? true : false
     }
+    //   isReady() {
+    //   if (this.order.customerRequests.filter(r => r.status === 'Not Processed').length === 0) {
+    //     return true
+    //   } else return false
+    // }
   },
   watch: {
     cards: {

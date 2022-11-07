@@ -3,7 +3,7 @@
     <div class="card__top">
       <div class="card__top-left">
         <i v-if="selected" class="i-device_hub blue" />
-        <i v-if="selected" class="i-check_circle green" @click="$emit('select', card)" />
+        <i v-if="selected" class="i-check_circle green" @click="$emit('unselect', card)" />
         <i v-else class="i-add_circle grey" @click="$emit('select', card)" :style="!isStart ? 'pointer-events:none' : 'pointer-events:auto'" />
         <Label label="Ford F150 2021" size="small" circle />
         <div class="card__name">
