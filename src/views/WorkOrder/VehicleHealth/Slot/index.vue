@@ -1,8 +1,11 @@
 <template>
+  <!-- <div class="card__wrapper flex-column" :class="{'-check': isStart && !isViewOnlyMode }"> -->
   <div class="card__wrapper flex-column" :class="{'-check': isStart && isReady}">
     <!-- <div class="y-check" :class="{'-active': card.select, '-hide': isViewOnlyMode || !isStart}" @click="select(card.id)" /> -->
-    <div class="y-check" :class="{'-active': card.select, '-hide': !isStart || !isReady}" @click="select(card.id)" />
+    <div class="y-check" :class="{'-active': card.select, '-hide': !isReady || !isStart}" @click="select(card.id)" />
+
     <div class="card__menu">
+      <!-- <Menu :list="statusesChange" position="left" :disabled="!isStart || isViewOnlyMode"> -->
       <Menu :list="statusesChange" position="left" :disabled="!isStart || !isReady">
         <template #menu>
           <Label :label="card.status" size="small" class="card__label -hover" :class="labelClass(card.status)" />
@@ -66,11 +69,11 @@ export default {
     isViewOnlyMode: {
       type: Boolean,
       default: false
-    },
-    isReady: {
-      type: Boolean,
-      default: false
     }
+    // isReady: {
+    //   type: Boolean,
+    //   default: false
+    // }
   },
   components: {Label, Menu},
   data() {
@@ -106,9 +109,14 @@ export default {
   },
   computed: {
     ...mapState({
-      isStart: s => s.workOrder.isStart
-      // order: s => s.workOrder.workOrder
-    })
+      isStart: s => s.workOrder.isStart,
+      order: s => s.workOrder.workOrder
+    }),
+    isReady() {
+      if (this.order && this.order.customerRequests?.filter(r => r.status === 'Not Processed').length === 0) {
+        return true
+      } else return false
+    }
   },
   methods: {
     ...mapMutations({
