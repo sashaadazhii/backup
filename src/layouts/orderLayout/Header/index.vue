@@ -80,8 +80,11 @@ export default {
       isStart: s => s.workOrder.isStart
     }),
     isReady() {
-      return this.order.cannedServices.filter(s => s.advisorApprove).length !== 0 ? true : false
+      // if(this.order) {
+      return this.order?.cannedServices.filter(s => s.advisorApprove).length !== 0 ? true : false
+      // }
     }
+
     //   isReady() {
     //   if (this.order.customerRequests.filter(r => r.status === 'Not Processed').length === 0) {
     //     return true

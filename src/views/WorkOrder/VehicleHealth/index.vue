@@ -49,22 +49,23 @@
         </div>
       </div>
       <div class="health__table table">
-        <div class="table__header" :class="{'-check': isStart && isReady}">
+        <div class="table__header" :class="{'-check': isStart}">
+          <!-- <div class="table__header" :class="{'-check': isStart && isReady}"> -->
           <!-- <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart || isViewOnlyMode}" @click="selectAll" /> -->
-          <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart || !isReady}" @click="selectAll" />
+          <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart}" @click="selectAll" />
           <div class="table__header-cell">Card status</div>
           <div class="table__header-cell">Card name</div>
           <div class="table__header-cell">Approval Status</div>
           <div class="table__header-cell">Service Tracking</div>
         </div>
         <div class="table__main">
-          <div v-if="initialWalkaround" class="card__wrapper small" :class="{'-check': isStart && isReady}" @click="open">
+          <div v-if="initialWalkaround" class="card__wrapper small" :class="{'-check': isStart}" @click="open">
             <!-- <div v-if="isStart" /> -->
             <Label label="Completed" size="small" class="card__label" />
             <div class="card__title">Initial Walkaround</div>
           </div>
 
-          <Slot v-for="card of cards" :key="card.uid" :card="card" :isViewOnlyMode="isViewOnlyMode" :isReady="isReady" @click.self="openCard(card)" />
+          <Slot v-for="card of cards" :key="card.uid" :card="card" :isViewOnlyMode="isViewOnlyMode" class="inner" @click.self="openCard(card)" />
         </div>
       </div>
     </div>
@@ -221,7 +222,7 @@ export default {
       return this.cards.filter(c => c.select)
     },
     isReady() {
-      if (this.order.customerRequests.filter(r => r.status === 'Not Processed').length === 0) {
+      if (this.order && this.order.customerRequests.filter(r => r.status === 'Not Processed').length === 0) {
         return true
       } else return false
     }
