@@ -1,0 +1,198 @@
+@import 'src/assets/styles/_variables.scss';
+
+.checkout {
+  position: relative;
+  width: 100%;
+  max-width: 290px;
+  height: calc(100% - 32px);
+  margin: 16px auto;
+  overflow: hidden;
+  background-color: $color-grey-smoke;
+  @include hideScrollbar();
+  border-radius: 40px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 108px;
+    height: 54px;
+  }
+  &__page {
+    margin-top: 20px;
+    padding-bottom: 40px;
+    filter: drop-shadow(0px 12.2059px 104.622px rgba(0, 0, 0, 0.35));
+  }
+  &-wrapper {
+    height: 660px;
+    overflow-y: auto;
+    @include hideScrollbar();
+    background: url('../../../../assets/images/mobile-bg.svg') 50% no-repeat;
+    background-size: contain;
+  }
+  &__title {
+    margin: 0 auto 20px;
+    @include font(20px, $color-grey-space, 600);
+    text-align: center;
+  }
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 24px;
+  }
+}
+.inspections {
+  position: relative;
+  height: 660px;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 108px;
+    height: 54px;
+    background: url('../../../../assets/images/mic.svg') no-repeat;
+    background-size: 108px auto;
+    background-position: center top;
+  }
+  &__wrapper {
+    height: inherit;
+    overflow-y: auto;
+    @include hideScrollbar();
+    padding-bottom: 40px;
+    width: 100%;
+    margin: 0 auto;
+    background: $color-grey-smoke;
+    border-radius: 48px;
+  }
+  &__inner {
+    height: inherit;
+    overflow: auto;
+    @include hideScrollbar();
+  }
+}
+.header {
+  position: fixed;
+  left: 50%;
+  top: 84px;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 280px;
+  padding: 16px;
+  background: $color-white;
+  border-radius: 16px;
+  text-align: center;
+  z-index: 101;
+  &__title {
+    @include font(14px, $color-grey-space, 700);
+  }
+
+  &__link {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    background: $color-grey-smoke;
+    border-radius: 8px;
+    i {
+      font-size: 20px;
+      color: $color-grey-space;
+    }
+  }
+}
+.message {
+  padding: 20px;
+  background: $color-grey-dark;
+  border-radius: 0 16px 16px 16px;
+
+  &__wrapper {
+    padding: 104px 16px 16px;
+  }
+  &__icon {
+    margin-bottom: 12px;
+    i {
+      font-size: 30px;
+      color: $color-green;
+    }
+  }
+  &__title {
+    @include font(20px, $color-white, 600);
+  }
+  &__subtitle {
+    padding: 10px 0;
+    @include font(16px, $color-white, 600);
+  }
+  &__text {
+    @include font(14px, $color-white, 500, 1.5);
+  }
+}
+.cards {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+.card {
+  padding: 12px;
+  background: $color-white;
+  box-shadow: 0px 3px 0px rgba(48, 50, 73, 0.05);
+  border-radius: 16px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: $color-grey-smoke;
+    @include border(8px);
+  }
+  &__title {
+    @include font(16px, $color-grey-space, 600);
+  }
+  &__subtitle {
+    @include font(14px, $color-grey-space, 600);
+  }
+  &__text {
+    padding: 4px 0 12px;
+    @include font(14px, $color-grey, 500, 1.5);
+    &--thin {
+      padding: 0;
+    }
+  }
+  &__footer {
+    margin-top: 16px;
+
+    &-button {
+    }
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px;
+    @include border(8px);
+    @include font(12px, $color-grey-space, 600);
+    box-shadow: 0px 3px 0px rgba(48, 50, 73, 0.05);
+    & > i {
+      font-size: 16px;
+      color: $color-green;
+    }
+  }
+}

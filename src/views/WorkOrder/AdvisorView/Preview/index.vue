@@ -5,7 +5,7 @@
       <div class="checkout">
         <div class="inspection__wrapper inspection">
           <div class="inspection__header">
-            <div class="inspection__link">
+            <div class="inspection__link" @click="$router.back()">
               <i class="i-keyboard_arrow_left" />
             </div>
           </div>

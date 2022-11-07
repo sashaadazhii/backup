@@ -110,7 +110,6 @@ import Input from '@/components/Yaro/Input'
 import Dialog from '@/components/Yaro/Dialog'
 import Filter from '@/components/Yaro/Filter'
 import Label from '@/components/Yaro/Label'
-
 import {mapState, mapMutations, mapActions} from 'vuex'
 import AddCard from './AddCard'
 import CardPage from './CardPage'
@@ -183,7 +182,6 @@ export default {
       this.activeFilters.push(...activeFilters)
       this.setFilter(activeFilters)
       this.fetch()
-
       this.changeRequestStatusInTechStart()
     }
   },
@@ -210,10 +208,10 @@ export default {
       return this.order.customerRequests && this.order.customerRequests.length > 0 ? this.order.customerRequests : []
     },
     cards() {
-      return this.order.cards && this.order.cards.length > 0 ? this.order.cards : this.localCards
+      return this.order?.cards && this.order?.cards.length > 0 ? this.order.cards : this.localCards
     },
     isViewOnlyMode() {
-      if (this.order.uid) {
+      if (!!this.order?.uid) {
         return this.$route.params.uid === this.order.uid
       }
       return false
@@ -338,7 +336,6 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" scoped>
 @import 'style';
 </style>

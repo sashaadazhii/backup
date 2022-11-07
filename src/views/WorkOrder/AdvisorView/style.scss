@@ -1,14 +1,14 @@
 @import 'src/assets/styles/_variables.scss';
 .page-inner {
   height: 100%;
-
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
+  margin-left: 20px;
 
   &.requests {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3.6fr;
   }
 }
 .requests {
