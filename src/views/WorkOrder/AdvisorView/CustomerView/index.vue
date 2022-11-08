@@ -30,10 +30,10 @@
         </div>
       </div>
     </div>
-    <!-- <div class="checkout__footer">
+    <div class="checkout__footer">
       <Button label="Cancel" grey @click="cancel" />
       <Button label="Confirm and Send to Customer" @click="next" />
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -44,10 +44,9 @@ import Button from '@/components/Yaro/Button'
 
 export default {
   name: 'CustomerViewPreview',
-  components: {Card},
+  components: {Card, Button},
   data() {
     return {
-      // cardID: null,
       uid: null
     }
   },
@@ -63,7 +62,13 @@ export default {
   methods: {
     ...mapActions({
       findOrder: 'workOrder/find'
-    })
+    }),
+    cancel() {
+      this.$router.push(`/service-advisor/${this.uid}`)
+    },
+    next() {
+      this.$router.push(`/customer-view/${this.uid}`)
+    }
   }
 }
 </script>

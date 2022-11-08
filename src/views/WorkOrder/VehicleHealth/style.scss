@@ -59,7 +59,7 @@
 .table {
   &__header {
     display: grid;
-    grid-template-columns: minmax(100px, 180px) minmax(200px, 2.2fr) minmax(100px, 204px) minmax(200px, 2fr);
+    grid-template-columns: minmax(100px, 180px) minmax(200px, 2.2fr) minmax(100px, 204px) minmax(200px, 2fr) 20px;
     column-gap: 14px;
     align-items: center;
     padding: 14px 16px;
@@ -70,7 +70,7 @@
       @include font(12px, $color-grey, 500);
     }
     &.-check {
-      grid-template-columns: 16px minmax(100px, 180px) minmax(200px, 2.2fr) minmax(100px, 204px) minmax(200px, 2fr);
+      grid-template-columns: 16px minmax(100px, 180px) minmax(200px, 2.2fr) minmax(100px, 204px) minmax(200px, 2fr) 20px;
     }
   }
   &__main {

@@ -50,7 +50,7 @@
           <Button label="Send for customer approval" icon="i-check_circle" class="mint" color="#10B981" />
         </router-link>
       </div>
-      <Button icon="i-circle_close" border circle size="small" @click="close" />
+      <Button v-if="!isAdvisor" icon="i-circle_close" border circle size="small" @click="close" />
     </div>
   </div>
 </template>
@@ -89,12 +89,6 @@ export default {
     isAdvisor() {
       return this.$route.name == 'SAView' ? true : false
     }
-
-    //   isReady() {
-    //   if (this.order.customerRequests.filter(r => r.status === 'Not Processed').length === 0) {
-    //     return true
-    //   } else return false
-    // }
   },
   watch: {
     cards: {

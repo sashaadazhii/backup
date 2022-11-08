@@ -3,7 +3,7 @@
 .card {
   &__wrapper {
     display: grid;
-    grid-template-columns: 140px minmax(280px, 400px) 90px minmax(90px, 160px) 250px 24px;
+    grid-template-columns: 1fr 2.5fr 1fr 1fr 1.5fr 24px;
     column-gap: 14px;
     align-items: center;
     justify-content: space-between;
