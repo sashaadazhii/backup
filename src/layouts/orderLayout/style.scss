@@ -7,6 +7,7 @@
   }
 }
 .page-wrapper {
-  background-color: $color-grey-smoke;
-  overflow: hidden;
+  background-color: #e5e5e5;
+  overflow: auto;
+  @include hideScrollbar();
 }

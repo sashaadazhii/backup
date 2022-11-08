@@ -3,7 +3,7 @@
 .card {
   &__wrapper {
     display: grid;
-    grid-template-columns: 140px minmax(280px, 400px) 90px minmax(90px, 160px) 250px 24px;
+    grid-template-columns: 1fr 2.5fr 1fr 1fr 1.5fr 24px;
     column-gap: 14px;
     align-items: center;
     justify-content: space-between;
@@ -56,32 +56,22 @@
       &.-red {
         color: $color-red;
         background-color: rgba($color-red, 0.1);
+        &.-border {
+          border: 1px solid $color-red;
+        }
       }
+
       &.-purple {
         color: $color-purple;
         background-color: rgba($color-purple, 0.1);
       }
-      &.-bluegreen {
+      &.-blue {
         color: $color-bluegreen;
         background-color: rgba($color-bluegreen, 0.1);
-      }
-      &.-none {
-        border-color: transparent;
-        background-color: $color-grey-smoke;
-        color: $color-grey;
-      }
-      &.-dashed {
-        border-color: $color-grey-light;
-        border-style: dashed;
-        background-color: transparent;
-        color: $color-grey;
       }
     }
     &.-red {
       background-color: $color-red;
-      &.-border {
-        border: 1px solid $color-red;
-      }
     }
     &.-green {
       background-color: $color-green-mint;
@@ -97,7 +87,7 @@
     }
     &.-none {
       border-color: $color-grey-flash;
-      background-color: $color-grey-smoke;
+      background-color: $color-white;
       color: $color-grey;
     }
     &.-hover {

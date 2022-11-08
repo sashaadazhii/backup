@@ -3,7 +3,7 @@
     <div class="card__header">
       <Label :label="card.status" size="small" :color="labelColor()" />
       <div class="card__arrow">
-        <router-link :to="{name: 'CustomerCardPage', params: {uid: order.uid, cardID: card.id}}">
+        <router-link :to="{name: 'SAPreview', params: {uid: order.uid, cardID: card.id}}">
           <Button icon="i-keyboard_arrow_right" border grey class="button--arrow" />
         </router-link>
       </div>
@@ -39,7 +39,7 @@ import Label from '@/components/Yaro/Label'
 import Button from '@/components/Yaro/Button'
 
 export default {
-  name: 'WorkOrderCard',
+  name: 'PreviewCard',
   components: {Label, Button},
   props: {
     card: {type: Object}
@@ -82,7 +82,6 @@ export default {
         '-blue': status === 'Pre-approved'
       }
     },
-
     formatter(val) {
       const price = new Intl.NumberFormat('en-CA', {style: 'currency', currency: 'CAD'}).format(val)
       return price

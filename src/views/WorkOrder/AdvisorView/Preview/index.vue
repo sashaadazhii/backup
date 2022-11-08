@@ -5,7 +5,7 @@
       <div class="checkout">
         <div class="inspection__wrapper inspection">
           <div class="inspection__header">
-            <div class="inspection__link">
+            <div class="inspection__link" @click="$router.back()">
               <i class="i-keyboard_arrow_left" />
             </div>
           </div>
@@ -132,7 +132,6 @@
 import {mapState, mapActions} from 'vuex'
 import Label from '@/components/Yaro/Label'
 import Button from '@/components/Yaro/Button'
-import CardPage from '../CardPage'
 import _ from 'lodash'
 
 export default {
@@ -226,14 +225,6 @@ export default {
     },
     cancel() {
       this.$router.push(`/service-advisor/${this.uid}`)
-      this.$vfm.show({
-        component: CardPage,
-        bind: {
-          name: 'AdvisorCardPage',
-          'click-to-close': false,
-          'esc-to-close': true
-        }
-      })
     },
     next() {
       this.$router.push(`/customer-view/${this.uid}`)

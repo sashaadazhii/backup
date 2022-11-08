@@ -48,7 +48,7 @@
         <div class="modal__body">
           <div class="modal__back" @click="close">
             <i class="i-arrow_back" />
-            <div class="block__title">{{ card.name }}</div>
+            <div class="block__title"><i v-if="card.request.notes" class="i-device_hub" />{{ card.name }}</div>
           </div>
           <div class="modal__body-top">
             <i class="i-time" />
@@ -263,7 +263,7 @@
                   <Label alias="3" size="large" color="#10B981" class="-large-text" />
                   <div class="item__title">Solution</div>
                 </div>
-                <div class="item__right" :class="{active: solutionList?.length}"><i class="i-check_circle" /></div>
+                <div class="item__right" :class="{active: solution.length > 10}"><i class="i-check_circle" /></div>
               </div>
               <div class="sidebar__list-item item">
                 <div class="item__left">
@@ -282,7 +282,7 @@
                 </div>
               </div>
             </div>
-            <Button label="Mark as Ready for Customer" size="large" @click="approve" :disabled="cause.length <= 10 || !solutionList.length" />
+            <Button label="Mark as Ready for Customer" size="large" @click="approve" :disabled="cause.length <= 10 || solution.length <= 10" />
           </div>
           <div class="sidebar__bottom">
             <div class="sidebar__notes">
@@ -422,9 +422,6 @@ export default {
     quotes() {
       return this.order.quotes
     },
-    solutionList() {
-      return this.services.map(s => s.description)
-    },
     notes() {
       return this.card.techNotes
     }
@@ -485,14 +482,17 @@ export default {
       this.showControls = true
     },
     approve() {
-      this.card.advisorApprove = true
+      if (this.cause.length > 10 && this.solution.length > 10) {
+        this.card.advisorApprove = true
+      }
+
       this.card.cause = this.cause
       this.card.chosenService.description = this.solution
       this.card.request.notes = this.request
       this.updateOrder(this.order)
       this.updateCard(this.card)
       this.$vfm.hide('AdvisorCardPage')
-      this.$router.push(`/service-advisor/${this.uid}/preview/${this.card.id}`)
+      // this.$router.push(`/service-advisor/${this.uid}/preview/${this.card.id}`)
     },
     addPart(part) {
       this.card.chosenService.parts.push(part)

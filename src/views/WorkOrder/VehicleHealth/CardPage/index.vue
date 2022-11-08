@@ -47,7 +47,7 @@
       </div>
       <div class="modal__main" :class="{'-full': block === 'Service'}">
         <div class="modal__main-blocks blocks">
-          <div v-if="block !== 'Service'" class="blocks__title">{{ card.name }}</div>
+          <div v-if="block !== 'Service'" class="blocks__title"><i v-if="card.request.notes" class="i-device_hub" />{{ card.name }}</div>
           <div v-if="block !== 'Service'" class="blocks__subtitle">{{ card.description }}</div>
           <div v-if="block !== 'Service'" class="blocks__nav">
             <button class="blocks__btn" :class="{'-green': block === 'General'}" @click="block = 'General'">General</button>
@@ -63,7 +63,6 @@
         <div v-if="block !== 'Service'" class="modal__main-requests">
           <div class="requests__list">
             <div class="requests__list-title">Assigned Requests:</div>
-            <!-- <div v-if="!card.isRequest" class="request__wrapper"> -->
             <div v-if="card.request.notes" class="request__wrapper">
               <div class="request__header">
                 <i class="i-device_hub" />

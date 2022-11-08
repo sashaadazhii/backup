@@ -6,7 +6,7 @@
         <div class="modal__title">Do you want to?</div>
         <div class="modal__text">We’ll remind you at your next visit</div>
         <div class="modal__buttons">
-          <button class="modal__btn green" @click="declineTemporary">
+          <button class="modal__btn green" @click="preApproved">
             <span class="modal__btn-icon"><i class="i-calendar" /></span>Let’s do it next visit
           </button>
           <button class="modal__btn blue" @click="declineTemporary">
@@ -61,14 +61,20 @@ export default {
       findOrder: 'workOrder/find'
     }),
     ...mapMutations({updateCard: 'company/cards/updateCard'}),
-    async decline() {
+    decline() {
       this.card.approvalStatus = 'Permanently Decline'
       this.updateCard(this.card)
       this.$vfm.hide('AskingDeclineModal')
       this.$router.push(`/customer-view/${this.uid}`)
     },
-    async declineTemporary() {
-      this.card.approvalStatus = 'Temporarily Declined'
+    declineTemporary() {
+      this.card.approvalStatus = 'Temporarily Decline'
+      this.updateCard(this.card)
+      this.$vfm.hide('AskingDeclineModal')
+      this.$router.push(`/customer-view/${this.uid}`)
+    },
+    preApproved() {
+      this.card.approvalStatus = 'Pre-approved'
       this.updateCard(this.card)
       this.$vfm.hide('AskingDeclineModal')
       this.$router.push(`/customer-view/${this.uid}`)

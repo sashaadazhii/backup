@@ -20,7 +20,9 @@
         <i class="i-check_circle_outline" /> {{ card.advisorApprove ? 'Ready' : 'Not Ready' }}
       </div>
     </div>
-    <div class="card__menu text">{{ formatter(card.chosenService.parts?.reduce((sum, current) => sum + current.price * current.quantity, 0)) }}</div>
+    <div v-if="card.customPrice" class="card__menu text">{{ formatter(card.customPrice) }}</div>
+
+    <div v-else class="card__menu text">{{ formatter(card.chosenService.parts?.reduce((sum, current) => sum + current.price * current.quantity, 0)) }}</div>
     <div class="card__menu">
       <Label :label="card.approvalStatus" size="small" circle class="card__label -shadow -hover" :class="labelClass(card.approvalStatus)" />
     </div>
@@ -70,13 +72,17 @@ export default {
         {label: 'Recommended', command: () => this.changeStatus({id: this.card.id, status: 'Recommended'})},
         {label: 'Component Unsafe', command: () => this.changeStatus({id: this.card.id, status: 'Component Unsafe'})}
       ],
+      // approvalStatusesChange: [
+      //   {label: 'No Status', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'No Status'})},
+      //   {label: 'Approved By Customer', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By Customer'})},
+      //   {label: 'Approved By SA', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By SA'})},
+      //   {label: 'Temporary Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Temporary Declined'})},
+      //   {label: 'Permanently Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Permanently Declined'})},
+      //   {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
+      // ],
       approvalStatusesChange: [
         {label: 'No Status', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'No Status'})},
-        {label: 'Approved By Customer', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By Customer'})},
-        {label: 'Approved By SA', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By SA'})},
-        {label: 'Temporary Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Temporary Declined'})},
-        {label: 'Permanently Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Permanently Declined'})},
-        {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
+        {label: 'Approved By SA', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By SA'})}
       ],
       parts: [],
       uid: null
@@ -103,12 +109,13 @@ export default {
     labelClass(status) {
       return {
         '-orange': status === 'Recommended',
-        '-red': status === 'Component Unsafe' || status === 'Permanently Declined',
+        '-red': status === 'Component Unsafe',
         '-none': status === 'No Status',
-        '-green -border': status === 'Approved by Customer',
-        '-red -border': status === 'Permanently Decline' || status === 'Temporarily Declined',
-        '-purple': status === 'Approved For Next Visit',
-        '-disabled': !this.isStart
+        '-green': status === 'Approved By SA',
+        '-green -border': status === 'Approved By Customer',
+        '-purple': status === 'Temporarily Decline',
+        '-red -border': status === 'Permanently Decline',
+        '-blue': status === 'Pre-approved'
       }
     },
     openModal(message) {

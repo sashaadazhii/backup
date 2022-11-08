@@ -3,22 +3,25 @@
     <div class="header__title">
       <span v-if="isNew">Create new Work Order</span>
       <Label
-        v-else
+        v-else-if="!isNew && !isAdvisor"
         :label="order.customStatus?.name || order.logicalStatus"
         size="small"
-        :color="order.customStatus?.color"
-        circle
+        :color="order.logicalStatus === 'In Progress' ? '#FF9B70' : '#40C79A'"
+        :circle="order.logicalStatus !== 'In Progress' ? true : false"
         :class="statusClass(order.logicalStatus)"
         :icon="statusIcon(order.logicalStatus)"
       />
+      <span v-else></span>
+
       <span v-if="!isNew">Work Order</span>
       <Label v-if="!!order?.vehicleInShop" class="header__label" icon="i-directions_car" border iconSize="18px" size="large" />
       <Label v-if="!!order?.talkSA" class="header__label" icon="i-help" border iconColor="#FF9B70" iconSize="18px" size="large" />
       <Label v-if="!!order?.partsOrdered" class="header__label" icon="i-build" border iconColor="#6B7280" iconSize="18px" size="large" />
+      <Label v-if="isAdvisor" label="To Do" color="#3EB3BB" />
     </div>
     <div class="header__nav">
       <router-link v-if="uid === 'new'" class="header__nav-link" :to="`/work-order/${uid}/general`">General </router-link>
-      <router-link class="header__nav-link" :to="`/work-order/${uid}/vehicle-health`">Vehicle Health</router-link>
+      <router-link class="header__nav-link" :to="`/work-order/${uid}/vehicle-health`" :class="{active: isAdvisor}">Vehicle Health</router-link>
       <router-link class="header__nav-link" :to="`/work-order/${uid}/vehicle-info`">Vehicle Info</router-link>
     </div>
     <div v-if="isNew" class="header__menu">
@@ -35,17 +38,19 @@
         <div v-if="!isStart" class="header__timer-start"><i class="i-play_circle_filled" /> <span>Start Work Order</span></div>
       </div>
 
-      <div v-if="isStart && !isReady && cardsApproved">
+      <div v-if="isStart && !isReady && isAdvisor"></div>
+      <div v-else-if="isStart && !isReady && cardsApproved && !isAdvisor">
         <router-link :to="`/service-advisor/${uid}`">
-          <Button label="Ready for Service Advisor Review" icon="i-check_circle" class="mint" color="#10B981" @click="isSAView" />
+          <Button label="Ready for Service Advisor Review" icon="i-check_circle" class="mint" color="#10B981" />
         </router-link>
       </div>
 
-      <div v-else-if="isStart && isReady">
-        <Button label="Send for customer approval" icon="i-check_circle" class="mint" color="#10B981" />
+      <div v-else-if="isStart && isReady && isAdvisor">
+        <router-link :to="`/service-advisor/${uid}/preview`">
+          <Button label="Send for customer approval" icon="i-check_circle" class="mint" color="#10B981" />
+        </router-link>
       </div>
-
-      <Button icon="i-circle_close" border circle size="small" @click="close" />
+      <Button v-if="!isAdvisor" icon="i-circle_close" border circle size="small" @click="close" />
     </div>
   </div>
 </template>
@@ -65,8 +70,7 @@ export default {
       uid: this.$route.params.uid,
       isNew: true,
       isFlow: false,
-      cardsApproved: false,
-      isSAView: false
+      cardsApproved: false
     }
   },
   async created() {
@@ -80,16 +84,11 @@ export default {
       isStart: s => s.workOrder.isStart
     }),
     isReady() {
-      // if(this.order) {
-      return this.order?.cannedServices.filter(s => s.advisorApprove).length !== 0 ? true : false
-      // }
+      return this.order?.cannedServices.filter(s => s.advisorApprove).length === this.order?.cannedServices.length ? true : false
+    },
+    isAdvisor() {
+      return this.$route.name == 'SAView' ? true : false
     }
-
-    //   isReady() {
-    //   if (this.order.customerRequests.filter(r => r.status === 'Not Processed').length === 0) {
-    //     return true
-    //   } else return false
-    // }
   },
   watch: {
     cards: {
@@ -105,7 +104,8 @@ export default {
   methods: {
     ...mapMutations({
       startOrder: 'workOrder/startOrder',
-      addNewWorkOrder: 'workOrder/addNewOrder'
+      addNewWorkOrder: 'workOrder/addNewOrder',
+      updateOrder: 'workOrder/updateOrder'
     }),
     ...mapActions({
       fetch: 'company/cards/fetch',
@@ -185,8 +185,9 @@ export default {
     },
     async start() {
       this.isStart = !this.isStart
-      // this.startOrder(this.isStart)
       this.startOrder(true)
+      this.order.logicalStatus = 'In Progress'
+      this.updateOrder(this.order)
       if (this.isStart) this.open()
 
       if (this.$route.params.uid) {
@@ -203,6 +204,8 @@ export default {
         icon: 'i-volume_up',
         accept: async () => {
           this.startOrder(false)
+          this.order.logicalStatus = 'Not Started'
+          this.updateOrder(this.order)
           this.$router.push('/work-orders/board')
         }
       })

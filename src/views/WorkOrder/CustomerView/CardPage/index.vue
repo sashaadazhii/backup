@@ -229,7 +229,7 @@ export default {
       if (this.selectedMedia.id === id) return true
     },
     approve() {
-      this.card.approvalStatus = 'Approved by Customer'
+      this.card.approvalStatus = 'Approved By Customer'
       this.updateCard(this.card)
       this.$router.push(`/customer-view/${this.uid}`)
     },

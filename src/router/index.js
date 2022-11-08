@@ -364,6 +364,12 @@ const routes = [
     component: () => import('@/views/WorkOrder/CustomerView/CardPage')
   },
   {
+    path: '/service-advisor/:uid/preview',
+    name: 'CustomerViewPreview',
+    meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true},
+    component: () => import('@/views/WorkOrder/AdvisorView/CustomerView')
+  },
+  {
     path: '/service-advisor/:uid/preview/:cardID',
     name: 'SAPreview',
     meta: {layout: 'order', access: ['admin', 'technician', 'service-advisor'], auth: true},

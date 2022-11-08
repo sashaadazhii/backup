@@ -2,10 +2,10 @@
 
 .request {
   &__wrapper {
-    padding: 16px 14px;
     background-color: $color-white;
     border-radius: 16px;
     box-shadow: 0px 3px 0px rgba($color-grey-space, 0.05);
+    padding: 16px 14px;
     border-radius: 16px;
   }
   &__header {
@@ -34,7 +34,7 @@
   }
   &__main {
     display: grid;
-    grid-template-columns: 16px 1fr;
+    // grid-template-columns: 16px 1fr;
     column-gap: 8px;
     row-gap: 12px;
     padding: 12px 0;
@@ -44,6 +44,10 @@
     }
     &-title {
       @include font(14px, $color-grey-space, 600);
+      & i {
+        padding-right: 6px;
+        color: $color-blue;
+      }
     }
     &-text {
       @include font(12px, $color-grey-space, 500, 1.4);
@@ -62,7 +66,6 @@
       display: flex;
       align-items: center;
       column-gap: 6px;
-      margin-bottom: 10px;
       & > i {
         @include font(14px, $color-grey);
       }

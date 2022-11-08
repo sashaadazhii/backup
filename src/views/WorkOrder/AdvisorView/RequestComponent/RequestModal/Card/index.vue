@@ -1,17 +1,20 @@
 <template>
   <div class="card__wrapper" :class="{'-select': selected}" @click.self="openCard">
     <div class="card__top">
-      <i v-if="selected" class="i-device_hub blue" />
-      <i v-if="selected" class="i-check_circle green" @click="$emit('select', card)" />
-      <i v-else class="i-add_circle grey" @click="$emit('select', card)" :style="!isStart ? 'pointer-events:none' : 'pointer-events:auto'" />
-      <Label label="Ford F150 2021" size="small" circle />
-      <div class="card__name">
-        <span class="card__title">{{ card.name }}</span>
+      <div class="card__top-left">
+        <i v-if="selected" class="i-device_hub blue" />
+        <i v-if="selected" class="i-check_circle green" @click="$emit('unselect', card)" />
+        <i v-else class="i-add_circle grey" @click="$emit('select', card)" :style="!isStart ? 'pointer-events:none' : 'pointer-events:auto'" />
+        <Label label="Ford F150 2021" size="small" circle />
+        <div class="card__name">
+          <span class="card__title">{{ card.name }}</span>
+        </div>
       </div>
-
-      <div class="card__top-labels">
-        <Label icon="i-shutter_speed" iconColor="#3EB3BB" :label="`${card.timeTrackLength} Months`" border class="-shadow" />
-        <Label icon="i-timer" iconColor="#3EB3BB" :label="`${card.odometerTrack.toLocaleString('fr-FR')} KM`" border class="-shadow" />
+      <div class="card__top-right">
+        <div class="card__top-labels">
+          <Label icon="i-shutter_speed" iconColor="#3EB3BB" :label="`${card.timeTrackLength} Months`" border class="-shadow" />
+          <Label icon="i-timer" iconColor="#3EB3BB" :label="`${card.odometerTrack.toLocaleString('fr-FR')} KM`" border class="-shadow" />
+        </div>
       </div>
     </div>
     <div class="card__bottom">

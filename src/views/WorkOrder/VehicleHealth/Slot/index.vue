@@ -18,7 +18,34 @@
     </div>
     <div v-if="card.status === 'Good'" class="card__empty" />
     <div v-else class="card__menu">
-      <Menu :list="approvalStatusesChange" position="left" :disabled="!isStart || $route.params.uid === 'tech-flow'">
+      <!-- <Menu :list="approvalStatusesChange" position="left" :disabled="!isStart || $route.params.uid === 'tech-flow'"> -->
+      <Menu v-if="isSlots && !isStart" :list="approvalStatusesChange" position="left">
+        <template #menu>
+          <Label
+            :label="card.approvalStatus"
+            size="small"
+            icon="i-rp_done"
+            circle
+            class="card__label -shadow -hover"
+            :class="labelClass(card.approvalStatus)"
+            iconSize="8px"
+          />
+        </template>
+      </Menu>
+      <Menu v-else-if="!isSlots && !isStart" :list="approvalStatusesChange" position="left" disabled>
+        <template #menu>
+          <Label
+            :label="card.approvalStatus"
+            size="small"
+            icon="i-rp_done"
+            circle
+            class="card__label -shadow -hover"
+            :class="labelClass(card.approvalStatus)"
+            iconSize="8px"
+          />
+        </template>
+      </Menu>
+      <Menu v-else :list="approvalStatusesChange" position="left" :disabled="!isStart || $route.params.uid === 'tech-flow'">
         <template #menu>
           <Label
             :label="card.approvalStatus"
@@ -70,10 +97,6 @@ export default {
       type: Boolean,
       default: false
     }
-    // isReady: {
-    //   type: Boolean,
-    //   default: false
-    // }
   },
   components: {Label, Menu},
   data() {
@@ -97,15 +120,23 @@ export default {
         {label: 'Recommended', command: () => this.changeStatus({id: this.card.id, status: 'Recommended'})},
         {label: 'Component Unsafe', command: () => this.changeStatus({id: this.card.id, status: 'Component Unsafe'})}
       ],
+      // approvalStatusesChange: [
+      //   {label: 'No Status', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'No Status'})},
+      //   {label: 'Approved By Customer', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By Customer'})},
+      //   {label: 'Approved By SA', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By SA'})},
+      //   {label: 'Temporary Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Temporary Declined'})},
+      //   {label: 'Permanently Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Permanently Declined'})},
+      //   {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
+      // ]
       approvalStatusesChange: [
         {label: 'No Status', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'No Status'})},
-        {label: 'Approved By Customer', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By Customer'})},
-        {label: 'Approved By SA', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By SA'})},
-        {label: 'Temporary Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Temporary Declined'})},
-        {label: 'Permanently Declined', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Permanently Declined'})},
-        {label: 'Approved For Next Visit', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved For Next Visit'})}
-      ]
+        {label: 'Approved By SA', command: () => this.changeApprovalStatus({id: this.card.id, approvalStatus: 'Approved By SA'})}
+      ],
+      isSlots: false
     }
+  },
+  created() {
+    window.location.href.includes('work-order/new/vehicle-health') ? (this.isSlots = true) : (this.isSlots = false)
   },
   computed: {
     ...mapState({
@@ -113,9 +144,7 @@ export default {
       order: s => s.workOrder.workOrder
     }),
     isReady() {
-      if (this.order && this.order.customerRequests?.filter(r => r.status === 'Not Processed').length === 0) {
-        return true
-      } else return false
+      return this.order && this.order.customerRequests?.filter(r => r.status === 'Not Processed').length === 0 ? true : false
     }
   },
   methods: {
@@ -152,7 +181,6 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" scoped>
 @import 'style';
 </style>
