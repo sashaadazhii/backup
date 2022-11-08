@@ -48,7 +48,7 @@
         <div class="modal__body">
           <div class="modal__back" @click="close">
             <i class="i-arrow_back" />
-            <div class="block__title">{{ card.name }}</div>
+            <div class="block__title"><i v-if="card.request.notes" class="i-device_hub" />{{ card.name }}</div>
           </div>
           <div class="modal__body-top">
             <i class="i-time" />

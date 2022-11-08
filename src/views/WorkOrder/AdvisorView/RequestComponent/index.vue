@@ -9,20 +9,16 @@
       </div>
     </div>
     <div class="request__main">
-      <i v-if="request.cards.length" class="i-device_hub request__main-icon" />
-      <div class="request__main-title">Customer Request</div>
+      <i class="i-device_hub request__main-icon" v-if="request?.newCards" />
+      <div class="request__main-title"><i v-if="request.cards.length" class="i-device_hub" />Customer Request</div>
       <div class="request__main-text">{{ request.notes }}</div>
     </div>
     <div class="request__footer">
       <div class="request__footer-desc">
         <div class="request__footer-time">
           <i class="i-time" />
-          <span>Est:</span>
-          <span>{{ request.estimatedTime }}</span>
-        </div>
-        <div class="request__footer-time">
-          <span>Tracked:</span>
-          <span>{{ request.trackedTime }}</span>
+          <span>Time Allotted:</span>
+          <span>{{ request.estimatedTime }}h</span>
         </div>
       </div>
     </div>

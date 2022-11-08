@@ -24,9 +24,9 @@
     <div class="card__footer">
       <Label
         v-if="card.approvalStatus !== 'No Status'"
-        :label="card.approvalStatus === 'Approved by Customer' ? 'Pre-approved' : card.approvalStatus"
-        :icon="card.approvalStatus === 'Approved by Customer' ? 'i-check_circle_outline' : 'i-circle_close'"
-        :class="[card.approvalStatus === 'Approved by Customer' ? '-green' : '-red']"
+        :label="card.approvalStatus"
+        :icon="card.approvalStatus === 'Approved By Customer' || card.approvalStatus === 'Approved By SA' ? 'i-check_circle_outline' : 'i-circle_close'"
+        :class="labelClass(card.approvalStatus)"
         size="large"
       />
     </div>
@@ -70,6 +70,19 @@ export default {
           return '#6b7280'
       }
     },
+    labelClass(status) {
+      return {
+        '-orange': status === 'Recommended',
+        '-red': status === 'Component Unsafe',
+        '-none': status === 'No Status',
+        '-green': status === 'Approved By SA',
+        '-green -border': status === 'Approved By Customer',
+        '-purple': status === 'Temporarily Decline',
+        '-red -border': status === 'Permanently Decline',
+        '-blue': status === 'Pre-approved'
+      }
+    },
+
     formatter(val) {
       const price = new Intl.NumberFormat('en-CA', {style: 'currency', currency: 'CAD'}).format(val)
       return price

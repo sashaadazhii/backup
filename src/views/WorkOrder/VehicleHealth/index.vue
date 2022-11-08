@@ -49,15 +49,21 @@
         </div>
       </div>
       <div class="health__table table">
-        <div class="table__header" :class="{'-check': isStart}">
-          <!-- <div class="table__header" :class="{'-check': isStart && isReady}"> -->
-          <!-- <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart || isViewOnlyMode}" @click="selectAll" /> -->
-          <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart}" @click="selectAll" />
+        <!-- <div class="table__header" :class="{'-check': isStart}">
+          <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart }" @click="selectAll" />
+          <div class="table__header-cell">Card status</div>
+          <div class="table__header-cell">Card name</div>
+          <div class="table__header-cell">Approval Status</div>
+          <div class="table__header-cell">Service Tracking</div>
+        </div> -->
+        <div class="table__header" :class="{'-check': isStart && isReady}">
+          <div class="y-check" :class="{'-active': allSelected, '-hide': !isStart || !isReady}" @click="selectAll" />
           <div class="table__header-cell">Card status</div>
           <div class="table__header-cell">Card name</div>
           <div class="table__header-cell">Approval Status</div>
           <div class="table__header-cell">Service Tracking</div>
         </div>
+
         <div class="table__main">
           <div v-if="initialWalkaround" class="card__wrapper small" :class="{'-check': isStart}" @click="open">
             <!-- <div v-if="isStart" /> -->
@@ -123,19 +129,21 @@ export default {
       sortTypes: ['Sort A-Z', 'Sort Z-A'],
       status: 'Good',
       statuses: ['No Status', 'Good', 'Recommended', 'Component Unsafe'],
-      approvalStatuses: ['No Status', 'Approved By Customer', 'Approved By SA', 'Temporary Declined', 'Permanently Declined', 'Approved For Next Visit'],
+      // approvalStatuses: ['No Status', 'Approved By Customer', 'Approved By SA', 'Temporary Declined', 'Permanently Declined', 'Approved For Next Visit'],
+      approvalStatuses: ['No Status', 'Approved By SA'],
       activeFilters: [],
       filtersList: [],
       allSelected: false,
       display: false,
       showRequests: false,
       bin: null
+      // isReady: false
     }
   },
   async created() {
     const uid = this.$route.params.uid
     if (uid !== 'new') this.showRequests = true
-    if (!this.showRequests) this.startOrder(true)
+    // if (!this.showRequests) this.startOrder(true)
     const statusList = {
       name: 'Card Status',
       id: this.$getID(),
@@ -220,8 +228,10 @@ export default {
       return this.cards.filter(c => c.select)
     },
     isReady() {
-      if (this.order && this.order.customerRequests.filter(r => r.status === 'Not Processed').length === 0) {
-        return true
+      let ready
+      if (this.order.uid) {
+        ready = this.order && this.order.customerRequests?.filter(r => r.status === 'Not Processed').length === 0 ? true : false
+        return ready
       } else return false
     }
   },

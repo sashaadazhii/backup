@@ -3,7 +3,6 @@
     <div class="card__header">
       <Label :label="card.status" size="small" :color="labelColor()" />
       <div class="card__arrow">
-        <!-- <router-link :to="{name: 'CustomerCardPage', params: {uid: order.uid, cardID: card.id}}"> -->
         <router-link :to="{name: 'SAPreview', params: {uid: order.uid, cardID: card.id}}">
           <Button icon="i-keyboard_arrow_right" border grey class="button--arrow" />
         </router-link>
@@ -25,9 +24,9 @@
     <div class="card__footer">
       <Label
         v-if="card.approvalStatus !== 'No Status'"
-        :label="card.approvalStatus === 'Approved by Customer' ? 'Pre-approved' : card.approvalStatus"
-        :icon="card.approvalStatus === 'Approved by Customer' ? 'i-check_circle_outline' : 'i-circle_close'"
-        :class="[card.approvalStatus === 'Approved by Customer' ? '-green' : '-red']"
+        :label="card.approvalStatus"
+        :icon="card.approvalStatus === 'Approved By Customer' || card.approvalStatus === 'Approved By SA' ? 'i-check_circle_outline' : 'i-circle_close'"
+        :class="labelClass(card.approvalStatus)"
         size="large"
       />
     </div>
@@ -48,7 +47,6 @@ export default {
   async created() {
     this.uid = this.$route.params.uid
     await this.findOrder(this.uid)
-    console.log(this.card)
   },
   computed: {
     ...mapState({
@@ -70,6 +68,18 @@ export default {
           return '#10B981'
         default:
           return '#6b7280'
+      }
+    },
+    labelClass(status) {
+      return {
+        '-orange': status === 'Recommended',
+        '-red': status === 'Component Unsafe',
+        '-none': status === 'No Status',
+        '-green': status === 'Approved By SA',
+        '-green -border': status === 'Approved By Customer',
+        '-purple': status === 'Temporarily Decline',
+        '-red -border': status === 'Permanently Decline',
+        '-blue': status === 'Pre-approved'
       }
     },
     formatter(val) {

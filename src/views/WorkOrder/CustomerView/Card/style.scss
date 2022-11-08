@@ -36,23 +36,40 @@
     display: grid;
     margin-top: 16px;
 
-    & > .-green {
-      background-color: transparent;
-      border-color: $color-bluegreen;
+    & .-blue {
+      border-color: transparent;
+      background-color: rgba($color-bluegreen, 0.1);
       color: $color-bluegreen;
       justify-content: flex-start;
     }
-    & > .-red {
-      background-color: transparent;
+    & .-green {
+      border-color: transparent;
+      background-color: rgba($color-green, 0.1);
+      color: $color-green;
+      justify-content: flex-start;
+      &.-border {
+        border-color: $color-green;
+      }
+    }
+    & .-red {
+      background-color: $color-red;
       border-color: $color-red;
       color: $color-red;
       justify-content: flex-start;
+      &.-border {
+        background-color: rgba($color-red, 0.1);
+      }
     }
-
-    // &-buttons {
-    //   display: grid;
-    //   grid-template-columns: 40px 1fr;
-    //   column-gap: 8px;
-    // }
+    & .-purple {
+      border-color: transparent;
+      background-color: rgba($color-purple, 0.1);
+      color: $color-purple;
+      justify-content: flex-start;
+    }
+    & .-none {
+      background-color: $color-white;
+      border: 1px dashed $color-grey-light;
+      color: $color-grey;
+    }
   }
 }

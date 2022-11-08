@@ -5,8 +5,7 @@
       <div class="checkout">
         <div class="inspections">
           <header class="header">
-            <!--   // this.$router.push(`/service-advisor/${this.uid}/preview/${this.card.id}`) -->
-            <div @click="$router.back()" class="header__link">
+            <div @click="$router.push(`/service-advisor/${this.uid}`)" class="header__link">
               <i class="i-keyboard_arrow_left" />
             </div>
             <div class="header__title">Work Order #<span>24</span></div>
@@ -31,10 +30,10 @@
         </div>
       </div>
     </div>
-    <div class="checkout__footer">
+    <!-- <div class="checkout__footer">
       <Button label="Cancel" grey @click="cancel" />
       <Button label="Confirm and Send to Customer" @click="next" />
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -45,7 +44,7 @@ import Button from '@/components/Yaro/Button'
 
 export default {
   name: 'CustomerViewPreview',
-  components: {Card, Button},
+  components: {Card},
   data() {
     return {
       // cardID: null,
