@@ -46,9 +46,7 @@
       </div>
       <div class="modal__main">
         <div v-if="block === 'service'" class="modal__services">
-          <Button icon="i-add_circle" label="Create Canned Service" border @click="addService" />
-          <Service />
-          <Service />
+            <Service v-for="(service, idx) of services" :key="idx" :service="service" />
         </div>
         <div v-if="block === 'info'" class="modal__info">
           <div class="modal__info-part">
@@ -109,7 +107,7 @@ import Label from '@/components/Yaro/Label'
 import Menu from '@/components/Yaro/Menu'
 import AddCard from '../index.vue'
 import AddService from './AddService'
-import Service from './Service'
+import Service from '@/views/InspectionBuilder/CardModal/Services/index'
 
 import {mapState, mapMutations, mapActions} from 'vuex'
 export default {
@@ -137,6 +135,7 @@ export default {
   },
   computed: {
     ...mapState({
+        services: s => s.company.cannedServices.services,
       order: s => s.workOrder.workOrder,
       cards: s => s.company.cardTemplates.templates
     }),

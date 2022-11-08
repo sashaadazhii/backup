@@ -14,9 +14,9 @@
       <span v-else></span>
 
       <span v-if="!isNew">Work Order</span>
-      <Label v-if="order.vehicleInShop" class="header__label" icon="i-directions_car" border iconSize="18px" size="large" />
-      <Label v-if="order.talkSA" class="header__label" icon="i-help" border iconColor="#FF9B70" iconSize="18px" size="large" />
-      <Label v-if="order.partsOrdered" class="header__label" icon="i-build" border iconColor="#6B7280" iconSize="18px" size="large" />
+      <Label v-if="!!order?.vehicleInShop" class="header__label" icon="i-directions_car" border iconSize="18px" size="large" />
+      <Label v-if="!!order?.talkSA" class="header__label" icon="i-help" border iconColor="#FF9B70" iconSize="18px" size="large" />
+      <Label v-if="!!order?.partsOrdered" class="header__label" icon="i-build" border iconColor="#6B7280" iconSize="18px" size="large" />
       <Label v-if="isAdvisor" label="To Do" color="#3EB3BB" />
     </div>
     <div class="header__nav">

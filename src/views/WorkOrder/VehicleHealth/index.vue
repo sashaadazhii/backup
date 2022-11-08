@@ -265,7 +265,7 @@ export default {
       startOrder: 'workOrder/startOrder',
       changeStatusInTechFlow: 'company/cards/changeApprovalStatusInTechFlow',
       changeStatusInTechStart: 'company/cards/changeApprovalStatusInTechStart',
-      changeRequestStatusInTechStart: 'requests/changeStatusInTechStart'
+      changeRequestStatusInTechStart: 'requests/changeStatusInTechStart',
     }),
     save() {
       this.changeStatus(this.status)

@@ -16,6 +16,9 @@ export default {
     set(state, cards) {
       state.cards = cards
     },
+    addCard(state, card) {
+      state.cards.unshift(card)
+    },
     setSort(state, params) {
       state.sortType = params
     },

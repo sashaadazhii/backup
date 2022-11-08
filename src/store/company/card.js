@@ -68,6 +68,9 @@ export default {
     setErrors(state, errors) {
       state.errors = errors
     },
+    setCardLevel(state, lvl) {
+      state.card.includedToEachOrder = lvl
+    },
     reset(state) {
       Object.assign(state.card, getDefaultCard())
     },

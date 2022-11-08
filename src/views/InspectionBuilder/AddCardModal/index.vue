@@ -70,7 +70,29 @@ export default {
       const elementList = ['odometerTrack', 'timeTrackLength']
       const error = elementList.some(el => errors.find(err => err === el))
       return error
-    }
+    },
+      formattedCard() {
+          return {
+              ...this.card,
+              additional: null,
+              advisorApprove: false,
+              approvalStatus: "No Status",
+              archive: null,
+              customPrice: null,
+              displayFees: false,
+              displayLabour: false,
+              id: Math.floor(Math.random() * 100000),
+              odometerTrack: +this.card.odometerTrack,
+              partsForCustomer: null,
+              relation: {},
+              select: false,
+              service: Math.floor(Math.random() * 100),
+              status: "No Status",
+              time: new Date().toLocaleTimeString(),
+              timeTrackLength: +this.card.timeTrackLength,
+
+          }
+      },
   },
   watch: {
     v$(val) {
@@ -85,7 +107,8 @@ export default {
       setErrors: 'company/card/setErrors',
       setTemplate: 'company/cardTemplates/setTemplate',
       add: 'company/cardTemplates/add',
-      reset: 'company/card/reset'
+      reset: 'company/card/reset',
+      addCard: 'company/cards/addCard',
     }),
     async save() {
       if (this.isLoading) return
@@ -99,7 +122,9 @@ export default {
       if (this.card.hasService && this.card.odometerTrack) card.odometerTrack = odometerTrack
       if (this.card.hasService && this.card.timeTrackLength) card.timeTrackLength = timeTrackLength
       if (this.card.hasService && this.card.timeTrackLength) card.timeTrackType = timeTrackType
-
+        if(this.card.includedToEachOrder) {
+            this.addCard(this.formattedCard)
+        }
       try {
         this.isLoading = true
         await this.create(card)

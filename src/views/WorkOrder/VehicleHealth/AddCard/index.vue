@@ -3,7 +3,7 @@
     <div class="modal__wrapper">
       <div class="modal__header">
         <div class="modal__header-title">Cards Library</div>
-        <Button label="Create New Card" icon="i-add_circle" size="small" />
+        <Button label="Create New Card" icon="i-add_circle" size="small" @click="openNewCardModal"/>
         <Button icon="i-circle_close" border grey circle iconSize="20px" size="small" @click="close" />
       </div>
       <Input v-model="cardSearch" icon-left="i-search1" placeholder="Start typing to search card" />
@@ -24,8 +24,9 @@ import Button from '@/components/Yaro/Button'
 import Card from './Card'
 import CardPage from './CardPage'
 import Service from './CardPage/Service'
-
 import {mapState, mapMutations, mapActions} from 'vuex'
+import AddCardModal from "@/views/InspectionBuilder/AddCardModal";
+
 export default {
   name: 'AddCard',
   components: {Button, Input, Card, Service},
@@ -69,7 +70,15 @@ export default {
         card
       )
       this.$vfm.hide('AddCard')
-    }
+    },
+      openNewCardModal() {
+          this.$vfm.show({
+              component: AddCardModal,
+              bind: {
+                  name: 'AddCardModal'
+              }
+          })
+      },
   }
 }
 </script>

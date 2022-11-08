@@ -122,7 +122,8 @@ export default {
   },
   computed: {
     ...mapState({
-      card: s => s.company.cardTemplates.template
+      card: s => s.company.cardTemplates.template,
+      cardId: s => s.company.cards.card.templateID,
       // company: s => s.company.settings.settings
     })
   },
@@ -149,7 +150,7 @@ export default {
       if (this.isLoading) return
       const result = await this.v$.$validate()
       if (!result) return
-      const id = this.card.templateID
+      const id = this.cardId || this.card.templateID
       const {name, estimatedTime, warranty, time, range, description, averageTime, used, parts, guides} = this
       const service = {
         name,
@@ -160,7 +161,8 @@ export default {
         averageTime,
         used,
         parts,
-        guides
+        guides,
+          select: false
       }
 
       if (warranty.id === 'custom') {
