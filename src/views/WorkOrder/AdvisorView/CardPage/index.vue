@@ -532,8 +532,9 @@ export default {
     select(i, e) {
       this.activeOptionIdx = i
       this.card.partsForCustomer = e.target.dataset.option
-      if (!this.card.partsForCustomer) this.card.partsForCustomer = 'Display Total Price Only'
-      else this.card.customPrice = null
+      if (!this.card.partsForCustomer) {
+        this.card.partsForCustomer = 'Display Total Price Only'
+      } else this.card.customPrice = null
       this.updateCard(this.card)
     },
 
