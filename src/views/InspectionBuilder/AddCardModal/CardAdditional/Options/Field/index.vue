@@ -3,8 +3,8 @@
     <div class="field__title">Field {{ idx + 1 }}</div>
     <Input
       :modelValue="field.title"
-      title="Enter field title"
-      placeholder="Field title goes here..."
+      :title="`Enter field ${idx + 1} title`"
+      placeholder="Label"
       @update:modelValue="$emit('changeTitle', {value: $event, idx})"
     />
     <!-- <Dropdown :modelValue="field.type" :options="types" title="Choose answer type" @update:modelValue="$emit('changeType', {value: $event, idx})" /> -->
@@ -14,7 +14,7 @@
           <div class="options__item item">
             <div class="item__title">option {{ index + 1 }}</div>
             <i class="i-drag_indicator drug" />
-            <Input v-model="element.option" placeholder="Option name goes here..." />
+            <Input v-model="element.option" placeholder="Label" />
             <Button icon="i-remove_circle_outline" border size="large" @click="$emit('delItem', {index, idx})" :disabled="field.list.length <= 2" />
           </div>
         </template>

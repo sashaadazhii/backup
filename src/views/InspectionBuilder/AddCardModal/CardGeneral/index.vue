@@ -1,14 +1,6 @@
 <template>
   <div class="main__wrapper">
     <y-input title="Name" placeholder="Name" :modelValue="card.name" @update:modelValue="setName" :error="error('name')" />
-    <Dropdown title="Card Type" v-model="type" :options="typesList" optionLabel="label" @change="setCardType($event.value.id)" />
-    <div v-if="type.id === 'public'" class="main__label">
-      <i class="i-information-fill" />
-      <span>Thanks for helping your network! Card is going to be undergoing review process, though, you can can use it as your local card.</span>
-    </div>
-    <CardRelation />
-    <CardInclude />
-
     <div class="field__label">
       <div class="field__title">Description</div>
       <textarea
@@ -19,10 +11,18 @@
         @input="setDesc($event.target.value)"
       />
     </div>
-    <div class="field__label">
+    <!-- <Dropdown title="Card Type" v-model="type" :options="typesList" optionLabel="label" @change="setCardType($event.value.id)" />
+    <div v-if="type.id === 'public'" class="main__label">
+      <i class="i-information-fill" />
+      <span>Thanks for helping your network! Card is going to be undergoing review process, though, you can can use it as your local card.</span>
+    </div> -->
+    <CardRelation />
+    <CardInclude />
+
+    <!-- <div class="field__label">
       <div class="field__title">Customer Facing Description</div>
       <textarea class="field__text" placeholder="Description" :value="card.descriptionForCustomer" @input="setCusDesc($event.target.value)" />
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -34,7 +34,7 @@ import CardInclude from './CardInclude'
 
 export default {
   name: 'AddCardGeneral',
-  components: {Dropdown, CardRelation, CardInclude},
+  components: {CardRelation, CardInclude}, //Dropdown
 
   data() {
     return {
