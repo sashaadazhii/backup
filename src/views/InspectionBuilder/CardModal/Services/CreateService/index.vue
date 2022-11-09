@@ -4,22 +4,38 @@
       <div class="modal__header">
         <div v-if="templateID" class="modal__title">Edit Canned Service</div>
         <div v-else class="modal__title">Add New Canned Service</div>
-        <button class="modal__close" @click="close"><i class="i-circle_close" /></button>
       </div>
       <div class="modal__main">
-        <y-input v-model.trim="name" title="Name" placeholder="Name" :error="v$.name.$error" />
-        <label class="field__label">
-          <div class="field__title">Description</div>
-          <textarea class="field__text" placeholder="Description" v-model="description"></textarea>
-        </label>
-        <div class="y-number__wrapper">
+        <Input v-model.trim="name" placeholder="Enter Canned Service title" :error="v$.name.$error" />
+
+        <div class="modal__row">
+          <i class="i-time" /><span>Time required: </span>
+          <Input
+            v-model.trim="estimatedTime"
+            placeholder="Enter time"
+            :error="v$.estimatedTime.$error"
+            v-maska="{mask: 'HHHHHHH', tokens: {H: {pattern: /[0-9.]/}}}"
+            class="input-small"
+          />
+        </div>
+
+        <!-- <div class="y-number__wrapper">
           <div class="y-number__title">Estimated Time</div>
           <div class="y-number__inner">
             <i class="i-remove y-number__dec" :class="{'-disabled': !time}" @click="decTime()" />
             <span class="y-number__text">{{ estimatedTime }} h</span>
             <i class="i-add y-number__inc" @click="incTime()" />
           </div>
+        </div> -->
+        <!-- <label class="field__label">
+          <div class="field__title">Description</div>
+          <textarea class="field__text" placeholder="Description" v-model="description"></textarea>
+        </label> -->
+        <div class="textarea">
+          <div class="textarea__title">Description</div>
+          <textarea class="textarea__text" placeholder="Enter Service Description" v-model="description"></textarea>
         </div>
+        <!-- 
         <div class="field__select">
           <div class="field__title">Warranty</div>
           <Dropdown v-model="warranty" :options="warrantyList" @change="selectWarranty">
@@ -40,8 +56,8 @@
               </div>
             </template>
           </Dropdown>
-        </div>
-        <y-input
+        </div> -->
+        <!-- <y-input
           v-if="warranty && warranty.id === 'custom'"
           v-maska="'########'"
           v-model.trim="range"
@@ -63,12 +79,28 @@
           iconColor="orange"
           rightText="months"
           :error="v$.time.$error"
-        />
-        <Textarea title="Temporarily Declined Message" placeholder="Enter message" />
-        <Textarea title="Permanently Declined Message" placeholder="Enter message" />
+        /> -->
+        <div class="textarea red">
+          <div class="textarea__title">Permanently Declined Message</div>
+          <textarea class="textarea__text" placeholder="Enter permanently declined message" v-model="permanentlyDeclineMessage"></textarea>
+        </div>
+        <div class="textarea blue">
+          <div class="textarea__title">Temporarily Declined Message</div>
+          <textarea class="textarea__text" placeholder="Enter temporarily declined message" v-model="temporarilyDeclineMessage"></textarea>
+        </div>
       </div>
+      <!-- PARTS -->
+      <!-- <div class="service__parts">
+        <Part v-for="(part, idx) of parts" :key="idx" :part="part" class="service__part" />
+        <div v-if="partsKits.length" class="service__kit-wrap">
+          <PartsKit v-for="kit of partsKits" :key="kit.id" :kit="kit" />
+        </div>
+
+        <NewPart v-if="isNewPart" :serviceID="service.id" @close="open" />
+      </div> -->
       <div class="modal__footer">
-        <button class="modal__button" @click="Save"><span>Save</span><Loader :show="isLoading" /></button>
+        <Button label="Save Canned Service" size="large" @click="save" />
+        <Button label="Cancel" size="large" grey @click="close" />
       </div>
     </div>
   </vue-final-modal>
@@ -76,21 +108,24 @@
 
 <script>
 import {mapMutations, mapState} from 'vuex'
-import Loader from '@/components/loader'
+import Button from '@/components/Yaro/Button'
 import Dropdown from '@/components/Yaro/Dropdown'
-import Textarea from '@/components/Yaro/Textarea'
+import Input from '@/components/Yaro/Input'
 import useVuelidate from '@vuelidate/core'
 import {required, requiredIf} from '@vuelidate/validators'
+// import Part from '../Service/Part'
+// import PartsKit from '../Service/PartsKit'
+// import NewPart from '../Service/NewPart'
 
 export default {
   name: 'AddNewCannedServiceModal',
-  components: {Loader, Dropdown, Textarea},
+  components: {Button, Input}, //Part, NewPart, PartsKit,Dropdown
   data() {
     return {
       v$: useVuelidate(),
       name: null,
       description: null,
-      estimatedTime: 0.5,
+      estimatedTime: null, //0.5,
       warranty: {id: 'off', label: 'Warranty Off'},
       warrantyList: [
         {id: 'off', label: 'Warranty Off'},
@@ -105,7 +140,10 @@ export default {
       averageTime: null,
       used: 1,
       parts: [],
-      guides: []
+      guides: [],
+      permanentlyDeclineMessage: null,
+      temporarilyDeclineMessage: null,
+      service: {}
     }
   },
   async created() {
@@ -123,7 +161,7 @@ export default {
   computed: {
     ...mapState({
       card: s => s.company.cardTemplates.template,
-      cardId: s => s.company.cards.card.templateID,
+      cardId: s => s.company.cards.card.templateID
       // company: s => s.company.settings.settings
     })
   },
@@ -139,14 +177,14 @@ export default {
         this.$refs.warrantyOdometr.$el.focus()
       }
     },
-    decTime() {
-      if (this.estimatedTime > 0.5) this.estimatedTime -= 0.5
-    },
-    incTime() {
-      this.estimatedTime += 0.5
-    },
+    // decTime() {
+    //   if (this.estimatedTime > 0.5) this.estimatedTime -= 0.5
+    // },
+    // incTime() {
+    //   this.estimatedTime += 0.5
+    // },
 
-    async Save() {
+    async save() {
       if (this.isLoading) return
       const result = await this.v$.$validate()
       if (!result) return
@@ -162,7 +200,7 @@ export default {
         used,
         parts,
         guides,
-          select: false
+        select: false
       }
 
       if (warranty.id === 'custom') {

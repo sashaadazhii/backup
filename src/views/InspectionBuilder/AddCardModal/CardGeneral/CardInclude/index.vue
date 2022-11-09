@@ -1,10 +1,14 @@
 <template>
   <div class="block__wrapper">
-    <div class="block__header">
-      <span> Include on every work order</span>
-      <Switch v-model="every" />
+    <div class="block__left">
+      <div class="block__title">Include on every work order</div>
+      <div class="block__desc">
+        <div class="block__text">Card would appear on each work order as a part of inspection</div>
+      </div>
     </div>
-    <Dropdown theme="white" v-model="type" :options="types" class="-full" :disabled="!every" />
+    <div class="block__right"><Switch v-model="every" /></div>
+
+    <!-- <Dropdown theme="white" v-model="type" :options="types" class="-full" :disabled="!every" />
     <Dropdown
       v-if="type === 'Specific Vehicle tied to a Customer'"
       theme="white"
@@ -47,7 +51,7 @@
           <span>{{ option.make }} {{ option.model }} {{ option.year }}</span>
         </div>
       </template>
-    </Dropdown>
+    </Dropdown> -->
   </div>
 </template>
 
@@ -58,7 +62,7 @@ import Switch from '@/components/Yaro/Switch'
 
 export default {
   name: 'AddCardRelation',
-  components: {Dropdown, Switch},
+  components: {Switch}, //Dropdown
   data() {
     return {
       type: 'Specific Vehicle tied to a Customer',
@@ -74,20 +78,20 @@ export default {
   },
   computed: {
     ...mapState({
-      customers: s => {
-        const customers = s.company.card.customers
-        return customers.map(c => {
-          c.name = `${c.firstName} ${c.lastName}`
-          return c
-        })
-      },
+      // customers: s => {
+      //   const customers = s.company.card.customers
+      //   return customers.map(c => {
+      //     c.name = `${c.firstName} ${c.lastName}`
+      //     return c
+      //   })
+      // },
       card: s => s.company.card.card
     })
   },
   methods: {
-      ...mapMutations({
-          setCardLevel: 'company/card/setCardLevel',
-      }),
+    ...mapMutations({
+      setCardLevel: 'company/card/setCardLevel'
+    }),
     ...mapActions({
       fetchCustomers: 'company/card/fetchCustomers',
       fetchVehicles: 'company/vehicles/fetchVehicles'
@@ -98,15 +102,15 @@ export default {
       this.vehicle = null
     }
   },
-    watch: {
-        every: {
-            handler(val) {
-                if(val) {
-                    this.setCardLevel(val)
-                }
-            }
+  watch: {
+    every: {
+      handler(val) {
+        if (val) {
+          this.setCardLevel(val)
         }
+      }
     }
+  }
 }
 </script>
 <style lang="scss" scoped>

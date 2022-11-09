@@ -14,7 +14,7 @@
           <div class="options__item item">
             <div class="item__title">{{ question.type }} option {{ element.name }} {{ index + 1 }}</div>
             <i class="i-drag_indicator drug" />
-            <Input v-model="element.option" placeholder="Option name goes here..." />
+            <Input v-model="element.option" placeholder="" />
             <Button icon="i-remove_circle_outline" border size="large" @click="$emit('delItem', {index, idx})" :disabled="question.list.length <= 2" />
           </div>
         </template>
