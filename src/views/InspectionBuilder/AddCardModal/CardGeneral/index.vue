@@ -11,6 +11,15 @@
         @input="setDesc($event.target.value)"
       />
     </div>
+    <div class="field__label">
+      <div class="field__title">Customer Facing Description</div>
+      <textarea
+        class="field__text"
+        placeholder="Enter customer facing description"
+        :value="card.descriptionForCustomer"
+        @input="setCusDesc($event.target.value)"
+      />
+    </div>
     <!-- <Dropdown title="Card Type" v-model="type" :options="typesList" optionLabel="label" @change="setCardType($event.value.id)" />
     <div v-if="type.id === 'public'" class="main__label">
       <i class="i-information-fill" />
@@ -18,11 +27,6 @@
     </div> -->
     <CardRelation />
     <CardInclude />
-
-    <!-- <div class="field__label">
-      <div class="field__title">Customer Facing Description</div>
-      <textarea class="field__text" placeholder="Description" :value="card.descriptionForCustomer" @input="setCusDesc($event.target.value)" />
-    </div> -->
   </div>
 </template>
 

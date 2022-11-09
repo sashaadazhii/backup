@@ -35,6 +35,7 @@
         </div>
         <NewPart v-if="isNewPart" :serviceID="service.id" @close="open" />
       </div>
+
       <div v-if="service.guides && service.guides.length" class="service__guids">
         <div class="service__guids-title">Service guides</div>
         <Guid v-for="(guid, idx) of service.guides" :key="idx" :guid="guid" />
