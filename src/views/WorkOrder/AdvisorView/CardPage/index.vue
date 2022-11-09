@@ -157,7 +157,13 @@
                     </div>
                     <div v-if="option === 'Display Total Price Only'" class="option__right">
                       <div class="option__text">Enter Total:</div>
-                      <input v-model="card.customPrice" type="text" class="option__input" v-maska="{mask: 'HHHHHHHH', tokens: {H: {pattern: /[0-9.]/}}}" />
+                      <input
+                        v-model="card.customPrice"
+                        type="text"
+                        class="option__input"
+                        :style="[card.partsForCustomer === 'Display Total Price Only' && !card.customPrice ? 'border-color: #F37878' : 'border-color: #D6D7DE']"
+                        v-maska="{mask: 'HHHHHHHH', tokens: {H: {pattern: /[0-9.]/}}}"
+                      />
                     </div>
                   </div>
                   <div class="block__halfs">
@@ -282,7 +288,12 @@
                 </div>
               </div>
             </div>
-            <Button label="Mark as Ready for Customer" size="large" @click="approve" :disabled="cause.length <= 10 || solution.length <= 10" />
+            <Button
+              label="Mark as Ready for Customer"
+              size="large"
+              @click="approve"
+              :disabled="cause.length <= 10 || solution.length <= 10 || (card.partsForCustomer === 'Display Total Price Only' && !card.customPrice)"
+            />
           </div>
           <div class="sidebar__bottom">
             <div class="sidebar__notes">
