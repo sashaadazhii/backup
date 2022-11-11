@@ -80,14 +80,14 @@
           rightText="months"
           :error="v$.time.$error"
         /> -->
-        <div class="textarea red">
+        <!-- <div class="textarea red">
           <div class="textarea__title">Permanently Declined Message</div>
           <textarea class="textarea__text" placeholder="Enter permanently declined message" v-model="permanentlyDeclineMessage"></textarea>
         </div>
         <div class="textarea blue">
           <div class="textarea__title">Temporarily Declined Message</div>
           <textarea class="textarea__text" placeholder="Enter temporarily declined message" v-model="temporarilyDeclineMessage"></textarea>
-        </div>
+        </div> -->
       </div>
       <!-- PARTS -->
       <!-- <div class="service__parts">
